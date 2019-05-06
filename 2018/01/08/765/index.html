@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="今天工作中遇到一个诡异的问题：dubbo服务中,controller调用service的系统暴露的服务，同步调用，controller报空指针，反序列化失败： Caused by: com.alibaba.com.caucho.hessian.io.HessianProtocolException: ‘com.xwtech.wingservice.entity.vo.jsjq.JqDesignFe">
+<meta name="keywords" content="序列化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hessian反序列化问题">
+<meta property="og:url" content="http://b.zhongmin.me/2018/01/08/765/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="今天工作中遇到一个诡异的问题：dubbo服务中,controller调用service的系统暴露的服务，同步调用，controller报空指针，反序列化失败： Caused by: com.alibaba.com.caucho.hessian.io.HessianProtocolException: ‘com.xwtech.wingservice.entity.vo.jsjq.JqDesignFe">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hessian反序列化问题">
+<meta name="twitter:description" content="今天工作中遇到一个诡异的问题：dubbo服务中,controller调用service的系统暴露的服务，同步调用，controller报空指针，反序列化失败： Caused by: com.alibaba.com.caucho.hessian.io.HessianProtocolException: ‘com.xwtech.wingservice.entity.vo.jsjq.JqDesignFe">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/01/08/765/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>hessian反序列化问题 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/08/765/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hessian反序列化问题
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-08 21:03:13" itemprop="dateCreated datePublished" datetime="2018-01-08T21:03:13+08:00">2018-01-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天工作中遇到一个诡异的问题：dubbo服务中,controller调用service的系统暴露的服务，同步调用，controller报空指针，反序列化失败：</p>
+<p>Caused by: com.alibaba.com.caucho.hessian.io.HessianProtocolException: ‘com.xwtech.wingservice.entity.vo.jsjq.JqDesignFeeVo’ could not be instantiated<br>    at com.alibaba.com.caucho.hessian.io.JavaDeserializer.instantiate(JavaDeserializer.java:275)<br>    at com.alibaba.com.caucho.hessian.io.JavaDeserializer.readObject(JavaDeserializer.java:155)<br>    at com.alibaba.com.caucho.hessian.io.SerializerFactory.readObject(SerializerFactory.java:397)<br>    at com.alibaba.com.caucho.hessian.io.Hessian2Input.readObjectInstance(Hessian2Input.java:2070)<br>    at com.alibaba.com.caucho.hessian.io.Hessian2Input.readObject(Hessian2Input.java:2005)<br>    at com.alibaba.com.caucho.hessian.io.Hessian2Input.readObject(Hessian2Input.java:1990)<br>    at com.alibaba.com.caucho.hessian.io.Hessian2Input.readObject(Hessian2Input.java:1538)<br>    at com.alibaba.com.caucho.hessian.io.JavaDeserializer$ObjectFieldDeserializer.deserialize(JavaDeserializer.java:396)<br>    … 29 more<br>Caused by: java.lang.reflect.InvocationTargetException<br>    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br>    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)<br>    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br>    at java.lang.reflect.Constructor.newInstance(Constructor.java:525)<br>    at com.alibaba.com.caucho.hessian.io.JavaDeserializer.instantiate(JavaDeserializer.java:271)<br>    … 36 more<br>Caused by: java.lang.NullPointerException<br>    at com.xwtech.wingservice.entity.jsjq.JqDesignFee.<init>(JqDesignFee.java:502)<br>    at com.xwtech.wingservice.entity.vo.jsjq.JqDesignFeeVo.<init>(JqDesignFeeVo.java:58)<br>    … 41 more</init></init></p>
+<pre><code>at com.alibaba.dubbo.remoting.exchange.support.DefaultFuture.returnFromResponse(DefaultFuture.java:190) ~\[dubbo-2.5.3.jar:2.5.3\]
+at com.alibaba.dubbo.remoting.exchange.support.DefaultFuture.get(DefaultFuture.java:110) ~\[dubbo-2.5.3.jar:2.5.3\]
+at com.alibaba.dubbo.remoting.exchange.support.DefaultFuture.get(DefaultFuture.java:84) ~\[dubbo-2.5.3.jar:2.5.3\]
+at com.alibaba.dubbo.rpc.protocol.dubbo.DubboInvoker.doInvoke(DubboInvoker.java:96) ~\[dubbo-2.5.3.jar:2.5.3\]
+... 61 common frames omitted
+</code></pre><p>报了一个JqDesignFee的一个空指正,那一行代码是刚好类构造函数.通过Debug发现在Service中在返回数据的时候始终会进入这个构造函数,猜测是序列化的时候可能会调用一下POJO类的构造函数. 在返回的实体类中增加了一个空的构造函数就OK了; 在 <code>JavaDeserializer.java:275</code>中有这么一段：</p>
+<p>public JavaDeserializer(Class cl)<br>  {<br>    _type = cl;<br>    _fieldMap = getFieldMap(cl);</p>
+<pre><code>_readResolve = getReadResolve(cl);
+
+if (_readResolve != null) {
+  _readResolve.setAccessible(true);
+}
+
+Constructor \[\]constructors = cl.getDeclaredConstructors();
+long bestCost = Long.MAX_VALUE;
+
+for (int i = 0; i &lt; constructors.length; i++) {
+  Class \[\]param = constructors\[i\].getParameterTypes();
+  long cost = 0;
+
+  for (int j = 0; j &lt; param.length; j++) {
+cost = 4 * cost;
+
+if (Object.class.equals(param\[j\]))
+  cost += 1;
+else if (String.class.equals(param\[j\]))
+  cost += 2;
+else if (int.class.equals(param\[j\]))
+  cost += 3;
+else if (long.class.equals(param\[j\]))
+  cost += 4;
+else if (param\[j\].isPrimitive())
+  cost += 5;
+else
+  cost += 6;
+  }
+
+  if (cost &lt; 0 || cost &gt; (1 &lt;&lt; 48))
+cost = 1 &lt;&lt; 48;
+
+  cost += param.length &lt;&lt; 48;
+
+  if (cost &lt; bestCost) {
+    _constructor = constructors\[i\];
+    bestCost = cost;
+  }
+}
+
+if (_constructor != null) {
+  _constructor.setAccessible(true);
+  Class \[\]params = _constructor.getParameterTypes();
+  _constructorArgs = new Object\[params.length\];
+  for (int i = 0; i &lt; params.length; i++) {
+    _constructorArgs\[i\] = getParamArg(params\[i\]);
+  }
+}
+</code></pre><p>上面这段代码，是hessian在反序列化的时候，用于在被反序列化的类里面找一个“得分最低”的构造函数，反序列化时会加以调用; 构造函数的“得分”规则大致是：参数越少得分越低；参数个数相同时，参数类型越接近JDK内置类得分越低 而我们的调用返回的类只有一个构造函数，当然只有这个构造函数会被选中 但是，hessian反序列化调用被选中的构造函数时，是这样来创造该构造函数需要的参数的:</p>
+<p>protected static Object getParamArg(Class cl)<br>  {<br>    if (! cl.isPrimitive())<br>      return null;<br>    else if (boolean.class.equals(cl))<br>      return Boolean.FALSE;<br>    else if (byte.class.equals(cl))<br>      return new Byte((byte) 0);<br>    else if (short.class.equals(cl))<br>      return new Short((short) 0);<br>    else if (char.class.equals(cl))<br>      return new Character((char) 0);<br>    else if (int.class.equals(cl))<br>      return new Integer(0);<br>    else if (long.class.equals(cl))<br>      return new Long(0);<br>    else if (float.class.equals(cl))<br>      return new Float(0);<br>    else if (double.class.equals(cl))<br>      return new Double(0);<br>    else<br>      throw new UnsupportedOperationException();</p>
+<p>可以看到，如果参数不是<code>primitive</code>类型，会被<code>null</code>代替；但不巧的是我们的构造函数内部对该参数调用了一个方法，因此抛出了空指针… 也就是说这个空指针是抛在客户端反序列化的时候而不是服务端内部，因此服务端当然找不到对应的错误日志了； 解决的办法也很简单：可以新增一个无参构造函数(无参构造函数肯定“得分”最低一定会被选中)；或者修改代码保证任意参数为<code>null</code>的时候都不会出问题</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/序列化/" rel="tag"># 序列化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/08/beannotofrequiredtypeexception-e5-8a-9e-e6-b3-95-e4-bb-a5-e5-8f-8aproxy-target-class-e4-bd-9c-e7-94-a8/" rel="next" title="BeanNotOfRequiredTypeException办法以及proxy-target-class 作用">
+                <i class="fa fa-chevron-left"></i> BeanNotOfRequiredTypeException办法以及proxy-target-class 作用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/15/java-copy-e5-af-b9-e8-b1-a1-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95/" rel="prev" title="Java copy对象的几种方法">
+                Java copy对象的几种方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

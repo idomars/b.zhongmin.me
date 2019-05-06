@@ -1,0 +1,4267 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/4/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/4/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/02/28/idea-e5-8f-96-e6-b6-88-e6-8e-a7-e5-88-b6-e5-8f-b0-e8-a1-8c-e6-95-b0-e9-99-90-e5-88-b6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/02/28/idea-e5-8f-96-e6-b6-88-e6-8e-a7-e5-88-b6-e5-8f-b0-e8-a1-8c-e6-95-b0-e9-99-90-e5-88-b6/" class="post-title-link" itemprop="url">Idea取消控制台行数限制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-28 11:39:40" itemprop="dateCreated datePublished" datetime="2018-02-28T11:39:40+08:00">2018-02-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>intellij idea控制台取消行数限制 在idea7之后的版本中取消了 控制台行数设置 选项，只能通过更改配置文件进行更改 在%安装目录%/bin中找到idea.properties文件，更改idea.cycle.buffer.size项值为disabled，保存，重启idea即可</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/02/27/java-equals-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/02/27/java-equals-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3/" class="post-title-link" itemprop="url">Java equals方法详解</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-27 16:31:02" itemprop="dateCreated datePublished" datetime="2018-02-27T16:31:02+08:00">2018-02-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1.equals()的所属以及内部原理（即Object中equals方法的实现原理）</strong> 说起equals方法，我们都知道是超类Object中的一个基本方法，用于检测一个对象是否与另外一个对象相等。而在Object类中这个方法实际上是判断两个对象是否具有相同的引用，如果有，它们就一定相等。其源码如下：</p>
+<p>public boolean equals(Object obj) {   return (this == obj);     }</p>
+<p>实际上我们知道所有的对象都拥有标识(内存地址)和状态(数据)，同时“==”比较两个对象的的内存地址，所以说 Object 的 equals() 方法是比较两个对象的内存地址是否相等，即若 object1.equals(object2) 为 true，则表示 equals1 和 equals2 实际上是引用同一个对象。 <strong>2.equals()与‘==’的区别</strong> 或许这是我们面试时更容易碰到的问题”equals方法与‘==’运算符有什么区别？“，并且常常我们都会胸有成竹地回答：“equals比较的是对象的内容，而‘==’比较的是对象的地址。”。但是从前面我们可以知道equals方法在Object中的实现也是间接使用了‘==’运算符进行比较的，所以从严格意义上来说，我们前面的回答并不完全正确。我们先来看一段代码并运行再来讨论这个问题。</p>
+<p>public class Car {<br>    private int batch;<br>    public Car(int batch) {<br>        this.batch = batch;<br>    }<br>    public static void main(String[] args) {<br>        Car c1 = new Car(1);<br>        Car c2 = new Car(1);<br>        System.out.println(c1.equals(c2));<br>        System.out.println(c1 == c2);<br>    }<br>}</p>
+<p>运行结果：</p>
+<p>false<br>false</p>
+<p>分析：对于‘==’运算符比较两个Car对象，返回了false，这点我们很容易明白，毕竟它们比较的是内存地址，而c1与c2是两个不同的对象，所以c1与c2的内存地址自然也不一样。现在的问题是，我们希望生产的两辆的批次（batch）相同的情况下就认为这两辆车相等，但是运行的结果是尽管c1与c2的批次相同，但equals的结果却反回了false。当然对于equals返回了false，我们也是心知肚明的，因为equal来自Object超类，访问修饰符为public，而我们并没有重写equal方法，故调用的必然是Object超类的原始方equals方法，根据前面分析我们也知道该原始equal方法内部实现使用的是’==’运算符，所以返回了false。因此为了达到我们的期望值，我们必须重写Car的equal方法，让其比较的是对象的批次（即对象的内容），而不是比较内存地址，于是修改如下：</p>
+<p>@Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof Car) {<br>            Car c = (Car) obj;<br>            return batch == c.batch;<br>        }<br>        return false;<br>    }  </p>
+<p>使用instanceof来判断引用obj所指向的对象的类型，如果obj是Car类对象，就可以将其强制转为Car对象，然后比较两辆Car的批次，相等返回true，否则返回false。当然如果obj不是 Car对象，自然也得返回false。我们再次运行：</p>
+<p>运行结果<br>true<br>false</p>
+<p>嗯，达到我们预期的结果了。因为前面的面试题我们应该这样回答更佳 总结：默认情况下也就是从超类Object继承而来的equals方法与‘==’是完全等价的，比较的都是对象的内存地址，但我们可以重写equals方法，使其按照我们的需求的方式进行比较，如String类重写了equals方法，使其比较的是字符的序列，而不再是内存地址。 <strong>3.equals()的重写规则</strong> 前面我们已经知道如何去重写equals方法来实现我们自己的需求了，但是我们在重写equals方法时，还是需要注意如下几点规则的。</p>
+<ul>
+<li>自反性。对于任何非null的引用值x，x.equals(x)应返回true。</li>
+<li>对称性。对于任何非null的引用值x与y，当且仅当：y.equals(x)返回true时，x.equals(y)才返回true。</li>
+<li>传递性。对于任何非null的引用值x、y与z，如果y.equals(x)返回true，y.equals(z)返回true，那么x.equals(z)也应返回true。</li>
+<li>一致性。对于任何非null的引用值x与y，假设对象上equals比较中的信息没有被修改，则多次调用x.equals(y)始终返回true或者始终返回false。</li>
+<li>对于任何非空引用值x，x.equal(null)应返回false。</li>
+</ul>
+<p>当然在通常情况下，如果只是进行同一个类两个对象的相等比较，一般都可以满足以上5点要求，下面我们来看前面写的一个例子。</p>
+<p>public class Car {<br>    private int batch;<br>    public Car(int batch) {<br>        this.batch = batch;<br>    }<br>    public static void main(String[] args) {<br>        Car c1 = new Car(1);<br>        Car c2 = new Car(1);<br>        Car c3 = new Car(1);<br>        System.out.println(“自反性-&gt;c1.equals(c1)：” + c1.equals(c1));<br>        System.out.println(“对称性：”);<br>        System.out.println(c1.equals(c2));<br>        System.out.println(c2.equals(c1));<br>        System.out.println(“传递性：”);<br>        System.out.println(c1.equals(c2));<br>        System.out.println(c2.equals(c3));<br>        System.out.println(c1.equals(c3));<br>        System.out.println(“一致性：”);<br>        for (int i = 0; i &lt; 50; i++) {<br>            if (c1.equals(c2) != c1.equals(c2)) {<br>                System.out.println(“equals方法没有遵守一致性！”);<br>                break;<br>            }<br>        }<br>        System.out.println(“equals方法遵守一致性！”);<br>        System.out.println(“与null比较：”);<br>        System.out.println(c1.equals(null));<br>    }<br>    @Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof Car) {<br>            Car c = (Car) obj;<br>            return batch == c.batch;<br>        }<br>        return false;<br>    }<br>}<br>运行结果:<br>自反性-&gt;c1.equals(c1)：true<br>对称性：<br>true<br>true<br>传递性：<br>true<br>true<br>true<br>一致性：<br>equals方法遵守一致性！<br>与null比较：<br>false</p>
+<p>由运行结果我们可以看出equals方法在同一个类的两个对象间的比较还是相当容易理解的。但是如果是子类与父类混合比较，那么情况就不太简单了。下面我们来看看另一个例子，首先，我们先创建一个新类BigCar，继承于Car,然后进行子类与父类间的比较。</p>
+<p>public class BigCar extends Car {<br>    int count;<br>    public BigCar(int batch, int count) {<br>        super(batch);<br>        this.count = count;<br>    }<br>    @Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof BigCar) {<br>            BigCar bc = (BigCar) obj;<br>            return super.equals(bc) &amp;&amp; count == bc.count;<br>        }<br>        return false;<br>    }<br>    public static void main(String[] args) {<br>        Car c = new Car(1);<br>        BigCar bc = new BigCar(1, 20);<br>        System.out.println(c.equals(bc));<br>        System.out.println(bc.equals(c));<br>    }<br>}<br>运行结果:<br>true<br>false</p>
+<p>对于这样的结果，自然是我们意料之中的啦。因为BigCar类型肯定是属于Car类型，所以c.equals(bc)肯定为true，对于bc.equals(c)返回false，是因为Car类型并不一定是BigCar类型（Car类还可以有其他子类）。嗯，确实是这样。但如果有这样一个需求，只要BigCar和Car的生产批次一样，我们就认为它们两个是相当的，在这样一种需求的情况下，父类（Car）与子类（BigCar）的混合比较就不符合equals方法对称性特性了。很明显一个返回true，一个返回了false，根据对称性的特性，此时两次比较都应该返回true才对。那么该如何修改才能符合对称性呢？其实造成不符合对称性特性的原因很明显，那就是因为Car类型并不一定是BigCar类型（Car类还可以有其他子类），在这样的情况下(Car instanceof BigCar)永远返回false，因此，我们不应该直接返回false，而应该继续使用父类的equals方法进行比较才行（因为我们的需求是批次相同，两个对象就相等，父类equals方法比较的就是batch是否相同）。因此BigCar的equals方法应该做如下修改：</p>
+<p>@Override<br>public boolean equals(Object obj) {<br>    if (obj instanceof BigCar) {<br>        BigCar bc = (BigCar) obj;<br>        return super.equals(bc) &amp;&amp; count == bc.count;<br>    }<br>    return super.equals(obj);<br>}</p>
+<p>这样运行的结果就都为true了。但是到这里问题并没有结束，虽然符合了对称性，却还没符合传递性，实例如下：</p>
+<p>public class BigCar extends Car {<br>    int count;<br>    public BigCar(int batch, int count) {<br>        super(batch);<br>        this.count = count;<br>    }<br>    @Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof BigCar) {<br>            BigCar bc = (BigCar) obj;<br>            return super.equals(bc) &amp;&amp; count == bc.count;<br>        }<br>        return super.equals(obj);<br>    }<br>    public static void main(String[] args) {<br>        Car c = new Car(1);<br>        BigCar bc = new BigCar(1, 20);<br>        BigCar bc2 = new BigCar(1, 22);<br>        System.out.println(bc.equals(c));<br>        System.out.println(c.equals(bc2));<br>        System.out.println(bc.equals(bc2));<br>    }<br>}<br>运行结果:<br>true<br>true<br>false</p>
+<p>bc，bc2，c的批次都是相同的，按我们之前的需求应该是相等，而且也应该符合equals的传递性才对。但是事实上运行结果却不是这样，违背了传递性。出现这种情况根本原因在于：</p>
+<ul>
+<li>父类与子类进行混合比较。</li>
+<li>子类中声明了新变量，并且在子类equals方法使用了新增的成员变量作为判断对象是否相等的条件。</li>
+</ul>
+<p>只要满足上面两个条件，equals方法的传递性便失效了。而且目前并没有直接的方法可以解决这个问题。因此我们在重写equals方法时这一点需要特别注意。虽然没有直接的解决方法，但是间接的解决方案还说有滴，那就是通过组合的方式来代替继承,还有一点要注意的是组合的方式并非真正意义上的解决问题（只是让它们间的比较都返回了false，从而不违背传递性，然而并没有实现我们上面batch相同对象就相等的需求），而是让equals方法满足各种特性的前提下，让代码看起来更加合情合理，代码如下：</p>
+<p>public class Combination4BigCar {<br>    private Car c;<br>    private int count;<br>    public Combination4BigCar(int batch, int count) {<br>        c = new Car(batch);<br>        this.count = count;<br>    }<br>    @Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof Combination4BigCar) {<br>            Combination4BigCar bc = (Combination4BigCar) obj;<br>            return c.equals(bc.c) &amp;&amp; count == bc.count;<br>        }<br>        return false;<br>    }<br>}</p>
+<p>从代码来看即使batch相同，Combination4BigCar类的对象与Car类的对象间的比较也永远都是false，但是这样看起来也就合情合理了，毕竟Combination4BigCar也不是Car的子类，因此equals方法也就没必要提供任何对Car的比较支持，同时也不会违背了equals方法的传递性。 <strong>4.equals()的重写规则之必要性深入解读</strong> 前面我们一再强调了equals方法重写必须遵守的规则，接下来我们就是分析一个反面的例子，看看不遵守这些规则到底会造成什么样的后果。</p>
+<p>public class AbnormalResult {<br>    public static void main(String[] args) {<br>        List<a> list = new ArrayList<a>();<br>        A a = new A();<br>        B b = new B();<br>        list.add(a);<br>        System.out.println(“list.contains(a)-&gt;” + list.contains(a));<br>        System.out.println(“list.contains(b)-&gt;” + list.contains(b));<br>        list.clear();<br>        list.add(b);<br>        System.out.println(“list.contains(a)-&gt;” + list.contains(a));<br>        System.out.println(“list.contains(b)-&gt;” + list.contains(b));<br>    }<br>    static class A {<br>        @Override<br>        public boolean equals(Object obj) {<br>            return obj instanceof A;<br>        }<br>    }<br>    static class B extends A {<br>        @Override<br>        public boolean equals(Object obj) {<br>            return obj instanceof B;<br>        }<br>    }<br>}</a></a></p>
+<p>上面的代码，我们声明了 A,B两个类，注意必须是static，否则无法被main调用。B类继承A，两个类都重写了equals方法，但是根据我们前面的分析，这样重写是没有遵守对称性原则的，我们先来看看运行结果：</p>
+<p>list.contains(a)-&gt;true<br>list.contains(b)-&gt;false<br>list.contains(a)-&gt;true<br>list.contains(b)-&gt;true</p>
+<p>19行和24行的输出没什么好说的，将a，b分别加入list中，list中自然会含有a，b。但是为什么20行和23行结果会不一样呢？我们先来看看contains方法内部实现</p>
+<p>@Override<br>public boolean contains(Object o) {<br>     return indexOf(o) != -1;<br> }  </p>
+<pre><code>@Override  
+</code></pre><p>public int indexOf(Object o) {<br>E[] a = this.a;<br>if (o == null) {<br>    for (int i = 0; i &lt; a.length; i++)<br>        if (a[i] == null)<br>            return i;<br>} else {<br>    for (int i = 0; i &lt; a.length; i++)<br>        if (o.equals(a[i]))<br>            return i;<br>}<br>return -1;</p>
+<p>可以看出最终调用的是对象的equals方法，所以当调用20行代码list.contains(b)时，实际上调用了 b.equals(a[i]),a[i]是集合中的元素集合中的类型而且为A类型(只添加了a对象)，虽然B继承了A,但此时 a[i] instanceof B 结果为false，equals方法也就会返回false；而当调用23行代码list.contains(a)时，实际上调用了a.equal(a[i]),其中a[i]是集合中的元素而且为B类型(只添加了b对象)，由于B类型肯定是A类型（B继承了A），所以a[i] instanceof A  结果为true，equals方法也就会返回true，这就是整个过程。但很明显结果是有问题的，因为我们的 list的泛型是A,而B又继承了A，此时无论加入了a还是b，都属于同种类型，所以无论是contains(a),还是contains(b)都应该返回true才算正常。而最终却出现上面的结果，这就是因为重写equals方法时没遵守对称性原则导致的结果，如果没遵守传递性也同样会造成上述的结果。当然这里的解决方法也比较简单，我们只要将B类的equals方法修改一下就可以了。</p>
+<p>static class B extends A{<br>        @Override<br>        public boolean equals(Object obj) {<br>            if(obj instanceof B){<br>                return true;<br>            }<br>            return super.equals(obj);<br>        }<br>    }</p>
+<p>到此，我们也应该明白了重写equals必须遵守几点原则的重要性了。当然这里不止是list，只要是java集合类或者java类库中的其他方法，重写equals不遵守5点原则的话，都可能出现意想不到的结果。 <strong>5.为什么重写equals()的同时还得重写hashCode()</strong> 这个问题之前我也很好奇，不过最后还是在书上得到了比较明朗的解释，当然这个问题主要是针对映射相关的操作（Map接口）。学过数据结构的同学都知道Map接口的类会使用到键对象的哈希码，当我们调用put方法或者get方法对Map容器进行操作时，都是根据键对象的哈希码来计算存储位置的，因此如果我们对哈希码的获取没有相关保证，就可能会得不到预期的结果。在java中，我们可以使用hashCode()来获取对象的哈希码，其值就是对象的存储地址，这个方法在Object类中声明，因此所有的子类都含有该方法。那我们先来认识一下hashCode()这个方法吧。hashCode的意思就是散列码，也就是哈希码，是由对象导出的一个整型值，散列码是没有规律的，如果x与y是两个不同的对象，那么x.hashCode()与y.hashCode()基本是不会相同的，下面通过String类的hashCode()计算一组散列码：</p>
+<p>public class HashCodeTest {<br>    public static void main(String[] args) {<br>        int hash=0;<br>        String s=”ok”;<br>        StringBuilder sb =new StringBuilder(s);  </p>
+<pre><code>    System.out.println(s.hashCode()+&quot;  &quot;+sb.hashCode());  
+
+    String t = new String(&quot;ok&quot;);  
+    StringBuilder tb =new StringBuilder(s);  
+    System.out.println(t.hashCode()+&quot;  &quot;+tb.hashCode());  
+}  
+</code></pre><p>}<br>运行结果:</p>
+<p>3548 1829164700<br>3548 2018699554</p>
+<p>我们可以看出，字符串s与t拥有相同的散列码，这是因为字符串的散列码是由内容导出的。而字符串缓冲sb与tb却有着不同的散列码，这是因为StringBuilder没有重写hashCode方法，它的散列码是由Object类默认的hashCode方法计算出来的对象存储地址，所以散列码自然也就不同了。那么我们该如何重写出一个较好的hashCode方法呢，其实并不难，我们只要合理地组织对象的散列码，就能够让不同的对象产生比较均匀的散列码。例如下面的例子：</p>
+<p>ackage com.zejian.test;<br>public class Model {<br>    private String name;<br>    private double salary;<br>    private int sex;  </p>
+<pre><code>@Override  
+public int hashCode() {  
+    return name.hashCode()+new Double(salary).hashCode()   
+            \+ new Integer(sex).hashCode();  
+}  
+</code></pre><p>}</p>
+<p>上面的代码我们通过合理的利用各个属性对象的散列码进行组合，最终便能产生一个相对比较好的或者说更加均匀的散列码，当然上面仅仅是个参考例子而已，我们也可以通过其他方式去实现，只要能使散列码更加均匀（所谓的均匀就是每个对象产生的散列码最好都不冲突）就行了。不过这里有点要注意的就是java 7中对hashCode方法做了两个改进，首先java发布者希望我们使用更加安全的调用方式来返回散列码，也就是使用null安全的方法Objects.hashCode（注意不是Object而是java.util.Objects）方法，这个方法的优点是如果参数为null，就只返回0，否则返回对象参数调用的hashCode的结果。Objects.hashCode 源码如下：</p>
+<p>public static int hashCode(Object o) {<br>        return o != null ? o.hashCode() : 0;<br>    }</p>
+<p>因此我们修改后的代码如下：</p>
+<p>package com.zejian.test;<br>import java.util.Objects;<br>public  class Model {<br>    private   String name;<br>    private double salary;<br>    private int sex;<br>    @Override<br>    public int hashCode() {<br>        return Objects.hashCode(name)+new Double(salary).hashCode()<br>                + new Integer(sex).hashCode();<br>    }<br>}</p>
+<p>java 7还提供了另外一个方法java.util.Objects.hash(Object… objects),当我们需要组合多个散列值时可以调用该方法。进一步简化上述的代码：</p>
+<p>public  class Model {<br>    private   String name;<br>    private double salary;<br>    private int sex;<br>//  @Override<br>//  public int hashCode() {<br>//      return Objects.hashCode(name)+new Double(salary).hashCode()<br>//              + new Integer(sex).hashCode();<br>//  }  </p>
+<pre><code>@Override  
+public int hashCode() {  
+    return Objects.hash(name,salary,sex);  
+}  
+</code></pre><p>}</p>
+<p>好了，到此hashCode()该介绍的我们都说了，还有一点要说的如果我们提供的是一个数值类型的变量的话，那么我们可以调用Arrays.hashCode()来计算它的散列码，这个散列码是由数组元素的散列码组成的。接下来我们回归到我们之前的问题，重写equals方法时也必须重写hashCode方法。在Java API文档中关于hashCode方法有以下几点规定（原文来自java深入解析一书）。</p>
+<ul>
+<li>在java应用程序执行期间，如果在equals方法比较中所用的信息没有被修改，那么在同一个对象上多次调用hashCode方法时必须一致地返回相同的整数。如果多次执行同一个应用时，不要求该整数必须相同。</li>
+<li>如果两个对象通过调用equals方法是相等的，那么这两个对象调用hashCode方法必须返回相同的整数。</li>
+<li>如果两个对象通过调用equals方法是不相等的，不要求这两个对象调用hashCode方法必须返回不同的整数。但是程序员应该意识到对不同的对象产生不同的hash值可以提供哈希表的性能。</li>
+</ul>
+<p>通过前面的分析，我们知道在Object类中，hashCode方法是通过Object对象的地址计算出来的，因为Object对象只与自身相等，所以同一个对象的地址总是相等的，计算取得的哈希码也必然相等，对于不同的对象，由于地址不同，所获取的哈希码自然也不会相等。因此到这里我们就明白了，如果一个类重写了equals方法，但没有重写hashCode方法，将会直接违法了第2条规定，这样的话，如果我们通过映射表(Map接口)操作相关对象时，就无法达到我们预期想要的效果。如果大家不相信, 可以看看下面的例子（来自java深入解析一书）</p>
+<p>import java.util.HashMap;<br>import java.util.Map;<br>public class MapTest {<br>    public static void main(String[] args) {<br>        Map&lt;String,Value&gt; map1 = new HashMap&lt;String,Value&gt;();<br>        String s1 = new String(“key”);<br>        String s2 = new String(“key”);<br>        Value value = new Value(2);<br>        map1.put(s1, value);<br>        System.out.println(“s1.equals(s2):”+s1.equals(s2));<br>        System.out.println(“map1.get(s1):”+map1.get(s1));<br>        System.out.println(“map1.get(s2):”+map1.get(s2));  </p>
+<pre><code>    Map&lt;Key,Value&gt; map2 = new HashMap&lt;Key,Value&gt;();  
+    Key k1 = new Key(&quot;A&quot;);  
+    Key k2 = new Key(&quot;A&quot;);  
+    map2.put(k1, value);  
+    System.out.println(&quot;k1.equals(k2):&quot;+s1.equals(s2));  
+    System.out.println(&quot;map2.get(k1):&quot;+map2.get(k1));  
+    System.out.println(&quot;map2.get(k2):&quot;+map2.get(k2));  
+}  
+
+/\*\* 
+ \* 键 
+ \* @author zejian 
+ \* 
+ */  
+static class Key{  
+    private String k;  
+    public Key(String key){  
+        this.k=key;  
+    }  
+
+    @Override  
+    public boolean equals(Object obj) {  
+        if(obj instanceof Key){  
+            Key key=(Key)obj;  
+            return k.equals(key.k);  
+        }  
+        return false;  
+    }  
+}  
+
+/\*\* 
+ \* 值 
+ \* @author zejian 
+ \* 
+ */  
+static class Value{  
+    private int v;  
+
+    public Value(int v){  
+        this.v=v;  
+    }  
+
+    @Override  
+    public String toString() {  
+        return &quot;类Value的值－－&gt;&quot;+v;  
+    }  
+}  
+</code></pre><p>}</p>
+<p>码比较简单，我们就不过多解释了（注意Key类并没有重写hashCode方法），直接运行看结果</p>
+<p>s1.equals(s2):true<br>map1.get(s1):类Value的值－－&gt;2<br>map1.get(s2):类Value的值－－&gt;2<br>k1.equals(k2):true<br>map2.get(k1):类Value的值－－&gt;2<br>map2.get(k2):null</p>
+<p>对于s1和s2的结果，我们并不惊讶，因为相同的内容的s1和s2获取相同内的value这个很正常，因为String类重写了equals方法和hashCode方法，使其比较的是内容和获取的是内容的哈希码。但是对于k1和k2的结果就不太尽人意了，k1获取到的值是2，k2获取到的是null，这是为什么呢？想必大家已经发现了，Key只重写了equals方法并没有重写hashCode方法，这样的话，equals比较的确实是内容，而hashCode方法呢？没重写，那就肯定调用超类Object的hashCode方法，这样返回的不就是地址了吗？k1与k2属于两个不同的对象，返回的地址肯定不一样，所以现在我们知道调用map2.get(k2)为什么返回null了吧？那么该如何修改呢？很简单，我们要做也重写一下hashCode方法即可（如果参与equals方法比较的成员变量是引用类型的，则可以递归调用hashCode方法来实现）：</p>
+<p>@Override<br>public int hashCode() {<br>     return k.hashCode();<br>}</p>
+<p>再次运行：</p>
+<p>s1.equals(s2):true<br>map1.get(s1):类Value的值－－&gt;2<br>map1.get(s2):类Value的值－－&gt;2<br>k1.equals(k2):true<br>map2.get(k1):类Value的值－－&gt;2<br>map2.get(k2):类Value的值－－&gt;2</p>
+<p><strong>6.重写equals()中getClass与instanceof的区别</strong> 虽然前面我们都在使用instanceof（当然前面我们是根据需求（批次相同即相等）而使用instanceof的），但是在重写equals() 方法时，一般都是推荐使用 getClass 来进行类型判断（除非所有的子类有统一的语义才使用instanceof），不是使用 instanceof。我们都知道 instanceof 的作用是判断其左边对象是否为其右边类的实例，返回 boolean 类型的数据。可以用来判断继承中的子类的实例是否为父类的实现。下来我们来看一个例子：父类Person</p>
+<p>public class Person {<br>        protected String name;<br>        public String getName() {<br>            return name;<br>        }<br>        public void setName(String name) {<br>            this.name = name;<br>        }<br>        public Person(String name){<br>            this.name = name;<br>        }<br>        public boolean equals(Object object){<br>            if(object instanceof Person){<br>                Person p = (Person) object;<br>                if(p.getName() == null || name == null){<br>                    return false;<br>                }<br>                else{<br>                    return name.equalsIgnoreCase(p.getName ());<br>                }<br>            }<br>            return false;<br>       }<br>    }</p>
+<p>子类 Employee</p>
+<p>public class Employee extends Person{<br>        private int id;<br>        public int getId() {<br>            return id;<br>        }<br>        public void setId(int id) {<br>            this.id = id;<br>        }<br>        public Employee(String name,int id){<br>            super(name);<br>            this.id = id;<br>        }<br>        /**<br>         * 重写equals()方法<br>         */<br>        public boolean equals(Object object){<br>            if(object instanceof Employee){<br>                Employee e = (Employee) object;<br>                return super.equals(object) &amp;&amp; e.getId() == id;<br>            }<br>            return false;<br>        }<br>    }</p>
+<p>上面父类 Person 和子类 Employee 都重写了 equals(),不过 Employee 比父类多了一个id属性,而且这里我们并没有统一语义。测试代码如下：</p>
+<p>public class Test {<br>        public static void main(String[] args) {<br>            Employee e1 = new Employee(“chenssy”, 23);<br>            Employee e2 = new Employee(“chenssy”, 24);<br>            Person p1 = new Person(“chenssy”);<br>            System.out.println(p1.equals(e1));<br>            System.out.println(p1.equals(e2));<br>            System.out.println(e1.equals(e2));<br>        }<br>    }</p>
+<p>上面代码我们定义了两个员工和一个普通人，虽然他们同名，但是他们肯定不是同一人，所以按理来说结果应该全部是 false，但是事与愿违，结果是：true、true、false。对于那 e1!=e2 我们非常容易理解，因为他们不仅需要比较 name,还需要比较 ID。但是 p1 即等于 e1 也等于 e2，这是非常奇怪的，因为 e1、e2 明明是两个不同的类，但为什么会出现这个情况？首先 p1.equals(e1)，是调用 p1 的 equals 方法，该方法使用 instanceof 关键字来检查 e1 是否为 Person 类，这里我们再看看 instanceof：判断其左边对象是否为其右边类的实例，也可以用来判断继承中的子类的实例是否为父类的实现。他们两者存在继承关系，肯定会返回 true 了，而两者 name 又相同，所以结果肯定是 true。所以出现上面的情况就是使用了关键字 instanceof，这是非常容易导致我们“钻牛角尖”。故在覆写 equals 时推荐使用 getClass 进行类型判断。而不是使用 instanceof（除非子类拥有统一的语义）。 <strong>7.编写一个完美equals()的几点建议</strong> 下面给出编写一个完美的equals方法的建议（出自Java核心技术 第一卷：基础知识）： 1）显式参数命名为otherObject,稍后需要将它转换成另一个叫做other的变量（参数名命名，强制转换请参考建议5） 2）检测this与otherObject是否引用同一个对象 ：if(this == otherObject) return true;（存储地址相同，肯定是同个对象，直接返回true） 3) 检测otherObject是否为null ，如果为null,返回false.if(otherObject == null) return false; 4) 比较this与otherObject是否属于同一个类 （视需求而选择）</p>
+<ul>
+<li>如果equals的语义在每个子类中有所改变，就使用getClass检测 ：if(getClass()!=otherObject.getClass()) return false; (参考前面分析的第6点)</li>
+<li>如果所有的子类都拥有统一的语义，就使用instanceof检测 ：if(!(otherObject instanceof ClassName)) return false;（即前面我们所分析的父类car与子类bigCar混合比，我们统一了批次相同即相等）</li>
+</ul>
+<p>5) 将otherObject转换为相应的类类型变量：ClassName other = (ClassName) otherObject; 6) 现在开始对所有需要比较的域进行比较 。使用==比较基本类型域，使用equals比较对象域。如果所有的域都匹配，就返回true，否则就返回flase。</p>
+<ul>
+<li>如果在子类中重新定义equals，就要在其中包含调用super.equals(other)</li>
+<li>当此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明 相等对象必须具有相等的哈希码 。</li>
+</ul>
+<p>参考资料： Java核心技术 第一卷：基础知识 Java深入分析 <a href="http://wiki.jikexueyuan.com/project/java-enhancement/java-thirteen.html" target="_blank" rel="noopener">http://wiki.jikexueyuan.com/project/java-enhancement/java-thirteen.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/02/27/java8-e5-ae-9e-e6-88-98-e6-95-99-e5-ad-a6-e8-a7-86-e9-a2-91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/02/27/java8-e5-ae-9e-e6-88-98-e6-95-99-e5-ad-a6-e8-a7-86-e9-a2-91/" class="post-title-link" itemprop="url">Java8实战</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-27 14:04:48" itemprop="dateCreated datePublished" datetime="2018-02-27T14:04:48+08:00">2018-02-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Java 8 已经出来了两年的时间，很多公司在日常开发中已经全面使用Java 8带来的编程革新，本课程从细节一点一滴的介绍Java 8的变化和详细API的深入讲解，大纲大致如下所示 1.让方法参数具备行为能力 2.Lambda表达式初探 3.Lambda语法精讲 4.Lambda使用深入解析 5.Lambda方法推导详细解析 6.Stream入门及Stream在JVM中的线程表现 7.Stream知识点总结Stream源码阅读 8.如何创建Stream精讲 9.Stream之filter，distinct，skip，limit，map，flatmap详细介绍 10.Stream之Find，Match，Reduce详细介绍 11.NumericStream的详细介绍以及和Stream之间的相互转换 12.Stream综合练习，熟练掌握API的用法 13.在Optional出现之前经常遇到的空指针异常 14.Optional的介绍以及API的详解 15.Optional之flatMap，综合练习，Optional源码剖析 16.初识Collector体会Collector的强大 17.Collector使用方法深入详细介绍-01 18.Collector使用方法深入详细介绍-02 19.Collector使用方法深入详细介绍-03 20.Collector使用方法深入详细介绍-04 21.Collector原理讲解，JDK自带Collector源码深度剖析 22.自定义Collector，结合Stream的使用详细介绍 23.Parallel Stream编程体验，充分利用多核机器加快计算速度 24.Fork Join框架实例深入讲解 25.Spliterator接口源码剖析以及自定义Spliterator实现一个Stream 26.Default方法的介绍和简单的例子 27.Default方法解决多重继承冲突的三大原则详细介绍 28.新Date API的详细介绍LocalDate，LocalTime，Instant，Duration 29.Future模式和Callable详细介绍 30.Java异步编程/异步回调机制 31.CompletableFuture详细介绍-01 32.CompletableFuture详细介绍-02 33.CompletableFuture详细介绍-03</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/02/26/mybatis-e6-89-b9-e9-87-8f-e5-a2-9e-e5-8a-a0-parameter-frch-item-0-not-found-available-parameters-are-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/02/26/mybatis-e6-89-b9-e9-87-8f-e5-a2-9e-e5-8a-a0-parameter-frch-item-0-not-found-available-parameters-are-list/" class="post-title-link" itemprop="url">mybatis 批量增加 Parameter '__frch_item_0' not found. Available parameters are [list]</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-26 17:52:46" itemprop="dateCreated datePublished" datetime="2018-02-26T17:52:46+08:00">2018-02-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当在mybatis用到foreach的时候，会报这个错误Parameter ‘__frch_item_0’ not found. Available parameters are [list]会出现的几种解决方案:</p>
+ <insert id="insertList" parametertype="java.util.List"><br>      insert into WXMATERIALLIST(MATERIALLISTID, DESIGNID, DEMANDLISTID, MATERIALCODE, MATERIALNAME, MODELCODE, VARIETYCODE,<br>    UNIT, UNITPRICE, MATERIALNUMBER, ALLPRICE, REMARK,PROVIDERNAME,providercode,productid,producttype,producttypename)<br>      <foreach collection="list" item="item" index="index" separator="union all"><br>      select<br>    #{item.materiallistid}, #{item.designid}, #{item.demandlistid}, #{item.materialcode,jdbcType=VARCHAR}, #{item.materialname,jdbcType=VARCHAR},<br>    #{item.modelcode,jdbcType=VARCHAR},#{item.varietycode,jdbcType=VARCHAR},<br>    #{item.unit,jdbcType=VARCHAR}, #{item.unitprice,jdbcType=DECIMAL}, #{item.materialnumber,jdbcType=DECIMAL}, #{item.allprice,jdbcType=DECIMAL}, #{item.remark,jdbcType=VARCHAR},<br>     #{item.providername,jdbcType=VARCHAR},#{item.providercode,jdbcType=VARCHAR},#{item.productid,jdbcType=BIGINT},<br>     #{item.producttype,jdbcType=BIGINT},#{item.producttypename,jdbcType=BIGINT}<br>    from dual<br>      </foreach><br>  </insert>
+
+<p>1.查看parameterType的类型是不是java.util.List类型，如果是的话，看foreach 的collection属性是不是list， 因为 传递一个 List 实例或者数组作为参数对象传给 MyBatis,MyBatis 会自动将它包装在一个 Map 中,用名称在作为键。List 实例将会以“list” 作为键,而数组实例将会以“array”作为键 2.看一下foreach里面的值有没有传递进来 3.看foreach里面的名称字段是否写错 4.还有就是我用Mybatis的时候，用mysql的值插入自动增长值，里面的key我在数据库中没有设置自动增长，然后我又用了selectkey，所以也会出现这种情况 5.还有种原因是xml中的属性，跟实体类中定义的不一致。如#{item.productid} productid在实体类中不存在</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/02/26/sql-state-null-error-code-17004-e6-97-a0-e6-95-88-e7-9a-84-e5-88-97-e7-b1-bb-e5-9e-8b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/02/26/sql-state-null-error-code-17004-e6-97-a0-e6-95-88-e7-9a-84-e5-88-97-e7-b1-bb-e5-9e-8b/" class="post-title-link" itemprop="url">SQL state [null]; error code [17004]; 无效的列类型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-26 17:36:45" itemprop="dateCreated datePublished" datetime="2018-02-26T17:36:45+08:00">2018-02-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在SQL执行插入数据的时候报SQL state [null]; error code [17004]; 无效的列类型。 org.springframework.jdbc.UncategorizedSQLException: Error setting null for parameter #4 with JdbcType OTHER . Try setting a different JdbcType for this parameter or a different jdbcTypeForNull configuration property. Cause: java.sql.SQLException: 无效的列类型 ; uncategorized SQLException for SQL []; SQL state [null]; error code [17004]; 无效的列类型; nested exception is java.sql.SQLException: 无效的列类型  </p>
+<p>错误日志是在：org.apache.ibatis.type.BaseTypeHandler这个类的第17行打出的。根据异常上面的代码<br>if (parameter == null) {<br>      if (jdbcType == null) {<br>        try {<br>          ps.setNull(i, JdbcType.OTHER.TYPE_CODE);<br>        } catch (SQLException e) {<br>          throw new TypeException(“Error setting null parameter.  Most JDBC drivers require that the JdbcType must be specified for all nullable parameters. Cause: “ + e, e);<br>        }<br>      } else {<br>        ps.setNull(i, jdbcType.TYPE_CODE);<br>      }<br>    } else {<br>      setNonNullParameter(ps, i, parameter, jdbcType);<br>    }</p>
+<p>可以看出，是因为传入的参数的字段为null对象无法获取对应的jdbcType类型，而报的错误。 你只要在insert语句中insert的对象加上jdbcType就可以了，修改如下： #{menuTitle,jdbcType=VARCHAR} 这样就可以解决以上错误了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/30/java-e4-b9-8blinkedlist-e6-ba-90-e7-a0-81-e8-a7-a3-e8-af-bb-ef-bc-88jdk-1-8-ef-bc-89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/30/java-e4-b9-8blinkedlist-e6-ba-90-e7-a0-81-e8-a7-a3-e8-af-bb-ef-bc-88jdk-1-8-ef-bc-89/" class="post-title-link" itemprop="url">Java之LinkedList源码解读（JDK 1.8）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-30 13:54:44" itemprop="dateCreated datePublished" datetime="2018-01-30T13:54:44+08:00">2018-01-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>java.util.LinkedList</strong></p>
+<ul>
+<li>双向链表实现的List。</li>
+<li>基于JDK 1.8。</li>
+<li>没有使用标准的注释，并适当调整了代码的缩进以方便介绍。</li>
+<li>里面很多方法的实现是一样的，不过可以让外界感觉其提供了更多的行为。</li>
+<li><p>需要花比ArrayList更多一点的时间理解</p>
+<p>/**<br>* LinkedList底层使用双向链表，实现了List和deque。实现所有的可选List操作，并可以只有所有元素（包括空值）<br>* 其大小理论上仅受内存大小的限制<br>*<br>* 所有的操作都可以作为一个双联列表来执行（及对双向链表操作）。<br>* 把对链表的操作封装起来，并对外提供看起来是对普通列表操作的方法。<br>* 遍历从起点、终点、或指定位置开始<br>* 内部方法，注释会描述为节点的操作(如删除第一个节点)，公开的方法会描述为元素的操作(如删除第一个元素)<br>*<br>* LinkedList不是线程安全的，如果在多线程中使用（修改），需要在外部作同步处理。<br>*<br>* 需要弄清元素（节点）的索引和位置的区别，不然有几个地方不好理解，具体在碰到的地方会解释。<br>*<br>* 迭代器可以快速报错<br>*/<br>public class LinkedList<e> extends AbstractSequentialList<e> implements List<e>, Deque<e>, Cloneable, java.io.Serializable<br>{<br>//容量<br>transient int size = 0;<br>//首节点<br>transient Node<e> first;<br>//尾节点<br>transient Node<e> last;<br>//默认构造函数<br>public LinkedList() {<br>}<br>//通过一个集合初始化LinkedList，元素顺序有这个集合的迭代器返回顺序决定<br>public LinkedList(Collection&lt;? extends E&gt; c) {</e></e></e></e></e></e></p>
+<pre><code>this();
+addAll(c);
+</code></pre><p>}<br>//使用对应参数作为第一个节点，内部使用<br>private void linkFirst(E e) {</p>
+<pre><code>final Node&lt;E&gt; f = first;//得到首节点
+final Node&lt;E&gt; newNode = new Node&lt;&gt;(null, e, f);//创建一个节点
+first = newNode;        //设置首节点
+if (f == null)
+    last = newNode;     //如果之前首节点为空(size==0)，那么尾节点就是首节点
+else
+    f.prev = newNode;   //如果之前首节点不为空，之前的首节点的前一个节点为当前首节点
+size++;                 //长度+1
+modCount++;             //修改次数+1
+</code></pre><p>}<br>//使用对应参数作为尾节点<br>void linkLast(E e) {</p>
+<pre><code>final Node&lt;E&gt; l = last; //得到尾节点
+final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);//使用参数创建一个节点
+last = newNode;         //设置尾节点
+if (l == null)
+    first = newNode;    //如果之前尾节点为空(size==0)，首节点即尾节点
+else
+    l.next = newNode;   //如果之前尾节点不为空，之前的尾节点的后一个就是当前的尾节点
+size++;
+modCount++;
+</code></pre><p>}<br>//在指定节点前插入节点，节点succ不能为空<br>void linkBefore(E e, Node<e> succ) {</e></p>
+<pre><code>final Node&lt;E&gt; pred = succ.prev;//获取前一个节点
+final Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, succ);//使用参数创建新的节点，向前指向前一个节点，向后指向当前节点
+succ.prev = newNode;//当前节点指向新的节点
+if (pred == null)
+    first = newNode;//如果前一个节点为null，新的节点就是首节点
+else
+    pred.next = newNode;//如果存在前节点，那么前节点的向后指向新节点
+size++;
+modCount++;
+</code></pre><p>}<br>//删除首节点并返回删除前首节点的值，内部使用<br>private E unlinkFirst(Node<e> f) {</e></p>
+<pre><code>final E element = f.item;//获取首节点的值
+final Node&lt;E&gt; next = f.next;//得到下一个节点
+f.item = null;
+f.next = null;      //便于垃圾回收期清理
+first = next;       //首节点的下一个节点成为新的首节点
+if (next == null)
+    last = null;    //如果不存在下一个节点，则首尾都为null(空表)
+else
+    next.prev = null;//如果存在下一个节点，那它向前指向null
+size--;
+modCount++;
+return element;
+</code></pre><p>}<br>//删除尾节点并返回删除前尾节点的值，内部使用<br>private E unlinkLast(Node<e> l) {</e></p>
+<pre><code>final E element = l.item;//获取值
+final Node&lt;E&gt; prev = l.prev;//获取尾节点前一个节点
+l.item = null;
+l.prev = null;      //便于垃圾回收期清理
+last = prev;        //前一个节点成为新的尾节点
+if (prev == null)
+    first = null;   //如果前一个节点不存在，则首尾都为null(空表)
+else
+    prev.next = null;//如果前一个节点存在，先后指向null
+size--;
+modCount++;
+return element;
+</code></pre><p>}<br>//删除指定节点并返回被删除的元素值<br>E unlink(Node<e> x) {</e></p>
+<pre><code>//获取当前值和前后节点
+final E element = x.item;
+final Node&lt;E&gt; next = x.next;
+final Node&lt;E&gt; prev = x.prev;
+if (prev == null) {
+    first = next;   //如果前一个节点为空(如当前节点为首节点)，后一个节点成为新的首节点
+} else {
+    prev.next = next;//如果前一个节点不为空，那么他先后指向当前的下一个节点
+    x.prev = null;  //方便gc回收
+}
+if (next == null) {
+    last = prev;    //如果后一个节点为空(如当前节点为尾节点)，当前节点前一个成为新的尾节点
+} else {
+    next.prev = prev;//如果后一个节点不为空，后一个节点向前指向当前的前一个节点
+    x.next = null;  //方便gc回收
+}
+x.item = null;      //方便gc回收
+size--;
+modCount++;
+return element;
+</code></pre><p>}<br>//获取第一个元素<br>public E getFirst() {</p>
+<pre><code>final Node&lt;E&gt; f = first;//得到首节点
+if (f == null)          //如果为空，抛出异常
+    throw new NoSuchElementException();
+return f.item;
+</code></pre><p>}<br>//获取最后一个元素<br>public E getLast() {</p>
+<pre><code>final Node&lt;E&gt; l = last;//得到尾节点
+if (l == null)          //如果为空，抛出异常
+    throw new NoSuchElementException();
+return l.item;
+</code></pre><p>}<br>//删除第一个元素并返回删除的元素<br>public E removeFirst() {</p>
+<pre><code>final Node&lt;E&gt; f = first;//得到第一个节点
+if (f == null)          //如果为空，抛出异常
+    throw new NoSuchElementException();
+return unlinkFirst(f);
+</code></pre><p>}<br>//删除最后一个元素并返回删除的值<br>public E removeLast() {</p>
+<pre><code>final Node&lt;E&gt; l = last;//得到最后一个节点
+if (l == null)          //如果为空，抛出异常
+    throw new NoSuchElementException();
+return unlinkLast(l);
+</code></pre><p>}<br>//添加元素作为第一个元素<br>public void addFirst(E e) {</p>
+<pre><code>linkFirst(e);
+</code></pre><p>}<br>//店家元素作为最后一个元素<br>public void addLast(E e) {</p>
+<pre><code>linkLast(e);
+</code></pre><p>}<br>//检查是否包含某个元素，返回bool<br>public boolean contains(Object o) {</p>
+<pre><code>return indexOf(o) != -1;//返回指定元素的索引位置，不存在就返回-1，然后比较返回bool值
+</code></pre><p>}<br>//返回列表长度<br>public int size() {</p>
+<pre><code>return size;
+</code></pre><p>}<br>//添加一个元素，默认添加到末尾作为最后一个元素<br>public boolean add(E e) {</p>
+<pre><code>linkLast(e);
+return true;
+</code></pre><p>}<br>//删除指定元素，默认从first节点开始，删除第一次出现的那个元素<br>public boolean remove(Object o) {</p>
+<pre><code>//会根据是否为null分开处理。若值不是null，会用到对象的equals()方法
+if (o == null) {
+    for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+        if (x.item == null) {
+            unlink(x);
+            return true;
+        }
+    }
+} else {
+    for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+        if (o.equals(x.item)) {
+            unlink(x);
+            return true;
+        }
+    }
+}
+return false;
+</code></pre><p>}<br>//添加指定集合的元素到列表，默认从最后开始添加<br>public boolean addAll(Collection&lt;? extends E&gt; c) {</p>
+<pre><code>return addAll(size, c);//size表示最后一个位置，可以理解为元素的位置分别为1~size
+</code></pre><p>}<br>//从指定位置（而不是下标！下标即索引从0开始，位置可以看做从1开始，其实也是0）后面添加指定集合的元素到列表中，只要有至少一次添加就会返回true<br>//index换成position应该会更好理解，所以也就是从索引为index(position)的元素的前面索引为index-1的后面添加！<br>//当然位置可以为0啊，为0的时候就是从位置0(虽然它不存在)后面开始添加嘛，所以理所当前就是添加到第一个位置（位置1的前面）的前面了啊！<br>//比如列表：0 1 2 3，如果此处index=4(实际索引为3)，就是在元素3后面添加；如果index=3(实际索引为2)，就在元素2后面添加。<br>//原谅我的表达水平，我已经尽力解释了…<br>public boolean addAll(int index, Collection&lt;? extends E&gt; c) {</p>
+<pre><code>checkPositionIndex(index);  //检查索引是否正确（0&lt;=index&lt;=size）
+Object\[\] a = c.toArray();   //得到元素数组
+int numNew = a.length;      //得到元素个数
+if (numNew == 0)            //若没有元素要添加，直接返回false
+    return false;
+Node&lt;E&gt; pred, succ;
+if (index == size) {    //如果是在末尾开始添加，当前节点后一个节点初始化为null，前一个节点为尾节点
+    succ = null;        //这里可以看做node(index)，不过index=size了（index最大只能是size-1），所以这里的succ只能=null，也方便后面判断
+    pred = last;        //这里看做noede(index-1)，当然实现是不能这么写的，看做这样只是为了好理解，所以就是在node(index-1的后面开始添加元素)
+} else {                //如果不是从末尾开始添加，当前位置的节点为指定位置的节点，前一个节点为要添加的节点的前一个节点
+    succ = node(index); //添加好元素后(整个新加的)的后一个节点
+    pred = succ.prev;   //这里依然是node(index-1)
+}
+//遍历数组并添加到列表中
+for (Object o : a) {
+    @SuppressWarnings(&quot;unchecked&quot;)
+    E e = (E) o;
+    Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, null);//创建一个节点，向前指向上面得到的前节点
+    if (pred == null)
+        first = newNode;    //若果前节点为null，则新加的节点为首节点
+    else
+        pred.next = newNode;//如果存在前节点，前节点会向后指向新加的节点
+    pred = newNode;         //新加的节点成为前一个节点
+}
+if (succ == null) {
+    //pred.next = null  //加上这句也可以更好的理解
+    last = pred;        //如果是从最后开始添加的，则最后添加的节点成为尾节点
+} else {
+    pred.next = succ;   //如果不是从最后开始添加的，则最后添加的节点向后指向之前得到的后续第一个节点
+    succ.prev = pred;   //当前，后续的第一个节点也应改为向前指向最后一个添加的节点
+}
+size += numNew;
+modCount++;
+return true;
+</code></pre><p>}<br>//清空表<br>public void clear() {</p>
+<pre><code>//方便gc回收垃圾
+for (Node&lt;E&gt; x = first; x != null; ) {
+    Node&lt;E&gt; next = x.next;
+    x.item = null;
+    x.next = null;
+    x.prev = null;
+    x = next;
+}
+first = last = null;
+size = 0;
+modCount++;
+</code></pre><p>}<br>//获取指定索引的节点的值<br>public E get(int index) {</p>
+<pre><code>checkElementIndex(index);
+return node(index).item;
+</code></pre><p>}<br>//修改指定索引的值并返回之前的值<br>public E set(int index, E element) {</p>
+<pre><code>checkElementIndex(index);
+Node&lt;E&gt; x = node(index);
+E oldVal = x.item;
+x.item = element;
+return oldVal;
+</code></pre><p>}<br>//指定位置后面（即索引为这个值的元素的前面）添加元素<br>public void add(int index, E element) {</p>
+<pre><code>checkPositionIndex(index);
+if (index == size)
+    linkLast(element);  //如果指定位置为最后，则添加到链表最后
+else                    //如果指定位置不是最后，则添加到指定位置前
+    linkBefore(element, node(index));
+</code></pre><p>}<br>//删除指定位置的元素，<br>public E remove(int index) {</p>
+<pre><code>checkElementIndex(index);
+return unlink(node(index));
+</code></pre><p>}<br>//检查索引是否超出范围，因为元素索引是0~size-1的，所以index必须满足0&lt;=index&lt;size<br>private boolean isElementIndex(int index) {</p>
+<pre><code>return index &gt;= 0 &amp;&amp; index &lt; size;
+</code></pre><p>}<br>//检查位置是否超出范围，index必须在index~size之间（含），如果超出，返回false<br>private boolean isPositionIndex(int index) {</p>
+<pre><code>return index &gt;= 0 &amp;&amp; index &lt;= size;
+</code></pre><p>}<br>//异常详情<br>private String outOfBoundsMsg(int index) {</p>
+<pre><code>return &quot;Index: &quot;+index+&quot;, Size: &quot;+size;
+</code></pre><p>}<br>//检查元素索引是否超出范围，若已超出，就抛出异常<br>private void checkElementIndex(int index) {</p>
+<pre><code>if (!isElementIndex(index))
+    throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+</code></pre><p>}<br>//检查位置是否超出范围，若已超出，就抛出异常<br>private void checkPositionIndex(int index) {</p>
+<pre><code>if (!isPositionIndex(index))
+    throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+</code></pre><p>}<br>//获取指定位置的节点<br>Node<e> node(int index) {</e></p>
+<pre><code>//如果位置索引小于列表长度的一半(或一半减一)，从前面开始遍历；否则，从后面开始遍历
+if (index &lt; (size &gt;&gt; 1)) {
+    Node&lt;E&gt; x = first;//index==0时不会循环，直接返回first
+    for (int i = 0; i &lt; index; i++)
+        x = x.next;
+    return x;
+} else {
+    Node&lt;E&gt; x = last;
+    for (int i = size - 1; i &gt; index; i--)
+        x = x.prev;
+    return x;
+}
+</code></pre><p>}<br>//获取指定元素从first开始的索引位置，不存在就返回-1<br>//不能按条件双向找了，所以通常根据索引获得元素的速度比通过元素获得索引的速度快<br>public int indexOf(Object o) {</p>
+<pre><code>int index = 0;
+if (o == null) {
+    for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+        if (x.item == null)
+            return index;
+        index++;
+    }
+} else {
+    for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+        if (o.equals(x.item))
+            return index;
+        index++;
+    }
+}
+return -1;
+</code></pre><p>}<br>//获取指定元素从first开始最后出现的索引，不存在就返回-1<br>//但实际查找是从last开始的<br>public int lastIndexOf(Object o) {</p>
+<pre><code>int index = size;
+if (o == null) {
+    for (Node&lt;E&gt; x = last; x != null; x = x.prev) {
+        index--;
+        if (x.item == null)
+            return index;
+    }
+} else {
+    for (Node&lt;E&gt; x = last; x != null; x = x.prev) {
+        index--;
+        if (o.equals(x.item))
+            return index;
+    }
+}
+return -1;
+</code></pre><p>}<br>//提供普通队列和双向队列的功能，当然，也可以实现栈，FIFO，FILO<br>//出队（从前端），获得第一个元素，不存在会返回null，不会删除元素（节点）<br>public E peek() {</p>
+<pre><code>final Node&lt;E&gt; f = first;
+return (f == null) ? null : f.item;
+</code></pre><p>}<br>//出队（从前端），不删除元素，若为null会抛出异常而不是返回null<br>public E element() {</p>
+<pre><code>return getFirst();
+</code></pre><p>}<br>//出队（从前端），如果不存在会返回null，存在的话会返回值并移除这个元素（节点）<br>public E poll() {</p>
+<pre><code>final Node&lt;E&gt; f = first;
+return (f == null) ? null : unlinkFirst(f);
+</code></pre><p>}<br>//出队（从前端），如果不存在会抛出异常而不是返回null，存在的话会返回值并移除这个元素（节点）<br>public E remove() {</p>
+<pre><code>return removeFirst();
+</code></pre><p>}<br>//入队（从后端），始终返回true<br>public boolean offer(E e) {</p>
+<pre><code>return add(e);
+</code></pre><p>}<br>//入队（从前端），始终返回true<br>public boolean offerFirst(E e) {</p>
+<pre><code>addFirst(e);
+return true;
+</code></pre><p>}<br>//入队（从后端），始终返回true<br>public boolean offerLast(E e) {</p>
+<pre><code>addLast(e);//linkLast(e)
+return true;
+</code></pre><p>}<br>//出队（从前端），获得第一个元素，不存在会返回null，不会删除元素（节点）<br>public E peekFirst() {</p>
+<pre><code>final Node&lt;E&gt; f = first;
+return (f == null) ? null : f.item;
+</code></pre><p> }<br>//出队（从后端），获得最后一个元素，不存在会返回null，不会删除元素（节点）<br>public E peekLast() {</p>
+<pre><code>final Node&lt;E&gt; l = last;
+return (l == null) ? null : l.item;
+</code></pre><p>}<br>//出队（从前端），获得第一个元素，不存在会返回null，会删除元素（节点）<br>public E pollFirst() {</p>
+<pre><code>final Node&lt;E&gt; f = first;
+return (f == null) ? null : unlinkFirst(f);
+</code></pre><p>}<br>//出队（从后端），获得最后一个元素，不存在会返回null，会删除元素（节点）<br>public E pollLast() {</p>
+<pre><code>final Node&lt;E&gt; l = last;
+return (l == null) ? null : unlinkLast(l);
+</code></pre><p>}<br>//入栈，从前面添加<br>public void push(E e) {</p>
+<pre><code>addFirst(e);
+</code></pre><p>}<br>//出栈，返回栈顶元素，从前面移除（会删除）<br>public E pop() {</p>
+<pre><code>return removeFirst();
+</code></pre><p>}<br>/**<br> * Removes the first occurrence of the specified element in this<br> * list (when traversing the list from head to tail).  If the list<br> * does not contain the element, it is unchanged.<br> *<br> * @param o element to be removed from this list, if present<br> * @return {@code true} if the list contained the specified element<br> * @since 1.6<br> */<br>public boolean removeFirstOccurrence(Object o) {</p>
+<pre><code>return remove(o);
+</code></pre><p>}<br>/**<br> * Removes the last occurrence of the specified element in this<br> * list (when traversing the list from head to tail).  If the list<br> * does not contain the element, it is unchanged.<br> *<br> * @param o element to be removed from this list, if present<br> * @return {@code true} if the list contained the specified element<br> * @since 1.6<br> */<br>public boolean removeLastOccurrence(Object o) {</p>
+<pre><code>if (o == null) {
+    for (Node&lt;E&gt; x = last; x != null; x = x.prev) {
+        if (x.item == null) {
+            unlink(x);
+            return true;
+        }
+    }
+} else {
+    for (Node&lt;E&gt; x = last; x != null; x = x.prev) {
+        if (o.equals(x.item)) {
+            unlink(x);
+            return true;
+        }
+    }
+}
+return false;
+</code></pre><p>}<br>/**<br> * Returns a list-iterator of the elements in this list (in proper<br> * sequence), starting at the specified position in the list.<br> * Obeys the general contract of {@code List.listIterator(int)}.</p><p><br> *<br> * The list-iterator is <i>fail-fast</i>: if the list is structurally<br> * modified at any time after the Iterator is created, in any way except<br> * through the list-iterator’s own {@code remove} or {@code add}<br> * methods, the list-iterator will throw a<br> * {@code ConcurrentModificationException}.  Thus, in the face of<br> * concurrent modification, the iterator fails quickly and cleanly, rather<br> * than risking arbitrary, non-deterministic behavior at an undetermined<br> * time in the future.<br> *<br> * @param index index of the first element to be returned from the<br> *              list-iterator (by a call to {@code next})<br> * @return a ListIterator of the elements in this list (in proper<br> *         sequence), starting at the specified position in the list<br> * @throws IndexOutOfBoundsException {@inheritDoc}<br> * @see List#listIterator(int)<br> */<br>public ListIterator<e> listIterator(int index) {</e></p>
+<pre><code>checkPositionIndex(index);
+return new ListItr(index);
+</code></pre><p>}<br>private class ListItr implements ListIterator<e> {</e></p>
+<pre><code>private Node&lt;E&gt; lastReturned;
+private Node&lt;E&gt; next;
+private int nextIndex;
+private int expectedModCount = modCount;
+ListItr(int index) {
+    // assert isPositionIndex(index);
+    next = (index == size) ? null : node(index);
+    nextIndex = index;
+}
+public boolean hasNext() {
+    return nextIndex &lt; size;
+}
+public E next() {
+    checkForComodification();
+    if (!hasNext())
+        throw new NoSuchElementException();
+    lastReturned = next;
+    next = next.next;
+    nextIndex++;
+    return lastReturned.item;
+}
+public boolean hasPrevious() {
+    return nextIndex &gt; 0;
+}
+public E previous() {
+    checkForComodification();
+    if (!hasPrevious())
+        throw new NoSuchElementException();
+    lastReturned = next = (next == null) ? last : next.prev;
+    nextIndex--;
+    return lastReturned.item;
+}
+public int nextIndex() {
+    return nextIndex;
+}
+public int previousIndex() {
+    return nextIndex - 1;
+}
+public void remove() {
+    checkForComodification();
+    if (lastReturned == null)
+        throw new IllegalStateException();
+    Node&lt;E&gt; lastNext = lastReturned.next;
+    unlink(lastReturned);
+    if (next == lastReturned)
+        next = lastNext;
+    else
+        nextIndex--;
+    lastReturned = null;
+    expectedModCount++;
+}
+public void set(E e) {
+    if (lastReturned == null)
+        throw new IllegalStateException();
+    checkForComodification();
+    lastReturned.item = e;
+}
+public void add(E e) {
+    checkForComodification();
+    lastReturned = null;
+    if (next == null)
+        linkLast(e);
+    else
+        linkBefore(e, next);
+    nextIndex++;
+    expectedModCount++;
+}
+public void forEachRemaining(Consumer&lt;? super E&gt; action) {
+    Objects.requireNonNull(action);
+    while (modCount == expectedModCount &amp;&amp; nextIndex &lt; size) {
+        action.accept(next.item);
+        lastReturned = next;
+        next = next.next;
+        nextIndex++;
+    }
+    checkForComodification();
+}
+final void checkForComodification() {
+    if (modCount != expectedModCount)
+        throw new ConcurrentModificationException();
+}
+</code></pre><p>}<br>//节点的数据结构，包含前后节点的引用和当前节点<br>private static class Node<e> {</e></p>
+<pre><code>E item;
+Node&lt;E&gt; next;
+Node&lt;E&gt; prev;
+Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) {
+    this.item = element;
+    this.next = next;
+    this.prev = prev;
+}
+</code></pre><p>}<br>//返回迭代器<br>public Iterator<e> descendingIterator() {</e></p>
+<pre><code>return new DescendingIterator();
+</code></pre><p>}<br>//因为采用链表实现，所以迭代器很简单<br>private class DescendingIterator implements Iterator<e> {</e></p>
+<pre><code>private final ListItr itr = new ListItr(size());
+public boolean hasNext() {
+    return itr.hasPrevious();
+}
+public E next() {
+    return itr.previous();
+}
+public void remove() {
+    itr.remove();
+}
+</code></pre><p>}<br>@SuppressWarnings(“unchecked”)<br>private LinkedList<e> superClone() {</e></p>
+<pre><code>try {
+    return (LinkedList&lt;E&gt;) super.clone();
+} catch (CloneNotSupportedException e) {
+    throw new InternalError(e);
+}
+</code></pre><p>}<br>/**<br> * Returns a shallow copy of this {@code LinkedList}. (The elements<br> * themselves are not cloned.)<br> *<br> * @return a shallow copy of this {@code LinkedList} instance<br> */<br>public Object clone() {</p>
+<pre><code>LinkedList&lt;E&gt; clone = superClone();
+// Put clone into &quot;virgin&quot; state
+clone.first = clone.last = null;
+clone.size = 0;
+clone.modCount = 0;
+// Initialize clone with our elements
+for (Node&lt;E&gt; x = first; x != null; x = x.next)
+    clone.add(x.item);
+return clone;
+</code></pre><p>}<br>/**<br> * Returns an array containing all of the elements in this list<br> * in proper sequence (from first to last element).<br> *<br> * </p><p>The returned array will be “safe” in that no references to it are<br> * maintained by this list.  (In other words, this method must allocate<br> * a new array).  The caller is thus free to modify the returned array.<br> *<br> * </p><p>This method acts as bridge between array-based and collection-based<br> * APIs.<br> *<br> * @return an array containing all of the elements in this list<br> *         in proper sequence<br> */<br>public Object[] toArray() {</p>
+<pre><code>Object\[\] result = new Object\[size\];
+int i = 0;
+for (Node&lt;E&gt; x = first; x != null; x = x.next)
+    result\[i++\] = x.item;
+return result;
+</code></pre><p>}<br>/**<br> * Returns an array containing all of the elements in this list in<br> * proper sequence (from first to last element); the runtime type of<br> * the returned array is that of the specified array.  If the list fits<br> * in the specified array, it is returned therein.  Otherwise, a new<br> * array is allocated with the runtime type of the specified array and<br> * the size of this list.<br> *<br> * </p><p>If the list fits in the specified array with room to spare (i.e.,<br> * the array has more elements than the list), the element in the array<br> * immediately following the end of the list is set to {@code null}.<br> * (This is useful in determining the length of the list <i>only</i> if<br> * the caller knows that the list does not contain any null elements.)<br> *<br> * </p><p>Like the {@link #toArray()} method, this method acts as bridge between<br> * array-based and collection-based APIs.  Further, this method allows<br> * precise control over the runtime type of the output array, and may,<br> * under certain circumstances, be used to save allocation costs.<br> *<br> * </p><p>Suppose {@code x} is a list known to contain only strings.<br> * The following code can be used to dump the list into a newly<br> * allocated array of {@code String}:<br> *<br> * <pre><br> *     String[] y = x.toArray(new String[0]);</pre><br> *<br> * Note that {@code toArray(new Object[0])} is identical in function to<br> * {@code toArray()}.<br> *<br> * @param a the array into which the elements of the list are to<br> *          be stored, if it is big enough; otherwise, a new array of the<br> *          same runtime type is allocated for this purpose.<br> * @return an array containing the elements of the list<br> * @throws ArrayStoreException if the runtime type of the specified array<br> *         is not a supertype of the runtime type of every element in<br> *         this list<br> * @throws NullPointerException if the specified array is null<br> */<br>@SuppressWarnings(“unchecked”)<br>public <t> T[] toArray(T[] a) {</t></p>
+<pre><code>if (a.length &lt; size)
+    a = (T\[\])java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), size);
+int i = 0;
+Object\[\] result = a;
+for (Node&lt;E&gt; x = first; x != null; x = x.next)
+    result\[i++\] = x.item;
+if (a.length &gt; size)
+    a\[size\] = null;
+return a;
+</code></pre><p>}<br>private static final long serialVersionUID = 876323262645176354L;<br>/**<br> * Saves the state of this {@code LinkedList} instance to a stream<br> * (that is, serializes it).<br> *<br> * @serialData The size of the list (the number of elements it<br> *             contains) is emitted (int), followed by all of its<br> *             elements (each an Object) in the proper order.<br> */<br>private void writeObject(java.io.ObjectOutputStream s)</p>
+<pre><code>throws java.io.IOException {
+// Write out any hidden serialization magic
+s.defaultWriteObject();
+// Write out size
+s.writeInt(size);
+// Write out all elements in the proper order.
+for (Node&lt;E&gt; x = first; x != null; x = x.next)
+    s.writeObject(x.item);
+</code></pre><p>}<br>/**<br> * Reconstitutes this {@code LinkedList} instance from a stream<br> * (that is, deserializes it).<br> */<br>@SuppressWarnings(“unchecked”)<br>private void readObject(java.io.ObjectInputStream s)</p>
+<pre><code>throws java.io.IOException, ClassNotFoundException {
+// Read in any hidden serialization magic
+s.defaultReadObject();
+// Read in size
+int size = s.readInt();
+// Read in all elements in the proper order.
+for (int i = 0; i &lt; size; i++)
+    linkLast((E)s.readObject());
+</code></pre><p>}<br>/**<br> * Creates a <em><a href="Spliterator.html#binding">late-binding</a></em><br> * and <em>fail-fast</em> {@link Spliterator} over the elements in this<br> * list.<br> *<br> * </p><p>The {@code Spliterator} reports {@link Spliterator#SIZED} and<br> * {@link Spliterator#ORDERED}.  Overriding implementations should document<br> * the reporting of additional characteristic values.<br> *<br> * @implNote<br> * The {@code Spliterator} additionally reports {@link Spliterator#SUBSIZED}<br> * and implements {@code trySplit} to permit limited parallelism..<br> *<br> * @return a {@code Spliterator} over the elements in this list<br> * @since 1.8<br> */<br>@Override<br>public Spliterator<e> spliterator() {</e></p>
+<pre><code>return new LLSpliterator&lt;E&gt;(this, -1, 0);
+</code></pre><p>}<br>/** A customized variant of Spliterators.IteratorSpliterator */<br>static final class LLSpliterator<e> implements Spliterator<e> {</e></e></p>
+<pre><code>static final int BATCH_UNIT = 1 &lt;&lt; 10;  // batch array size increment
+static final int MAX_BATCH = 1 &lt;&lt; 25;  // max batch array size;
+final LinkedList&lt;E&gt; list; // null OK unless traversed
+Node&lt;E&gt; current;      // current node; null until initialized
+int est;              // size estimate; -1 until first needed
+int expectedModCount; // initialized when est set
+int batch;            // batch size for splits
+LLSpliterator(LinkedList&lt;E&gt; list, int est, int expectedModCount) {
+    this.list = list;
+    this.est = est;
+    this.expectedModCount = expectedModCount;
+}
+final int getEst() {
+    int s; // force initialization
+    final LinkedList&lt;E&gt; lst;
+    if ((s = est) &lt; 0) {
+        if ((lst = list) == null)
+            s = est = 0;
+        else {
+            expectedModCount = lst.modCount;
+            current = lst.first;
+            s = est = lst.size;
+        }
+    }
+    return s;
+}
+public long estimateSize() { return (long) getEst(); }
+public Spliterator&lt;E&gt; trySplit() {
+    Node&lt;E&gt; p;
+    int s = getEst();
+    if (s &gt; 1 &amp;&amp; (p = current) != null) {
+        int n = batch + BATCH_UNIT;
+        if (n &gt; s)
+            n = s;
+        if (n &gt; MAX_BATCH)
+            n = MAX_BATCH;
+        Object\[\] a = new Object\[n\];
+        int j = 0;
+        do { a\[j++\] = p.item; } while ((p = p.next) != null &amp;&amp; j &lt; n);
+        current = p;
+        batch = j;
+        est = s - j;
+        return Spliterators.spliterator(a, 0, j, Spliterator.ORDERED);
+    }
+    return null;
+}
+public void forEachRemaining(Consumer&lt;? super E&gt; action) {
+    Node&lt;E&gt; p; int n;
+    if (action == null) throw new NullPointerException();
+    if ((n = getEst()) &gt; 0 &amp;&amp; (p = current) != null) {
+        current = null;
+        est = 0;
+        do {
+            E e = p.item;
+            p = p.next;
+            action.accept(e);
+        } while (p != null &amp;&amp; --n &gt; 0);
+    }
+    if (list.modCount != expectedModCount)
+        throw new ConcurrentModificationException();
+}
+public boolean tryAdvance(Consumer&lt;? super E&gt; action) {
+    Node&lt;E&gt; p;
+    if (action == null) throw new NullPointerException();
+    if (getEst() &gt; 0 &amp;&amp; (p = current) != null) {
+        --est;
+        E e = p.item;
+        current = p.next;
+        action.accept(e);
+        if (list.modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+        return true;
+    }
+    return false;
+}
+public int characteristics() {
+    return Spliterator.ORDERED | Spliterator.SIZED | Spliterator.SUBSIZED;
+}
+</code></pre><p>}<br>}</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/25/hashmap-e6-ba-90-e7-a0-81-e5-89-96-e6-9e-90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/25/hashmap-e6-ba-90-e7-a0-81-e5-89-96-e6-9e-90/" class="post-title-link" itemprop="url">HashMap源码剖析</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-25 14:46:05" itemprop="dateCreated datePublished" datetime="2018-01-25T14:46:05+08:00">2018-01-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HashMap作为Java中经典的数据结构,还是值得多多学习的. HashMap是基于哈希表实现的，每一个元素是一个key-value对，其内部通过单链表解决冲突问题，容量不足（超过了阀值）时，同样会自动增长。 HashMap是非线程安全的，只是用于单线程环境下，多线程环境下可以采用concurrent并发包下的concurrentHashMap。 HashMap 实现了Serializable接口，因此它支持序列化，实现了Cloneable接口，能被克隆。</p>
+<h1 id="HashMap源码剖析"><a href="#HashMap源码剖析" class="headerlink" title="HashMap源码剖析"></a>HashMap源码剖析</h1><p>HashMap的源码如下(加入了比较详细的注释)：</p>
+<p>package java.util;<br>import java.io.*;  </p>
+<p>public class HashMap&lt;K,V&gt;<br>    extends AbstractMap&lt;K,V&gt;<br>    implements Map&lt;K,V&gt;, Cloneable, Serializable<br>{  </p>
+<pre><code>// 默认的初始容量（容量为HashMap中槽的数目）是16，且实际容量必须是2的整数次幂。  
+static final int DEFAULT\_INITIAL\_CAPACITY = 16;  
+
+// 最大容量（必须是2的幂且小于2的30次方，传入容量过大将被这个值替换）  
+static final int MAXIMUM_CAPACITY = 1 &lt;&lt; 30;  
+
+// 默认加载因子为0.75 
+static final float DEFAULT\_LOAD\_FACTOR = 0.75f;  
+
+// 存储数据的Entry数组，长度是2的幂。  
+// HashMap采用链表法解决冲突，每一个Entry本质上是一个单向链表  
+transient Entry\[\] table;  
+
+// HashMap的底层数组中已用槽的数量  
+transient int size;  
+
+// HashMap的阈值，用于判断是否需要调整HashMap的容量（threshold = 容量*加载因子）  
+int threshold;  
+
+// 加载因子实际大小  
+final float loadFactor;  
+
+// HashMap被改变的次数  
+transient volatile int modCount;  
+
+// 指定“容量大小”和“加载因子”的构造函数  
+public HashMap(int initialCapacity, float loadFactor) {  
+    if (initialCapacity &lt; 0)  
+        throw new IllegalArgumentException(&quot;Illegal initial capacity: &quot; +  
+                                           initialCapacity);  
+    // HashMap的最大容量只能是MAXIMUM_CAPACITY  
+    if (initialCapacity &gt; MAXIMUM_CAPACITY)  
+        initialCapacity = MAXIMUM_CAPACITY;  
+    //加载因此不能小于0
+    if (loadFactor &lt;= 0 || Float.isNaN(loadFactor))  
+        throw new IllegalArgumentException(&quot;Illegal load factor: &quot; +  
+                                           loadFactor);  
+
+    // 找出“大于initialCapacity”的最小的2的幂  
+    int capacity = 1;  
+    while (capacity &lt; initialCapacity)  
+        capacity &lt;&lt;= 1;  
+
+    // 设置“加载因子”  
+    this.loadFactor = loadFactor;  
+    // 设置“HashMap阈值”，当HashMap中存储数据的数量达到threshold时，就需要将HashMap的容量加倍。  
+    threshold = (int)(capacity * loadFactor);  
+    // 创建Entry数组，用来保存数据  
+    table = new Entry\[capacity\];  
+    init();  
+}  
+
+// 指定“容量大小”的构造函数  
+public HashMap(int initialCapacity) {  
+    this(initialCapacity, DEFAULT\_LOAD\_FACTOR);  
+}  
+
+// 默认构造函数。  
+public HashMap() {  
+    // 设置“加载因子”为默认加载因子0.75  
+    this.loadFactor = DEFAULT\_LOAD\_FACTOR;  
+    // 设置“HashMap阈值”，当HashMap中存储数据的数量达到threshold时，就需要将HashMap的容量加倍。  
+    threshold = (int)(DEFAULT\_INITIAL\_CAPACITY * DEFAULT\_LOAD\_FACTOR);  
+    // 创建Entry数组，用来保存数据  
+    table = new Entry\[DEFAULT\_INITIAL\_CAPACITY\];  
+    init();  
+}  
+
+// 包含“子Map”的构造函数  
+public HashMap(Map&lt;? extends K, ? extends V&gt; m) {  
+    this(Math.max((int) (m.size() / DEFAULT\_LOAD\_FACTOR) + 1,  
+                  DEFAULT\_INITIAL\_CAPACITY), DEFAULT\_LOAD\_FACTOR);  
+    // 将m中的全部元素逐个添加到HashMap中  
+    putAllForCreate(m);  
+}  
+
+//求hash值的方法，重新计算hash值
+static int hash(int h) {  
+    h ^= (h &gt;&gt;&gt; 20) ^ (h &gt;&gt;&gt; 12);  
+    return h ^ (h &gt;&gt;&gt; 7) ^ (h &gt;&gt;&gt; 4);  
+}  
+
+// 返回h在数组中的索引值，这里用&amp;代替取模，旨在提升效率 
+// h &amp; (length-1)保证返回值的小于length  
+static int indexFor(int h, int length) {  
+    return h &amp; (length-1);  
+}  
+
+public int size() {  
+    return size;  
+}  
+
+public boolean isEmpty() {  
+    return size == 0;  
+}  
+
+// 获取key对应的value  
+public V get(Object key) {  
+    if (key == null)  
+        return getForNullKey();  
+    // 获取key的hash值  
+    int hash = hash(key.hashCode());  
+    // 在“该hash值对应的链表”上查找“键值等于key”的元素  
+    for (Entry&lt;K,V&gt; e = table\[indexFor(hash, table.length)\];  
+         e != null;  
+         e = e.next) {  
+        Object k;  
+        //判断key是否相同
+        if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k)))  
+            return e.value;  
+    }
+    //没找到则返回null
+    return null;  
+}  
+
+// 获取“key为null”的元素的值  
+// HashMap将“key为null”的元素存储在table\[0\]位置，但不一定是该链表的第一个位置！  
+private V getForNullKey() {  
+    for (Entry&lt;K,V&gt; e = table\[0\]; e != null; e = e.next) {  
+        if (e.key == null)  
+            return e.value;  
+    }  
+    return null;  
+}  
+
+// HashMap是否包含key  
+public boolean containsKey(Object key) {  
+    return getEntry(key) != null;  
+}  
+
+// 返回“键为key”的键值对  
+final Entry&lt;K,V&gt; getEntry(Object key) {  
+    // 获取哈希值  
+    // HashMap将“key为null”的元素存储在table\[0\]位置，“key不为null”的则调用hash()计算哈希值  
+    int hash = (key == null) ? 0 : hash(key.hashCode());  
+    // 在“该hash值对应的链表”上查找“键值等于key”的元素  
+    for (Entry&lt;K,V&gt; e = table\[indexFor(hash, table.length)\];  
+         e != null;  
+         e = e.next) {  
+        Object k;  
+        if (e.hash == hash &amp;&amp;  
+            ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))  
+            return e;  
+    }  
+    return null;  
+}  
+
+// 将“key-value”添加到HashMap中  
+public V put(K key, V value) {  
+    // 若“key为null”，则将该键值对添加到table\[0\]中。  
+    if (key == null)  
+        return putForNullKey(value);  
+    // 若“key不为null”，则计算该key的哈希值，然后将其添加到该哈希值对应的链表中。  
+    int hash = hash(key.hashCode());  
+    int i = indexFor(hash, table.length);  
+    for (Entry&lt;K,V&gt; e = table\[i\]; e != null; e = e.next) {  
+        Object k;  
+        // 若“该key”对应的键值对已经存在，则用新的value取代旧的value。然后退出！  
+        if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) {  
+            V oldValue = e.value;  
+            e.value = value;  
+            e.recordAccess(this);  
+            return oldValue;  
+        }  
+    }  
+
+    // 若“该key”对应的键值对不存在，则将“key-value”添加到table中  
+    modCount++;
+    //将key-value添加到table\[i\]处
+    addEntry(hash, key, value, i);  
+    return null;  
+}  
+
+// putForNullKey()的作用是将“key为null”键值对添加到table\[0\]位置  
+private V putForNullKey(V value) {  
+    for (Entry&lt;K,V&gt; e = table\[0\]; e != null; e = e.next) {  
+        if (e.key == null) {  
+            V oldValue = e.value;  
+            e.value = value;  
+            e.recordAccess(this);  
+            return oldValue;  
+        }  
+    }  
+    // 如果没有存在key为null的键值对，则直接题阿见到table\[0\]处!  
+    modCount++;  
+    addEntry(0, null, value, 0);  
+    return null;  
+}  
+
+// 创建HashMap对应的“添加方法”，  
+// 它和put()不同。putForCreate()是内部方法，它被构造函数等调用，用来创建HashMap  
+// 而put()是对外提供的往HashMap中添加元素的方法。  
+private void putForCreate(K key, V value) {  
+    int hash = (key == null) ? 0 : hash(key.hashCode());  
+    int i = indexFor(hash, table.length);  
+
+    // 若该HashMap表中存在“键值等于key”的元素，则替换该元素的value值  
+    for (Entry&lt;K,V&gt; e = table\[i\]; e != null; e = e.next) {  
+        Object k;  
+        if (e.hash == hash &amp;&amp;  
+            ((k = e.key) == key || (key != null &amp;&amp; key.equals(k)))) {  
+            e.value = value;  
+            return;  
+        }  
+    }  
+
+    // 若该HashMap表中不存在“键值等于key”的元素，则将该key-value添加到HashMap中  
+    createEntry(hash, key, value, i);  
+}  
+
+// 将“m”中的全部元素都添加到HashMap中。  
+// 该方法被内部的构造HashMap的方法所调用。  
+private void putAllForCreate(Map&lt;? extends K, ? extends V&gt; m) {  
+    // 利用迭代器将元素逐个添加到HashMap中  
+    for (Iterator&lt;? extends Map.Entry&lt;? extends K, ? extends V&gt;&gt; i = m.entrySet().iterator(); i.hasNext(); ) {  
+        Map.Entry&lt;? extends K, ? extends V&gt; e = i.next();  
+        putForCreate(e.getKey(), e.getValue());  
+    }  
+}  
+
+// 重新调整HashMap的大小，newCapacity是调整后的容量  
+void resize(int newCapacity) {  
+    Entry\[\] oldTable = table;  
+    int oldCapacity = oldTable.length; 
+    //如果就容量已经达到了最大值，则不能再扩容，直接返回
+    if (oldCapacity == MAXIMUM_CAPACITY) {  
+        threshold = Integer.MAX_VALUE;  
+        return;  
+    }  
+
+    // 新建一个HashMap，将“旧HashMap”的全部元素添加到“新HashMap”中，  
+    // 然后，将“新HashMap”赋值给“旧HashMap”。  
+    Entry\[\] newTable = new Entry\[newCapacity\];  
+    transfer(newTable);  
+    table = newTable;  
+    threshold = (int)(newCapacity * loadFactor);  
+}  
+
+// 将HashMap中的全部元素都添加到newTable中  
+void transfer(Entry\[\] newTable) {  
+    Entry\[\] src = table;  
+    int newCapacity = newTable.length;  
+    for (int j = 0; j &lt; src.length; j++) {  
+        Entry&lt;K,V&gt; e = src\[j\];  
+        if (e != null) {  
+            src\[j\] = null;  
+            do {  
+                Entry&lt;K,V&gt; next = e.next;  
+                int i = indexFor(e.hash, newCapacity);  
+                e.next = newTable\[i\];  
+                newTable\[i\] = e;  
+                e = next;  
+            } while (e != null);  
+        }  
+    }  
+}  
+
+// 将&quot;m&quot;的全部元素都添加到HashMap中  
+public void putAll(Map&lt;? extends K, ? extends V&gt; m) {  
+    // 有效性判断  
+    int numKeysToBeAdded = m.size();  
+    if (numKeysToBeAdded == 0)  
+        return;  
+
+    // 计算容量是否足够，  
+    // 若“当前阀值容量 &lt; 需要的容量”，则将容量x2。  
+    if (numKeysToBeAdded &gt; threshold) {  
+        int targetCapacity = (int)(numKeysToBeAdded / loadFactor + 1);  
+        if (targetCapacity &gt; MAXIMUM_CAPACITY)  
+            targetCapacity = MAXIMUM_CAPACITY;  
+        int newCapacity = table.length;  
+        while (newCapacity &lt; targetCapacity)  
+            newCapacity &lt;&lt;= 1;  
+        if (newCapacity &gt; table.length)  
+            resize(newCapacity);  
+    }  
+
+    // 通过迭代器，将“m”中的元素逐个添加到HashMap中。  
+    for (Iterator&lt;? extends Map.Entry&lt;? extends K, ? extends V&gt;&gt; i = m.entrySet().iterator(); i.hasNext(); ) {  
+        Map.Entry&lt;? extends K, ? extends V&gt; e = i.next();  
+        put(e.getKey(), e.getValue());  
+    }  
+}  
+
+// 删除“键为key”元素  
+public V remove(Object key) {  
+    Entry&lt;K,V&gt; e = removeEntryForKey(key);  
+    return (e == null ? null : e.value);  
+}  
+
+// 删除“键为key”的元素  
+final Entry&lt;K,V&gt; removeEntryForKey(Object key) {  
+    // 获取哈希值。若key为null，则哈希值为0；否则调用hash()进行计算  
+    int hash = (key == null) ? 0 : hash(key.hashCode());  
+    int i = indexFor(hash, table.length);  
+    Entry&lt;K,V&gt; prev = table\[i\];  
+    Entry&lt;K,V&gt; e = prev;  
+
+    // 删除链表中“键为key”的元素  
+    // 本质是“删除单向链表中的节点”  
+    while (e != null) {  
+        Entry&lt;K,V&gt; next = e.next;  
+        Object k;  
+        if (e.hash == hash &amp;&amp;  
+            ((k = e.key) == key || (key != null &amp;&amp; key.equals(k)))) {  
+            modCount++;  
+            size--;  
+            if (prev == e)  
+                table\[i\] = next;  
+            else
+                prev.next = next;  
+            e.recordRemoval(this);  
+            return e;  
+        }  
+        prev = e;  
+        e = next;  
+    }  
+
+    return e;  
+}  
+
+// 删除“键值对”  
+final Entry&lt;K,V&gt; removeMapping(Object o) {  
+    if (!(o instanceof Map.Entry))  
+        return null;  
+
+    Map.Entry&lt;K,V&gt; entry = (Map.Entry&lt;K,V&gt;) o;  
+    Object key = entry.getKey();  
+    int hash = (key == null) ? 0 : hash(key.hashCode());  
+    int i = indexFor(hash, table.length);  
+    Entry&lt;K,V&gt; prev = table\[i\];  
+    Entry&lt;K,V&gt; e = prev;  
+
+    // 删除链表中的“键值对e”  
+    // 本质是“删除单向链表中的节点”  
+    while (e != null) {  
+        Entry&lt;K,V&gt; next = e.next;  
+        if (e.hash == hash &amp;&amp; e.equals(entry)) {  
+            modCount++;  
+            size--;  
+            if (prev == e)  
+                table\[i\] = next;  
+            else
+                prev.next = next;  
+            e.recordRemoval(this);  
+            return e;  
+        }  
+        prev = e;  
+        e = next;  
+    }  
+
+    return e;  
+}  
+
+// 清空HashMap，将所有的元素设为null  
+public void clear() {  
+    modCount++;  
+    Entry\[\] tab = table;  
+    for (int i = 0; i &lt; tab.length; i++)  
+        tab\[i\] = null;  
+    size = 0;  
+}  
+
+// 是否包含“值为value”的元素  
+public boolean containsValue(Object value) {  
+// 若“value为null”，则调用containsNullValue()查找  
+if (value == null)  
+        return containsNullValue();  
+
+// 若“value不为null”，则查找HashMap中是否有值为value的节点。  
+Entry\[\] tab = table;  
+    for (int i = 0; i &lt; tab.length ; i++)  
+        for (Entry e = tab\[i\] ; e != null ; e = e.next)  
+            if (value.equals(e.value))  
+                return true;  
+return false;  
+}  
+
+// 是否包含null值  
+private boolean containsNullValue() {  
+Entry\[\] tab = table;  
+    for (int i = 0; i &lt; tab.length ; i++)  
+        for (Entry e = tab\[i\] ; e != null ; e = e.next)  
+            if (e.value == null)  
+                return true;  
+return false;  
+}  
+
+// 克隆一个HashMap，并返回Object对象  
+public Object clone() {  
+    HashMap&lt;K,V&gt; result = null;  
+    try {  
+        result = (HashMap&lt;K,V&gt;)super.clone();  
+    } catch (CloneNotSupportedException e) {  
+        // assert false;  
+    }  
+    result.table = new Entry\[table.length\];  
+    result.entrySet = null;  
+    result.modCount = 0;  
+    result.size = 0;  
+    result.init();  
+    // 调用putAllForCreate()将全部元素添加到HashMap中  
+    result.putAllForCreate(this);  
+
+    return result;  
+}  
+
+// Entry是单向链表。  
+// 它是 “HashMap链式存储法”对应的链表。  
+// 它实现了Map.Entry 接口，即实现getKey(), getValue(), setValue(V value), equals(Object o), hashCode()这些函数  
+static class Entry&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; {  
+    final K key;  
+    V value;  
+    // 指向下一个节点  
+    Entry&lt;K,V&gt; next;  
+    final int hash;  
+
+    // 构造函数。  
+    // 输入参数包括&quot;哈希值(h)&quot;, &quot;键(k)&quot;, &quot;值(v)&quot;, &quot;下一节点(n)&quot;  
+    Entry(int h, K k, V v, Entry&lt;K,V&gt; n) {  
+        value = v;  
+        next = n;  
+        key = k;  
+        hash = h;  
+    }  
+
+    public final K getKey() {  
+        return key;  
+    }  
+
+    public final V getValue() {  
+        return value;  
+    }  
+
+    public final V setValue(V newValue) {  
+        V oldValue = value;  
+        value = newValue;  
+        return oldValue;  
+    }  
+
+    // 判断两个Entry是否相等  
+    // 若两个Entry的“key”和“value”都相等，则返回true。  
+    // 否则，返回false  
+    public final boolean equals(Object o) {  
+        if (!(o instanceof Map.Entry))  
+            return false;  
+        Map.Entry e = (Map.Entry)o;  
+        Object k1 = getKey();  
+        Object k2 = e.getKey();  
+        if (k1 == k2 || (k1 != null &amp;&amp; k1.equals(k2))) {  
+            Object v1 = getValue();  
+            Object v2 = e.getValue();  
+            if (v1 == v2 || (v1 != null &amp;&amp; v1.equals(v2)))  
+                return true;  
+        }  
+        return false;  
+    }  
+
+    // 实现hashCode()  
+    public final int hashCode() {  
+        return (key==null   ? 0 : key.hashCode()) ^  
+               (value==null ? 0 : value.hashCode());  
+    }  
+
+    public final String toString() {  
+        return getKey() + &quot;=&quot; + getValue();  
+    }  
+
+    // 当向HashMap中添加元素时，绘调用recordAccess()。  
+    // 这里不做任何处理  
+    void recordAccess(HashMap&lt;K,V&gt; m) {  
+    }  
+
+    // 当从HashMap中删除元素时，绘调用recordRemoval()。  
+    // 这里不做任何处理  
+    void recordRemoval(HashMap&lt;K,V&gt; m) {  
+    }  
+}  
+
+// 新增Entry。将“key-value”插入指定位置，bucketIndex是位置索引。  
+void addEntry(int hash, K key, V value, int bucketIndex) {  
+    // 保存“bucketIndex”位置的值到“e”中  
+    Entry&lt;K,V&gt; e = table\[bucketIndex\];  
+    // 设置“bucketIndex”位置的元素为“新Entry”，  
+    // 设置“e”为“新Entry的下一个节点”  
+    table\[bucketIndex\] = new Entry&lt;K,V&gt;(hash, key, value, e);  
+    // 若HashMap的实际大小 不小于 “阈值”，则调整HashMap的大小  
+    if (size++ &gt;= threshold)  
+        resize(2 * table.length);  
+}  
+
+// 创建Entry。将“key-value”插入指定位置。  
+void createEntry(int hash, K key, V value, int bucketIndex) {  
+    // 保存“bucketIndex”位置的值到“e”中  
+    Entry&lt;K,V&gt; e = table\[bucketIndex\];  
+    // 设置“bucketIndex”位置的元素为“新Entry”，  
+    // 设置“e”为“新Entry的下一个节点”  
+    table\[bucketIndex\] = new Entry&lt;K,V&gt;(hash, key, value, e);  
+    size++;  
+}  
+
+// HashIterator是HashMap迭代器的抽象出来的父类，实现了公共了函数。  
+// 它包含“key迭代器(KeyIterator)”、“Value迭代器(ValueIterator)”和“Entry迭代器(EntryIterator)”3个子类。  
+private abstract class HashIterator&lt;E&gt; implements Iterator&lt;E&gt; {  
+    // 下一个元素  
+    Entry&lt;K,V&gt; next;  
+    // expectedModCount用于实现fast-fail机制。  
+    int expectedModCount;  
+    // 当前索引  
+    int index;  
+    // 当前元素  
+    Entry&lt;K,V&gt; current;  
+
+    HashIterator() {  
+        expectedModCount = modCount;  
+        if (size &gt; 0) { // advance to first entry  
+            Entry\[\] t = table;  
+            // 将next指向table中第一个不为null的元素。  
+            // 这里利用了index的初始值为0，从0开始依次向后遍历，直到找到不为null的元素就退出循环。  
+            while (index &lt; t.length &amp;&amp; (next = t\[index++\]) == null)  
+                ;  
+        }  
+    }  
+
+    public final boolean hasNext() {  
+        return next != null;  
+    }  
+
+    // 获取下一个元素  
+    final Entry&lt;K,V&gt; nextEntry() {  
+        if (modCount != expectedModCount)  
+            throw new ConcurrentModificationException();  
+        Entry&lt;K,V&gt; e = next;  
+        if (e == null)  
+            throw new NoSuchElementException();  
+
+        // 注意！！！  
+        // 一个Entry就是一个单向链表  
+        // 若该Entry的下一个节点不为空，就将next指向下一个节点;  
+        // 否则，将next指向下一个链表(也是下一个Entry)的不为null的节点。  
+        if ((next = e.next) == null) {  
+            Entry\[\] t = table;  
+            while (index &lt; t.length &amp;&amp; (next = t\[index++\]) == null)  
+                ;  
+        }  
+        current = e;  
+        return e;  
+    }  
+
+    // 删除当前元素  
+    public void remove() {  
+        if (current == null)  
+            throw new IllegalStateException();  
+        if (modCount != expectedModCount)  
+            throw new ConcurrentModificationException();  
+        Object k = current.key;  
+        current = null;  
+        HashMap.this.removeEntryForKey(k);  
+        expectedModCount = modCount;  
+    }  
+
+}  
+
+// value的迭代器  
+private final class ValueIterator extends HashIterator&lt;V&gt; {  
+    public V next() {  
+        return nextEntry().value;  
+    }  
+}  
+
+// key的迭代器  
+private final class KeyIterator extends HashIterator&lt;K&gt; {  
+    public K next() {  
+        return nextEntry().getKey();  
+    }  
+}  
+
+// Entry的迭代器  
+private final class EntryIterator extends HashIterator&lt;Map.Entry&lt;K,V&gt;&gt; {  
+    public Map.Entry&lt;K,V&gt; next() {  
+        return nextEntry();  
+    }  
+}  
+
+// 返回一个“key迭代器”  
+Iterator&lt;K&gt; newKeyIterator()   {  
+    return new KeyIterator();  
+}  
+// 返回一个“value迭代器”  
+Iterator&lt;V&gt; newValueIterator()   {  
+    return new ValueIterator();  
+}  
+// 返回一个“entry迭代器”  
+Iterator&lt;Map.Entry&lt;K,V&gt;&gt; newEntryIterator()   {  
+    return new EntryIterator();  
+}  
+
+// HashMap的Entry对应的集合  
+private transient Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet = null;  
+
+// 返回“key的集合”，实际上返回一个“KeySet对象”  
+public Set&lt;K&gt; keySet() {  
+    Set&lt;K&gt; ks = keySet;  
+    return (ks != null ? ks : (keySet = new KeySet()));  
+}  
+
+// Key对应的集合  
+// KeySet继承于AbstractSet，说明该集合中没有重复的Key。  
+private final class KeySet extends AbstractSet&lt;K&gt; {  
+    public Iterator&lt;K&gt; iterator() {  
+        return newKeyIterator();  
+    }  
+    public int size() {  
+        return size;  
+    }  
+    public boolean contains(Object o) {  
+        return containsKey(o);  
+    }  
+    public boolean remove(Object o) {  
+        return HashMap.this.removeEntryForKey(o) != null;  
+    }  
+    public void clear() {  
+        HashMap.this.clear();  
+    }  
+}  
+
+// 返回“value集合”，实际上返回的是一个Values对象  
+public Collection&lt;V&gt; values() {  
+    Collection&lt;V&gt; vs = values;  
+    return (vs != null ? vs : (values = new Values()));  
+}  
+
+// “value集合”  
+// Values继承于AbstractCollection，不同于“KeySet继承于AbstractSet”，  
+// Values中的元素能够重复。因为不同的key可以指向相同的value。  
+private final class Values extends AbstractCollection&lt;V&gt; {  
+    public Iterator&lt;V&gt; iterator() {  
+        return newValueIterator();  
+    }  
+    public int size() {  
+        return size;  
+    }  
+    public boolean contains(Object o) {  
+        return containsValue(o);  
+    }  
+    public void clear() {  
+        HashMap.this.clear();  
+    }  
+}  
+
+// 返回“HashMap的Entry集合”  
+public Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet() {  
+    return entrySet0();  
+}  
+
+// 返回“HashMap的Entry集合”，它实际是返回一个EntrySet对象  
+private Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet0() {  
+    Set&lt;Map.Entry&lt;K,V&gt;&gt; es = entrySet;  
+    return es != null ? es : (entrySet = new EntrySet());  
+}  
+
+// EntrySet对应的集合  
+// EntrySet继承于AbstractSet，说明该集合中没有重复的EntrySet。  
+private final class EntrySet extends AbstractSet&lt;Map.Entry&lt;K,V&gt;&gt; {  
+    public Iterator&lt;Map.Entry&lt;K,V&gt;&gt; iterator() {  
+        return newEntryIterator();  
+    }  
+    public boolean contains(Object o) {  
+        if (!(o instanceof Map.Entry))  
+            return false;  
+        Map.Entry&lt;K,V&gt; e = (Map.Entry&lt;K,V&gt;) o;  
+        Entry&lt;K,V&gt; candidate = getEntry(e.getKey());  
+        return candidate != null &amp;&amp; candidate.equals(e);  
+    }  
+    public boolean remove(Object o) {  
+        return removeMapping(o) != null;  
+    }  
+    public int size() {  
+        return size;  
+    }  
+    public void clear() {  
+        HashMap.this.clear();  
+    }  
+}  
+
+// java.io.Serializable的写入函数  
+// 将HashMap的“总的容量，实际容量，所有的Entry”都写入到输出流中  
+private void writeObject(java.io.ObjectOutputStream s)  
+    throws IOException  
+{  
+    Iterator&lt;Map.Entry&lt;K,V&gt;&gt; i =  
+        (size &gt; 0) ? entrySet0().iterator() : null;  
+
+    // Write out the threshold, loadfactor, and any hidden stuff  
+    s.defaultWriteObject();  
+
+    // Write out number of buckets  
+    s.writeInt(table.length);  
+
+    // Write out size (number of Mappings)  
+    s.writeInt(size);  
+
+    // Write out keys and values (alternating)  
+    if (i != null) {  
+        while (i.hasNext()) {  
+        Map.Entry&lt;K,V&gt; e = i.next();  
+        s.writeObject(e.getKey());  
+        s.writeObject(e.getValue());  
+        }  
+    }  
+}  
+
+private static final long serialVersionUID = 362498820763181265L;  
+
+// java.io.Serializable的读取函数：根据写入方式读出  
+// 将HashMap的“总的容量，实际容量，所有的Entry”依次读出  
+private void readObject(java.io.ObjectInputStream s)  
+     throws IOException, ClassNotFoundException  
+{  
+    // Read in the threshold, loadfactor, and any hidden stuff  
+    s.defaultReadObject();  
+
+    // Read in number of buckets and allocate the bucket array;  
+    int numBuckets = s.readInt();  
+    table = new Entry\[numBuckets\];  
+
+    init();  // Give subclass a chance to do its thing.  
+
+    // Read in size (number of Mappings)  
+    int size = s.readInt();  
+
+    // Read the keys and values, and put the mappings in the HashMap  
+    for (int i=0; i&lt;size; i++) {  
+        K key = (K) s.readObject();  
+        V value = (V) s.readObject();  
+        putForCreate(key, value);  
+    }  
+}  
+
+// 返回“HashMap总的容量”  
+int   capacity()     { return table.length; }  
+// 返回“HashMap的加载因子”  
+float loadFactor()   { return loadFactor;   }  
+</code></pre><p>}</p>
+<h1 id="几点总结"><a href="#几点总结" class="headerlink" title="几点总结"></a>几点总结</h1><p>1、首先要清楚HashMap的存储结构，如下图所示： <img src="http://zhongmin.me/wp-content/uploads/2018/01/A_KQ@7TIOBER1ZUL.png" alt> 图中，紫色部分即代表哈希表，也称为哈希数组，数组的每个元素都是一个单链表的头节点，链表是用来解决冲突的，如果不同的key映射到了数组的同一位置处，就将其放入单链表中。JDK8中的链表元素大于一定数量是会转成红黑树进行存储. 2、首先看链表中节点的数据结构：</p>
+<p>// Entry是单向链表。<br>// 它是 “HashMap链式存储法”对应的链表。<br>// 它实现了Map.Entry 接口，即实现getKey(), getValue(), setValue(V value), equals(Object o), hashCode()这些函数<br>static class Entry&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; {<br>    final K key;<br>    V value;<br>    // 指向下一个节点<br>    Entry&lt;K,V&gt; next;<br>    final int hash;  </p>
+<pre><code>// 构造函数。  
+// 输入参数包括&quot;哈希值(h)&quot;, &quot;键(k)&quot;, &quot;值(v)&quot;, &quot;下一节点(n)&quot;  
+Entry(int h, K k, V v, Entry&lt;K,V&gt; n) {  
+    value = v;  
+    next = n;  
+    key = k;  
+    hash = h;  
+}  
+
+public final K getKey() {  
+    return key;  
+}  
+
+public final V getValue() {  
+    return value;  
+}  
+
+public final V setValue(V newValue) {  
+    V oldValue = value;  
+    value = newValue;  
+    return oldValue;  
+}  
+
+// 判断两个Entry是否相等  
+// 若两个Entry的“key”和“value”都相等，则返回true。  
+// 否则，返回false  
+public final boolean equals(Object o) {  
+    if (!(o instanceof Map.Entry))  
+        return false;  
+    Map.Entry e = (Map.Entry)o;  
+    Object k1 = getKey();  
+    Object k2 = e.getKey();  
+    if (k1 == k2 || (k1 != null &amp;&amp; k1.equals(k2))) {  
+        Object v1 = getValue();  
+        Object v2 = e.getValue();  
+        if (v1 == v2 || (v1 != null &amp;&amp; v1.equals(v2)))  
+            return true;  
+    }  
+    return false;  
+}  
+
+// 实现hashCode()  
+public final int hashCode() {  
+    return (key==null   ? 0 : key.hashCode()) ^  
+           (value==null ? 0 : value.hashCode());  
+}  
+
+public final String toString() {  
+    return getKey() + &quot;=&quot; + getValue();  
+}  
+
+// 当向HashMap中添加元素时，绘调用recordAccess()。  
+// 这里不做任何处理  
+void recordAccess(HashMap&lt;K,V&gt; m) {  
+}  
+
+// 当从HashMap中删除元素时，绘调用recordRemoval()。  
+// 这里不做任何处理  
+void recordRemoval(HashMap&lt;K,V&gt; m) {  
+}  
+</code></pre><p>}</p>
+<p>它的结构元素除了key、value、hash外，还有next，next指向下一个节点。另外，这里覆写了equals和hashCode方法来保证键值对的独一无二. 3、HashMap共有四个构造方法。构造方法中提到了两个很重要的参数：初始容量和加载因子。这两个参数是影响HashMap性能的重要参数，其中容量表示哈希表中槽的数量（即哈希数组的长度），初始容量是创建哈希表时的容量（从构造函数中可以看出，如果不指明，则默认为16），加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 resize 操作（即扩容）。 下面说下加载因子，如果加载因子越大，对空间的利用更充分，但是查找效率会降低（链表长度会越来越长）；如果加载因子太小，那么表中的数据将过于稀疏（很多空间还没用，就开始扩容了），对空间造成严重浪费。如果我们在构造方法中不指定，则系统默认加载因子为0.75，这是一个比较理想的值，一般情况下我们是无需修改的。 另外，无论我们指定的容量为多少，构造方法都会将实际容量设为不小于指定容量的2的次方的一个数，且最大值不能超过2的30次方 4、HashMap中key和value都允许为null。 5、要重点分析下HashMap中用的最多的两个方法put和get。先从比较简单的get方法着手，源码如下：</p>
+<p>// 获取key对应的value<br>public V get(Object key) {<br>    if (key == null)<br>        return getForNullKey();<br>    // 获取key的hash值<br>    int hash = hash(key.hashCode());<br>    // 在“该hash值对应的链表”上查找“键值等于key”的元素<br>    for (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)];<br>         e != null;<br>         e = e.next) {<br>        Object k;<br>        //判断key是否相同<br>        if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k)))<br>            return e.value;<br>    }<br>    //没找到则返回null<br>    return null;<br>}  </p>
+<p>// 获取“key为null”的元素的值<br>// HashMap将“key为null”的元素存储在table[0]位置，但不一定是该链表的第一个位置！<br>private V getForNullKey() {<br>    for (Entry&lt;K,V&gt; e = table[0]; e != null; e = e.next) {<br>        if (e.key == null)<br>            return e.value;<br>    }<br>    return null;<br>}</p>
+<p>首先，如果key为null，则直接从哈希表的第一个位置table[0]对应的链表上查找。记住，key为null的键值对永远都放在以table[0]为头结点的链表中，当然不一定是存放在头结点table[0]中。 如果key不为null，则先求的key的hash值，根据hash值找到在table中的索引，在该索引对应的单链表中查找是否有键值对的key与目标key相等，有就返回对应的value，没有则返回null。 put方法稍微复杂些，代码如下：</p>
+<p>/ 将“key-value”添加到HashMap中<br>public V put(K key, V value) {<br>    // 若“key为null”，则将该键值对添加到table[0]中。<br>    if (key == null)<br>        return putForNullKey(value);<br>    // 若“key不为null”，则计算该key的哈希值，然后将其添加到该哈希值对应的链表中。<br>    int hash = hash(key.hashCode());<br>    int i = indexFor(hash, table.length);<br>    for (Entry&lt;K,V&gt; e = table[i]; e != null; e = e.next) {<br>        Object k;<br>        // 若“该key”对应的键值对已经存在，则用新的value取代旧的value。然后退出！<br>        if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) {<br>            V oldValue = e.value;<br>            e.value = value;<br>            e.recordAccess(this);<br>            return oldValue;<br>        }<br>    }  </p>
+<pre><code>// 若“该key”对应的键值对不存在，则将“key-value”添加到table中  
+modCount++;
+//将key-value添加到table\[i\]处
+addEntry(hash, key, value, i);  
+return null;  
+</code></pre><p>}</p>
+<p>如果key为null，则将其添加到table[0]对应的链表中，putForNullKey的源码如下：</p>
+<p>// putForNullKey()的作用是将“key为null”键值对添加到table[0]位置<br>private V putForNullKey(V value) {<br>    for (Entry&lt;K,V&gt; e = table[0]; e != null; e = e.next) {<br>        if (e.key == null) {<br>            V oldValue = e.value;<br>            e.value = value;<br>            e.recordAccess(this);<br>            return oldValue;<br>        }<br>    }<br>    // 如果没有存在key为null的键值对，则直接题阿见到table[0]处!<br>    modCount++;<br>    addEntry(0, null, value, 0);<br>    return null;<br>}</p>
+<p>如果key不为null，则同样先求出key的hash值，根据hash值得出在table中的索引，而后遍历对应的单链表，如果单链表中存在与目标key相等的键值对，则将新的value覆盖旧的value，比将旧的value返回，如果找不到与目标key相等的键值对，或者该单链表为空，则将该键值对插入到改单链表的头结点位置（每次新插入的节点都是放在头结点的位置），该操作是有addEntry方法实现的，它的源码如下：</p>
+<p>// 新增Entry。将“key-value”插入指定位置，bucketIndex是位置索引。<br>void addEntry(int hash, K key, V value, int bucketIndex) {<br>    // 保存“bucketIndex”位置的值到“e”中<br>    Entry&lt;K,V&gt; e = table[bucketIndex];<br>    // 设置“bucketIndex”位置的元素为“新Entry”，<br>    // 设置“e”为“新Entry的下一个节点”<br>    table[bucketIndex] = new Entry&lt;K,V&gt;(hash, key, value, e);<br>    // 若HashMap的实际大小 不小于 “阈值”，则调整HashMap的大小<br>    if (size++ &gt;= threshold)<br>        resize(2 * table.length);<br>}</p>
+<p>注意这里倒数第三行的构造方法，将key-value键值对赋给table[bucketIndex]，并将其next指向元素e，这便将key-value放到了头结点中，并将之前的头结点接在了它的后面。该方法也说明，每次put键值对的时候，总是将新的该键值对放在table[bucketIndex]处（即头结点处）。 两外注意最后两行代码，每次加入键值对时，都要判断当前已用的槽的数目是否大于等于阀值（容量*加载因子），如果大于等于，则进行扩容，将容量扩为原来容量的2倍。 6、关于扩容。上面我们看到了扩容的方法，resize方法，它的源码如下：</p>
+<p>// 重新调整HashMap的大小，newCapacity是调整后的单位<br>void resize(int newCapacity) {<br>    Entry[] oldTable = table;<br>    int oldCapacity = oldTable.length;<br>    if (oldCapacity == MAXIMUM_CAPACITY) {<br>        threshold = Integer.MAX_VALUE;<br>        return;<br>    }  </p>
+<pre><code>// 新建一个HashMap，将“旧HashMap”的全部元素添加到“新HashMap”中，  
+// 然后，将“新HashMap”赋值给“旧HashMap”。  
+Entry\[\] newTable = new Entry\[newCapacity\];  
+transfer(newTable);  
+table = newTable;  
+threshold = (int)(newCapacity * loadFactor);  
+</code></pre><p>}</p>
+<p>很明显，是新建了一个HashMap的底层数组，而后调用transfer方法，将就HashMap的全部元素添加到新的HashMap中（要重新计算元素在新的数组中的索引位置）。transfer方法的源码如下：</p>
+<p>// 将HashMap中的全部元素都添加到newTable中<br>void transfer(Entry[] newTable) {<br>    Entry[] src = table;<br>    int newCapacity = newTable.length;<br>    for (int j = 0; j &lt; src.length; j++) {<br>        Entry&lt;K,V&gt; e = src[j];<br>        if (e != null) {<br>            src[j] = null;<br>            do {<br>                Entry&lt;K,V&gt; next = e.next;<br>                int i = indexFor(e.hash, newCapacity);<br>                e.next = newTable[i];<br>                newTable[i] = e;<br>                e = next;<br>            } while (e != null);<br>        }<br>    }<br>}</p>
+<p>很明显，扩容是一个相当耗时的操作，因为它需要重新计算这些元素在新的数组中的位置并进行复制处理。因此，我们在用HashMap的时，最好能提前预估下HashMap中元素的个数，这样有助于提高HashMap的性能。 7、注意containsKey方法和containsValue方法。前者直接可以通过key的哈希值将搜索范围定位到指定索引对应的链表，而后者要对哈希数组的每个链表进行搜索。 8、我们重点来分析下求hash值和索引值的方法，这两个方法便是HashMap设计的最为核心的部分，二者结合能保证哈希表中的元素尽可能均匀地散列。 计算哈希值的方法如下：</p>
+<p>static int hash(int h) {<br>        h ^= (h &gt;&gt;&gt; 20) ^ (h &gt;&gt;&gt; 12);<br>        return h ^ (h &gt;&gt;&gt; 7) ^ (h &gt;&gt;&gt; 4);<br>    }</p>
+<p>它只是一个数学公式，IDK这样设计对hash值的计算，自然有它的好处，至于为什么这样设计，我们这里不去追究，只要明白一点，用的位的操作使hash值的计算效率很高。 由hash值找到对应索引的方法如下：</p>
+<p>static int indexFor(int h, int length) {<br>        return h &amp; (length-1);<br>    }</p>
+<p>这个我们要重点说下，我们一般对哈希表的散列很自然地会想到用hash值对length取模（即除法散列法），Hashtable中也是这样实现的，这种方法基本能保证元素在哈希表中散列的比较均匀，但取模会用到除法运算，效率很低，HashMap中则通过h&amp;(length-1)的方法来代替取模，同样实现了均匀的散列，但效率要高很多，这也是HashMap对Hashtable的一个改进。 接下来，我们分析下为什么哈希表的容量一定要是2的整数次幂。首先，length为2的整数次幂的话，h&amp;(length-1)就相当于对length取模，这样便保证了散列的均匀，同时也提升了效率；其次，length为2的整数次幂的话，为偶数，这样length-1为奇数，奇数的最后一位是1，这样便保证了h&amp;(length-1)的最后一位可能为0，也可能为1（这取决于h的值），即与后的结果可能为偶数，也可能为奇数，这样便可以保证散列的均匀性，而如果length为奇数的话，很明显length-1为偶数，它的最后一位是0，这样h&amp;(length-1)的最后一位肯定为0，即只能为偶数，这样任何hash值都只会被散列到数组的偶数下标位置上，这便浪费了近一半的空间，因此，length取2的整数次幂，是为了使不同hash值发生碰撞的概率较小，这样就能使元素在哈希表中均匀地散列。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/25/java-e4-b8-ba-e4-bb-80-e4-b9-88-e5-8c-bf-e5-90-8d-e5-86-85-e9-83-a8-e7-b1-bb-e7-9a-84-e5-8f-82-e6-95-b0-e5-bc-95-e7-94-a8-e6-97-b6final-ef-bc-9f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/25/java-e4-b8-ba-e4-bb-80-e4-b9-88-e5-8c-bf-e5-90-8d-e5-86-85-e9-83-a8-e7-b1-bb-e7-9a-84-e5-8f-82-e6-95-b0-e5-bc-95-e7-94-a8-e6-97-b6final-ef-bc-9f/" class="post-title-link" itemprop="url">java为什么匿名内部类的参数引用时final？</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-25 13:14:37" itemprop="dateCreated datePublished" datetime="2018-01-25T13:14:37+08:00">2018-01-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1. Java内部类是闭包：包含指向外部类的指针</strong> 那Java里有没有除了实例对象之外的闭包结构？Java中的内部类就是一个典型的闭包结构。例子如下，</p>
+<p>public class Outer {<br>    private class Inner{<br>        private y=100;<br>        public int innerAdd(){<br>            return x+y;<br>        }<br>    }<br>    private int x=100;<br>}</p>
+<p>下图画的就是上面代码的结构。内部类（Inner Class）通过包含一个指向外部类的引用，做到自由访问外部环境类的所有字段，变相把环境中的自由变量封装到函数里，形成一个闭包。 <img src="http://zhongmin.me/wp-content/uploads/2018/01/CDDJT307UI5I@9XVDKBJ4AP.png" alt> <strong>2. 别扭的匿名内部类</strong> 但Java匿名内部类就做得比较尴尬。下面这个例子中，getAnnoInner负责返回一个匿名内部类的引用。</p>
+<p>interface AnnoInner(){addXYZ();}<br>public class Outer {<br>    public AnnoInner getAnnoInner(final int x){<br>        final int y=100;<br>        return new AnnoInner(){<br>            int z=100;<br>            public int addXYZ(){return x+y+z;}<br>            //public void changeY(){y+=1;}    //这个函数无法修改外部环境中的自由变量y。<br>        };<br>    }</p>
+<pre><code>private int num=100;
+</code></pre><p>}</p>
+<p>匿名内部类因为是匿名，所以不能显式地声明构造函数，也不能往构造函数里传参数。不但返回的只是个叫AnnoInner的接口，而且还没有和它外围环境getAnnoInner()方法的局部变量x和y构成任何类的结构。但它的addXYZ()函数却直接使用了x和y这两个自由变量来计算结果。这就说明，外部方法getAnnoInner()事实上已经对内部类AnnoInner构成了一个闭包。 但这里别扭的地方是这两个x和y都必须用final修饰，不可以修改。如果用一个changeY()函数试图修改外部getAnnoInner()函数的成员变量y，编译器通不过，error: cannot assign a value to final variable y 这是为什么呢？因为这里Java编译器支持了闭包，但支持地不完整。说支持了闭包，是因为编译器编译的时候其实悄悄对函数做了手脚，偷偷把外部环境方法的x和y局部变量，拷贝了一份到匿名内部类里。如下面的代码所示。</p>
+<p>interface AnnoInner(){addXYZ();}<br>public class Outer {<br>    public AnnoInner getAnnoInner(final int x){<br>        final int y=100;<br>        return new AnnoInner(){<br>            int copyX=x;    //编译器相当于拷贝了外部自由变量x的一个副本到匿名内部类里。<br>            int copyY=y;    //编译器相当于拷贝了外部自由变量y的一个副本到匿名内部类里。<br>            int z=100;<br>            public int addXYZ(){return x+y+z;}<br>            //public void changeY(){y+=1;}    //这个函数无法修改外部环境中的自由变量y。<br>        };<br>    }</p>
+<pre><code>private int num=100;
+</code></pre><p>}</p>
+<p>所以用R大回答里的原话说就是：<strong>Java编译器实现的只是capture-by-value，并没有实现capture-by-reference。</strong> 但Java又不肯明说，只能粗暴地一刀切，就说既然内外不能同步，那就不许大家改外围的局部变量。    </p>
+<p>要避免局部变量A随着方法的结束而消亡，内部类就必须隐式地用final变量B接收它，此时如果改变变量A的实例，变量B并不会随之变化，体现到方法与内部类的情况中，容易让人费解，为了避免不必要的误解（即保持语义的一致性），干脆要求变量A也声明为final，这样A和B就能保持同步了。 所以成员变量不需要声明为final，因为成员变量只会在所有引用它的指针全部消失以后才会被回收，所以不需要用final接收，也就不需要强行规定声明final了。 可能是由于局部类的回收机制与匿名类存在小小的不和谐，不过强制声明final就很好的解决问题了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/24/e4-bb-80-e4-b9-88-e6-98-af-e9-97-ad-e5-8c-85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/24/e4-bb-80-e4-b9-88-e6-98-af-e9-97-ad-e5-8c-85/" class="post-title-link" itemprop="url">什么是闭包</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-24 19:02:16" itemprop="dateCreated datePublished" datetime="2018-01-24T19:02:16+08:00">2018-01-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1. 组合子（Combinator）</strong> 普通我们常说的一个“<strong>函数</strong>”：</p>
+<p>f(x,y)=x+y</p>
+<p>函数有两个“自变量”（<strong>术语：约束变量</strong>），x和y。函数的返回值，也就是应变量，是自变量一系列操作的结果。比如例子里是返回x和y的和。这样的一个它内部操作依赖的变量全部由参数提供了的”<strong>自给自足</strong>“的函数，叫“<strong>组合子（Combinator）</strong>”。 <img src="http://zhongmin.me/wp-content/uploads/2018/01/9KH57E_IJJD48II8O-375x176.png" alt> Java代码表示就是：</p>
+<p>public int add(int x, int y){<br>    return x+y;<br>}</p>
+<p>换到编程的概念，强调的就是函数的<strong>“作用域”</strong>。大多数编程语言都是用一对花括号<strong>“{}”</strong>标识出作用域。上面代码里的add()函数被调用之后， <strong>int sum=add(2,3);</strong> 编译器编译之后，可以理解成是这个样子，函数的参数x和y，是包含在函数add()的作用域里的。</p>
+<p>add(){<br>    int x=2;<br>    int y=3;<br>    return x+y;<br>}</p>
+<p>或者，函数像下面这样写也可以。这时候x作为函数参数出现，而y作为函数局部变量出现。效果和上面的例子是一样的。</p>
+<p>public int add(int x){<br>    int y=3;<br>    return x+y;<br>}</p>
+<p><strong>2. 自由变量</strong> 但有的时候，函数也可以有它自身作用域以外的参数参与。这些在函数作用域以外，由函数的外部环境提供的参数就叫“<strong>自由变量（Free Variable）</strong>”。比如下面这个函数返回x和y 的和。这里的y就是自由变量。</p>
+<p>f(x)=x+y</p>
+<p>写成代码就是这样，</p>
+<p>int y=3;<br>add(){<br>    int x=2;<br>    return x+y;<br>}</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2018/01/D6ECO@YBMWHSZ82-375x142.png" alt> <strong>3. 闭包（Closure）</strong> 大白话不怎么严谨的说法就是三点：</p>
+<ol>
+<li>一个依赖于自由变量的函数</li>
+<li>处在含有这些自由变量的一个外围环境</li>
+<li>这个函数能够访问外围环境里的自由变量</li>
+</ol>
+<p>看下面这个Javascript闭包的例子：</p>
+<p>function Add(y) {<br>    return function(x) {<br>        return x + y<br>    }<br>}</p>
+<p>对内部函数function(x)来讲，y就是自由变量，而且function(x)的返回值，依赖于这个外部自由变量y。而往上推一层，外围Add(y)函数正好就是那个包含自由变量y的环境。而且Javascript的语法允许内部函数function(x)访问外部函数Add(y)的局部变量。满足这三个条件，所以这个时候，外部函数Add(y)对内部函数function(x)构成了闭包。 闭包的结构，如果用<strong>λ演算</strong>表达式来写，就是多参数的<strong>Currying</strong>技术。 > <strong>λx.λy.x+y</strong> 但在Java中我们看不到这样的结构。因为Java主流语法不允许这样的直接的函数套嵌和跨域访问变量。 <strong>4. 类和对象</strong> 但Java中真的不存在闭包吗？正好相反，Java到处都是闭包，所以反而我们感觉不出来在使用闭包。因为Java的“对象”其实就是一个闭包。其实无论是闭包也好，对象也好，都是一种数据封装的手段。看下面这个类，</p>
+<p>class Add{<br>    private int x=2;<br>    public int add(){<br>    int y=3;<br>        return x+y;<br>    }<br>}</p>
+<p>看上去x在函数add()的作用域外面，但是通过Add类实例化的过程，变量”x“和数值”2“之间已经绑定了，而且和函数add()也已经打包在一起。add()函数其实是透过this关键字来访问对象的成员字段的。 <strong>5. 内部类是闭包：包含指向外部类的指针</strong> Java中的内部类就是一个典型的闭包结构。代码如下</p>
+<p>public class Outer {<br>    private class Inner{<br>        private x=100;<br>        public int innerAdd(){<br>            return x+y;<br>        }<br>    }<br>    private int y=100;<br>}</p>
+<p>下图画的就是上面代码的结构。内部类（Inner Class）通过包含一个指向外部类的引用，做到自由访问外部环境类的所有字段，变相把环境中的自由变量封装到函数里，形成一个闭包: <img src="http://zhongmin.me/wp-content/uploads/2018/01/7FZZAGHC85LK8@KLYD8FN.png" alt> ====================================================== SICP中是这样说的， <img src="http://zhongmin.me/wp-content/uploads/2018/01/RPE_8@Y99C5GDLWVLEJ.png" alt> 闭包也是一种为表示带有自由变量的过程而用的实用技术。 那么第一个问题来了，什么是自由变量？ 举例子吧，</p>
+<p>f(x,y) = x+y+z</p>
+<p>在函数 f 中，x和y是约束变量，z为自由变量。 另一个C语言版的例子，（用C只为说明概念，代码的正确性不做保证）</p>
+<p>int add(int x, int y){<br>  return x + y + z;<br>}</p>
+<p>在函数add中，x和y是约束变量，z为自由变量。同样在一个代码块中，如果某个变量在这个代码块中没被定义过，那么这个变量就可以被认为是一个自由变量。 在定义了自由变量的基础上，我们可以来定义闭包了。很简单，一句话， 定义中含有自由变量的函数叫闭包。</p>
+<p>前面提到的 add 函数就是一个闭包，因为它含有自由变量z。 请注意，这个定义来自于Lisp社团，Haskell社区（<a href="https://link.zhihu.com/?target=https%3A//wiki.haskell.org/Closure" target="_blank" rel="noopener">Closure - HaskellWiki</a>）。显然和《The Swift programming langauge》中Closure（<a href="https://link.zhihu.com/?target=https%3A//numbbbbb.gitbooks.io/-the-swift-programming-language-/content/chapter2/07_Closures.html" target="_blank" rel="noopener">闭包 | 《The Swift Programming Language》中文版</a>）的定义不完全相同。 Haskell社区把函数分为两类，一种为闭包，另一种和闭包相对的叫组合子（<a href="https://link.zhihu.com/?target=https%3A//wiki.haskell.org/Combinator" target="_blank" rel="noopener">Combinator - HaskellWiki</a>）。</p>
+<p>不含自由变量的函数叫组合子。</p>
+<p>如果再构造一个新的函数addz，</p>
+<p>int addz(int x, int y, int z){<br>  return add(x, y);<br>}</p>
+<p>addz就是一个组合子。 然而在《The Swift programming langauge》中， 全局函数是一个有名字但不会捕获任何值的闭包 全局函数（本质上是一个有名字的组合子）被归为闭包的一种特殊形式。 不管怎样，闭包不过是对某种程序结构起的一个名字，定义是次要的，知道怎么用才是重要的。但是它有什么用呢？ 还是举例子，下面的例子来自SICP第三章，但是用javascript改写（本打算用python改写的，但是python的闭包更像是科里化（Currying），不如scheme，swift，javaScript等语言的闭包强大 [这个说法没有得到验证，需要精通python的高手给予解释] ）。 从银行账户中取款时，每一次取款都会更新账户余额balance，</p>
+<p>function makeAccount(balance){<br>    function withdraw(amount){<br>        balance = balance - amount;<br>        return balance;<br>    }<br>    return withdraw;<br>}</p>
+<p>在上边的代码中，withdraw（是一个闭包）作为函数makeAccount的返回值，这样withdraw不仅仅单纯作为一个函数存在，而且携带着balance变量。 接下来我们可以生成withdraw闭包，每一个withdraw闭包都携带一个balance变量</p>
+<p>var withdraw1 = makeAccount(100);             // withdraw1 is a closure here.<br>withdraw1(10);<br>// => 90<br>withdraw1(30);<br>// => 60</p>
+<p>我们还可以生成不止一个withdraw闭包，而且各个闭包之间是相互独立的。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/16/jaxb-e5-ae-9e-e7-8e-b0java-e5-af-b9-e8-b1-a1-e4-b8-8exml-e4-b9-8b-e9-97-b4-e4-ba-92-e7-9b-b8-e8-bd-ac-e6-8d-a2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/16/jaxb-e5-ae-9e-e7-8e-b0java-e5-af-b9-e8-b1-a1-e4-b8-8exml-e4-b9-8b-e9-97-b4-e4-ba-92-e7-9b-b8-e8-bd-ac-e6-8d-a2/" class="post-title-link" itemprop="url">JAXB 实现java对象与xml之间互相转换</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-16 15:58:35" itemprop="dateCreated datePublished" datetime="2018-01-16T15:58:35+08:00">2018-01-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先熟悉一下JAXB实现对象与xml互转时常用的一些注解使用： 1.@XmlRootElement，用于类级别的注解，对应xml的跟元素。通过name属性定义这个根节点的名称。 2.@XmlAccessorType，定义映射这个类中的何种类型都需要映射到xml。(如果不存在@XmlAccessorType,默认使用XmlAccessType.PUBLIC_MEMBER注解) 　　参数：XmlAccessType.FIELD: java对象中的所有成员变量。 XmlAccessType.PROPERTY：java对象中所有通过getter/setter方式访问的成员变量。 XmlAccessType.PUBLIC_MEMBER：java对象中所有的public访问权限的成员变量和通过getter/setter方式访问的成员变量。 XmlAccessType.NONE: java对象的所有属性都不映射为xml的元素。 3.@XmlAttribute，用于把java对象的属性映射为xml的属性,并可通过name属性为生成的xml属性指定别名。 4.@XmlElement，指定一个字段或get/set方法映射到xml的节点。通过name属性定义这个根节点的名称。 5.@XmlElementWrapper，为数组或集合定义一个父节点。通过name属性定义这个父节点的名称。 下面来看一个例子： 先定义一个学生类，Student如下：</p>
+<p>package com.quest.software.bus4j.ui.framework.extend.frameParase.test;</p>
+<p>import java.util.List;</p>
+<p>import javax.xml.bind.annotation.XmlAttribute;<br>import javax.xml.bind.annotation.XmlElement;<br>import javax.xml.bind.annotation.XmlElementWrapper;</p>
+<p>public class Student {<br>    String name;  //姓名<br>    String sex;    //性别<br>    int number;     //学号<br>    String className;    //班级<br>    List<string> hobby;    //爱好</string></p>
+<pre><code>public Student(){
+}
+public Student(String name,String sex,int number,
+        String className,List&lt;String&gt; hobby) {
+    this.name = name;
+    this.sex = sex;
+    this.number = number;
+    this.className = className;
+    this.hobby = hobby;
+}
+@XmlAttribute(name=&quot;name&quot;)  
+public String getName() {
+    return name;
+}
+public void setName(String name) {
+    this.name = name;
+}
+
+@XmlAttribute(name=&quot;sex&quot;)  
+public String getSex() {
+    return sex;
+}
+public void setSex(String sex) {
+    this.sex = sex;
+}
+
+@XmlAttribute(name=&quot;number&quot;)  
+public int getNumber() {
+    return number;
+}
+public void setNumber(int number) {
+    this.number = number;
+}
+
+@XmlElement(name=&quot;className&quot;)  
+public String getClassName() {
+    return className;
+}
+public void setClassName(String className) {
+    this.className = className;
+}
+
+@XmlElementWrapper(name=&quot;hobbys&quot;)
+@XmlElement(name = &quot;hobby&quot;)
+public List&lt;String&gt; getHobby() {
+    return hobby;
+}
+public void setHobby(List&lt;String&gt; hobby) {
+    this.hobby = hobby;
+}
+</code></pre><p>}</p>
+<p>切记，如果java对象属性同时添加了get和set方法，注解不能定义在属性的定义上，只需在get或者set方法上定义一个即可，否则jaxb会报错！！如下： Exception in thread “main” com.sun.xml.internal.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions Class has two properties of the same name “name” 然后再定义学生集合类，StudentList如下：</p>
+<p>package com.quest.software.bus4j.ui.framework.extend.frameParase.test;</p>
+<p>import java.util.List;</p>
+<p>import javax.xml.bind.annotation.XmlElement;<br>import javax.xml.bind.annotation.XmlRootElement;</p>
+<p>@XmlRootElement(name=”list”)<br>public class StudentList {</p>
+<pre><code>List&lt;Student&gt; students;    //所有学生信息的集合
+
+@XmlElement(name = &quot;student&quot;)  
+public List&lt;Student&gt; getStudents() {
+    return students;
+}
+
+public void setStudents(List&lt;Student&gt; students) {
+    this.students = students;
+}
+</code></pre><p>}</p>
+<p>后写xml和java对象互转的类(通过Marshaller类实现将对象转换为xml，同时也可利用Unmarshaller类进行xml转换为类)： 1.java对象转换为xml：</p>
+<p>package com.quest.software.bus4j.ui.framework.extend.frameParase.test;</p>
+<p>import java.io.BufferedWriter;<br>import java.io.File;<br>import java.io.FileWriter;<br>import java.io.IOException;<br>import java.io.StringWriter;<br>import java.util.ArrayList;<br>import java.util.List;</p>
+<p>import javax.xml.bind.JAXBContext;<br>import javax.xml.bind.JAXBException;<br>import javax.xml.bind.Marshaller;</p>
+<p>public class BeanToXml {</p>
+<pre><code>/\*\*
+ \* java对象转换为xml文件
+ \* @param xmlPath  xml文件路径
+ \* @param load    java对象.Class
+ \* @return    xml文件的String
+ \* @throws JAXBException    
+ */
+public static String beanToXml(Object obj,Class&lt;?&gt; load) throws JAXBException{
+    JAXBContext context = JAXBContext.newInstance(load);
+    Marshaller marshaller = context.createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB\_FORMATTED\_OUTPUT, true);
+    marshaller.setProperty(Marshaller.JAXB_ENCODING, &quot;GBK&quot;);
+    StringWriter writer = new StringWriter();
+    marshaller.marshal(obj,writer);
+    return writer.toString();
+}
+public static void main(String\[\] args) throws JAXBException, IOException {
+        List&lt;String&gt; hobby = new ArrayList&lt;&gt;();
+        hobby.add(&quot;篮球&quot;);
+        hobby.add(&quot;音乐&quot;);
+        hobby.add(&quot;乒乓球&quot;);
+
+        List&lt;Student&gt; studentList = new ArrayList&lt;&gt;();
+
+        Student st = new Student(&quot;张三&quot;,&quot;男&quot;,10001,&quot;尖子班&quot;,hobby);
+        studentList.add(st);
+        Student st1 = new Student(&quot;李四&quot;,&quot;男&quot;,10002,&quot;普通班&quot;,hobby);
+        studentList.add(st1);
+        Student st2 = new Student(&quot;莉莉&quot;,&quot;女&quot;,10003,&quot;普通班&quot;,hobby);
+        studentList.add(st2);
+
+        StudentList students = new StudentList();
+        students.setStudents(studentList);
+        String str =  BeanToXml.beanToXml(students, StudentList.class);
+
+        //写入到xml文件中
+        String xmlPath = &quot;D:/testConfig.xml&quot;;
+        BufferedWriter bfw = new BufferedWriter(new FileWriter(new File(xmlPath)));
+        bfw.write(str);
+        bfw.close();
+}
+</code></pre><p>}</p>
+<p>测试生成的xml文件如下图： <img src="http://zhongmin.me/wp-content/uploads/2018/01/NH54TWIRRUOHQ8IG4FV.png" alt> 2.xml转换为java对象：</p>
+<p>package com.quest.software.bus4j.ui.framework.extend.frameParase.test;</p>
+<p>import java.io.File;<br>import java.io.IOException;<br>import java.util.List;</p>
+<p>import javax.xml.bind.JAXBContext;<br>import javax.xml.bind.JAXBException;<br>import javax.xml.bind.Unmarshaller;</p>
+<p>public class XmlToBean {</p>
+<pre><code>/\*\*
+ \* xml文件配置转换为对象
+ \* @param xmlPath  xml文件路径
+ \* @param load    java对象.Class
+ \* @return    java对象
+ \* @throws JAXBException    
+ \* @throws IOException
+ */
+public static Object xmlToBean(String xmlPath,Class&lt;?&gt; load) throws JAXBException, IOException{
+    JAXBContext context = JAXBContext.newInstance(load);  
+    Unmarshaller unmarshaller = context.createUnmarshaller(); 
+    Object object = unmarshaller.unmarshal(new File(xmlPath));
+    return object;
+}
+
+public static void main(String\[\] args) throws IOException, JAXBException {
+    String xmlPath =  &quot;D:/testConfig.xml&quot;;
+    Object object = XmlToBean.xmlToBean(xmlPath,StudentList.class);
+    StudentList students = (StudentList)object;
+    List&lt;Student&gt; studentList = students.getStudents();
+
+    for(int i=0;i&lt;studentList.size();i++){
+        System.out.println(studentList.get(i).name);
+        System.out.println(studentList.get(i).sex);
+        System.out.println(studentList.get(i).number);
+        System.out.println(studentList.get(i).className);
+        for(String str :studentList.get(i).hobby){
+            System.out.print(str+&quot; &quot;);
+        }
+        System.out.println(&quot;-------------&quot;);
+    }
+}
+</code></pre><p>}</p>
+<p>测试打印的结果如下： 张三 男 10001 尖子班 篮球 音乐 乒乓球 ————- 李四 男 10002 普通班 篮球 音乐 乒乓球 ————- 莉莉 女 10003 普通班 篮球 音乐 乒乓球 ————- jaxb虽然挺实用，但是在xml转java对象时xml文件不能配置错了，必须严格按照自己定义的java对象的注解来编写xml文件，否则jaxb里面报错很难查错！！！</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -320,6 +320,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2019/05/02/mac-e4-b8-8b-e4-bd-bf-e7-94-a8homebrew-e5-ae-89-e8-a3-85-e9-85-8d-e7-bd-aemysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/02/mac-e4-b8-8b-e4-bd-bf-e7-94-a8homebrew-e5-ae-89-e8-a3-85-e9-85-8d-e7-bd-aemysql/" class="post-title-link" itemprop="url">Mac下使用homebrew安装配置mysql</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-02 18:12:02" itemprop="dateCreated datePublished" datetime="2019-05-02T18:12:02+08:00">2019-05-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>步骤： 一、安装mysql $ brew install mysql 二、配置自启动</p>
+<p>$ mkdir -p ~/Library/LaunchAgents<br>$ ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents<br>$ find /usr/local/Cellar/mysql/ -name “homebrew.mxcl.mysql.plist” -exec cp {} ~/Library/LaunchAgents/ \;<br>$ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist</p>
+<p>三、修改mysql密码</p>
+<p>mbp: eureka min$ mysql_secure_installation</p>
+<p>Securing the MySQL server deployment.</p>
+<p>Connecting to MySQL using a blank password.</p>
+<p>VALIDATE PASSWORD PLUGIN can be used to test passwords<br>and improve security. It checks the strength of password<br>and allows the users to set only those passwords which are<br>secure enough. Would you like to setup VALIDATE PASSWORD plugin?</p>
+<p>Press y|Y for Yes, any other key for No: N   // 这个选yes的话密码长度就必须要设置为8位以上，但我只想要6位的<br>Please set the password for root here.</p>
+<p>New password:            // 设置密码</p>
+<p>Re-enter new password:     // 再一次确认密码<br>By default, a MySQL installation has an anonymous user,<br>allowing anyone to log into MySQL without having to have<br>a user account created for them. This is intended only for<br>testing, and to make the installation go a bit smoother.<br>You should remove them before moving into a production<br>environment.</p>
+<p>Remove anonymous users? (Press y|Y for Yes, any other key for No) : Y    // 移除不用密码的那个账户<br>Success.</p>
+<p>Normally, root should only be allowed to connect from<br>‘localhost’. This ensures that someone cannot guess at<br>the root password from the network.</p>
+<p>Disallow root login remotely? (Press y|Y for Yes, any other key for No) : n #是否开启远程登陆权限</p>
+<p> … skipping.<br>By default, MySQL comes with a database named ‘test’ that<br>anyone can access. This is also intended only for testing,<br>and should be removed before moving into a production<br>environment.</p>
+<p>Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y<br> - Dropping test database…<br>Success.</p>
+<p> - Removing privileges on test database…<br>Success.</p>
+<p>Reloading the privilege tables will ensure that all changes<br>made so far will take effect immediately.</p>
+<p>Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y<br>Success.</p>
+<p>All done!</p>
+<p>四、创建my.cnf配置文件 1.首先需要知道系统是按如下顺序去找my.cnf： i.    /etc/my.cnf ii.   /etc/mysql/my.cnf iii.  /usr/local/etc/my.cnf iv.  ~/.my.cnf homebrew 默认的路径为第三个，找到文件配置即可！</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2019/04/30/Test-Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -590,9 +782,1711 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/10/23/mybatis-e6-89-b9-e9-87-8f-e6-8f-92-e5-85-a5oracle-e7-9a-84-e4-bf-a9-e7-a7-8d-e6-96-b9-e5-bc-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/10/23/mybatis-e6-89-b9-e9-87-8f-e6-8f-92-e5-85-a5oracle-e7-9a-84-e4-bf-a9-e7-a7-8d-e6-96-b9-e5-bc-8f/" class="post-title-link" itemprop="url">Mybatis批量插入Oracle的俩种方式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-23 15:50:05" itemprop="dateCreated datePublished" datetime="2018-10-23T15:50:05+08:00">2018-10-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一种:</p>
+<insert id="addList" parametertype="java.util.List" usegeneratedkeys="false"><br>    INSERT ALL<br>    <foreach item="item" index="index" collection="list"><br>    INTO T_APPLAUD<br>    (<br>      ID,<br>      USER_ID,<br>      BUSINESS_TYPE,<br>      PRODUCT_ID,<br>      CREATE_TIME<br>    ) VALUES<br>    (<br>      #{item.id, jdbcType=NUMERIC},<br>      #{item.userId, jdbcType=VARCHAR},<br>      #{item.businessType, jdbcType=VARCHAR},<br>      #{item.productId, jdbcType=VARCHAR},<br>      #{item.createdTime, jdbcType=NUMERIC}<br>    )<br>    </foreach><br>    SELECT 1 FROM DUAL<br>  </insert>
+
+<p>第二种:</p>
+<insert id="addList" parametertype="java.util.List" usegeneratedkeys="false"><br>    INSERT INTO T_APPLAUD<br>    (<br>      ID,<br>      USER_ID,<br>      BUSINESS_TYPE,<br>      PRODUCT_ID,<br>      CREATE_TIME<br>    )<br>    <foreach item="item" index="index" collection="list" separator="union all"><br>    (<br>      SELECT<br>        #{item.id},<br>        #{item.userId},<br>        #{item.businessType},<br>        #{item.productId},<br>        #{item.createdTime}<br>      FROM DUAL<br>    )<br>    </foreach><br>  </insert>
+
+<p><strong>注意：将 useGeneratedKeys设置为”false”</strong></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/09/14/springboot-e4-b8-8ejunit-e9-81-87-e5-88-b0-e7-9a-84-e4-b8-80-e4-b8-aa-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/09/14/springboot-e4-b8-8ejunit-e9-81-87-e5-88-b0-e7-9a-84-e4-b8-80-e4-b8-aa-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">SpringBoot与Junit遇到的一个问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-14 19:30:38" itemprop="dateCreated datePublished" datetime="2018-09-14T19:30:38+08:00">2018-09-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Pom文件如下:<img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-14_19-23-03.png" alt> 测试包已经导入了,但是始终找不到SpringRunner和SpringBootTest <img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-14_19-25-42.png" alt> 一直很郁闷,也查不到什么资料,最后才发现是</p>
+  <dependency><br>            <groupid>org.springframework.boot</groupid><br>            <artifactid>spring-boot-starter-test</artifactid><br>            <!--<scope>test</scope>--><br>        </dependency>
+
+<p>测试包有一个Scope属性,值为test时只能在Test包中使用,不能再Java包中使用.<img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-14_19-28-41.png" alt> 唉,以前一直没注意这个!</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/09/11/springcloud-e7-bb-9f-e4-b8-80-e9-85-8d-e7-bd-ae-e4-b8-ad-e5-bf-83-e8-b8-a9-e5-9d-912/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/09/11/springcloud-e7-bb-9f-e4-b8-80-e9-85-8d-e7-bd-ae-e4-b8-ad-e5-bf-83-e8-b8-a9-e5-9d-912/" class="post-title-link" itemprop="url">SpringCloud 统一配置中心踩坑2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-11 21:28:40" itemprop="dateCreated datePublished" datetime="2018-09-11T21:28:40+08:00">2018-09-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习记录/" itemprop="url" rel="index"><span itemprop="name">学习记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>config-server暂时没有遇到坑,记录一下client读取config过程中遇到的问题 1.读取配置中心的配置文件应该有application.yml 修改为 bootstrap.yml,优先加载 2.Git仓库中配置文件的名称应该与 spring.application.name 一致,这样应用才知道读取哪一个文件.如果不一致的话可以使用,spring.cloud.config.name来设置需要读取的配置文件名称.<img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-11_20-57-05.png" alt> 3.不能加入 spring-cloud-config-server 包,之前一直无法加载配置文件就是因为这jar包的问题. 4.如果通过配置中心服务名称来检索配置文件, 就是开启spring.cloud.config.discovery=true,如下</p>
+<p>spring.cloud.config.discovery.enabled=true<br>spring.cloud.config.discovery.service-id=config-server<br>spring.cloud.config.label=master<br>spring.cloud.config.profile=test</p>
+<p>#spring.cloud.config.uri=<a href="http://cloud.com:9030/" target="_blank" rel="noopener">http://cloud.com:9030/</a></p>
+<p>则一定需要在配置文件中配置好注册中心的地址 eureka.client.service-url.defaultZone=<a href="http://cloud.com:9001/eureka/" target="_blank" rel="noopener">http://cloud.com:9001/eureka/</a> ,否则是无法找到配置中心实列的.但是如果是直接配置spring.cloud.config.uri=<a href="http://cloud.com:9030/" target="_blank" rel="noopener">http://cloud.com:9030/</a> ,这样服务直接从配置中心地址加载配置文件,不需要向注册中心注册的. 5. Unregistering application server with eureka with status DOWN 的问题,client貌似起来之后又自动停止了.日志如下:</p>
+<p>2018-09-11 21:23:12.774  INFO 15376 — [           main] me.zhongmin.server.ServerApplication     : Started ServerApplication in 9.209 seconds (JVM running for 10.992)<br>2018-09-11 21:23:12.787  INFO 15376 — [      Thread-24] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@21ab988f: startup date [Tue Sep 11 21:23:10 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4d5d943d<br>2018-09-11 21:23:12.788  INFO 15376 — [      Thread-24] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application cloud-server with eureka with status DOWN<br>2018-09-11 21:23:12.788  WARN 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1536672192788, current=DOWN, previous=UP]<br>2018-09-11 21:23:12.790  INFO 15376 — [      Thread-24] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 0<br>2018-09-11 21:23:12.796  INFO 15376 — [      Thread-24] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown<br>2018-09-11 21:23:12.797  INFO 15376 — [      Thread-24] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans<br>2018-09-11 21:23:12.800  INFO 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient …<br>2018-09-11 21:23:12.801  INFO 15376 — [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLOUD-SERVER/remin:cloud-server:9011 - registration status: 204<br>2018-09-11 21:23:12.803  INFO 15376 — [      Thread-24] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING<br>2018-09-11 21:23:12.804  INFO 15376 — [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLOUD-SERVER/remin:cloud-server:9011: registering service…<br>2018-09-11 21:23:12.810  INFO 15376 — [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLOUD-SERVER/remin:cloud-server:9011 - registration status: 204<br>2018-09-11 21:23:12.811  INFO 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : Unregistering …<br>2018-09-11 21:23:12.821  INFO 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLOUD-SERVER/remin:cloud-server:9011 - deregister  status: 200<br>2018-09-11 21:23:12.833  INFO 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient</p>
+<p>这个问题只需要加入</p>
+   <dependency><br>            <groupid>org.springframework.boot</groupid><br>            <artifactid>spring-boot-starter-web</artifactid><br>        </dependency>
+
+<p>就可以将解决问题,具体原因还不明白; 6.还有一个细节,Git仓库中存放多个文件时,其中server.properties为默认文件<img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-11_21-25-45.png" alt> 这个默认文件不管是配置哪个环境都会加载的,并且与根据环境加载的文件进行合并.这个文件一般配置一些通用的配置! 暂时就遇到这么多,明天再试试Bus动态刷新配置文件! 7.关于spring.cloud.config.server.git.basedir配置,这个配置的Git本地仓库路径,会从Git上拉取配置文件到本地仓库.千万不要直接配置成项目路径. 我是直接配置的config路径,本来以为会新增几个文件,没想到直接会全部覆盖,导致config下的项目代码都没有了!</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/09/08/spring-cloud-e6-b3-a8-e5-86-8c-e4-b8-ad-e5-bf-83-e8-b8-a9-e5-9d-91-e8-ae-b0-e5-bd-951/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/09/08/spring-cloud-e6-b3-a8-e5-86-8c-e4-b8-ad-e5-bf-83-e8-b8-a9-e5-9d-91-e8-ae-b0-e5-bd-951/" class="post-title-link" itemprop="url">Spring-Cloud  注册中心踩坑记录1</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-08 18:22:47" itemprop="dateCreated datePublished" datetime="2018-09-08T18:22:47+08:00">2018-09-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>spring-boot版本为  2.0.4.RELEASE; spring-cloud版本为 Finchley.SR1; Jdk 版本 1.8;   1.使用idea生成的 eureka-client怎么也起不来<img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-08_17-57-43.png" alt> 一直报这个错误,后添加了config包才成功,具体原因不太清楚,有空再查查.貌似这个包还包含spring的相关包!去掉之后相关的spring注解会报错.</p>
+   <dependency><br>            <groupid>org.springframework.cloud</groupid><br>            <artifactid>spring-cloud-config-server</artifactid><br>        </dependency>
+
+<p>2.通过ribbon restTemplate调用服务时,报一个UnknownHostException异常;</p>
+<p>va.net.UnknownHostException: cloud-server<br>    at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:184) ~[na:1.8.0_144]<br>    at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.8.0_144]<br>    at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_144]<br>    at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_144]<br>    at java.net.Socket.connect(Socket.java:538) ~[na:1.8.0_144</p>
+<p>代码是这样的:</p>
+<p>@RestController<br>@Slf4j<br>public class RibbonTestController {</p>
+<pre><code>@Autowired
+RestTemplate restTemplate;
+
+@RequestMapping(&quot;/ribbon-hello&quot;)
+public String helloRibbon(){
+    return restTemplate.getForEntity(&quot;http://CLOUD-SERVER/hello&quot;,String.class).getBody();
+}
+</code></pre><p>}</p>
+<p>restTemplate也注入了,@LoadBalanced 也添加了,但是一直报这个错误. 最后跟踪源码发现 最终调用的地址为 cloud-server:9010/hello ,才发现server一个配置的问题:</p>
+<p>#service 配置<br>eureka:<br>  client:<br>    service-url:<br>      defaultZone: <a href="http://cloud.com:9001/eureka/,http://cloud.com:9002/eureka/" target="_blank" rel="noopener">http://cloud.com:9001/eureka/,http://cloud.com:9002/eureka/</a><br>  instance:<br>    hostname: cloud.com</p>
+<p>eureka.client.instance 这个配置就是自己的服务的地址,之前配置的为 cloud-server ,消费端获取到的服务地址就是 cloud-server:9110, 这个地址根本不存在! 这里应该配置成当前服务的IP或域名,我本地映射的为cloud.com,配置成cloud.com之后调用成功! 刚刚顺便测试了一下不设置这个会是什么样的,<img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-08_18-16-09.png" alt> 如图默认为 remin ,这个是我电脑的名称,消费者调用的时候也会成功! 但是有一个新的问题: 这里 cloud.com:9110 我已经关闭了,消费端的服务列表中依旧存在这个服务,同时在eureka注册中心也存在,已经好几分钟了,这个有待研究.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/05/04/java-e4-b8-ad-e7-9a-84-e9-94-81-e5-81-8f-e5-90-91-e9-94-81-e3-80-81-e8-bd-bb-e9-87-8f-e7-ba-a7-e9-94-81-e3-80-81-e8-87-aa-e6-97-8b-e9-94-81-e3-80-81-e9-87-8d-e9-87-8f-e7-ba-a7-e9-94-81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/05/04/java-e4-b8-ad-e7-9a-84-e9-94-81-e5-81-8f-e5-90-91-e9-94-81-e3-80-81-e8-bd-bb-e9-87-8f-e7-ba-a7-e9-94-81-e3-80-81-e8-87-aa-e6-97-8b-e9-94-81-e3-80-81-e9-87-8d-e9-87-8f-e7-ba-a7-e9-94-81/" class="post-title-link" itemprop="url">java 中的锁 -- 偏向锁、轻量级锁、自旋锁、重量级锁</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-04 15:19:18" itemprop="dateCreated datePublished" datetime="2018-05-04T15:19:18+08:00">2018-05-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>之前做过一个测试，详情见这篇文章<a href="http://blog.csdn.net/zqz_zqz/article/details/58603938" target="_blank" rel="noopener">《多线程 +1操作的几种实现方式，及效率对比》</a>，当时对这个测试结果很疑惑，反复执行过多次，发现结果是一样的:<br>1. 单线程下synchronized效率最高（当时感觉它的效率应该是最差才对）；<br>2. AtomicInteger效率最不稳定，不同并发情况下表现不一样：短时间低并发下，效率比synchronized高，有时甚至比LongAdder还高出一点，但是高并发下，性能还不如synchronized，不同情况下性能表现很不稳定；<br>3. LongAdder性能稳定，在各种并发情况下表现都不错，整体表现最好,短时间的低并发下比AtomicInteger性能差一点，长时间高并发下性能最高（可以让AtomicInteger下台了）；</p>
+<p>这篇文章我们就去揭秘，为什么会是这个测试结果！</p>
+<h2 id="理解锁的基础知识"><a href="#理解锁的基础知识" class="headerlink" title="理解锁的基础知识"></a>理解锁的基础知识</h2><p>如果想要透彻的理解java锁的来龙去脉，需要先了解以下基础知识。</p>
+<h3 id="基础知识之一：锁的类型"><a href="#基础知识之一：锁的类型" class="headerlink" title="基础知识之一：锁的类型"></a>基础知识之一：锁的类型</h3><p>锁从宏观上分类，分为悲观锁与乐观锁。</p>
+<h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><p>乐观锁是一种乐观思想，即认为读多写少，遇到并发写的可能性低，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，采取在写时先读出当前版本号，然后加锁操作（比较跟上一次的版本号，如果一样则更新），如果失败则要重复读-比较-写的操作。</p>
+<p>java中的乐观锁基本都是通过CAS操作实现的，CAS是一种更新的原子操作，比较当前值跟传入值是否一样，一样则更新，否则失败。</p>
+<h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><p>悲观锁是就是悲观思想，即认为写多，遇到并发写的可能性高，每次去拿数据的时候都认为别人会修改，所以每次在读写数据的时候都会上锁，这样别人想读写这个数据就会block直到拿到锁。java中的悲观锁就是Synchronized,AQS框架下的锁则是先尝试cas乐观锁去获取锁，获取不到，才会转换为悲观锁，如RetreenLock。</p>
+<h3 id="基础知识之二：java线程阻塞的代价"><a href="#基础知识之二：java线程阻塞的代价" class="headerlink" title="基础知识之二：java线程阻塞的代价"></a>基础知识之二：java线程阻塞的代价</h3><p>java的线程是映射到操作系统原生线程之上的，如果要阻塞或唤醒一个线程就需要操作系统介入，需要在户态与核心态之间切换，这种切换会消耗大量的系统资源，因为用户态与内核态都有各自专用的内存空间，专用的寄存器等，用户态切换至内核态需要传递给许多变量、参数给内核，内核也需要保护好用户态在切换时的一些寄存器值、变量等，以便内核态调用结束后切换回用户态继续工作。</p>
+<ol>
+<li>如果线程状态切换是一个高频操作时，这将会消耗很多CPU处理时间；</li>
+<li>如果对于那些需要同步的简单的代码块，获取锁挂起操作消耗的时间比用户代码执行的时间还要长，这种同步策略显然非常糟糕的。</li>
+</ol>
+<p>synchronized会导致争用不到锁的线程进入阻塞状态，所以说它是java语言中一个重量级的同步操纵，被称为重量级锁，为了缓解上述性能问题，JVM从1.5开始，引入了轻量锁与偏向锁，默认启用了自旋锁，他们都属于乐观锁。<strong>明确java线程切换的代价，是理解java中各种锁的优缺点的基础之一。</strong></p>
+<h3 id="基础知识之三：markword"><a href="#基础知识之三：markword" class="headerlink" title="基础知识之三：markword"></a>基础知识之三：markword</h3><p>在介绍java锁之前，先说下什么是markword，markword是java对象数据结构中的一部分，要详细了解java对象的结构可以<a href="http://blog.csdn.net/zqz_zqz/article/details/70246212" target="_blank" rel="noopener">点击这里</a>,这里只做markword的详细介绍，因为对象的markword和java各种类型的锁密切相关；</p>
+<p>markword数据的长度在32位和64位的虚拟机（未开启压缩指针）中分别为32bit和64bit，它的<strong>最后2bit是锁状态标志位</strong>，用来标记当前对象的状态，对象的所处的状态，决定了markword存储的内容，如下表所示:</p>
+<p>状态</p>
+<p>标志位</p>
+<p>存储内容</p>
+<p>未锁定</p>
+<p>01</p>
+<p>对象哈希码、对象分代年龄</p>
+<p>轻量级锁定</p>
+<p>00</p>
+<p>指向锁记录的指针</p>
+<p>膨胀(重量级锁定)</p>
+<p>10</p>
+<p>执行重量级锁定的指针</p>
+<p>GC标记</p>
+<p>11</p>
+<p>空(不需要记录信息)</p>
+<p>可偏向</p>
+<p>01</p>
+<p>偏向线程ID、偏向时间戳、对象分代年龄</p>
+<p>32位虚拟机在不同状态下markword结构如下图所示：</p>
+<p><img src="https://img-blog.csdn.net/20170419215511634?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenF6X3pxeg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>了解了markword结构，有助于后面了解java锁的加锁解锁过程；</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>前面提到了java的4种锁，他们分别是重量级锁、自旋锁、轻量级锁和偏向锁，<br>不同的锁有不同特点，每种锁只有在其特定的场景下，才会有出色的表现，java中没有哪种锁能够在所有情况下都能有出色的效率，引入这么多锁的原因就是为了应对不同的情况；</p>
+<p>前面讲到了重量级锁是悲观锁的一种，自旋锁、轻量级锁与偏向锁属于乐观锁，所以现在你就能够大致理解了他们的适用范围，但是具体如何使用这几种锁呢，就要看后面的具体分析他们的特性；</p>
+<h2 id="Java中的锁"><a href="#Java中的锁" class="headerlink" title="Java中的锁"></a>Java中的锁</h2><h3 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h3><p>自旋锁原理非常简单，如果持有锁的线程能在很短时间内释放锁资源，那么那些等待竞争锁的线程就不需要做内核态和用户态之间的切换进入阻塞挂起状态，它们只需要等一等（自旋），等持有锁的线程释放锁后即可立即获取锁，这样就<strong>避免用户线程和内核的切换的消耗</strong>。 但是线程自旋是需要消耗cpu的，说白了就是让cpu在做无用功，如果一直获取不到锁，那线程也不能一直占用cup自旋做无用功，所以需要设定一个自旋等待的最大时间。 如果持有锁的线程执行的时间超过自旋等待的最大时间扔没有释放锁，就会导致其它争用锁的线程在最大等待时间内还是获取不到锁，这时争用线程会停止自旋进入阻塞状态。</p>
+<h4 id="自旋锁的优缺点"><a href="#自旋锁的优缺点" class="headerlink" title="自旋锁的优缺点"></a>自旋锁的优缺点</h4><p>自旋锁尽可能的减少线程的阻塞，这对于锁的竞争不激烈，且占用锁时间非常短的代码块来说性能能大幅度的提升，因为自旋的消耗会小于线程阻塞挂起再唤醒的操作的消耗，这些操作会导致线程发生两次上下文切换！ 但是如果锁的竞争激烈，或者持有锁的线程需要长时间占用锁执行同步块，这时候就不适合使用自旋锁了，因为自旋锁在获取锁前一直都是占用cpu做无用功，占着XX不XX，同时有大量线程在竞争一个锁，会导致获取锁的时间很长，线程自旋的消耗大于线程阻塞挂起操作的消耗，其它需要cup的线程又不能获取到cpu，造成cpu的浪费。所以这种情况下我们要关闭自旋锁；</p>
+<h4 id="自旋锁时间阈值"><a href="#自旋锁时间阈值" class="headerlink" title="自旋锁时间阈值"></a>自旋锁时间阈值</h4><p>自旋锁的目的是为了占着CPU的资源不释放，等到获取到锁立即进行处理。但是如何去选择自旋的执行时间呢？如果自旋执行时间太长，会有大量的线程处于自旋状态占用CPU资源，进而会影响整体系统的性能。因此自旋的周期选的额外重要！ JVM对于自旋周期的选择，jdk1.5这个限度是一定的写死的，在1.6引入了适应性自旋锁，适应性自旋锁意味着自旋的时间不在是固定的了，而是由前一次在同一个锁上的自旋时间以及锁的拥有者的状态来决定，基本认为一个线程上下文切换的时间是最佳的一个时间，同时JVM还针对当前CPU的负荷情况做了较多的优化</p>
+<ol>
+<li>如果平均负载小于CPUs则一直自旋</li>
+<li>如果有超过(CPUs/2)个线程正在自旋，则后来线程直接阻塞</li>
+<li>如果正在自旋的线程发现Owner发生了变化则延迟自旋时间（自旋计数）或进入阻塞</li>
+<li>如果CPU处于节电模式则停止自旋</li>
+<li>自旋时间的最坏情况是CPU的存储延迟（CPU A存储了一个数据，到CPU B得知这个数据直接的时间差）</li>
+<li>自旋时会适当放弃线程优先级之间的差异</li>
+</ol>
+<h4 id="自旋锁的开启"><a href="#自旋锁的开启" class="headerlink" title="自旋锁的开启"></a>自旋锁的开启</h4><p>JDK1.6中-XX:+UseSpinning开启； -XX:PreBlockSpin=10 为自旋次数； JDK1.7后，去掉此参数，由jvm控制；</p>
+<h3 id="重量级锁Synchronized"><a href="#重量级锁Synchronized" class="headerlink" title="重量级锁Synchronized"></a>重量级锁Synchronized</h3><h4 id="Synchronized的作用"><a href="#Synchronized的作用" class="headerlink" title="Synchronized的作用"></a>Synchronized的作用</h4><p>在JDK1.5之前都是使用synchronized关键字保证同步的，Synchronized的作用相信大家都已经非常熟悉了； 它可以把任意一个非NULL的对象当作锁。</p>
+<ol>
+<li>作用于方法时，锁住的是对象的实例(this)；</li>
+<li>当作用于静态方法时，锁住的是Class实例，又因为Class的相关数据存储在永久带PermGen（jdk1.8则是metaspace），永久带是全局共享的，因此静态方法锁相当于类的一个全局锁，会锁所有调用该方法的线程；</li>
+<li>synchronized作用于一个对象实例时，锁住的是所有以该对象为锁的代码块。</li>
+</ol>
+<h4 id="Synchronized的实现"><a href="#Synchronized的实现" class="headerlink" title="Synchronized的实现"></a>Synchronized的实现</h4><p>实现如下图所示； <img src="https://img-blog.csdn.net/20170418221917277?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenF6X3pxeg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> 它有多个队列，当多个线程一起访问某个对象监视器的时候，对象监视器会将这些线程存储在不同的容器中。</p>
+<ol>
+<li>Contention List：竞争队列，所有请求锁的线程首先被放在这个竞争队列中；</li>
+<li>Entry List：Contention List中那些有资格成为候选资源的线程被移动到Entry List中；</li>
+<li>Wait Set：哪些调用wait方法被阻塞的线程被放置在这里；</li>
+<li>OnDeck：任意时刻，最多只有一个线程正在竞争锁资源，该线程被成为OnDeck；</li>
+<li>Owner：当前已经获取到所资源的线程被称为Owner；</li>
+<li>!Owner：当前释放锁的线程。</li>
+</ol>
+<p>JVM每次从队列的尾部取出一个数据用于锁竞争候选者（OnDeck），但是并发情况下，ContentionList会被大量的并发线程进行CAS访问，为了降低对尾部元素的竞争，JVM会将一部分线程移动到EntryList中作为候选竞争线程。Owner线程会在unlock时，将ContentionList中的部分线程迁移到EntryList中，并指定EntryList中的某个线程为OnDeck线程（一般是最先进去的那个线程）。Owner线程并不直接把锁传递给OnDeck线程，而是把锁竞争的权利交给OnDeck，OnDeck需要重新竞争锁。这样虽然牺牲了一些公平性，但是能极大的提升系统的吞吐量，在JVM中，也把这种选择行为称之为“竞争切换”。 OnDeck线程获取到锁资源后会变为Owner线程，而没有得到锁资源的仍然停留在EntryList中。如果Owner线程被wait方法阻塞，则转移到WaitSet队列中，直到某个时刻通过notify或者notifyAll唤醒，会重新进去EntryList中。 处于ContentionList、EntryList、WaitSet中的线程都处于阻塞状态，该阻塞是由操作系统来完成的（Linux内核下采用pthread_mutex_lock内核函数实现的）。 <strong>Synchronized是非公平锁。</strong> Synchronized在线程进入ContentionList时，等待的线程会先尝试自旋获取锁，如果获取不到就进入ContentionList，这明显对于已经进入队列的线程是不公平的，还有一个不公平的事情就是自旋获取锁的线程还可能直接抢占OnDeck线程的锁资源。</p>
+<h3 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h3><p>Java偏向锁(Biased Locking)是Java6引入的一项多线程优化。 偏向锁，顾名思义，它会偏向于第一个访问锁的线程，如果在运行过程中，同步锁只有一个线程访问，不存在多线程争用的情况，则线程是不需要触发同步的，这种情况下，就会给线程加一个偏向锁。 如果在运行过程中，遇到了其他线程抢占锁，则持有偏向锁的线程会被挂起，JVM会消除它身上的偏向锁，将锁恢复到标准的轻量级锁。</p>
+<blockquote>
+<p><em>它通过消除资源无竞争情况下的同步原语，进一步提高了程序的运行性能。</em></p>
+</blockquote>
+<h4 id="偏向锁的实现"><a href="#偏向锁的实现" class="headerlink" title="偏向锁的实现"></a>偏向锁的实现</h4><h5 id="偏向锁获取过程："><a href="#偏向锁获取过程：" class="headerlink" title="偏向锁获取过程："></a>偏向锁获取过程：</h5><ol>
+<li>访问Mark Word中偏向锁的标识是否设置成1，锁标志位是否为01，确认为可偏向状态。</li>
+<li>如果为可偏向状态，则测试线程ID是否指向当前线程，如果是，进入步骤5，否则进入步骤3。</li>
+<li>如果线程ID并未指向当前线程，则通过CAS操作竞争锁。如果竞争成功，则将Mark Word中线程ID设置为当前线程ID，然后执行5；如果竞争失败，执行4。</li>
+<li>如果CAS获取偏向锁失败，则表示有竞争。当到达全局安全点（safepoint）时获得偏向锁的线程被挂起，偏向锁升级为轻量级锁，然后被阻塞在安全点的线程继续往下执行同步代码。（撤销偏向锁的时候会导致stop the word）</li>
+<li>执行同步代码。</li>
+</ol>
+<blockquote>
+<p>注意：第四步中到达安全点safepoint会导致stop the word，时间很短。</p>
+</blockquote>
+<h4 id="偏向锁的释放："><a href="#偏向锁的释放：" class="headerlink" title="偏向锁的释放："></a>偏向锁的释放：</h4><p>偏向锁的撤销在上述第四步骤中有提到。偏向锁只有遇到其他线程尝试竞争偏向锁时，持有偏向锁的线程才会释放锁，线程不会主动去释放偏向锁。偏向锁的撤销，需要等待全局安全点（在这个时间点上没有字节码正在执行），它会首先暂停拥有偏向锁的线程，判断锁对象是否处于被锁定状态，撤销偏向锁后恢复到未锁定（标志位为“01”）或轻量级锁（标志位为“00”）的状态。</p>
+<h4 id="偏向锁的适用场景"><a href="#偏向锁的适用场景" class="headerlink" title="偏向锁的适用场景"></a>偏向锁的适用场景</h4><p>始终只有一个线程在执行同步块，在它没有执行完释放锁之前，没有其它线程去执行同步块，在锁无竞争的情况下使用，一旦有了竞争就升级为轻量级锁，升级为轻量级锁的时候需要撤销偏向锁，撤销偏向锁的时候会导致stop the word操作； 在有锁的竞争时，偏向锁会多做很多额外操作，尤其是撤销偏向所的时候会导致进入安全点，安全点会导致stw，导致性能下降，这种情况下应当禁用；</p>
+<h4 id="查看停顿–安全点停顿日志"><a href="#查看停顿–安全点停顿日志" class="headerlink" title="查看停顿–安全点停顿日志"></a>查看停顿–安全点停顿日志</h4><p>要查看安全点停顿，可以打开安全点日志，通过设置JVM参数 -XX:+PrintGCApplicationStoppedTime 会打出系统停止的时间，添加-XX:+PrintSafepointStatistics -XX:PrintSafepointStatisticsCount=1 这两个参数会打印出详细信息，可以查看到使用偏向锁导致的停顿，时间非常短暂，但是争用严重的情况下，停顿次数也会非常多； 注意：安全点日志不能一直打开： 1. 安全点日志默认输出到stdout，一是stdout日志的整洁性，二是stdout所重定向的文件如果不在/dev/shm，可能被锁。 2. 对于一些很短的停顿，比如取消偏向锁，打印的消耗比停顿本身还大。 3. 安全点日志是在安全点内打印的，本身加大了安全点的停顿时间。 所以安全日志应该只在问题排查时打开。 如果在生产系统上要打开，再再增加下面四个参数： -XX:+UnlockDiagnosticVMOptions -XX: -DisplayVMOutput -XX:+LogVMOutput -XX:LogFile=/dev/shm/vm.log 打开Diagnostic（只是开放了更多的flag可选，不会主动激活某个flag），关掉输出VM日志到stdout，输出到独立文件,/dev/shm目录（内存文件系统）。 <img src="https://img-blog.csdn.net/20170420165422130?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenF6X3pxeg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> 此日志分三部分： 第一部分是时间戳，VM Operation的类型 第二部分是线程概况，被中括号括起来 total: 安全点里的总线程数 initially_running: 安全点开始时正在运行状态的线程数 wait_to_block: 在VM Operation开始前需要等待其暂停的线程数 第三部分是到达安全点时的各个阶段以及执行操作所花的时间，其中最重要的是vmop</p>
+<ul>
+<li>spin: 等待线程响应safepoint号召的时间；</li>
+<li>block: 暂停所有线程所用的时间；</li>
+<li>sync: 等于 spin+block，这是从开始到进入安全点所耗的时间，可用于判断进入安全点耗时；</li>
+<li>cleanup: 清理所用时间；</li>
+<li>vmop: 真正执行VM Operation的时间。</li>
+</ul>
+<p>可见，那些很多但又很短的安全点，全都是RevokeBias， 高并发的应用会禁用掉偏向锁。</p>
+<h4 id="Jvm开启-关闭偏向锁"><a href="#Jvm开启-关闭偏向锁" class="headerlink" title="Jvm开启/关闭偏向锁"></a>Jvm开启/关闭偏向锁</h4><ul>
+<li>开启偏向锁：-XX:+UseBiasedLocking -XX:BiasedLockingStartupDelay=0</li>
+<li>关闭偏向锁：-XX:-UseBiasedLocking</li>
+</ul>
+<h3 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h3><p>轻量级锁是由偏向所升级来的，偏向锁运行在一个线程进入同步块的情况下，当第二个线程加入锁争用的时候，偏向锁就会升级为轻量级锁； 轻量级锁的加锁过程：</p>
+<ol>
+<li>在代码进入同步块的时候，如果同步对象锁状态为无锁状态（锁标志位为“01”状态，是否为偏向锁为“0”），虚拟机首先将在当前线程的栈帧中建立一个名为锁记录（Lock Record）的空间，用于存储锁对象目前的Mark Word的拷贝，官方称之为 Displaced Mark Word。这时候线程堆栈与对象头的状态如图： <img src="https://img-blog.csdn.net/20170420102716139?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenF6X3pxeg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述">所示。</li>
+<li>拷贝对象头中的Mark Word复制到锁记录中；</li>
+<li>拷贝成功后，虚拟机将使用CAS操作尝试将对象的Mark Word更新为指向Lock Record的指针，并将Lock record里的owner指针指向object mark word。如果更新成功，则执行步骤4，否则执行步骤5。</li>
+<li>如果这个更新动作成功了，那么这个线程就拥有了该对象的锁，并且对象Mark Word的锁标志位设置为“00”，即表示此对象处于轻量级锁定状态，这时候线程堆栈与对象头的状态如图所示。 <img src="https://img-blog.csdn.net/20170420102754608?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenF6X3pxeg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></li>
+<li>如果这个更新操作失败了，虚拟机首先会检查对象的Mark Word是否指向当前线程的栈帧，如果是就说明当前线程已经拥有了这个对象的锁，那就可以直接进入同步块继续执行。否则说明多个线程竞争锁，轻量级锁就要膨胀为重量级锁，锁标志的状态值变为“10”，Mark Word中存储的就是指向重量级锁（互斥量）的指针，后面等待锁的线程也要进入阻塞状态。 而当前线程便尝试使用自旋来获取锁，自旋就是为了不让线程阻塞，而采用循环去获取锁的过程。</li>
+</ol>
+<h4 id="轻量级锁的释放"><a href="#轻量级锁的释放" class="headerlink" title="轻量级锁的释放"></a>轻量级锁的释放</h4><p><strong>释放锁线程视角</strong>：由轻量锁切换到重量锁，是发生在轻量锁释放锁的期间，之前在获取锁的时候它拷贝了锁对象头的markword，在释放锁的时候如果它发现在它持有锁的期间有其他线程来尝试获取锁了，并且该线程对markword做了修改，两者比对发现不一致，则切换到重量锁。 因为重量级锁被修改了，所有display mark word和原来的markword不一样了。 怎么补救，就是进入mutex前，compare一下obj的markword状态。确认该markword是否被其他线程持有。 此时如果线程已经释放了markword，那么通过CAS后就可以直接进入线程，无需进入mutex，就这个作用。 <strong>尝试获取锁线程视角</strong>：如果线程尝试获取锁的时候，轻量锁正被其他线程占有，那么它就会修改markword，修改重量级锁，表示该进入重量锁了。 还有一个注意点：等待轻量锁的线程不会阻塞，它会一直自旋等待锁，并如上所说修改markword。 这就是自旋锁，尝试获取锁的线程，在没有获得锁的时候，不被挂起，而转而去执行一个空循环，即自旋。在若干个自旋后，如果还没有获得锁，则才被挂起，获得锁，则执行代码。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://img-blog.csdn.net/20170420224430096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenF6X3pxeg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> synchronized的执行过程： 1. 检测Mark Word里面是不是当前线程的ID，如果是，表示当前线程处于偏向锁 2. 如果不是，则使用CAS将当前线程的ID替换Mard Word，如果成功则表示当前线程获得偏向锁，置偏向标志位1 3. 如果失败，则说明发生竞争，撤销偏向锁，进而升级为轻量级锁。 4. 当前线程使用CAS将对象头的Mark Word替换为锁记录指针，如果成功，当前线程获得锁 5. 如果失败，表示其他线程竞争锁，当前线程便尝试使用自旋来获取锁。 6. 如果自旋成功则依然处于轻量级状态。 7. 如果自旋失败，则升级为重量级锁。 上面几种锁都是JVM自己内部实现，当我们执行synchronized同步块的时候jvm会根据启用的锁和当前线程的争用情况，决定如何执行同步操作； 在所有的锁都启用的情况下线程进入临界区时会先去获取偏向锁，如果已经存在偏向锁了，则会尝试获取轻量级锁，启用自旋锁，如果自旋也没有获取到锁，则使用重量级锁，没有获取到锁的线程阻塞挂起，直到持有锁的线程执行完同步块唤醒他们； 偏向锁是在无锁争用的情况下使用的，也就是同步开在当前线程没有执行完之前，没有其它线程会执行该同步块，一旦有了第二个线程的争用，偏向锁就会升级为轻量级锁，如果轻量级锁自旋到达阈值后，没有获取到锁，就会升级为重量级锁； 如果线程争用激烈，那么应该禁用偏向锁。</p>
+<h2 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h2><p>以上介绍的锁不是我们代码中能够控制的，但是借鉴上面的思想，我们可以优化我们自己线程的加锁操作；</p>
+<h3 id="减少锁的时间"><a href="#减少锁的时间" class="headerlink" title="减少锁的时间"></a>减少锁的时间</h3><p>不需要同步执行的代码，能不放在同步快里面执行就不要放在同步快内，可以让锁尽快释放；</p>
+<h3 id="减少锁的粒度"><a href="#减少锁的粒度" class="headerlink" title="减少锁的粒度"></a>减少锁的粒度</h3><p><strong>它的思想是将物理上的一个锁，拆成逻辑上的多个锁，增加并行度，从而降低锁竞争。</strong>它的思想也是用空间来换时间； java中很多数据结构都是采用这种方法提高并发操作的效率：</p>
+<h4 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h4><p>java中的ConcurrentHashMap在jdk1.8之前的版本，使用一个Segment 数组</p>
+<p>Segment&lt; K,V &gt;[] segments</p>
+<p>Segment继承自ReenTrantLock，所以每个Segment就是个可重入锁，每个Segment 有一个HashEntry&lt; K,V &gt;数组用来存放数据，put操作时，先确定往哪个Segment放数据，只需要锁定这个Segment，执行put，其它的Segment不会被锁定；所以数组中有多少个Segment就允许同一时刻多少个线程存放数据，这样增加了并发能力。</p>
+<h4 id="LongAdder"><a href="#LongAdder" class="headerlink" title="LongAdder"></a>LongAdder</h4><p>LongAdder 实现思路也类似ConcurrentHashMap，LongAdder有一个根据当前并发状况动态改变的Cell数组，Cell对象里面有一个long类型的value用来存储值; 开始没有并发争用的时候或者是cells数组正在初始化的时候，会使用cas来将值累加到成员变量的base上，在并发争用的情况下，LongAdder会初始化cells数组，在Cell数组中选定一个Cell加锁，数组有多少个cell，就允许同时有多少线程进行修改，最后将数组中每个Cell中的value相加，在加上base的值，就是最终的值；cell数组还能根据当前线程争用情况进行扩容，初始长度为2，每次扩容会增长一倍，直到扩容到大于等于cpu数量就不再扩容，这也就是为什么LongAdder比cas和AtomicInteger效率要高的原因，后面两者都是volatile+cas实现的，他们的竞争维度是1，LongAdder的竞争维度为“Cell个数+1”为什么要+1？因为它还有一个base，如果竞争不到锁还会尝试将数值加到base上；</p>
+<h4 id="LinkedBlockingQueue"><a href="#LinkedBlockingQueue" class="headerlink" title="LinkedBlockingQueue"></a>LinkedBlockingQueue</h4><p>LinkedBlockingQueue也体现了这样的思想，在队列头入队，在队列尾出队，入队和出队使用不同的锁，相对于LinkedBlockingArray只有一个锁效率要高； <strong><em>拆锁的粒度不能无限拆，最多可以将一个锁拆为当前cup数量个锁即可；</em></strong></p>
+<h3 id="锁粗化"><a href="#锁粗化" class="headerlink" title="锁粗化"></a>锁粗化</h3><p>大部分情况下我们是要让锁的粒度最小化，锁的粗化则是要增大锁的粒度; 在以下场景下需要粗化锁的粒度： 假如有一个循环，循环内的操作需要加锁，我们应该把锁放到循环外面，否则每次进出循环，都进出一次临界区，效率是非常差的；</p>
+<h4 id="使用读写锁"><a href="#使用读写锁" class="headerlink" title="使用读写锁"></a>使用读写锁</h4><p>ReentrantReadWriteLock 是一个读写锁，读操作加读锁，可以并发读，写操作使用写锁，只能单线程写；</p>
+<h4 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h4><p>CopyOnWriteArrayList 、CopyOnWriteArraySet CopyOnWrite容器即写时复制的容器。通俗的理解是当我们往一个容器添加元素的时候，不直接往当前容器添加，而是先将当前容器进行Copy，复制出一个新的容器，然后新的容器里添加元素，添加完元素之后，再将原容器的引用指向新的容器。这样做的好处是我们可以对CopyOnWrite容器进行并发的读，而不需要加锁，因为当前容器不会添加任何元素。所以CopyOnWrite容器也是一种读写分离的思想，读和写不同的容器。 CopyOnWrite并发容器用于读多写少的并发场景，因为，读的时候没有锁，但是对其进行更改的时候是会加锁的，否则会导致多个线程同时复制出多个副本，各自修改各自的；</p>
+<h4 id="使用cas"><a href="#使用cas" class="headerlink" title="使用cas"></a>使用cas</h4><p>如果需要同步的操作执行速度非常快，并且线程竞争并不激烈，这时候使用cas效率会更高，因为加锁会导致线程的上下文切换，如果上下文切换的耗时比同步操作本身更耗时，且线程对资源的竞争不激烈，使用volatiled+cas操作会是非常高效的选择；</p>
+<h4 id="消除缓存行的伪共享"><a href="#消除缓存行的伪共享" class="headerlink" title="消除缓存行的伪共享"></a>消除缓存行的伪共享</h4><p>除了我们在代码中使用的同步锁和jvm自己内置的同步锁外，还有一种隐藏的锁就是缓存行，它也被称为性能杀手。 在多核cup的处理器中，每个cup都有自己独占的一级缓存、二级缓存，甚至还有一个共享的三级缓存，为了提高性能，cpu读写数据是以缓存行为最小单元读写的；32位的cpu缓存行为32字节，64位cup的缓存行为64字节，这就导致了一些问题。 例如，多个不需要同步的变量因为存储在连续的32字节或64字节里面，当需要其中的一个变量时，就将它们作为一个缓存行一起加载到某个cup-1私有的缓存中（虽然只需要一个变量，但是cpu读取会以缓存行为最小单位，将其相邻的变量一起读入），被读入cpu缓存的变量相当于是对主内存变量的一个拷贝，也相当于变相的将在同一个缓存行中的几个变量加了一把锁，这个缓存行中任何一个变量发生了变化，当cup-2需要读取这个缓存行时，就需要先将cup-1中被改变了的整个缓存行更新回主存（即使其它变量没有更改），然后cup-2才能够读取，而cup-2可能需要更改这个缓存行的变量与cpu-1已经更改的缓存行中的变量是不一样的，所以这相当于给几个毫不相关的变量加了一把同步锁； 为了防止伪共享，不同jdk版本实现方式是不一样的： 1. 在jdk1.7之前会 将需要独占缓存行的变量前后添加一组long类型的变量，依靠这些无意义的数组的填充做到一个变量自己独占一个缓存行；  2. 在jdk1.7因为jvm会将这些没有用到的变量优化掉，所以采用继承一个声明了好多long变量的类的方式来实现；  3. 在jdk1.8中通过添加sun.misc.Contended注解来解决这个问题，若要使该注解有效必须在jvm中添加以下参数：  -XX:-RestrictContended sun.misc.Contended注解会在变量<strong>前面</strong>添加<strong>128字节</strong>的padding将当前变量与其他变量进行隔离； 关于什么是缓存行，jdk是如何避免缓存行的，网上有非常多的解释，在这里就不再深入讲解了； 其它方式等待着大家一起补充</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/05/03/j-u-c-e8-af-bb-e5-86-99-e9-94-81-reentrantreadwritelock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/05/03/j-u-c-e8-af-bb-e5-86-99-e9-94-81-reentrantreadwritelock/" class="post-title-link" itemprop="url">J.U.C-- 读写锁 ReentrantReadWriteLock</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-03 20:11:34" itemprop="dateCreated datePublished" datetime="2018-05-03T20:11:34+08:00">2018-05-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例:"></a>使用示例:</h3><p>下面这个例子非常实用，是 javadoc 的示例：</p>
+<p>// 这是一个关于缓存操作的故事<br>class CachedData {<br>    Object data;<br>    volatile boolean cacheValid;<br>    // 读写锁实例<br>    final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();</p>
+<pre><code>void processCachedData() {
+    // 获取读锁
+    rwl.readLock().lock();
+    if (!cacheValid) { // 如果缓存过期了，或者为 null
+        // 释放掉读锁，然后获取写锁 (后面会看到，没释放掉读锁就获取写锁，会发生死锁情况)
+        rwl.readLock().unlock();
+        rwl.writeLock().lock();
+
+        try {
+            if (!cacheValid) { // 重新判断，因为在等待写锁的过程中，可能前面有其他写线程执行过了
+                data = ...
+                cacheValid = true;
+            }
+            // 获取读锁 (持有写锁的情况下，是允许获取读锁的，称为 “锁降级”，反之不行。)
+            rwl.readLock().lock();
+        } finally {
+            // 释放写锁，此时还剩一个读锁
+            rwl.writeLock().unlock(); // Unlock write, still hold read
+        }
+    }
+    try {
+        use(data);
+    } finally {
+        // 释放读锁
+        rwl.readLock().unlock();
+    }
+}
+</code></pre><p>}</p>
+<p>ReentrantReadWriteLock 分为读锁和写锁两个实例，读锁是共享锁，可被多个线程同时使用，写锁是独占锁。持有写锁的线程可以继续获取读锁，反之不行。</p>
+<h4 id="ReentrantReadWriteLock-总览"><a href="#ReentrantReadWriteLock-总览" class="headerlink" title="ReentrantReadWriteLock 总览"></a>ReentrantReadWriteLock 总览</h4><p>这一节比较重要，我们要先看清楚 ReentrantReadWriteLock 的大框架，然后再到源码细节。 首先，我们来看下 ReentrantReadWriteLock 的结构，它有好些嵌套类：<img src="https://zhongmin.me/wp-content/uploads/2018/05/111-869x640.png" alt> 大家先仔细看看这张图中的信息。然后我们把 ReadLock 和 WriteLock 的代码提出来一起看，清晰一些：<img src="https://zhongmin.me/wp-content/uploads/2018/05/zhongmin.me_2018-05-03_19-52-49-960x498.png" alt> 很清楚了，ReadLock 和 WriteLock 中的方法都是通过 Sync 这个类来实现的。Sync 是 AQS 的子类，然后再派生了公平模式和不公平模式。 从它们调用的 Sync 方法，我们可以看到： <strong>ReadLock 使用了共享模式，WriteLock 使用了独占模式</strong>。 等等，<strong>同一个 AQS 实例怎么可以同时使用共享模式和独占模式</strong>？？？ 这里给大家回顾下 AQS，我们横向对比下 AQS 的共享模式和独占模式：<img src="https://zhongmin.me/wp-content/uploads/2018/05/MXGVDPS3_DMXTWJLAJ-854x640.png" alt> AQS 的精髓在于内部的属性 <strong>state</strong>：</p>
+<ol>
+<li>对于独占模式来说，通常就是 0 代表可获取锁，1 代表锁被别人获取了，重入例外</li>
+<li>而共享模式下，每个线程都可以对 state 进行加减操作</li>
+</ol>
+<p>也就是说，独占模式和共享模式对于 state 的操作完全不一样，那读写锁 ReentrantReadWriteLock 中是怎么使用 state 的呢？答案是<strong>将 state 这个 32 位的 int 值分为高 16 位和低 16位，分别用于共享模式和独占模式</strong>。</p>
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>源代码加注释 1500 行，并不算难，我们要看的代码量不大。如果你前面一节都理解了，那么直接从头开始一行一行往下看就是了，还是比较简单的。 ReentrantReadWriteLock 的前面几行很简单，我们往下滑到 Sync 类，先来看下它的所有的属性：</p>
+<p>abstract static class Sync extends AbstractQueuedSynchronizer {<br>    // 下面这块说的就是将 state 一分为二，高 16 位用于共享模式，低16位用于独占模式<br>    static final int SHARED_SHIFT   = 16;<br>    static final int SHARED_UNIT    = (1 &lt;&lt; SHARED_SHIFT);<br>    static final int MAX_COUNT      = (1 &lt;&lt; SHARED_SHIFT) - 1;<br>    static final int EXCLUSIVE_MASK = (1 &lt;&lt; SHARED_SHIFT) - 1;<br>    // 取 c 的高 16 位值，代表读锁的获取次数(包括重入)<br>    static int sharedCount(int c)    { return c &gt;&gt;&gt; SHARED_SHIFT; }<br>    // 取 c 的低 16 位值，代表写锁的重入次数，因为写锁是独占模式<br>    static int exclusiveCount(int c) { return c &amp; EXCLUSIVE_MASK; }</p>
+<pre><code>// 这个嵌套类的实例用来记录每个线程持有的读锁数量(读锁重入)
+static final class HoldCounter {
+    // 持有的读锁数
+    int count = 0;
+    // 线程 id
+    final long tid = getThreadId(Thread.currentThread());
+}
+
+// ThreadLocal 的子类
+static final class ThreadLocalHoldCounter
+    extends ThreadLocal&lt;HoldCounter&gt; {
+    public HoldCounter initialValue() {
+        return new HoldCounter();
+    }
+}
+/\*\*
+  \* 组合使用上面两个类，用一个 ThreadLocal 来记录当前线程持有的读锁数量
+  */ 
+private transient ThreadLocalHoldCounter readHolds;
+
+// 用于缓存，记录&quot;最后一个获取读锁的线程&quot;的读锁重入次数，
+// 所以不管哪个线程获取到读锁后，就把这个值占为已用，这样就不用到 ThreadLocal 中查询 map 了
+// 算不上理论的依据：通常读锁的获取很快就会伴随着释放，
+//   显然，在 获取-&gt;释放 读锁这段时间，如果没有其他线程获取读锁的话，此缓存就能帮助提高性能
+private transient HoldCounter cachedHoldCounter;
+
+// 第一个获取读锁的线程(并且其未释放读锁)，以及它持有的读锁数量
+private transient Thread firstReader = null;
+private transient int firstReaderHoldCount;
+
+Sync() {
+    // 初始化 readHolds 这个 ThreadLocal 属性
+    readHolds = new ThreadLocalHoldCounter();
+    // 为了保证 readHolds 的内存可见性
+    setState(getState()); // ensures visibility of readHolds
+}
+...
+</code></pre><p>}</p>
+<ol>
+<li>state 的高 16 位代表读锁的获取次数，包括重入次数，获取到读锁一次加 1，释放掉读锁一次减 1</li>
+<li>state 的低 16 位代表写锁的获取次数，因为写锁是独占锁，同时只能被一个线程获得，所以它代表重入次数</li>
+<li>每个线程都需要维护自己的 HoldCounter，记录该线程获取的读锁次数，这样才能知道到底是不是读锁重入，用 ThreadLocal 属性 <strong>readHolds</strong> 维护</li>
+<li><strong>cachedHoldCounter</strong> 有什么用？其实没什么用，但能提示性能。将最后一次获取读锁的线程的 HoldCounter 缓存到这里，这样比使用 ThreadLocal 性能要好一些，因为 ThreadLocal 内部是基于 map 来查询的。但是 cachedHoldCounter 这一个属性毕竟只能缓存一个线程，所以它要起提升性能作用的依据就是：通常读锁的获取紧随着就是该读锁的释放。我这里可能表达不太好，但是大家应该是懂的吧。</li>
+<li><strong>firstReader</strong> 和 <strong>firstReaderHoldCount</strong> 有什么用？其实也没什么用，但是它也能提示性能。将”第一个”获取读锁的线程记录在 firstReader 属性中，这里的<strong>第一个</strong>不是全局的概念，等这个 firstReader 当前代表的线程释放掉读锁以后，会有后来的线程占用这个属性的。<strong>firstReader 和 firstReaderHoldCount 使得在读锁不产生竞争的情况下，记录读锁重入次数非常方便快速</strong></li>
+<li>如果一个线程使用了 firstReader，那么它就不需要占用 cachedHoldCounter</li>
+<li>个人认为，读写锁源码中最让初学者头疼的就是这几个用于提升性能的属性了，使得大家看得云里雾里的。主要是因为 ThreadLocal 内部是通过一个 ThreadLocalMap 来操作的，会增加检索时间。而很多场景下，执行 unlock 的线程往往就是刚刚最后一次执行 lock 的线程，中间可能没有其他线程进行 lock。还有就是很多不怎么会发生读锁竞争的场景。</li>
+</ol>
+<p>上面说了这么多，是希望能帮大家降低后面阅读源码的压力，大家也可以先看看后面的，然后再慢慢体会。 前面我们好像都只说读锁，完全没提到写锁，主要是因为写锁真的是简单很多，我也特地将写锁的源码放到了后面，我们先啃下最难的读锁先。</p>
+<h3 id="读锁获取"><a href="#读锁获取" class="headerlink" title="读锁获取"></a>读锁获取</h3><p>下面我就不一行一行按源码顺序说了，我们按照使用来说。 我们来看下读锁 ReadLock 的 lock 流程：</p>
+<p>// ReadLock<br>public void lock() {<br>    sync.acquireShared(1);<br>}<br>// AQS<br>public final void acquireShared(int arg) {<br>    if (tryAcquireShared(arg) &lt; 0)<br>        doAcquireShared(arg);<br>}</p>
+<p>然后我们就会进到 Sync 类的 tryAcquireShared 方法</p>
+<blockquote>
+<p>在 AQS 中，如果 tryAcquireShared(arg) 方法返回值小于 0 代表没有获取到共享锁(读锁)，大于 0 代表获取到 回顾 AQS 共享模式：tryAcquireShared 方法不仅仅在 acquireShared 的最开始被使用，这里是 try，也就可能会失败，如果失败的话，执行后面的 doAcquireShared，进入到阻塞队列，然后等待前驱节点唤醒。唤醒以后，还是会调用 tryAcquireShared 进行获取共享锁的。当然，唤醒以后再 try 是很容易获得锁的，因为这个节点已经排了很久的队了，组织是会照顾它的。 所以，你在看下面这段代码的时候，要想象到两种获取读锁的场景，一种是新来的，一种是排队排到它的。</p>
+</blockquote>
+<p>protected final int tryAcquireShared(int unused) {</p>
+<pre><code>Thread current = Thread.currentThread();
+int c = getState();
+
+// exclusiveCount(c) 不等于 0，说明有线程持有写锁，
+//    而且不是当前线程持有写锁，那么当前线程获取读锁失败
+//         （另，如果持有写锁的是当前线程，是可以继续获取读锁的）
+if (exclusiveCount(c) != 0 &amp;&amp;
+    getExclusiveOwnerThread() != current)
+    return -1;
+
+// 读锁的获取次数
+int r = sharedCount(c);
+
+// 读锁获取是否需要被阻塞，稍后细说。为了进去下面的分支，假设这里不阻塞就好了
+if (!readerShouldBlock() &amp;&amp;
+    // 判断是否会溢出 (2^16-1，没那么容易溢出的)
+    r &lt; MAX_COUNT &amp;&amp;
+    // 下面这行 CAS 是将 state 属性的高 16 位加 1，低 16 位不变，如果成功就代表获取到了读锁
+    compareAndSetState(c, c + SHARED_UNIT)) {
+
+    // =======================
+    //   进到这里就是获取到了读锁
+    // =======================
+
+    if (r == 0) {
+        // r == 0 说明此线程是第一个获取读锁的，或者说在它前面获取读锁的都走光光了，它也算是第一个吧
+        //  记录 firstReader 为当前线程，及其持有的读锁数量：1
+        firstReader = current;
+        firstReaderHoldCount = 1;
+    } else if (firstReader == current) {
+        // 进来这里，说明是 firstReader 重入获取读锁（这非常简单，count 加 1 结束）
+        firstReaderHoldCount++;
+    } else {
+        // 前面我们说了 cachedHoldCounter 用于缓存最后一个获取读锁的线程
+        // 如果 cachedHoldCounter 缓存的不是当前线程，设置为缓存当前线程的 HoldCounter
+        HoldCounter rh = cachedHoldCounter;
+        if (rh == null || rh.tid != getThreadId(current))
+            cachedHoldCounter = rh = readHolds.get();
+        else if (rh.count == 0) 
+            // 到这里，那么就是 cachedHoldCounter 缓存的是当前线程，但是 count 为 0，
+            // 大家可以思考一下：这里为什么要 set ThreadLocal 呢？(当然，答案肯定不在这块代码中)
+            //   既然 cachedHoldCounter 缓存的是当前线程，
+            //   当前线程肯定调用过 readHolds.get() 进行初始化 ThreadLocal
+            readHolds.set(rh);
+
+        // count 加 1
+        rh.count++;
+    }
+    // return 大于 0 的数，代表获取到了共享锁
+    return 1;
+}
+// 往下看
+return fullTryAcquireShared(current);
+</code></pre><p>}</p>
+<p>上面的代码中，要进入 if 分支，需要满足：readerShouldBlock() 返回 false，并且 CAS 要成功（我们先不要纠结 MAX_COUNT 溢出）。 那我们反向推，怎么样进入到最后的 fullTryAcquireShared：</p>
+<ul>
+<li>readerShouldBlock() 返回 true，2 种情况：</li>
+</ul>
+<p>1.在 FairSync 中说的是 hasQueuedPredecessors()，即阻塞队列中有其他元素在等待锁。也就是说，公平模式下，有人在排队呢，你新来的不能直接获取锁. 2.在 NonFairSync 中说的是 apparentlyFirstQueuedIsExclusive()，即判断阻塞队列中 head 的第一个后继节点是否是来获取写锁的，如果是的话，让这个写锁先来，避免写锁饥饿。作者给写锁定义了更高的优先级，所以如果碰上获取写锁的线程<strong>马上</strong>就要获取到锁了，获取读锁的线程不应该和它抢。如果 head.next 不是来获取写锁的，那么可以随便抢，因为是非公平模式，大家比比 CAS 速度.</p>
+<ul>
+<li>compareAndSetState(c, c + SHARED_UNIT) 这里 CAS 失败，存在竞争。可能是和另一个读锁获取竞争，当然也可能是和另一个写锁获取操作竞争。</li>
+</ul>
+<p>然后就会来到 fullTryAcquireShared 中再次尝试：</p>
+<p>/**<br> * 1. 刚刚我们说了可能是因为 CAS 失败，如果就此返回，那么就要进入到阻塞队列了，<br> *    想想有点不甘心，因为都已经满足了 !readerShouldBlock()，也就是说本来可以不用到阻塞队列的，<br> *    所以进到这个方法其实是增加 CAS 成功的机会<br> * 2. 在 NonFairSync 情况下，虽然 head.next 是获取写锁的，我知道它等待很久了，我没想和它抢，<br> *    可是如果我是来重入读锁的，那么只能表示对不起了<br> <em>/<br>final int fullTryAcquireShared(Thread current) {<br>    HoldCounter rh = null;<br>    // 别忘了这外层有个 for 循环<br>    for (;;) {<br>        int c = getState();<br>        // 如果其他线程持有了写锁，自然这次是获取不到读锁了，乖乖到阻塞队列排队吧<br>        if (exclusiveCount(c) != 0) {<br>            if (getExclusiveOwnerThread() != current)<br>                return -1;<br>            // else we hold the exclusive lock; blocking here<br>            // would cause deadlock.<br>        } else if (readerShouldBlock()) {<br>            /\</em>*<br>              * 进来这里，说明：<br>              *  1. exclusiveCount(c) == 0：写锁没有被占用<br>              *  2. readerShouldBlock() 为 true，说明阻塞队列中有其他线程在等待<br>              *<br>              * 既然 should block，那进来这里是干什么的呢？<br>              * 答案：是进来处理读锁重入的！<br>              *<br>              */</p>
+<pre><code>        // firstReader 线程重入读锁，直接到下面的 CAS
+        if (firstReader == current) {
+            // assert firstReaderHoldCount &gt; 0;
+        } else {
+            if (rh == null) {
+                rh = cachedHoldCounter;
+                if (rh == null || rh.tid != getThreadId(current)) {
+                    // cachedHoldCounter 缓存的不是当前线程
+                    // 那么到 ThreadLocal 中获取当前线程的 HoldCounter
+                    // 如果当前线程从来没有初始化过 ThreadLocal 中的值，get() 会执行初始化
+                    rh = readHolds.get();
+                    // 如果发现 count == 0，也就是说，纯属上一行代码初始化的，那么执行 remove
+                    // 然后往下两三行，乖乖排队去
+                    if (rh.count == 0)
+                        readHolds.remove();
+                }
+            }
+            if (rh.count == 0)
+                // 排队去。
+                return -1;
+        }
+        /\*\*
+          \* 这块代码我看了蛮久才把握好它是干嘛的，原来只需要知道，它是处理重入的就可以了。
+          \* 就是为了确保读锁重入操作能成功，而不是被塞到阻塞队列中等待
+          \*
+          \* 另一个信息就是，这里对于 ThreadLocal 变量 readHolds 的处理：
+          \*    如果 get() 后发现 count == 0，居然会做 remove() 操作，
+          \*    这行代码对于理解其他代码是有帮助的
+          */
+    }
+
+    if (sharedCount(c) == MAX_COUNT)
+        throw new Error(&quot;Maximum lock count exceeded&quot;);
+
+    if (compareAndSetState(c, c + SHARED_UNIT)) {
+        // 这里 CAS 成功，那么就意味着成功获取读锁了
+        // 下面需要做的是设置 firstReader 或 cachedHoldCounter
+
+        if (sharedCount(c) == 0) {
+            // 如果发现 sharedCount(c) 等于 0，就将当前线程设置为 firstReader
+            firstReader = current;
+            firstReaderHoldCount = 1;
+        } else if (firstReader == current) {
+            firstReaderHoldCount++;
+        } else {
+            // 下面这几行，就是将 cachedHoldCounter 设置为当前线程
+            if (rh == null)
+                rh = cachedHoldCounter;
+            if (rh == null || rh.tid != getThreadId(current))
+                rh = readHolds.get();
+            else if (rh.count == 0)
+                readHolds.set(rh);
+            rh.count++;
+            cachedHoldCounter = rh;
+        }
+        // 返回大于 0 的数，代表获取到了读锁
+        return 1;
+    }
+}
+</code></pre><p>}</p>
+<blockquote>
+<p>firstReader 是每次将<strong>读锁获取次数</strong>从 0 变为 1 的那个线程。 能缓存到 firstReader 中就不要缓存到 cachedHoldCounter 中。</p>
+</blockquote>
+<p>上面的源码分析应该说得非常详细了，如果到这里你不太能看懂上面的有些地方的注释，那么可以先往后看，然后再多看几遍。</p>
+<h3 id="读锁释放"><a href="#读锁释放" class="headerlink" title="读锁释放"></a>读锁释放</h3><p>下面我们看看读锁释放的流程：</p>
+<p>// ReadLock<br>public void unlock() {<br>    sync.releaseShared(1);<br>}<br>// Sync<br>public final boolean releaseShared(int arg) {<br>    if (tryReleaseShared(arg)) {<br>        doReleaseShared(); // 这句代码其实唤醒 获取写锁的线程，往下看就知道了<br>        return true;<br>    }<br>    return false;<br>}</p>
+<p>// Sync<br>protected final boolean tryReleaseShared(int unused) {<br>    Thread current = Thread.currentThread();<br>    if (firstReader == current) {<br>        if (firstReaderHoldCount == 1)<br>            // 如果等于 1，那么这次解锁后就不再持有锁了，把 firstReader 置为 null，给后来的线程用<br>            // 为什么不顺便设置 firstReaderHoldCount = 0？因为没必要，其他线程使用的时候自己会设值<br>            firstReader = null;<br>        else<br>            firstReaderHoldCount–;<br>    } else {<br>        // 判断 cachedHoldCounter 是否缓存的是当前线程，不是的话要到 ThreadLocal 中取<br>        HoldCounter rh = cachedHoldCounter;<br>        if (rh == null || rh.tid != getThreadId(current))<br>            rh = readHolds.get();</p>
+<pre><code>    int count = rh.count;
+    if (count &lt;= 1) {
+
+        // 这一步将 ThreadLocal remove 掉，防止内存泄漏。因为已经不再持有读锁了
+        readHolds.remove();
+
+        if (count &lt;= 0)
+            // 就是那种，lock() 一次，unlock() 好几次的逗比
+            throw unmatchedUnlockException();
+    }
+    // count 减 1
+    --rh.count;
+}
+
+for (;;) {
+    int c = getState();
+    // nextc 是 state 高 16 位减 1 后的值
+    int nextc = c - SHARED_UNIT;
+    if (compareAndSetState(c, nextc))
+        // 如果 nextc == 0，那就是 state 全部 32 位都为 0，也就是读锁和写锁都空了
+        // 此时这里返回 true 的话，其实是帮助唤醒后继节点中的获取写锁的线程
+        return nextc == 0;
+}
+</code></pre><p>}</p>
+<p>读锁释放的过程还是比较简单的，主要就是将 hold count 减 1，如果减到 0 的话，还要将 ThreadLocal 中的 remove 掉。 然后是在 for 循环中将 state 的高 16 位减 1，如果发现读锁和写锁都释放光了，那么唤醒后继的获取写锁的线程。</p>
+<h3 id="写锁获取"><a href="#写锁获取" class="headerlink" title="写锁获取"></a>写锁获取</h3><ol>
+<li>写锁是独占锁。</li>
+<li>如果有读锁被占用，写锁获取是要进入到阻塞队列中等待的。</li>
+</ol>
+<p>// WriteLock<br>public void lock() {<br>    sync.acquire(1);<br>}<br>// AQS<br>public final void acquire(int arg) {<br>    if (!tryAcquire(arg) &amp;&amp;<br>        // 如果 tryAcquire 失败，那么进入到阻塞队列等待<br>        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))<br>        selfInterrupt();<br>}</p>
+<p>// Sync<br>protected final boolean tryAcquire(int acquires) {</p>
+<pre><code>Thread current = Thread.currentThread();
+int c = getState();
+int w = exclusiveCount(c);
+if (c != 0) {
+
+    // 看下这里返回 false 的情况：
+    //   c != 0 &amp;&amp; w == 0: 写锁可用，但是有线程持有读锁(也可能是自己持有)
+    //   c != 0 &amp;&amp; w !=0 &amp;&amp; current != getExclusiveOwnerThread(): 其他线程持有写锁
+    //   也就是说，只要有读锁或写锁被占用，这次就不能获取到写锁
+    if (w == 0 || current != getExclusiveOwnerThread())
+        return false;
+
+    if (w + exclusiveCount(acquires) &gt; MAX_COUNT)
+        throw new Error(&quot;Maximum lock count exceeded&quot;);
+
+    // 这里不需要 CAS，仔细看就知道了，能到这里的，只可能是写锁重入，不然在上面的 if 就拦截了
+    setState(c + acquires);
+    return true;
+}
+
+// 如果写锁获取不需要 block，那么进行 CAS，成功就代表获取到了写锁
+if (writerShouldBlock() ||
+    !compareAndSetState(c, c + acquires))
+    return false;
+setExclusiveOwnerThread(current);
+return true;
+</code></pre><p>}</p>
+<p>下面看一眼 <strong>writerShouldBlock()</strong> 的判定，然后你再回去看一篇写锁获取过程。</p>
+<p>static final class NonfairSync extends Sync {<br>    // 如果是非公平模式，那么 lock 的时候就可以直接用 CAS 去抢锁，抢不到再排队<br>    final boolean writerShouldBlock() {<br>        return false; // writers can always barge<br>    }<br>    …<br>}<br>static final class FairSync extends Sync {<br>    final boolean writerShouldBlock() {<br>        // 如果是公平模式，那么如果阻塞队列有线程等待的话，就乖乖去排队<br>        return hasQueuedPredecessors();<br>    }<br>    …<br>}</p>
+<h3 id="写锁释放"><a href="#写锁释放" class="headerlink" title="写锁释放"></a>写锁释放</h3><p>// WriteLock<br>public void unlock() {<br>    sync.release(1);<br>}</p>
+<p>// AQS<br>public final boolean release(int arg) {<br>    // 1. 释放锁<br>    if (tryRelease(arg)) {<br>        // 2. 如果独占锁释放”完全”，唤醒后继节点<br>        Node h = head;<br>        if (h != null &amp;&amp; h.waitStatus != 0)<br>            unparkSuccessor(h);<br>        return true;<br>    }<br>    return false;<br>}</p>
+<p>// Sync<br>// 释放锁，是线程安全的，因为写锁是独占锁，具有排他性<br>// 实现很简单，state 减 1 就是了<br>protected final boolean tryRelease(int releases) {<br>    if (!isHeldExclusively())<br>        throw new IllegalMonitorStateException();<br>    int nextc = getState() - releases;<br>    boolean free = exclusiveCount(nextc) == 0;<br>    if (free)<br>        setExclusiveOwnerThread(null);<br>    setState(nextc);<br>    // 如果 exclusiveCount(nextc) == 0，也就是说包括重入的，所有的写锁都释放了，<br>    // 那么返回 true，这样会进行唤醒后继节点的操作。<br>    return free;<br>}</p>
+<h2 id="锁降级"><a href="#锁降级" class="headerlink" title="锁降级"></a>锁降级</h2><p>Doug Lea 没有说写锁更<strong>高级</strong>，如果有线程持有读锁，那么写锁获取也需要等待。 不过从源码中也可以看出，确实会给写锁一些特殊照顾，如非公平模式下，为了提高吞吐量，lock 的时候会先 CAS 竞争一下，能成功就代表读锁获取成功了，但是如果发现 head.next 是获取写锁的线程，就不会去做 CAS 操作。 Doug Lea 将持有写锁的线程，去获取读锁的过程称为<strong>锁降级（Lock downgrading）</strong>。这样，此线程就既持有写锁又持有读锁。 但是，<strong>锁升级</strong>是不可以的。线程持有读锁的话，在没释放的情况下不能去获取写锁，因为会发生<strong>死锁</strong>。 回去看下写锁获取的源码：</p>
+<p>protected final boolean tryAcquire(int acquires) {</p>
+<pre><code>Thread current = Thread.currentThread();
+int c = getState();
+int w = exclusiveCount(c);
+if (c != 0) {
+    // 看下这里返回 false 的情况：
+    //   c != 0 &amp;&amp; w == 0: 写锁可用，但是有线程持有读锁(也可能是自己持有)
+    //   c != 0 &amp;&amp; w !=0 &amp;&amp; current != getExclusiveOwnerThread(): 其他线程持有写锁
+    //   也就是说，只要有读锁或写锁被占用，这次就不能获取到写锁
+    if (w == 0 || current != getExclusiveOwnerThread())
+        return false;
+    ...
+}
+...
+</code></pre><p>}</p>
+<p>仔细想想，如果线程 a 先获取了读锁，然后获取写锁，那么线程 a 就到阻塞队列休眠了，自己把自己弄休眠了，而且可能之后就没人去唤醒它了。 <img src="https://javadoop.com/blogimages/reentrant-read-write-lock/14.png" alt="14"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/05/01/jvm-e7-b1-bb-e5-8a-a0-e8-bd-bd-e5-99-a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/05/01/jvm-e7-b1-bb-e5-8a-a0-e8-bd-bd-e5-99-a8/" class="post-title-link" itemprop="url">JVM--类加载器</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-01 16:50:59" itemprop="dateCreated datePublished" datetime="2018-05-01T16:50:59+08:00">2018-05-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JVM设计者把类加载阶段中的“通过’类全名’来获取定义此类的二进制字节流”这个动作放到Java虚拟机外部去实现，以便让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。</p>
+<h4 id="1-类与类加载器"><a href="#1-类与类加载器" class="headerlink" title="1.类与类加载器"></a><strong>1.类与类加载器</strong></h4><p>对于任何一个类，都需要由加载它的类加载器和这个类来确立其在JVM中的唯一性。也就是说，两个类来源于同一个Class文件，并且被同一个类加载器加载，这两个类才相等。</p>
+<h4 id="2-双亲委派模型"><a href="#2-双亲委派模型" class="headerlink" title="2.双亲委派模型"></a><strong>2.双亲委派模型</strong></h4><p>从虚拟机的角度来说，只存在两种不同的类加载器：一种是启动类加载器（Bootstrap ClassLoader），该类加载器使用C++语言实现，属于虚拟机自身的一部分。另外一种就是所有其它的类加载器，这些类加载器是由Java语言实现，独立于JVM外部，并且全部继承自抽象类java.lang.ClassLoader。 从Java开发人员的角度来看，大部分Java程序一般会使用到以下三种系统提供的类加载器： 1)启动类加载器（Bootstrap ClassLoader）：负责加载JAVA_HOME\lib目录中并且能被虚拟机识别的类库到JVM内存中，如果名称不符合的类库即使放在lib目录中也不会被加载。该类加载器无法被Java程序直接引用。 2)扩展类加载器（Extension ClassLoader）：该加载器主要是负责加载JAVA_HOME\lib\，该加载器可以被开发者直接使用。 3)应用程序类加载器（Application ClassLoader）：该类加载器也称为系统类加载器，它负责加载用户类路径（Classpath）上所指定的类库，开发者可以直接使用该类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。 我们的应用程序都是由这三类加载器互相配合进行加载的，我们也可以加入自己定义的类加载器。这些类加载器之间的关系如下图所示：<img src="https://zhongmin.me/wp-content/uploads/2018/05/6KVESSD31CYBSB3QK.png" alt> 如上图所示的类加载器之间的这种层次关系，就称为类加载器的双亲委派模型（Parent Delegation Model）。该模型要求除了顶层的启动类加载器外，其余的类加载器都应当有自己的父类加载器。子类加载器和父类加载器不是以继承（Inheritance）的关系来实现，而是通过组合（Composition）关系来复用父加载器的代码。 <strong>双亲委派模型的工作过程为：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成，每一个层次的加载器都是如此，因此所有的类加载请求都会传给顶层的启动类加载器，只有当父加载器反馈自己无法完成该加载请求（该加载器的搜索范围中没有找到对应的类）时，子加载器才会尝试自己去加载。</strong> 使用这种模型来组织类加载器之间的关系的好处是Java类随着它的类加载器一起具备了一种带有优先级的层次关系。例如java.lang.Object类，无论哪个类加载器去加载该类，最终都是由启动类加载器进行加载，因此Object类在程序的各种类加载器环境中都是同一个类。否则的话，如果不使用该模型的话，如果用户自定义一个java.lang.Object类且存放在classpath中，那么系统中将会出现多个Object类，应用程序也会变得很混乱。如果我们自定义一个rt.jar中已有类的同名Java类，会发现JVM可以正常编译，但该类永远无法被加载运行。 在rt.jar包中的java.lang.ClassLoader类中，我们可以查看类加载实现过程的代码，具体源码如下：</p>
+<pre><code>protected synchronized Class loadClass(String name, boolean resolve)
+        throws ClassNotFoundException {
+    // 首先检查该name指定的class是否有被加载
+    Class c = findLoadedClass(name);
+    if (c == null) {
+        try {
+            if (parent != null) {
+                // 如果parent不为null，则调用parent的loadClass进行加载
+                c = parent.loadClass(name, false);
+            } else {
+                // parent为null，则调用BootstrapClassLoader进行加载
+                c = findBootstrapClass0(name);
+            }
+        } catch (ClassNotFoundException e) {
+            // 如果仍然无法加载成功，则调用自身的findClass进行加载
+            c = findClass(name);
+        }
+    }
+    if (resolve) {
+        resolveClass(c);
+    }
+    return c;
+}
+</code></pre><p>通过上面代码可以看出，双亲委派模型是通过loadClass()方法来实现的，根据代码以及代码中的注释可以很清楚地了解整个过程其实非常简单：先检查是否已经被加载过，如果没有则调用父加载器的loadClass()方法，如果父加载器为空则默认使用启动类加载器作为父加载器。如果父类加载器加载失败，则先抛出ClassNotFoundException，然后再调用自己的findClass()方法进行加载。</p>
+<h4 id="3-自定义类加载器"><a href="#3-自定义类加载器" class="headerlink" title="3.自定义类加载器"></a><strong>3.自定义类加载器</strong></h4><p>若要实现自定义类加载器，只需要继承java.lang.ClassLoader 类，并且重写其findClass()方法即可。java.lang.ClassLoader 类的基本职责就是根据一个指定的类的名称，找到或者生成其对应的字节代码，然后从这些字节代码中定义出一个 Java 类，即 java.lang.Class 类的一个实例。除此之外，ClassLoader 还负责加载 Java 应用所需的资源，如图像文件和配置文件等，ClassLoader 中与加载类相关的方法如下： getParent()  返回该类加载器的父类加载器。 loadClass(String name) 加载名称为 二进制名称为name 的类，返回的结果是 java.lang.Class 类的实例。 findClass(String name) 查找名称为 name 的类，返回的结果是 java.lang.Class 类的实例。 findLoadedClass(String name) 查找名称为 name 的已经被加载过的类，返回的结果是 java.lang.Class 类的实例。 resolveClass(Class&lt;?&gt; c) 链接指定的 Java 类。 注意：在JDK1.2之前，类加载尚未引入双亲委派模式，因此实现自定义类加载器时常常重写loadClass方法，提供双亲委派逻辑，从JDK1.2之后，双亲委派模式已经被引入到类加载体系中，自定义类加载器时不需要在自己写双亲委派的逻辑，因此不鼓励重写loadClass方法，而推荐重写findClass方法。 在Java中，任意一个类都需要由加载它的类加载器和这个类本身一同确定其在java虚拟机中的唯一性，即比较两个类是否相等，只有在这两个类是由同一个类加载器加载的前提之下才有意义，否则，即使这两个类来源于同一个Class类文件，只要加载它的类加载器不相同，那么这两个类必定不相等(这里的相等包括代表类的Class对象的equals()方法、isAssignableFrom()方法、isInstance()方法和instanceof关键字的结果)。例子代码如下：</p>
+<p>/**<br>     * 一、ClassLoader加载类的顺序<br>     *  1.调用 findLoadedClass(String) 来检查是否已经加载类。<br>     *  2.在父类加载器上调用 loadClass 方法。如果父类加载器为 null，则使用虚拟机的内置类加载器。<br>     *  3.调用 findClass(String) 方法查找类。<br>     * 二、实现自己的类加载器<br>     *  1.获取类的class文件的字节数组<br>     *  2.将字节数组转换为Class类的实例<br>     <em>/<br>    public class ClassLoaderTest {<br>        public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {<br>            //新建一个类加载器<br>            MyClassLoader cl = new MyClassLoader(“myClassLoader”);<br>            //加载类，得到Class对象<br>            Class&lt;?&gt; clazz = cl.loadClass(“classloader.Animal”);<br>            //得到类的实例<br>            Animal animal=(Animal) clazz.newInstance();<br>            animal.say();<br>        }<br>    }<br>    class Animal{<br>        public void say(){<br>            System.out.println(“hello world!”);<br>        }<br>    }<br>    class MyClassLoader extends ClassLoader {<br>        //类加载器的名称<br>        private String name;<br>        //类存放的路径<br>        private String path = “E:\\workspace\\Algorithm\\src”;<br>        MyClassLoader(String name) {<br>            this.name = name;<br>        }<br>        MyClassLoader(ClassLoader parent, String name) {<br>            super(parent);<br>            this.name = name;<br>        }<br>        /\</em>*<br>         * 重写findClass方法<br>         */<br>        @Override<br>        public Class&lt;?&gt; findClass(String name) {<br>            byte[] data = loadClassData(name);<br>            return this.defineClass(name, data, 0, data.length);<br>        }<br>        public byte[] loadClassData(String name) {<br>            try {<br>                name = name.replace(“.”, “//“);<br>                FileInputStream is = new FileInputStream(new File(path + name + “.class”));<br>                ByteArrayOutputStream baos = new ByteArrayOutputStream();<br>                int b = 0;<br>                while ((b = is.read()) != -1) {<br>                    baos.write(b);<br>                }<br>                return baos.toByteArray();<br>            } catch (Exception e) {<br>                e.printStackTrace();<br>            }<br>            return null;<br>        }<br>    }</p>
+<p>类加载器双亲委派模型是从JDK1.2以后引入的，并且只是一种推荐的模型，不是强制要求的，因此有一些没有遵循双亲委派模型的特例：(了解) (1).在JDK1.2之前，自定义类加载器都要覆盖loadClass方法去实现加载类的功能，JDK1.2引入双亲委派模型之后，loadClass方法用于委派父类加载器进行类加载，只有父类加载器无法完成类加载请求时才调用自己的findClass方法进行类加载，因此在JDK1.2之前的类加载的loadClass方法没有遵循双亲委派模型，因此在JDK1.2之后，自定义类加载器不推荐覆盖loadClass方法，而只需要覆盖findClass方法即可。 (2).双亲委派模式很好地解决了各个类加载器的基础类统一问题，越基础的类由越上层的类加载器进行加载，但是这个基础类统一有一个不足，当基础类想要调用回下层的用户代码时无法委派子类加载器进行类加载。为了解决这个问题JDK引入了ThreadContext线程上下文，通过线程上下文的setContextClassLoader方法可以设置线程上下文类加载器。 JavaEE只是一个规范，sun公司只给出了接口规范，具体的实现由各个厂商进行实现，因此JNDI，JDBC,JAXB等这些第三方的实现库就可以被JDK的类库所调用。线程上下文类加载器也没有遵循双亲委派模型。 (3).近年来的热码替换，模块热部署等应用要求不用重启java虚拟机就可以实现代码模块的即插即用，催生了OSGi技术，在OSGi中类加载器体系被发展为网状结构。OSGi也没有完全遵循双亲委派模型。</p>
+<h4 id="4-动态加载Jar-amp-amp-ClassLoader-隔离问题"><a href="#4-动态加载Jar-amp-amp-ClassLoader-隔离问题" class="headerlink" title="4.动态加载Jar &amp;&amp; ClassLoader 隔离问题"></a><strong>4.动态加载Jar &amp;&amp; ClassLoader 隔离问题</strong></h4><p><strong>动态加载Jar：</strong> Java 中动态加载 Jar 比较简单，如下：</p>
+<p>URL[] urls = new URL[] {new URL(“file:libs/jar1.jar”)};<br>URLClassLoader loader = new URLClassLoader(urls, parentLoader);</p>
+<p>表示加载 libs 下面的 jar1.jar，其中 parentLoader 就是上面1中的 parent，可以为当前的 ClassLoader。 <strong>ClassLoader 隔离问题：</strong> 大家觉得一个运行程序中有没有可能同时存在两个包名和类名完全一致的类？ JVM 及 Dalvik 对类唯一的识别是 ClassLoader id + PackageName + ClassName，所以一个运行程序中是有可能存在两个包名和类名完全一致的类的。并且如果这两个”类”不是由一个 ClassLoader 加载，是无法将一个类的示例强转为另外一个类的，这就是 ClassLoader 隔离。 最后： 一道面试题 能不能自己写个类叫java.lang.System？ 答案：通常不可以，但可以采取另类方法达到这个需求。 解释：为了不让我们写System类，类加载采用委托机制，这样可以保证爸爸们优先，爸爸们能找到的类，儿子就没有机会加载。而System类是Bootstrap加载器加载的，就算自己重写，也总是使用Java系统提供的System，自己写的System类根本没有机会得到加载。 但是，我们可以自己定义一个类加载器来达到这个目的，为了避免双亲委托机制，这个类加载器也必须是特殊的。由于系统自带的三个类加载器都加载特定目录下的类，如果我们自己的类加载器放在一个特殊的目录，那么系统的加载器就无法加载，也就是最终还是由我们自己的加载器加载。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -632,14 +2526,232 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">153</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
 
               
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
               
             </nav>
           

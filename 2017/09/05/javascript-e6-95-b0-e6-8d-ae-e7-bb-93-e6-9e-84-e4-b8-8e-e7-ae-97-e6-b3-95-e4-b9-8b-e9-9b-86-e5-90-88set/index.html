@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="集合(Set) 说起集合，就想起刚进高中时，数学第一课讲的就是集合。因此在学习集合这种数据结构时，倍感亲切。 集合的基本性质有一条: 集合中元素是不重复的。因为这种性质，所以我们选用了对象来作为集合的容器，而非数组。 虽然数组也能做到所有不重复，但终究过于繁琐，不如集合。 集合的操作 集合的基本操作有交集、并集、差集等。这儿我们介绍JavaScipt集合中交集、并集、差集的实现。 JavaScip">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数据结构与算法之集合(Set)">
+<meta property="og:url" content="http://b.zhongmin.me/2017/09/05/javascript-e6-95-b0-e6-8d-ae-e7-bb-93-e6-9e-84-e4-b8-8e-e7-ae-97-e6-b3-95-e4-b9-8b-e9-9b-86-e5-90-88set/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="集合(Set) 说起集合，就想起刚进高中时，数学第一课讲的就是集合。因此在学习集合这种数据结构时，倍感亲切。 集合的基本性质有一条: 集合中元素是不重复的。因为这种性质，所以我们选用了对象来作为集合的容器，而非数组。 虽然数组也能做到所有不重复，但终究过于繁琐，不如集合。 集合的操作 集合的基本操作有交集、并集、差集等。这儿我们介绍JavaScipt集合中交集、并集、差集的实现。 JavaScip">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript数据结构与算法之集合(Set)">
+<meta name="twitter:description" content="集合(Set) 说起集合，就想起刚进高中时，数学第一课讲的就是集合。因此在学习集合这种数据结构时，倍感亲切。 集合的基本性质有一条: 集合中元素是不重复的。因为这种性质，所以我们选用了对象来作为集合的容器，而非数组。 虽然数组也能做到所有不重复，但终究过于繁琐，不如集合。 集合的操作 集合的基本操作有交集、并集、差集等。这儿我们介绍JavaScipt集合中交集、并集、差集的实现。 JavaScip">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/09/05/javascript-e6-95-b0-e6-8d-ae-e7-bb-93-e6-9e-84-e4-b8-8e-e7-ae-97-e6-b3-95-e4-b9-8b-e9-9b-86-e5-90-88set/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JavaScript数据结构与算法之集合(Set) | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/09/05/javascript-e6-95-b0-e6-8d-ae-e7-bb-93-e6-9e-84-e4-b8-8e-e7-ae-97-e6-b3-95-e4-b9-8b-e9-9b-86-e5-90-88set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript数据结构与算法之集合(Set)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-09-05 17:20:00" itemprop="dateCreated datePublished" datetime="2017-09-05T17:20:00+08:00">2017-09-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>集合(Set)</strong> 说起集合，就想起刚进高中时，数学第一课讲的就是集合。因此在学习集合这种数据结构时，倍感亲切。 集合的基本性质有一条: 集合中元素是不重复的。因为这种性质，所以我们选用了对象来作为集合的容器，而非数组。 虽然数组也能做到所有不重复，但终究过于繁琐，不如集合。 <strong>集合的操作</strong> 集合的基本操作有交集、并集、差集等。这儿我们介绍JavaScipt集合中交集、并集、差集的实现。 <strong>JavaScipt中集合的实现</strong> 首先，创建一个构造函数。</p>
+<p>/**<br> * 集合的构造函数<br> <em>/<br>function Set方法 {<br> /\</em>*<br>  * 集合元素的容器，以对象来表示<br>  * @type {Object}<br>  */<br> var items = {};<br>}</p>
+<p>集合需要有如下方法:</p>
+<ol>
+<li>has(value): 检测集合内是否有某个元素</li>
+<li>add(value): 给集合内添加某个元素</li>
+<li>remove(value): 移除集合中某个元素</li>
+<li>clear(value): 清空集合</li>
+<li>size(): 返回集合长度</li>
+<li>values(): 返回集合转换的数组</li>
+<li>union(otherSet): 返回两个集合的并集</li>
+<li>intersection(otherSet): 返回两个集合的交集</li>
+<li>difference(otherSet): 返回两个集合的差集</li>
+<li>subset(otherSet): 判断该集合是否为传入集合的子集</li>
+</ol>
+<p><strong>has方法:</strong> 说明:集合中元素是不重复的。所以在其它任何操作前，必须用has方法确认集合是否有某个元素。这儿使用了hasOwnProperty方法来检测。 实现:</p>
+<p>/**<br> * 检测集合内是否有某个元素<br> * @param {Any} value  要检测的元素<br> * @return {Boolean}    如果有，返回true<br> */<br>this.has = function(value) {<br> // hasOwnProperty的问题在于<br> // 它是一个方法，所以可能会被覆写<br> return items.hasOwnProperty(value)<br>};</p>
+<p><strong>add方法:</strong> 说明: 给集合内添加某个元素。 实现:</p>
+<p>/**<br> * 给集合内添加某个元素<br> * @param {Any} value 要被添加的元素<br> * @return {Boolean}    添加成功返回True。<br> */<br>this.add = function(value) {<br> //先检测元素是否存在。<br> if (!this.has(value)) {<br>  items[value] = value;<br>  return true;<br> }<br> //如果元素已存在则返回false<br> return false;<br>};</p>
+<p><strong>remove方法:</strong> 说明: 移除集合中某个元素 实现:</p>
+<p>/**<br> * 移除集合中某个元素<br> * @param {Any} value 要移除的元素<br> * @return {Boolean}    移除成功返回True。<br> */<br>this.remove = function(value) {<br> //先检测元素是否存在。<br> if (this.has(value)) {<br>  delete items[value];<br>  return true;<br> }<br> //如果元素不存在，则删除失败返回false<br> return false;<br>};</p>
+<p><strong>clear方法:</strong> 说明: 清空集合 实现:</p>
+<p>/**<br> * 清空集合<br> */<br>this.clear = function() {<br> this.items = {};<br>};</p>
+<p><strong>size方法</strong> 说明: 返回集合长度，这儿有两种方法。第一种方法使用了Object.keys这个Api，但只支持IE9及以上。第二种则适用于所有浏览器。 实现:</p>
+<p>/**<br> * 返回集合长度，只可用于IE9及以上<br> * @return {Number} 集合长度<br> */<br>this.size = function() {<br> // Object.keys方法能将对象转化为数组<br> // 只可用于IE9及以上，但很方便<br> return Object.keys(items).length;<br>}</p>
+<p>/**<br> * 返回集合长度，可用于所有浏览器<br> * @return {Number} 集合长度<br> */<br>this.sizeLegacy = function() {<br> var count = 0;<br> for (var prop in items) {<br>  if (items.hasOwnProperty(prop)) {<br>   ++count;<br>  }<br> }<br> return count;<br>}</p>
+<p><strong>values方法</strong> 说明: 返回集合转换的数组，这儿也有两种方法。理由同上。使用了Object.keys，只能支持IE9及以上。 实现:</p>
+<p>/**<br> * 返回集合转换的数组，只可用于IE9及以上<br> * @return {Array} 转换后的数组<br> */<br>this.values = function() {<br> return Object.keys(items);<br>};</p>
+<p>/**<br> * 返回集合转换的数组，可用于所有浏览器<br> * @return {Array} 转换后的数组<br> */<br>this.valuesLegacy = function() {<br> var keys = [];<br> for (var key in items) {<br>  keys.push(key)<br> };<br> return keys;<br>};</p>
+<p><strong>union方法</strong> 说明: 返回两个集合的并集 实现:</p>
+<p>/**<br> * 返回两个集合的并集<br> * @param {Set} otherSet 要进行并集操作的集合<br> * @return {Set}     两个集合的并集<br> */<br>this.union = function(otherSet) {<br> //初始化一个新集合，用于表示并集。<br> var unionSet = new Set();<br> //将当前集合转换为数组，并依次添加进unionSet<br> var values = this.values();<br> for (var i = 0; i &lt; values.length; i++) {<br>  unionSet.add(values[i]);<br> }</p>
+<p> //将其它集合转换为数组，依次添加进unionSet。<br> //循环中的add方法保证了不会有重复元素的出现<br> values = otherSet.values();<br> for (var i = 0; i &lt; values.length; i++) {<br>  unionSet.add(values[i]);<br> }</p>
+<p> return unionSet;<br>};</p>
+<p><strong>intersection方法</strong> 说明: 返回两个集合的交集 实现:</p>
+<p>/**<br> * 返回两个集合的交集<br> * @param {Set} otherSet 要进行交集操作的集合<br> * @return {Set}     两个集合的交集<br> */<br>this.intersection = function(otherSet) {<br> //初始化一个新集合，用于表示交集。<br> var interSectionSet = new Set();<br> //将当前集合转换为数组<br> var values = this.values();<br> //遍历数组，如果另外一个集合也有该元素，则interSectionSet加入该元素。<br> for (var i = 0; i &lt; values.length; i++) {</p>
+<p>  if (otherSet.has(values[i])) {<br>   interSectionSet.add(values[i])<br>  }<br> }</p>
+<p> return interSectionSet;<br>};</p>
+<p><strong>difference方法</strong> 说明: 返回两个集合的差集 实现:</p>
+<p>/**<br> * 返回两个集合的交集<br> * @param {Set} otherSet 要进行交集操作的集合<br> * @return {Set}     两个集合的交集<br> */<br>this.intersection = function(otherSet) {<br> //初始化一个新集合，用于表示交集。<br> var interSectionSet = new Set();<br> //将当前集合转换为数组<br> var values = this.values();<br> //遍历数组，如果另外一个集合也有该元素，则interSectionSet加入该元素。<br> for (var i = 0; i &lt; values.length; i++) {</p>
+<p>  if (otherSet.has(values[i])) {<br>   interSectionSet.add(values[i])<br>  }<br> }</p>
+<p> return interSectionSet;<br>};</p>
+<p><strong>difference方法</strong> 说明: 返回两个集合的差集 实现:</p>
+<p>/**<br> * 返回两个集合的差集<br> * @param {Set} otherSet 要进行差集操作的集合<br> * @return {Set}     两个集合的差集<br> */<br>this.difference = function(otherSet) {<br> //初始化一个新集合，用于表示差集。<br> var differenceSet = new Set();<br> //将当前集合转换为数组<br> var values = this.values();<br> //遍历数组，如果另外一个集合没有该元素，则differenceSet加入该元素。<br> for (var i = 0; i &lt; values.length; i++) {</p>
+<p>  if (!otherSet.has(values[i])) {<br>   differenceSet.add(values[i])<br>  }<br> }</p>
+<p> return differenceSet;<br>};</p>
+<p><strong>subset方法</strong> 说明: 判断该集合是否为传入集合的子集。这段代码在我自己写完后与书上一比对，觉得自己超级low。我写的要遍历数组三次，书上的只需要一次，算法复杂度远远低于我的。 实现:</p>
+<p>**<br> * 判断该集合是否为传入集合的子集<br> * @param {Set} otherSet 传入的集合<br> * @return {Boolean}   是则返回True<br> */<br>this.subset = function(otherSet) {<br> // 第一个判定,如果该集合长度大于otherSet的长度<br> // 则直接返回false<br> if (this.size() &gt; otherSet.size()) {<br>  return false;<br> } else {<br>  // 将当前集合转换为数组<br>  var values = this.values();</p>
+<p>  for (var i = 0; i &lt; values.length; i++) {</p>
+<p>   if (!otherSet.has(values[i])) {<br>    // 第二个判定。只要有一个元素不在otherSet中<br>    // 那么则可以直接判定不是子集，返回false<br>    return false;<br>   }<br>  }</p>
+<p>  return true;<br> }<br>};</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/04/mysql-e6-9c-8d-e5-8a-a1-e6-97-a0-e6-b3-95-e5-90-af-e5-8a-a8-e6-9c-8d-e5-8a-a1-e6-b2-a1-e6-9c-89-e6-8a-a5-e5-91-8a-e4-bb-bb-e4-bd-95-e9-94-99-e8-af-af/" rel="next" title="Mysql 服务无法启动 服务没有报告任何错误">
+                <i class="fa fa-chevron-left"></i> Mysql 服务无法启动 服务没有报告任何错误
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/19/e5-be-ae-e4-bf-a1-e5-bc-80-e5-8f-91-e8-b8-a9-e5-9d-91-e8-ae-b0-e5-bd-95/" rel="prev" title="微信开发踩坑记录">
+                微信开发踩坑记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

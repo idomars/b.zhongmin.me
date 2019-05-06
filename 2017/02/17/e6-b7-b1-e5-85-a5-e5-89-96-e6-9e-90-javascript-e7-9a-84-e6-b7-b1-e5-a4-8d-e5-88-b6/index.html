@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="浅拷贝和深拷贝也叫做浅克隆和深克隆，深浅主要针对的是对象的“深度”，常见的对象都是“浅”的，也就是对象里的属性就是单个的属性，而“深”的对象是指一个对象的属性就是一个对象，也就是对象里面套对象，就像嵌套函数一样。 为什么要使用深拷贝和浅拷贝？ 如果现有var obj={….}这个对象，想复制对象obj2，一贯的做法就是obj2=obj1，这时虽然obj2拥有了obj1的所有属性，但obj2却不是自">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入剖析 JavaScript 的深复制">
+<meta property="og:url" content="http://b.zhongmin.me/2017/02/17/e6-b7-b1-e5-85-a5-e5-89-96-e6-9e-90-javascript-e7-9a-84-e6-b7-b1-e5-a4-8d-e5-88-b6/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="浅拷贝和深拷贝也叫做浅克隆和深克隆，深浅主要针对的是对象的“深度”，常见的对象都是“浅”的，也就是对象里的属性就是单个的属性，而“深”的对象是指一个对象的属性就是一个对象，也就是对象里面套对象，就像嵌套函数一样。 为什么要使用深拷贝和浅拷贝？ 如果现有var obj={….}这个对象，想复制对象obj2，一贯的做法就是obj2=obj1，这时虽然obj2拥有了obj1的所有属性，但obj2却不是自">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入剖析 JavaScript 的深复制">
+<meta name="twitter:description" content="浅拷贝和深拷贝也叫做浅克隆和深克隆，深浅主要针对的是对象的“深度”，常见的对象都是“浅”的，也就是对象里的属性就是单个的属性，而“深”的对象是指一个对象的属性就是一个对象，也就是对象里面套对象，就像嵌套函数一样。 为什么要使用深拷贝和浅拷贝？ 如果现有var obj={….}这个对象，想复制对象obj2，一贯的做法就是obj2=obj1，这时虽然obj2拥有了obj1的所有属性，但obj2却不是自">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/02/17/e6-b7-b1-e5-85-a5-e5-89-96-e6-9e-90-javascript-e7-9a-84-e6-b7-b1-e5-a4-8d-e5-88-b6/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>深入剖析 JavaScript 的深复制 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/02/17/e6-b7-b1-e5-85-a5-e5-89-96-e6-9e-90-javascript-e7-9a-84-e6-b7-b1-e5-a4-8d-e5-88-b6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深入剖析 JavaScript 的深复制
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-17 10:10:57" itemprop="dateCreated datePublished" datetime="2017-02-17T10:10:57+08:00">2017-02-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>浅拷贝和深拷贝也叫做浅克隆和深克隆，深浅主要针对的是对象的“深度”，常见的对象都是“浅”的，也就是对象里的属性就是单个的属性，而“深”的对象是指一个对象的属性就是一个对象，也就是对象里面套对象，就像嵌套函数一样。 为什么要使用深拷贝和浅拷贝？ 如果现有var obj={….}这个对象，想复制对象obj2，一贯的做法就是obj2=obj1，这时虽然obj2拥有了obj1的所有属性，但obj2却不是自由的，因为它的改动会影响到obj1，obj1的改动也会直接影响到obj2，这不是我们所希望的。所以要用到深拷贝和浅拷贝。 下面是一个简单的浅复制实现：</p>
+<p>var obj = { a:1, arr: [2,3] };<br>var shadowObj = shadowCopy(obj);</p>
+<p>function shadowCopy(src) {<br>  var dst = {};<br>  for (var prop in src) {<br>    if (src.hasOwnProperty(prop)) {<br>      dst[prop] = src[prop];<br>    }<br>  }<br>  return dst;<br>}</p>
+<p>因为浅复制只会将对象的各个属性进行依次复制，并不会进行递归复制，而 JavaScript 存储对象都是存地址的，所以浅复制会导致 obj.arr 和 shadowObj.arr 指向同一块内存地址， 导致的结果就是：</p>
+<p>shadowObj.arr[1] = 5;<br>obj.arr[1]   // = 5</p>
+<p>而深复制则不同，它不仅将原对象的各个属性逐个复制出去，而且将原对象各个属性所包含的对象也依次采用深复制的方法<strong>递归复制</strong>到新对象上。这就不会存在上面 obj 和 shadowObj 的 arr 属性指向同一个对象的问题。 不同的深复制实现方法和实现粒度有各自的优劣以及各自适合的应用场景，所以本文并不是在教大家改如何实现深复制，而是将一些在 JavaScript 中实现深复制所需要考虑的问题呈献给大家。我们首先从较为简单的 Underscore 开始：</p>
+<h3 id="Underscore-——-clone"><a href="#Underscore-——-clone" class="headerlink" title="Underscore —— _.clone()"></a>Underscore —— _.clone()</h3><p>在 Underscore 中有这样一个方法：<code>_.clone()</code>，这个方法实际上是一种浅复制 (shallow-copy)，所有嵌套的对象和数组都是直接复制引用而并没有进行深复制。来看一下例子应该会更加直观：</p>
+<p>var x = {<br>    a: 1,<br>    b: { z: 0 }<br>};</p>
+<p>var y = _.clone(x);</p>
+<p>y === x       // false<br>y.b === x.b   // true</p>
+<p>x.b.z = 100;<br>y.b.z         // 100</p>
+<p>让我们来看一下 <a href="https://github.com/jashkenas/underscore/blob/e4743ab712b8ab42ad4ccb48b155034d02394e4d/underscore.js#L1068" target="_blank" rel="noopener">Underscore 的源码</a>：</p>
+<p>// Create a (shallow-cloned) duplicate of an object.<br><em>.clone = function(obj) {<br>  if (!</em>.isObject(obj)) return obj;<br>  return _.isArray(obj) ? obj.slice() : _.extend({}, obj);<br>};</p>
+<p>如果目标对象是一个数组，则直接调用数组的<code>slice()</code>方法，否则就是用<code>_.extend()</code>方法。想必大家对<code>extend()</code>方法不会陌生，它的作用主要是将从第二个参数开始的所有对象，按键值逐个赋给第一个对象。而在 jQuery 中也有类似的方法。关于 Underscore 中的 <code>_.extend()</code> 方法的实现可以参考 <a href="https://github.com/jashkenas/underscore/blob/e4743ab712b8ab42ad4ccb48b155034d02394e4d/underscore.js#L1006" target="_blank" rel="noopener">underscore.js #L1006</a>。 Underscore 的 <code>clone()</code> 不能算作深复制，但它至少比直接赋值来得“深”一些，它创建了一个新的对象。另外，你也可以通过以下比较 tricky 的方法来完成<strong>单层</strong>嵌套的深复制：</p>
+<p>var _ = require(‘underscore’);<br>var a = [{f: 1}, {f:5}, {f:10}];<br>var b = _.map(a, _.clone);       // &lt;—-<br>b[1].f = 55;<br>console.log(JSON.stringify(a));  // [{“f”:1},{“f”:5},{“f”:10}]</p>
+<h3 id="jQuery-——-clone-extend"><a href="#jQuery-——-clone-extend" class="headerlink" title="jQuery —— $.clone() / $.extend()"></a>jQuery —— $.clone() / $.extend()</h3><p>在 jQuery 中也有这么一个叫 <code>$.clone()</code> 的方法，可是它并不是用于一般的 JS 对象的深复制，而是用于 DOM 对象。这不是这篇文章的重点，所以感兴趣的同学可以参考<a href="http://api.jquery.com/clone/" target="_blank" rel="noopener">jQuery的文档</a>。与 Underscore 类似，我们也是可以通过 <code>$.extend()</code> 方法来完成深复制。值得庆幸的是，我们在 jQuery 中可以通过添加一个参数来实现<strong>递归extend</strong>。调用<code>$.extend(true, {}, ...)</code>就可以实现深复制啦，参考下面的例子：</p>
+<p>var x = {<br>    a: 1,<br>    b: { f: { g: 1 } },<br>    c: [ 1, 2, 3 ]<br>};</p>
+<p>var y = $.extend({}, x),          //shallow copy<br>    z = $.extend(true, {}, x);    //deep copy</p>
+<p>y.b.f === x.b.f       // true<br>z.b.f === x.b.f       // false</p>
+<p>在 <a href="https://github.com/jquery/jquery/blob/1472290917f17af05e98007136096784f9051fab/src/core.js#L121" target="_blank" rel="noopener">jQuery的源码 - src/core.js #L121</a> 文件中我们可以找到<code>$.extend()</code>的实现，也是实现得比较简洁，而且不太依赖于 jQuery 的内置函数，稍作修改就能拿出来单独使用。</p>
+<h3 id="lodash-——-clone-cloneDeep"><a href="#lodash-——-clone-cloneDeep" class="headerlink" title="lodash —— _.clone() / _.cloneDeep()"></a>lodash —— _.clone() / _.cloneDeep()</h3><p>在lodash中关于复制的方法有两个，分别是<code>_.clone()</code>和<code>_.cloneDeep()</code>。其中<code>_.clone(obj, true)</code>等价于<code>_.cloneDeep(obj)</code>。使用上，lodash和前两者并没有太大的区别，但看了源码会发现，Underscore 的实现只有30行左右，而 jQuery 也不过60多行。可 lodash 中与深复制相关的代码却有上百行</p>
+<p>var $ = require(“jquery”),<br>    _ = require(“lodash”);</p>
+<p>var arr = new Int16Array(5),<br>    obj = { a: arr },<br>    obj2;<br>arr[0] = 5;<br>arr[1] = 6;</p>
+<p>// 1. jQuery<br>obj2 = $.extend(true, {}, obj);<br>console.log(obj2.a);                            // [5, 6, 0, 0, 0]<br>Object.prototype.toString.call(obj2);           // [object Int16Array]<br>obj2.a[0] = 100;<br>console.log(obj);                               // [100, 6, 0, 0, 0]</p>
+<p>//此处jQuery不能正确处理Int16Array的深复制！！！</p>
+<p>// 2. lodash<br>obj2 = _.cloneDeep(obj);<br>console.log(obj2.a);                            // [5, 6, 0, 0, 0]<br>Object.prototype.toString.call(arr2);           // [object Int16Array]<br>obj2.a[0] = 100;<br>console.log(obj);                               // [5, 6, 0, 0, 0]</p>
+<p>通过上面这个例子可以初见端倪，jQuery 无法正确深复制 JSON 对象以外的对象，而我们可以从下面这段代码片段可以看出 lodash 花了大量的代码来实现 ES6 引入的大量新的标准对象。更厉害的是，lodash 针对<strong>存在环的对象</strong>的处理也是非常出色的。因此相较而言，lodash 在深复制上的行为反馈比前两个库好很多，是更拥抱未来的一个第三方库。</p>
+<p>/** `Object#toString` result references. */<br>var argsTag = ‘[object Arguments]‘,<br>    arrayTag = ‘[object Array]‘,<br>    boolTag = ‘[object Boolean]‘,<br>    dateTag = ‘[object Date]‘,<br>    errorTag = ‘[object Error]‘,<br>    funcTag = ‘[object Function]‘,<br>    mapTag = ‘[object Map]‘,<br>    numberTag = ‘[object Number]‘,<br>    objectTag = ‘[object Object]‘,<br>    regexpTag = ‘[object RegExp]‘,<br>    setTag = ‘[object Set]‘,<br>    stringTag = ‘[object String]‘,<br>    weakMapTag = ‘[object WeakMap]‘;</p>
+<p>var arrayBufferTag = ‘[object ArrayBuffer]‘,<br>    float32Tag = ‘[object Float32Array]‘,<br>    float64Tag = ‘[object Float64Array]‘,<br>    int8Tag = ‘[object Int8Array]‘,<br>    int16Tag = ‘[object Int16Array]‘,<br>    int32Tag = ‘[object Int32Array]‘,<br>    uint8Tag = ‘[object Uint8Array]‘,<br>    uint8ClampedTag = ‘[object Uint8ClampedArray]‘,<br>    uint16Tag = ‘[object Uint16Array]‘,<br>    uint32Tag = ‘[object Uint32Array]‘;</p>
+<h2 id="借助-JSON-全局对象"><a href="#借助-JSON-全局对象" class="headerlink" title="借助 JSON 全局对象"></a>借助 JSON 全局对象</h2><p>相比于上面介绍的三个库的做法，针对纯 JSON 数据对象的深复制，使用 JSON 全局对象的 <code>parse</code> 和 <code>stringify</code> 方法来实现深复制也算是一个简单讨巧的方法。然而使用这种方法会有一些隐藏的坑，它能正确处理的对象只有 Number, String, Boolean, Array, 扁平对象，即那些能够被 json 直接表示的数据结构。</p>
+<p>function jsonClone(obj) {<br>    return JSON.parse(JSON.stringify(obj));<br>}<br>var clone = jsonClone({ a:1 });</p>
+<h2 id="拥抱未来的深复制方法"><a href="#拥抱未来的深复制方法" class="headerlink" title="拥抱未来的深复制方法"></a>拥抱未来的深复制方法</h2><p>这个实现方法具体可以看一个小玩意儿——<a href="https://github.com/cherryjs/cherry.js" target="_blank" rel="noopener">Cherry.js</a>，使用方法大概是这样的：</p>
+<p>function X() {<br>    this.x = 5;<br>    this.arr = [1,2,3];<br>}<br>var obj = { d: new Date(), r: /abc/ig, x: new X(), arr: [1,2,3] },<br>    obj2,<br>    clone;</p>
+<p>obj.x.xx = new X();<br>obj.arr.testProp = “test”;<br>clone = obj.$clone();</p>
+<p>首先定义一个辅助函数，用于在预定义对象的 Prototype 上定义方法：</p>
+<p>function defineMethods(protoArray, nameToFunc) {<br>    protoArray.forEach(function(proto) {<br>        var names = Object.keys(nameToFunc),<br>            i = 0;</p>
+<pre><code>    for (; i &lt; names.length; i++) {
+        Object.defineProperty(proto, names\[i\], {
+            enumerable: false,
+            configurable: true,
+            writable: true,
+            value: nameToFunc\[names\[i\]\]
+        });
+    }
+});
+</code></pre><p>}</p>
+<p>为了避免和源生方法冲突，在方法名前加了一个 <code>$</code> 符号。而这个方法的具体实现很简单，就是递归深复制。其中需要解释一下两个参数：<code>srcStack</code>和<code>dstStack</code>。它们的主要用途是对存在环的对象进行深复制。比如源对象中的子对象<code>srcStack[7]</code>在深复制以后，对应于<code>dstStack[7]</code>。该实现方法参考了 lodash 的实现。关于递归最重要的就是 Object 和 Array 对象：</p>
+<p>/*=====================================*<br> * Object.prototype<br> * - $clone()<br><em>=====================================</em>/</p>
+<p>defineMethods([ Object.prototype ], {<br>    ‘$clone’: function (srcStack, dstStack) {<br>        var obj = Object.create(Object.getPrototypeOf(this)),<br>            keys = Object.keys(this),<br>            index,<br>            prop;</p>
+<pre><code>    srcStack = srcStack || \[\];
+    dstStack = dstStack || \[\];
+    srcStack.push(this);
+    dstStack.push(obj);
+
+    for (var i = 0; i &lt; keys.length; i++) {
+        prop = this\[keys\[i\]\];
+        if (prop === null || prop === undefined) {
+            obj\[keys\[i\]\] = prop;
+        }
+        else if (!prop.$isFunction()) {
+            if (prop.$isPlainObject()) {
+                index = srcStack.lastIndexOf(prop);
+                if (index &gt; 0) {
+                    obj\[keys\[i\]\] = dstStack\[index\];
+                    continue;
+                }
+            }
+            obj\[keys\[i\]\] = prop.$clone(srcStack, dstStack);
+        }
+    }
+    return obj;
+}
+</code></pre><p>});</p>
+<p>/*=====================================*<br> * Array.prototype<br> * - $clone()<br><em>=====================================</em>/</p>
+<p>defineMethods([ Array.prototype ], {<br>    ‘$clone’: function (srcStack, dstStack) {<br>        var thisArr = this.valueOf(),<br>            newArr = [],<br>            keys = Object.keys(thisArr),<br>            index,<br>            element;</p>
+<pre><code>    srcStack = srcStack || \[\];
+    dstStack = dstStack || \[\];
+    srcStack.push(this);
+    dstStack.push(newArr);
+
+    for (var i = 0; i &lt; keys.length; i++) {
+        element = thisArr\[keys\[i\]\];
+        if (element === undefined || element === null) {
+            newArr\[keys\[i\]\] = element;
+        } else if (!element.$isFunction()) {
+            if (element.$isPlainObject()) {
+                index = srcStack.lastIndexOf(element);
+                if (index &gt; 0) {
+                    newArr\[keys\[i\]\] = dstStack\[index\];
+                    continue;
+                }
+            }
+        }
+        newArr\[keys\[i\]\] = element.$clone(srcStack, dstStack);
+    }
+    return newArr;
+}
+</code></pre><p>});</p>
+<p>接下来要针对 Date 和 RegExp 对象的深复制进行一些特殊处理：</p>
+<p>/*=====================================*<br> * Date.prototype<br> * - $clone<br> <em>=====================================</em>/</p>
+<p>defineMethods([ Date.prototype ], {<br>    ‘$clone’: function() { return new Date(this.valueOf()); }<br>});</p>
+<p>/*=====================================*<br> * RegExp.prototype<br> * - $clone<br> <em>=====================================</em>/</p>
+<p>defineMethods([ RegExp.prototype ], {<br>    ‘$clone’: function () {<br>        var pattern = this.valueOf();<br>        var flags = ‘’;<br>        flags += pattern.global ? ‘g’ : ‘’;<br>        flags += pattern.ignoreCase ? ‘i’ : ‘’;<br>        flags += pattern.multiline ? ‘m’ : ‘’;<br>        return new RegExp(pattern.source, flags);<br>    }<br>});</p>
+<p>接下来就是 Number, Boolean 和 String 的 <code>$clone</code> 方法，虽然很简单，但这也是必不可少的。这样就能防止像单个字符串这样的对象错误地去调用 <code>Object.prototype.$clone</code>。</p>
+<p>/*=====================================*<br> * Number / Boolean / String.prototype<br> * - $clone()<br> <em>=====================================</em>/</p>
+<p>defineMethods([<br>    Number.prototype,<br>    Boolean.prototype,<br>    String.prototype<br>], {<br>    ‘$clone’: function() { return this.valueOf(); }<br>});</p>
+<h2 id="比较各个深复制方法"><a href="#比较各个深复制方法" class="headerlink" title="比较各个深复制方法"></a>比较各个深复制方法</h2><p>特性</p>
+<p>jQuery</p>
+<p>lodash</p>
+<p>JSON.parse</p>
+<p>所谓“拥抱未来的深复制实现”</p>
+<p>浏览器兼容性</p>
+<p>IE6+ (1.x) &amp; IE9+ (2.x)</p>
+<p>IE6+ (Compatibility) &amp; IE9+ (Modern)</p>
+<p>IE8+</p>
+<p>IE9+</p>
+<p>能够深复制存在环的对象</p>
+<p>抛出异常 RangeError: Maximum call stack size exceeded</p>
+<p>支持</p>
+<p>抛出异常 TypeError: Converting circular structure to JSON</p>
+<p>支持</p>
+<p>对 Date, RegExp 的深复制支持</p>
+<p>×</p>
+<p>支持</p>
+<p>×</p>
+<p>支持</p>
+<p>对 ES6 新引入的标准对象的深复制支持</p>
+<p>×</p>
+<p>支持</p>
+<p>×</p>
+<p>×</p>
+<p>复制数组的属性</p>
+<p>×</p>
+<p><a href="https://github.com/lodash/lodash/blob/5166064453ed6164b76fb20f8dd340d23dd334e5/lodash._baseclone/index.js#215" target="_blank" rel="noopener">仅支持RegExp#exec返回的数组结果</a></p>
+<p>×</p>
+<p>支持</p>
+<p>是否保留非源生对象的类型</p>
+<p>×</p>
+<p>×</p>
+<p>×</p>
+<p>支持</p>
+<p>复制不可枚举元素</p>
+<p>×</p>
+<p>×</p>
+<p>×</p>
+<p>×</p>
+<p>复制函数</p>
+<p>×</p>
+<p>×</p>
+<p>×</p>
+<p>×</p>
+<h2 id="执行效率"><a href="#执行效率" class="headerlink" title="执行效率"></a>执行效率</h2><p>为了测试各种深复制方法的执行效率，使用了如下的测试用例</p>
+<p>ar x = {};<br>for (var i = 0; i &lt; 1000; i++) {<br>    x[i] = {};<br>    for (var j = 0; j &lt; 1000; j++) {<br>        x[i][j] = Math.random();<br>    }<br>}</p>
+<p>var start = Date.now();<br>var y = clone(x);<br>console.log(Date.now() - start);</p>
+<p>下面来看看各个实现方法的具体效率如何，所使用的浏览器是 Mac 上的 Chrome 43.0.2357.81 (64-bit) 版本，可以看出来在3次的实验中，所实现的方法比 lodash 稍逊一筹，但比jQuery的效率也会高一些。   原文地址:<a href="http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/" target="_blank" rel="noopener">http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/16/vue-e5-ae-9e-e4-be-8b-e8-af-a6-e8-a7-a3-e4-b8-8e-e7-94-9f-e5-91-bd-e5-91-a8-e6-9c-9f/" rel="next" title="Vue实例详解与生命周期">
+                <i class="fa fa-chevron-left"></i> Vue实例详解与生命周期
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/20/eslint-e8-a7-84-e5-88-99-e8-af-b4-e6-98-8e/" rel="prev" title="Eslint 规则说明">
+                Eslint 规则说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Underscore-——-clone"><span class="nav-number">1.</span> <span class="nav-text">Underscore —— _.clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-——-clone-extend"><span class="nav-number">2.</span> <span class="nav-text">jQuery —— $.clone() / $.extend()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lodash-——-clone-cloneDeep"><span class="nav-number">3.</span> <span class="nav-text">lodash —— _.clone() / _.cloneDeep()</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#借助-JSON-全局对象"><span class="nav-number"></span> <span class="nav-text">借助 JSON 全局对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拥抱未来的深复制方法"><span class="nav-number"></span> <span class="nav-text">拥抱未来的深复制方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较各个深复制方法"><span class="nav-number"></span> <span class="nav-text">比较各个深复制方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行效率"><span class="nav-number"></span> <span class="nav-text">执行效率</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

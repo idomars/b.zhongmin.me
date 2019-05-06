@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="org.apache.commons.lang.StringUtils中方法的操作对象是java.lang.String类型的对象，是JDK提供的String类型操作方法的补充，并且是null安全的(即如果输入参数String为null则不会抛出NullPointerException，而是做了相应处理，例如，如果输入为null则返回也是null等，具体可以查看源代码)。 除了构造器，String">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java StringUtils工具类的使用">
+<meta property="og:url" content="http://b.zhongmin.me/2016/11/16/java-stringutils-e5-b7-a5-e5-85-b7-e7-b1-bb-e7-9a-84-e4-bd-bf-e7-94-a8/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="org.apache.commons.lang.StringUtils中方法的操作对象是java.lang.String类型的对象，是JDK提供的String类型操作方法的补充，并且是null安全的(即如果输入参数String为null则不会抛出NullPointerException，而是做了相应处理，例如，如果输入为null则返回也是null等，具体可以查看源代码)。 除了构造器，String">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java StringUtils工具类的使用">
+<meta name="twitter:description" content="org.apache.commons.lang.StringUtils中方法的操作对象是java.lang.String类型的对象，是JDK提供的String类型操作方法的补充，并且是null安全的(即如果输入参数String为null则不会抛出NullPointerException，而是做了相应处理，例如，如果输入为null则返回也是null等，具体可以查看源代码)。 除了构造器，String">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2016/11/16/java-stringutils-e5-b7-a5-e5-85-b7-e7-b1-bb-e7-9a-84-e4-bd-bf-e7-94-a8/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java StringUtils工具类的使用 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/16/java-stringutils-e5-b7-a5-e5-85-b7-e7-b1-bb-e7-9a-84-e4-bd-bf-e7-94-a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java StringUtils工具类的使用
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-16 11:33:29" itemprop="dateCreated datePublished" datetime="2016-11-16T11:33:29+08:00">2016-11-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>org.apache.commons.lang.StringUtils中方法的操作对象是java.lang.String类型的对象，是JDK提供的String类型操作方法的补充，并且是null安全的(即如果输入参数String为null则不会抛出NullPointerException，而是做了相应处理，例如，如果输入为null则返回也是null等，具体可以查看源代码)。 除了构造器，StringUtils中一共有130多个方法，并且都是static的， 所以我们可以这样调用StringUtils.xxx()。</p>
+<p>下面分别对一些常用方法做简要介绍：</p>
+<p>1. public static boolean isEmpty(String str)</p>
+<p>判断某字符串是否为空，为空的标准是str == null 或 str.length() == 0</p>
+<p>下面是示例：</p>
+<p>StringUtils.isEmpty(null) = true</p>
+<p>StringUtils.isEmpty(“”) = true</p>
+<p>StringUtils.isEmpty(“ “) = false</p>
+<p>StringUtils.isEmpty(“ “) = false</p>
+<p>StringUtils.isEmpty(“bob”) = false</p>
+<p>StringUtils.isEmpty(“ bob “) = false</p>
+<p>2. public static boolean isNotEmpty(String str)</p>
+<p>判断某字符串是否非空，等于!isEmpty(String str)</p>
+<p>下面是示例：</p>
+<p>StringUtils.isNotEmpty(null) = false</p>
+<p>StringUtils.isNotEmpty(“”) = false</p>
+<p>StringUtils.isNotEmpty(“ “) = true</p>
+<p>StringUtils.isNotEmpty(“ “) = true</p>
+<p>StringUtils.isNotEmpty(“bob”) = true</p>
+<p>StringUtils.isNotEmpty(“ bob “) = true</p>
+<p>3. public static boolean isBlank(String str)</p>
+<p>判断某字符串是否为空或长度为0或由空白符(whitespace)构成</p>
+<p>下面是示例：</p>
+<p>StringUtils.isBlank(null) = true</p>
+<p>StringUtils.isBlank(“”) = true</p>
+<p>StringUtils.isBlank(“ “) = true</p>
+<p>StringUtils.isBlank(“ “) = true</p>
+<p>StringUtils.isBlank(“/t /n /f /r”) = true</p>
+<p>StringUtils.isBlank(“/b”) = false</p>
+<p>StringUtils.isBlank(“bob”) = false</p>
+<p>StringUtils.isBlank(“ bob “) = false</p>
+<p>4. public static boolean isNotBlank(String str)</p>
+<p>判断某字符串是否不为空且长度不为0且不由空白符(whitespace)构成，</p>
+<p>等于!isBlank(String str)</p>
+<p>下面是示例：</p>
+<p>StringUtils.isNotBlank(null) = false</p>
+<p>StringUtils.isNotBlank(“”) = false</p>
+<p>StringUtils.isNotBlank(“ “) = false</p>
+<p>StringUtils.isNotBlank(“ “) = false</p>
+<p>StringUtils.isNotBlank(“/t /n /f /r”) = false</p>
+<p>StringUtils.isNotBlank(“/b”) = true</p>
+<p>StringUtils.isNotBlank(“bob”) = true</p>
+<p>StringUtils.isNotBlank(“ bob “) = true</p>
+<p>5. public static String trim(String str)</p>
+<p>去掉字符串两端的控制符(control characters, char &lt;= 32)</p>
+<p>如果输入为null则返回null</p>
+<p>下面是示例：</p>
+<p>StringUtils.trim(null) = null</p>
+<p>StringUtils.trim(“”) = “”</p>
+<p>StringUtils.trim(“ “) = “”</p>
+<p>StringUtils.trim(“ /b /t /n /f /r “) = “”</p>
+<p>StringUtils.trim(“ /n/tss /b”) = “ss”</p>
+<p>StringUtils.trim(“ d d dd “) = “d d dd”</p>
+<p>StringUtils.trim(“dd “) = “dd”</p>
+<p>StringUtils.trim(“ dd “) = “dd”</p>
+<p>6.public static String trimToNull(String str)</p>
+<p>去掉字符串两端的控制符(control characters, char &lt;= 32)</p>
+<p>如果变为null或””，则返回null</p>
+<p>下面是示例：</p>
+<p>StringUtils.trimToNull(null) = null</p>
+<p>StringUtils.trimToNull(“”) = null</p>
+<p>StringUtils.trimToNull(“ “) = null</p>
+<p>StringUtils.trimToNull(“ /b /t /n /f /r “) = null</p>
+<p>StringUtils.trimToNull(“ /n/tss /b”) = “ss”</p>
+<p>StringUtils.trimToNull(“ d d dd “) = “d d dd”</p>
+<p>StringUtils.trimToNull(“dd “) = “dd”</p>
+<p>StringUtils.trimToNull(“ dd “) = “dd”</p>
+<p>7.public static String trimToEmpty(String str)</p>
+<p>去掉字符串两端的控制符(control characters, char &lt;= 32)</p>
+<p>如果变为null或””，则返回””</p>
+<p>下面是示例：</p>
+<p>StringUtils.trimToEmpty(null) = “”</p>
+<p>StringUtils.trimToEmpty(“”) = “”</p>
+<p>StringUtils.trimToEmpty(“ “) = “”</p>
+<p>StringUtils.trimToEmpty(“ /b /t /n /f /r “) = “”</p>
+<p>StringUtils.trimToEmpty(“ /n/tss /b”) = “ss”</p>
+<p>StringUtils.trimToEmpty(“ d d dd “) = “d d dd”</p>
+<p>StringUtils.trimToEmpty(“dd “) = “dd”</p>
+<p>StringUtils.trimToEmpty(“ dd “) = “dd”</p>
+<p>8.public static String strip(String str)</p>
+<p>去掉字符串两端的空白符(whitespace)，</p>
+<p>如果输入为null则返回null</p>
+<p>下面是示例(注意和trim()的区别)：</p>
+<p>StringUtils.strip(null) = null</p>
+<p>StringUtils.strip(“”) = “”</p>
+<p>StringUtils.strip(“ “) = “”</p>
+<p>StringUtils.strip(“ /b /t /n /f /r “) = “/b”</p>
+<p>StringUtils.strip(“ /n/tss /b”) = “ss /b”</p>
+<p>StringUtils.strip(“ d d dd “) = “d d dd”</p>
+<p>StringUtils.strip(“dd “) = “dd”</p>
+<p>StringUtils.strip(“ dd “) = “dd”</p>
+<p>9.public static String stripToNull(String str)</p>
+<p>去掉字符串两端的空白符(whitespace)，</p>
+<p>如果变为null或””，则返回null</p>
+<p>下面是示例(注意和trimToNull()的区别)：</p>
+<p>StringUtils.stripToNull(null) = null</p>
+<p>StringUtils.stripToNull(“”) = null</p>
+<p>StringUtils.stripToNull(“ “) = null</p>
+<p>StringUtils.stripToNull(“ /b /t /n /f /r “) = “/b”</p>
+<p>StringUtils.stripToNull(“ /n/tss /b”) = “ss /b”</p>
+<p>StringUtils.stripToNull(“ d d dd “) = “d d dd”</p>
+<p>StringUtils.stripToNull(“dd “) = “dd”</p>
+<p>StringUtils.stripToNull(“ dd “) = “dd”</p>
+<p>10.public static String stripToEmpty(String str)</p>
+<p>去掉字符串两端的空白符(whitespace)，</p>
+<p>如果变为null或””，则返回””</p>
+<p>下面是示例(注意和trimToEmpty()的区别)：</p>
+<p>StringUtils.stripToNull(null) = “”</p>
+<p>StringUtils.stripToNull(“”) = “”</p>
+<p>StringUtils.stripToNull(“ “) = “”</p>
+<p>StringUtils.stripToNull(“ /b /t /n /f /r “) = “/b”</p>
+<p>StringUtils.stripToNull(“ /n/tss /b”) = “ss /b”</p>
+<p>StringUtils.stripToNull(“ d d dd “) = “d d dd”</p>
+<p>StringUtils.stripToNull(“dd “) = “dd”</p>
+<p>StringUtils.stripToNull(“ dd “) = “dd”</p>
+<p>11.public static String strip(String str, String stripChars)</p>
+<p>去掉str两端的在stripChars中的字符。</p>
+<p>如果str为null或等于””，则返回它本身；</p>
+<p>如果stripChars为null或””，则返回strip(String str)。</p>
+<p>12.public static String stripStart(String str, String stripChars)</p>
+<p>和11相似，去掉str前端的在stripChars中的字符。</p>
+<p>13.public static String stripEnd(String str, String stripChars)</p>
+<p>和11相似，去掉str末端的在stripChars中的字符。</p>
+<p>14.public static String[] stripAll(String[] strs)</p>
+<p>对字符串数组中的每个字符串进行strip(String str)，然后返回。</p>
+<p>如果strs为null或strs长度为0，则返回strs本身</p>
+<p>15.public static String[] stripAll(String[] strs, String stripChars)</p>
+<p>对字符串数组中的每个字符串进行strip(String str, String stripChars)，然后返回。</p>
+<p>如果strs为null或strs长度为0，则返回strs本身</p>
+<p>16.public static boolean equals(String str1, String str2)</p>
+<p>比较两个字符串是否相等，如果两个均为空则也认为相等。</p>
+<p>17.public static boolean equalsIgnoreCase(String str1, String str2)</p>
+<p>比较两个字符串是否相等，不区分大小写，如果两个均为空则也认为相等。</p>
+<p>18.public static int indexOf(String str, char searchChar)</p>
+<p>返回字符searchChar在字符串str中第一次出现的位置。</p>
+<p>如果searchChar没有在str中出现则返回-1，</p>
+<p>如果str为null或””，则也返回-1</p>
+<p>19.public static int indexOf(String str, char searchChar, int startPos)</p>
+<p>返回字符searchChar从startPos开始在字符串str中第一次出现的位置。</p>
+<p>如果从startPos开始searchChar没有在str中出现则返回-1，</p>
+<p>如果str为null或””，则也返回-1</p>
+<p>20.public static int indexOf(String str, String searchStr)</p>
+<p>返回字符串searchStr在字符串str中第一次出现的位置。</p>
+<p>如果str为null或searchStr为null则返回-1，</p>
+<p>如果searchStr为””,且str为不为null，则返回0，</p>
+<p>如果searchStr不在str中，则返回-1</p>
+<p>21.public static int ordinalIndexOf(String str, String searchStr, int ordinal)</p>
+<p>返回字符串searchStr在字符串str中第ordinal次出现的位置。</p>
+<p>如果str=null或searchStr=null或ordinal&lt;=0则返回-1</p>
+<p>举例(*代表任意字符串)：</p>
+<p>StringUtils.ordinalIndexOf(null, <em>, </em>) = -1</p>
+<p>StringUtils.ordinalIndexOf(<em>, null, </em>) = -1</p>
+<p>StringUtils.ordinalIndexOf(“”, “”, *) = 0</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “a”, 1) = 0</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “a”, 2) = 1</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “b”, 1) = 2</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “b”, 2) = 5</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “ab”, 1) = 1</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “ab”, 2) = 4</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “bc”, 1) = -1</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “”, 1) = 0</p>
+<p>StringUtils.ordinalIndexOf(“aabaabaa”, “”, 2) = 0</p>
+<p>22. public static int indexOf(String str, String searchStr, int startPos)</p>
+<p>返回字符串searchStr从startPos开始在字符串str中第一次出现的位置。</p>
+<p>举例(*代表任意字符串)：</p>
+<p>StringUtils.indexOf(null, <em>, </em>) = -1</p>
+<p>StringUtils.indexOf(<em>, null, </em>) = -1</p>
+<p>StringUtils.indexOf(“”, “”, 0) = 0</p>
+<p>StringUtils.indexOf(“aabaabaa”, “a”, 0) = 0</p>
+<p>StringUtils.indexOf(“aabaabaa”, “b”, 0) = 2</p>
+<p>StringUtils.indexOf(“aabaabaa”, “ab”, 0) = 1</p>
+<p>StringUtils.indexOf(“aabaabaa”, “b”, 3) = 5</p>
+<p>StringUtils.indexOf(“aabaabaa”, “b”, 9) = -1</p>
+<p>StringUtils.indexOf(“aabaabaa”, “b”, -1) = 2</p>
+<p>StringUtils.indexOf(“aabaabaa”, “”, 2) = 2</p>
+<p>StringUtils.indexOf(“abc”, “”, 9) = 3</p>
+<p>23.public static int lastIndexOf(String str, char searchChar)</p>
+<p>基本原理同18。</p>
+<p>24.public static int lastIndexOf(String str, char searchChar, int startPos)</p>
+<p>基本原理同19。</p>
+<p>25.public static int lastIndexOf(String str, String searchStr)</p>
+<p>基本原理同20。</p>
+<p>26.public static int lastIndexOf(String str, String searchStr, int startPos)</p>
+<p>基本原理同22。</p>
+<p>27.public static boolean contains(String str, char searchChar)</p>
+<p>判断字符串str中是否包含字符searchChar。</p>
+<p>如果str为null或””，返回false；</p>
+<p>如果searchChar不在str中，返回false。</p>
+<p>28.public static boolean contains(String str, String searchStr)</p>
+<p>判断字符串str是否包含字符串searchStr。</p>
+<p>如果str为null或searchStr为null，返回false；</p>
+<p>如果str为””，并且searchStr为””，返回true</p>
+<p>举例：</p>
+<p>StringUtils.contains(“”, “”) = true</p>
+<p>StringUtils.contains(“dfg”, “”) = true</p>
+<p>StringUtils.contains(“dfg”, “d”) = true</p>
+<p>StringUtils.contains(“dfg”, “gz”) = false</p>
+<p>29.public static boolean containsIgnoreCase(String str, String searchStr)</p>
+<p>判断字符串str是否包含字符串searchStr，不区分大小写。</p>
+<p>和28类似。</p>
+<p>30.public static int indexOfAny(String str, char[] searchChars)</p>
+<p>找出字符数组searchChars中的字符第一次出现在字符串str中的位置。</p>
+<p>如果字符数组中的字符都不在字符串中，则返回-1</p>
+<p>如果字符串为null或””，则返回-1</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.indexOfAny(null, *) = -1</p>
+<p>StringUtils.indexOfAny(“”, *) = -1</p>
+<p>StringUtils.indexOfAny(*, []) = -1</p>
+<p>StringUtils.indexOfAny(“asdf”, [‘a’,’f’,’ ‘]) = 0</p>
+<p>StringUtils.indexOfAny(“bs df”, [‘a’,’f’,’ ‘]) = 2</p>
+<p>StringUtils.indexOfAny(“bsdf”, [‘a’,’f’,’ ‘]) = 3</p>
+<p>StringUtils.indexOfAny(“bbeegg”, [‘a’,’f’,’ ‘]) = -1</p>
+<p>31.public static int indexOfAny(String str, String searchChars)</p>
+<p>找出字符串searchChars中的字符第一次出现在字符串str中的位置。</p>
+<p>如果字符串searchChars中的字符都不在字符串str中，则返回-1</p>
+<p>如果searchChars或str为null或为””，则返回-1</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.indexOfAny(null, *) = -1</p>
+<p>StringUtils.indexOfAny(“”, *) = -1</p>
+<p>StringUtils.indexOfAny(*, null) = -1</p>
+<p>StringUtils.indexOfAny(*, “”) = -1</p>
+<p>StringUtils.indexOfAny(“asdf”, “af “) = 0</p>
+<p>StringUtils.indexOfAny(“bs df”, “af “) = 2</p>
+<p>StringUtils.indexOfAny(“bsdf”, “af “) = 3</p>
+<p>StringUtils.indexOfAny(“bbeegg”, “af “) = -1</p>
+<p>32.public static int indexOfAnyBut(String str, char[] searchChars)</p>
+<p>找出字符串str中不在字符数组searchChars中的第一个字符的位置。</p>
+<p>如果字符串中的所有字符都在字符数组中，则返回-1</p>
+<p>如果字符串为null或””，则返回-1</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.indexOfAnyBut(null, *) = -1</p>
+<p>StringUtils.indexOfAnyBut(“”, *) = -1</p>
+<p>StringUtils.indexOfAnyBut(*, []) = -1</p>
+<p>StringUtils.indexOfAnyBut(“asdf”, [‘a’,’f’,’ ‘]) = 1</p>
+<p>StringUtils.indexOfAnyBut(“bs df”, [‘a’,’f’,’ ‘]) = 0</p>
+<p>StringUtils.indexOfAnyBut(“ aaf”, [‘a’,’f’,’ ‘]) = -1</p>
+<p>StringUtils.indexOfAnyBut(“bbeegg”, [‘a’,’f’,’ ‘]) = 0</p>
+<p>33.public static int indexOfAnyBut(String str, String searchChars)</p>
+<p>找出字符串str中不在字符串searchChars中的第一个字符的位置。</p>
+<p>如果字符串str中的所有字符都在字符串searchChars中，则返回-1</p>
+<p>如果字符串str或searchChars为null或””，则返回-1</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.indexOfAnyBut(null, *) = -1</p>
+<p>StringUtils.indexOfAnyBut(“”, *) = -1</p>
+<p>StringUtils.indexOfAnyBut(*, null) = -1</p>
+<p>StringUtils.indexOfAnyBut(*, “”) = -1</p>
+<p>StringUtils.indexOfAnyBut(“asdf”, “af “) = 1</p>
+<p>StringUtils.indexOfAnyBut(“bs df”, “af “) = 0</p>
+<p>StringUtils.indexOfAnyBut(“ aaf”, “af “) = -1</p>
+<p>StringUtils.indexOfAnyBut(“bbeegg”, “af “) = 0</p>
+<p>34.public static boolean containsOnly(String str, char[] valid)</p>
+<p>判断是否字符串str仅包含字符数组valid中的字符，即字符串中的字符是否都在字符数组中。</p>
+<p>如果str为null，则返回false；如果str为””，则返回true</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.containsOnly(null, *)) = false</p>
+<p>StringUtils.containsOnly(“”, *)) = true</p>
+<p>StringUtils.containsOnly(“afaf”, [‘a’,’f’,’ ‘]))= true</p>
+<p>StringUtils.containsOnly(“af a”, [‘a’,’f’,’ ‘]))= true</p>
+<p>StringUtils.containsOnly(“a”, [‘a’,’f’,’ ‘])) = true</p>
+<p>StringUtils.containsOnly(“afg”, [‘a’,’f’,’ ‘])) = false</p>
+<p>StringUtils.containsOnly(“bbeegg”, [])) = false</p>
+<p>35.public static boolean containsOnly(String str, String validChars)</p>
+<p>判断是否字符串str仅包含字符串validChars中的字符，</p>
+<p>即字符串str中的字符是否都在字符串validChars中。</p>
+<p>和34类似，举例(*表示任意)：</p>
+<p>StringUtils.containsOnly(null, *) = false</p>
+<p>StringUtils.containsOnly(*, null) = false</p>
+<p>StringUtils.containsOnly(“”, “”) = true</p>
+<p>StringUtils.containsOnly(“”, “a”) = true</p>
+<p>StringUtils.containsOnly(“afaf”, “af “) = true</p>
+<p>StringUtils.containsOnly(“af a”, “af “) = true</p>
+<p>StringUtils.containsOnly(“afg”, “af “) = false</p>
+<p>StringUtils.containsOnly(“afg”, “”) = false</p>
+<p>36.public static boolean containsNone(String str, char[] invalidChars)</p>
+<p>判断是否字符串str不包含字符数组invalidChars中的字符，如果含有则返回false。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.containsNone(null, *) = true</p>
+<p>StringUtils.containsNone(*, []) = true</p>
+<p>StringUtils.containsNone(“”, *) = true</p>
+<p>StringUtils.containsNone(“ab”, []) = true</p>
+<p>StringUtils.containsNone(“b”, [‘a’,’f’,’ ‘]) = true</p>
+<p>StringUtils.containsNone(“bcd”, [‘a’,’f’,’ ‘]) = true</p>
+<p>StringUtils.containsNone(“abc”, [‘a’,’f’,’ ‘]) = false</p>
+<p>StringUtils.containsNone(“ “, [‘a’,’f’,’ ‘]) = false</p>
+<p>37.public static boolean containsNone(String str, String invalidChars)</p>
+<p>判断是否字符串str不包含字符串invalidChars中的字符，如果含有则返回false。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.containsNone(null, *) = true</p>
+<p>StringUtils.containsNone(*, null) = true</p>
+<p>StringUtils.containsNone(“”, *) = true</p>
+<p>StringUtils.containsNone(“ab”, “”) = true</p>
+<p>StringUtils.containsNone(“b”, “af “) = true</p>
+<p>StringUtils.containsNone(“bcd”, “af “) = true</p>
+<p>StringUtils.containsNone(“abc”, “af “) = false</p>
+<p>StringUtils.containsNone(“ “, “af “) = false</p>
+<p>38.public static int indexOfAny(String str, String[] searchStrs)</p>
+<p>找出字符串数组searchStrs中的字符串第一次出现在字符串str中的位置。</p>
+<p>如果数组中没有字符串在str中，则返回-1</p>
+<p>如果数组为null或长度为0，则返回-1</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.indexOfAny(null, *) = -1</p>
+<p>StringUtils.indexOfAny(*, null) = -1</p>
+<p>StringUtils.indexOfAny(*, []) = -1</p>
+<p>StringUtils.indexOfAny(“”, [“”]) = 0</p>
+<p>StringUtils.indexOfAny(“bbeegg”, [“as”,”df”,”yy”]) = -1</p>
+<p>StringUtils.indexOfAny(“asdfgh”, [“as”,”df”,”yy”]) = 0</p>
+<p>StringUtils.indexOfAny(“dfasgh”, [“as”,”df”,”yy”]) = 0</p>
+<p>StringUtils.indexOfAny(“ghasdf”, [“as”,”df”,”yy”]) = 2</p>
+<p>39.public static int lastIndexOfAny(String str, String[] searchStrs)</p>
+<p>找出字符串数组searchStrs中的字符串最后一次出现在字符串str中的位置。</p>
+<p>如果数组中没有字符串在str中，则返回-1</p>
+<p>如果数组为null或长度为0，则返回-1</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.lastIndexOfAny(null, *) = -1</p>
+<p>StringUtils.lastIndexOfAny(*, null) = -1</p>
+<p>StringUtils.lastIndexOfAny(*, []) = -1</p>
+<p>StringUtils.lastIndexOfAny(“”, [“”]) = 0</p>
+<p>StringUtils.lastIndexOfAny(“bbeegg”, [“as”,”df”,”yy”]) = -1</p>
+<p>StringUtils.lastIndexOfAny(“asdfgh”, [“as”,”df”,”yy”]) = 2</p>
+<p>StringUtils.lastIndexOfAny(“dfghjk”, [“as”,”df”,”yy”]) = 0</p>
+<p>StringUtils.lastIndexOfAny(“ghasdf”, [“as”,”df”,”yy”]) = 4</p>
+<p>StringUtils.lastIndexOfAny(“ghasdf”, [“as”,”df”,””]) = 6</p>
+<p>40.public static String substring(String str, int start)</p>
+<p>得到字符串str的子串。</p>
+<p>如果start小于0，位置是从后往前数的第|start|个</p>
+<p>如果str为null或””，则返回它本身</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.substring(null, *) = null</p>
+<p>StringUtils.substring(“”, *) = “”</p>
+<p>StringUtils.substring(“asdf”, 0)) = “asdf”</p>
+<p>StringUtils.substring(“asdf”, 1)) = “sdf”</p>
+<p>StringUtils.substring(“asdf”, 3)) = “f”</p>
+<p>StringUtils.substring(“asdf”, ) = “”</p>
+<p>StringUtils.substring(“asdf”, -1)) = “f”</p>
+<p>StringUtils.substring(“asdf”, -3)) = “sdf”</p>
+<p>StringUtils.substring(“asdf”, -8)) = “asdf”</p>
+<p>41.public static String substring(String str, int start, int end)</p>
+<p>得到字符串str的子串。</p>
+<p>如果start小于0，位置是从后往前数的第|start|个，</p>
+<p>如果end小于0，位置是从后往前数的第|end|个，</p>
+<p>如果str为null或””，则返回它本身</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.substring(null, <em>, </em>) = null</p>
+<p>StringUtils.substring(“”, <em> , </em>) = “”;</p>
+<p>StringUtils.substring(“asdf”, 0, 2) = “as”</p>
+<p>StringUtils.substring(“asdf”, 0, -1) = “asd”</p>
+<p>StringUtils.substring(“asdf”, 2, -1) = “d”</p>
+<p>StringUtils.substring(“asdf”, 2, -2) = “”</p>
+<p>StringUtils.substring(“asdf”, 3, 2) = “”</p>
+<p>StringUtils.substring(“asdf”, 1,  = “sdf”</p>
+<p>StringUtils.substring(“asdf”, -1, -3) = “”</p>
+<p>StringUtils.substring(“asdf”, -3, -1) = “sd”</p>
+<p>StringUtils.substring(“asdf”, -8, 5) = “asdf”</p>
+<p>42.public static String left(String str, int len)</p>
+<p>得到字符串str从左边数len长度的子串。</p>
+<p>如果str为null或为””，则返回它本身</p>
+<p>如果len小于0，则返回””</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.left(null, *) = null</p>
+<p>StringUtils.left(*, -ve) = “”</p>
+<p>StringUtils.left(“”, *) = “”</p>
+<p>StringUtils.left(“asdf”, 0) = “”</p>
+<p>StringUtils.left(“asdf”, 2) = “as”</p>
+<p>StringUtils.left(“asdf”, = “asdf”</p>
+<p>43.public static String right(String str, int len)</p>
+<p>得到字符串str从右边数len长度的子串。</p>
+<p>如果str为null或为””，则返回它本身</p>
+<p>如果len小于0，则返回””</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.right(null, *) = null</p>
+<p>StringUtils.right(*, -ve) = “”</p>
+<p>StringUtils.right(“”, *) = “”</p>
+<p>StringUtils.right(“asdf”, 0) = “”</p>
+<p>StringUtils.right(“asdf”, 2) = “df”</p>
+<p>StringUtils.right(“asdf”, = “asdf”</p>
+<p>44.public static String mid(String str, int pos, int len)</p>
+<p>得到字符串str从pos开始len长度的子串。</p>
+<p>如果str为null或为””，则返回它本身</p>
+<p>如果len小于0或pos大于srt的长度，则返回””</p>
+<p>如果pos小于0，则pos设为0</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.mid(null, <em>, </em>) = null</p>
+<p>StringUtils.mid(“”, <em>, </em>) = “”</p>
+<p>StringUtils.mid(<em>, </em>, -ve) = “”</p>
+<p>StringUtils.mid(“asdf”, 0, 4)) = “asdf”</p>
+<p>StringUtils.mid(“asdf”, 2, 2)) = “df”</p>
+<p>StringUtils.mid(“asdf”, 2, 5)) = “df”</p>
+<p>StringUtils.mid(“asdf”, -2, 1)) = “a”</p>
+<p>StringUtils.mid(“asdf”, 0, -1)) = “”</p>
+<p>45.public static String substringBefore(String str, String separator)</p>
+<p>得到字符串str的在字符串separator出现前的字串，且separator不包括在内。</p>
+<p>如果str为null或为””，则返回它本身</p>
+<p>如果separator为null，则返回str本身</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.substringBefore(null, *) = null</p>
+<p>StringUtils.substringBefore(“”, *) = “”</p>
+<p>StringUtils.substringBefore(“asdfg”, null)) = “asdfg”</p>
+<p>StringUtils.substringBefore(“asdfg”, “a”)) = “”</p>
+<p>StringUtils.substringBefore(“asdfg”, “sd”)) = “a”</p>
+<p>StringUtils.substringBefore(“asdfsag”, “sa”)) = “asdf”</p>
+<p>StringUtils.substringBefore(“asdfg”, “h”)) = “asdfg”</p>
+<p>StringUtils.substringBefore(“asdfg”, “”)) = “”</p>
+<p>StringUtils.substringBefore(“asdfg”, “dfgh”)) = “asdfg”</p>
+<p>StringUtils.substringBefore(“asdfg”, “dfg”)) = “as”</p>
+<p>StringUtils.substringBefore(“abbbabbba”, “bb”)) = “a”</p>
+<p>46.public static String substringAfter(String str, String separator)</p>
+<p>得到字符串str的在字符串separator出现后的字串，且separator不包括在内。</p>
+<p>如果str为null或为””，则返回它本身</p>
+<p>如果separator为null，则返回””</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.substringAfter(null, *) = null</p>
+<p>StringUtils.substringAfter(“”, *) = “”</p>
+<p>StringUtils.substringAfter(*, null) = “”</p>
+<p>StringUtils.substringAfter(“asdfg”, “a”)) = “sdfg”</p>
+<p>StringUtils.substringAfter(“asdfg”, “sd”)) = “fg”</p>
+<p>StringUtils.substringAfter(“asdfsag”, “sa”)) = “g”</p>
+<p>StringUtils.substringAfter(“asdfg”, “h”)) = “”</p>
+<p>StringUtils.substringAfter(“asdfg”, “”)) = “asdfg”</p>
+<p>StringUtils.substringAfter(“asdfg”, “dfgh”)) = “”</p>
+<p>StringUtils.substringAfter(“asdfg”, “dfg”)) = “”</p>
+<p>StringUtils.substringAfter(“abbbabbba”, “bb”))= “babbba”</p>
+<p>47.public static String substringBeforeLast(String str, String separator)</p>
+<p>和45类似，得到字符串str的在字符串separator最后一次出现前的字串。</p>
+<p>这里不再举例。</p>
+<p>48.public static String substringAfterLast(String str, String separator)</p>
+<p>和46类似，得到字符串str的在字符串separator最后一次出现后的字串。</p>
+<p>这里不再举例。</p>
+<p>49.public static String substringBetween(String str, String tag)</p>
+<p>得到str中的在两个字符串tag中间的字符串，即str中的tag所夹的串。</p>
+<p>如果str为null或tag为null，返回null</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.substringBetween(null, *) = null</p>
+<p>StringUtils.substringBetween(*, null) = null</p>
+<p>StringUtils.substringBetween(“”, “”) = “”</p>
+<p>StringUtils.substringBetween(“”, “a”)) = null</p>
+<p>StringUtils.substringBetween(“asdfdf”, “df”)) = “”</p>
+<p>StringUtils.substringBetween(“asdfas”, “as”)) = “df”</p>
+<p>StringUtils.substringBetween(“dfasdfasdfas”, “df”)) = “as”</p>
+<p>StringUtils.substringBetween(“dfasdfasdfas”, “as”)) = “df”</p>
+<p>StringUtils.substringBetween(“dfasdfasgdf”, “df”)) = “as”</p>
+<p>50.public static String substringBetween(String str, String open, String close)</p>
+<p>得到str中的在两个字符串open和close中间的字符串，即open和close所夹的串。</p>
+<p>如果str为null或open为null或close为null，返回null</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.substringBetween(null, <em>, </em>) = null</p>
+<p>StringUtils.substringBetween(<em>, null, </em>) = null</p>
+<p>StringUtils.substringBetween(<em>, </em>, null) = null</p>
+<p>StringUtils.substringBetween(“”, “”, “”) = “”</p>
+<p>StringUtils.substringBetween(“”, “”, “]“) = null</p>
+<p>StringUtils.substringBetween(“”, “[“, “]“) = null</p>
+<p>StringUtils.substringBetween(“[]“, “[“,”]“)) = “”</p>
+<p>StringUtils.substringBetween(“a[sd]f”, “[“,”]“)) = “sd”</p>
+<p>StringUtils.substringBetween(“a[sd]f[gh]“, “[“,”]“)) = “sd”</p>
+<p>StringUtils.substringBetween(“a[sd]f”, “]“,”[“)) = null</p>
+<p>StringUtils.substringBetween(“a[sd]f”, “”,””)) = “”</p>
+<p>51.public static String[] substringsBetween(String str, String open, String close)</p>
+<p>得到str中的在两个字符串open和close中间的字符串，即open和close所夹的串，</p>
+<p>把所有符合的结果放在数组中返回。</p>
+<p>和50类似，但是返回了所有的结果(50只返回了第一个匹配的结果)。</p>
+<p>这里不再举例。</p>
+<p>52.public static String[] split(String str)</p>
+<p>把字符串拆分成一个字符串数组，用空白符(whitespace)作为分隔符。</p>
+<p>Whitespace是这样定义的 {@link Character#isWhitespace(char)}</p>
+<p>如果字符串为null，返回null</p>
+<p>如果字符串为””，返回空数组{}</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.split(null) = null</p>
+<p>StringUtils.split(“”) = {}</p>
+<p>StringUtils.split(“as df yy”)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“ as df yy “)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as/ndf/ryy”)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as/tdf/fyy”)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as df /fyy”)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as/t /r df /f /n yy”)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as”)) = {“as”}</p>
+<p>StringUtils.split(“ as “)) = {“as”}</p>
+<p>53.public static String[] split(String str, char separatorChar)</p>
+<p>把字符串拆分成一个字符串数组，用指定的字符separatorChar作为分隔符。</p>
+<p>如果字符串为null，返回null</p>
+<p>如果字符串为””，返回空数组{}</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.split(null, *) = null</p>
+<p>StringUtils.split(“”, *) = {}</p>
+<p>StringUtils.split(“as df yy”,’ ‘)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“ as df yy “,’ ‘)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“asodfoyy”,’o’)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as.df.yy”,’.’)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as/ndf/nyy”,’/n’))= {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as”,’ ‘)) = {“as”}</p>
+<p>StringUtils.split(“ as “,’ ‘)) = {“as”}</p>
+<p>54.public static String[] split(String str, String separatorChars)</p>
+<p>把字符串拆分成一个字符串数组，用指定的字符串separatorChars作为分隔符。</p>
+<p>如果字符串str为null，返回null</p>
+<p>如果字符串str为””，返回空数组{}</p>
+<p>如果separatorChars为null，则默认为空白符</p>
+<p>和53类似。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.split(“as /rdf /t yy”,null)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as/ndf/fyy”,null)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as”,””)) = {“as”}</p>
+<p>55.public static String[] split(String str, String separatorChars, int max)</p>
+<p>把字符串拆分成一个字符串数组，用指定的字符串separatorChars作为分隔符，</p>
+<p>数组的最大长度为max。</p>
+<p>如果字符串str为null，返回null</p>
+<p>如果字符串str为””，返回空数组{}</p>
+<p>如果separatorChars为null，则默认为空白符</p>
+<p>如果max小于等于0，认为是没有限制</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.split(null, <em>, </em>) = null</p>
+<p>StringUtils.split(“”, <em>, </em>) = {}</p>
+<p>StringUtils.split(“as df yy”,null,0)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as df yy”,” “,0)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as.df.yy”,”.”,-1)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as.df.yy”,”.”,4)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as-!-df-!-yy”,”-!-“,0)) = {“as”,”df”,”yy”}</p>
+<p>StringUtils.split(“as.df.yy”,”.”,2)) = {“as”,”df.yy”}</p>
+<p>StringUtils.split(“as”,””,0)) = {“as”}</p>
+<p>StringUtils.split(“as”,””,2)) = {“as”}</p>
+<p>56.public static String[] splitByWholeSeparator(String str, String separator)</p>
+<p>个人认为和54功能一样。区别有待发掘。</p>
+<p>57.public static String[] splitByWholeSeparator( String str, String separator, int max )</p>
+<p>个人认为和55功能一样。区别有待发掘。</p>
+<p>58.public static String[] splitPreserveAllTokens(String str)</p>
+<p>把字符串str拆分成一个数组，用空白符(whitespace)作为分隔符，保留所有的标识，</p>
+<p>包括相邻分隔符产生的空的标识。它可作为StringTokenizer的一个替代。</p>
+<p>Whitespace是这样定义的{@link Character#isWhitespace(char)}。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.splitPreserveAllTokens(null)) = null</p>
+<p>StringUtils.splitPreserveAllTokens(“”)) = {}</p>
+<p>StringUtils.splitPreserveAllTokens(“as df gh jk”)) = {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as/ndf/rgh/fjk”)) = {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as/tdf gh jk”)) = {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as df gh”)) = {“as”,””,”df”,”gh”}</p>
+<p>StringUtils.splitPreserveAllTokens(“ as df “)) = {“”,”as”,””,””,”df”,””,””}</p>
+<p>59.public static String[] splitPreserveAllTokens(String str, char separatorChar)</p>
+<p>和58类似，只是分隔符为字符separatorChar。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.splitPreserveAllTokens(null, *) = null</p>
+<p>StringUtils.splitPreserveAllTokens(“”, *) = {}</p>
+<p>StringUtils.splitPreserveAllTokens(“as df gh jk”,’ ‘)) = {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as.df.gh.jk”,’.’)) = {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as..df.gh”,’.’)) = {“as”,””,”df”,”gh”}</p>
+<p>StringUtils.splitPreserveAllTokens(“,as,,,df,,”,’,’)) = {“”,”as”,””,””,”df”,””,””}</p>
+<p>StringUtils.splitPreserveAllTokens(“as.df.gh”,’,’)) = {“as.df.gh”}</p>
+<p>60.public static String[] splitPreserveAllTokens(String str, String separatorChars)</p>
+<p>和59类似，只是分隔符为字符串separatorChars。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.splitPreserveAllTokens(null, *) = null</p>
+<p>StringUtils.splitPreserveAllTokens(“”, *) = {}</p>
+<p>StringUtils.splitPreserveAllTokens(“as df gh jk”,null)) = {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as/ndf/rgh/fjk”,null))= {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as df gh jk”,” “)) = {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as.df.gh.jk”,”.”)) = {“as”,”df”,”gh”,”jk”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as..df.gh”,”.”)) = {“as”,””,”df”,”gh”}</p>
+<p>StringUtils.splitPreserveAllTokens(“,as,,,df,,”,”,”)) = {“”,”as”,””,””,”df”,””,””}</p>
+<p>StringUtils.splitPreserveAllTokens(“as.df.gh”,”,”)) = {“as.df.gh”}</p>
+<p>StringUtils.splitPreserveAllTokens(“as.df.gh”,””)) = {“as.df.gh”}</p>
+<p>61.public static String[] splitPreserveAllTokens(String str, String separatorChars, int max)</p>
+<p>和上面几个类似，只是指定了数组的最大长度。</p>
+<p>如果max为0或负数，则认为没有限制。</p>
+<p>这里不再举例。</p>
+<p>62.public static String join(Object[] array)</p>
+<p>把数组中的元素连接成一个字符串返回。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.join(null) = null</p>
+<p>StringUtils.join({}) = “”</p>
+<p>StringUtils.join({“as”,”df”,”gh”,”jk”})) = “asdfghjk”</p>
+<p>StringUtils.join({“as”,””,”df”,”gh”})) = “asdfgh”</p>
+<p>StringUtils.join({“”,”as”,””,””,”df”,””,””})) = “asdf”</p>
+<p>63.public static String join(Object[] array, char separator)</p>
+<p>把数组中的元素连接成一个字符串返回，把分隔符separator也加上。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.join(null, *) = null</p>
+<p>StringUtils.join({}, *) = “”</p>
+<p>StringUtils.join({null}, *) = “”</p>
+<p>StringUtils.join({“as”,”df”,”gh”,”jk”},’ ‘)) = “as df gh jk”</p>
+<p>StringUtils.join({“as”,”df”,”gh”,”jk”},’.’)) = “as.df.gh.jk”</p>
+<p>StringUtils.join({“as”,””,”df”,”gh”},’.’)) = “as..df.gh”</p>
+<p>StringUtils.join({“”,”as”,””,””,”df”,””,””},’,’))= “,as,,,df,,”</p>
+<p>StringUtils.join({“”,”as”,””,””,”df”,””,””},’ ‘))= “ as df “</p>
+<p>StringUtils.join({“as.df.gh”},’.’)) = “as.df.gh”</p>
+<p>StringUtils.join({“as.df.gh”},’ ‘)) = “as.df.gh”</p>
+<p>64.public static String join(Object[] array, char separator, int startIndex, int endIndex)</p>
+<p>把数组中的元素连接成一个字符串返回，把分隔符separator也加上。</p>
+<p>连接的开始位置为startIndex，结束位置为endIndex。</p>
+<p>这里不再举例。</p>
+<p>65.public static String join(Object[] array, String separator)</p>
+<p>与63类似，这里不再举例。</p>
+<p>66.public static String join(Object[] array, String separator, int startIndex, int endIndex)</p>
+<p>与64类似，这里不再举例。</p>
+<p>67.public static String deleteWhitespace(String str)</p>
+<p>删除字符串中的所有空白符(whitespace)，空白符是这样定义的{@link Character#isWhitespace(char)}。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.deleteWhitespace(null) = null</p>
+<p>StringUtils.deleteWhitespace(“”) = “”</p>
+<p>StringUtils.deleteWhitespace(“asd”)) = “asd”,</p>
+<p>StringUtils.deleteWhitespace(“as df”)) = “asdf”</p>
+<p>StringUtils.deleteWhitespace(“as/n/r/f/tdf”)) = “asdf”</p>
+<p>StringUtils.deleteWhitespace(“as/bdf”)) = “as/bdf”</p>
+<p>StringUtils.deleteWhitespace(“ as df “)) = “asdf”</p>
+<p>68.public static String removeStart(String str, String remove)</p>
+<p>如果字符串str是以字符串remove开始，则去掉这个开始，然后返回，否则返回原来的串。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.removeStart(null, *) = null</p>
+<p>StringUtils.removeStart(“”, *) = “”</p>
+<p>StringUtils.removeStart(<em>, null) = </em></p>
+<p>StringUtils.removeStart(“asdf”,””)) = “asdf”</p>
+<p>StringUtils.removeStart(“asdf”,”as”)) = “df”</p>
+<p>StringUtils.removeStart(“asdf”,”df”)) = “asdf”</p>
+<p>StringUtils.removeStart(“asdf”,”gh”)) = “asdf”</p>
+<p>69.public static String removeEnd(String str, String remove)</p>
+<p>如果字符串str是以字符串remove结尾，则去掉这个结尾，然后返回，否则返回原来的串。</p>
+<p>这里不再举例。</p>
+<p>70.public static String remove(String str, String remove)</p>
+<p>去掉字符串str中所有包含remove的部分，然后返回。</p>
+<p>这里不再举例。</p>
+<p>71.public static String remove(String str, char remove)</p>
+<p>去掉字符串str中所有包含remove的部分，然后返回。</p>
+<p>这里不再举例。</p>
+<p>72.public static String replaceOnce(String text, String repl, String with)</p>
+<p>在字符串text中用with代替repl，仅一次。</p>
+<p>这里不再举例。</p>
+<p>73.public static String replace(String text, String repl, String with)</p>
+<p>在字符串text中用with代替repl，替换所有。</p>
+<p>这里不再举例。</p>
+<p>74.public static String replace(String text, String repl, String with, int max)</p>
+<p>在字符串text中用with代替repl，max为最大替换次数。</p>
+<p>如果max小于0，则替换所有。</p>
+<p>这里不再举例。</p>
+<p>75. public static String replaceChars(String str, char searchChar, char replaceChar)</p>
+<p>在字符串str中用字符replaceChar代替所有字符searchChar，</p>
+<p>如果字符串为null或””，则返回它本身。</p>
+<p>这里不再举例。</p>
+<p>76.public static String replaceChars(String str, String searchChars, String replaceChars)</p>
+<p>用replaceChars代替str中的searchChars。</p>
+<p>replaceChars的长度应该和searchChars的长度相等，</p>
+<p>如果replaceChars的长度大于searchChars的长度，超过长度的字符将被忽略，</p>
+<p>如果replaceChars的长度小于searchChars的长度，超过长度的字符将被删除。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.replaceChars(null, <em>, </em>) = null</p>
+<p>StringUtils.replaceChars(“”, <em>, </em>) = “”</p>
+<p>StringUtils.replaceChars(“asdf”, null, *) = “asdf”</p>
+<p>StringUtils.replaceChars(“asdf”, “”, *) = “asdf”</p>
+<p>StringUtils.replaceChars(“asdf”,”s”,null)) = “adf”</p>
+<p>StringUtils.replaceChars(“asdf”,”s”,””)) = “adf”</p>
+<p>StringUtils.replaceChars(“asdsfsg”,”s”,”y”)) = “aydyfyg”</p>
+<p>StringUtils.replaceChars(“asdf”,”sd”,”yy”)) = “ayyf”</p>
+<p>StringUtils.replaceChars(“asdf”,”sd”,”yyy”)) = “ayyf”</p>
+<p>StringUtils.replaceChars(“asssdf”,”s”,”yyy”)) = “ayyydf”</p>
+<p>StringUtils.replaceChars(“asdf”,”sd”,”y”)) = “ayf”</p>
+<p>StringUtils.replaceChars(“assssddddf”,”sd”,”y”))= “ayyyyf”</p>
+<p>77.public static String overlay(String str, String overlay, int start, int end)</p>
+<p>用字符串overlay覆盖字符串str从start到end之间的串。</p>
+<p>如果str为null，则返回null</p>
+<p>如果start或end小于0，则设为0</p>
+<p>如果start大于end，则两者交换</p>
+<p>如果start或end大于str的长度，则认为等于str的长度</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.overlay(null, <em>, </em>, *) = null</p>
+<p>StringUtils.overlay(“”,”as”,0,0)) = “as”</p>
+<p>StringUtils.overlay(“asdfgh”,”qq”,2,5)) = “asqqh”</p>
+<p>StringUtils.overlay(“asdfgh”,”qq”,5,2)) = “asqqh”</p>
+<p>StringUtils.overlay(“asdfgh”,”qq”,-1,3)) = “qqfgh”</p>
+<p>StringUtils.overlay(“asdfgh”,”qq”,-1,-3)) = “qqasdfgh”</p>
+<p>StringUtils.overlay(“asdfgh”,”qq”,7,10)) = “asdfghqq”</p>
+<p>StringUtils.overlay(“asdfgh”,”qq”,0,8)) = “qq”</p>
+<p>StringUtils.overlay(“asdfgh”,”qq”,2,8)) = “asqq”</p>
+<p>StringUtils.overlay(“asdfgh”,null,2,5)) = “ash”</p>
+<p>StringUtils.overlay(“asdfgh”,””,2,5)) = “ash”</p>
+<p>78.public static String chop(String str)</p>
+<p>去掉字符串str的最后一个字符。</p>
+<p>如果字符串以”/r/n”结尾，则去掉它们。</p>
+<p>这里不再举例。</p>
+<p>79.public static String repeat(String str, int repeat)</p>
+<p>重复字符串repeat次，组合成一个新串返回。</p>
+<p>如果字符串str为null或””，则返回它本身</p>
+<p>如果repeat小于0，则返回””</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.repeat(null, *) = null</p>
+<p>StringUtils.repeat(“”, *) = “”</p>
+<p>StringUtils.repeat(“a”, 3) = “aaa”</p>
+<p>StringUtils.repeat(“ab”, 2) = “abab”</p>
+<p>StringUtils.repeat(“a”, -2) = “”</p>
+<p>80.public static String rightPad(String str, int size)</p>
+<p>如果str为null，则返回null</p>
+<p>如果字符串长度小于size，则在右边补空格使其长度等于size，然后返回</p>
+<p>如果字符串长度大于等于size，则返回它本身</p>
+<p>这里不再举例。</p>
+<p>81.public static String rightPad(String str, int size, char padChar)</p>
+<p>和80类似，只是补的字符为padChar。</p>
+<p>这里不再举例。</p>
+<p>82.public static String rightPad(String str, int size, String padStr)</p>
+<p>和80类似，只是补的是字符串padStr。</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.rightPad(null, <em>, </em>) = null</p>
+<p>StringUtils.rightPad(“”,0,””)) = “”</p>
+<p>StringUtils.rightPad(“”,3,””)) = “ “</p>
+<p>StringUtils.rightPad(“”,3,”a”)) = “aaa”</p>
+<p>StringUtils.rightPad(“”,2,”as”)) = “as”</p>
+<p>StringUtils.rightPad(“as”,-1,”df”)) = “as”</p>
+<p>StringUtils.rightPad(“as”,0,”df”)) = “as”</p>
+<p>StringUtils.rightPad(“as”,3,”df”)) = “asd”</p>
+<p>StringUtils.rightPad(“as”,8,”df”)) = “asdfdfdf”</p>
+<p>StringUtils.rightPad(“as”,5,null)) = “as “</p>
+<p>StringUtils.rightPad(“as”,5,””)) = “as “</p>
+<p>83.public static String leftPad(String str, int size)</p>
+<p>和80类似，只是补左边。</p>
+<p>这里不再举例。</p>
+<p>84.public static String leftPad(String str, int size, char padChar)</p>
+<p>和81类似。</p>
+<p>这里不再举例。</p>
+<p>85.public static String leftPad(String str, int size, String padStr)</p>
+<p>和82类似。</p>
+<p>这里不再举例。</p>
+<p>86.public static String center(String str, int size)</p>
+<p>产生一个字符串返回，该字符串长度等于size，str位于新串的中心，其他位置补空格。</p>
+<p>如果str为null，则返回null</p>
+<p>如果size小于str的长度，则返回str本身</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.center(null, *) = null</p>
+<p>StringUtils.center(“”,1)) = “ “</p>
+<p>StringUtils.center(“”,2)) = “ “</p>
+<p>StringUtils.center(“as”,-1)) = “as”</p>
+<p>StringUtils.center(“as”,2)) = “as”</p>
+<p>StringUtils.center(“as”,3)) = “as “</p>
+<p>StringUtils.center(“as”,4)) = “ as “</p>
+<p>StringUtils.center(“as”,10)) = “ as “</p>
+<p>87.public static String center(String str, int size, char padChar)</p>
+<p>和86类似，只是其他位置补padChar。</p>
+<p>这里不再举例。</p>
+<p>88.public static String center(String str, int size, String padStr)</p>
+<p>和86类似，只是其他位置补padStr。</p>
+<p>这里不再举例。</p>
+<p>89.public static String swapCase(String str)</p>
+<p>把字符串中的字符大写转换为小写，小写转换为大写。</p>
+<p>举例：</p>
+<p>StringUtils.swapCase(null) = null</p>
+<p>StringUtils.swapCase(“”) = “”</p>
+<p>StringUtils.swapCase(“Hello Boys”)) = “hELLO bOYS”</p>
+<p>StringUtils.swapCase(“I am 11”)) = “i AM 11”</p>
+<p>90.public static int countMatches(String str, String sub)</p>
+<p>计算字符串sub在字符串str中出现的次数。</p>
+<p>如果str为null或””，则返回0</p>
+<p>举例(*表示任意)：</p>
+<p>StringUtils.countMatches(null, *) = 0</p>
+<p>StringUtils.countMatches(“”, *) = 0</p>
+<p>StringUtils.countMatches(“asdf”,”as”)) = 1</p>
+<p>StringUtils.countMatches(“asdfas”,”as”)) = 2</p>
+<p>StringUtils.countMatches(“dfgh”,”as”)) = 0</p>
+<p>StringUtils.countMatches(“as”,””)) = 0</p>
+<p>StringUtils.countMatches(“as”,null)) = 0</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/16/js-e6-97-a5-e6-9c-9f-e6-a0-bc-e5-bc-8f-e5-8c-96-e5-8f-8a-e6-97-a5-e6-9c-9f-e8-ae-a1-e7-ae-97-e6-96-b9-e6-b3-95/" rel="next" title="js日期格式化及日期计算方法">
+                <i class="fa fa-chevron-left"></i> js日期格式化及日期计算方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/16/e4-b8-ba-e8-be-93-e5-85-a5-e6-a1-86-e5-a2-9e-e5-8a-a0-e7-a6-bb-e5-ad-90-e5-96-b7-e5-b0-84-e7-89-b9-e6-95-88/" rel="prev" title="为输入框增加离子喷射特效">
+                为输入框增加离子喷射特效 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

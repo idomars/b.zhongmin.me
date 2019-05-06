@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="java.util.LinkedList  双向链表实现的List。 基于JDK 1.8。 没有使用标准的注释，并适当调整了代码的缩进以方便介绍。 里面很多方法的实现是一样的，不过可以让外界感觉其提供了更多的行为。 需要花比ArrayList更多一点的时间理解 /*** LinkedList底层使用双向链表，实现了List和deque。实现所有的可选List操作，并可以只有所有元素（包括空值）*">
+<meta name="keywords" content="Java,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java之LinkedList源码解读（JDK 1.8）">
+<meta property="og:url" content="http://b.zhongmin.me/2018/01/30/java-e4-b9-8blinkedlist-e6-ba-90-e7-a0-81-e8-a7-a3-e8-af-bb-ef-bc-88jdk-1-8-ef-bc-89/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="java.util.LinkedList  双向链表实现的List。 基于JDK 1.8。 没有使用标准的注释，并适当调整了代码的缩进以方便介绍。 里面很多方法的实现是一样的，不过可以让外界感觉其提供了更多的行为。 需要花比ArrayList更多一点的时间理解 /*** LinkedList底层使用双向链表，实现了List和deque。实现所有的可选List操作，并可以只有所有元素（包括空值）*">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java之LinkedList源码解读（JDK 1.8）">
+<meta name="twitter:description" content="java.util.LinkedList  双向链表实现的List。 基于JDK 1.8。 没有使用标准的注释，并适当调整了代码的缩进以方便介绍。 里面很多方法的实现是一样的，不过可以让外界感觉其提供了更多的行为。 需要花比ArrayList更多一点的时间理解 /*** LinkedList底层使用双向链表，实现了List和deque。实现所有的可选List操作，并可以只有所有元素（包括空值）*">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/01/30/java-e4-b9-8blinkedlist-e6-ba-90-e7-a0-81-e8-a7-a3-e8-af-bb-ef-bc-88jdk-1-8-ef-bc-89/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java之LinkedList源码解读（JDK 1.8） | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/30/java-e4-b9-8blinkedlist-e6-ba-90-e7-a0-81-e8-a7-a3-e8-af-bb-ef-bc-88jdk-1-8-ef-bc-89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java之LinkedList源码解读（JDK 1.8）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-30 13:54:44" itemprop="dateCreated datePublished" datetime="2018-01-30T13:54:44+08:00">2018-01-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>java.util.LinkedList</strong></p>
+<ul>
+<li>双向链表实现的List。</li>
+<li>基于JDK 1.8。</li>
+<li>没有使用标准的注释，并适当调整了代码的缩进以方便介绍。</li>
+<li>里面很多方法的实现是一样的，不过可以让外界感觉其提供了更多的行为。</li>
+<li><p>需要花比ArrayList更多一点的时间理解</p>
+<p>/**<br>* LinkedList底层使用双向链表，实现了List和deque。实现所有的可选List操作，并可以只有所有元素（包括空值）<br>* 其大小理论上仅受内存大小的限制<br>*<br>* 所有的操作都可以作为一个双联列表来执行（及对双向链表操作）。<br>* 把对链表的操作封装起来，并对外提供看起来是对普通列表操作的方法。<br>* 遍历从起点、终点、或指定位置开始<br>* 内部方法，注释会描述为节点的操作(如删除第一个节点)，公开的方法会描述为元素的操作(如删除第一个元素)<br>*<br>* LinkedList不是线程安全的，如果在多线程中使用（修改），需要在外部作同步处理。<br>*<br>* 需要弄清元素（节点）的索引和位置的区别，不然有几个地方不好理解，具体在碰到的地方会解释。<br>*<br>* 迭代器可以快速报错<br>*/<br>public class LinkedList<e> extends AbstractSequentialList<e> implements List<e>, Deque<e>, Cloneable, java.io.Serializable<br>{<br>//容量<br>transient int size = 0;<br>//首节点<br>transient Node<e> first;<br>//尾节点<br>transient Node<e> last;<br>//默认构造函数<br>public LinkedList() {<br>}<br>//通过一个集合初始化LinkedList，元素顺序有这个集合的迭代器返回顺序决定<br>public LinkedList(Collection&lt;? extends E&gt; c) {</e></e></e></e></e></e></p>
+<pre><code>this();
+addAll(c);
+</code></pre><p>}<br>//使用对应参数作为第一个节点，内部使用<br>private void linkFirst(E e) {</p>
+<pre><code>final Node&lt;E&gt; f = first;//得到首节点
+final Node&lt;E&gt; newNode = new Node&lt;&gt;(null, e, f);//创建一个节点
+first = newNode;        //设置首节点
+if (f == null)
+    last = newNode;     //如果之前首节点为空(size==0)，那么尾节点就是首节点
+else
+    f.prev = newNode;   //如果之前首节点不为空，之前的首节点的前一个节点为当前首节点
+size++;                 //长度+1
+modCount++;             //修改次数+1
+</code></pre><p>}<br>//使用对应参数作为尾节点<br>void linkLast(E e) {</p>
+<pre><code>final Node&lt;E&gt; l = last; //得到尾节点
+final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);//使用参数创建一个节点
+last = newNode;         //设置尾节点
+if (l == null)
+    first = newNode;    //如果之前尾节点为空(size==0)，首节点即尾节点
+else
+    l.next = newNode;   //如果之前尾节点不为空，之前的尾节点的后一个就是当前的尾节点
+size++;
+modCount++;
+</code></pre><p>}<br>//在指定节点前插入节点，节点succ不能为空<br>void linkBefore(E e, Node<e> succ) {</e></p>
+<pre><code>final Node&lt;E&gt; pred = succ.prev;//获取前一个节点
+final Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, succ);//使用参数创建新的节点，向前指向前一个节点，向后指向当前节点
+succ.prev = newNode;//当前节点指向新的节点
+if (pred == null)
+    first = newNode;//如果前一个节点为null，新的节点就是首节点
+else
+    pred.next = newNode;//如果存在前节点，那么前节点的向后指向新节点
+size++;
+modCount++;
+</code></pre><p>}<br>//删除首节点并返回删除前首节点的值，内部使用<br>private E unlinkFirst(Node<e> f) {</e></p>
+<pre><code>final E element = f.item;//获取首节点的值
+final Node&lt;E&gt; next = f.next;//得到下一个节点
+f.item = null;
+f.next = null;      //便于垃圾回收期清理
+first = next;       //首节点的下一个节点成为新的首节点
+if (next == null)
+    last = null;    //如果不存在下一个节点，则首尾都为null(空表)
+else
+    next.prev = null;//如果存在下一个节点，那它向前指向null
+size--;
+modCount++;
+return element;
+</code></pre><p>}<br>//删除尾节点并返回删除前尾节点的值，内部使用<br>private E unlinkLast(Node<e> l) {</e></p>
+<pre><code>final E element = l.item;//获取值
+final Node&lt;E&gt; prev = l.prev;//获取尾节点前一个节点
+l.item = null;
+l.prev = null;      //便于垃圾回收期清理
+last = prev;        //前一个节点成为新的尾节点
+if (prev == null)
+    first = null;   //如果前一个节点不存在，则首尾都为null(空表)
+else
+    prev.next = null;//如果前一个节点存在，先后指向null
+size--;
+modCount++;
+return element;
+</code></pre><p>}<br>//删除指定节点并返回被删除的元素值<br>E unlink(Node<e> x) {</e></p>
+<pre><code>//获取当前值和前后节点
+final E element = x.item;
+final Node&lt;E&gt; next = x.next;
+final Node&lt;E&gt; prev = x.prev;
+if (prev == null) {
+    first = next;   //如果前一个节点为空(如当前节点为首节点)，后一个节点成为新的首节点
+} else {
+    prev.next = next;//如果前一个节点不为空，那么他先后指向当前的下一个节点
+    x.prev = null;  //方便gc回收
+}
+if (next == null) {
+    last = prev;    //如果后一个节点为空(如当前节点为尾节点)，当前节点前一个成为新的尾节点
+} else {
+    next.prev = prev;//如果后一个节点不为空，后一个节点向前指向当前的前一个节点
+    x.next = null;  //方便gc回收
+}
+x.item = null;      //方便gc回收
+size--;
+modCount++;
+return element;
+</code></pre><p>}<br>//获取第一个元素<br>public E getFirst() {</p>
+<pre><code>final Node&lt;E&gt; f = first;//得到首节点
+if (f == null)          //如果为空，抛出异常
+    throw new NoSuchElementException();
+return f.item;
+</code></pre><p>}<br>//获取最后一个元素<br>public E getLast() {</p>
+<pre><code>final Node&lt;E&gt; l = last;//得到尾节点
+if (l == null)          //如果为空，抛出异常
+    throw new NoSuchElementException();
+return l.item;
+</code></pre><p>}<br>//删除第一个元素并返回删除的元素<br>public E removeFirst() {</p>
+<pre><code>final Node&lt;E&gt; f = first;//得到第一个节点
+if (f == null)          //如果为空，抛出异常
+    throw new NoSuchElementException();
+return unlinkFirst(f);
+</code></pre><p>}<br>//删除最后一个元素并返回删除的值<br>public E removeLast() {</p>
+<pre><code>final Node&lt;E&gt; l = last;//得到最后一个节点
+if (l == null)          //如果为空，抛出异常
+    throw new NoSuchElementException();
+return unlinkLast(l);
+</code></pre><p>}<br>//添加元素作为第一个元素<br>public void addFirst(E e) {</p>
+<pre><code>linkFirst(e);
+</code></pre><p>}<br>//店家元素作为最后一个元素<br>public void addLast(E e) {</p>
+<pre><code>linkLast(e);
+</code></pre><p>}<br>//检查是否包含某个元素，返回bool<br>public boolean contains(Object o) {</p>
+<pre><code>return indexOf(o) != -1;//返回指定元素的索引位置，不存在就返回-1，然后比较返回bool值
+</code></pre><p>}<br>//返回列表长度<br>public int size() {</p>
+<pre><code>return size;
+</code></pre><p>}<br>//添加一个元素，默认添加到末尾作为最后一个元素<br>public boolean add(E e) {</p>
+<pre><code>linkLast(e);
+return true;
+</code></pre><p>}<br>//删除指定元素，默认从first节点开始，删除第一次出现的那个元素<br>public boolean remove(Object o) {</p>
+<pre><code>//会根据是否为null分开处理。若值不是null，会用到对象的equals()方法
+if (o == null) {
+    for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+        if (x.item == null) {
+            unlink(x);
+            return true;
+        }
+    }
+} else {
+    for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+        if (o.equals(x.item)) {
+            unlink(x);
+            return true;
+        }
+    }
+}
+return false;
+</code></pre><p>}<br>//添加指定集合的元素到列表，默认从最后开始添加<br>public boolean addAll(Collection&lt;? extends E&gt; c) {</p>
+<pre><code>return addAll(size, c);//size表示最后一个位置，可以理解为元素的位置分别为1~size
+</code></pre><p>}<br>//从指定位置（而不是下标！下标即索引从0开始，位置可以看做从1开始，其实也是0）后面添加指定集合的元素到列表中，只要有至少一次添加就会返回true<br>//index换成position应该会更好理解，所以也就是从索引为index(position)的元素的前面索引为index-1的后面添加！<br>//当然位置可以为0啊，为0的时候就是从位置0(虽然它不存在)后面开始添加嘛，所以理所当前就是添加到第一个位置（位置1的前面）的前面了啊！<br>//比如列表：0 1 2 3，如果此处index=4(实际索引为3)，就是在元素3后面添加；如果index=3(实际索引为2)，就在元素2后面添加。<br>//原谅我的表达水平，我已经尽力解释了…<br>public boolean addAll(int index, Collection&lt;? extends E&gt; c) {</p>
+<pre><code>checkPositionIndex(index);  //检查索引是否正确（0&lt;=index&lt;=size）
+Object\[\] a = c.toArray();   //得到元素数组
+int numNew = a.length;      //得到元素个数
+if (numNew == 0)            //若没有元素要添加，直接返回false
+    return false;
+Node&lt;E&gt; pred, succ;
+if (index == size) {    //如果是在末尾开始添加，当前节点后一个节点初始化为null，前一个节点为尾节点
+    succ = null;        //这里可以看做node(index)，不过index=size了（index最大只能是size-1），所以这里的succ只能=null，也方便后面判断
+    pred = last;        //这里看做noede(index-1)，当然实现是不能这么写的，看做这样只是为了好理解，所以就是在node(index-1的后面开始添加元素)
+} else {                //如果不是从末尾开始添加，当前位置的节点为指定位置的节点，前一个节点为要添加的节点的前一个节点
+    succ = node(index); //添加好元素后(整个新加的)的后一个节点
+    pred = succ.prev;   //这里依然是node(index-1)
+}
+//遍历数组并添加到列表中
+for (Object o : a) {
+    @SuppressWarnings(&quot;unchecked&quot;)
+    E e = (E) o;
+    Node&lt;E&gt; newNode = new Node&lt;&gt;(pred, e, null);//创建一个节点，向前指向上面得到的前节点
+    if (pred == null)
+        first = newNode;    //若果前节点为null，则新加的节点为首节点
+    else
+        pred.next = newNode;//如果存在前节点，前节点会向后指向新加的节点
+    pred = newNode;         //新加的节点成为前一个节点
+}
+if (succ == null) {
+    //pred.next = null  //加上这句也可以更好的理解
+    last = pred;        //如果是从最后开始添加的，则最后添加的节点成为尾节点
+} else {
+    pred.next = succ;   //如果不是从最后开始添加的，则最后添加的节点向后指向之前得到的后续第一个节点
+    succ.prev = pred;   //当前，后续的第一个节点也应改为向前指向最后一个添加的节点
+}
+size += numNew;
+modCount++;
+return true;
+</code></pre><p>}<br>//清空表<br>public void clear() {</p>
+<pre><code>//方便gc回收垃圾
+for (Node&lt;E&gt; x = first; x != null; ) {
+    Node&lt;E&gt; next = x.next;
+    x.item = null;
+    x.next = null;
+    x.prev = null;
+    x = next;
+}
+first = last = null;
+size = 0;
+modCount++;
+</code></pre><p>}<br>//获取指定索引的节点的值<br>public E get(int index) {</p>
+<pre><code>checkElementIndex(index);
+return node(index).item;
+</code></pre><p>}<br>//修改指定索引的值并返回之前的值<br>public E set(int index, E element) {</p>
+<pre><code>checkElementIndex(index);
+Node&lt;E&gt; x = node(index);
+E oldVal = x.item;
+x.item = element;
+return oldVal;
+</code></pre><p>}<br>//指定位置后面（即索引为这个值的元素的前面）添加元素<br>public void add(int index, E element) {</p>
+<pre><code>checkPositionIndex(index);
+if (index == size)
+    linkLast(element);  //如果指定位置为最后，则添加到链表最后
+else                    //如果指定位置不是最后，则添加到指定位置前
+    linkBefore(element, node(index));
+</code></pre><p>}<br>//删除指定位置的元素，<br>public E remove(int index) {</p>
+<pre><code>checkElementIndex(index);
+return unlink(node(index));
+</code></pre><p>}<br>//检查索引是否超出范围，因为元素索引是0~size-1的，所以index必须满足0&lt;=index&lt;size<br>private boolean isElementIndex(int index) {</p>
+<pre><code>return index &gt;= 0 &amp;&amp; index &lt; size;
+</code></pre><p>}<br>//检查位置是否超出范围，index必须在index~size之间（含），如果超出，返回false<br>private boolean isPositionIndex(int index) {</p>
+<pre><code>return index &gt;= 0 &amp;&amp; index &lt;= size;
+</code></pre><p>}<br>//异常详情<br>private String outOfBoundsMsg(int index) {</p>
+<pre><code>return &quot;Index: &quot;+index+&quot;, Size: &quot;+size;
+</code></pre><p>}<br>//检查元素索引是否超出范围，若已超出，就抛出异常<br>private void checkElementIndex(int index) {</p>
+<pre><code>if (!isElementIndex(index))
+    throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+</code></pre><p>}<br>//检查位置是否超出范围，若已超出，就抛出异常<br>private void checkPositionIndex(int index) {</p>
+<pre><code>if (!isPositionIndex(index))
+    throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+</code></pre><p>}<br>//获取指定位置的节点<br>Node<e> node(int index) {</e></p>
+<pre><code>//如果位置索引小于列表长度的一半(或一半减一)，从前面开始遍历；否则，从后面开始遍历
+if (index &lt; (size &gt;&gt; 1)) {
+    Node&lt;E&gt; x = first;//index==0时不会循环，直接返回first
+    for (int i = 0; i &lt; index; i++)
+        x = x.next;
+    return x;
+} else {
+    Node&lt;E&gt; x = last;
+    for (int i = size - 1; i &gt; index; i--)
+        x = x.prev;
+    return x;
+}
+</code></pre><p>}<br>//获取指定元素从first开始的索引位置，不存在就返回-1<br>//不能按条件双向找了，所以通常根据索引获得元素的速度比通过元素获得索引的速度快<br>public int indexOf(Object o) {</p>
+<pre><code>int index = 0;
+if (o == null) {
+    for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+        if (x.item == null)
+            return index;
+        index++;
+    }
+} else {
+    for (Node&lt;E&gt; x = first; x != null; x = x.next) {
+        if (o.equals(x.item))
+            return index;
+        index++;
+    }
+}
+return -1;
+</code></pre><p>}<br>//获取指定元素从first开始最后出现的索引，不存在就返回-1<br>//但实际查找是从last开始的<br>public int lastIndexOf(Object o) {</p>
+<pre><code>int index = size;
+if (o == null) {
+    for (Node&lt;E&gt; x = last; x != null; x = x.prev) {
+        index--;
+        if (x.item == null)
+            return index;
+    }
+} else {
+    for (Node&lt;E&gt; x = last; x != null; x = x.prev) {
+        index--;
+        if (o.equals(x.item))
+            return index;
+    }
+}
+return -1;
+</code></pre><p>}<br>//提供普通队列和双向队列的功能，当然，也可以实现栈，FIFO，FILO<br>//出队（从前端），获得第一个元素，不存在会返回null，不会删除元素（节点）<br>public E peek() {</p>
+<pre><code>final Node&lt;E&gt; f = first;
+return (f == null) ? null : f.item;
+</code></pre><p>}<br>//出队（从前端），不删除元素，若为null会抛出异常而不是返回null<br>public E element() {</p>
+<pre><code>return getFirst();
+</code></pre><p>}<br>//出队（从前端），如果不存在会返回null，存在的话会返回值并移除这个元素（节点）<br>public E poll() {</p>
+<pre><code>final Node&lt;E&gt; f = first;
+return (f == null) ? null : unlinkFirst(f);
+</code></pre><p>}<br>//出队（从前端），如果不存在会抛出异常而不是返回null，存在的话会返回值并移除这个元素（节点）<br>public E remove() {</p>
+<pre><code>return removeFirst();
+</code></pre><p>}<br>//入队（从后端），始终返回true<br>public boolean offer(E e) {</p>
+<pre><code>return add(e);
+</code></pre><p>}<br>//入队（从前端），始终返回true<br>public boolean offerFirst(E e) {</p>
+<pre><code>addFirst(e);
+return true;
+</code></pre><p>}<br>//入队（从后端），始终返回true<br>public boolean offerLast(E e) {</p>
+<pre><code>addLast(e);//linkLast(e)
+return true;
+</code></pre><p>}<br>//出队（从前端），获得第一个元素，不存在会返回null，不会删除元素（节点）<br>public E peekFirst() {</p>
+<pre><code>final Node&lt;E&gt; f = first;
+return (f == null) ? null : f.item;
+</code></pre><p> }<br>//出队（从后端），获得最后一个元素，不存在会返回null，不会删除元素（节点）<br>public E peekLast() {</p>
+<pre><code>final Node&lt;E&gt; l = last;
+return (l == null) ? null : l.item;
+</code></pre><p>}<br>//出队（从前端），获得第一个元素，不存在会返回null，会删除元素（节点）<br>public E pollFirst() {</p>
+<pre><code>final Node&lt;E&gt; f = first;
+return (f == null) ? null : unlinkFirst(f);
+</code></pre><p>}<br>//出队（从后端），获得最后一个元素，不存在会返回null，会删除元素（节点）<br>public E pollLast() {</p>
+<pre><code>final Node&lt;E&gt; l = last;
+return (l == null) ? null : unlinkLast(l);
+</code></pre><p>}<br>//入栈，从前面添加<br>public void push(E e) {</p>
+<pre><code>addFirst(e);
+</code></pre><p>}<br>//出栈，返回栈顶元素，从前面移除（会删除）<br>public E pop() {</p>
+<pre><code>return removeFirst();
+</code></pre><p>}<br>/**<br> * Removes the first occurrence of the specified element in this<br> * list (when traversing the list from head to tail).  If the list<br> * does not contain the element, it is unchanged.<br> *<br> * @param o element to be removed from this list, if present<br> * @return {@code true} if the list contained the specified element<br> * @since 1.6<br> */<br>public boolean removeFirstOccurrence(Object o) {</p>
+<pre><code>return remove(o);
+</code></pre><p>}<br>/**<br> * Removes the last occurrence of the specified element in this<br> * list (when traversing the list from head to tail).  If the list<br> * does not contain the element, it is unchanged.<br> *<br> * @param o element to be removed from this list, if present<br> * @return {@code true} if the list contained the specified element<br> * @since 1.6<br> */<br>public boolean removeLastOccurrence(Object o) {</p>
+<pre><code>if (o == null) {
+    for (Node&lt;E&gt; x = last; x != null; x = x.prev) {
+        if (x.item == null) {
+            unlink(x);
+            return true;
+        }
+    }
+} else {
+    for (Node&lt;E&gt; x = last; x != null; x = x.prev) {
+        if (o.equals(x.item)) {
+            unlink(x);
+            return true;
+        }
+    }
+}
+return false;
+</code></pre><p>}<br>/**<br> * Returns a list-iterator of the elements in this list (in proper<br> * sequence), starting at the specified position in the list.<br> * Obeys the general contract of {@code List.listIterator(int)}.</p><p><br> *<br> * The list-iterator is <i>fail-fast</i>: if the list is structurally<br> * modified at any time after the Iterator is created, in any way except<br> * through the list-iterator’s own {@code remove} or {@code add}<br> * methods, the list-iterator will throw a<br> * {@code ConcurrentModificationException}.  Thus, in the face of<br> * concurrent modification, the iterator fails quickly and cleanly, rather<br> * than risking arbitrary, non-deterministic behavior at an undetermined<br> * time in the future.<br> *<br> * @param index index of the first element to be returned from the<br> *              list-iterator (by a call to {@code next})<br> * @return a ListIterator of the elements in this list (in proper<br> *         sequence), starting at the specified position in the list<br> * @throws IndexOutOfBoundsException {@inheritDoc}<br> * @see List#listIterator(int)<br> */<br>public ListIterator<e> listIterator(int index) {</e></p>
+<pre><code>checkPositionIndex(index);
+return new ListItr(index);
+</code></pre><p>}<br>private class ListItr implements ListIterator<e> {</e></p>
+<pre><code>private Node&lt;E&gt; lastReturned;
+private Node&lt;E&gt; next;
+private int nextIndex;
+private int expectedModCount = modCount;
+ListItr(int index) {
+    // assert isPositionIndex(index);
+    next = (index == size) ? null : node(index);
+    nextIndex = index;
+}
+public boolean hasNext() {
+    return nextIndex &lt; size;
+}
+public E next() {
+    checkForComodification();
+    if (!hasNext())
+        throw new NoSuchElementException();
+    lastReturned = next;
+    next = next.next;
+    nextIndex++;
+    return lastReturned.item;
+}
+public boolean hasPrevious() {
+    return nextIndex &gt; 0;
+}
+public E previous() {
+    checkForComodification();
+    if (!hasPrevious())
+        throw new NoSuchElementException();
+    lastReturned = next = (next == null) ? last : next.prev;
+    nextIndex--;
+    return lastReturned.item;
+}
+public int nextIndex() {
+    return nextIndex;
+}
+public int previousIndex() {
+    return nextIndex - 1;
+}
+public void remove() {
+    checkForComodification();
+    if (lastReturned == null)
+        throw new IllegalStateException();
+    Node&lt;E&gt; lastNext = lastReturned.next;
+    unlink(lastReturned);
+    if (next == lastReturned)
+        next = lastNext;
+    else
+        nextIndex--;
+    lastReturned = null;
+    expectedModCount++;
+}
+public void set(E e) {
+    if (lastReturned == null)
+        throw new IllegalStateException();
+    checkForComodification();
+    lastReturned.item = e;
+}
+public void add(E e) {
+    checkForComodification();
+    lastReturned = null;
+    if (next == null)
+        linkLast(e);
+    else
+        linkBefore(e, next);
+    nextIndex++;
+    expectedModCount++;
+}
+public void forEachRemaining(Consumer&lt;? super E&gt; action) {
+    Objects.requireNonNull(action);
+    while (modCount == expectedModCount &amp;&amp; nextIndex &lt; size) {
+        action.accept(next.item);
+        lastReturned = next;
+        next = next.next;
+        nextIndex++;
+    }
+    checkForComodification();
+}
+final void checkForComodification() {
+    if (modCount != expectedModCount)
+        throw new ConcurrentModificationException();
+}
+</code></pre><p>}<br>//节点的数据结构，包含前后节点的引用和当前节点<br>private static class Node<e> {</e></p>
+<pre><code>E item;
+Node&lt;E&gt; next;
+Node&lt;E&gt; prev;
+Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) {
+    this.item = element;
+    this.next = next;
+    this.prev = prev;
+}
+</code></pre><p>}<br>//返回迭代器<br>public Iterator<e> descendingIterator() {</e></p>
+<pre><code>return new DescendingIterator();
+</code></pre><p>}<br>//因为采用链表实现，所以迭代器很简单<br>private class DescendingIterator implements Iterator<e> {</e></p>
+<pre><code>private final ListItr itr = new ListItr(size());
+public boolean hasNext() {
+    return itr.hasPrevious();
+}
+public E next() {
+    return itr.previous();
+}
+public void remove() {
+    itr.remove();
+}
+</code></pre><p>}<br>@SuppressWarnings(“unchecked”)<br>private LinkedList<e> superClone() {</e></p>
+<pre><code>try {
+    return (LinkedList&lt;E&gt;) super.clone();
+} catch (CloneNotSupportedException e) {
+    throw new InternalError(e);
+}
+</code></pre><p>}<br>/**<br> * Returns a shallow copy of this {@code LinkedList}. (The elements<br> * themselves are not cloned.)<br> *<br> * @return a shallow copy of this {@code LinkedList} instance<br> */<br>public Object clone() {</p>
+<pre><code>LinkedList&lt;E&gt; clone = superClone();
+// Put clone into &quot;virgin&quot; state
+clone.first = clone.last = null;
+clone.size = 0;
+clone.modCount = 0;
+// Initialize clone with our elements
+for (Node&lt;E&gt; x = first; x != null; x = x.next)
+    clone.add(x.item);
+return clone;
+</code></pre><p>}<br>/**<br> * Returns an array containing all of the elements in this list<br> * in proper sequence (from first to last element).<br> *<br> * </p><p>The returned array will be “safe” in that no references to it are<br> * maintained by this list.  (In other words, this method must allocate<br> * a new array).  The caller is thus free to modify the returned array.<br> *<br> * </p><p>This method acts as bridge between array-based and collection-based<br> * APIs.<br> *<br> * @return an array containing all of the elements in this list<br> *         in proper sequence<br> */<br>public Object[] toArray() {</p>
+<pre><code>Object\[\] result = new Object\[size\];
+int i = 0;
+for (Node&lt;E&gt; x = first; x != null; x = x.next)
+    result\[i++\] = x.item;
+return result;
+</code></pre><p>}<br>/**<br> * Returns an array containing all of the elements in this list in<br> * proper sequence (from first to last element); the runtime type of<br> * the returned array is that of the specified array.  If the list fits<br> * in the specified array, it is returned therein.  Otherwise, a new<br> * array is allocated with the runtime type of the specified array and<br> * the size of this list.<br> *<br> * </p><p>If the list fits in the specified array with room to spare (i.e.,<br> * the array has more elements than the list), the element in the array<br> * immediately following the end of the list is set to {@code null}.<br> * (This is useful in determining the length of the list <i>only</i> if<br> * the caller knows that the list does not contain any null elements.)<br> *<br> * </p><p>Like the {@link #toArray()} method, this method acts as bridge between<br> * array-based and collection-based APIs.  Further, this method allows<br> * precise control over the runtime type of the output array, and may,<br> * under certain circumstances, be used to save allocation costs.<br> *<br> * </p><p>Suppose {@code x} is a list known to contain only strings.<br> * The following code can be used to dump the list into a newly<br> * allocated array of {@code String}:<br> *<br> * <pre><br> *     String[] y = x.toArray(new String[0]);</pre><br> *<br> * Note that {@code toArray(new Object[0])} is identical in function to<br> * {@code toArray()}.<br> *<br> * @param a the array into which the elements of the list are to<br> *          be stored, if it is big enough; otherwise, a new array of the<br> *          same runtime type is allocated for this purpose.<br> * @return an array containing the elements of the list<br> * @throws ArrayStoreException if the runtime type of the specified array<br> *         is not a supertype of the runtime type of every element in<br> *         this list<br> * @throws NullPointerException if the specified array is null<br> */<br>@SuppressWarnings(“unchecked”)<br>public <t> T[] toArray(T[] a) {</t></p>
+<pre><code>if (a.length &lt; size)
+    a = (T\[\])java.lang.reflect.Array.newInstance(a.getClass().getComponentType(), size);
+int i = 0;
+Object\[\] result = a;
+for (Node&lt;E&gt; x = first; x != null; x = x.next)
+    result\[i++\] = x.item;
+if (a.length &gt; size)
+    a\[size\] = null;
+return a;
+</code></pre><p>}<br>private static final long serialVersionUID = 876323262645176354L;<br>/**<br> * Saves the state of this {@code LinkedList} instance to a stream<br> * (that is, serializes it).<br> *<br> * @serialData The size of the list (the number of elements it<br> *             contains) is emitted (int), followed by all of its<br> *             elements (each an Object) in the proper order.<br> */<br>private void writeObject(java.io.ObjectOutputStream s)</p>
+<pre><code>throws java.io.IOException {
+// Write out any hidden serialization magic
+s.defaultWriteObject();
+// Write out size
+s.writeInt(size);
+// Write out all elements in the proper order.
+for (Node&lt;E&gt; x = first; x != null; x = x.next)
+    s.writeObject(x.item);
+</code></pre><p>}<br>/**<br> * Reconstitutes this {@code LinkedList} instance from a stream<br> * (that is, deserializes it).<br> */<br>@SuppressWarnings(“unchecked”)<br>private void readObject(java.io.ObjectInputStream s)</p>
+<pre><code>throws java.io.IOException, ClassNotFoundException {
+// Read in any hidden serialization magic
+s.defaultReadObject();
+// Read in size
+int size = s.readInt();
+// Read in all elements in the proper order.
+for (int i = 0; i &lt; size; i++)
+    linkLast((E)s.readObject());
+</code></pre><p>}<br>/**<br> * Creates a <em><a href="Spliterator.html#binding">late-binding</a></em><br> * and <em>fail-fast</em> {@link Spliterator} over the elements in this<br> * list.<br> *<br> * </p><p>The {@code Spliterator} reports {@link Spliterator#SIZED} and<br> * {@link Spliterator#ORDERED}.  Overriding implementations should document<br> * the reporting of additional characteristic values.<br> *<br> * @implNote<br> * The {@code Spliterator} additionally reports {@link Spliterator#SUBSIZED}<br> * and implements {@code trySplit} to permit limited parallelism..<br> *<br> * @return a {@code Spliterator} over the elements in this list<br> * @since 1.8<br> */<br>@Override<br>public Spliterator<e> spliterator() {</e></p>
+<pre><code>return new LLSpliterator&lt;E&gt;(this, -1, 0);
+</code></pre><p>}<br>/** A customized variant of Spliterators.IteratorSpliterator */<br>static final class LLSpliterator<e> implements Spliterator<e> {</e></e></p>
+<pre><code>static final int BATCH_UNIT = 1 &lt;&lt; 10;  // batch array size increment
+static final int MAX_BATCH = 1 &lt;&lt; 25;  // max batch array size;
+final LinkedList&lt;E&gt; list; // null OK unless traversed
+Node&lt;E&gt; current;      // current node; null until initialized
+int est;              // size estimate; -1 until first needed
+int expectedModCount; // initialized when est set
+int batch;            // batch size for splits
+LLSpliterator(LinkedList&lt;E&gt; list, int est, int expectedModCount) {
+    this.list = list;
+    this.est = est;
+    this.expectedModCount = expectedModCount;
+}
+final int getEst() {
+    int s; // force initialization
+    final LinkedList&lt;E&gt; lst;
+    if ((s = est) &lt; 0) {
+        if ((lst = list) == null)
+            s = est = 0;
+        else {
+            expectedModCount = lst.modCount;
+            current = lst.first;
+            s = est = lst.size;
+        }
+    }
+    return s;
+}
+public long estimateSize() { return (long) getEst(); }
+public Spliterator&lt;E&gt; trySplit() {
+    Node&lt;E&gt; p;
+    int s = getEst();
+    if (s &gt; 1 &amp;&amp; (p = current) != null) {
+        int n = batch + BATCH_UNIT;
+        if (n &gt; s)
+            n = s;
+        if (n &gt; MAX_BATCH)
+            n = MAX_BATCH;
+        Object\[\] a = new Object\[n\];
+        int j = 0;
+        do { a\[j++\] = p.item; } while ((p = p.next) != null &amp;&amp; j &lt; n);
+        current = p;
+        batch = j;
+        est = s - j;
+        return Spliterators.spliterator(a, 0, j, Spliterator.ORDERED);
+    }
+    return null;
+}
+public void forEachRemaining(Consumer&lt;? super E&gt; action) {
+    Node&lt;E&gt; p; int n;
+    if (action == null) throw new NullPointerException();
+    if ((n = getEst()) &gt; 0 &amp;&amp; (p = current) != null) {
+        current = null;
+        est = 0;
+        do {
+            E e = p.item;
+            p = p.next;
+            action.accept(e);
+        } while (p != null &amp;&amp; --n &gt; 0);
+    }
+    if (list.modCount != expectedModCount)
+        throw new ConcurrentModificationException();
+}
+public boolean tryAdvance(Consumer&lt;? super E&gt; action) {
+    Node&lt;E&gt; p;
+    if (action == null) throw new NullPointerException();
+    if (getEst() &gt; 0 &amp;&amp; (p = current) != null) {
+        --est;
+        E e = p.item;
+        current = p.next;
+        action.accept(e);
+        if (list.modCount != expectedModCount)
+            throw new ConcurrentModificationException();
+        return true;
+    }
+    return false;
+}
+public int characteristics() {
+    return Spliterator.ORDERED | Spliterator.SIZED | Spliterator.SUBSIZED;
+}
+</code></pre><p>}<br>}</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/25/hashmap-e6-ba-90-e7-a0-81-e5-89-96-e6-9e-90/" rel="next" title="HashMap源码剖析">
+                <i class="fa fa-chevron-left"></i> HashMap源码剖析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/26/sql-state-null-error-code-17004-e6-97-a0-e6-95-88-e7-9a-84-e5-88-97-e7-b1-bb-e5-9e-8b/" rel="prev" title="SQL state [null]; error code [17004]; 无效的列类型">
+                SQL state [null]; error code [17004]; 无效的列类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

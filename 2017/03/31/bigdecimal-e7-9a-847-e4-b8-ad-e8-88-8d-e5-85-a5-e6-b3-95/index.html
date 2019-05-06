@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="目前java支持7中舍入法： 1、 UP：表示远离零方向舍入。向绝对值最大的方向舍入，只要舍弃位非0即进位。   /*       RoundingMode源码中的注释栗子          Example:                  \ Rounding mode UP Examples         Input Number         \    Input rounded to">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BigDecimal 的7中舍入法">
+<meta property="og:url" content="http://b.zhongmin.me/2017/03/31/bigdecimal-e7-9a-847-e4-b8-ad-e8-88-8d-e5-85-a5-e6-b3-95/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="目前java支持7中舍入法： 1、 UP：表示远离零方向舍入。向绝对值最大的方向舍入，只要舍弃位非0即进位。   /*       RoundingMode源码中的注释栗子          Example:                  \ Rounding mode UP Examples         Input Number         \    Input rounded to">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BigDecimal 的7中舍入法">
+<meta name="twitter:description" content="目前java支持7中舍入法： 1、 UP：表示远离零方向舍入。向绝对值最大的方向舍入，只要舍弃位非0即进位。   /*       RoundingMode源码中的注释栗子          Example:                  \ Rounding mode UP Examples         Input Number         \    Input rounded to">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/03/31/bigdecimal-e7-9a-847-e4-b8-ad-e8-88-8d-e5-85-a5-e6-b3-95/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>BigDecimal 的7中舍入法 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/31/bigdecimal-e7-9a-847-e4-b8-ad-e8-88-8d-e5-85-a5-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BigDecimal 的7中舍入法
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-31 12:44:53" itemprop="dateCreated datePublished" datetime="2017-03-31T12:44:53+08:00">2017-03-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>目前java支持7中舍入法： 1、 UP：表示远离零方向舍入。向绝对值最大的方向舍入，只要舍弃位非0即进位。</p>
+<p>  /*<em><br>       RoundingMode源码中的注释栗子
+         </em></p><p>Example:<br>         <em><table border><br>         \</table></em> <caption><b>Rounding mode UP Examples</b></caption><br>         <em><tr valign="top"><th>Input Number</th><br>         \</tr></em>    <th>Input rounded to one digit<br> with {@code UP} rounding<br>         <em><tr align="right"><td>5.5</td>  <td>6</td>
+         </tr></em></th><tr align="right"><td>2.5</td>  <td>3</td><br>         <em><tr align="right"><td>1.6</td>  <td>2</td>
+         </tr></em></tr><tr align="right"><td>1.1</td>  <td>2</td><br>         <em><tr align="right"><td>1.0</td>  <td>1</td>
+         </tr></em></tr><tr align="right"><td>-1.0</td> <td>-1</td><br>         <em><tr align="right"><td>-1.1</td> <td>-2</td>
+         </tr></em></tr><tr align="right"><td>-1.6</td> <td>-2</td><br>         <em><tr align="right"><td>-2.5</td> <td>-3</td>
+         </tr></em></tr><tr align="right"><td>-5.5</td> <td>-6</td><br>         <em>
+         </em>/</tr></p>
+<p>2、DOWN：趋向零方向舍入。向绝对值最小的方向输入，所有的位都要舍弃，不存在进位情况。</p>
+<p>  /**</p>
+<pre><code>*&lt;p&gt;Example:
+*&lt;table border&gt;
+\* &lt;caption&gt;&lt;b&gt;Rounding mode DOWN Examples&lt;/b&gt;&lt;/caption&gt;
+*&lt;tr valign=top&gt;&lt;th&gt;Input Number&lt;/th&gt;
+\*    &lt;th&gt;Input rounded to one digit&lt;br&gt; with {@code DOWN} rounding
+*&lt;tr align=right&gt;&lt;td&gt;5.5&lt;/td&gt;  &lt;td&gt;5&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;2.5&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.6&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.1&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.0&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.0&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.1&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.6&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-2.5&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-5.5&lt;/td&gt; &lt;td&gt;-5&lt;/td&gt;
+*&lt;/table&gt;
+*/
+</code></pre><p>3、CEILING：向上取值，向正无穷方向舍入。向正最大方向靠拢。若是正数，舍入行为类似于UP，若为负数，舍入行为类似于DOWN。Math.round()方法就是使用的此模式。</p>
+<p> /**</p>
+<pre><code>*&lt;p&gt;Example:
+*&lt;table border&gt;
+\* &lt;caption&gt;&lt;b&gt;Rounding mode CEILING Examples&lt;/b&gt;&lt;/caption&gt;
+*&lt;tr valign=top&gt;&lt;th&gt;Input Number&lt;/th&gt;
+\*    &lt;th&gt;Input rounded to one digit&lt;br&gt; with {@code CEILING} rounding
+*&lt;tr align=right&gt;&lt;td&gt;5.5&lt;/td&gt;  &lt;td&gt;6&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;2.5&lt;/td&gt;  &lt;td&gt;3&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.6&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.1&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.0&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.0&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.1&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.6&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-2.5&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-5.5&lt;/td&gt; &lt;td&gt;-5&lt;/td&gt;
+*&lt;/table&gt;
+*/
+</code></pre><p>4、 FLOOR：向下取值，与CEILING 相反，向负无穷方向舍入。向负无穷方向靠拢。若是正数，舍入行为类似于DOWN；若为负数，舍入行为类似于UP。</p>
+<p> /**</p>
+<pre><code>*&lt;p&gt;Example:
+*&lt;table border&gt;
+\* &lt;caption&gt;&lt;b&gt;Rounding mode FLOOR Examples&lt;/b&gt;&lt;/caption&gt;
+*&lt;tr valign=top&gt;&lt;th&gt;Input Number&lt;/th&gt;
+\*    &lt;th&gt;Input rounded to one digit&lt;br&gt; with {@code FLOOR} rounding
+*&lt;tr align=right&gt;&lt;td&gt;5.5&lt;/td&gt;  &lt;td&gt;5&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;2.5&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.6&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.1&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.0&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.0&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.1&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.6&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-2.5&lt;/td&gt; &lt;td&gt;-3&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-5.5&lt;/td&gt; &lt;td&gt;-6&lt;/td&gt;
+*&lt;/table&gt;
+*/
+</code></pre><p>5、 HALF_UP：最近数字舍入(5进)，不管正负数都是四舍五入。这是我们最经典的四舍五入。</p>
+<p> /**<br>         * Rounding mode to round towards {@literal “nearest neighbor”}</p>
+<pre><code>*&lt;p&gt;Example:
+*&lt;table border&gt;
+\* &lt;caption&gt;&lt;b&gt;Rounding mode HALF_UP Examples&lt;/b&gt;&lt;/caption&gt;
+*&lt;tr valign=top&gt;&lt;th&gt;Input Number&lt;/th&gt;
+\*    &lt;th&gt;Input rounded to one digit&lt;br&gt; with {@code HALF_UP} rounding
+*&lt;tr align=right&gt;&lt;td&gt;5.5&lt;/td&gt;  &lt;td&gt;6&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;2.5&lt;/td&gt;  &lt;td&gt;3&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.6&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.1&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.0&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.0&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.1&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.6&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-2.5&lt;/td&gt; &lt;td&gt;-3&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-5.5&lt;/td&gt; &lt;td&gt;-6&lt;/td&gt;
+*&lt;/table&gt;
+*/
+</code></pre><p>6、 HALF_DOWN：最近数字舍入(5舍)。在这里5是要舍弃的，但是如果5后面还有值那么就会舍5进1。</p>
+<p>  /*<em>
+         </em></p><p>Example:<br>         <em><table border><br>         \</table></em> <caption><b>Rounding mode HALF_DOWN Examples</b></caption><br>         <em><tr valign="top"><th>Input Number</th><br>         \</tr></em>    <th>Input rounded to one digit<br> with {@code HALF_DOWN} rounding<br>         <em><tr align="right"><td>5.5</td>  <td>5</td>
+         </tr></em></th><tr align="right"><td>2.5</td>  <td>2</td><br>         <em><tr align="right"><td>1.6</td>  <td>2</td>
+         </tr></em></tr><tr align="right"><td>1.1</td>  <td>1</td><br>         <em><tr align="right"><td>1.0</td>  <td>1</td>
+         </tr></em></tr><tr align="right"><td>-1.0</td> <td>-1</td><br>         <em><tr align="right"><td>-1.1</td> <td>-1</td>
+         </tr></em></tr><tr align="right"><td>-1.6</td> <td>-2</td><br>         <em><tr align="right"><td>-2.5</td> <td>-2</td>
+         </tr></em></tr><tr align="right"><td>-5.5</td> <td>-5</td><br>         <em>
+         </em>/</tr></p>
+<p>如果5的后面有数字：</p>
+<p> BigDecimal i = new BigDecimal(1.451);<br> i = i.setScale(1, RoundingMode.HALF_UP);<br> System.out.println(i);</p>
+<p>输出结果：1.5</p>
+<p>7、 HAIL_EVEN：银行家舍入法。 因为银行的盈利渠道主要是利息差，它从储户手里收集资金，然后放贷出去，期间产生的利息差就是银行所获得的利润。如果我们采用平常四舍五入的规则话，这里采用每10笔存款利息计算作为模型，如下： 四舍：0.000、0.001、0.002、0.003、0.004。这些舍的都是银行赚的钱。 五入：0.005、0.006、0.007、0.008、0.009。这些入的都是银行亏的钱，分别为：0.005、0.004、.003、0.002、0.001。 所以对于银行来说它的盈利应该是0.000 + 0.001 + 0.002 + 0.003 + 0.004 - 0.005 - 0.004 - 0.003 - 0.002 - 0.001 = -0.005。从结果中可以看出每10笔的利息银行可能就会损失0.005元，千万别小看这个数字，这对于银行来说就是一笔非常大的损失。面对这个问题就产生了如下的银行家涉入法了。该算法是由美国银行家提出了，主要用于修正采用上面四舍五入规则而产生的误差。如下： 舍去位的数值小于5时，直接舍去。 舍去位的数值大于5时，进位后舍去。 当舍去位的数值等于5时，若5后面还有其他非0数值，则进位后舍去，若5后面是0时，则根据5前一位数的奇偶性来判断，奇数进位，偶数舍去。 对于上面的规则我们举例说明 11.556 = 11.56          ——六入 11.554 = 11.55          —–四舍 11.5551 = 11.56         —–五后有数进位 11.545 = 11.54          —–五后无数，若前位为偶数应舍去 11.555 = 11.56          —–五后无数，若前位为奇数应进位</p>
+<p>/**<br>         * Rounding mode to round towards the {@literal “nearest neighbor”}<br>         * unless both neighbors are equidistant, in which case, round<br>         * towards the even neighbor.  Behaves as for<br>         * {@code RoundingMode.HALF_UP} if the digit to the left of the<br>         * discarded fraction is odd; behaves as for<br>         * {@code RoundingMode.HALF_DOWN} if it’s even.  Note that this<br>         * is the rounding mode that statistically minimizes cumulative<br>         * error when applied repeatedly over a sequence of calculations.<br>         * It is sometimes known as {@literal “Banker’s rounding,”} and is<br>         * chiefly used in the USA.  This rounding mode is analogous to<br>         * the rounding policy used for {@code float} and {@code double}<br>         * arithmetic in Java.<br>         <em>
+         </em></p><p>Example:<br>         <em><table border><br>         \</table></em> <caption><b>Rounding mode HALF_EVEN Examples</b></caption><br>         <em><tr valign="top"><th>Input Number</th><br>         \</tr></em>    <th>Input rounded to one digit<br> with {@code HALF_EVEN} rounding<br>         <em><tr align="right"><td>5.5</td>  <td>6</td>
+         </tr></em></th><tr align="right"><td>2.5</td>  <td>2</td><br>         <em><tr align="right"><td>1.6</td>  <td>2</td>
+         </tr></em></tr><tr align="right"><td>1.1</td>  <td>1</td><br>         <em><tr align="right"><td>1.0</td>  <td>1</td>
+         </tr></em></tr><tr align="right"><td>-1.0</td> <td>-1</td><br>         <em><tr align="right"><td>-1.1</td> <td>-1</td>
+         </tr></em></tr><tr align="right"><td>-1.6</td> <td>-2</td><br>         <em><tr align="right"><td>-2.5</td> <td>-2</td>
+         </tr></em></tr><tr align="right"><td>-5.5</td> <td>-6</td><br>         <em>
+         </em>/</tr></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/30/e6-b7-b1-e5-85-a5-e7-90-86-e8-a7-a3java-e7-b1-bb-e5-8a-a0-e8-bd-bd-e6-9c-ba-e5-88-b6/" rel="next" title="深入理解Java类加载机制">
+                <i class="fa fa-chevron-left"></i> 深入理解Java类加载机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/31/spring-e6-b3-a8-e5-85-a5-e5-8e-9f-e7-90-86/" rel="prev" title="spring注入原理">
+                spring注入原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

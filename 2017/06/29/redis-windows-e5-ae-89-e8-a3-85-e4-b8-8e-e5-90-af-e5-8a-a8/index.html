@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Redis 官方下载地址：http://redis.io/download，不过官方没有64位的Windows下的可执行程序，目前有个开源的托管在github上, 地址：https://github.com/ServiceStack/redis-windows 点击这个地方，下载文件并解压到自己的电脑目录下。在https://github.com/ServiceStack/redis-window">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis windows安装与启动">
+<meta property="og:url" content="http://b.zhongmin.me/2017/06/29/redis-windows-e5-ae-89-e8-a3-85-e4-b8-8e-e5-90-af-e5-8a-a8/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="Redis 官方下载地址：http://redis.io/download，不过官方没有64位的Windows下的可执行程序，目前有个开源的托管在github上, 地址：https://github.com/ServiceStack/redis-windows 点击这个地方，下载文件并解压到自己的电脑目录下。在https://github.com/ServiceStack/redis-window">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/06/TYU9UOQ3NMGN1W_9NH.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/06/JJ96821HJLFX@YALOC.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/06/K1I6S5P@SSE7H2Z3XWEZ6W.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/06/21S3UDSFBK5@@MSDJQE.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/06/X2LKZD9E@HOT2P@5HVV.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/06/7QKW3OBF71COZ53I2V6J.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis windows安装与启动">
+<meta name="twitter:description" content="Redis 官方下载地址：http://redis.io/download，不过官方没有64位的Windows下的可执行程序，目前有个开源的托管在github上, 地址：https://github.com/ServiceStack/redis-windows 点击这个地方，下载文件并解压到自己的电脑目录下。在https://github.com/ServiceStack/redis-window">
+<meta name="twitter:image" content="http://zhongmin.me/wp-content/uploads/2017/06/TYU9UOQ3NMGN1W_9NH.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/06/29/redis-windows-e5-ae-89-e8-a3-85-e4-b8-8e-e5-90-af-e5-8a-a8/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Redis windows安装与启动 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/06/29/redis-windows-e5-ae-89-e8-a3-85-e4-b8-8e-e5-90-af-e5-8a-a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis windows安装与启动
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-29 17:30:39" itemprop="dateCreated datePublished" datetime="2017-06-29T17:30:39+08:00">2017-06-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Redis 官方下载地址：<a href="http://redis.io/download" target="_blank" rel="noopener">http://redis.io/download</a>，不过官方没有64位的Windows下的可执行程序，目前有个开源的托管在github上, 地址：<a href="https://github.com/ServiceStack/redis-windows" target="_blank" rel="noopener">https://github.com/ServiceStack/redis-windows</a> 点击这个地方，下载文件并解压到自己的电脑目录下。在<a href="https://github.com/ServiceStack/redis-windows/tree/master/downloads" target="_blank" rel="noopener">https://github.com/ServiceStack/redis-windows/tree/master/downloads</a>可以看见各个版本的安装包. 本文使用版本：<strong>redis64-3.0.501.zip</strong> 解压后目录如下：<img src="http://zhongmin.me/wp-content/uploads/2017/06/TYU9UOQ3NMGN1W_9NH.png" alt></p>
+<p><strong>文件名</strong></p>
+<p><strong>简要</strong></p>
+<p>redis-benchmark.exe</p>
+<p>基准测试</p>
+<p>redis-check-aof.exe</p>
+<p>aof</p>
+<p>redischeck-dump.exe</p>
+<p>dump</p>
+<p>redis-cli.exe</p>
+<p>客户端</p>
+<p>redis-server.exe</p>
+<p>服务器</p>
+<p>redis.windows.conf</p>
+<p>配置文件</p>
+<p>然后编辑<strong>redis.windows.conf</strong>文件，我看网上有的教程说编辑里边<strong>maxheap <bytes> </bytes></strong>,但是3.x版本以后，修改的是 maxmemory <strong><bytes></bytes></strong>, bytes是字节，请自行换算，我这里改成<strong>maxmemory 1024000000</strong>。 其实这个地方可以不用设置，他描述上已经说了，redis会自动设置的。<img src="http://zhongmin.me/wp-content/uploads/2017/06/JJ96821HJLFX@YALOC.png" alt> 设置redis的密码：找到<strong># requirepass foobared</strong> 改为 <strong>requirepass 我的密码</strong> ，本机测试可不设置 <img src="http://zhongmin.me/wp-content/uploads/2017/06/K1I6S5P@SSE7H2Z3XWEZ6W.png" alt> 保存后打开redis的解压目录，shift+鼠标左键找到菜单上：<strong>在此处打开命令行窗口 或</strong> 自行运行cmd命令到此目录 命令如下：</p>
+<p>redis-server.exe redis.windows.conf –maxmemory 200M</p>
+<p>其中–maxmemory 200M是选填的，如果你配置文件redis.windows.conf中配置，这个就可以省去，如果没配置，这个可以加也可以不加，你开心就好<img src="http://zhongmin.me/wp-content/uploads/2017/06/21S3UDSFBK5@@MSDJQE.png" alt> 当出现此界面的时候，说明启动成功，监听端口6379,然后让我们测试一下效果吧 重新打开一个DOS界面，效果如下：<img src="http://zhongmin.me/wp-content/uploads/2017/06/X2LKZD9E@HOT2P@5HVV.png" alt> 如果你设置了redis的密码，则需要在set之前执行auth 密码 命令，否则会提<strong>示(error) NOAUTH Authentication required.</strong> <img src="http://zhongmin.me/wp-content/uploads/2017/06/7QKW3OBF71COZ53I2V6J.png" alt> 最后说一下将redis加到Windows服务中。首先还是要启动redis服务器端，然后在运行redis客户端，然后通过Windows的service-install命令，输入</p>
+<p>redis-server –service-install redis.windows.conf –loglevel verbose</p>
+<p>以后就可以使用win的服务启动，而不需要每次都要打开一个DOS界面启动了。 推荐redis技术阅读：<a href="http://www.cnblogs.com/hoojo/p/4466024.html" target="_blank" rel="noopener">http://www.cnblogs.com/hoojo/p/4466024.html</a> 推荐redis桌面客户端：<a href="http://www.oschina.net/p/redis-studio" target="_blank" rel="noopener">http://www.oschina.net/p/redis-studio</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag"># Redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/12/java-poi-e8-af-bb-e5-8f-96excel-e6-96-87-e4-bb-b6/" rel="next" title="Java poi读取Excel文件">
+                <i class="fa fa-chevron-left"></i> Java poi读取Excel文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/30/java-e5-8f-8d-e5-b0-84-e7-9a-84-e4-b8-80-e4-ba-9b-e7-9f-a5-e8-af-86-e7-82-b9/" rel="prev" title="Java反射的一些知识点">
+                Java反射的一些知识点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

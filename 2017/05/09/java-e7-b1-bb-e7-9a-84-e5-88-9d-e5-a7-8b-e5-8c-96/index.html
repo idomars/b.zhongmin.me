@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="先总结一下一个对象的创建过程，假如有一个名为Dog的类: 1.即使没有显式的使用static关键字，即没有static成员方法或者代码块，构造器实际是一个静态的方法。因此当首次创建Dog对象，或者首次访问Dog类中的静态方法、静态域时，Java解释器必须查找类路径，已定位Dog.class文件。 2.然后会载入Dog.class文件（这将创建一个Class对象），有关静态初始化的所有动作都会执行。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java类的初始化">
+<meta property="og:url" content="http://b.zhongmin.me/2017/05/09/java-e7-b1-bb-e7-9a-84-e5-88-9d-e5-a7-8b-e5-8c-96/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="先总结一下一个对象的创建过程，假如有一个名为Dog的类: 1.即使没有显式的使用static关键字，即没有static成员方法或者代码块，构造器实际是一个静态的方法。因此当首次创建Dog对象，或者首次访问Dog类中的静态方法、静态域时，Java解释器必须查找类路径，已定位Dog.class文件。 2.然后会载入Dog.class文件（这将创建一个Class对象），有关静态初始化的所有动作都会执行。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java类的初始化">
+<meta name="twitter:description" content="先总结一下一个对象的创建过程，假如有一个名为Dog的类: 1.即使没有显式的使用static关键字，即没有static成员方法或者代码块，构造器实际是一个静态的方法。因此当首次创建Dog对象，或者首次访问Dog类中的静态方法、静态域时，Java解释器必须查找类路径，已定位Dog.class文件。 2.然后会载入Dog.class文件（这将创建一个Class对象），有关静态初始化的所有动作都会执行。">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/05/09/java-e7-b1-bb-e7-9a-84-e5-88-9d-e5-a7-8b-e5-8c-96/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java类的初始化 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/09/java-e7-b1-bb-e7-9a-84-e5-88-9d-e5-a7-8b-e5-8c-96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java类的初始化
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-09 21:33:23" itemprop="dateCreated datePublished" datetime="2017-05-09T21:33:23+08:00">2017-05-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先总结一下一个对象的创建过程，假如有一个名为Dog的类: 1.即使没有显式的使用static关键字，即没有static成员方法或者代码块，构造器实际是一个静态的方法。因此当首次创建Dog对象，或者首次访问Dog类中的静态方法、静态域时，Java解释器必须查找类路径，已定位Dog.class文件。 2.然后会载入Dog.class文件（这将创建一个Class对象），有关静态初始化的所有动作都会执行。因此静态初始化只在Class对象首次访问的时候进行一次。 3.这块存储空间将被清零，这就自动的将Dog对象中的所有基本类型的数据都设置成了默认值,(对数字来说就是0，布尔类型的为false,char为0,String类型为null),而对象的引用会赋予默认值null. 4.执行所有出现于对象定义处的初始化动作。 6.执行构造器。这会涉及到继承的问题。 这段总结摘自于Think In Java P96页。</p>
+<h4 id="Q1：访问类的静态域是否会执行所有的静态代码块？"><a href="#Q1：访问类的静态域是否会执行所有的静态代码块？" class="headerlink" title="Q1：访问类的静态域是否会执行所有的静态代码块？"></a>Q1：访问类的静态域是否会执行所有的静态代码块？</h4><p>public class TestClassLoad {<br>    public static void main(String[] args) {<br>       int i = Window.i;<br>    }<br>}<br>class Window{<br>    static int i = 10;<br>    static {<br>        System.out.println(“window中static初始化块”);<br>    }<br>    static void f(){<br>        System.out.println(“window中static方法”);<br>    }<br>    Window(int marker){<br>        System.out.println(“Window(“+marker+”)”);<br>    }<br>    Window(){<br>        System.out.println(“Window()”);<br>    }<br>}</p>
+<p>输出结果如下：</p>
+<p>window中static初始化块</p>
+<p>发现只执行了静态代码块中的代码，而构造器并没有执行，那么与第一点说构造器实际上是一个静态方法又相互矛盾了。查了一些资料，其实构造器并不是一个静态方法只是具有静态方法的一些特性，可以看做静态方法。 关于构造器是否是静态方法可以参考这篇文章：<a href="http://rednaxelafx.iteye.com/blog/652719" target="_blank" rel="noopener">http://rednaxelafx.iteye.com/blog/652719</a> 对于第三点这块存储空间将会被清0，是指创建dog对象的时候需要在heap上分配足够的内存，这块内会先被清零。</p>
+<h4 id="Q2-静态成员变量的初始化在静态代码执行前还是执行后？"><a href="#Q2-静态成员变量的初始化在静态代码执行前还是执行后？" class="headerlink" title="Q2:静态成员变量的初始化在静态代码执行前还是执行后？"></a>Q2:静态成员变量的初始化在静态代码执行前还是执行后？</h4><p>public class TestClassLoad {<br>    public static void main(String[] args) {<br>       int i = Window.i;<br>        System.out.println(“Window.i=”+i);<br>    }<br>}<br>class Window{<br>    static int i = 10;<br>    static {<br>        i = 20;<br>        System.out.println(“window中static初始化块”);<br>    }<br>}</p>
+<p>输出结果为：</p>
+<p>window中static初始化块<br>Window.i=20</p>
+<p>结果i=20说明静态成员变量的初始化在静态代码块之前。</p>
+<h4 id="Q3-对于第6点-如果Dog类存在父类，初始化顺序又是怎样？"><a href="#Q3-对于第6点-如果Dog类存在父类，初始化顺序又是怎样？" class="headerlink" title="Q3:对于第6点,如果Dog类存在父类，初始化顺序又是怎样？"></a>Q3:对于第6点,如果Dog类存在父类，初始化顺序又是怎样？</h4><p>class Parent{<br>    public static String age = f(“parent static age”);<br>    public String weight= f(“parent weight”);<br>    public static String name = “parent”;<br>    {<br>        System.out.println(“parent中的初始化块”);<br>    }<br>    static{<br>        System.out.println(“parent中static初始化块”);<br>    }<br>    public static String f(String i){<br>        System.out.println(i+”初始化”);<br>        return “20”;<br>    }<br>    public Parent(){<br>        System.out.println(“parent构造方法”);<br>    }<br>}</p>
+<p>class Son extends Parent{<br>    public static String height = f(“son static height”);<br>    public String sonage= f(“son sonage”);<br>    public static String name = “son”;<br>    {<br>        System.out.println(“son中的初始化块”);<br>    }<br>    static{<br>        System.out.println(“son中的static初始化块”);<br>    }<br>    public Son(){<br>        System.out.println(“son构造方法”);<br>    }<br>}<br>public class TestClassLoad {<br>    public static void main(String[] args) {<br>        Parent p = new Son();<br>        Parent p2 = new Son();<br>    }<br>}</p>
+<p>输出结果为:</p>
+<p>parent static age初始化<br>parent中static初始化块<br>son static height初始化<br>son中的static初始化块<br>parent weight初始化<br>parent中的初始化块<br>parent构造方法<br>son sonage初始化<br>son中的初始化块<br>son构造方法<br>---------------------------------</p>
+<p>##下面是p2 = new Son()打印的结果<br>parent weight初始化<br>parent中的初始化块<br>parent构造方法<br>son sonage初始化<br>son中的初始化块<br>son构造方法</p>
+<p>由此可见：属性、方法、构造方法和自由块都是类中的成员，在创建类的对象时，类中各成员的执行顺序： 1.父类静态成员和静态初始化快，按在代码中出现的顺序依次执行。 2.子类静态成员和静态初始化块，按在代码中出现的顺序依次执行。 3. 父类的实例成员和实例初始化块，按在代码中出现的顺序依次执行。 4.执行父类的构造方法。 5.子类实例成员和实例初始化块，按在代码中出现的顺序依次执行。 6.执行子类的构造方法。 初始化块主要用于对象的初始化操作，在创建对象时调用，可以用于完成初始化属性值、加载其他的类的功能。 初始化块和构造方法功能类似，可以再创建对象的时候完成一些初始化的操作，一般的情况下，构造方法初始化和初始化块初始化可以通用。 构造方法在初始化的时候可以通过参数船只，但是初始化块不能，初始化块的初始化在构造方法之前执行，如果搞糟方法多次重载，此时可以考虑构造方法中共通的代码放到初始化块中进行初始化。 静态初始化块和非晶态初始化块的区别？ 非静态初始化块主要是用于对象的初始化操作，在每次创建对象的时都要调用一次，其执行顺序在构造方法之前。 在初始化块之前有static修饰，则为静态初始化块。由于非静态成员不能再静态方法中使用，同样也不能在静态初始化块中，因此，静态初始化块主要用于初始化静态变量和静态方法，静态初始化块只调用一次，是在类的第一次加载到内存时，并非一定要创建对象才执行， 静态初始化块比非静态初始化块先执行。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/09/wordpress-e6-97-a0-e6-b3-95-e5-b0-86-e4-b8-8a-e4-bc-a0-e7-9a-84-e6-96-87-e4-bb-b6-e7-a7-bb-e5-8a-a8-e8-87-b3wp-contentuploads-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/" rel="next" title="wordpress无法将上传的文件移动至wp-content/uploads的解决方法">
+                <i class="fa fa-chevron-left"></i> wordpress无法将上传的文件移动至wp-content/uploads的解决方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/14/druid-e9-85-8d-e7-bd-ae-e6-95-b0-e6-8d-ae-e5-ba-93-e8-bf-9e-e6-8e-a5-e4-bd-bf-e7-94-a8-e5-af-86-e6-96-87-e5-af-86-e7-a0-81/" rel="prev" title="druid配置数据库连接使用密文密码">
+                druid配置数据库连接使用密文密码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q1：访问类的静态域是否会执行所有的静态代码块？"><span class="nav-number">1.</span> <span class="nav-text">Q1：访问类的静态域是否会执行所有的静态代码块？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q2-静态成员变量的初始化在静态代码执行前还是执行后？"><span class="nav-number">2.</span> <span class="nav-text">Q2:静态成员变量的初始化在静态代码执行前还是执行后？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q3-对于第6点-如果Dog类存在父类，初始化顺序又是怎样？"><span class="nav-number">3.</span> <span class="nav-text">Q3:对于第6点,如果Dog类存在父类，初始化顺序又是怎样？</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

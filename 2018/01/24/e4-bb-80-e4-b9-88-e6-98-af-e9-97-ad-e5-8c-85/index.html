@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1. 组合子（Combinator） 普通我们常说的一个“函数”： f(x,y)=x+y 函数有两个“自变量”（术语：约束变量），x和y。函数的返回值，也就是应变量，是自变量一系列操作的结果。比如例子里是返回x和y的和。这样的一个它内部操作依赖的变量全部由参数提供了的”自给自足“的函数，叫“组合子（Combinator）”。  Java代码表示就是： public int add(int x, i">
+<meta name="keywords" content="Java,涨姿势">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是闭包">
+<meta property="og:url" content="http://b.zhongmin.me/2018/01/24/e4-bb-80-e4-b9-88-e6-98-af-e9-97-ad-e5-8c-85/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="1. 组合子（Combinator） 普通我们常说的一个“函数”： f(x,y)=x+y 函数有两个“自变量”（术语：约束变量），x和y。函数的返回值，也就是应变量，是自变量一系列操作的结果。比如例子里是返回x和y的和。这样的一个它内部操作依赖的变量全部由参数提供了的”自给自足“的函数，叫“组合子（Combinator）”。  Java代码表示就是： public int add(int x, i">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2018/01/9KH57E_IJJD48II8O-375x176.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2018/01/D6ECO@YBMWHSZ82-375x142.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2018/01/7FZZAGHC85LK8@KLYD8FN.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2018/01/RPE_8@Y99C5GDLWVLEJ.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="什么是闭包">
+<meta name="twitter:description" content="1. 组合子（Combinator） 普通我们常说的一个“函数”： f(x,y)=x+y 函数有两个“自变量”（术语：约束变量），x和y。函数的返回值，也就是应变量，是自变量一系列操作的结果。比如例子里是返回x和y的和。这样的一个它内部操作依赖的变量全部由参数提供了的”自给自足“的函数，叫“组合子（Combinator）”。  Java代码表示就是： public int add(int x, i">
+<meta name="twitter:image" content="http://zhongmin.me/wp-content/uploads/2018/01/9KH57E_IJJD48II8O-375x176.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/01/24/e4-bb-80-e4-b9-88-e6-98-af-e9-97-ad-e5-8c-85/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>什么是闭包 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/24/e4-bb-80-e4-b9-88-e6-98-af-e9-97-ad-e5-8c-85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">什么是闭包
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-24 19:02:16" itemprop="dateCreated datePublished" datetime="2018-01-24T19:02:16+08:00">2018-01-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>1. 组合子（Combinator）</strong> 普通我们常说的一个“<strong>函数</strong>”：</p>
+<p>f(x,y)=x+y</p>
+<p>函数有两个“自变量”（<strong>术语：约束变量</strong>），x和y。函数的返回值，也就是应变量，是自变量一系列操作的结果。比如例子里是返回x和y的和。这样的一个它内部操作依赖的变量全部由参数提供了的”<strong>自给自足</strong>“的函数，叫“<strong>组合子（Combinator）</strong>”。 <img src="http://zhongmin.me/wp-content/uploads/2018/01/9KH57E_IJJD48II8O-375x176.png" alt> Java代码表示就是：</p>
+<p>public int add(int x, int y){<br>    return x+y;<br>}</p>
+<p>换到编程的概念，强调的就是函数的<strong>“作用域”</strong>。大多数编程语言都是用一对花括号<strong>“{}”</strong>标识出作用域。上面代码里的add()函数被调用之后， <strong>int sum=add(2,3);</strong> 编译器编译之后，可以理解成是这个样子，函数的参数x和y，是包含在函数add()的作用域里的。</p>
+<p>add(){<br>    int x=2;<br>    int y=3;<br>    return x+y;<br>}</p>
+<p>或者，函数像下面这样写也可以。这时候x作为函数参数出现，而y作为函数局部变量出现。效果和上面的例子是一样的。</p>
+<p>public int add(int x){<br>    int y=3;<br>    return x+y;<br>}</p>
+<p><strong>2. 自由变量</strong> 但有的时候，函数也可以有它自身作用域以外的参数参与。这些在函数作用域以外，由函数的外部环境提供的参数就叫“<strong>自由变量（Free Variable）</strong>”。比如下面这个函数返回x和y 的和。这里的y就是自由变量。</p>
+<p>f(x)=x+y</p>
+<p>写成代码就是这样，</p>
+<p>int y=3;<br>add(){<br>    int x=2;<br>    return x+y;<br>}</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2018/01/D6ECO@YBMWHSZ82-375x142.png" alt> <strong>3. 闭包（Closure）</strong> 大白话不怎么严谨的说法就是三点：</p>
+<ol>
+<li>一个依赖于自由变量的函数</li>
+<li>处在含有这些自由变量的一个外围环境</li>
+<li>这个函数能够访问外围环境里的自由变量</li>
+</ol>
+<p>看下面这个Javascript闭包的例子：</p>
+<p>function Add(y) {<br>    return function(x) {<br>        return x + y<br>    }<br>}</p>
+<p>对内部函数function(x)来讲，y就是自由变量，而且function(x)的返回值，依赖于这个外部自由变量y。而往上推一层，外围Add(y)函数正好就是那个包含自由变量y的环境。而且Javascript的语法允许内部函数function(x)访问外部函数Add(y)的局部变量。满足这三个条件，所以这个时候，外部函数Add(y)对内部函数function(x)构成了闭包。 闭包的结构，如果用<strong>λ演算</strong>表达式来写，就是多参数的<strong>Currying</strong>技术。 > <strong>λx.λy.x+y</strong> 但在Java中我们看不到这样的结构。因为Java主流语法不允许这样的直接的函数套嵌和跨域访问变量。 <strong>4. 类和对象</strong> 但Java中真的不存在闭包吗？正好相反，Java到处都是闭包，所以反而我们感觉不出来在使用闭包。因为Java的“对象”其实就是一个闭包。其实无论是闭包也好，对象也好，都是一种数据封装的手段。看下面这个类，</p>
+<p>class Add{<br>    private int x=2;<br>    public int add(){<br>    int y=3;<br>        return x+y;<br>    }<br>}</p>
+<p>看上去x在函数add()的作用域外面，但是通过Add类实例化的过程，变量”x“和数值”2“之间已经绑定了，而且和函数add()也已经打包在一起。add()函数其实是透过this关键字来访问对象的成员字段的。 <strong>5. 内部类是闭包：包含指向外部类的指针</strong> Java中的内部类就是一个典型的闭包结构。代码如下</p>
+<p>public class Outer {<br>    private class Inner{<br>        private x=100;<br>        public int innerAdd(){<br>            return x+y;<br>        }<br>    }<br>    private int y=100;<br>}</p>
+<p>下图画的就是上面代码的结构。内部类（Inner Class）通过包含一个指向外部类的引用，做到自由访问外部环境类的所有字段，变相把环境中的自由变量封装到函数里，形成一个闭包: <img src="http://zhongmin.me/wp-content/uploads/2018/01/7FZZAGHC85LK8@KLYD8FN.png" alt> ====================================================== SICP中是这样说的， <img src="http://zhongmin.me/wp-content/uploads/2018/01/RPE_8@Y99C5GDLWVLEJ.png" alt> 闭包也是一种为表示带有自由变量的过程而用的实用技术。 那么第一个问题来了，什么是自由变量？ 举例子吧，</p>
+<p>f(x,y) = x+y+z</p>
+<p>在函数 f 中，x和y是约束变量，z为自由变量。 另一个C语言版的例子，（用C只为说明概念，代码的正确性不做保证）</p>
+<p>int add(int x, int y){<br>  return x + y + z;<br>}</p>
+<p>在函数add中，x和y是约束变量，z为自由变量。同样在一个代码块中，如果某个变量在这个代码块中没被定义过，那么这个变量就可以被认为是一个自由变量。 在定义了自由变量的基础上，我们可以来定义闭包了。很简单，一句话， 定义中含有自由变量的函数叫闭包。</p>
+<p>前面提到的 add 函数就是一个闭包，因为它含有自由变量z。 请注意，这个定义来自于Lisp社团，Haskell社区（<a href="https://link.zhihu.com/?target=https%3A//wiki.haskell.org/Closure" target="_blank" rel="noopener">Closure - HaskellWiki</a>）。显然和《The Swift programming langauge》中Closure（<a href="https://link.zhihu.com/?target=https%3A//numbbbbb.gitbooks.io/-the-swift-programming-language-/content/chapter2/07_Closures.html" target="_blank" rel="noopener">闭包 | 《The Swift Programming Language》中文版</a>）的定义不完全相同。 Haskell社区把函数分为两类，一种为闭包，另一种和闭包相对的叫组合子（<a href="https://link.zhihu.com/?target=https%3A//wiki.haskell.org/Combinator" target="_blank" rel="noopener">Combinator - HaskellWiki</a>）。</p>
+<p>不含自由变量的函数叫组合子。</p>
+<p>如果再构造一个新的函数addz，</p>
+<p>int addz(int x, int y, int z){<br>  return add(x, y);<br>}</p>
+<p>addz就是一个组合子。 然而在《The Swift programming langauge》中， 全局函数是一个有名字但不会捕获任何值的闭包 全局函数（本质上是一个有名字的组合子）被归为闭包的一种特殊形式。 不管怎样，闭包不过是对某种程序结构起的一个名字，定义是次要的，知道怎么用才是重要的。但是它有什么用呢？ 还是举例子，下面的例子来自SICP第三章，但是用javascript改写（本打算用python改写的，但是python的闭包更像是科里化（Currying），不如scheme，swift，javaScript等语言的闭包强大 [这个说法没有得到验证，需要精通python的高手给予解释] ）。 从银行账户中取款时，每一次取款都会更新账户余额balance，</p>
+<p>function makeAccount(balance){<br>    function withdraw(amount){<br>        balance = balance - amount;<br>        return balance;<br>    }<br>    return withdraw;<br>}</p>
+<p>在上边的代码中，withdraw（是一个闭包）作为函数makeAccount的返回值，这样withdraw不仅仅单纯作为一个函数存在，而且携带着balance变量。 接下来我们可以生成withdraw闭包，每一个withdraw闭包都携带一个balance变量</p>
+<p>var withdraw1 = makeAccount(100);             // withdraw1 is a closure here.<br>withdraw1(10);<br>// => 90<br>withdraw1(30);<br>// => 60</p>
+<p>我们还可以生成不止一个withdraw闭包，而且各个闭包之间是相互独立的。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/涨姿势/" rel="tag"># 涨姿势</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/16/jaxb-e5-ae-9e-e7-8e-b0java-e5-af-b9-e8-b1-a1-e4-b8-8exml-e4-b9-8b-e9-97-b4-e4-ba-92-e7-9b-b8-e8-bd-ac-e6-8d-a2/" rel="next" title="JAXB 实现java对象与xml之间互相转换">
+                <i class="fa fa-chevron-left"></i> JAXB 实现java对象与xml之间互相转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/25/java-e4-b8-ba-e4-bb-80-e4-b9-88-e5-8c-bf-e5-90-8d-e5-86-85-e9-83-a8-e7-b1-bb-e7-9a-84-e5-8f-82-e6-95-b0-e5-bc-95-e7-94-a8-e6-97-b6final-ef-bc-9f/" rel="prev" title="java为什么匿名内部类的参数引用时final？">
+                java为什么匿名内部类的参数引用时final？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

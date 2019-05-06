@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="摘 要：介绍了Servlet多线程机制，通过一个实例并结合Java 的内存模型说明引起Servlet线程不安全的原因，给出了保证Servlet线程安全的三种解决方案，并说明三种方案在实际开发中的取舍。 Servlet/JSP技术和ASP、PHP等相比，由于其多线程运行而具有很高的执行效率。由于Servlet/JSP默认是以多线程模式执行的，所 以，在编写代码时需要非常细致地考虑多线程的安全性问题">
+<meta name="keywords" content="Java,servlet,线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet线程安全性问题">
+<meta property="og:url" content="http://b.zhongmin.me/2017/02/28/servlet-e7-ba-bf-e7-a8-8b-e5-ae-89-e5-85-a8-e6-80-a7-e9-97-ae-e9-a2-98/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="摘 要：介绍了Servlet多线程机制，通过一个实例并结合Java 的内存模型说明引起Servlet线程不安全的原因，给出了保证Servlet线程安全的三种解决方案，并说明三种方案在实际开发中的取舍。 Servlet/JSP技术和ASP、PHP等相比，由于其多线程运行而具有很高的执行效率。由于Servlet/JSP默认是以多线程模式执行的，所 以，在编写代码时需要非常细致地考虑多线程的安全性问题">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/02/2012090713422194.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/02/2012090713484742.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/02/2012090713513288.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/02/2012090713520185.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Servlet线程安全性问题">
+<meta name="twitter:description" content="摘 要：介绍了Servlet多线程机制，通过一个实例并结合Java 的内存模型说明引起Servlet线程不安全的原因，给出了保证Servlet线程安全的三种解决方案，并说明三种方案在实际开发中的取舍。 Servlet/JSP技术和ASP、PHP等相比，由于其多线程运行而具有很高的执行效率。由于Servlet/JSP默认是以多线程模式执行的，所 以，在编写代码时需要非常细致地考虑多线程的安全性问题">
+<meta name="twitter:image" content="http://zhongmin.me/wp-content/uploads/2017/02/2012090713422194.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/02/28/servlet-e7-ba-bf-e7-a8-8b-e5-ae-89-e5-85-a8-e6-80-a7-e9-97-ae-e9-a2-98/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Servlet线程安全性问题 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/02/28/servlet-e7-ba-bf-e7-a8-8b-e5-ae-89-e5-85-a8-e6-80-a7-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Servlet线程安全性问题
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-28 11:29:43" itemprop="dateCreated datePublished" datetime="2017-02-28T11:29:43+08:00">2017-02-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>　摘 要</strong>：介绍了Servlet多线程机制，通过一个实例并结合Java 的内存模型说明引起Servlet线程不安全的原因，给出了保证Servlet线程安全的三种解决方案，并说明三种方案在实际开发中的取舍。 Servlet/JSP技术和ASP、PHP等相比，由于其多线程运行而具有很高的执行效率。由于Servlet/JSP默认是以多线程模式执行的，所 以，在编写代码时需要非常细致地考虑多线程的安全性问题。然而，很多人编写Servlet/JSP程序时并没有注意到多线程安全性的问题，这往往造成编写 的程序在少量用户访问时没有任何问题，而在并发用户上升到一定值时，就会经常出现一些莫明其妙的问题。 <strong>Servlet的多线程机制</strong> Servlet体系结构是建立在Java多线程机制之上的，它的生命周期是由Web容器负责的。当客户端第一次请求某个Servlet时，Servlet容器将会根据web.xml配置文件实例化这个Servlet类。当有新的客户端请求该Servlet时，一般不会再实例化该Servlet类，也就是有多个线程在使用这个实例。Servlet容器会自动使用线程池等技术来支持系统的运行，如图1所示。 <img src="http://zhongmin.me/wp-content/uploads/2017/02/2012090713422194.png" alt> 这样，当两个或多个线程同时访问同一个Servlet时，可能会发生多个线程同时访问同一资源的情况，数据可能会变得不一致。所以在用Servlet构建的Web应用时如果不注意线程安全的问题，会使所写的Servlet程序有难以发现的错误。 <strong>Servlet的线程安全问题 </strong> Servlet的线程安全问题主要是由于实例变量使用不当而引起的，这里以一个现实的例子来说明。</p>
+<p> 1 public class ConcurrentTest extends HttpServlet {<br> 2     PrintWriter output;<br> 3     @Override<br> 4     protected void service(HttpServletRequest request, HttpServletResponse response)<br> 5             throws ServletException, IOException {<br> 6         String  username;<br> 7         response.setContentType(“text/html;charset=gb2312”);<br> 8         username=request.getParameter(“username”);<br> 9         output=response.getWriter();<br>10         try {<br>11             //为了突出并发问题，在这设置一个延时<br>12             Thread.sleep(5000);<br>13             output.println(“用户名:”+username+”<br>“);<br>14         } catch (Exception e) {<br>15             e.printStackTrace();<br>16         }<br>17     }<br>18 }</p>
+<p>该Servlet中定义了一个实例变量output，在service方法将其赋值为用户的输出。当一个用户访问该Servlet时，程序会正常的运行，但当多个用户并发访问时，就可能会出现其它用户的信息显示在另外一些用户的浏览器上的问题。这是一个严重的问题。为了突出并发问题，便于测试、观察，我们在回显用户信息时执行了一个延时的操作。假设已在web.xml配置文件中注册了该Servlet，现有两个用户a和b同时访问该Servlet（可以启动两个IE浏览器，或者在两台机器上同时访问）,即同时在浏览器中输入：</p>
+<p>a： <a href="http://localhost:8080/ServletTest/ConcurrentTest?Username=a" target="_blank" rel="noopener">http://localhost:8080/ServletTest/ConcurrentTest?Username=a</a> b： <a href="http://localhost:8080/ServletTest/ConcurrentTest?Username=b" target="_blank" rel="noopener">http://localhost:8080/ServletTest/ConcurrentTest?Username=b</a> 如果用户b比用户a回车的时间稍慢一点，将得到如图2所示的输出： <img src="http://zhongmin.me/wp-content/uploads/2017/02/2012090713484742.png" alt></p>
+<p>图2 a用户和b用户的浏览器输出</p>
+<p>从图2中可以看到，Web服务器启动了两个线程分别处理来自用户a和用户b的请求，但是在用户a的浏览器上却得到一个空白的屏幕，用户a的信息显示在用户b的浏览器上。该Servlet存在线程不安全问题。下面我们就从分析该实例的内存模型入手,观察不同时刻实例变量output的值来分析使该Servlet线程不安全的原因。 Java的内存模型JMM（Java Memory Model）JMM主要是为了规定了线程和内存之间的一些关系。<strong>根据JMM的设计，系统存在一个主内存(Main Memory)，Java中所有实例变量都储存在主存中，对于所有线程都是共享的。每条线程都有自己的工作内存(Working Memory)，工作内存由缓存和堆栈两部分组成，缓存中保存的是主存中变量的拷贝，缓存可能并不总和主存同步，也就是缓存中变量的修改可能没有立刻写到主存中；堆栈中保存的是线程的局部变量，线程之间无法相互直接访问堆栈中的变量。</strong>根据JMM，我们可以将论文中所讨论的Servlet实例的内存模型抽象为图3所示的模型。 <img src="http://zhongmin.me/wp-content/uploads/2017/02/2012090713513288.png" alt> 下面根据图3所示的内存模型，来分析当用户a和b的线程（简称为a线程、b线程）并发执行时，Servlet实例中所涉及变量的变化情况及线程的执行情况，如图4所示。 <img src="http://zhongmin.me/wp-content/uploads/2017/02/2012090713520185.png" alt> 从图4中可以清楚的看到，由于b线程对实例变量output的修改覆盖了a线程对实例变量output的修改，从而导致了用户a的信息显示在了用户b的浏览器上。如果在a线程执行输出语句时，b线程对output的修改还没有刷新到主存，那么将不会出现图2所示的输出结果，因此这只是一种偶然现象，但这更增加了程序潜在的危险性。 <strong>设计线程安全的Servlet</strong> 通过上面的分析，我们知道了<strong>实例变量不正确的使用是造成Servlet线程不安全的主要原因。</strong>下面针对该问题给出了三种解决方案并对方案的选取给出了一些参考性的建议。 1、实现 SingleThreadModel 接口 该接口指定了系统如何处理对同一个Servlet的调用。如果一个Servlet被这个接口指定,那么在这个Servlet中的service方法将不会有两个线程被同时执行，当然也就不存在线程安全的问题。这种方法只要将前面的Concurrent Test类的类头定义更改为：</p>
+<p>1 public class ConcurrentTest extends HttpServlet implements SingleThreadModel  {<br>2       …  …<br>3 }</p>
+<p>javax.servlet.SingleThreadModel API及其翻译 Ensures that servlets handle only one request at a time. This interface has no methods. <strong>确保servlet每次只处理一项请求。接口不含方法。</strong> If a servlet implements this interface, you are <em>guaranteed</em> that no two threads will execute concurrently in the servlet’s <code>service</code> method. The servlet container can make this guarantee by synchronizing access to a single instance of the servlet, or by maintaining a pool of servlet instances and dispatching each new request to a free servlet. <strong>如果servlet实现了该接口，会确保不会有两个线程同时执行servlet的service方法。 servlet容器通过同步化访问servlet的单实例来保证，也可以通过维持servlet的实例池，对于新的请求会分配给一个空闲的servlet。</strong> Note that SingleThreadModel does not solve all thread safety issues. For example, session attributes and static variables can still be accessed by multiple requests on multiple threads at the same time, even when SingleThreadModel servlets are used. It is recommended that a developer take other means to resolve those issues instead of implementing this interface, such as avoiding the usage of an instance variable or synchronizing the block of the code accessing those resources. This interface is deprecated in Servlet API version 2.4. <strong>注意：SingleThreadModel不会解决所有的线程安全隐患。</strong> 例如，会话属性和静态变量仍然可以被多线程的多请求同时访问，即便使用了SingleThreadModel servlet。<strong>建议开发人员应当采取其他手段来解决这些问题，而不是实现该接口，比如 避免实例变量的使用或者在访问资源时同步代码块。该接口在Servlet　API 2.4中将不推荐使用。</strong> 2、同步对共享数据的操作 使用synchronized 关键字能保证一次只有一个线程可以访问被保护的区段，在本论文中的Servlet可以通过同步块操作来保证线程的安全。同步后的代码如下：</p>
+<p> 1 public class ConcurrentTest extends HttpServlet {<br> 2     PrintWriter output;<br> 3     @Override<br> 4     protected void service(HttpServletRequest request, HttpServletResponse response)<br> 5             throws ServletException, IOException {<br> 6         String  username;<br> 7         response.setContentType(“text/html;charset=gb2312”);<br> 8         username=request.getParameter(“username”);<br> 9         synchronized(this){<br>10             output=response.getWriter();<br>11             try {<br>12                 //为了突出并发问题，在这设置一个延时<br>13                 Thread.sleep(5000);<br>14                 output.println(“用户名:”+username+”<br>“);<br>15             } catch (Exception e) {<br>16                 e.printStackTrace();<br>17             }<br>18         }<br>19     }<br>20 }</p>
+<p>　　3、避免使用实例变量</p>
+<p>本实例中的线程安全问题是由实例变量造成的，只要在Servlet里面的任何方法里面都不使用实例变量，那么该Servlet就是线程安全的。 修正上面的Servlet代码，将实例变量改为局部变量实现同样的功能，代码如下：</p>
+<p> 1 public class ConcurrentTest extends HttpServlet {<br> 2     @Override<br> 3     protected void service(HttpServletRequest request, HttpServletResponse response)<br> 4             throws ServletException, IOException {<br> 5         PrintWriter output;<br> 6         String username;<br> 7         response.setContentType(“text/html;charset=gb2312”);<br> 8         username=request.getParameter(“username”);<br> 9         synchronized(this){<br>10             output=response.getWriter();<br>11             try {<br>12                 //为了突出并发问题，在这设置一个延时<br>13                 Thread.sleep(5000);<br>14                 output.println(“用户名:”+username+”<br>“);<br>15             } catch (Exception e) {<br>16                 e.printStackTrace();<br>17             }<br>18         }<br>19     }<br>20 }</p>
+<pre><code>对上面的三种方法进行测试，可以表明用它们都能设计出线程安全的Servlet程序。但是，如果一个Servlet实现了SingleThreadModel接口，Servlet引擎将为每个新的请求创建一个单独的Servlet实例，这将引起大量的系统开销。SingleThreadModel在Servlet2.4中已不再提倡使用；同样如果在程序中使用同步来保护要使用的共享的数据，也会使系统的性能大大下降。这是因为被同步的代码块在同一时刻只能有一个线程执行它，使得其同时处理客户请求的吞吐量降低，而且很多客户处于阻塞状态。另外为保证主存内容和线程的工作内存中的数据的一致性，要频繁地刷新缓存,这也会大大地影响系统的性能。所以在实际的开发中也应避免或最小化 Servlet 中的同步代码；在Serlet中避免使用实例变量是保证Servlet线程安全的最佳选择。从Java 内存模型也可以知道，方法中的临时变量是在栈上分配空间，而且每个线程都有自己私有的栈空间，所以它们不会影响线程的安全。
+</code></pre><p><strong>小结</strong> Servlet的线程安全问题只有在大量的并发访问时才会显现出来，并且很难发现，因此在编写Servlet程序时要特别注意。线程安全问题主要是由实例变量造成的,因此在Servlet中应避免使用实例变量。<strong>如果应用程序设计无法避免使用实例变量，那么使用同步来保护要使用的实例变量，但为保证系统的最佳性能，应该同步可用性最小的代码路径。</strong></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/servlet/" rel="tag"># servlet</a>
+          
+            <a href="/tags/线程/" rel="tag"># 线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/24/vue2-0-e8-ae-b0-e5-bd-95-e8-b7-af-e7-94-b1-e4-b8-8e-e7-bb-84-e4-bb-b6-e8-b8-a9-e8-bf-87-e7-9a-84-e5-9d-91/" rel="next" title="Vue2.0 记录路由与组件踩过的坑">
+                <i class="fa fa-chevron-left"></i> Vue2.0 记录路由与组件踩过的坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/28/vue-webpack-e9-a1-b9-e7-9b-ae-e4-b8-ad-e8-af-b7-e6-b1-82-e8-b7-a8-e5-9f-9f-e7-9a-84-e9-97-ae-e9-a2-98/" rel="prev" title="Vue-webpack项目中请求跨域的问题">
+                Vue-webpack项目中请求跨域的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

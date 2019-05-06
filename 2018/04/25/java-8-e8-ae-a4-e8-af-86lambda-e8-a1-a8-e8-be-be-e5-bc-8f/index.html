@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="在Java中，Lambda表达式是SAM类型，SAM类型是一个具有单一抽象方法的接口。（对了，Java8接口可以包含非抽象方法了-即default/defender方法，我们将在后面讲到它） 举个例子，众所周知的Runnable接口就是SAM类型的： Runnable r =()-&amp;gt;System.out.println(“hello Lambda!”); Comparator 接口也算一个:">
+<meta name="keywords" content="Java,JDK,lambda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 8-- 认识Lambda表达式">
+<meta property="og:url" content="http://b.zhongmin.me/2018/04/25/java-8-e8-ae-a4-e8-af-86lambda-e8-a1-a8-e8-be-be-e5-bc-8f/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="在Java中，Lambda表达式是SAM类型，SAM类型是一个具有单一抽象方法的接口。（对了，Java8接口可以包含非抽象方法了-即default/defender方法，我们将在后面讲到它） 举个例子，众所周知的Runnable接口就是SAM类型的： Runnable r =()-&amp;gt;System.out.println(“hello Lambda!”); Comparator 接口也算一个:">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 8-- 认识Lambda表达式">
+<meta name="twitter:description" content="在Java中，Lambda表达式是SAM类型，SAM类型是一个具有单一抽象方法的接口。（对了，Java8接口可以包含非抽象方法了-即default/defender方法，我们将在后面讲到它） 举个例子，众所周知的Runnable接口就是SAM类型的： Runnable r =()-&amp;gt;System.out.println(“hello Lambda!”); Comparator 接口也算一个:">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/04/25/java-8-e8-ae-a4-e8-af-86lambda-e8-a1-a8-e8-be-be-e5-bc-8f/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java 8-- 认识Lambda表达式 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/25/java-8-e8-ae-a4-e8-af-86lambda-e8-a1-a8-e8-be-be-e5-bc-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java 8-- 认识Lambda表达式
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-25 21:14:55" itemprop="dateCreated datePublished" datetime="2018-04-25T21:14:55+08:00">2018-04-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Java中，Lambda表达式是SAM类型，SAM类型是一个具有单一抽象方法的接口。（对了，Java8接口可以包含非抽象方法了-即default/defender方法，我们将在后面讲到它） 举个例子，众所周知的Runnable接口就是SAM类型的：</p>
+<p>Runnable r =()-&gt;System.out.println(“hello Lambda!”);</p>
+<p>Comparator 接口也算一个:</p>
+<p>Comparator cmp=(x, y)-&gt;(x &lt; y)?-1:((x &gt; y)?1:0);</p>
+<p>像下面这样写也可以:</p>
+<p>Comparator cmp= (x, y)-&gt;{<br>    return (x &lt; y) ? -1: ((x &gt; y)?1:0);<br>};</p>
+<p>如此看来上面单行的Lambda表达式中隐含有return关键词。</p>
+<p>我来用下面的例子提示一下，使用Java8之前的语法，如何实现同样的比较器代码：</p>
+<p>Comparator cmp=newComparator(){<br>  @Override<br>    publicint compare(Integer x,Integer y){<br>         return (x&lt; y)? -1:((x&gt; y)?1:0);<br>    }<br>};</p>
+<p>如你所见，在这两个例子中有相当一部分代码是相同的，相同部分正是<strong>Comparator</strong> 的比较逻辑：</p>
+<p>(x&lt; y)? -1:((x&gt; y)?1:0)</p>
+<p>当把经典风格java语法转变为Lambda表达式语法时，我们主要关注接口方法的参数和功能逻辑。 看另外一个例子。如果我打算写一个方法，此方法接收一个Lambda表达式作为参数，那么该怎么写？嗯…你得把方法参数声明成函数接口，然后才能传递Lambda表达式进来，如下所示：</p>
+<p>interface Action{<br>     void run(Stringparam);<br>}</p>
+<p>public void execute(Action action){<br>     action.run(“Hello!”);<br>}</p>
+<p>如果我们想要调用execute(..)方法，那么通常地做法，给execute方法传递一个Action的匿名实现类。如下所示：</p>
+<p>execute(new Action{<br>    publicvoid run(String param){<br>        System.out.println(param);<br>    }<br>});</p>
+<p>但是因为我们现在有函数接口做参数类型，所以我们可以用下面的方式调用execute(..)：</p>
+<p>execute((Stringparam)-&gt;System.out.println(param));</p>
+<p>实际上，可以不需要声明Lambda表达式的参数类型：</p>
+<p>execute(param-&gt;System.out.println(param));</p>
+<p>一般来说，Lambda表达式的类型声明规则如下：<strong>要么为所有参数声明类型，要么去掉所有参数的类型声明。</strong></p>
+<p>既然这个Lambda表达式仅调用一个方法，且（该方法和函数接口中定义的方法）使用相同的参数，那么可以用方法引用（method reference）替代这个Lambda表达式。如下所示：</p>
+<p>execute(System.out::println);</p>
+<p>但是，如果（调用的方法）使用参数形式有变，就不能使用方法引用了，得使用完整的Lambda表达式，如下面这种情况</p>
+<p>execute(s-&gt;System.out.println(“<em>“+ s +”</em>“));</p>
+<p>尽管Java本质上并没有函数类型（的变量），但是上面展示的语法已经相当不错，对于在java语言中应用Lambda表达式来说，我们也算有一个非常优雅的解决方案了。</p>
+<h3 id="函数接口"><a href="#函数接口" class="headerlink" title="函数接口"></a>函数接口</h3><p>如刚才讲的，Lambda表达式在运行期表示为一个函数接口（functionalinterface）（或者说一个SAM类型），函数接口是一种只定义了一个抽象方法的接口。尽管JDK已经有一些接口都符合函数接口定义，比如Runnable 和 Comparator，但是这对API演进来说是显然不够的。我们又不能到处在代码里使用像Runnable这样的接口，因为这么做不合乎逻辑。 JDK8中新增了一个包，java.util.function，这个包里有一些专门给新增的API使用的函数接口。此处就不列出所有的函数接口了，有兴趣可以自行学习下java.util.function：） 下面列出几个java.util.function中定义的接口，都非常有趣：</p>
+<p>  Consumer<t> – 在T上执行一个操作，无返回结果<br>  Supplier<t> –无输入参数，返回T的实例<br>  Predicate<t> –输入参数为T的实例，返回boolean值<br>  Function&lt;T,R&gt; –输入参数为T的实例，返回R的实例</t></t></t></p>
+<p><strong>java.util.function</strong> 中新定义了超过40个函数接口。通常可以从接口的名字看出其含义。举个例子，BiFunction和上面提到的Function接口非常相似，只是唯一不同点是BiFunction有两个输入参数而Function有一个 我们可以从那些新接口中看到另一个常见模式，该模式是在一个接口继承另一个接口的时候，把多个参数声明成同一种类型。例如，<a href="http://download.java.net/jdk8/docs/api/java/util/function/BinaryOperator.html" target="_blank" rel="noopener">BinaryOperator</a> 继承<a href="http://download.java.net/jdk8/docs/api/java/util/function/BiFunction.html" target="_blank" rel="noopener">BiFunction</a>，目的仅仅是为了把两个输入参数声明为同类型，如下所示：</p>
+<p>@FunctionalInterface public interface BinaryOperator extends BiFunction&lt;T,T,T&gt;{}</p>
+<p>为了强调接口是函数接口，可以使用新注释<a href="http://download.java.net/jdk8/docs/api/java/lang/FunctionalInterface.html" target="_blank" rel="noopener">@FunctionalInterface</a>，来防止你的团队成员往这个接口里增加方法。这个注释除了在运行时使用，还给javac用来验证该接口是否真是函数接口，其内部的抽象方法是否不多于一个。下面代码不能正常编译：</p>
+<p>@FunctionalInterface interface Action{<br>    void run(String param);<br>    void stop(String param);<br>}</p>
+<p>编译器抛出错误：</p>
+<p>java: Unexpected @FunctionalInterface annotation<br>    Action is not a functional interface<br>    multiple non-overriding abstract methods found in interface Action</p>
+<p>而下面的会编译通过</p>
+<p>@FunctionalInterface interface Action {<br>    void run(String param);<br>    default void stop(String param){}<br>}</p>
+<h3 id="获取变量"><a href="#获取变量" class="headerlink" title="获取变量"></a>获取变量</h3><p>如果Lambda表达式需要访问非静态变量或定义在其外部的对象，那么我们会碰到一种情况，就是Lambda表达式需要获取非体内变量，此时我们称之为一种“<em>获取态”</em>的Lambda表达式。 思考下面比较器的例子：</p>
+<p>int minus_one =-1;<br>int one =1;<br>int zero =0;<br>Comparator cmp =(x, y)-&gt;(x &lt; y)? minus_one :((x &gt; y)? one : zero);</p>
+<p>为了使Lambda表达式生效，Lambda表达式获取的变量minus_one、one和 zero必须是“实质的常量”。这意味着这些变量要么应该声明成final类型，要么不能二次赋值。</p>
+<h3 id="返回值是Lambda表达式"><a href="#返回值是Lambda表达式" class="headerlink" title="返回值是Lambda表达式"></a>返回值是Lambda表达式</h3><p>虽然在上面讲到的例子中，函数接口可以用作其他某个方法的参数，然而函数接口的用法并不限于当参数，函数接口还可以用作方法的返回值。也就是说我们可以从方法返回一个Lambda表达式，如下例子：</p>
+<p>public class Comparator Factory{<br>    public Comparator makeComparator(){<br>        return Integer::compareUnsigned;<br>    }<br>}</p>
+<p>上面的例子展示了一段有效的方法代码，这个方法返回了一个方法引用。然而实际上仅像那样是不能从方法中返回一个方法引用的，其实编译器还会使用invokedynamic 字节码指令，生成一些代码来使它成为一个方法调用，该方法调用返回一个Comparator接口的实例对象。因此客户端代码只认为自己是在使用一个接口：</p>
+<p>Comparator cmp=new ComparatorFactory().makeComparator();<br>cmp.compare(10, -5);// -1</p>
+<h3 id="序列化Lambda表达式"><a href="#序列化Lambda表达式" class="headerlink" title="序列化Lambda表达式"></a>序列化Lambda表达式</h3><p>前一部分中使用的那段代码，创建了一个Comparator 实例对象，该实例对象可以让客户端代码使用。所有工作看似相当成功。但是，有个严重的问题，即是如果我们尝试序列化那个Comparator实例对象，代码就会抛出<a href="http://docs.oracle.com/javase/6/docs/api/java/io/NotSerializableException.html" target="_blank" rel="noopener">NotSerializableException</a>异常。 因为序列化可能存在安全隐患，所以默认情况下，Lambda表达式不能序列化。为了能序列化，java8引入了所谓的类型关联（TypeIntersection），如下所示：</p>
+<p>public class ComparatorFactory{<br>    public Comparator makeComparator(){<br>        return(Comparator&amp;Serializable)Integer::compareUnsigned;<br>    }<br>}</p>
+<p>Serializable接口一般认为是标记性的接口，该接口中没有声明任何方法，因此Serializable接口也可以称作ZAM类型（ZAM即Zero Abstract Methods）。 使用类型关联的一般规则如下： SAM &amp; ZAM1 &amp; ZAM2 &amp; ZAM3 也就是说，如果返回结果是SAM类型的，那么我们可以用SAM类型和一个甚至多个ZAM类型“相关联”。我们现在事实上认为作为返回结果的Comparator 实例对象也是Serializable类型的。 经过上面对返回结果强制转换类型后，编译器在编译后的class文件中多生成了一个方法，如下所示：</p>
+<p>private  static  java.lang.Object  $deserializeLambda$(java.lang.invoke.SerializedLambda);</p>
+<p>此外，通过使用<em>invokedynamic</em> 字节码指令策略，当通过<strong>makeComparator()</strong>方法 创建一个<strong>Comparator</strong> 的实例对象的时候，编译器就会调用<strong>$deserializeLambda$(..)</strong> 方法。</p>
+<h3 id="反编译Lambda表达式"><a href="#反编译Lambda表达式" class="headerlink" title="反编译Lambda表达式"></a>反编译Lambda表达式</h3><p>现在讲一讲这背后的实现原理。当我们在代码中使用Lambda表达式的时候，同时也了解下代码实际上是怎么编译的，这会很有趣。 目前（像Java 7之前的版本），如果你想在java中模仿Lambda表达式，那么你得定义一个匿名内部类。这样会在编译后生成一个相应的class文件。如果你在代码中定义多个匿名内部类，那么这些匿名类只不过是在其相应的class文件名字中增加一个数字后缀。Lambda表达式编译后会是怎样呢？ 仔细思考下面的代码：</p>
+<p>public class Main {<br>  @Functional<br>   Interface  interface Action{<br>       void run(String s);<br>   }<br>   public  void  action(Action action){<br>       action.run(“Hello!”);<br>   }     </p>
+<p>   public  static  void main(String[] args){<br>        new  Main().action((String s)-&gt;System.out.print(“<em>“+ s +”</em>“));<br>   } </p>
+<p>}</p>
+<p>编译后产生两个类文件：Main.class和Main$Action.class，但并没有生成带编号的类，带编号的类通常在匿名类编译后产生。这样在Main.class中一定有什么东西，实现了我们在main方法中定义的Lambda表达式。（我们反编译下Main.class看看究竟）</p>
+<p>$ javap -p Main</p>
+<p>Warning: Binary file Main contains com.zt.Main<br>Compiled from “Main.java”<br>public class com.zt.Main {<br>  public com.zt.Main();<br>  public void action(com.zt.Main$Action);<br>  public static void main(java.lang.String[]);<br>  private static java.lang.Object Lambda$0(java.lang.String);<br>}</p>
+<p>哈！在编译后的class中生成了一个方法Lambda$0！ -C- V选项会给我们展示实际的字节码和常量池定义。 下面的main方法揭示了invokedynamic指令用来分派方法调用。</p>
+<p>public static void main(java.lang.String[]);<br>   Code:<br>   0: new          #4   // class com/zt/Main<br>   3: dup<br>   4: invokespecial#5    // Method “”:()V<br>    7: invokedynamic #6,  0  // InvokeDynamic #0:run:()Lcom/zt/Main$Action;<br>   12: invokevirtual  #7      // Method action:(Lcom/zt/Main$Action;)V<br>   15: return</p>
+<p>可以在常量池中找到引导方法，该引导方法负责在运行时把所有内容链接起来：</p>
+<p>BootstrapMethods:<br>  0: #40 invokestatic java/lang/invoke/LambdaMetafactory.metaFactory:(    \<br>Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;             \<br>Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;          \<br>Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)         \<br>Ljava/lang/invoke/CallSite;<br>  Method arguments:</p>
+<pre><code>#41 invokeinterface com/zt/Main$Action.run:(Ljava/lang/String;)Ljava/lang/Object;
+#42 invokestatic com/zt/Main.Lambda$0:(Ljava/lang/String;)Ljava/lang/Object;
+#43 (Ljava/lang/String;)Ljava/lang/Object;
+</code></pre><p>你可以看见到处都有MethodHandle的影子，但我们现在不会深入去讲MethodHandle。到现在，我们可以确认上面说的那个定义恰恰指的是生成的方法Lambda$0。 如果我定义一个名字是Lambda$0的静态方法会这么样？Lambda$0毕竟算一个有效标识符！于是，我定义了Lambda$0方法，如下所示：</p>
+<p>Public static void Lambda$0(String s){<br>    return null;<br>}</p>
+<p>结果编译失败，不允许我在代码中定义Lambda$0方法。</p>
+<p>java: the symbol Lambda$0(java.lang.String) conflicts with a<br>        compiler-synthesized symbol in com.zt.Main</p>
+<p>这实际上告诉我们在编译过程中，在Main类里构建其他方法前就先构建的Lambda表达式。</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p>//接受2种类型的参数,进行处理<br>BiConsumer&lt;T,U&gt;<br>    void accept(T t, U u);<br>    default BiConsumer&lt;T, U&gt; andThen(BiConsumer&lt;? super T, ? super U&gt; after);<br>//接受单个参数,进行处理<br>Consumer<t><br>    void accept(T t);<br>     default Consumer<t> andThen(Consumer&lt;? super T&gt; after);<br>//接受double类型的参数,进行处理<br>DoubleConsumer<br>    void accept(double value);<br>    default DoubleConsumer andThen(DoubleConsumer after);<br>//接受int类型的参数,进行处理<br>IntConsumer<br>    void accept(int value);<br>    default IntConsumer andThen(IntConsumer after);<br>//接受long类型的参数,进行处理<br>LongConsumer<br>    void accept(long value);<br>    default LongConsumer andThen(LongConsumer after);<br>//接受T和double类型的参数,进行处理<br>ObjDoubleConsumer<t><br>    void accept(T t, double value);<br>//接受T和int类型的参数,进行处理<br>ObjIntConsumer<t><br>     void accept(T t, int value);<br>//接受T和long类型的参数,进行处理<br>ObjLongConsumer<t><br>     void accept(T t, long value);</t></t></t></t></t></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在此为本文的第一章做一个小结。我敢肯定，Lambda表达式在不久的将来会对Java产生巨大的影响。又因为Lambda表达式语法结构相当不错，所以一旦开发者认识到像Lambda这些特性有益于提升开发效率，那么我们将会看到Lambda表达式更广泛的应用。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/JDK/" rel="tag"># JDK</a>
+          
+            <a href="/tags/lambda/" rel="tag"># lambda</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/24/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-linkedblockingqueue/" rel="next" title="J.U.C -- 有界阻塞队列 LinkedBlockingQueue">
+                <i class="fa fa-chevron-left"></i> J.U.C -- 有界阻塞队列 LinkedBlockingQueue
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/26/java-8-e4-b8-ad-e7-9a-84-streams-api-e8-af-a6-e8-a7-a3/" rel="prev" title="Java 8 中的 Streams API 详解">
+                Java 8 中的 Streams API 详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数接口"><span class="nav-number">1.</span> <span class="nav-text">函数接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取变量"><span class="nav-number">2.</span> <span class="nav-text">获取变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值是Lambda表达式"><span class="nav-number">3.</span> <span class="nav-text">返回值是Lambda表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化Lambda表达式"><span class="nav-number">4.</span> <span class="nav-text">序列化Lambda表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反编译Lambda表达式"><span class="nav-number">5.</span> <span class="nav-text">反编译Lambda表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">6.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

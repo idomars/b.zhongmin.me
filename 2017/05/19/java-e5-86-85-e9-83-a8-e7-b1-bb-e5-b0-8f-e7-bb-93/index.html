@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="内部类是指在一个外部类的内部再定义一个类。类名不需要和文件夹相同。 *内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部顶级类即类名和文件名相同的只能使用public和default）。 注意：内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和其内部定义的名为inner的内部类。编译完成">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java内部类小结">
+<meta property="og:url" content="http://b.zhongmin.me/2017/05/19/java-e5-86-85-e9-83-a8-e7-b1-bb-e5-b0-8f-e7-bb-93/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="内部类是指在一个外部类的内部再定义一个类。类名不需要和文件夹相同。 *内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部顶级类即类名和文件名相同的只能使用public和default）。 注意：内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和其内部定义的名为inner的内部类。编译完成">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java内部类小结">
+<meta name="twitter:description" content="内部类是指在一个外部类的内部再定义一个类。类名不需要和文件夹相同。 *内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部顶级类即类名和文件名相同的只能使用public和default）。 注意：内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和其内部定义的名为inner的内部类。编译完成">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/05/19/java-e5-86-85-e9-83-a8-e7-b1-bb-e5-b0-8f-e7-bb-93/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java内部类小结 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/19/java-e5-86-85-e9-83-a8-e7-b1-bb-e5-b0-8f-e7-bb-93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java内部类小结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-19 14:49:02" itemprop="dateCreated datePublished" datetime="2017-05-19T14:49:02+08:00">2017-05-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>内部类是指在一个外部类的内部再定义一个类。类名不需要和文件夹相同。</p>
+<p>*内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部顶级类即类名和文件名相同的只能使用public和default）。</p>
+<p>注意：内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和其内部定义的名为inner的内部类。编译完成后出现outer.class和outer$inner.class两类。所以内部类的成员变量/方法名可以和外部类的相同。</p>
+<h3 id="1-成员内部类"><a href="#1-成员内部类" class="headerlink" title="1. 成员内部类"></a>1. 成员内部类</h3><p>成员内部类，就是作为外部类的成员，可以直接使用外部类的所有成员和方法，即使是private的。这是因为</p>
+<p>同时外部类要访问内部类的所有成员变量/方法，则需要通过内部类的对象来获取。</p>
+<p>要注意的是，成员内部类不能含有static的变量和方法。<strong>因为成员内部类需要先创建了外部类，才能创建它自己的</strong>，</p>
+<p>而需要创建内部类对象，需要指明这个对象的类型：OuterClass.InnerClass。可以使用outer.inner  obj = new outer().new inner();</p>
+<p>在内部类内部要引用外部类对象时，使用OuterClass.this来表示外部类对象的引用；</p>
+<p>public class Outer {<br>    public static void main(String[] args) {<br>        Outer outer = new Outer();<br>        Outer.Inner inner = outer.new Inner();<br>        inner.print(“Outer.new”); </p>
+<pre><code>    inner = outer.getInner(); 
+    inner.print(&quot;Outer.get&quot;); 
+} 
+
+// 推荐使用getxxx()来获取成员内部类，尤其是该内部类的构造函数无参数时 
+public Inner getInner() { 
+    return new Inner(); 
+} 
+
+public class Inner { 
+    public void print(String str) { 
+        System.out.println(str); 
+    } 
+ public Outer getOuter(){
+        return Outer.this;//在内部类可以使用outClass.this  获取当前外部类的引用.
+    }
+} 
+</code></pre><p>}</p>
+<h3 id="2-局部内部类"><a href="#2-局部内部类" class="headerlink" title="2. 局部内部类"></a>2. 局部内部类</h3><pre><code>局部内部类，是指内部类定义在方法和作用域内。Thinking in Java给了这么两个例子：
+</code></pre><p>定义在方法内：</p>
+<p>public class Parcel4 {<br>    public Destination destination(String s) {<br>        class PDestination implements Destination {<br>            private String label; </p>
+<pre><code>        private PDestination(String whereTo) { 
+            label = whereTo; 
+        } 
+
+        public String readLabel() { 
+            return label; 
+        } 
+    } 
+    return new PDestination(s); 
+} 
+
+public static void main(String\[\] args) { 
+    Parcel4 p = new Parcel4(); 
+    Destination d = p.destination(&quot;Tasmania&quot;); 
+} 
+</code></pre><p>}</p>
+<p>定义在作用域里：</p>
+<p>public class Parcel5 {<br>    private void internalTracking(boolean b) {<br>        if (b) {<br>            class TrackingSlip {<br>                private String id;<br>                TrackingSlip(String s) {<br>                    id = s;<br>                }<br>                String getSlip() {<br>                    return id;<br>                }<br>            }<br>            TrackingSlip ts = new TrackingSlip(“slip”);<br>            String s = ts.getSlip();<br>        }<br>    } </p>
+<pre><code>public void track() { 
+    internalTracking(true); 
+} 
+
+public static void main(String\[\] args) { 
+    Parcel5 p = new Parcel5(); 
+    p.track(); 
+} 
+</code></pre><p>}</p>
+<p>局部内部类也像别的类一样进行编译，但只是作用域不同而已，只在该方法或条件的作用域内才能使用，退出这些作用域后无法引用的。</p>
+<h3 id="3-嵌套内部类"><a href="#3-嵌套内部类" class="headerlink" title="3. 嵌套内部类"></a>3. 嵌套内部类</h3><pre><code> 嵌套内部类，就是修饰为static的内部类。声明为static的内部类，不需要内部类对象和外部类对象之间的联系，就是说我们可以直接引用outer.inner，即不需要创建外部类，也不需要创建内部类。
+
+嵌套类和普通的内部类还有一个区别：普通内部类不能有static数据和static属性，也不能包含嵌套类，但嵌套类可以。而嵌套类不能声明为private，一般声明为public，方便调用。
+</code></pre><p>public class OuterClass {<br>    private String sex;<br>    public static String name = “chenssy”;</p>
+<pre><code>/**
+ *静态内部类
+ */
+static class InnerClass1{
+    /\* 在静态内部类中可以存在静态成员 */
+    public static String \_name1 = &quot;chenssy\_static&quot;;
+
+    public void display(){
+        /\* 
+         \* 静态内部类只能访问外围类的静态成员变量和方法
+         \* 不能访问外围类的非静态成员变量和方法
+         */
+        System.out.println(&quot;OutClass name :&quot; + name);
+    }
+}
+
+/\*\*
+ \* 非静态内部类
+ */
+class InnerClass2{
+    /\* 非静态内部类中不能存在静态成员 */
+    public String \_name2 = &quot;chenssy\_inner&quot;;
+    /\* 非静态内部类中可以调用外围类的任何成员,不管是静态的还是非静态的 */
+    public void display(){
+        System.out.println(&quot;OuterClass name：&quot; + name);
+    }
+}
+
+/\*\*
+ \* @desc 外围类方法
+ \* @return void
+ */
+public void display(){
+    /\* 外围类访问静态内部类：内部类. */
+    System.out.println(InnerClass1._name1);
+    /\* 静态内部类 可以直接创建实例不需要依赖于外围类 */
+    new InnerClass1().display();
+
+    /\* 非静态内部的创建需要依赖于外围类 */
+    OuterClass.InnerClass2 inner2 = new OuterClass().new InnerClass2();
+    /\* 方位非静态内部类的成员需要使用非静态内部类的实例 */
+    System.out.println(inner2._name2);
+    inner2.display();
+}
+
+public static void main(String\[\] args) {
+    OuterClass outer = new OuterClass();
+    outer.display();
+}
+</code></pre><p>}<br>----------------<br>Output:<br>chenssy_static<br>OutClass name :chenssy<br>chenssy_inner<br>OuterClass name：chenssy</p>
+<p>上面这个例子充分展现了静态内部类和非静态内部类的区别。</p>
+<h3 id="4-匿名内部类"><a href="#4-匿名内部类" class="headerlink" title="4. 匿名内部类"></a>4. 匿名内部类</h3><pre><code>有时候我为了免去给内部类命名，便倾向于使用匿名内部类，因为它没有名字。例如：
+</code></pre><p>(Button) findViewById(R.id.start)).setOnClickListener(new Button.OnClickListener() {<br>    @Override<br>    public void onClick(View v) {<br>        new Thread() { </p>
+<pre><code>        @Override 
+        public void run() { 
+            // TODO Auto-generated method stub 
+        } 
+
+    }.start(); 
+} 
+</code></pre><p>});</p>
+<p>匿名内部类是不能加访问修饰符的。<strong>要注意的是，new 匿名类，这个类是要先定义的</strong>，看下面例子：</p>
+<p>public class Outer {<br>    public static void main(String[] args) {<br>        Outer outer = new Outer();<br>        Inner inner = outer.getInner(“Inner”, “gz”);<br>        System.out.println(inner.getName());<br>    } </p>
+<pre><code>public Inner getInner(final String name, String city) { 
+    return new Inner() { 
+        private String nameStr = name; 
+
+        public String getName() { 
+            return nameStr; 
+        } 
+    }; 
+} 
+</code></pre><p>} </p>
+<p>//注释后，编译时提示类Inner找不到<br>/* interface Inner {<br>    String getName();<br>} */</p>
+<p>同时在这个例子，留意外部类的方法的形参，<strong>当所在的方法的形参需要被内部类里面使用时，该形参必须为final</strong>。这里可以看到形参name已经定义为final了，而形参city 没有被使用则不用定义为final。为什么要定义为final呢？在网上找到本人比较如同的解释：</p>
+<p> “这是一个编译器设计的问题，如果你了解java的编译原理的话很容易理解。</p>
+<p>首先，内部类被编译的时候会生成一个单独的内部类的.class文件，这个文件并不与外部类在同一class文件中。</p>
+<p>当外部类传的参数被内部类调用时，从java程序的角度来看是直接的调用例如：</p>
+<p>public void dosome(final String a,final int b){<br>  class Dosome{public void dosome(){System.out.println(a+b)}};<br>  Dosome some=new Dosome();<br>  some.dosome();<br>}</p>
+<p>从代码来看好像是那个内部类直接调用的a参数和b参数，但是实际上不是，在java编译器编译以后实际的操作代码是</p>
+<p>class Outer$Dosome{<br>  public Dosome(final String a,final int b){<br>  this.Dosome$a=a;<br>  this.Dosome$b=b;<br>}<br>  public void dosome(){<br>  System.out.println(this.Dosome$a+this.Dosome$b);<br>}<br>}}</p>
+<p>从以上代码看来，内部类并不是直接调用方法传进来的参数，而是内部类将传进来的参数通过自己的构造器备份到了自己的内部，自己内部的方法调用的实际是自己的属性而不是外部类方法的参数。</p>
+<p>这样理解就很容易得出为什么要用final了，因为两者从外表看起来是同一个东西，实际上却不是这样，如果内部类改掉了这些参数的值也不可能影响到原参数，然而这样却失去了参数的一致性，因为从编程人员的角度来看他们是同一个东西，如果编程人员在程序设计的时候在内部类中改掉参数的值，但是外部调用的时候又发现值其实没有被改掉，这就让人非常的难以理解和接受，为了避免这种尴尬的问题存在，所以编译器设计人员把内部类能够使用的参数设定为必须是final来规避这种莫名其妙错误的存在。”</p>
+<p><strong> (简单理解就是，拷贝引用，为了避免引用值发生改变，例如被外部类的方法修改等，而导致内部类得到的值不一致，于是用final来让该引用不可改变)</strong></p>
+<p> 因为匿名内部类，没名字，是用默认的构造函数的，无参数的，那如果需要参数呢？则需要该类有带参数的构造函数：</p>
+<p>public class Outer {<br>    public static void main(String[] args) {<br>        Outer outer = new Outer();<br>        Inner inner = outer.getInner(“Inner”, “gz”);<br>        System.out.println(inner.getName());<br>    } </p>
+<pre><code>public Inner getInner(final String name, String city) { 
+    return new Inner(name, city) { 
+        private String nameStr = name; 
+
+        public String getName() { 
+            return nameStr; 
+        } 
+    }; 
+} 
+</code></pre><p>} </p>
+<p>abstract class Inner {<br>    Inner(String name, String city) {<br>        System.out.println(city);<br>    } </p>
+<pre><code>abstract String getName(); 
+</code></pre><p>}</p>
+<p>注意这里的形参city，由于它没有被匿名内部类直接使用，而是被抽象类Inner的构造函数所使用，所以不必定义为final。</p>
+<pre><code>而匿名内部类通过实例初始化，可以达到类似构造器的效果：
+</code></pre><p>public class Outer {<br>    public static void main(String[] args) {<br>        Outer outer = new Outer();<br>        Inner inner = outer.getInner(“Inner”, “gz”);<br>        System.out.println(inner.getName());<br>        System.out.println(inner.getProvince());<br>    } </p>
+<pre><code>public Inner getInner(final String name, final String city) { 
+    return new Inner() { 
+        private String nameStr = name; 
+        private String province; 
+
+        // 实例初始化 
+        { 
+            if (city.equals(&quot;gz&quot;)) { 
+                province = &quot;gd&quot;; 
+            }else { 
+                province = &quot;&quot;; 
+            } 
+        } 
+
+        public String getName() { 
+            return nameStr; 
+        } 
+
+        public String getProvince() { 
+            return province; 
+        } 
+    }; 
+} 
+</code></pre><p>} </p>
+<p>interface Inner {<br>    String getName();<br>    String getProvince();</p>
+<h5 id="5-内部类的继承"><a href="#5-内部类的继承" class="headerlink" title="5.内部类的继承"></a>5.内部类的继承</h5><pre><code>内部类的继承，是指内部类被继承，普通类 extents 内部类。而这时候代码上要有点特别处理，具体看以下例子：
+</code></pre><p>public class InheritInner extends WithInner.Inner { </p>
+<pre><code>// InheritInner() 是不能通过编译的，一定要加上形参 
+InheritInner(WithInner wi) { 
+    wi.super(); 
+} 
+
+public static void main(String\[\] args) { 
+    WithInner wi = new WithInner(); 
+    InheritInner obj = new InheritInner(wi); 
+} 
+</code></pre><p>} </p>
+<p>class WithInner {<br>    class Inner { </p>
+<pre><code>} 
+</code></pre><p>}</p>
+<p>可以看到子类的构造函数里面要使用父类的外部类对象.super();而这个对象需要从外面创建并传给形参。</p>
+<p>至于内部类的重载，感觉Thinking in Java的例子很复杂，在平常应用中应该很少，因为有点难懂，不清晰。而内部类和闭包之间的事情，暂时放下，以后再看。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/18/spring-e4-ba-8b-e5-8a-a1-e7-ae-a1-e7-90-86-ef-bc-88-e8-af-a6-e8-a7-a3-e5-ae-9e-e4-be-8b-ef-bc-89/" rel="next" title="Spring事务管理（详解+实例）">
+                <i class="fa fa-chevron-left"></i> Spring事务管理（详解+实例）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/22/springmaybatis-e5-bc-82-e5-b8-b8manual-close-is-not-allowed-over-a-spring-managed-sqlsession/" rel="prev" title="Spring+Maybatis 异常:Manual close is not allowed over a Spring managed SqlSession">
+                Spring+Maybatis 异常:Manual close is not allowed over a Spring managed SqlSession <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-成员内部类"><span class="nav-number">1.</span> <span class="nav-text">1. 成员内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-局部内部类"><span class="nav-number">2.</span> <span class="nav-text">2. 局部内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-嵌套内部类"><span class="nav-number">3.</span> <span class="nav-text">3. 嵌套内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-匿名内部类"><span class="nav-number">4.</span> <span class="nav-text">4. 匿名内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内部类的继承"><span class="nav-number">4.0.1.</span> <span class="nav-text">5.内部类的继承</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="SQL结构 :      wp_commentmeta  :文章评论额外信息表。   CREATE TABLE IF NOT EXISTS `wp_commentmeta` (  `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `comment_id` bigint(20) unsigned NOT NULL DEFAULT ‘0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wordpress-4.4.1 数据库表结构解析，wordpress数据库结构">
+<meta property="og:url" content="http://b.zhongmin.me/2016/12/27/wordpressdb/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="SQL结构 :      wp_commentmeta  :文章评论额外信息表。   CREATE TABLE IF NOT EXISTS `wp_commentmeta` (  `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `comment_id` bigint(20) unsigned NOT NULL DEFAULT ‘0">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.bkjia.com/uploads/allimg/160403/1622131957-0.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wordpress-4.4.1 数据库表结构解析，wordpress数据库结构">
+<meta name="twitter:description" content="SQL结构 :      wp_commentmeta  :文章评论额外信息表。   CREATE TABLE IF NOT EXISTS `wp_commentmeta` (  `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,  `comment_id` bigint(20) unsigned NOT NULL DEFAULT ‘0">
+<meta name="twitter:image" content="http://www.bkjia.com/uploads/allimg/160403/1622131957-0.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2016/12/27/wordpressdb/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>wordpress-4.4.1 数据库表结构解析，wordpress数据库结构 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/12/27/wordpressdb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">wordpress-4.4.1 数据库表结构解析，wordpress数据库结构
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-27 17:24:06" itemprop="dateCreated datePublished" datetime="2016-12-27T17:24:06+08:00">2016-12-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  SQL结构 :   <img src="http://www.bkjia.com/uploads/allimg/160403/1622131957-0.png" alt>   <strong>wp_commentmeta  :文章评论额外信息表。</strong>  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_commentmeta` (<br>  `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `comment_id` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `meta_key` varchar(255) DEFAULT NULL,<br>  `meta_value` longtext,<br>  PRIMARY KEY (`meta_id`),<br>  KEY `comment_id` (`comment_id`),<br>  KEY `meta_key` (`meta_key`(191))<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;</p>
+<p>  <strong>wp_comments :文章评论信息表。</strong>   comment_ID – 每个评论的唯一ID号，是一个bigint(20)值。带有附加属性auto_increment。 comment_post_ID – 每个评论对应的文章的ID号，int(11)值，等同于wp_posts.ID。 comment_author – 每个评论的评论者名称，tinytext值。 comment_author_email – 每个评论的评论者电邮地址，varchar(100)值。 comment_author_url – 每个评论的评论者网址，varchar(200)值。 comment_author_IP – 每个评论的评论者的IP地址，varchar(100)值。 comment_date – 每个评论发表的时间，datetime值(是加上时区偏移量后的值)。 comment_date_gmt – 每个评论发表的时间，datetime值(是标准的格林尼治时间)。 comment_content – 每个评论的具体内容，text值。 comment_karma – 不详，int(11)值，默认为0。 comment_approved – 每个评论的当前状态，为一个枚举值enum(’0′,’1′,’spam’)，0为等待审核，1为允许发布，spam为垃圾评论。默认值为1。 comment_agent – 每个评论的评论者的客户端信息，varchar(255)值，主要包括其浏览器和操作系统的类型、版本等资料。 comment_type – 评论的类型，varchar(20)值。 comment_parent – 某一评论的上级评论，int(11)值，对应wp_comment.ID，默认为0，即无上级评论。 user_id – 某一评论对应的用户ID，只有当用户注册后才会生成，int(11)值，对应wp_users.ID。未注册的用户，即外部评论者，这个ID的值为0。  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_comments` (<br>  `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `comment_post_ID` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `comment_author` tinytext NOT NULL,<br>  `comment_author_email` varchar(100) NOT NULL DEFAULT ‘’,<br>  `comment_author_url` varchar(200) NOT NULL DEFAULT ‘’,<br>  `comment_author_IP` varchar(100) NOT NULL DEFAULT ‘’,<br>  `comment_date` datetime NOT NULL DEFAULT ‘0000-00-00 00:00:00’,<br>  `comment_date_gmt` datetime NOT NULL DEFAULT ‘0000-00-00 00:00:00’,<br>  `comment_content` text NOT NULL,<br>  `comment_karma` int(11) NOT NULL DEFAULT ‘0’,<br>  `comment_approved` varchar(20) NOT NULL DEFAULT ‘1’,<br>  `comment_agent` varchar(255) NOT NULL DEFAULT ‘’,<br>  `comment_type` varchar(20) NOT NULL DEFAULT ‘’,<br>  `comment_parent` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `user_id` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  PRIMARY KEY (`comment_ID`),<br>  KEY `comment_post_ID` (`comment_post_ID`),<br>  KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),<br>  KEY `comment_date_gmt` (`comment_date_gmt`),<br>  KEY `comment_parent` (`comment_parent`),<br>  KEY `comment_author_email` (`comment_author_email`(10))<br>) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;</p>
+<p>  <strong>wp_links ：用于保存用户输入到Wordpress中的链接的表。</strong>   link_id – 每个链接的唯一ID号，bigint(20)值，附加属性为auto_increment。 link_url – 每个链接的URL地址，varchar(255)值，形式为http://开头的地址。 link_name – 单个链接的名字，varchar(255)值。 link_image – 链接可以被定义为使用图片链接，这个字段用于保存该图片的地址，为varchar(255)值。 link_target – 链接打开的方式，有三种，_blank为以新窗口打开，_top为就在本窗口中打开并在最上一级，none为不选择，会在本窗口中打开。这个字段是varchar(25)值。 link_category – 某个链接对应的链接分类，为int(11)值。相当于wp_linkcategories.cat_id。 link_description – 链接的说明文字。用户可以选择显示在链接下方还是显示在title属性中。varchar(255)值。 link_visible – 该链接是否可以，枚举enum(’Y’,’N’)值，默认为Y，即可见。 link_owner – 某个链接的创建人，为一int(11)值，默认是1。(应该对应的就是wp_users.ID) link_rating – 链接的等级，int(11)值。默认为0。 link_updated – 链接被定义、修改的时间，datetime值。 link_rel – 链接与定义者的关系，由XFN Creator设置，varchar(255)值。 link_notes – 链接的详细说明，mediumtext值。 link_rss – 该链接的RSS地址，varchar(255)值。  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_links` (<br>  `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `link_url` varchar(255) NOT NULL DEFAULT ‘’,<br>  `link_name` varchar(255) NOT NULL DEFAULT ‘’,<br>  `link_image` varchar(255) NOT NULL DEFAULT ‘’,<br>  `link_target` varchar(25) NOT NULL DEFAULT ‘’,<br>  `link_description` varchar(255) NOT NULL DEFAULT ‘’,<br>  `link_visible` varchar(20) NOT NULL DEFAULT ‘Y’,<br>  `link_owner` bigint(20) unsigned NOT NULL DEFAULT ‘1’,<br>  `link_rating` int(11) NOT NULL DEFAULT ‘0’,<br>  `link_updated` datetime NOT NULL DEFAULT ‘0000-00-00 00:00:00’,<br>  `link_rel` varchar(255) NOT NULL DEFAULT ‘’,<br>  `link_notes` mediumtext NOT NULL,<br>  `link_rss` varchar(255) NOT NULL DEFAULT ‘’,<br>  PRIMARY KEY (`link_id`),<br>  KEY `link_visible` (`link_visible`)<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;</p>
+<p>  <strong>wp_options: 用于保存Wordpress相关设置、参数的表。基本配置信息表，通常通过get_option来操作，该表通常作为插件存储数据的一个地方。是用来存储 WordPress 中所有全局选项的数据表。</strong>   option_id – 选项的ID，bigint(20)值，附加auto_increment属性。 option_name – 选项名称，varchar(64)值。 option_value – 选项的值，longtext值。 autoload – 选项是否每次都被自动加载，枚举enum(’yes’,’no’)值，默认为yes。  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_options` (<br>  `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `option_name` varchar(191) NOT NULL DEFAULT ‘’,<br>  `option_value` longtext NOT NULL,<br>  `autoload` varchar(20) NOT NULL DEFAULT ‘yes’,<br>  PRIMARY KEY (`option_id`),<br>  UNIQUE KEY `option_name` (`option_name`)<br>) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=156 ;</p>
+<p>  <strong>wp_postmeta: 用于保存文章的元信息(meta)的表。文章额外数据表，例如文章浏览次数，文章的自定义字段等都存储在这里。</strong>   meta_id – 元信息ID，bigint(20)值，附加属性为auto_increment。 post_id – 文章ID，bigint(20)值，相当于wp_posts.ID。 meta_key – 元信息的关键字，varchar(255)值。 meta_value – 元信息的值，text值。 这 些内容主要是在文章及页面编辑页(Write Post, Write Page)的”Add a new custom field to this post(page):”下进行设定的。meta_key就对应名为”key”的下拉列表中的项，而值由用户自己填上(某些时候，wp也会自动加入，如文 章中有的音频媒体)。  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_postmeta` (<br>  `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `post_id` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `meta_key` varchar(255) DEFAULT NULL,<br>  `meta_value` longtext,<br>  PRIMARY KEY (`meta_id`),<br>  KEY `post_id` (`post_id`),<br>  KEY `meta_key` (`meta_key`(191))<br>) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;</p>
+<p>INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES<br>(1, 2, ‘_wp_page_template’, ‘default’);</p>
+<p>  <strong>wp_posts: 用于保存你所有的文章(posts)的相关信息的表。文章信息表，包括了日志、附件、页面等等信息，是WordPress最重要的一个数据表。</strong>   ID – 每篇文章的唯一ID，bigint(20)值，附加属性auto_increment。 post_author – 每篇文章的作者的编号，int(4)值，应该对应的是wp_users.ID。 post_date – 每篇文章发表的时间，datetime值。它是GMT时间加上时区偏移量的结果。 post_date_gmt – 每篇文章发表时的GMT(格林威治)时间，datetime值。 post_content – 每篇文章的具体内容，longtext值。你在后台文章编辑页面中写入的所有内容都放在这里。 post_title – 文章的标题，text值。 post_category – 文章所属分类，int(4)值。 post_excerpt – 文章摘要，text值。 post_status – 文章当前的状态，枚举enum(’publish’,’draft’,’private’,’static’,’object’)值，publish为已 发表，draft为草稿，private为私人内容(不会被公开) ，static(不详)，object(不详)。默认为publish。 comment_status – 评论设置的状态，也是枚举enum(’open’,’closed’,’registered_only’)值，open为允许评论，closed为不允 许评论，registered_only为只有注册用户方可评论。默认为open，即人人都可以评论。 ping_status – ping状态，枚举enum(’open’,’closed’)值，open指打开pingback功能，closed为关闭。默认值是open。 post_password – 文章密码，varchar(20)值。文章编辑才可为文章设定一个密码，凭这个密码才能对文章进行重新强加或修改。 post_name – 文章名，varchar(200)值。这通常是用在生成permalink时，标识某篇文章的一段文本或数字，也即post slug。 to_ping – 强制该文章去ping某个URI。text值。 pinged – 该文章被pingback的历史记录，text值，为一个个的URI。 post_modified – 文章最后修改的时间，datetime值，它是GMT时间加上时区偏移量的结果。 post_modified_gmt – 文章最后修改的GMT时间，datetime值。 post_content_filtered – 不详，text值。 post_parent – 文章的上级文章的ID，int(11)值，对应的是wp_posts.ID。默认为0，即没有上级文章。 guid – 这是每篇文章的一个地址，varchar(255)值。默认是这样的形式: <a href="http://your.blog.site/?p=1，如果你形成permalink功能，则通常会是" target="_blank" rel="noopener">http://your.blog.site/?p=1，如果你形成permalink功能，则通常会是</a>: 你的Wordpress站点地址+文章名。 menu_order – 不详，int(11)值，默认为0。 post_type – 文章类型，具体不详，varchar(100)值。默认为0。 post_mime_type – 不详。varchar(100)值。 comment_count – 评论计数，具体用途不详，bigint(20)值。  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_posts` (<br>  `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `post_author` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `post_date` datetime NOT NULL DEFAULT ‘0000-00-00 00:00:00’,<br>  `post_date_gmt` datetime NOT NULL DEFAULT ‘0000-00-00 00:00:00’,<br>  `post_content` longtext NOT NULL,<br>  `post_title` text NOT NULL,<br>  `post_excerpt` text NOT NULL,<br>  `post_status` varchar(20) NOT NULL DEFAULT ‘publish’,<br>  `comment_status` varchar(20) NOT NULL DEFAULT ‘open’,<br>  `ping_status` varchar(20) NOT NULL DEFAULT ‘open’,<br>  `post_password` varchar(20) NOT NULL DEFAULT ‘’,<br>  `post_name` varchar(200) NOT NULL DEFAULT ‘’,<br>  `to_ping` text NOT NULL,<br>  `pinged` text NOT NULL,<br>  `post_modified` datetime NOT NULL DEFAULT ‘0000-00-00 00:00:00’,<br>  `post_modified_gmt` datetime NOT NULL DEFAULT ‘0000-00-00 00:00:00’,<br>  `post_content_filtered` longtext NOT NULL,<br>  `post_parent` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `guid` varchar(255) NOT NULL DEFAULT ‘’,<br>  `menu_order` int(11) NOT NULL DEFAULT ‘0’,<br>  `post_type` varchar(20) NOT NULL DEFAULT ‘post’,<br>  `post_mime_type` varchar(100) NOT NULL DEFAULT ‘’,<br>  `comment_count` bigint(20) NOT NULL DEFAULT ‘0’,<br>  PRIMARY KEY (`ID`),<br>  KEY `post_name` (`post_name`(191)),<br>  KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),<br>  KEY `post_parent` (`post_parent`),<br>  KEY `post_author` (`post_author`)<br>) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;</p>
+<p>INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES<br>(1, 1, ‘2016-04-03 08:48:29’, ‘2016-04-03 00:48:29’, ‘欢迎使用WordPress。这是您的第一篇文章。编辑或删除它，然后开始写作吧！’, ‘世界，您好！’, ‘’, ‘publish’, ‘open’, ‘open’, ‘’, ‘hello-world’, ‘’, ‘’, ‘2016-04-03 08:48:29’, ‘2016-04-03 00:48:29’, ‘’, 0, ‘<a href="http://localhost:8081/?p=1&#39;" target="_blank" rel="noopener">http://localhost:8081/?p=1&#39;</a>, 0, ‘post’, ‘’, 1),<br>(2, 1, ‘2016-04-03 08:48:29’, ‘2016-04-03 00:48:29’, ‘这是一个范例页面。它和博客文章不同，因为它的页面位置是固定的，同时会显示于您的博客导航栏（大多数主题中）。大多数人会新增一个“关于”页面向访客介绍自己。它可能类似下面这样：\n\n<blockquote>我是一个很有趣的人，我创建了工厂和庄园。并且，顺便提一下，我的妻子也很好。</blockquote>\n\n……或下面这样：\n\n<blockquote>XYZ装置公司成立于1971年，公司成立以来，我们一直向市民提供高品质的装置。我们位于北京市，有超过2,000名员工，对北京市有着相当大的贡献。</blockquote>\n\n作为一个新的WordPress用户，您可以前往<a href="http://localhost:8081/wp-admin/" target="_blank" rel="noopener">您的仪表盘</a>删除这个页面，并建立属于您的全新内容。祝您使用愉快！’, ‘示例页面’, ‘’, ‘publish’, ‘closed’, ‘open’, ‘’, ‘sample-page’, ‘’, ‘’, ‘2016-04-03 08:48:29’, ‘2016-04-03 00:48:29’, ‘’, 0, ‘<a href="http://localhost:8081/?page_id=2&#39;" target="_blank" rel="noopener">http://localhost:8081/?page_id=2&#39;</a>, 0, ‘page’, ‘’, 0),<br>(3, 1, ‘2016-04-03 08:58:06’, ‘0000-00-00 00:00:00’, ‘’, ‘自动草稿’, ‘’, ‘auto-draft’, ‘open’, ‘open’, ‘’, ‘’, ‘’, ‘’, ‘2016-04-03 08:58:06’, ‘0000-00-00 00:00:00’, ‘’, 0, ‘<a href="http://localhost:8081/?p=3&#39;" target="_blank" rel="noopener">http://localhost:8081/?p=3&#39;</a>, 0, ‘post’, ‘’, 0),<br>(4, 1, ‘2016-04-03 09:00:50’, ‘0000-00-00 00:00:00’, ‘’, ‘自动草稿’, ‘’, ‘auto-draft’, ‘open’, ‘open’, ‘’, ‘’, ‘’, ‘’, ‘2016-04-03 09:00:50’, ‘0000-00-00 00:00:00’, ‘’, 0, ‘<a href="http://localhost:8081/?p=4&#39;" target="_blank" rel="noopener">http://localhost:8081/?p=4&#39;</a>, 0, ‘post’, ‘’, 0);</p>
+<p>  <strong>wp_termmeta ：分类与文章信息表（wp_posts）、链接表(wp_links)的关联表。</strong>  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_termmeta` (<br>  `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `term_id` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `meta_key` varchar(255) DEFAULT NULL,<br>  `meta_value` longtext,<br>  PRIMARY KEY (`meta_id`),<br>  KEY `term_id` (`term_id`),<br>  KEY `meta_key` (`meta_key`(191))<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;</p>
+<p>  <strong>wp_terms ：文章分类、链接分类、标签的信息表。</strong>  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_terms` (<br>  `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `name` varchar(200) NOT NULL DEFAULT ‘’,<br>  `slug` varchar(200) NOT NULL DEFAULT ‘’,<br>  `term_group` bigint(10) NOT NULL DEFAULT ‘0’,<br>  PRIMARY KEY (`term_id`),<br>  KEY `slug` (`slug`(191)),<br>  KEY `name` (`name`(191))<br>) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;</p>
+<p>INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES<br>(1, ‘未分类’, ‘uncategorized’, 0);</p>
+<p>  <strong> wp_term_relationships ：分类与文章信息表（wp_posts）、链接表(wp_links)的关联表。</strong>  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_term_relationships` (<br>  `object_id` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `term_order` int(11) NOT NULL DEFAULT ‘0’,<br>  PRIMARY KEY (`object_id`,`term_taxonomy_id`),<br>  KEY `term_taxonomy_id` (`term_taxonomy_id`)<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8;</p>
+<p>  <strong> wp_term_taxonomy ：分类信息表，区分wp_terms信息的分类类型，有category、link_category和tag三种分类类型。</strong>  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (<br>  `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `term_id` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `taxonomy` varchar(32) NOT NULL DEFAULT ‘’,<br>  `description` longtext NOT NULL,<br>  `parent` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `count` bigint(20) NOT NULL DEFAULT ‘0’,<br>  PRIMARY KEY (`term_taxonomy_id`),<br>  UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),<br>  KEY `taxonomy` (`taxonomy`)<br>) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;</p>
+<p>INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES<br>(1, 1, ‘category’, ‘’, 0, 1);</p>
+<p>  <strong>wp_usermeta : 用于保存用户元信息(meta)的表。</strong>   umeta_id – 元信息ID，bigint(20)值，附加属性auto_increment。 user_id – 元信息对应的用户ID，bigint(20)值，相当于wp_users.ID。 meta_key – 元信息关键字，varchar(255)值。 meta_value – 元信息的详细值，longtext值。  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_usermeta` (<br>  `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `user_id` bigint(20) unsigned NOT NULL DEFAULT ‘0’,<br>  `meta_key` varchar(255) DEFAULT NULL,<br>  `meta_value` longtext,<br>  PRIMARY KEY (`umeta_id`),<br>  KEY `user_id` (`user_id`),<br>  KEY `meta_key` (`meta_key`(191))<br>) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;</p>
+<p>INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES<br>(1, 1, ‘nickname’, ‘souvc’),<br>(2, 1, ‘first_name’, ‘’),<br>(3, 1, ‘last_name’, ‘’),<br>(4, 1, ‘description’, ‘’),<br>(5, 1, ‘rich_editing’, ‘true’),<br>(6, 1, ‘comment_shortcuts’, ‘false’),<br>(7, 1, ‘admin_color’, ‘fresh’),<br>(8, 1, ‘use_ssl’, ‘0’),<br>(9, 1, ‘show_admin_bar_front’, ‘true’),<br>(10, 1, ‘wp_capabilities’, ‘a:1:{s:13:”administrator”;b:1;}’),<br>(11, 1, ‘wp_user_level’, ‘10’),<br>(12, 1, ‘dismissed_wp_pointers’, ‘’),<br>(13, 1, ‘show_welcome_panel’, ‘1’),<br>(14, 1, ‘session_tokens’, ‘a:2:{s:64:”863288c6d33f046c578de0cafee38ec3b49a0ca4e078088b0065cbafcdd06d3c”;a:4:{s:10:”expiration”;i:1459817885;s:2:”ip”;s:3:”::1”;s:2:”ua”;s:72:”Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0”;s:5:”login”;i:1459645085;}s:64:”310725109de88bde9eb342337323927d2af5e6c98b5662f715dd1acc1697609f”;a:4:{s:10:”expiration”;i:1459830580;s:2:”ip”;s:3:”::1”;s:2:”ua”;s:72:”Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0”;s:5:”login”;i:1459657780;}}’),<br>(15, 1, ‘wp_dashboard_quick_press_last_post_id’, ‘3’),<br>(16, 1, ‘managenav-menuscolumnshidden’, ‘a:5:{i:0;s:11:”link-target”;i:1;s:11:”css-classes”;i:2;s:3:”xfn”;i:3;s:11:”description”;i:4;s:15:”title-attribute”;}’),<br>(17, 1, ‘metaboxhidden_nav-menus’, ‘a:2:{i:0;s:12:”add-post_tag”;i:1;s:15:”add-post_format”;}’),<br>(18, 1, ‘wp_user-settings’, ‘mfold=o’),<br>(19, 1, ‘wp_user-settings-time’, ‘1459658009’);</p>
+<p>  <strong>wp_users:用于保存Wordpress使用者的相关信息的表。</strong>   ID – 用户唯一ID,bigint(20)值，带附加属性auto_increment。 user_login – 用户的注册名称，varchar(60)值。 user_pass – 用户密码，varchar(64)值，这是经过加密的结果。好象用的是不可逆的MD5算法。 user_nicename – 用户昵称，varchar(50)值。 user_email – 用户电邮地址，varchar(100)值。 user_url – 用户网址，varchar(100)值。 user_registered – 用户注册时间，datetime值。 user_activation_key – 用户激活码，不详。varchar(60)值。 user_status – 用户状态，int(11)值，默认为0。 display_name – 来前台显示出来的用户名字，varchar(250)值。  </p>
+<p>CREATE TABLE IF NOT EXISTS `wp_users` (<br>  `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,<br>  `user_login` varchar(60) NOT NULL DEFAULT ‘’,<br>  `user_pass` varchar(255) NOT NULL DEFAULT ‘’,<br>  `user_nicename` varchar(50) NOT NULL DEFAULT ‘’,<br>  `user_email` varchar(100) NOT NULL DEFAULT ‘’,<br>  `user_url` varchar(100) NOT NULL DEFAULT ‘’,<br>  `user_registered` datetime NOT NULL DEFAULT ‘0000-00-00 00:00:00’,<br>  `user_activation_key` varchar(255) NOT NULL DEFAULT ‘’,<br>  `user_status` int(11) NOT NULL DEFAULT ‘0’,<br>  `display_name` varchar(250) NOT NULL DEFAULT ‘’,<br>  PRIMARY KEY (`ID`),<br>  KEY `user_login_key` (`user_login`),<br>  KEY `user_nicename` (`user_nicename`)<br>) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;</p>
+<p>INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES<br>(1, ‘souvc’, ‘$P$B1X3tpz3DDAzQInF0pTRXff8PxMZ6R0’, ‘souvc’, <a href="mailto:&#39;291117974@qq.com" target="_blank" rel="noopener">&#39;291117974@qq.com</a>‘, ‘’, ‘2016-04-03 00:48:29’, ‘’, 0, ‘souvc’);</p>
+<pre><code>参考： [http://blog.csdn.net/liujiyong7/article/details/8042132](http://blog.csdn.net/liujiyong7/article/details/8042132) [http://zmingcx.com/wordpress-database-tdescription.html](http://zmingcx.com/wordpress-database-tdescription.html) [http://blog.csdn.net/liujiyong7/article/details/8037843](http://blog.csdn.net/liujiyong7/article/details/8037843)
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/27/jquery-e8-8e-b7-e5-8f-96-e6-b5-8f-e8-a7-88-e5-99-a8-e6-98-be-e7-a4-ba-e5-8c-ba-e5-9f-9f-ef-bc-88-e5-8f-af-e8-a7-86-e5-8c-ba-e5-9f-9f-ef-bc-89-e7-9a-84-e9-ab-98-e5-ba-a6/" rel="next" title="JQUERY获取浏览器显示区域（可视区域）的高度">
+                <i class="fa fa-chevron-left"></i> JQUERY获取浏览器显示区域（可视区域）的高度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/27/wordpress-timthumb-php-e7-bc-a9-e7-95-a5-e5-9b-be-e4-b8-8d-e6-98-be-e7-a4-ba-e7-9a-84-e5-8e-9f-e5-9b-a0/" rel="prev" title="wordpress timthumb.php缩略图不显示的原因">
+                wordpress timthumb.php缩略图不显示的原因 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="让我们看看效果先：  首先是JavaScript代码： (function webpackUniversalModuleDefinition(root, factory) {if(typeof exports === ‘object’ &amp;amp;&amp;amp; typeof module === ‘object’)module.exports = factory();else if(typeof de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为输入框增加离子喷射特效">
+<meta property="og:url" content="http://b.zhongmin.me/2016/11/16/e4-b8-ba-e8-be-93-e5-85-a5-e6-a1-86-e5-a2-9e-e5-8a-a0-e7-a6-bb-e5-ad-90-e5-96-b7-e5-b0-84-e7-89-b9-e6-95-88/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="让我们看看效果先：  首先是JavaScript代码： (function webpackUniversalModuleDefinition(root, factory) {if(typeof exports === ‘object’ &amp;amp;&amp;amp; typeof module === ‘object’)module.exports = factory();else if(typeof de">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2016/11/wenzicool.gif">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为输入框增加离子喷射特效">
+<meta name="twitter:description" content="让我们看看效果先：  首先是JavaScript代码： (function webpackUniversalModuleDefinition(root, factory) {if(typeof exports === ‘object’ &amp;amp;&amp;amp; typeof module === ‘object’)module.exports = factory();else if(typeof de">
+<meta name="twitter:image" content="http://zhongmin.me/wp-content/uploads/2016/11/wenzicool.gif">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2016/11/16/e4-b8-ba-e8-be-93-e5-85-a5-e6-a1-86-e5-a2-9e-e5-8a-a0-e7-a6-bb-e5-ad-90-e5-96-b7-e5-b0-84-e7-89-b9-e6-95-88/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>为输入框增加离子喷射特效 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/16/e4-b8-ba-e8-be-93-e5-85-a5-e6-a1-86-e5-a2-9e-e5-8a-a0-e7-a6-bb-e5-ad-90-e5-96-b7-e5-b0-84-e7-89-b9-e6-95-88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">为输入框增加离子喷射特效
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-16 11:59:06" itemprop="dateCreated datePublished" datetime="2016-11-16T11:59:06+08:00">2016-11-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>让我们看看效果先： <img src="http://zhongmin.me/wp-content/uploads/2016/11/wenzicool.gif" alt="wenzicool"> 首先是JavaScript代码：</p>
+<p>(function webpackUniversalModuleDefinition(root, factory) {<br>if(typeof exports === ‘object’ &amp;&amp; typeof module === ‘object’)<br>module.exports = factory();<br>else if(typeof define === ‘function’ &amp;&amp; define.amd)<br>define([], factory);<br>else if(typeof exports === ‘object’)<br>exports[“POWERMODE”] = factory();<br>else<br>root[“POWERMODE”] = factory();<br>})(this, function() {<br>return  (function(modules) { // webpackBootstrap<br>var installedModules = {};<br>function __webpack_require__(moduleId) {<br>if(installedModules[moduleId])<br>return installedModules[moduleId].exports;<br>var module = installedModules[moduleId] = {<br>exports: {},<br>id: moduleId,<br>loaded: false<br>};<br>modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);<br>module.loaded = true;<br>return module.exports;<br>}<br>__webpack_require__.m = modules;<br>__webpack_require__.c = installedModules;<br>__webpack_require__.p = “”;<br>return __webpack_require__(0);<br>})<br>([<br>function(module, exports, __webpack_require__) {<br>‘use strict’;<br>var canvas = document.createElement(‘canvas’);<br>canvas.width = window.innerWidth;<br>canvas.height = window.innerHeight;<br>canvas.style.cssText = ‘position:fixed;top:0;left:0;pointer-events:none;z-index:999999’;<br>window.addEventListener(‘resize’, function () {<br>    canvas.width = window.innerWidth;<br>    canvas.height = window.innerHeight;<br>});<br>document.body.appendChild(canvas);<br>var context = canvas.getContext(‘2d’);<br>var particles = [];<br>var particlePointer = 0;</p>
+<p>POWERMODE.shake = true;</p>
+<p>function getRandom(min, max) {<br>    return Math.random() <em> (max - min) + min;<br>}<br>function getColor(el) {<br>    if (POWERMODE.colorful) {<br>        var u = getRandom(0, 360);<br>        return ‘hsla(‘ + getRandom(u - 10, u + 10) + ‘, 100%, ‘ + getRandom(50, 80) + ‘%, ‘ + 1 + ‘)’;<br>    } else {<br>        return window.getComputedStyle(el).color;<br>    }<br>}<br>function getCaret() {<br>    var el = document.activeElement;<br>    var bcr;<br>    if (el.tagName === ‘TEXTAREA’ ||<br>        (el.tagName === ‘INPUT’ &amp;&amp; el.getAttribute(‘type’) === ‘text’)) {<br>        var offset = __webpack_require__(1)(el, el.selectionStart);<br>        bcr = el.getBoundingClientRect();<br>        return {<br>            x: offset.left + bcr.left,<br>            y: offset.top + bcr.top,<br>            color: getColor(el)<br>        };<br>    }<br>    var selection = window.getSelection();<br>    if (selection.rangeCount) {<br>        var range = selection.getRangeAt(0);<br>        var startNode = range.startContainer;<br>        if (startNode.nodeType === document.TEXT_NODE) {<br>            startNode = startNode.parentNode;<br>        }<br>        bcr = range.getBoundingClientRect();<br>        return {<br>            x: bcr.left,<br>            y: bcr.top,<br>            color: getColor(startNode)<br>        };<br>    }<br>    return { x: 0, y: 0, color: ‘transparent’ };<br>}<br>function createParticle(x, y, color) {<br>    return {<br>        x: x,<br>        y: y,<br>        alpha: 1,<br>        color: color,<br>        velocity: {<br>            x: -1 + Math.random() </em> 2,<br>            y: -3.5 + Math.random() <em> 2<br>        }<br>    };<br>}<br>function POWERMODE() {<br>    {<br>        var caret = getCaret();<br>        var numParticles = 5 + Math.round(Math.random() </em> 10);<br>        while (numParticles–) {<br>            particles[particlePointer] = createParticle(caret.x, caret.y, caret.color);<br>            particlePointer = (particlePointer + 1) % 500;<br>        }<br>    }<br>    {<br>        if (POWERMODE.shake) {<br>            var intensity = 1 + 2 <em> Math.random();<br>            var x = intensity </em> (Math.random() &gt; 0.5 ? -1 : 1);<br>            var y = intensity <em> (Math.random() &gt; 0.5 ? -1 : 1);<br>            document.body.style.marginLeft = x + ‘px’;<br>            document.body.style.marginTop = y + ‘px’;<br>            setTimeout(function() {<br>                document.body.style.marginLeft = ‘’;<br>                document.body.style.marginTop = ‘’;<br>            }, 75);<br>        }<br>    }<br>};<br>POWERMODE.colorful = false;<br>function loop() {<br>    requestAnimationFrame(loop);<br>    context.clearRect(0, 0, canvas.width, canvas.height);<br>    for (var i = 0; i &lt; particles.length; ++i) {<br>        var particle = particles[i];<br>        if (particle.alpha &lt;= 0.1) continue;<br>        particle.velocity.y += 0.075;<br>        particle.x += particle.velocity.x;<br>        particle.y += particle.velocity.y;<br>        particle.alpha </em>= 0.96;<br>        context.globalAlpha = particle.alpha;<br>        context.fillStyle = particle.color;<br>        context.fillRect(<br>            Math.round(particle.x - 1.5),<br>            Math.round(particle.y - 1.5),<br>            3, 3<br>        );<br>    }<br>}<br>requestAnimationFrame(loop);</p>
+<p>module.exports = POWERMODE;<br>},<br>function(module, exports) {<br>(function () {<br>var properties = [<br>  ‘direction’,<br>  ‘boxSizing’,<br>  ‘width’,<br>  ‘height’,<br>  ‘overflowX’,<br>  ‘overflowY’,<br>  ‘borderTopWidth’,<br>  ‘borderRightWidth’,<br>  ‘borderBottomWidth’,<br>  ‘borderLeftWidth’,<br>  ‘borderStyle’,<br>  ‘paddingTop’,<br>  ‘paddingRight’,<br>  ‘paddingBottom’,<br>  ‘paddingLeft’,<br>  ‘fontStyle’,<br>  ‘fontVariant’,<br>  ‘fontWeight’,<br>  ‘fontStretch’,<br>  ‘fontSize’,<br>  ‘fontSizeAdjust’,<br>  ‘lineHeight’,<br>  ‘fontFamily’,<br>  ‘textAlign’,<br>  ‘textTransform’,<br>  ‘textIndent’,<br>  ‘textDecoration’,<br>  ‘letterSpacing’,<br>  ‘wordSpacing’,<br>  ‘tabSize’,<br>  ‘MozTabSize’<br>];<br>var isFirefox = window.mozInnerScreenX != null;<br>function getCaretCoordinates(element, position, options) {<br>  var debug = options &amp;&amp; options.debug || false;<br>  if (debug) {<br>    var el = document.querySelector(‘#input-textarea-caret-position-mirror-div’);<br>    if ( el ) { el.parentNode.removeChild(el); }<br>  }<br>  var div = document.createElement(‘div’);<br>  div.id = ‘input-textarea-caret-position-mirror-div’;<br>  document.body.appendChild(div);<br>  var style = div.style;<br>  var computed = window.getComputedStyle? getComputedStyle(element) : element.currentStyle;  // currentStyle for IE &lt; 9<br>  style.whiteSpace = ‘pre-wrap’;<br>  if (element.nodeName !== ‘INPUT’)<br>    style.wordWrap = ‘break-word’;<br>  style.position = ‘absolute’;<br>  if (!debug)<br>    style.visibility = ‘hidden’;<br>  properties.forEach(function (prop) {<br>    style[prop] = computed[prop];<br>  });<br>  if (isFirefox) {<br>    if (element.scrollHeight &gt; parseInt(computed.height))<br>      style.overflowY = ‘scroll’;<br>  } else {<br>    style.overflow = ‘hidden’;<br>  }<br>  div.textContent = element.value.substring(0, position);<br>  if (element.nodeName === ‘INPUT’)<br>    div.textContent = div.textContent.replace(/\s/g, “\u00a0”);<br>  var span = document.createElement(‘span’);<br>  span.textContent = element.value.substring(position) || ‘.’;  // || because a completely empty faux span doesn’t render at all<br>  div.appendChild(span);<br>  var coordinates = {<br>    top: span.offsetTop + parseInt(computed[‘borderTopWidth’]),<br>    left: span.offsetLeft + parseInt(computed[‘borderLeftWidth’])<br>  };<br>  if (debug) {<br>    span.style.backgroundColor = ‘#aaa’;<br>  } else {<br>    document.body.removeChild(div);<br>  }<br>  return coordinates;<br>}<br>if (typeof module != “undefined” &amp;&amp; typeof module.exports != “undefined”) {<br>  module.exports = getCaretCoordinates;<br>} else {<br>  window.getCaretCoordinates = getCaretCoordinates;<br>}<br>}());<br>}<br>])<br>});</p>
+<p>将以上代码存为<code>input.js</code>，然后在页面放入引入代码和实现代码：</p>
+<p> POWERMODE.colorful = true;<br>POWERMODE.shake = false;<br>document.body.addEventListener(‘input’, POWERMODE); </p>
+<p>注意上面第一个行高亮代码。里面的/input.js的路径需要替换成你的<code>.js</code>文件的绝对路径。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/16/java-stringutils-e5-b7-a5-e5-85-b7-e7-b1-bb-e7-9a-84-e4-bd-bf-e7-94-a8/" rel="next" title="Java StringUtils工具类的使用">
+                <i class="fa fa-chevron-left"></i> Java StringUtils工具类的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/17/e4-bd-bf-e7-94-a8ngrok-e5-b0-86-e5-86-85-e7-bd-91-e5-9c-b0-e5-9d-80-e6-98-a0-e5-b0-84-e5-88-b0-e5-85-ac-e7-bd-91-e4-b8-8a/" rel="prev" title="使用ngrok将内网地址映射到公网上">
+                使用ngrok将内网地址映射到公网上 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="&amp;lt;!DOCTYPE html&amp;gt;         vue-hello            &amp;lt;!--            在Vue模板中，只能绑定简单的属性键值。同时在模板中提供javascript表达式的支持。        –&amp;gt;        { { info }}        { { info ?” has info” :’no info’}}        { {">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2.0学习-数据的绑定以及一些简单的指令">
+<meta property="og:url" content="http://b.zhongmin.me/2017/02/12/vue2-0-e5-ad-a6-e4-b9-a0-e6-95-b0-e6-8d-ae-e7-9a-84-e7-bb-91-e5-ae-9a-e4-bb-a5-e5-8f-8a-e4-b8-80-e4-ba-9b-e7-ae-80-e5-8d-95-e7-9a-84-e8-80-b3-e5-91-bd-e4-bb-a4/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="&amp;lt;!DOCTYPE html&amp;gt;         vue-hello            &amp;lt;!--            在Vue模板中，只能绑定简单的属性键值。同时在模板中提供javascript表达式的支持。        –&amp;gt;        { { info }}        { { info ?” has info” :’no info’}}        { {">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://b.zhongmin.me/2017/02/12/vue2-0-e5-ad-a6-e4-b9-a0-e6-95-b0-e6-8d-ae-e7-9a-84-e7-bb-91-e5-ae-9a-e4-bb-a5-e5-8f-8a-e4-b8-80-e4-ba-9b-e7-ae-80-e5-8d-95-e7-9a-84-e8-80-b3-e5-91-bd-e4-bb-a4/%7B%20%7Bimg%7D%7D">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue2.0学习-数据的绑定以及一些简单的指令">
+<meta name="twitter:description" content="&amp;lt;!DOCTYPE html&amp;gt;         vue-hello            &amp;lt;!--            在Vue模板中，只能绑定简单的属性键值。同时在模板中提供javascript表达式的支持。        –&amp;gt;        { { info }}        { { info ?” has info” :’no info’}}        { {">
+<meta name="twitter:image" content="http://b.zhongmin.me/2017/02/12/vue2-0-e5-ad-a6-e4-b9-a0-e6-95-b0-e6-8d-ae-e7-9a-84-e7-bb-91-e5-ae-9a-e4-bb-a5-e5-8f-8a-e4-b8-80-e4-ba-9b-e7-ae-80-e5-8d-95-e7-9a-84-e8-80-b3-e5-91-bd-e4-bb-a4/%7B%20%7Bimg%7D%7D">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/02/12/vue2-0-e5-ad-a6-e4-b9-a0-e6-95-b0-e6-8d-ae-e7-9a-84-e7-bb-91-e5-ae-9a-e4-bb-a5-e5-8f-8a-e4-b8-80-e4-ba-9b-e7-ae-80-e5-8d-95-e7-9a-84-e8-80-b3-e5-91-bd-e4-bb-a4/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vue2.0学习-数据的绑定以及一些简单的指令 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br/>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/02/12/vue2-0-e5-ad-a6-e4-b9-a0-e6-95-b0-e6-8d-ae-e7-9a-84-e7-bb-91-e5-ae-9a-e4-bb-a5-e5-8f-8a-e4-b8-80-e4-ba-9b-e7-ae-80-e5-8d-95-e7-9a-84-e8-80-b3-e5-91-bd-e4-bb-a4/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue2.0学习-数据的绑定以及一些简单的指令
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-12 15:22:10" itemprop="dateCreated datePublished" datetime="2017-02-12T15:22:10+08:00">2017-02-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/学习记录/" itemprop="url" rel="index"><span itemprop="name">学习记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&lt;!DOCTYPE html&gt;</p>
+<html lang="en"><br><br><head><meta name="generator" content="Hexo 3.8.0"><br>    <meta charset="UTF-8"><br>    <title>vue-hello</title><br></head><br><br><body><br>    <div id="app"><br>        &lt;!--<br>            在Vue模板中，只能绑定简单的属性键值。同时在模板中提供javascript表达式的支持。<br>        –&gt;<br>        <h1>{ { info }}</h1><br>        <h1>{ { info ?” has info” :’no info’}}</h1><br>        <h1>{ { info.concat(“!!!”)}}</h1><br>        <h1>{ { number + 1}}</h1><br>        &lt;!--<br>            在我们的模板中，我们一直都只绑定简单的属性键值。但实际上，对于所有的数据绑定， Vue.js 都提供了完全的 JavaScript 表达式支持。<br>        –&gt;<br>        <h1>{ {new Date()}}</h1><br>        &lt;!-- <h1>{ {k}}</h1>   全局变量无法访问–&gt;<br>        <hr><br>        &lt;!--<br>            胡子写法(双大括号写法)会将数据解释为纯文本,为了输出真正的 HTML ，你需要使用 v-html 指令：<br>         –&gt;<br><br>        <div>{ {message}}</div><br>        <div v-html="message"></div><br>        <hr><br>        &lt;!--<br>            胡子写法不能在 HTML 属性中使用,如果需要绑定标签的属性,需要通过v-bind指令,<br>            <div v-bind:id="id"><br>            v-bind可以省略 简写为 :id<br>        --&gt;<br>        &lt;!-- <img src="{ {img}}">  胡子写吧不能绑定属性会报错–&gt;<br>        <img :src="img" :id="number"><br>        <a :href="link">点我点我</a><br>        <hr><br>        &lt;!--<br>            v-if 与v-show 都是可以用来控制元素的显示与否<br>            不同的是v-show是通过display 属性控制元素是否显示的,<br>            而v-if 是动态的向DOM树内添加或者删除DOM元素<br>            v-if有更高的切换消耗；v-show有更高的初始渲染消；<br>            v-if适合运营条件不大可能改变；v-show适合频繁切换。<br>         –&gt;<br>         <div v-if="isShow">你看不见我!</div><br>         <div v-show="isShow">你看不见我!v-show</div><br>         <hr><br>        &lt;!--<br>            v-on 是用来绑定事件,绑定的事件需要在实例 methods属相中去定义方法<br>            v-on 也可以简写为 @ ,如 v-on:click 简写为@click<br><br>         –&gt;<br>        <a @click="clickFunc">别点我</a><br>        <hr><br>        &lt;!--<br>            过滤器的调用方法 filter:<br>             { { message | capitalize }}<br>             capitalize为调用的过滤器的方法,需要在实例 filters 中定义方法<br>             过滤器的方法总是 接受表示式的值作为第一个参数,即vmessage始终作为第一个参数传递到方法中.<br><br>         –&gt;<br>         <div>过滤器test :{ {info | capitalize(‘1’,’2s’)}}</div><br><br>         &lt;!--<br>            v-once 只渲染一次,及时数据发生改变也不会重新渲染<br>         –&gt;<br>              <div v-once>只渲染一次:{ {info}}</div><br>               <div>不只渲染一次:{ {info}}</div><br>        &lt;!--<br>            { { }} 中只能包含一个表达式, 不能绑定多个表达式或者语句<br>            如 { { var a = 1 }} // 这是语句，不是表达式<br>            { { if (ok) { return message } }}//流控制也不会生效，请使用三元表达式<br>        –&gt;<br>    </div><br>    <script src="../statice/vue.js"></script><br>    <script type="text/javascript"><br>    //自定义的全局变量是无法被模板的<br>    var k = 1;<br><br>    var data = {<br>        info: ‘hello Vue’,<br>        number:1,<br>        message:”<span style='color:red'>hello vue</span>“,<br>        img:’<a href="http://tva1.sinaimg.cn/crop.0.0.179.179.50/d9e5634djw1east9pi6bej2050050dfw.jpg&#39;">http://tva1.sinaimg.cn/crop.0.0.179.179.50/d9e5634djw1east9pi6bej2050050dfw.jpg&#39;</a>,<br>        link:’<a href="http://www.baidu.com&#39;">http://www.baidu.com&#39;</a>,<br>        isShow:true<br>    }<br><br>    var app = new Vue({<br>        el: “#app”,<br>        data: data,<br>        methods:{<br>            clickFunc: function(){<br>                //this指向app这个vue实例 改变number的值页面同时会发生变化,这是vue双向绑定的一种实现.<br>                this.number = 0;<br>                alert(‘别点我!’);<br>            }<br>        },<br>        /*<em><br>         局部过滤器<br>            调用方法<br>            胡子写法<br>            { { message | capitalize }}<br>            //绑定属性v-bind<br>            <div v-bind:id="rawId | formatId"></div>
+         </em>/<br>        filters: {<br>            /<em><br>                过滤器的方法总是 接受表示式的值作为第一个参数<br>                比如 { { message | capitalize }}<br>                此时value的值为 message;<br><br>                 { { message | capitalize(‘1’,’2’) }}<br>                 这时value值依然为message,param1 为 1, param2为2
+            </em>/<br>                capitalize: function (value,param1,param2) {<br>                 if (!value) return ‘’<br>                    value = value + param1 + param2;<br>                 return value +” test”;<br>                }<br>          }<br><br>    })<br>    </script><br></div></body><br><br></html>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/03/jquery-e5-ad-a6-e4-b9-a0-e5-9f-ba-e7-a1-80-e5-8a-a8-e7-94-bb/" rel="next" title="jQuery学习-基础-动画">
+                <i class="fa fa-chevron-left"></i> jQuery学习-基础-动画
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/16/vue-e5-ae-9e-e4-be-8b-e8-af-a6-e8-a7-a3-e4-b8-8e-e7-94-9f-e5-91-bd-e5-91-a8-e6-9c-9f/" rel="prev" title="Vue实例详解与生命周期">
+                Vue实例详解与生命周期 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">{ { info }}</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">{ { info ?” has info” :’no info’}}</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">{ { info.concat(“!!!”)}}</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">{ { number + 1}}</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">{ {new Date()}}</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">{ {k}}</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

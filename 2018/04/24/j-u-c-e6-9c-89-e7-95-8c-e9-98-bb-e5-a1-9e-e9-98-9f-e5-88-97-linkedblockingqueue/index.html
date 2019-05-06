@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简介LinkedBlockingQueue是一个由链表实现的有界队列阻塞队列，但大小默认值为Integer.MAX_VALUE，所以我们在使用LinkedBlockingQueue时建议手动传值，为其提供我们所需的大小，避免队列过大造成机器负载或者内存爆满等情况。其构造函数如下 //默认大小为Integer.MAX_VALUEpublic LinkedBlockingQueue() {">
+<meta name="keywords" content="Java,J.U.C,并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="J.U.C -- 有界阻塞队列 LinkedBlockingQueue">
+<meta property="og:url" content="http://b.zhongmin.me/2018/04/24/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-linkedblockingqueue/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="简介LinkedBlockingQueue是一个由链表实现的有界队列阻塞队列，但大小默认值为Integer.MAX_VALUE，所以我们在使用LinkedBlockingQueue时建议手动传值，为其提供我们所需的大小，避免队列过大造成机器负载或者内存爆满等情况。其构造函数如下 //默认大小为Integer.MAX_VALUEpublic LinkedBlockingQueue() {">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://zhongmin.me/wp-content/uploads/2018/04/4CYBIUF8UV8Z_FF.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="J.U.C -- 有界阻塞队列 LinkedBlockingQueue">
+<meta name="twitter:description" content="简介LinkedBlockingQueue是一个由链表实现的有界队列阻塞队列，但大小默认值为Integer.MAX_VALUE，所以我们在使用LinkedBlockingQueue时建议手动传值，为其提供我们所需的大小，避免队列过大造成机器负载或者内存爆满等情况。其构造函数如下 //默认大小为Integer.MAX_VALUEpublic LinkedBlockingQueue() {">
+<meta name="twitter:image" content="https://zhongmin.me/wp-content/uploads/2018/04/4CYBIUF8UV8Z_FF.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/04/24/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-linkedblockingqueue/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>J.U.C -- 有界阻塞队列 LinkedBlockingQueue | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/24/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-linkedblockingqueue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">J.U.C -- 有界阻塞队列 LinkedBlockingQueue
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-24 16:55:53" itemprop="dateCreated datePublished" datetime="2018-04-24T16:55:53+08:00">2018-04-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>LinkedBlockingQueue是一个由链表实现的有界队列阻塞队列，但大小默认值为Integer.MAX_VALUE，所以我们在使用LinkedBlockingQueue时建议手动传值，为其提供我们所需的大小，避免队列过大造成机器负载或者内存爆满等情况。其构造函数如下</p>
+<p>//默认大小为Integer.MAX_VALUE<br>public LinkedBlockingQueue() {<br>       this(Integer.MAX_VALUE);<br>}</p>
+<p>//创建指定大小为capacity的阻塞队列<br>public LinkedBlockingQueue(int capacity) {<br>     if (capacity &lt;= 0) throw new IllegalArgumentException();<br>     this.capacity = capacity;<br>     last = head = new Node<e>(null);<br> }</e></p>
+<p>//创建大小默认值为Integer.MAX_VALUE的阻塞队列并添加c中的元素到阻塞队列<br>public LinkedBlockingQueue(Collection&lt;? extends E&gt; c) {<br>     this(Integer.MAX_VALUE);<br>     final ReentrantLock putLock = this.putLock;<br>     putLock.lock(); // Never contended, but necessary for visibility<br>     try {<br>         int n = 0;<br>         for (E e : c) {<br>             if (e == null)<br>                 throw new NullPointerException();<br>             if (n == capacity)<br>                 throw new IllegalStateException(“Queue full”);<br>             enqueue(new Node<e>(e));<br>             ++n;<br>         }<br>         count.set(n);<br>     } finally {<br>         putLock.unlock();<br>     }<br> }</e></p>
+<p>从源码看，有三种方式可以构造LinkedBlockingQueue，通常情况下，我们建议创建指定大小的LinkedBlockingQueue阻塞队列。LinkedBlockingQueue队列也是按 FIFO（先进先出）排序元素。新元素插入到队列的尾部，而队列执行获取操作会获得位于队列头部的元素。在正常情况下，链接队列的吞吐量要高于基于数组的队列（ArrayBlockingQueue），因为其内部实现添加和删除操作使用的两个ReenterLock来控制并发执行，而ArrayBlockingQueue内部只是使用一个ReenterLock控制并发，因此LinkedBlockingQueue的吞吐量要高于ArrayBlockingQueue。注意LinkedBlockingQueue和ArrayBlockingQueue的API几乎是一样的，但它们的内部实现原理不太相同，这点稍后会分析。使用LinkedBlockingQueue，我们同样也能实现生产者消费者模式。只需把前面ArrayBlockingQueue案例中的阻塞队列对象换成LinkedBlockingQueue即可。这里限于篇幅就不贴重复代码了。接下来我们重点分析LinkedBlockingQueue的内部实现原理，最后我们将对ArrayBlockingQueue和LinkedBlockingQueue 做总结，阐明它们间的不同之处。</p>
+<h4 id="LinkedBlockingQueue的实现原理剖析"><a href="#LinkedBlockingQueue的实现原理剖析" class="headerlink" title="LinkedBlockingQueue的实现原理剖析:"></a>LinkedBlockingQueue的实现原理剖析:</h4><p>LinkedBlockingQueue是一个基于链表的阻塞队列，其内部维持一个基于链表的数据队列，实际上我们对LinkedBlockingQueue的API操作都是间接操作该数据队列，这里我们先看看LinkedBlockingQueue的内部成员变量</p>
+<p>public class LinkedBlockingQueue<e> extends AbstractQueue<e><br>        implements BlockingQueue<e>, java.io.Serializable {</e></e></e></p>
+<pre><code>/\*\*
+ \* 节点类，用于存储数据
+ */
+static class Node&lt;E&gt; {
+    E item;
+
+    /\*\*
+     \* One of:
+     \* \- the real successor Node
+     \* \- this Node, meaning the successor is head.next
+     \* \- null, meaning there is no successor (this is the last node)
+     */
+    Node&lt;E&gt; next;
+
+    Node(E x) { item = x; }
+}
+
+/\*\* 阻塞队列的大小，默认为Integer.MAX_VALUE */
+private final int capacity;
+
+/\*\* 当前阻塞队列中的元素个数 */
+private final AtomicInteger count = new AtomicInteger();
+
+/\*\*
+ \* 阻塞队列的头结点
+ */
+transient Node&lt;E&gt; head;
+
+/\*\*
+ \* 阻塞队列的尾节点
+ */
+private transient Node&lt;E&gt; last;
+
+/\*\* 获取并移除元素时使用的锁，如take, poll, etc */
+private final ReentrantLock takeLock = new ReentrantLock();
+
+/\*\* notEmpty条件对象，当队列没有数据时用于挂起执行删除的线程 */
+private final Condition notEmpty = takeLock.newCondition();
+
+/\*\* 添加元素时使用的锁如 put, offer, etc */
+private final ReentrantLock putLock = new ReentrantLock();
+
+/\*\* notFull条件对象，当队列数据已满时用于挂起执行添加的线程 */
+private final Condition notFull = putLock.newCondition();
+</code></pre><p>}</p>
+<p>从上述可看成，每个添加到LinkedBlockingQueue队列中的数据都将被封装成Node节点，添加的链表队列中，其中head和last分别指向队列的头结点和尾结点。与ArrayBlockingQueue不同的是，LinkedBlockingQueue内部分别使用了takeLock 和 putLock 对并发进行控制，也就是说，添加和删除操作并不是互斥操作，可以同时进行，这样也就可以大大提高吞吐量。这里再次强调如果没有给LinkedBlockingQueue指定容量大小，其默认值将是Integer.MAX_VALUE，如果存在添加速度大于删除速度时候，有可能会内存溢出，这点在使用前希望慎重考虑。至于LinkedBlockingQueue的实现原理图与ArrayBlockingQueue是类似的，除了对添加和移除方法使用单独的锁控制外，两者都使用了不同的Condition条件对象作为等待队列，用于挂起take线程和put线程。 <img src="https://zhongmin.me/wp-content/uploads/2018/04/4CYBIUF8UV8Z_FF.png" alt></p>
+<h4 id="添加方法的实现原理"><a href="#添加方法的实现原理" class="headerlink" title="添加方法的实现原理:"></a>添加方法的实现原理:</h4><p>对于添加方法，主要指的是add，offer以及put，这里先看看add方法和offer方法的实现,</p>
+<p>public boolean add(E e) {<br>     if (offer(e))<br>         return true;<br>     else<br>         throw new IllegalStateException(“Queue full”);<br>}</p>
+<p>从源码可以看出，add方法间接调用的是offer方法，如果add方法添加失败将抛出IllegalStateException异常，添加成功则返回true，那么下面我们直接看看offer的相关方法实现</p>
+<p>public boolean offer(E e) {<br>     //添加元素为null直接抛出异常<br>     if (e == null) throw new NullPointerException();<br>      //获取队列的个数<br>      final AtomicInteger count = this.count;<br>      //判断队列是否已满<br>      if (count.get() == capacity)<br>          return false;<br>      int c = -1;<br>      //构建节点<br>      Node<e> node = new Node<e>(e);<br>      final ReentrantLock putLock = this.putLock;<br>      putLock.lock();<br>      try {<br>          //再次判断队列是否已满，考虑并发情况<br>          if (count.get() &lt; capacity) {<br>              enqueue(node);//添加元素<br>              c = count.getAndIncrement();//拿到当前未添加新元素时的队列长度<br>              //如果容量还没满<br>              if (c + 1 &lt; capacity)<br>                  notFull.signal();//唤醒下一个添加线程，执行添加操作<br>          }<br>      } finally {<br>          putLock.unlock();<br>      }<br>      // 由于存在添加锁和消费锁，而消费锁和添加锁都会持续唤醒等到线程，因此count肯定会变化。<br>      //这里的if条件表示如果队列中还有1条数据<br>      if (c == 0)<br>        signalNotEmpty();//如果还存在数据那么就唤醒消费锁<br>    return c &gt;= 0; // 添加成功返回true，否则返回false<br>  }</e></e></p>
+<p>//入队操作<br>private void enqueue(Node<e> node) {<br>     //队列尾节点指向新的node节点<br>     last = last.next = node;<br>}</e></p>
+<p>//signalNotEmpty方法<br>private void signalNotEmpty() {<br>      final ReentrantLock takeLock = this.takeLock;<br>      takeLock.lock();<br>          //唤醒获取并删除元素的线程<br>          notEmpty.signal();<br>      } finally {<br>          takeLock.unlock();<br>      }<br>  }</p>
+<p>这里的Offer()方法做了两件事，第一件事是判断队列是否满，满了就直接释放锁，没满就将节点封装成Node入队，然后再次判断队列添加完成后是否已满，不满就继续唤醒等到在条件对象notFull上的添加线程。第二件事是，判断是否需要唤醒等到在notEmpty条件对象上的消费线程。这里我们可能会有点疑惑，为什么添加完成后是继续唤醒在条件对象notFull上的添加线程而不是像ArrayBlockingQueue那样直接唤醒notEmpty条件对象上的消费线程？而又为什么要当<code>if (c == 0)</code>时才去唤醒消费线程呢？</p>
+<ul>
+<li>唤醒添加线程的原因，在添加新元素完成后，会判断队列是否已满，不满就继续唤醒在条件对象notFull上的添加线程，这点与前面分析的ArrayBlockingQueue很不相同，在ArrayBlockingQueue内部完成添加操作后，会直接唤醒消费线程对元素进行获取，这是因为ArrayBlockingQueue只用了一个ReenterLock同时对添加线程和消费线程进行控制，这样如果在添加完成后再次唤醒添加线程的话，消费线程可能永远无法执行，而对于LinkedBlockingQueue来说就不一样了，其内部对添加线程和消费线程分别使用了各自的ReenterLock锁对并发进行控制，也就是说添加线程和消费线程是不会互斥的，所以添加锁只要管好自己的添加线程即可，添加线程自己直接唤醒自己的其他添加线程，如果没有等待的添加线程，直接结束了。如果有就直到队列元素已满才结束挂起，当然offer方法并不会挂起，而是直接结束，只有put方法才会当队列满时才执行挂起操作。注意消费线程的执行过程也是如此。这也是为什么LinkedBlockingQueue的吞吐量要相对大些的原因。</li>
+<li>为什么要判断<code>if (c == 0)</code>时才去唤醒消费线程呢，这是因为消费线程一旦被唤醒是一直在消费的（前提是有数据），所以c值是一直在变化的，c值是添加完元素前队列的大小，此时c只可能是0或<code>c&gt;0</code>，如果是<code>c=0</code>，那么说明之前消费线程已停止，条件对象上可能存在等待的消费线程，添加完数据后应该是<code>c+1</code>，那么有数据就直接唤醒等待消费线程，如果没有就结束啦，等待下一次的消费操作。如果<code>c&gt;0</code>那么消费线程就不会被唤醒，只能等待下一个消费操作（poll、take、remove）的调用，那为什么不是条件<code>c&gt;0</code>才去唤醒呢？我们要明白的是消费线程一旦被唤醒会和添加线程一样，一直不断唤醒其他消费线程，如果添加前<code>c&gt;0</code>，那么很可能上一次调用的消费线程后，数据并没有被消费完，条件队列上也就不存在等待的消费线程了，所以<code>c&gt;0</code>唤醒消费线程得意义不是很大，当然如果添加线程一直添加元素，那么一直<code>c&gt;0</code>，消费线程执行的换就要等待下一次调用消费操作了（poll、take、remove）。</li>
+</ul>
+<h4 id="移除方法的实现原理"><a href="#移除方法的实现原理" class="headerlink" title="移除方法的实现原理"></a>移除方法的实现原理</h4><p>关于移除的方法主要是指remove和poll以及take方法，下面一一分析</p>
+<p>public boolean remove(Object o) {<br>   if (o == null) return false;<br>     fullyLock();//同时对putLock和takeLock加锁<br>     try {<br>         //循环查找要删除的元素<br>         for (Node<e> trail = head, p = trail.next;<br>              p != null;<br>              trail = p, p = p.next) {<br>             if (o.equals(p.item)) {//找到要删除的节点<br>                 unlink(p, trail);//直接删除<br>                 return true;<br>             }<br>         }<br>         return false;<br>     } finally {<br>         fullyUnlock();//解锁<br>     }<br>    }</e></p>
+<p>//两个同时加锁<br>void fullyLock() {<br>       putLock.lock();<br>       takeLock.lock();<br>   }</p>
+<p>void fullyUnlock() {<br>      takeLock.unlock();<br>      putLock.unlock();<br>  }</p>
+<p>remove方法删除指定的对象，这里我们可能会诧异，为什么同时对putLock和takeLock加锁？这是因为remove方法删除的数据的位置不确定，为了避免造成并非安全问题，所以需要对2个锁同时加锁。</p>
+<p>public E poll() {<br>         //获取当前队列的大小<br>        final AtomicInteger count = this.count;<br>        if (count.get() == 0)//如果没有元素直接返回null<br>            return null;<br>        E x = null;<br>        int c = -1;<br>        final ReentrantLock takeLock = this.takeLock;<br>        takeLock.lock();<br>        try {<br>            //判断队列是否有数据<br>            if (count.get() &gt; 0) {<br>                //如果有，直接删除并获取该元素值<br>                x = dequeue();<br>                //当前队列大小减一<br>                c = count.getAndDecrement();<br>                //如果队列未空，继续唤醒等待在条件对象notEmpty上的消费线程<br>                if (c &gt; 1)<br>                    notEmpty.signal();<br>            }<br>        } finally {<br>            takeLock.unlock();<br>        }<br>        //判断c是否等于capacity，这是因为如果满说明NotFull条件对象上<br>        //可能存在等待的添加线程<br>        if (c == capacity)<br>            signalNotFull();<br>        return x;<br>    }</p>
+<p>  private E dequeue() {<br>        Node<e> h = head;//获取头结点<br>        Node<e> first = h.next; 获取头结的下一个节点（要删除的节点）<br>        h.next = h; // help GC//自己next指向自己，即被删除<br>        head = first;//更新头结点<br>        E x = first.item;//获取删除节点的值<br>        first.item = null;//清空数据，因为first变成头结点是不能带数据的，这样也就删除队列的带数据的第一个节点<br>        return x;<br>    }</e></e></p>
+<p>poll方法也比较简单，如果队列没有数据就返回null，如果队列有数据，那么就取出来，如果队列还有数据那么唤醒等待在条件对象notEmpty上的消费线程。然后判断if (c == capacity)为true就唤醒添加线程，这点与前面分析if(c==0)是一样的道理。因为只有可能队列满了，notFull条件对象上才可能存在等待的添加线程。</p>
+<p>public E take() throws InterruptedException {<br>        E x;<br>        int c = -1;<br>        //获取当前队列大小<br>        final AtomicInteger count = this.count;<br>        final ReentrantLock takeLock = this.takeLock;<br>        takeLock.lockInterruptibly();//可中断<br>        try {<br>            //如果队列没有数据，挂机当前线程到条件对象的等待队列中<br>            while (count.get() == 0) {<br>                notEmpty.await();<br>            }<br>            //如果存在数据直接删除并返回该数据<br>            x = dequeue();<br>            c = count.getAndDecrement();//队列大小减1<br>            if (c &gt; 1)<br>                notEmpty.signal();//还有数据就唤醒后续的消费线程<br>        } finally {<br>            takeLock.unlock();<br>        }<br>        //满足条件，唤醒条件对象上等待队列中的添加线程<br>        if (c == capacity)<br>            signalNotFull();<br>        return x;<br>    }</p>
+<p>take方法是一个可阻塞可中断的移除方法，主要做了两件事，一是，如果队列没有数据就挂起当前线程到 notEmpty条件对象的等待队列中一直等待，如果有数据就删除节点并返回数据项，同时唤醒后续消费线程，二是尝试唤醒条件对象notFull上等待队列中的添加线程。 到此关于remove、poll、take的实现也分析完了，其中只有take方法具备阻塞功能。remove方法则是成功返回true失败返回false，poll方法成功返回被移除的值，失败或没数据返回null。下面再看看两个检查方法，即peek和element</p>
+<p>/构造方法，head 节点不存放数据<br> public LinkedBlockingQueue(int capacity) {<br>       if (capacity &lt;= 0) throw new IllegalArgumentException();<br>       this.capacity = capacity;<br>       last = head = new Node<e>(null);<br>   }</e></p>
+<p> public E element() {<br>        E x = peek();//直接调用peek<br>        if (x != null)<br>            return x;<br>        else<br>            throw new NoSuchElementException();//没数据抛异常<br>    }</p>
+<p> public E peek() {<br>        if (count.get() == 0)<br>            return null;<br>        final ReentrantLock takeLock = this.takeLock;<br>        takeLock.lock();<br>        try {<br>            //获取头结节点的下一个节点<br>            Node<e> first = head.next;<br>            if (first == null)<br>                return null;//为null就返回null<br>            else<br>                return first.item;//返回值<br>        } finally {<br>            takeLock.unlock();<br>        }<br>    }</e></p>
+<p>从代码来看，head头结节点在初始化时是本身不带数据的，仅仅作为头部head方便我们执行链表的相关操作。peek返回直接获取头结点的下一个节点返回其值，如果没有值就返回null，有值就返回节点对应的值。element方法内部调用的是peek，有数据就返回，没数据就抛异常。下面我们最后来看两个根据时间阻塞的方法，比较有意思，利用的Conditin来实现的。</p>
+<p>//在指定时间内阻塞添加的方法，超时就结束<br> public boolean offer(E e, long timeout, TimeUnit unit)<br>        throws InterruptedException {</p>
+<pre><code>    if (e == null) throw new NullPointerException();
+    //将时间转换成纳秒
+    long nanos = unit.toNanos(timeout);
+    int c = -1;
+    //获取锁
+    final ReentrantLock putLock = this.putLock;
+    //获取当前队列大小
+    final AtomicInteger count = this.count;
+    //锁中断(如果需要)
+    putLock.lockInterruptibly();
+    try {
+        //判断队列是否满
+        while (count.get() == capacity) {
+            if (nanos &lt;= 0)
+                return false;
+            //如果队列满根据阻塞的等待
+            nanos = notFull.awaitNanos(nanos);
+        }
+        //队列没满直接入队
+        enqueue(new Node&lt;E&gt;(e));
+        c = count.getAndIncrement();
+        //唤醒条件对象上等待的线程
+        if (c + 1 &lt; capacity)
+            notFull.signal();
+    } finally { 
+        putLock.unlock();
+    }
+    //唤醒消费线程
+    if (c == 0)
+        signalNotEmpty();
+    return true;
+}
+</code></pre><p>对于这个offer方法，我们重点来看看阻塞的这段代码</p>
+<p>//判断队列是否满<br> while (count.get() == capacity) {<br>        if (nanos &lt;= 0)<br>            return false;<br>        //如果队列满根据阻塞的等待<br>        nanos = notFull.awaitNanos(nanos);<br>    }</p>
+<p>//CoditionObject（Codition的实现类）中的awaitNanos方法<br> public final long awaitNanos(long nanosTimeout)<br>                throws InterruptedException {<br>            if (Thread.interrupted())<br>                throw new InterruptedException();<br>            //这里是将当前添加线程封装成NODE节点加入Condition的等待队列中<br>            //注意这里的NODE是AQS的内部类Node<br>            Node node = addConditionWaiter();<br>            //加入等待，那么就释放当前线程持有的锁<br>            int savedState = fullyRelease(node);<br>            //计算过期时间<br>            final long deadline = System.nanoTime() + nanosTimeout;<br>            int interruptMode = 0;</p>
+<pre><code>    while (!isOnSyncQueue(node)) {
+        if (nanosTimeout &lt;= 0L) {
+            transferAfterCancelledWait(node);
+            break;
+        }
+        //主要看这里！！由于是while 循环，这里会不断判断等待时间
+        //nanosTimeout 是否超时
+        //static final long spinForTimeoutThreshold = 1000L;
+        if (nanosTimeout &gt;= spinForTimeoutThreshold)
+            LockSupport.parkNanos(this, nanosTimeout);//挂起线程
+        if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
+            break;
+        //重新计算剩余等待时间，while循环中继续判断下列公式
+        //nanosTimeout &gt;= spinForTimeoutThreshold
+        nanosTimeout = deadline - System.nanoTime();
+    }
+    if (acquireQueued(node, savedState) &amp;&amp; interruptMode != THROW_IE)
+        interruptMode = REINTERRUPT;
+    if (node.nextWaiter != null)
+        unlinkCancelledWaiters();
+    if (interruptMode != 0)
+        reportInterruptAfterWait(interruptMode);
+    return deadline - System.nanoTime();
+}
+</code></pre><p>awaitNanos方法中，根据传递进来的时间计算超时阻塞nanosTimeout，然后通过while循环中判断<code>nanosTimeout &gt;= spinForTimeoutThreshold</code> 该公式是否成立，当其为true时则说明超时时间nanosTimeout 还未到期，再次计算<code>nanosTimeout = deadline - System.nanoTime();</code>即nanosTimeout ，持续判断，直到nanosTimeout 小于spinForTimeoutThreshold结束超时阻塞操作，方法也就结束。这里的spinForTimeoutThreshold其实更像一个经验值，因为非常短的超时等待无法做到十分精确，因此采用了spinForTimeoutThreshold这样一个临界值。<code>offer(E e, long timeout, TimeUnit unit)</code>方法内部正是利用这样的Codition的超时等待awaitNanos方法实现添加方法的超时阻塞操作。同样对于<code>poll(long timeout, TimeUnit unit)</code>方法也是一样的道理。</p>
+<h3 id="LinkedBlockingQueue和ArrayBlockingQueue迥异"><a href="#LinkedBlockingQueue和ArrayBlockingQueue迥异" class="headerlink" title="LinkedBlockingQueue和ArrayBlockingQueue迥异"></a>LinkedBlockingQueue和ArrayBlockingQueue迥异</h3><p>通过上述的分析，对于LinkedBlockingQueue和ArrayBlockingQueue的基本使用以及内部实现原理我们已较为熟悉了，这里我们就对它们两间的区别来个小结 1.队列大小有所不同，ArrayBlockingQueue是有界的初始化必须指定大小，而LinkedBlockingQueue可以是有界的也可以是无界的(Integer.MAX_VALUE)，对于后者而言，当添加速度大于移除速度时，在无界的情况下，可能会造成内存溢出等问题。 2.数据存储容器不同，ArrayBlockingQueue采用的是数组作为数据存储容器，而LinkedBlockingQueue采用的则是以Node节点作为连接对象的链表。 3.由于ArrayBlockingQueue采用的是数组的存储容器，因此在插入或删除元素时不会产生或销毁任何额外的对象实例，而LinkedBlockingQueue则会生成一个额外的Node对象。这可能在长时间内需要高效并发地处理大批量数据的时，对于GC可能存在较大影响。 4.两者的实现队列添加或移除的锁不一样，ArrayBlockingQueue实现的队列中的锁是没有分离的，即添加操作和移除操作采用的同一个ReenterLock锁，而LinkedBlockingQueue实现的队列中的锁是分离的，其添加采用的是putLock，移除采用的则是takeLock，这样能大大提高队列的吞吐量，也意味着在高并发的情况下生产者和消费者可以并行地操作队列中的数据，以此来提高整个队列的并发性能。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/J-U-C/" rel="tag"># J.U.C</a>
+          
+            <a href="/tags/并发/" rel="tag"># 并发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/22/j-u-c-e4-bc-98-e5-85-88-e7-ba-a7-e9-98-9f-e5-88-97-priorityblockingqueue/" rel="next" title="J.U.C--优先级队列-PriorityBlockingQueue">
+                <i class="fa fa-chevron-left"></i> J.U.C--优先级队列-PriorityBlockingQueue
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/25/java-8-e8-ae-a4-e8-af-86lambda-e8-a1-a8-e8-be-be-e5-bc-8f/" rel="prev" title="Java 8-- 认识Lambda表达式">
+                Java 8-- 认识Lambda表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedBlockingQueue的实现原理剖析"><span class="nav-number">2.</span> <span class="nav-text">LinkedBlockingQueue的实现原理剖析:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加方法的实现原理"><span class="nav-number">3.</span> <span class="nav-text">添加方法的实现原理:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除方法的实现原理"><span class="nav-number">4.</span> <span class="nav-text">移除方法的实现原理</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedBlockingQueue和ArrayBlockingQueue迥异"><span class="nav-number"></span> <span class="nav-text">LinkedBlockingQueue和ArrayBlockingQueue迥异</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

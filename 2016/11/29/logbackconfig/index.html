@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="logback 简介 Ceki Gülcü在Java日志领域世界知名。他创造了Log4J ，这个最早的Java日志框架即便在JRE内置日志功能的竞争下仍然非常流行。随后他又着手实现SLF4J 这个“简单的日志前端接口（Façade）”来替代Jakarta Commons-Logging LOGBack，一个“可靠、通用、快速而又灵活的Java日志框架”。 要在工程里面使用logback需要以下ja">
+<meta name="keywords" content="Java,logback">
+<meta property="og:type" content="article">
+<meta property="og:title" content="logback常用配置--logger和configuration">
+<meta property="og:url" content="http://b.zhongmin.me/2016/11/29/logbackconfig/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="logback 简介 Ceki Gülcü在Java日志领域世界知名。他创造了Log4J ，这个最早的Java日志框架即便在JRE内置日志功能的竞争下仍然非常流行。随后他又着手实现SLF4J 这个“简单的日志前端接口（Façade）”来替代Jakarta Commons-Logging LOGBack，一个“可靠、通用、快速而又灵活的Java日志框架”。 要在工程里面使用logback需要以下ja">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://logback.qos.ch/manual/images/chapters/configuration/basicSyntax.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="logback常用配置--logger和configuration">
+<meta name="twitter:description" content="logback 简介 Ceki Gülcü在Java日志领域世界知名。他创造了Log4J ，这个最早的Java日志框架即便在JRE内置日志功能的竞争下仍然非常流行。随后他又着手实现SLF4J 这个“简单的日志前端接口（Façade）”来替代Jakarta Commons-Logging LOGBack，一个“可靠、通用、快速而又灵活的Java日志框架”。 要在工程里面使用logback需要以下ja">
+<meta name="twitter:image" content="http://logback.qos.ch/manual/images/chapters/configuration/basicSyntax.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2016/11/29/logbackconfig/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>logback常用配置--logger和configuration | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/29/logbackconfig/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">logback常用配置--logger和configuration
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-29 14:34:00" itemprop="dateCreated datePublished" datetime="2016-11-29T14:34:00+08:00">2016-11-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/学习记录/" itemprop="url" rel="index"><span itemprop="name">学习记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>logback 简介</strong> Ceki Gülcü在Java日志领域世界知名。他创造了Log4J ，这个最早的Java日志框架即便在JRE内置日志功能的竞争下仍然非常流行。随后他又着手实现SLF4J 这个“简单的日志前端接口（Façade）”来替代Jakarta Commons-Logging LOGBack，一个“可靠、通用、快速而又灵活的Java日志框架”。 要在工程里面使用logback需要以下jar文件： slf4j-api-1.6.1.jar 官网网址：<a href="http://www.slf4j.org/" target="_blank" rel="noopener">http://www.slf4j.org/</a> 下载地址：<a href="http://www.slf4j.org/dist/slf4j-1.6.1.zip" target="_blank" rel="noopener">http://www.slf4j.org/dist/slf4j-1.6.1.zip</a> logback-access-0.9.29.jar logback-classic-0.9.29.jar logback-core-0.9.29.jar 官网网址：<a href="http://logback.qos.ch/" target="_blank" rel="noopener">http://logback.qos.ch/</a> 下载地址：<a href="http://logback.qos.ch/dist/logback-0.9.29.zip" target="_blank" rel="noopener">http://logback.qos.ch/dist/logback-0.9.29.zip</a> 在工程src目录下建立logback.xml 注： 1.logback首先会试着查找logback.groovy文件; 2.当没有找到时，继续试着查找logback-test.xml文件; 3.当没有找到时，继续试着查找logback.xml文件; 4.如果仍然没有找到，则使用默认配置（打印到控制台）。 在工程src目录下建立logback包，然后在包下建立LogbackDemo.java用于测试，代码如</p>
+<p>package logback;  </p>
+<p>import org.slf4j.Logger;<br>import org.slf4j.LoggerFactory;  </p>
+<p>public class LogbackDemo {<br>    private static Logger log = LoggerFactory.getLogger(LogbackDemo.class);<br>    public static void main(String[] args) {<br>        log.trace(“======trace”);<br>        log.debug(“======debug”);<br>        log.info(“======info”);<br>        log.warn(“======warn”);<br>        log.error(“======error”);  </p>
+<pre><code>    String name = &quot;Aub&quot;;  
+    String message = &quot;3Q&quot;;  
+    String\[\] fruits = { &quot;apple&quot;, &quot;banana&quot; };  
+
+    // logback提供的可以使用变量的打印方式，结果为&quot;Hello,Aub!&quot;  
+    log.info(&quot;Hello,{}!&quot;, name);  
+
+    // 可以有多个参数,结果为“Hello,Aub! 3Q!”  
+    log.info(&quot;Hello,{}!   {}!&quot;, name, message);  
+
+    // 可以传入一个数组，结果为&quot;Fruit:  apple,banana&quot;  
+    log.info(&quot;Fruit:  {},{}&quot;, fruits);   
+}  
+</code></pre><p>}</p>
+<p><strong>logback 配置详解（一）<configuration> and <logger></logger></configuration></strong> <strong>一：根节点<configuration>包含的属性：</configuration></strong> scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。 scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。 debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 例如：</p>
+<configuration scan="true" scanperiod="60 seconds" debug="false"><br>      &lt;!-- 其他配置省略–><br></configuration>
+
+<p>  <strong>二：根节点<configuration>的子节点：</configuration></strong> <img src="http://logback.qos.ch/manual/images/chapters/configuration/basicSyntax.png" alt> <strong>2.1设置上下文名称：<contextname></contextname></strong> 每个logger都关联到logger上下文，默认上下文名称为“default”。但可以使用<contextname>设置成其他名字，用于区分不同应用程序的记录。一旦设置，不能修改。</contextname></p>
+<configuration scan="true" scanperiod="60 seconds" debug="false"><br>      <contextname>myAppName</contextname><br>      <!-- 其他配置省略--><br></configuration>
+
+<p><strong>2.2设置变量：</strong> <strong><property></property></strong> 用来定义变量值的标签，<property> 有两个属性，name和value；其中name的值是变量的名称，value的值时变量定义的值。通过<property>定义的值会被插入到logger上下文中。定义变量后，可以使“${}”来使用变量。 例如使用<property>定义上下文名称，然后在<contentname>设置logger上下文时使用。</contentname></property></property></property></p>
+<p>Xml代码</p>
+<configuration scan="true" scanperiod="60 seconds" debug="false"><br>      <property name="APP_Name" value="myAppName"><br>      <contextname>${APP_Name}</contextname><br>      <!-- 其他配置省略--><br></property></configuration>
+
+<p><strong>2.3获取时间戳字符串：<timestamp></timestamp></strong> 两个属性 key:标识此<strong><timestamp></timestamp></strong> 的名字；datePattern：设置将当前时间（解析配置文件的时间）转换为字符串的模式，遵循java.txt.SimpleDateFormat的格式。        例如将解析配置文件的时间作为上下文名称：</p>
+<p>Xml代码</p>
+<configuration scan="true" scanperiod="60 seconds" debug="false"><br>      <timestamp key="bySecond" datepattern="yyyyMMdd'T'HHmmss"><br>      <contextname>${bySecond}</contextname><br>      <!-- 其他配置省略--><br></timestamp></configuration>
+
+<p><strong>2.4设置loger：</strong> <strong><loger></loger></strong> 用来设置某一个包或者具体的某一个类的日志打印级别、以及指定<appender>。<loger>仅有一个name属性，一个可选的level和一个可选的addtivity属性。 name:用来指定受此loger约束的某一个包或者具体的某一个类。 level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，还有一个特俗值INHERITED或者同义词NULL，代表强制执行上级的级别。如果未设置此属性，那么当前loger将会继承上级的级别。 addtivity:是否向上级loger传递打印信息。默认是true。 <loger>可以包含零个或多个<appender-ref>元素，标识这个appender将会添加到这个loger。 <strong><root></root></strong> 也是<loger>元素，但是它是根loger。只有一个level属性，应为已经被命名为”root”. level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，不能设置为INHERITED或者同义词NULL。默认是DEBUG。 <root>可以包含零个或多个<appender-ref>元素，标识这个appender将会添加到这个loger。 例如： LogbackDemo.java类</appender-ref></root></loger></appender-ref></loger></loger></appender></p>
+<p>Java代码</p>
+<p>package logback;  </p>
+<p>import org.slf4j.Logger;<br>import org.slf4j.LoggerFactory;  </p>
+<p>public class LogbackDemo {<br>    private static Logger log = LoggerFactory.getLogger(LogbackDemo.class);<br>    public static void main(String[] args) {<br>        log.trace(“======trace”);<br>        log.debug(“======debug”);<br>        log.info(“======info”);<br>        log.warn(“======warn”);<br>        log.error(“======error”);<br>    }<br>}  </p>
+<p>logback.xml配置文件 <strong>第1种：只配置root</strong></p>
+<p>Xml代码</p>
+<configuration><br><br>  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <!-- encoder 默认配置为PatternLayoutEncoder --><br>    <encoder><br>      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <root level="INFO"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br><br> </configuration>
+
+<p>其中appender的配置表示打印到控制台； <root level="INFO">将root的打印级别设置为“INFO”，指定了名字为“STDOUT”的appender。 当执行logback.LogbackDemo类的main方法时，root将级别为“INFO”及大于“INFO”的日志信息交给已经配置好的名为“STDOUT”的appender处理，“STDOUT”appender将信息打印到控制台； <strong>打印结果如下：</strong></root></p>
+<p>13:30:38.484 [main] INFO  logback.LogbackDemo - ======info<br>13:30:38.500 [main] WARN  logback.LogbackDemo - ======warn<br>13:30:38.500 [main] ERROR logback.LogbackDemo - ======error</p>
+<p><strong> 第2种：带有loger的配置，不指定级别，不指定appender，</strong></p>
+<p>Xml代码</p>
+<configuration><br><br>  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <!-- encoder 默认配置为PatternLayoutEncoder --><br>    <encoder><br>      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <!-- logback为java中的包 --><br>  <logger name="logback"><br><br>  <root level="DEBUG"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br><br> </logger></configuration>
+
+<p>其中appender的配置表示打印到控制台； <logger name="logback">将控制logback包下的所有类的日志的打印，但是并没用设置打印级别，所以继承他的上级<root>的日志级别“DEBUG”； 没有设置addtivity，默认为true，将此loger的打印信息向上级传递； 没有设置appender，此loger本身不打印任何信息。 <root level="DEBUG">将root的打印级别设置为“DEBUG”，指定了名字为“STDOUT”的appender。 当执行logback.LogbackDemo类的main方法时，因为LogbackDemo 在包logback中，所以首先执行<logger name="logback">，将级别为“DEBUG”及大于“DEBUG”的日志信息传递给root，本身并不打印； root接到下级传递的信息，交给已经配置好的名为“STDOUT”的appender处理，“STDOUT”appender将信息打印到控制台； <strong>打印结果如下：</strong></logger></root></root></logger></p>
+<p>13:19:15.406 [main] DEBUG logback.LogbackDemo - ======debug<br>13:19:15.406 [main] INFO  logback.LogbackDemo - ======info<br>13:19:15.406 [main] WARN  logback.LogbackDemo - ======warn<br>13:19:15.406 [main] ERROR logback.LogbackDemo - ======error</p>
+<p><strong>第3种：带有多个loger的配置，指定级别，指定appender</strong></p>
+<p>Xml代码</p>
+<configuration><br>   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <!-- encoder 默认配置为PatternLayoutEncoder --><br>    <encoder><br>      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <!-- logback为java中的包 --><br>  <logger name="logback"><br>  <!--logback.LogbackDemo：类的全路径 --><br>  <logger name="logback.LogbackDemo" level="INFO" additivity="false"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></logger><br><br>  <root level="ERROR"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br></logger></configuration>
+
+<p>其中appender的配置表示打印到控制台； <logger name="logback">将控制logback包下的所有类的日志的打印，但是并没用设置打印级别，所以继承他的上级<root>的日志级别“DEBUG”； 没有设置addtivity，默认为true，将此loger的打印信息向上级传递； 没有设置appender，此loger本身不打印任何信息。 <logger name="logback.LogbackDemo" level="INFO" additivity="false">控制logback.LogbackDemo类的日志打印，打印级别为“INFO”； additivity属性为false，表示此loger的打印信息不再向上级传递， 指定了名字为“STDOUT”的appender。 <root level="ERROR">将root的打印级别设置为“ERROR”，指定了名字为“STDOUT”的appender。 当执行logback.LogbackDemo类的main方法时，先执行<logger name="logback.LogbackDemo" level="INFO" additivity="false">，将级别为“INFO”及大于“INFO”的日志信息交给此loger指定的名为“STDOUT”的appender处理，在控制台中打出日志，不再向次loger的上级 <logger name="logback"> 传递打印信息； <logger name="logback">未接到任何打印信息，当然也不会给它的上级root传递任何打印信息； <strong>打印结果如下：</strong></logger></logger></logger></root></logger></root></logger></p>
+<p>14:05:35.937 [main] INFO  logback.LogbackDemo - ======info<br>14:05:35.937 [main] WARN  logback.LogbackDemo - ======warn<br>14:05:35.937 [main] ERROR logback.LogbackDemo - ======error</p>
+<p>如果将<logger name="logback.LogbackDemo" level="INFO" additivity="false">修改为 <logger name="logback.LogbackDemo" level="INFO" additivity="true">那打印结果将是什么呢？ 没错，日志打印了两次，想必大家都知道原因了，因为打印信息向上级传递，logger本身打印一次，root接到后又打印一次 <strong>打印结果如下：</strong></logger></logger></p>
+<p>14:09:01.531 [main] INFO  logback.LogbackDemo - ======info<br>14:09:01.531 [main] INFO  logback.LogbackDemo - ======info<br>14:09:01.531 [main] WARN  logback.LogbackDemo - ======warn<br>14:09:01.531 [main] WARN  logback.LogbackDemo - ======warn<br>14:09:01.531 [main] ERROR logback.LogbackDemo - ======error<br>14:09:01.531 [main] ERROR logback.LogbackDemo - ======error</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/logback/" rel="tag"># logback</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/28/github/" rel="next" title="Git 远程仓库GitHub">
+                <i class="fa fa-chevron-left"></i> Git 远程仓库GitHub
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/29/logbackconfig2/" rel="prev" title="LogBack常用配置二--appender">
+                LogBack常用配置二--appender <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

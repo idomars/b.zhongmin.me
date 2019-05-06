@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="jQuery选择器之全选择器（*选择器）在CSS中，经常会在第一行写下这样一段样式 * {padding: 0; margin: 0;} 通配符意味着给所有的元素设置默认的边距。jQuery中我们也可以通过传递选择器来选中文档页面中的元素 描述： $( “*” ) 抛开jQuery，如果要获取文档中所有的元素，通过document.getElementsByTagName()中传递”*”同样可以获">
+<meta name="keywords" content="jquery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery学习-基础-jQuery选择器">
+<meta property="og:url" content="http://b.zhongmin.me/2017/01/26/jquery-e5-ad-a6-e4-b9-a0-e5-9f-ba-e7-a1-80-e6-a0-b7-e5-bc-8f/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="jQuery选择器之全选择器（*选择器）在CSS中，经常会在第一行写下这样一段样式 * {padding: 0; margin: 0;} 通配符意味着给所有的元素设置默认的边距。jQuery中我们也可以通过传递选择器来选中文档页面中的元素 描述： $( “*” ) 抛开jQuery，如果要获取文档中所有的元素，通过document.getElementsByTagName()中传递”*”同样可以获">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/01/QQ图片20170126094228.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/01/1BI@PR10BABDM1J7.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/01/9RD2U5NR_KUC3OF4V@8.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/01/919WUQZLJBW3MGCCP.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/01/T19ZZZZ97X4Y9U@PJA6.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/01/UPG@PB_ET03J8L@18AXKH.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/01/5592040d0001f8eb04940441.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/01/55920c2f0001198b04940201.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery学习-基础-jQuery选择器">
+<meta name="twitter:description" content="jQuery选择器之全选择器（*选择器）在CSS中，经常会在第一行写下这样一段样式 * {padding: 0; margin: 0;} 通配符意味着给所有的元素设置默认的边距。jQuery中我们也可以通过传递选择器来选中文档页面中的元素 描述： $( “*” ) 抛开jQuery，如果要获取文档中所有的元素，通过document.getElementsByTagName()中传递”*”同样可以获">
+<meta name="twitter:image" content="http://zhongmin.me/wp-content/uploads/2017/01/QQ图片20170126094228.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/01/26/jquery-e5-ad-a6-e4-b9-a0-e5-9f-ba-e7-a1-80-e6-a0-b7-e5-bc-8f/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>jQuery学习-基础-jQuery选择器 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/26/jquery-e5-ad-a6-e4-b9-a0-e5-9f-ba-e7-a1-80-e6-a0-b7-e5-bc-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery学习-基础-jQuery选择器
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-26 09:39:27" itemprop="dateCreated datePublished" datetime="2017-01-26T09:39:27+08:00">2017-01-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习记录/" itemprop="url" rel="index"><span itemprop="name">学习记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="jQuery选择器之全选择器（-选择器）"><a href="#jQuery选择器之全选择器（-选择器）" class="headerlink" title="jQuery选择器之全选择器（*选择器）"></a>jQuery选择器之全选择器（*选择器）</h2><p>在CSS中，经常会在第一行写下这样一段样式</p>
+<p>* {padding: 0; margin: 0;}</p>
+<p>通配符<em>意味着给所有的元素设置默认的边距。jQuery中我们也可以通过传递</em>选择器来选中文档页面中的元素 描述：</p>
+<p>$( “*” )</p>
+<p>抛开jQuery，如果要获取文档中所有的元素，通过document.getElementsByTagName()中传递”*”同样可以获取到 不难发现，id、class、tag都可以通过原生的方法获取到对应的节点，但是我们还需要考虑一个兼容性的问题，我这里顺便提及一下，比如:</p>
+<ol>
+<li>IE会将注释节点实现为元素，所以在IE中调用getElementsByTagName里面会包含注释节点，这个通常是不应该的</li>
+<li>getElementById的参数在IE8及较低的版本不区分大小写</li>
+<li>IE7及较低的版本中，表单元素中，如果表单A的name属性名用了另一个元素B的ID名并且A在B之前，那么getElementById会选中A</li>
+<li>IE8及较低的版本，浏览器不支持getElementsByClassName</li>
+</ol>
+<p>看到了吧，作为一名合格的前端不是那么简单的，就一个基本的选择器上面都需要做这么多兼容，幸好有jQuery的出现，让我们省了很多功夫。</p>
+<h2 id="jQuery选择器之层级选择器"><a href="#jQuery选择器之层级选择器" class="headerlink" title="jQuery选择器之层级选择器"></a>jQuery选择器之层级选择器</h2><p>  <img src="http://zhongmin.me/wp-content/uploads/2017/01/QQ图片20170126094228.png" alt>  </p>
+<ol>
+<li>> （大于号）紧跟父子关系 如$(“div &gt; p”)表示选择div下的直接层中类型是p的节点。</li>
+<li>(空格) 任意层父子关系 如$(“div p”)表示选择div下的所有子节点中类型是p的节点（不管中间隔多少层）。</li>
+<li>+ （加号） 紧跟兄弟关系 如$(“div + p”)表示选择div后面的同层相邻的p节点。</li>
+<li>~ （波浪线）一般兄弟选择器 如$(“div ～ p”)表示选择div后面的同层的所有p节点。</li>
+<li>,(逗号) 表示选择器组合，如$(“div p, span p”)表示div下p节点和span下p节点。</li>
+</ol>
+<h2 id="jQuery选择器之基本筛选选择器"><a href="#jQuery选择器之基本筛选选择器" class="headerlink" title="jQuery选择器之基本筛选选择器"></a>jQuery选择器之基本筛选选择器</h2><p><img src="http://zhongmin.me/wp-content/uploads/2017/01/1BI@PR10BABDM1J7.png" alt> 注意事项：</p>
+<ol>
+<li>:eq(), :lt(), :gt(), :even, :odd 用来筛选他们前面的匹配表达式的集合元素，根据之前匹配的元素在进一步筛选，注意jQuery合集都是从0开始索引</li>
+<li>gt是一个段落筛选，从指定索引的下一个开始，gt(1) 实际从2开始</li>
+<li>eq全称是equal(意思是“等于”)；gt全称是greater than(意思是大于)；lt全称是less than(意思是小于)</li>
+</ol>
+<h2 id="jQuery选择器之内容筛选选择器"><a href="#jQuery选择器之内容筛选选择器" class="headerlink" title="jQuery选择器之内容筛选选择器"></a>jQuery选择器之内容筛选选择器<img src="http://zhongmin.me/wp-content/uploads/2017/01/9RD2U5NR_KUC3OF4V@8.png" alt></h2><p><strong>注意事项：</strong></p>
+<ol>
+<li>:contains与:has都有查找的意思，但是contains查找包含“指定文本”的元素，has查找包含“指定元素”的元素</li>
+<li>如果:contains匹配的文本包含在元素的子元素中，同样认为是符合条件的。</li>
+<li>:parent与:empty是相反的，两者所涉及的子元素，包括文本节点</li>
+</ol>
+<p>至于:parent和:empty,比如a:parent和 a:empty,parent都理解吧，学JS的时候用来选择父元素的； a:parent可以理解成如果 a 是个父元素， a 什么时候是个父元素？&gt;&gt; a 下面有任何东西的时候它就是父元素。 那么可以理解成：如果 a 不是个空标签 a:parent 就可以选中它。a:empty 与前面的相反， 如果 a 是个空标签， 那么选中它.</p>
+<h2 id="jQuery选择器之可见性筛选选择器"><a href="#jQuery选择器之可见性筛选选择器" class="headerlink" title="jQuery选择器之可见性筛选选择器"></a>jQuery选择器之可见性筛选选择器</h2><p><img src="http://zhongmin.me/wp-content/uploads/2017/01/919WUQZLJBW3MGCCP.png" alt> 这2个选择器都是 jQuery 延伸出来的，看起来比较简单，但是元素可见性依赖于适用的样式</p>
+<blockquote>
+<p><code>:hidden选择器，不仅仅包含样式是display=&quot;none&quot;的元素，还包括隐藏表单、visibility等等</code></p>
+</blockquote>
+<p>我们有几种方式可以隐藏一个元素：</p>
+<ol>
+<li>CSS display的值是none。</li>
+<li>type=”hidden”的表单元素。</li>
+<li>宽度和高度都显式设置为0。</li>
+<li>一个祖先元素是隐藏的，该元素是不会在页面上显示</li>
+<li>CSS visibility的值是hidden</li>
+<li>CSS opacity的指是0</li>
+</ol>
+<blockquote>
+<p>如果元素中占据文档中一定的空间,元素被认为是可见的。 可见元素的宽度或高度，是大于零。 元素的visibility: hidden 或 opacity: 0被认为是可见的，因为他们仍然占用空间布局。 但是display:none,width=0 height=0 jq认为是不可见的,因为不占空间布局 displaynone和width:0;height:0，让div消失且不在文档流里占位置了，用hidden可以选择出来；         visibility:hidden和opacity:0，只是让你看不到他们，但是他们还在文档流里占位，用visible选择出来</p>
+</blockquote>
+<h2 id="jQuery选择器之属性筛选选择器"><a href="#jQuery选择器之属性筛选选择器" class="headerlink" title="jQuery选择器之属性筛选选择器"></a>jQuery选择器之属性筛选选择器</h2><h2 id><a href="#" class="headerlink" title></a><img src="http://zhongmin.me/wp-content/uploads/2017/01/T19ZZZZ97X4Y9U@PJA6.png" alt></h2><p>  浏览器支持：</p>
+<ul>
+<li>[att=val]、[att]、[att|=val]、[att~=val]  属于CSS 2.1规范</li>
+<li>[ns|attr]、[att^=val]、[att*=val]、[att$=val] 属于CSS3规范</li>
+<li>[name!=”value”]  属于jQuery 扩展的选择器</li>
+</ul>
+<blockquote>
+<p>CSS选择器无论CSS2.1版本还是CSS3版本，IE7和IE8都支持，webkit、Gecko核心及Opera也都支持，只有IE6以下浏览器才不支持</p>
+</blockquote>
+<p>在这么多属性选择器中[attr=”value”]和[attr*=”value”]是最实用的</p>
+<blockquote>
+<p>[attr=”value”]能帮我们定位不同类型的元素，特别是表单form元素的操作，比如说input[type=”text”],input[type=”checkbox”]等 [attr*=”value”]能在网站中帮助我们匹配不同类型的文件</p>
+</blockquote>
+<p>$(‘div[name=p1]‘) //选中name值为p1的div 如<div name="p1"></div><br>$(‘div[p2]‘)      //选中属性值含有p2的div 如<div p2></div><br>$(‘div[name|=”-“]‘) //选中属性值name中的值只包含一个连字符“-”的div元素 如<div name="-"></div><br>$(‘div[name|=”p”]‘) //选中属性值name中的值使以p开头连接’-‘的div元素 如<div name="p-"></div><br>$(‘div[name*=”p”]‘) //选中属性值name中的值使以-p结束’的div元素 如<div name="-p"></div><br>$(‘div[name~=”a”]‘) //选中属性值name中的值包含 a 的div元素 如<div name="a b"></div><br>$(‘div[name^=a]‘) //选中属性值name中的值以a开头的div元素 如<div name="ab"></div><br>$(‘div[name$=a]‘) //选中属性值name中的值以a结束的div元素 如<div name="ba"></div></p>
+<h2 id="jQuery选择器之子元素筛选选择器"><a href="#jQuery选择器之子元素筛选选择器" class="headerlink" title="jQuery选择器之子元素筛选选择器"></a>jQuery选择器之子元素筛选选择器</h2><p><img src="http://zhongmin.me/wp-content/uploads/2017/01/UPG@PB_ET03J8L@18AXKH.png" alt> 注意事项：</p>
+<ol>
+<li>:first只匹配一个单独的元素，但是:first-child选择器可以匹配多个：即为每个父级元素匹配第一个子元素。这相当于:nth-child(1)</li>
+<li>:last 只匹配一个单独的元素， :last-child 选择器可以匹配多个元素：即，为每个父级元素匹配最后一个子元素</li>
+<li>如果子元素只有一个的话，:first-child与:last-child是同一个</li>
+<li>:only-child匹配某个元素是父元素中唯一的子元素，就是说当前子元素是父元素中唯一的元素，则匹配</li>
+<li>jQuery实现:nth-child(n)是严格来自CSS规范，所以n值是“索引”，也就是说，从1开始计数，:nth-child(index)从1开始的，而eq(index)是从0开始的</li>
+<li>nth-child(n) 与 :nth-last-child(n) 的区别前者是从前往后计算，后者从后往前计算</li>
+</ol>
+<h2 id="jQuery选择器之表单元素选择器"><a href="#jQuery选择器之表单元素选择器" class="headerlink" title="jQuery选择器之表单元素选择器"></a>jQuery选择器之表单元素选择器</h2><p>  <img src="http://zhongmin.me/wp-content/uploads/2017/01/5592040d0001f8eb04940441.png" alt> 注意事项： 除了input筛选选择器，几乎每个表单类别筛选器都对应一个input元素的type值。大部分表单类别筛选器可以使用属性筛选器替换。比如 $(‘:password’) == $(‘[type=password]‘)  </p>
+<h2 id="jQuery选择器之表单对象属性筛选选择器"><a href="#jQuery选择器之表单对象属性筛选选择器" class="headerlink" title="jQuery选择器之表单对象属性筛选选择器"></a>jQuery选择器之表单对象属性筛选选择器</h2><p>  <img src="http://zhongmin.me/wp-content/uploads/2017/01/55920c2f0001198b04940201.png" alt> 注意事项：</p>
+<ol>
+<li>选择器适用于复选框和单选框，对于下拉框元素, 使用 :selected 选择器</li>
+<li>在某些浏览器中，选择器:checked可能会错误选取到<option>元素，所以保险起见换用选择器input:checked，确保只会选取</option><input>元素</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag"># jquery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/25/e9-80-9a-e8-bf-87httpservletrequest-e8-8e-b7-e5-8f-96-e5-8f-82-e6-95-b0-e7-9a-84map-e9-9b-86-e5-90-88/" rel="next" title="通过HttpServletRequest获取参数的map集合">
+                <i class="fa fa-chevron-left"></i> 通过HttpServletRequest获取参数的map集合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/29/jquery-e5-ad-a6-e4-b9-a0-e5-9f-ba-e7-a1-80-e5-b1-9e-e6-80-a7-e4-b8-8e-e6-a0-b7-e5-bc-8f/" rel="prev" title="jQuery学习-基础-属性与样式">
+                jQuery学习-基础-属性与样式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之全选择器（-选择器）"><span class="nav-number">1.</span> <span class="nav-text">jQuery选择器之全选择器（*选择器）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之层级选择器"><span class="nav-number">2.</span> <span class="nav-text">jQuery选择器之层级选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之基本筛选选择器"><span class="nav-number">3.</span> <span class="nav-text">jQuery选择器之基本筛选选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之内容筛选选择器"><span class="nav-number">4.</span> <span class="nav-text">jQuery选择器之内容筛选选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之可见性筛选选择器"><span class="nav-number">5.</span> <span class="nav-text">jQuery选择器之可见性筛选选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之属性筛选选择器"><span class="nav-number">6.</span> <span class="nav-text">jQuery选择器之属性筛选选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">7.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之子元素筛选选择器"><span class="nav-number">8.</span> <span class="nav-text">jQuery选择器之子元素筛选选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之表单元素选择器"><span class="nav-number">9.</span> <span class="nav-text">jQuery选择器之表单元素选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery选择器之表单对象属性筛选选择器"><span class="nav-number">10.</span> <span class="nav-text">jQuery选择器之表单对象属性筛选选择器</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

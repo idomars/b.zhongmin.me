@@ -1,0 +1,2889 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/5/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/5/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/15/1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/15/1/" class="post-title-link" itemprop="url">1</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-15 14:00:22" itemprop="dateCreated datePublished" datetime="2018-01-15T14:00:22+08:00">2018-01-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一-实体类实现clone接口"><a href="#一-实体类实现clone接口" class="headerlink" title="一.实体类实现clone接口"></a><strong>一.实体类实现clone接口</strong></h3><p>但是该方法存在一个缺陷，clone()方法是使用Object类的clone()方法，,它并不会将对象的所有属性全部拷贝过来，而是有选择性的拷贝，基本规则如下： 1.基本类型 如果变量是基本很类型，则拷贝其值，比如int、float等。 2.对象 如果变量是一个实例对象，则拷贝其地址引用，也就是说此时新对象与原来对象是公用该实例变量。 3.String字符串 若变量为String字符串，则拷贝其地址引用。但是在修改时，它会从字符串池中重新生成一个新的字符串，原有字符串对象保持不变。</p>
+<h3 id="二-通过apache-common的BeanUtils-copyProperties"><a href="#二-通过apache-common的BeanUtils-copyProperties" class="headerlink" title="二.通过apache.common的BeanUtils.copyProperties;"></a><strong>二.通过apache.common的BeanUtils.copyProperties;</strong></h3><p>用法是 BeanUtils.copyProperties(“转换后的类”, “要转换的类”);  ,其原理是通过JDK自带的反射机制动态的去get,set，从而去转换我们的类.但是这个方法也有缺陷,对时间的支持不太好,当要转换的类中存在date类型为null的字段,会抛出异常,需要我们重写时间转换方法.目前beanutils支持转换的字段如下:</p>
+<p>* java.lang.BigDecimal<br>* java.lang.BigInteger<br>* boolean and java.lang.Boolean<br>* byte and java.lang.Byte<br>* char and java.lang.Character<br>* java.lang.Class<br>* double and java.lang.Double<br>* float and java.lang.Float<br>* int and java.lang.Integer<br>* long and java.lang.Long<br>* short and java.lang.Short<br>* java.lang.String<br>* java.sql.Date<br>* java.sql.Time<br>* java.sql.Timestamp</p>
+<p>还有一个PropertyUtils.copyProperties(“转换后的类”, “要转换的类”);  ,与BeanUtils有些区别,主要的区别在于BeanUtils提供类型转换功能，即发现两个JavaBean的同名属性为不同类型时，在支持的数据类型范围内进行转换，而前者不支持这个功能，但是速度会更快一些。其实两个都很慢.</p>
+<h3 id="三-利用序列化实现对象的copy"><a href="#三-利用序列化实现对象的copy" class="headerlink" title="三.利用序列化实现对象的copy"></a>三.利用序列化实现对象的copy</h3><p>在内存中通过字节流的拷贝是比较容易实现的。把母对象写入到一个字节流中，再从字节流中将其读出来，这样就可以创建一个新的对象了，并且该新对象与母对象之间并不存在引用共享的问题，真正实现对象的深拷贝</p>
+<p>public class CloneUtils {<br>    @SuppressWarnings(“unchecked”)<br>    public static <t extends serializable> T clone(T obj){<br>        T cloneObj = null;<br>        try {<br>            //写入字节流<br>            ByteArrayOutputStream out = new ByteArrayOutputStream();<br>            ObjectOutputStream obs = new ObjectOutputStream(out);<br>            obs.writeObject(obj);<br>            obs.close();</t></p>
+<pre><code>        //分配内存，写入原始对象，生成新对象
+        ByteArrayInputStream ios = new ByteArrayInputStream(out.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(ios);
+        //返回生成的新对象
+        cloneObj = (T) ois.readObject();
+        ois.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return cloneObj;
+}
+</code></pre><p>}</p>
+<p>使用该工具类的对象必须要实现Serializable接口，否则是没有办法实现克隆的。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/15/java-copy-e5-af-b9-e8-b1-a1-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/15/java-copy-e5-af-b9-e8-b1-a1-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95/" class="post-title-link" itemprop="url">Java copy对象的几种方法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-15 13:15:11" itemprop="dateCreated datePublished" datetime="2018-01-15T13:15:11+08:00">2018-01-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一-实体类实现clone接口"><a href="#一-实体类实现clone接口" class="headerlink" title="一.实体类实现clone接口"></a><strong>一.实体类实现clone接口</strong></h3><p>但是该方法存在一个缺陷，clone()方法是使用Object类的clone()方法，,它并不会将对象的所有属性全部拷贝过来，而是有选择性的拷贝，基本规则如下： 1.基本类型 如果变量是基本很类型，则拷贝其值，比如int、float等。 2.对象 如果变量是一个实例对象，则拷贝其地址引用，也就是说此时新对象与原来对象是公用该实例变量。 3.String字符串 若变量为String字符串，则拷贝其地址引用。但是在修改时，它会从字符串池中重新生成一个新的字符串，原有字符串对象保持不变。</p>
+<h3 id="二-通过apache-common的BeanUtils-copyProperties"><a href="#二-通过apache-common的BeanUtils-copyProperties" class="headerlink" title="二.通过apache.common的BeanUtils.copyProperties;"></a><strong>二.通过apache.common的BeanUtils.copyProperties;</strong></h3><p>用法是 BeanUtils.copyProperties(“转换后的类”, “要转换的类”);  ,其原理是通过JDK自带的反射机制动态的去get,set，从而去转换我们的类.但是这个方法也有缺陷,对时间的支持不太好,当要转换的类中存在date类型为null的字段,会抛出异常,需要我们重写时间转换方法.目前beanutils支持转换的字段如下:</p>
+<p>* java.lang.BigDecimal<br>* java.lang.BigInteger<br>* boolean and java.lang.Boolean<br>* byte and java.lang.Byte<br>* char and java.lang.Character<br>* java.lang.Class<br>* double and java.lang.Double<br>* float and java.lang.Float<br>* int and java.lang.Integer<br>* long and java.lang.Long<br>* short and java.lang.Short<br>* java.lang.String<br>* java.sql.Date<br>* java.sql.Time<br>* java.sql.Timestamp</p>
+<p>还有一个PropertyUtils.copyProperties(“转换后的类”, “要转换的类”);  ,与BeanUtils有些区别,主要的区别在于BeanUtils提供类型转换功能，即发现两个JavaBean的同名属性为不同类型时，在支持的数据类型范围内进行转换，而前者不支持这个功能，但是速度会更快一些。其实两个都很慢.</p>
+<h3 id="三-利用序列化实现对象的copy"><a href="#三-利用序列化实现对象的copy" class="headerlink" title="三.利用序列化实现对象的copy"></a>三.利用序列化实现对象的copy</h3><p>在内存中通过字节流的拷贝是比较容易实现的。把母对象写入到一个字节流中，再从字节流中将其读出来，这样就可以创建一个新的对象了，并且该新对象与母对象之间并不存在引用共享的问题，真正实现对象的深拷贝</p>
+<p>public class CloneUtils {<br>    @SuppressWarnings(“unchecked”)<br>    public static <t extends serializable> T clone(T obj){<br>        T cloneObj = null;<br>        try {<br>            //写入字节流<br>            ByteArrayOutputStream out = new ByteArrayOutputStream();<br>            ObjectOutputStream obs = new ObjectOutputStream(out);<br>            obs.writeObject(obj);<br>            obs.close();</t></p>
+<pre><code>        //分配内存，写入原始对象，生成新对象
+        ByteArrayInputStream ios = new ByteArrayInputStream(out.toByteArray());
+        ObjectInputStream ois = new ObjectInputStream(ios);
+        //返回生成的新对象
+        cloneObj = (T) ois.readObject();
+        ois.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return cloneObj;
+}
+</code></pre><p>}</p>
+<p>使用该工具类的对象必须要实现Serializable接口，否则是没有办法实现克隆的。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/08/765/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/08/765/" class="post-title-link" itemprop="url">hessian反序列化问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-08 21:03:13" itemprop="dateCreated datePublished" datetime="2018-01-08T21:03:13+08:00">2018-01-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天工作中遇到一个诡异的问题：dubbo服务中,controller调用service的系统暴露的服务，同步调用，controller报空指针，反序列化失败：</p>
+<p>Caused by: com.alibaba.com.caucho.hessian.io.HessianProtocolException: ‘com.xwtech.wingservice.entity.vo.jsjq.JqDesignFeeVo’ could not be instantiated<br>    at com.alibaba.com.caucho.hessian.io.JavaDeserializer.instantiate(JavaDeserializer.java:275)<br>    at com.alibaba.com.caucho.hessian.io.JavaDeserializer.readObject(JavaDeserializer.java:155)<br>    at com.alibaba.com.caucho.hessian.io.SerializerFactory.readObject(SerializerFactory.java:397)<br>    at com.alibaba.com.caucho.hessian.io.Hessian2Input.readObjectInstance(Hessian2Input.java:2070)<br>    at com.alibaba.com.caucho.hessian.io.Hessian2Input.readObject(Hessian2Input.java:2005)<br>    at com.alibaba.com.caucho.hessian.io.Hessian2Input.readObject(Hessian2Input.java:1990)<br>    at com.alibaba.com.caucho.hessian.io.Hessian2Input.readObject(Hessian2Input.java:1538)<br>    at com.alibaba.com.caucho.hessian.io.JavaDeserializer$ObjectFieldDeserializer.deserialize(JavaDeserializer.java:396)<br>    … 29 more<br>Caused by: java.lang.reflect.InvocationTargetException<br>    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br>    at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)<br>    at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br>    at java.lang.reflect.Constructor.newInstance(Constructor.java:525)<br>    at com.alibaba.com.caucho.hessian.io.JavaDeserializer.instantiate(JavaDeserializer.java:271)<br>    … 36 more<br>Caused by: java.lang.NullPointerException<br>    at com.xwtech.wingservice.entity.jsjq.JqDesignFee.<init>(JqDesignFee.java:502)<br>    at com.xwtech.wingservice.entity.vo.jsjq.JqDesignFeeVo.<init>(JqDesignFeeVo.java:58)<br>    … 41 more</init></init></p>
+<pre><code>at com.alibaba.dubbo.remoting.exchange.support.DefaultFuture.returnFromResponse(DefaultFuture.java:190) ~\[dubbo-2.5.3.jar:2.5.3\]
+at com.alibaba.dubbo.remoting.exchange.support.DefaultFuture.get(DefaultFuture.java:110) ~\[dubbo-2.5.3.jar:2.5.3\]
+at com.alibaba.dubbo.remoting.exchange.support.DefaultFuture.get(DefaultFuture.java:84) ~\[dubbo-2.5.3.jar:2.5.3\]
+at com.alibaba.dubbo.rpc.protocol.dubbo.DubboInvoker.doInvoke(DubboInvoker.java:96) ~\[dubbo-2.5.3.jar:2.5.3\]
+... 61 common frames omitted
+</code></pre><p>报了一个JqDesignFee的一个空指正,那一行代码是刚好类构造函数.通过Debug发现在Service中在返回数据的时候始终会进入这个构造函数,猜测是序列化的时候可能会调用一下POJO类的构造函数. 在返回的实体类中增加了一个空的构造函数就OK了; 在 <code>JavaDeserializer.java:275</code>中有这么一段：</p>
+<p>public JavaDeserializer(Class cl)<br>  {<br>    _type = cl;<br>    _fieldMap = getFieldMap(cl);</p>
+<pre><code>_readResolve = getReadResolve(cl);
+
+if (_readResolve != null) {
+  _readResolve.setAccessible(true);
+}
+
+Constructor \[\]constructors = cl.getDeclaredConstructors();
+long bestCost = Long.MAX_VALUE;
+
+for (int i = 0; i &lt; constructors.length; i++) {
+  Class \[\]param = constructors\[i\].getParameterTypes();
+  long cost = 0;
+
+  for (int j = 0; j &lt; param.length; j++) {
+cost = 4 * cost;
+
+if (Object.class.equals(param\[j\]))
+  cost += 1;
+else if (String.class.equals(param\[j\]))
+  cost += 2;
+else if (int.class.equals(param\[j\]))
+  cost += 3;
+else if (long.class.equals(param\[j\]))
+  cost += 4;
+else if (param\[j\].isPrimitive())
+  cost += 5;
+else
+  cost += 6;
+  }
+
+  if (cost &lt; 0 || cost &gt; (1 &lt;&lt; 48))
+cost = 1 &lt;&lt; 48;
+
+  cost += param.length &lt;&lt; 48;
+
+  if (cost &lt; bestCost) {
+    _constructor = constructors\[i\];
+    bestCost = cost;
+  }
+}
+
+if (_constructor != null) {
+  _constructor.setAccessible(true);
+  Class \[\]params = _constructor.getParameterTypes();
+  _constructorArgs = new Object\[params.length\];
+  for (int i = 0; i &lt; params.length; i++) {
+    _constructorArgs\[i\] = getParamArg(params\[i\]);
+  }
+}
+</code></pre><p>上面这段代码，是hessian在反序列化的时候，用于在被反序列化的类里面找一个“得分最低”的构造函数，反序列化时会加以调用; 构造函数的“得分”规则大致是：参数越少得分越低；参数个数相同时，参数类型越接近JDK内置类得分越低 而我们的调用返回的类只有一个构造函数，当然只有这个构造函数会被选中 但是，hessian反序列化调用被选中的构造函数时，是这样来创造该构造函数需要的参数的:</p>
+<p>protected static Object getParamArg(Class cl)<br>  {<br>    if (! cl.isPrimitive())<br>      return null;<br>    else if (boolean.class.equals(cl))<br>      return Boolean.FALSE;<br>    else if (byte.class.equals(cl))<br>      return new Byte((byte) 0);<br>    else if (short.class.equals(cl))<br>      return new Short((short) 0);<br>    else if (char.class.equals(cl))<br>      return new Character((char) 0);<br>    else if (int.class.equals(cl))<br>      return new Integer(0);<br>    else if (long.class.equals(cl))<br>      return new Long(0);<br>    else if (float.class.equals(cl))<br>      return new Float(0);<br>    else if (double.class.equals(cl))<br>      return new Double(0);<br>    else<br>      throw new UnsupportedOperationException();</p>
+<p>可以看到，如果参数不是<code>primitive</code>类型，会被<code>null</code>代替；但不巧的是我们的构造函数内部对该参数调用了一个方法，因此抛出了空指针… 也就是说这个空指针是抛在客户端反序列化的时候而不是服务端内部，因此服务端当然找不到对应的错误日志了； 解决的办法也很简单：可以新增一个无参构造函数(无参构造函数肯定“得分”最低一定会被选中)；或者修改代码保证任意参数为<code>null</code>的时候都不会出问题</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/08/beannotofrequiredtypeexception-e5-8a-9e-e6-b3-95-e4-bb-a5-e5-8f-8aproxy-target-class-e4-bd-9c-e7-94-a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/08/beannotofrequiredtypeexception-e5-8a-9e-e6-b3-95-e4-bb-a5-e5-8f-8aproxy-target-class-e4-bd-9c-e7-94-a8/" class="post-title-link" itemprop="url">BeanNotOfRequiredTypeException办法以及proxy-target-class 作用</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-08 20:36:07" itemprop="dateCreated datePublished" datetime="2018-01-08T20:36:07+08:00">2018-01-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="BeanNotOfRequiredTypeException问题"><a href="#BeanNotOfRequiredTypeException问题" class="headerlink" title="BeanNotOfRequiredTypeException问题"></a>BeanNotOfRequiredTypeException问题</h4><p>错误信息： org.springframework.beans.factory.BeanNotOfRequiredTypeException: Bean named ‘aisleService’ must be of type [com.gdie.whlocation.service.impl.AisleService], but was actually of type [$Proxy38] 这个问题出现的原因：一般在使用annotation的方式注入spring的bean 出现的，具体是由于spring采用代理的机制导致的，看使用的代码：</p>
+<p>1. 使用类注入：<br>@Resource(name = “aisleService”)<br>private AisleService aisleService;  </p>
+<p>2. 使用接口注入：<br>@Resource(name = “aisleService”)<br>private IAisleService aisleService;</p>
+<p>代码1不能使用JDK的动态代理注入，原因是jdk的动态代理不支持类注入，只支持接口方式注入； 代码2可以使用jdk动态代理注入； 如果要使用代码1的方式，必须使用cglib代理；设置 proxy-target-class=”true” 当然了推荐使用代码2的方式，基于接口编程的方式！ 使用1的方式也是可以的，建议试一下@Autowired这个注解 @Autowired这个注解和@Resource注解不同的是方法类型不同 @Autowired是按类的类型注入的  是不用区分注入名字的 @Resource是按照类的名字注入的   区分注入名字的大小写的写错了也会报BeanNotOfRequiredTypeException异常  </p>
+<h4 id="关于proxy-target-class-作用"><a href="#关于proxy-target-class-作用" class="headerlink" title="关于proxy-target-class 作用"></a>关于proxy-target-class 作用</h4><p>属性值默认为false,表示使用JDK动态代理织入增强;当值为true时,表示使用CGLib动态代理织入增强;但是,即使设置为false,如果目标类没有生命接口,则Spring将自动使用CGLib动态代理.(以上来自:Spring3.X企业应用开发实战 P229) 通俗理解: 当要使用实现了某个接口的类让Spring来生成bean时,无需在aop配置中添加proxy-target-class,因为它默认为false. 但如果要使用一个指定的类,让Spring来生成bean,并使用它的某个方法时,需要在aop配置上加上一句proxy-target-class=”true”,否则用JUnit时,会出现: java.lang.ClassCastException: com.sun.proxy.$Proxy6 cannot be cast to glut.daoImp2.DAOImp2 类似的错误. JUnit代码:</p>
+<p>@Test<br>    public void test() {<br>        ApplicationContext ctx = new ClassPathXmlApplicationContext(<br>                “applicationContext.xml”);<br>        //下面注释的两行,proxy-target-class=”false”<br>        //IDAO daoImp = (IDAO) ctx.getBean(“DAOImp”);<br>        //daoImp.add();  </p>
+<pre><code>    //以下两行,proxy-target-class=&quot;true&quot;  
+    DAOImp2 daoImp2 = (DAOImp2) ctx.getBean(&quot;DAOImp2&quot;);  
+    daoImp2.add2();  
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/02/ora-14411-e8-af-a5-ddl-e4-b8-8d-e8-83-bd-e4-b8-8e-e5-85-b6-e4-bb-96-ddl-e5-b9-b6-e8-a1-8c-e8-bf-90-e8-a1-8c-e5-a4-84-e7-90-86-e5-8a-9e-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/01/02/ora-14411-e8-af-a5-ddl-e4-b8-8d-e8-83-bd-e4-b8-8e-e5-85-b6-e4-bb-96-ddl-e5-b9-b6-e8-a1-8c-e8-bf-90-e8-a1-8c-e5-a4-84-e7-90-86-e5-8a-9e-e6-b3-95/" class="post-title-link" itemprop="url">ORA-14411 该 DDL 不能与其他 DDL 并行运行处理办法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-02 11:09:19" itemprop="dateCreated datePublished" datetime="2018-01-02T11:09:19+08:00">2018-01-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>存在问题：在oracle数据库中执行alter table 添加字段操作时，或者在执行for update的时候一直卡住, 在oracle数据库中执行alter table语句时，返回的是ORA-14411：该DDL不能与其他DDL并行运行这个错误，原因就是表被锁定了， 解除锁定的方法如下： 1.查询被锁定的会话的sid，serial# select sid,serial# from v$session t where t.SID IN (select session_id from v$locked_object); 2.结束该进程 alter system kill session ‘sid,serial#’; 例如： alter system kill session ‘12,68’; alter system kill session ‘136,42’;</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/12/29/maven-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/12/29/maven-e5-9f-ba-e7-a1-80-e7-9f-a5-e8-af-86/" class="post-title-link" itemprop="url">Maven基础知识</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-29 15:25:23" itemprop="dateCreated datePublished" datetime="2017-12-29T15:25:23+08:00">2017-12-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一-定制库到Maven本地资源库"><a href="#一-定制库到Maven本地资源库" class="headerlink" title="一.定制库到Maven本地资源库"></a>一.定制库到Maven本地资源库</h2><p>这里有2个案例，需要手动发出Maven命令包括一个 jar 到 Maven 的本地资源库。</p>
+<ul>
+<li>要使用的 jar 不存在于 Maven 的中心储存库中。</li>
+<li>您创建了一个自定义的 jar ，而另一个 Maven 项目需要使用。</li>
+</ul>
+<p>PS，还是有很多 jar 不支持 Maven 的。</p>
+<h3 id="案例学习"><a href="#案例学习" class="headerlink" title="案例学习"></a>案例学习</h3><p>例如，kaptcha，它是一个流行的第三方Java库，它被用来生成 “验证码” 的图片，以阻止垃圾邮件，但它不在 Maven 的中央仓库中。 在本教程中，我们将告诉你如何安装 “kaptcha” jar 到Maven 的本地资源库。</p>
+<h4 id="1-mvn-安装"><a href="#1-mvn-安装" class="headerlink" title="1. mvn 安装"></a>1. mvn 安装</h4><p>下载 “kaptcha”，将其解压缩并将 kaptcha-version.jar 复制到其他地方，比如：C盘。发出下面的命令：</p>
+<p>mvn install:install-file -Dfile=c:\kaptcha-{version}.jar -DgroupId=com.google.code -DartifactId=kaptcha -Dversion={version} -Dpackaging=jar</p>
+<p>示例：</p>
+<p>D:\&gt;mvn install:install-file -Dfile=c:\kaptcha-2.3.jar -DgroupId=com.google.code<br>-DartifactId=kaptcha -Dversion=2.3 -Dpackaging=jar<br>[INFO] Scanning for projects…<br>[INFO] Searching repository for plugin with prefix: ‘install’.<br>[INFO] ————————————————————————<br>[INFO] Building Maven Default Project<br>[INFO]    task-segment: [install:install-file] (aggregator-style)<br>[INFO] ————————————————————————<br>[INFO] [install:install-file]<br>[INFO] Installing c:\kaptcha-2.3.jar to<br>D:\maven_repo\com\google\code\kaptcha\2.3\kaptcha-2.3.jar<br>[INFO] ————————————————————————<br>[INFO] BUILD SUCCESSFUL<br>[INFO] ————————————————————————<br>[INFO] Total time: &lt; 1 second<br>[INFO] Finished at: Tue May 12 13:41:42 SGT 2014<br>[INFO] Final Memory: 3M/6M<br>[INFO] ————————————————————————</p>
+<p>现在，“kaptcha” jar被复制到 Maven 本地存储库。</p>
+<h4 id="2-pom-xml"><a href="#2-pom-xml" class="headerlink" title="2. pom.xml"></a>2. pom.xml</h4><dependency><br>      <groupid>com.google.code</groupid><br>      <artifactid>kaptcha</artifactid><br>      <version>2.3</version><br> </dependency>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/12/23/gradle-e4-bf-ae-e6-94-b9-e6-9c-ac-e5-9c-b0-e4-bb-93-e5-ba-93-e7-9a-84-e4-bd-8d-e7-bd-ae/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/12/23/gradle-e4-bf-ae-e6-94-b9-e6-9c-ac-e5-9c-b0-e4-bb-93-e5-ba-93-e7-9a-84-e4-bd-8d-e7-bd-ae/" class="post-title-link" itemprop="url">Gradle修改本地仓库的位置</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-23 18:11:26" itemprop="dateCreated datePublished" datetime="2017-12-23T18:11:26+08:00">2017-12-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Gradle修改本地仓库的位置 前段时间接触到了使用Gradle去构建项目，但是没有办法像Maven一样配置Setting文件来修改本地库的位置。后来纠结很久，修改系统的环境变量即可。PS：修改完成后一定要重启计算机才可以~ 将C:\Users\tower\.gradle的默认目录复制到d:/gradle_repo/.gradle，然后设置系统环境变量： GRADLE_USER_HOME=d:/gradle_repo/.gradle     找到gradle的配置文件路径，例如Windows中的路径为C:\Users\${你的用户名}\.gradle 上面已经修改为d盘下面了 新建一个文件名为init.gradle，用记事本或者类似的编辑器打开，输入以下内容:</p>
+<p>allprojects{<br>  repositories {<br>    def REPOSITORY_URL = ‘<a href="http://maven.aliyun.com/nexus/content/groups/public/&#39;" target="_blank" rel="noopener">http://maven.aliyun.com/nexus/content/groups/public/&#39;</a><br>      all { ArtifactRepository repo -&gt;<br>        if(repo instanceof MavenArtifactRepository){<br>          def url = repo.url.toString()<br>          if (url.startsWith(‘<a href="https://repo1.maven.org/maven2&#39;" target="_blank" rel="noopener">https://repo1.maven.org/maven2&#39;</a>) || url.startsWith(‘<a href="https://jcenter.bintray.com/&#39;)" target="_blank" rel="noopener">https://jcenter.bintray.com/&#39;)</a>) {<br>            project.logger.lifecycle “Repository ${repo.url} replaced by $REPOSITORY_URL.”<br>            remove repo<br>          }<br>       }<br>    }<br>    maven {<br>      url REPOSITORY_URL<br>    }<br>  }<br>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/12/19/e4-bd-bf-e7-94-a8spring-e7-9a-84scheduled-e5-ae-9e-e7-8e-b0-e5-ae-9a-e6-97-b6-e4-bb-bb-e5-8a-a1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/12/19/e4-bd-bf-e7-94-a8spring-e7-9a-84scheduled-e5-ae-9e-e7-8e-b0-e5-ae-9a-e6-97-b6-e4-bb-bb-e5-8a-a1/" class="post-title-link" itemprop="url">使用Spring的@Scheduled实现定时任务</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-19 11:15:55" itemprop="dateCreated datePublished" datetime="2017-12-19T11:15:55+08:00">2017-12-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Spring配置文件xmlns加入:</p>
+<p>xmlns:task=”<a href="http://www.springframework.org/schema/task&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/task&quot;</a></p>
+<p>xsi:schemaLocation中加入:</p>
+<p> <a href="http://www.springframework.org/schema/task" target="_blank" rel="noopener">http://www.springframework.org/schema/task</a><br> <a href="http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;</a></p>
+<p>Spring扫描注解的配置:</p>
+<p>&lt;context:component-scan base-package=”com.test.*” /&gt;</p>
+<p>任务扫描注解以及线程数:</p>
+<p>&lt;task:executor id=”executor” pool-size=”5” /&gt;<br>&lt;task:scheduler id=”scheduler” pool-size=”10” /&gt;<br>&lt;task:annotation-driven executor=”executor” scheduler=”scheduler” /&gt;</p>
+<p>代码实现： 注解@Scheduled 可以作为一个触发源添加到一个方法中，例如，以下的方法将以一个固定延迟时间5秒钟调用一次执行，这个周期是以上一个调用任务的<strong>完成时间</strong>为基准，在上一个任务完成之后，5s后再次执行：</p>
+<p>@Scheduled(fixedDelay = 5000)<br>public void doSomething() {<br>    // something that should execute periodically<br>}</p>
+<p>如果需要以固定速率执行，只要将注解中指定的属性名称改成fixedRate即可，以下方法将以一个固定速率5s来调用一次执行，这个周期是以上一个任务开始时间为基准，从上一任务开始执行后5s再次调用：</p>
+<p>@Scheduled(fixedRate = 5000)<br>public void doSomething() {<br>    // something that should execute periodically<br>}</p>
+<p>如果简单的定期调度不能满足，那么cron表达式提供了可能:</p>
+<p>import org.springframework.scheduling.annotation.Scheduled;<br>import org.springframework.stereotype.Component;</p>
+<p>@Component<br>public class TaskDemo {</p>
+<pre><code>@Scheduled(cron = &quot;0 0 2 * * ?&quot;)　　//每天凌晨两点执行
+    void doSomethingWith(){
+        logger.info(&quot;定时任务开始......&quot;);
+        long begin = System.currentTimeMillis();
+
+        long end = System.currentTimeMillis();
+        logger.info(&quot;定时任务结束，共耗时：\[&quot; + (end-begin) / 1000 + &quot;\]秒&quot;);
+}
+</code></pre><p>}</p>
+<p>以下内容摘自<a href="http://biaoming.iteye.com/blog/39532" target="_blank" rel="noopener">http://biaoming.iteye.com/blog/39532</a> 一个cron表达式有至少6个（也可能7个）有空格分隔的时间元素。</p>
+<h4 id="按顺序依次为"><a href="#按顺序依次为" class="headerlink" title="按顺序依次为"></a>按顺序依次为</h4><h4 id="秒（0-59）"><a href="#秒（0-59）" class="headerlink" title="秒（0~59）"></a>秒（0~59）</h4><p>分钟（0~59） 小时（0~23） 天（月）（0~31，但是你需要考虑你月的天数） 月（0~11） 天（星期）（1~7 1=SUN 或 SUN，MON，TUE，WED，THU，FRI，SAT） 7.年份（1970－2099） 其中每个元素可以是一个值(如6),一个连续区间(9-12),一个间隔时间(8-18/4)(/表示每隔4小时),一个列表(1,3,5),通配符。由于”月份中的日期”和”星期中的日期”这两个元素互斥的,必须要对其中一个设置?. 0 0 10,14,16 <em> </em> ? 每天上午10点，下午2点，4点 0 0/30 9-17 <em> </em> ?   朝九晚五工作时间内每半小时 0 0 12 ? <em> WED 表示每个星期三中午12点 “0 0 12 </em> <em> ?” 每天中午12点触发 “0 15 10 ? </em> <em>“ 每天上午10:15触发 “0 15 10 </em> <em> ?” 每天上午10:15触发 “0 15 10 </em> <em> ? </em>“ 每天上午10:15触发 “0 15 10 <em> </em> ? 2005” 2005年的每天上午10:15触发 “0 <em> 14 </em> <em> ?” 在每天下午2点到下午2:59期间的每1分钟触发 “0 0/5 14 </em> <em> ?” 在每天下午2点到下午2:55期间的每5分钟触发 “0 0/5 14,18 </em> <em> ?” 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发 “0 0-5 14 </em> <em> ?” 在每天下午2点到下午2:05期间的每1分钟触发 “0 10,44 14 ? 3 WED” 每年三月的星期三的下午2:10和2:44触发 “0 15 10 ? </em> MON-FRI” 周一至周五的上午10:15触发 “0 15 10 15 <em> ?” 每月15日上午10:15触发 “0 15 10 L </em> ?” 每月最后一日的上午10:15触发 “0 15 10 ? <em> 6L” 每月的最后一个星期五上午10:15触发 “0 15 10 ? </em> 6L 2002-2005” 2002年至2005年的每月的最后一个星期五上午10:15触发 “0 15 10 ? <em> 6#3” 每月的第三个星期五上午10:15触发 有些子表达式能包含一些范围或列表 例如：子表达式（<strong>天（星期）</strong>）可以为 “MON-FRI”，“MON，WED，FRI”，“MON-WED,SAT” “</em>”字符代表所有可能的值 因此，“<em>”在子表达式（<strong>月</strong>）里表示每个月的含义，“</em>”在子表达式（<strong>天（星期）</strong>）表示星期的每一天   “/”字符用来指定数值的增量 例如：在子表达式（分钟）里的“0/15”表示从第0分钟开始，每15分钟 在子表达式（分钟）里的“3/20”表示从第3分钟开始，每20分钟（它和“3，23，43”）的含义一样 “？”字符仅被用于天（月）和天（星期）两个子表达式，表示不指定值 当2个子表达式其中之一被指定了值以后，为了避免冲突，需要将另一个子表达式的值设为“？”   “L” 字符仅被用于天（月）和天（星期）两个子表达式，它是单词“last”的缩写 但是它在两个子表达式里的含义是不同的。 在天（月）子表达式中，“L”表示一个月的最后一天 在天（星期）自表达式中，“L”表示一个星期的最后一天，也就是SAT 如果在“L”前有具体的内容，它就具有其他的含义了 例如：“6L”表示这个月的倒数第６天，“ＦＲＩＬ”表示这个月的最一个星期五 注意：在使用“L”参数时，不要指定列表或范围，因为这会导致问题     字段   允许值   允许的特殊字符</p>
+<p><code>秒</code></p>
+<p><code>0-59</code></p>
+<p><code>, - * /</code></p>
+<p><code>分</code></p>
+<p><code>0-59</code></p>
+<p><code>, - * /</code></p>
+<p><code>小时</code></p>
+<p><code>0-23</code></p>
+<p><code>, - * /</code></p>
+<p><code>日期</code></p>
+<p><code>1-31</code></p>
+<p><code>, - * ? / L W C</code></p>
+<p><code>月份</code></p>
+<p><code>1-12 或者 JAN-DEC</code></p>
+<p><code>, - * /</code></p>
+<p><code>星期</code></p>
+<p><code>1-7 或者 SUN-SAT</code></p>
+<p><code>, - * ? / L C #</code></p>
+<p><code>年（可选）</code></p>
+<p><code>留空, 1970-2099</code></p>
+<p><code>, - * /</code></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/12/13/mybatis-generator-e7-94-9f-e6-88-90-e6-95-b0-e6-8d-ae-e5-ba-93-e8-87-aa-e5-b8-a6-e7-9a-84-e4-b8-ad-e6-96-87-e6-b3-a8-e9-87-8a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/12/13/mybatis-generator-e7-94-9f-e6-88-90-e6-95-b0-e6-8d-ae-e5-ba-93-e8-87-aa-e5-b8-a6-e7-9a-84-e4-b8-ad-e6-96-87-e6-b3-a8-e9-87-8a/" class="post-title-link" itemprop="url">Mybatis Generator生成数据库自带的中文注释</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-13 21:37:57" itemprop="dateCreated datePublished" datetime="2017-12-13T21:37:57+08:00">2017-12-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>相关jar包</p>
+<p>&lt;!-- mybatis生成 jar包 –&gt;</p>
+<dependency><br>     <groupid>org.mybatis.generator</groupid><br>     <artifactid>mybatis-generator-core</artifactid><br>     <version>1.3.2</version><br></dependency><br>&lt;!-- oracle jar包 –&gt;<br><dependency><br>     <groupid>com.oracle</groupid><br>     <artifactid>ojdbc6</artifactid><br>     <version>6.0</version><br></dependency><br>&lt;!-- mysql jar包 –&gt;<br><dependency><br>     <groupid>mysql</groupid><br>     <artifactid>mysql-connector-java</artifactid><br>     <version>5.1.9</version><br></dependency>
+
+<p>2、自定义的CommentGenerator类</p>
+<p>package org.mybatis.generator;</p>
+<p>import static org.mybatis.generator.internal.util.StringUtility.isTrue;</p>
+<p>import java.text.SimpleDateFormat;<br>import java.util.Date;<br>import java.util.Properties;</p>
+<p>import org.mybatis.generator.api.CommentGenerator;<br>import org.mybatis.generator.api.IntrospectedColumn;<br>import org.mybatis.generator.api.IntrospectedTable;<br>import org.mybatis.generator.api.dom.java.CompilationUnit;<br>import org.mybatis.generator.api.dom.java.Field;<br>import org.mybatis.generator.api.dom.java.InnerClass;<br>import org.mybatis.generator.api.dom.java.InnerEnum;<br>import org.mybatis.generator.api.dom.java.JavaElement;<br>import org.mybatis.generator.api.dom.java.Method;<br>import org.mybatis.generator.api.dom.java.Parameter;<br>import org.mybatis.generator.api.dom.xml.XmlElement;<br>import org.mybatis.generator.config.MergeConstants;<br>import org.mybatis.generator.config.PropertyRegistry;</p>
+<p>/**<br> * 描述：</p>
+<p> */<br>public class MyCommentGenerator implements CommentGenerator{<br>    private Properties properties;<br>    private Properties systemPro;<br>    private boolean suppressDate;<br>    private boolean suppressAllComments;<br>    private String currentDateStr;</p>
+<pre><code>public MyCommentGenerator() {
+    super();
+    properties = new Properties();
+    systemPro = System.getProperties();
+    suppressDate = false;
+    suppressAllComments = false;
+    currentDateStr = (new SimpleDateFormat(&quot;yyyy-MM-dd&quot;)).format(new Date());
+}
+
+public void addJavaFileComment(CompilationUnit compilationUnit) {
+    // add no file level comments by default
+    return;
+}
+
+/\*\*
+ \* Adds a suitable comment to warn users that the element was generated, and
+ \* when it was generated.
+ */
+public void addComment(XmlElement xmlElement) {
+    return;
+}
+
+public void addRootComment(XmlElement rootElement) {
+    // add no document level comments by default
+    return;
+}
+
+public void addConfigurationProperties(Properties properties) {
+    this.properties.putAll(properties);
+
+    suppressDate = isTrue(properties.getProperty(PropertyRegistry.COMMENT\_GENERATOR\_SUPPRESS_DATE));
+
+    suppressAllComments = isTrue(properties.getProperty(PropertyRegistry.COMMENT\_GENERATOR\_SUPPRESS\_ALL\_COMMENTS));
+}
+
+/\*\*
+ \* This method adds the custom javadoc tag for. You may do nothing if you do
+ \* not wish to include the Javadoc tag - however, if you do not include the
+ \* Javadoc tag then the Java merge capability of the eclipse plugin will
+ \* break.
+ \* 
+ \* @param javaElement
+ \*            the java element
+ */
+protected void addJavadocTag(JavaElement javaElement, boolean markAsDoNotDelete) {
+    javaElement.addJavaDocLine(&quot; *&quot;);
+    StringBuilder sb = new StringBuilder();
+    sb.append(&quot; * &quot;);
+    sb.append(MergeConstants.NEW\_ELEMENT\_TAG);
+    if (markAsDoNotDelete) {
+        sb.append(&quot; do\_not\_delete\_during\_merge&quot;);
+    }
+    String s = getDateString();
+    if (s != null) {
+        sb.append(&apos; &apos;);
+        sb.append(s);
+    }
+    javaElement.addJavaDocLine(sb.toString());
+}
+
+/\*\*
+ \* This method returns a formated date string to include in the Javadoc tag
+ \* and XML comments. You may return null if you do not want the date in
+ \* these documentation elements.
+ \* 
+ \* @return a string representing the current timestamp, or null
+ */
+protected String getDateString() {
+    String result = null;
+    if (!suppressDate) {
+        result = currentDateStr;
+    }
+    return result;
+}
+
+public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable) {
+    if (suppressAllComments) {
+        return;
+    }
+    StringBuilder sb = new StringBuilder();
+    innerClass.addJavaDocLine(&quot;/**&quot;);
+    sb.append(&quot; * &quot;);
+    sb.append(introspectedTable.getFullyQualifiedTable());
+    sb.append(&quot; &quot;);
+    sb.append(getDateString());
+    innerClass.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    innerClass.addJavaDocLine(&quot; */&quot;);
+}
+
+public void addEnumComment(InnerEnum innerEnum, IntrospectedTable introspectedTable) {
+    if (suppressAllComments) {
+        return;
+    }
+    StringBuilder sb = new StringBuilder();
+    innerEnum.addJavaDocLine(&quot;/**&quot;);
+    sb.append(&quot; * &quot;);
+    sb.append(introspectedTable.getFullyQualifiedTable());
+    innerEnum.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    innerEnum.addJavaDocLine(&quot; */&quot;);
+}
+
+public void addFieldComment(Field field, IntrospectedTable introspectedTable,
+        IntrospectedColumn introspectedColumn) {
+    if (suppressAllComments) {
+        return;
+    }
+    StringBuilder sb = new StringBuilder();
+    field.addJavaDocLine(&quot;/**&quot;);
+    sb.append(&quot; * &quot;);
+    sb.append(introspectedColumn.getRemarks());
+    field.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    field.addJavaDocLine(&quot; */&quot;);
+}
+
+public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
+    if (suppressAllComments) {
+        return;
+    }
+    StringBuilder sb = new StringBuilder();
+    field.addJavaDocLine(&quot;/**&quot;);
+    sb.append(&quot; * &quot;);
+    sb.append(introspectedTable.getFullyQualifiedTable());
+    field.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    field.addJavaDocLine(&quot; */&quot;);
+}
+
+public void addGeneralMethodComment(Method method, IntrospectedTable introspectedTable) {
+    if (suppressAllComments) {
+        return;
+    }
+  method.addJavaDocLine(&quot;/**&quot;);
+  addJavadocTag(method, false);
+  method.addJavaDocLine(&quot; */&quot;);
+}
+
+public void addGetterComment(Method method, IntrospectedTable introspectedTable,
+        IntrospectedColumn introspectedColumn) {
+    if (suppressAllComments) {
+        return;
+    }
+    method.addJavaDocLine(&quot;/**&quot;);
+    StringBuilder sb = new StringBuilder();
+    sb.append(&quot; * &quot;);
+    sb.append(introspectedColumn.getRemarks());
+    method.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    sb.setLength(0);
+    sb.append(&quot; * @return &quot;);
+    sb.append(introspectedColumn.getActualColumnName());
+    sb.append(&quot; &quot;);
+    sb.append(introspectedColumn.getRemarks());
+    method.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    method.addJavaDocLine(&quot; */&quot;);
+}
+
+public void addSetterComment(Method method, IntrospectedTable introspectedTable,
+        IntrospectedColumn introspectedColumn) {
+    if (suppressAllComments) {
+        return;
+    }
+    method.addJavaDocLine(&quot;/**&quot;);
+    StringBuilder sb = new StringBuilder();
+    sb.append(&quot; * &quot;);
+    sb.append(introspectedColumn.getRemarks());
+    method.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    Parameter parm = method.getParameters().get(0);
+    sb.setLength(0);
+    sb.append(&quot; * @param &quot;);
+    sb.append(parm.getName());
+    sb.append(&quot; &quot;);
+    sb.append(introspectedColumn.getRemarks());
+    method.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    method.addJavaDocLine(&quot; */&quot;);
+}
+
+public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable, boolean markAsDoNotDelete) {
+    if (suppressAllComments) {
+        return;
+    }
+    StringBuilder sb = new StringBuilder();
+    innerClass.addJavaDocLine(&quot;/**&quot;);
+    sb.append(&quot; * &quot;);
+    sb.append(introspectedTable.getFullyQualifiedTable());
+    innerClass.addJavaDocLine(sb.toString().replace(&quot;\\n&quot;, &quot; &quot;));
+    sb.setLength(0);
+    sb.append(&quot; * @author &quot;);
+    sb.append(systemPro.getProperty(&quot;user.name&quot;));
+    sb.append(&quot; &quot;);
+    sb.append(currentDateStr);
+    innerClass.addJavaDocLine(&quot; */&quot;);
+}
+</code></pre><p>}</p>
+<p>3.入口 ,执行类文件</p>
+<p>package org.mybatis.generator;</p>
+<p>import java.io.IOException;<br>import java.io.InputStream;<br>import java.net.URISyntaxException;<br>import java.sql.SQLException;<br>import java.util.ArrayList;<br>import java.util.List;</p>
+<p>import org.mybatis.generator.api.MyBatisGenerator;<br>import org.mybatis.generator.config.Configuration;<br>import org.mybatis.generator.config.xml.ConfigurationParser;<br>import org.mybatis.generator.exception.InvalidConfigurationException;<br>import org.mybatis.generator.exception.XMLParserException;<br>import org.mybatis.generator.internal.DefaultShellCallback;</p>
+<p>public class StartUp {<br>    public static void main(String[] args) throws URISyntaxException {<br>        try {<br>            List<string> warnings = new ArrayList<string>();<br>            boolean overwrite = true;<br>            ClassLoader classloader = Thread.currentThread().getContextClassLoader();<br>            InputStream is = classloader.getResourceAsStream(“generatorConfig.xml”);<br>            ConfigurationParser cp = new ConfigurationParser(warnings);<br>            Configuration config = cp.parseConfiguration(is);<br>            DefaultShellCallback callback = new DefaultShellCallback(overwrite);<br>            MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);<br>            myBatisGenerator.generate(null);<br>        } catch (SQLException e) {<br>            e.printStackTrace();<br>        } catch (IOException e) {<br>            e.printStackTrace();<br>        } catch (InterruptedException e) {<br>            e.printStackTrace();<br>        } catch (InvalidConfigurationException e) {<br>            e.printStackTrace();<br>        } catch (XMLParserException e) {<br>            e.printStackTrace();<br>        }<br>    }<br>}</string></string></p>
+<p>4.配置相关的xml文件</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE generatorConfiguration<br>  PUBLIC “-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN”<br>  “<a href="http://mybatis.org/dtd/mybatis-generator-config\_1\_0.dtd&quot;&gt;" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-generator-config\_1\_0.dtd&quot;&gt;</a></p>
+<generatorconfiguration><br>    &lt;!-- ojdbc6.jar已经直接放到项目中,无需指定了,同时mysql驱动包也一样,这里同样无需指定 –&gt;<br>    &lt;!-- <classpathentry location="ojdbc6.jar"> –&gt;<br>    <context id="context1" targetruntime="MyBatis3"><br>        &lt;!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 –&gt;<br>        <property name="javaFileEncoding" value="UTF-8"><br>        &lt;!-- 这里的type里写的是你的实现类的类全路径 –&gt;<br>        <commentgenerator type="org.mybatis.generator.MyCommentGenerator"><br>        </commentgenerator><br><br>        <jdbcconnection driverclass="oracle.jdbc.driver.OracleDriver" connectionurl="jdbc:oracle:thin:@远程ip地址或localhost:1521:orcl" userid="用户名" password="密码"><br>            &lt;!-- 针对oracle数据库 –&gt;<br>            <property name="remarksReporting" value="true"></property><br>        </jdbcconnection><br>　　　　<br>　　　　 &lt;!-- mysql配置 –&gt;<br>        &lt;!--   <jdbcconnection driverclass="com.mysql.jdbc.Driver" connectionurl="jdbc:mysql://localhost:3306/bookshop" userid="root" password="root"><br>                    针对mysql数据库<br>                    <property name="useInformationSchema" value="true"></property><br>          </jdbcconnection> –&gt;<br><br>        <javatyperesolver><br>            <property name="forceBigDecimals" value="false"><br>        </property></javatyperesolver><br><br>        &lt;!-- dto class –&gt;<br>        <javamodelgenerator targetpackage="model" targetproject="C:\\Users\\Administrator\\Desktop"><br>            <property name="enableSubPackages" value="true"><br>            <property name="trimStrings" value="true"><br>        </property></property></javamodelgenerator><br><br>        &lt;!-- mybatis xml file –&gt;<br>        <sqlmapgenerator targetpackage="dao" targetproject="C:\\Users\\Administrator\\Desktop"><br>            <property name="enableSubPackages" value="true"><br>        </property></sqlmapgenerator><br><br>        &lt;!-- mapper class –&gt;<br>        <javaclientgenerator type="XMLMAPPER" targetpackage="dao" targetproject="C:\\Users\\Administrator\\Desktop"><br>            <property name="enableSubPackages" value="true"><br>        </property></javaclientgenerator><br><br><br>        <!--不生成帮助类（Exmaples） --><br>        &lt;!-- enableCountByExample=”false” enableUpdateByExample=”false” enableDeleteByExample=”false”<br>            enableSelectByExample=”false” selectByExampleQueryId=”false” –&gt;<br>        <!--已生成的表 <table schema="demo" tableName="USER" domainObjectName="User"></table> --><br>        <table schema tablename="ABS_DEAL" domainobjectname="AbsDeal" enablecountbyexample="false" enableupdatebyexample="false" enabledeletebyexample="false" enableselectbyexample="false" selectbyexamplequeryid="false"><br>        </table><br><br>    </property></context><br></classpathentry></generatorconfiguration>
+
+<p>5.生成效果</p>
+<p>/**<br>     * 需求id<br>     <em>/<br>    private Long demandid;<br>    /\</em>*<br>     * 需求编码<br>     <em>/<br>    private String demandcode;<br>    /\</em>*<br>     * 起草人<br>     <em>/<br>    private Long draftsempid;<br>    /\</em>*<br>     * 起草人姓名<br>     <em>/<br>    private String draftsempname;<br>    /\</em>*<br>     * 起草人公司id<br>     <em>/<br>    private Long draftscomid;<br>    /\</em>*<br>     * 起草人手机号<br>     <em>/<br>    private String draftsmobile;<br>    /\</em>*<br>     * 起草人部门名称<br>     <em>/<br>    private String draftsdeptname;<br>    /\</em>*<br>     * 提出时间<br>     */<br>    private Date applytime;</p>
+<p>6.乱码的问题 首先检查你的 generator.xml  要有  <property name="javaFileEncoding" value="UTF-8"> 然后检查工程是否为utf-8编码！ 最后打开你的exlipse.ini 文件，最末尾加上 -Dfile.encoding=UTF-8 重启eclipse，配置maven生成代码即可，发现没有中文乱码了。</property></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/11/29/e8-a7-a3-e5-86-b3-wordpress-e4-b8-ad-e6-97-a0-e6-b3-95-e5-b0-86-e4-b8-8a-e4-bc-a0-e7-9a-84-e6-96-87-e4-bb-b6-e7-a7-bb-e5-8a-a8-e8-87-b3wp-contentuploads-e6-96-b9-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/11/29/e8-a7-a3-e5-86-b3-wordpress-e4-b8-ad-e6-97-a0-e6-b3-95-e5-b0-86-e4-b8-8a-e4-bc-a0-e7-9a-84-e6-96-87-e4-bb-b6-e7-a7-bb-e5-8a-a8-e8-87-b3wp-contentuploads-e6-96-b9-e6-b3-95/" class="post-title-link" itemprop="url">解决 WordPress中无法将上传的文件移动至wp-content/uploads 方法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-29 15:45:22" itemprop="dateCreated datePublished" datetime="2017-11-29T15:45:22+08:00">2017-11-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近换了服务器之后在手动上传图片发现有这样的提示：“无法将上传的文件移动至wp-content/uploads/2017/04/”。看到这，首先想到的是文件夹权限问题，再然后就是php与nginx运行的用户跟wwwroot中的文件夹所属用户不一致的问题。 遇事搜索一下，发现网上都在说是wp-content/uploads/没有创建权限，但经考虑，这次遇到的问题肯定跟这个无关（后面交代），所有说百度搜出来的都是千篇一律，没卵用。换google搜索了一下，得到了相关的提示， 下面进入正题，根据分析，这问题就从2方面检查： <strong>1. wp-content/uploads/下的文件夹权限问题</strong> 一般文件uploads的权限755足够,查了一下文件夹的权限就是755,随意应该不是文件夹权限的问题. <strong>2.php与nginx运行用户的不一致问题</strong> 2.1这个要分开几步检查，首先是检查当前php与nginx的运行用户，。经过 ps aux|grep php-fpm 和 ps aux|grep nginx 检查，这里都显示运行用户为 www<img src="http://zhongmin.me/wp-content/uploads/2017/11/EJZQU0GJM2X508S72.png" alt> 2.2 用ls –l 检查，发现 /home/wwwroot/zhongmin.me 目录的所属者和所属组均为 root（现在想起来估计就是之前的服务器上拷贝时直接用root对拷造成的）。看到这，估计就是问题所在了，利用 chwon –R www:www /www/wwwroot/zhongmin.me 更改所有组 各 所有者为www 在执行chown -R <a href="http://www.www" target="_blank" rel="noopener">www.www</a> /www/wwwroot/zhongmin.me时报了一个错误: chown: changing ownership of ‘/www/wwwroot/zhongmin.me/.user.ini’: Operation not permitted 具体的原因也不太清楚,查了好久 用 chown -R www:www /www/wwwroot/zhongmin.me/* 执行成功; 成功之后wordpress上传文件没有问题了. 参考地址:<a href="https://bbs.vpser.net/thread-12261-1-1.html" target="_blank" rel="noopener">https://bbs.vpser.net/thread-12261-1-1.html</a> <a href="http://lnmp.org/faq/lnmp-vhost-add-howto.html" target="_blank" rel="noopener">http://lnmp.org/faq/lnmp-vhost-add-howto.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

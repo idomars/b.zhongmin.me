@@ -1,0 +1,3575 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/12/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/12/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/13/jquery-e9-87-8d-e7-bd-ae-e8-a1-a8-e5-8d-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/13/jquery-e9-87-8d-e7-bd-ae-e8-a1-a8-e5-8d-95/" class="post-title-link" itemprop="url">jquery重置表单</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-13 15:30:31" itemprop="dateCreated datePublished" datetime="2017-01-13T15:30:31+08:00">2017-01-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>到了一个重置表单问题：就是如何使用jQuery方法重置form表单。 一开始我以为是:</p>
+<p>$(‘#formName’).reset()</p>
+<p>执行后发现不行，网上给出的答案是使用</p>
+<p>$(‘#formName’)[0].reset();</p>
+<p>虽然可以，但是我瞬间不懂了，为什么是这样写。 原来我们每次通过jQuery选择器得到的都是数组</p>
+<p>$(‘#id’)//得到的是数组<br>$(‘.class’)//得到的是数组</p>
+<p>这也是为什么jQuery调用reset方法要这样写：</p>
+<p>$(“#id”)[0].reset()</p>
+<p>这个时候$(“#id”)[0]得到的是jQuery对象。 注意：这种方式虽然可以重置表单，但是不能重置隐藏字段。隐藏字段要单独处理 对于隐藏字段可以改为</p>
+<p>input type=”text” style=”display:none;”&gt;</p>
+<p>  ,不用hideen来进行处理； 小知识：$(‘#id’).get(0)得到的是DOM对象。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/12/e8-8e-b7-e5-8f-96-e5-9c-b0-e5-9d-80-e6-a0-8f-e5-8f-82-e6-95-b0-e7-9a-844-e7-a7-8d-e6-96-b9-e5-bc-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/12/e8-8e-b7-e5-8f-96-e5-9c-b0-e5-9d-80-e6-a0-8f-e5-8f-82-e6-95-b0-e7-9a-844-e7-a7-8d-e6-96-b9-e5-bc-8f/" class="post-title-link" itemprop="url">获取地址栏参数的4种方式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-12 16:42:36" itemprop="dateCreated datePublished" datetime="2017-01-12T16:42:36+08:00">2017-01-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一种正则截取：</p>
+<p>function getQueryString(name) {<br>    var reg = new RegExp(‘(^|&amp;)’ + name + ‘=([^&amp;]*)(&amp;|$)’, ‘i’);<br>    var r = window.location.search.substr(1).match(reg);<br>    if (r != null) {<br>        return unescape(r[2]);<br>    }<br>    return null;<br>}</p>
+<p>这样调用：</p>
+<p>alert(GetQueryString(“参数名1”));<br>alert(GetQueryString(“参数名2”));<br>alert(GetQueryString(“参数名3”));</p>
+<p>方法二：split拆分法 复制代码代码如下:</p>
+<p>function GetRequest() {<br>    var url = location.search; //获取url中”?”符后的字串<br>    var theRequest = new Object();<br>    if (url.indexOf(“?”) != -1) {<br>        var str = url.substr(1);<br>        strs = str.split(“&amp;”);<br>        for(var i = 0; i &lt; strs.length; i ++) {<br>            theRequest[strs[i].split(“=”)[0]] = unescape(strs[i].split(“=”)[1]);<br>        }<br>    }<br>    return theRequest;<br>}</p>
+<p>var Request = new Object();<br>Request = GetRequest();<br>// var 参数1,参数2,参数3,参数N;<br>// 参数1 = Request[‘参数1’];<br>// 参数2 = Request[‘参数2’];<br>// 参数3 = Request[‘参数3’];<br>// 参数N = Request[‘参数N’];</p>
+<p>方法三：又见正则 通过JS获取url参数，这个经常用到。比如说一个url：<a href="http://wwww.jb51.net/?q=js,我们想得到参数q的值，那可以通过以下函数调用即可。" target="_blank" rel="noopener">http://wwww.jb51.net/?q=js,我们想得到参数q的值，那可以通过以下函数调用即可。</a></p>
+<p>function GetQueryString(name) {<br>    var reg = new RegExp(“(^|&amp;)” + name + “=([^&amp;]*)(&amp;|$)”, “i”);<br>    var r = window.location.search.substr(1).match(reg);  //获取url中”?”符后的字符串并正则匹配<br>    var context = “”;<br>    if (r != null)<br>         context = r[2];<br>    reg = null;<br>    r = null;<br>    return context == null || context == “” || context == “undefined” ? “” : context;<br>}</p>
+<p>调用方法：</p>
+<p>alert(GetQueryString(“q”));</p>
+<p>方法四：单个参数的获取方法</p>
+<p>function GetRequest() {<br>   var url = location.search; //获取url中”?”符后的字串<br>   if (url.indexOf(“?”) != -1) {    //判断是否有参数<br>      var str = url.substr(1); //从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串<br>      strs = str.split(“=”);   //用等号进行分隔 （因为知道只有一个参数 所以直接用等号进分隔 如果有多个参数 要用&amp;号分隔 再用等号进行分隔）<br>      alert(strs[1]);          //直接弹出第一个参数 （如果有多个参数 还要进行循环的）<br>   }<br>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/12/jquery-qrcode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/12/jquery-qrcode/" class="post-title-link" itemprop="url">jquery-qrcode 二维码生成</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-12 11:09:38" itemprop="dateCreated datePublished" datetime="2017-01-12T11:09:38+08:00">2017-01-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>二维码生成api-jquery.qrcode，附带中文二维码问题 jquery.qrcode.js 是把它用jquery方式封装起来的，用它来实现图形渲染，其实就是画图（支持canvas和table两种方式） 支持的功能主要有： Js代码 text     : “<a href="https://github.com/jeromeetienne/jquery-qrcode&quot;" target="_blank" rel="noopener">https://github.com/jeromeetienne/jquery-qrcode&quot;</a>  //设置二维码内容 Js代码</p>
+<pre><code>render   : &quot;canvas&quot;,//设置渲染方式  
+width       : 256,     //设置宽度  
+height      : 256,     //设置高度  
+typeNumber  : -1,      //计算模式  
+correctLevel    : QRErrorCorrectLevel.H,//纠错等级  
+background      : &quot;#ffffff&quot;,//背景颜色  
+foreground      : &quot;#000000&quot; //前景颜色
+</code></pre><p>使用方式非常简单 Js代码 jQuery(‘#output’).qrcode({width:200,height:200,correctLevel:0,text:content}); 经过简单实践， 使用canvas方式渲染性能还是非常不错的，但是如果用table方式，性能不太理想，特别是IE9以下的浏览器，所以需要自行优化一下渲染table的方式，这里就不细述了。 二、JS生成中文二维码 其实上面的js有一个小小的缺点，就是默认不支持中文。 这跟js的机制有关系，jquery-qrcode这个库是采用 charCodeAt() 这个方式进行编码转换的， 而这个方法默认会获取它的 Unicode 编码，一般的解码器都是采用UTF-8, ISO-8859-1等方式， 英文是没有问题，如果是中文，一般情况下Unicode是UTF-16实现，长度2位，而UTF-8编码是3位，这样二维码的编解码就不匹配了。 解决方式当然是，在二维码编码前把字符串转换成UTF-8，具体代码如下： Js代码</p>
+<p>function utf16to8(str) {<br>        var out, i, len, c;<br>        out = “”;<br>        len = str.length;<br>        for(i = 0; i &lt; len; i++) {<br>        c = str.charCodeAt(i);<br>        if ((c &gt;= 0x0001) &amp;&amp; (c &lt;= 0x007F)) {<br>            out += str.charAt(i);<br>        } else if (c &gt; 0x07FF) {<br>            out += String.fromCharCode(0xE0 | ((c &gt;&gt; 12) &amp; 0x0F));<br>            out += String.fromCharCode(0x80 | ((c &gt;&gt;  6) &amp; 0x3F));<br>            out += String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));<br>        } else {<br>            out += String.fromCharCode(0xC0 | ((c &gt;&gt;  6) &amp; 0x1F));<br>            out += String.fromCharCode(0x80 | ((c &gt;&gt;  0) &amp; 0x3F));<br>        }<br>        }<br>        return out;<br>    }</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/11/e8-a7-a3-e5-86-b3-e5-be-ae-e4-bf-a1-e6-b5-8f-e8-a7-88-e5-99-a8-e6-97-a0-e6-b3-95-e4-bd-bf-e7-94-a8window-location-reload-e5-88-b7-e6-96-b0-e9-a1-b5-e9-9d-a2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/11/e8-a7-a3-e5-86-b3-e5-be-ae-e4-bf-a1-e6-b5-8f-e8-a7-88-e5-99-a8-e6-97-a0-e6-b3-95-e4-bd-bf-e7-94-a8window-location-reload-e5-88-b7-e6-96-b0-e9-a1-b5-e9-9d-a2/" class="post-title-link" itemprop="url">解决微信浏览器无法使用window.location.reload()刷新页面</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-11 14:19:52" itemprop="dateCreated datePublished" datetime="2017-01-11T14:19:52+08:00">2017-01-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>解决方法: 使用window.location.href=window.location.href+随机数 代替 window.location.reload()。</p>
+<p>function reload(){<br>    window.location.href=window.location.href+”?id=”+10000*Math.random();<br>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/11/e7-a5-9e-e6-b3-a8-e9-87-8a-e5-a4-a7-e5-85-a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/11/e7-a5-9e-e6-b3-a8-e9-87-8a-e5-a4-a7-e5-85-a8/" class="post-title-link" itemprop="url">神注释大全</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-11 09:28:12" itemprop="dateCreated datePublished" datetime="2017-01-11T09:28:12+08:00">2017-01-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/coding/" itemprop="url" rel="index"><span itemprop="name">coding</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>/**                                                                          
+ *          .,:,,,                                        .::,,,::.          
+ *        .::::,,;;,                                  .,;;:,,....:i:         
+ *        :i,.::::,;i:.      ....,,:::::::::,....   .;i:,.  ......;i.        
+ *        :;..:::;::::i;,,:::;:,,,,,,,,,,..,.,,:::iri:. .,:irsr:,.;i.        
+ *        ;;..,::::;;;;ri,,,.                    ..,,:;s1s1ssrr;,.;r,        
+ *        :;. ,::;ii;:,     . ...................     .;iirri;;;,,;i,        
+ *        ,i. .;ri:.   ... ............................  .,,:;:,,,;i:        
+ *        :s,.;r:... ....................................... .::;::s;        
+ *        ,1r::. .............,,,.,,:,,........................,;iir;        
+ *        ,s;...........     ..::.,;:,,.          ...............,;1s        
+ *       :i,..,.              .,:,,::,.          .......... .......;1,       
+ *      ir,....:rrssr;:,       ,,.,::.     .r5S9989398G95hr;. ....,.:s,      
+ *     ;r,..,s9855513XHAG3i   .,,,,,,,.  ,S931,.,,.;s;s&amp;BHHA8s.,..,..:r:     
+ *    :r;..rGGh,  :SAG;;G@BS:.,,,,,,,,,.r83:      hHH1sXMBHHHM3..,,,,.ir.    
+ *   ,si,.1GS,   sBMAAX&amp;MBMB5,,,,,,:,,.:&amp;8       3@HXHBMBHBBH#X,.,,,,,,rr    
+ *   ;1:,,SH:   .A@&amp;&amp;B#&amp;8H#BS,,,,,,,,,.,5XS,     3@MHABM&amp;59M#As..,,,,:,is,   
+ *  .rr,,,;9&amp;1   hBHHBB&amp;8AMGr,,,,,,,,,,,:h&amp;&amp;9s;   r9&amp;BMHBHMB9:  . .,,,,;ri.  
+ *  :1:....:5&amp;XSi;r8BMBHHA9r:,......,,,,:ii19GG88899XHHH&amp;GSr.      ...,:rs.  
+ *  ;s.     .:sS8G8GG889hi.        ....,,:;:,.:irssrriii:,.        ...,,i1,  
+ *  ;1,         ..,....,,isssi;,        .,,.                      ....,.i1,  
+ *  ;h:               i9HHBMBBHAX9:         .                     ...,,,rs,  
+ *  ,1i..            :A#MBBBBMHB##s                             ....,,,;si.  
+ *  .r1,..        ,..;3BMBBBHBB#Bh.     ..                    ....,,,,,i1;   
+ *   :h;..       .,..;,1XBMMMMBXs,.,, .. :: ,.               ....,,,,,,ss.   
+ *    ih: ..    .;;;, ;;:s58A3i,..    ,. ,.:,,.             ...,,,,,:,s1,    
+ *    .s1,....   .,;sh,  ,iSAXs;.    ,.  ,,.i85            ...,,,,,,:i1;     
+ *     .rh: ...     rXG9XBBM#M#MHAX3hss13&amp;&amp;HHXr         .....,,,,,,,ih;      
+ *      .s5: .....    i598X&amp;&amp;A&amp;AAAAAA&amp;XG851r:       ........,,,,:,,sh;       
+ *      . ihr, ...  .         ..                    ........,,,,,;11:.       
+ *         ,s1i. ...  ..,,,..,,,.,,.,,.,..       ........,,.,,.;s5i.         
+ *          .:s1r,......................       ..............;shs,           
+ *          . .:shr:.  ....                 ..............,ishs.             
+ *              .,issr;,... ...........................,is1s;.               
+ *                 .,is1si;:,....................,:;ir1sr;,                  
+ *                    ..:isssssrrii;::::::;;iirsssssr;:..                    
+ *                         .,::iiirsssssssssrri;;:.                      
+ */                      
+
+
+/**
+ *               ii.                                         ;9ABH,          
+ *              SA391,                                    .r9GG35&amp;G          
+ *              &amp;#ii13Gh;                               i3X31i;:,rB1         
+ *              iMs,:,i5895,                         .5G91:,:;:s1:8A         
+ *               33::::,,;5G5,                     ,58Si,,:::,sHX;iH1        
+ *                Sr.,:;rs13BBX35hh11511h5Shhh5S3GAXS:.,,::,,1AG3i,GG        
+ *                .G51S511sr;;iiiishS8G89Shsrrsh59S;.,,,,,..5A85Si,h8        
+ *               :SB9s:,............................,,,.,,,SASh53h,1G.       
+ *            .r18S;..,,,,,,,,,,,,,,,,,,,,,,,,,,,,,....,,.1H315199,rX,       
+ *          ;S89s,..,,,,,,,,,,,,,,,,,,,,,,,....,,.......,,,;r1ShS8,;Xi       
+ *        i55s:.........,,,,,,,,,,,,,,,,.,,,......,.....,,....r9&amp;5.:X1       
+ *       59;.....,.     .,,,,,,,,,,,...        .............,..:1;.:&amp;s       
+ *      s8,..;53S5S3s.   .,,,,,,,.,..      i15S5h1:.........,,,..,,:99       
+ *      93.:39s:rSGB@A;  ..,,,,.....    .SG3hhh9G&amp;BGi..,,,,,,,,,,,,.,83      
+ *      G5.G8  9#@@@@@X. .,,,,,,.....  iA9,.S&amp;B###@@Mr...,,,,,,,,..,.;Xh     
+ *      Gs.X8 S@@@@@@@B:..,,,,,,,,,,. rA1 ,A@@@@@@@@@H:........,,,,,,.iX:    
+ *     ;9. ,8A#@@@@@@#5,.,,,,,,,,,... 9A. 8@@@@@@@@@@M;    ....,,,,,,,,S8    
+ *     X3    iS8XAHH8s.,,,,,,,,,,...,..58hH@@@@@@@@@Hs       ...,,,,,,,:Gs   
+ *    r8,        ,,,...,,,,,,,,,,.....  ,h8XABMMHX3r.          .,,,,,,,.rX:  
+ *   :9, .    .:,..,:;;;::,.,,,,,..          .,,.               ..,,,,,,.59  
+ *  .Si      ,:.i8HBMMMMMB&amp;5,....                    .            .,,,,,.sMr 
+ *  SS       :: h@@@@@@@@@@#; .                     ...  .         ..,,,,iM5 
+ *  91  .    ;:.,1&amp;@@@@@@MXs.                            .          .,,:,:&amp;S 
+ *  hS ....  .:;,,,i3MMS1;..,..... .  .     ...                     ..,:,.99 
+ *  ,8; ..... .,:,..,8Ms:;,,,...                                     .,::.83 
+ *   s&amp;: ....  .sS553B@@HX3s;,.    .,;13h.                            .:::&amp;1 
+ *    SXr  .  ...;s3G99XA&amp;X88Shss11155hi.                             ,;:h&amp;, 
+ *     iH8:  . ..   ,;iiii;,::,,,,,.                                 .;irHA  
+ *      ,8X5;   .     .......                                       ,;iihS8Gi
+ *         1831,                                                 .,;irrrrrs&amp;@
+ *           ;5A8r.                                            .:;iiiiirrss1H
+ *             :X@H3s.......                                .,:;iii;iiiiirsrh
+ *              r#h:;,...,,.. .,,:;;;;;:::,...              .:;;;;;;iiiirrss1
+ *             ,M8 ..,....,.....,,::::::,,...         .     .,;;;iiiiiirss11h
+ *             8B;.,,,,,,,.,.....          .           ..   .:;;;;iirrsss111h
+ *            i@5,:::,,,,,,,,.... .                   . .:::;;;;;irrrss111111
+ *            9Bi,:,,,,......                        ..r91;;;;;iirrsss1ss1111
+ */
+
+
+/**                                                                    
+ *            .,,       .,:;;iiiiiiiii;;:,,.     .,,                   
+ *          rGB##HS,.;iirrrrriiiiiiiiiirrrrri;,s&amp;##MAS,                
+ *         r5s;:r3AH5iiiii;;;;;;;;;;;;;;;;iiirXHGSsiih1,               
+ *            .;i;;s91;;;;;;::::::::::::;;;;iS5;;;ii:                  
+ *          :rsriii;;r::::::::::::::::::::::;;,;;iiirsi,               
+ *       .,iri;;::::;;;;;;::,,,,,,,,,,,,,..,,;;;;;;;;iiri,,.           
+ *    ,9BM&amp;,            .,:;;:,,,,,,,,,,,hXA8:            ..,,,.       
+ *   ,;&amp;@@#r:;;;;;::::,,.   ,r,,,,,,,,,,iA@@@s,,:::;;;::,,.   .;.      
+ *    :ih1iii;;;;;::::;;;;;;;:,,,,,,,,,,;i55r;;;;;;;;;iiirrrr,..       
+ *   .ir;;iiiiiiiiii;;;;::::::,,,,,,,:::::,,:;;;iiiiiiiiiiiiri         
+ *   iriiiiiiiiiiiiiiii;;;::::::::::::::::;;;iiiiiiiiiiiiiiiir;        
+ *  ,riii;;;;;;;;;;;;;:::::::::::::::::::::::;;;;;;;;;;;;;;iiir.       
+ *  iri;;;::::,,,,,,,,,,:::::::::::::::::::::::::,::,,::::;;iir:       
+ * .rii;;::::,,,,,,,,,,,,:::::::::::::::::,,,,,,,,,,,,,::::;;iri       
+ * ,rii;;;::,,,,,,,,,,,,,:::::::::::,:::::,,,,,,,,,,,,,:::;;;iir.      
+ * ,rii;;i::,,,,,,,,,,,,,:::::::::::::::::,,,,,,,,,,,,,,::i;;iir.      
+ * ,rii;;r::,,,,,,,,,,,,,:,:::::,:,:::::::,,,,,,,,,,,,,::;r;;iir.      
+ * .rii;;rr,:,,,,,,,,,,,,,,:::::::::::::::,,,,,,,,,,,,,:,si;;iri       
+ *  ;rii;:1i,,,,,,,,,,,,,,,,,,:::::::::,,,,,,,,,,,,,,,:,ss:;iir:       
+ *  .rii;;;5r,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,sh:;;iri        
+ *   ;rii;:;51,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.:hh:;;iir,        
+ *    irii;::hSr,.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.,sSs:;;iir:         
+ *     irii;;:iSSs:.,,,,,,,,,,,,,,,,,,,,,,,,,,,..:135;:;;iir:          
+ *      ;rii;;:,r535r:...,,,,,,,,,,,,,,,,,,..,;sS35i,;;iirr:           
+ *       :rrii;;:,;1S3Shs;:,............,:is533Ss:,;;;iiri,            
+ *        .;rrii;;;:,;rhS393S55hh11hh5S3393Shr:,:;;;iirr:              
+ *          .;rriii;;;::,:;is1h555555h1si;:,::;;;iirri:.               
+ *            .:irrrii;;;;;:::,,,,,,,,:::;;;;iiirrr;,                  
+ *               .:irrrriiiiii;;;;;;;;iiiiiirrrr;,.                    
+ *                  .,:;iirrrrrrrrrrrrrrrrri;:.                        
+ *                        ..,:::;;;;:::,,.                             
+ */                                                                     
+
+
+/**
+ * ┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
+ * │Esc│   │ F1│ F2│ F3│ F4│ │ F5│ F6│ F7│ F8│ │ F9│F10│F11│F12│ │P/S│S L│P/B│  ┌┐    ┌┐    ┌┐
+ * └───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘  └┘    └┘    └┘
+ * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ ┌───┬───┬───┐ ┌───┬───┬───┬───┐
+ * │~ `│! 1│@ 2│# 3│$ 4│% 5│^ 6│&amp; 7│* 8│( 9│) 0│_ -│+ =│ BacSp │ │Ins│Hom│PUp│ │N L│ / │ * │ - │
+ * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ├───┼───┼───┤ ├───┼───┼───┼───┤
+ * │ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │{ [│} ]│ | \ │ │Del│End│PDn│ │ 7 │ 8 │ 9 │   │
+ * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤ └───┴───┴───┘ ├───┼───┼───┤ + │
+ * │ Caps │ A │ S │ D │ F │ G │ H │ J │ K │ L │: ;│&quot; &apos;│ Enter  │               │ 4 │ 5 │ 6 │   │
+ * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤     ┌───┐     ├───┼───┼───┼───┤
+ * │ Shift  │ Z │ X │ C │ V │ B │ N │ M │&lt; ,│&gt; .│? /│  Shift   │     │ ↑ │     │ 1 │ 2 │ 3 │   │
+ * ├─────┬──┴─┬─┴──┬┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ E││
+ * │ Ctrl│    │Alt │         Space         │ Alt│    │    │Ctrl│ │ ← │ ↓ │ → │ │   0   │ . │←─┘│
+ * └─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
+ */
+
+
+/**
+ *                    _ooOoo_
+ *                   o8888888o
+ *                   88&quot; . &quot;88
+ *                   (| -_- |)
+ *                    O\ = /O
+ *                ____/`---&apos;\____
+ *              .   &apos; \\| |// `.
+ *               / \\||| : |||// \
+ *             / _||||| -:- |||||- \
+ *               | | \\\ - /// | |
+ *             | \_| &apos;&apos;\---/&apos;&apos; | |
+ *              \ .-\__ `-` ___/-. /
+ *           ___`. .&apos; /--.--\ `. . __
+ *        .&quot;&quot; &apos;&lt; `.___\_&lt;|&gt;_/___.&apos; &gt;&apos;&quot;&quot;.
+ *       | | : `- \`.;`\ _ /`;.`/ - ` : | |
+ *         \ \ `-. \_ __\ /__ _/ .-` / /
+ * ======`-.____`-.___\_____/___.-`____.-&apos;======
+ *                    `=---=&apos;
+ *
+ * .............................................
+ *          佛祖保佑             永无BUG
+ *  佛曰:
+ *          写字楼里写字间，写字间里程序员；
+ *          程序人员写程序，又拿程序换酒钱。
+ *          酒醒只在网上坐，酒醉还来网下眠；
+ *          酒醉酒醒日复日，网上网下年复年。
+ *          但愿老死电脑间，不愿鞠躬老板前；
+ *          奔驰宝马贵者趣，公交自行程序员。
+ *          别人笑我忒疯癫，我笑自己命太贱；
+ *          不见满街漂亮妹，哪个归得程序员？
+ */
+
+
+/**
+ * _ooOoo_
+ * o8888888o
+ * 88&quot; . &quot;88
+ * (| -_- |)
+ *  O\ = /O
+ * ___/`---&apos;\____
+ * .   &apos; \\| |// `.
+ * / \\||| : |||// \
+ * / _||||| -:- |||||- \
+ * | | \\\ - /// | |
+ * | \_| &apos;&apos;\---/&apos;&apos; | |
+ * \ .-\__ `-` ___/-. /
+ * ___`. .&apos; /--.--\ `. . __
+ * .&quot;&quot; &apos;&lt; `.___\_&lt;|&gt;_/___.&apos; &gt;&apos;&quot;&quot;.
+ * | | : `- \`.;`\ _ /`;.`/ - ` : | |
+ * \ \ `-. \_ __\ /__ _/ .-` / /
+ * ======`-.____`-.___\_____/___.-`____.-&apos;======
+ * `=---=&apos;
+ *          .............................................
+ *           佛曰：bug泛滥，我已瘫痪！
+ */
+
+
+/**
+ *                    .::::.
+ *                  .::::::::.
+ *                 :::::::::::  FUCK YOU
+ *             ..:::::::::::&apos;
+ *           &apos;::::::::::::&apos;
+ *             .::::::::::
+ *        &apos;::::::::::::::..
+ *             ..::::::::::::.
+ *           ``::::::::::::::::
+ *            ::::``:::::::::&apos;        .:::.
+ *           ::::&apos;   &apos;:::::&apos;       .::::::::.
+ *         .::::&apos;      ::::     .:::::::&apos;::::.
+ *        .:::&apos;       :::::  .:::::::::&apos; &apos;:::::.
+ *       .::&apos;        :::::.:::::::::&apos;      &apos;:::::.
+ *      .::&apos;         ::::::::::::::&apos;         ``::::.
+ *  ...:::           ::::::::::::&apos;              ``::.
+ * ```` &apos;:.          &apos;:::::::::&apos;                  ::::..
+ *                    &apos;.:::::&apos;                    &apos;:&apos;````..
+ */
+
+
+/**
+ *   ┏┓　　　┏┓
+ * ┏┛┻━━━┛┻┓
+ * ┃　　　　　　　┃
+ * ┃　　　━　　　┃
+ * ┃　＞　　　＜　┃
+ * ┃　　　　　　　┃
+ * ┃...　⌒　...　┃
+ * ┃　　　　　　　┃
+ * ┗━┓　　　┏━┛
+ *     ┃　　　┃　
+ *     ┃　　　┃
+ *     ┃　　　┃
+ *     ┃　　　┃  神兽保佑
+ *     ┃　　　┃  代码无bug　　
+ *     ┃　　　┃
+ *     ┃　　　┗━━━┓
+ *     ┃　　　　　　　┣┓
+ *     ┃　　　　　　　┏┛
+ *     ┗┓┓┏━┳┓┏┛
+ *       ┃┫┫　┃┫┫
+ *       ┗┻┛　┗┻┛
+ */
+
+
+/**
+ *　　┏┓　　　┏┓+ +
+ *　┏┛┻━━━┛┻┓ + +
+ *　┃　　　　　　　┃ 　
+ *　┃　　　━　　　┃ ++ + + +
+ * ████━████ ┃+
+ *　┃　　　　　　　┃ +
+ *　┃　　　┻　　　┃
+ *　┃　　　　　　　┃ + +
+ *　┗━┓　　　┏━┛
+ *　　　┃　　　┃　　　　　　　　　　　
+ *　　　┃　　　┃ + + + +
+ *　　　┃　　　┃
+ *　　　┃　　　┃ +  神兽保佑
+ *　　　┃　　　┃    代码无bug　　
+ *　　　┃　　　┃　　+　　　　　　　　　
+ *　　　┃　 　　┗━━━┓ + +
+ *　　　┃ 　　　　　　　┣┓
+ *　　　┃ 　　　　　　　┏┛
+ *　　　┗┓┓┏━┳┓┏┛ + + + +
+ *　　　　┃┫┫　┃┫┫
+ *　　　　┗┻┛　┗┻┛+ + + +
+ */
+
+
+/**
+ * ━━━━━━神兽出没━━━━━━
+ * 　　　┏┓　　　┏┓
+ * 　　┏┛┻━━━┛┻┓
+ * 　　┃　　　　　　　┃
+ * 　　┃　　　━　　　┃
+ * 　　┃　┳┛　┗┳　┃
+ * 　　┃　　　　　　　┃
+ * 　　┃　　　┻　　　┃
+ * 　　┃　　　　　　　┃
+ * 　　┗━┓　　　┏━┛
+ * 　　　　┃　　　┃  神兽保佑
+ * 　　　　┃　　　┃  代码无bug　　
+ * 　　　　┃　　　┗━━━┓
+ * 　　　　┃　　　　　　　┣┓
+ * 　　　　┃　　　　　　　┏┛
+ * 　　　　┗┓┓┏━┳┓┏┛
+ * 　　　　　┃┫┫　┃┫┫
+ * 　　　　　┗┻┛　┗┻┛
+ * ━━━━━━感觉萌萌哒━━━━━━
+ */
+
+
+/**
+ *  .--,       .--,
+ * ( (  \.---./  ) )
+ *  &apos;.__/o   o\__.&apos;
+ *     {=  ^  =}
+ *      &gt;  -  &lt;
+ *     /       \
+ *    //       \\
+ *   //|   .   |\\
+ *   &quot;&apos;\       /&apos;&quot;_.-~^`&apos;-.
+ *      \  _  /--&apos;         `
+ *    ___)( )(___
+ *   (((__) (__)))    高山仰止,景行行止.虽不能至,心向往之。
+ */
+
+
+/**                              _
+ *  _._ _..._ .-&apos;,     _.._(`))
+ * &apos;-. `     &apos;  /-._.-&apos;    &apos;,/
+ *    )         \            &apos;.
+ *   / _    _    |             \
+ *  |  a    a    /              |
+ *  \   .-.                     ;
+ *   &apos;-(&apos;&apos; ).-&apos;       ,&apos;       ;
+ *      &apos;-;           |      .&apos;
+ *         \           \    /
+ *         | 7  .__  _.-\   \
+ *         | |  |  ``/  /`  /
+ *        /,_|  |   /,_/   /
+ *           /,_/      &apos;`-&apos;
+ */
+
+
+/**
+ **************************************************************
+ *                                                            *
+ *   .=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-.       *
+ *    |                     ______                     |      *
+ *    |                  .-&quot;      &quot;-.                  |      *
+ *    |                 /            \                 |      *
+ *    |     _          |              |          _     |      *
+ *    |    ( \         |,  .-.  .-.  ,|         / )    |      *
+ *    |     &gt; &quot;=._     | )(__/  \__)( |     _.=&quot; &lt;     |      *
+ *    |    (_/&quot;=._&quot;=._ |/     /\     \| _.=&quot;_.=&quot;\_)    |      *
+ *    |           &quot;=._&quot;(_     ^^     _)&quot;_.=&quot;           |      *
+ *    |               &quot;=\__|IIIIII|__/=&quot;               |      *
+ *    |              _.=&quot;| \IIIIII/ |&quot;=._              |      *
+ *    |    _     _.=&quot;_.=&quot;\          /&quot;=._&quot;=._     _    |      *
+ *    |   ( \_.=&quot;_.=&quot;     `--------`     &quot;=._&quot;=._/ )   |      *
+ *    |    &gt; _.=&quot;                            &quot;=._ &lt;    |      *
+ *    |   (_/                                    \_)   |      *
+ *    |                                                |      *
+ *    &apos;-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=&apos;      *
+ *                                                            *
+ *           LASCIATE OGNI SPERANZA, VOI CH&apos;ENTRATE           *
+ **************************************************************
+ */
+
+/**
+ *                                         ,s555SB@@&amp;                          
+ *                                      :9H####@@@@@Xi                        
+ *                                     1@@@@@@@@@@@@@@8                       
+ *                                   ,8@@@@@@@@@B@@@@@@8                      
+ *                                  :B@@@@X3hi8Bs;B@@@@@Ah,                   
+ *             ,8i                  r@@@B:     1S ,M@@@@@@#8;                 
+ *            1AB35.i:               X@@8 .   SGhr ,A@@@@@@@@S                
+ *            1@h31MX8                18Hhh3i .i3r ,A@@@@@@@@@5               
+ *            ;@&amp;i,58r5                 rGSS:     :B@@@@@@@@@@A               
+ *             1#i  . 9i                 hX.  .: .5@@@@@@@@@@@1               
+ *              sG1,  ,G53s.              9#Xi;hS5 3B@@@@@@@B1                
+ *               .h8h.,A@@@MXSs,           #@H1:    3ssSSX@1                  
+ *               s ,@@@@@@@@@@@@Xhi,       r#@@X1s9M8    .GA981               
+ *               ,. rS8H#@@@@@@@@@@#HG51;.  .h31i;9@r    .8@@@@BS;i;          
+ *                .19AXXXAB@@@@@@@@@@@@@@#MHXG893hrX#XGGXM@@@@@@@@@@MS        
+ *                s@@MM@@@hsX#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&amp;,      
+ *              :GB@#3G@@Brs ,1GM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B,     
+ *            .hM@@@#@@#MX 51  r;iSGAM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8     
+ *          :3B@@@@@@@@@@@&amp;9@h :Gs   .;sSXH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:    
+ *      s&amp;HA#@@@@@@@@@@@@@@M89A;.8S.       ,r3@@@@@@@@@@@@@@@@@@@@@@@@@@@r    
+ *   ,13B@@@@@@@@@@@@@@@@@@@5 5B3 ;.         ;@@@@@@@@@@@@@@@@@@@@@@@@@@@i    
+ *  5#@@#&amp;@@@@@@@@@@@@@@@@@@9  .39:          ;@@@@@@@@@@@@@@@@@@@@@@@@@@@;    
+ *  9@@@X:MM@@@@@@@@@@@@@@@#;    ;31.         H@@@@@@@@@@@@@@@@@@@@@@@@@@:    
+ *   SH#@B9.rM@@@@@@@@@@@@@B       :.         3@@@@@@@@@@@@@@@@@@@@@@@@@@5    
+ *     ,:.   9@@@@@@@@@@@#HB5                 .M@@@@@@@@@@@@@@@@@@@@@@@@@B    
+ *           ,ssirhSM@&amp;1;i19911i,.             s@@@@@@@@@@@@@@@@@@@@@@@@@@S   
+ *              ,,,rHAri1h1rh&amp;@#353Sh:          8@@@@@@@@@@@@@@@@@@@@@@@@@#:  
+ *            .A3hH@#5S553&amp;@@#h   i:i9S          #@@@@@@@@@@@@@@@@@@@@@@@@@A. 
+ *
+ *
+ *    又看源码，看你妹妹呀！
+ */
+
+
+
+/**
+ * https://www.zhihu.com/
+ *           _____                    _____                    _____                    _____          
+ *          /\    \                  /\    \                  /\    \                  /\    \         
+ *         /::\____\                /::\    \                /::\    \                /::\    \        
+ *        /:::/    /                \:::\    \              /::::\    \              /::::\    \       
+ *       /:::/    /                  \:::\    \            /::::::\    \            /::::::\    \      
+ *      /:::/    /                    \:::\    \          /:::/\:::\    \          /:::/\:::\    \     
+ *     /:::/____/                      \:::\    \        /:::/__\:::\    \        /:::/__\:::\    \    
+ *    /::::\    \                      /::::\    \      /::::\   \:::\    \      /::::\   \:::\    \   
+ *   /::::::\    \   _____    ____    /::::::\    \    /::::::\   \:::\    \    /::::::\   \:::\    \  
+ *  /:::/\:::\    \ /\    \  /\   \  /:::/\:::\    \  /:::/\:::\   \:::\____\  /:::/\:::\   \:::\    \ 
+ * /:::/  \:::\    /::\____\/::\   \/:::/  \:::\____\/:::/  \:::\   \:::|    |/:::/__\:::\   \:::\____\
+ * \::/    \:::\  /:::/    /\:::\  /:::/    \::/    /\::/   |::::\  /:::|____|\:::\   \:::\   \::/    /
+ *  \/____/ \:::\/:::/    /  \:::\/:::/    / \/____/  \/____|:::::\/:::/    /  \:::\   \:::\   \/____/ 
+ *           \::::::/    /    \::::::/    /                 |:::::::::/    /    \:::\   \:::\    \     
+ *            \::::/    /      \::::/____/                  |::|\::::/    /      \:::\   \:::\____\    
+ *            /:::/    /        \:::\    \                  |::| \::/____/        \:::\   \::/    /    
+ *           /:::/    /          \:::\    \                 |::|  ~|               \:::\   \/____/     
+ *          /:::/    /            \:::\    \                |::|   |                \:::\    \         
+ *         /:::/    /              \:::\____\               \::|   |                 \:::\____\        
+ *         \::/    /                \::/    /                \:|   |                  \::/    /        
+ *          \/____/                  \/____/                  \|___|                   \/____/         
+ */ 
+
+
+/**
+ * http://www.freebuf.com/
+ *           _.._        ,------------.
+ *        ,&apos;      `.    ( We want you! )
+ *       /  __) __` \    `-,----------&apos;
+ *      (  (`-`(-&apos;)  ) _.-&apos;
+ *      /)  \  = /  (
+ *     /&apos;    |--&apos; .  \
+ *    (  ,---|  `-.)__`
+ *     )(  `-.,--&apos;   _`-.
+ *    &apos;/,&apos;          (  Uu&quot;,
+ *     (_       ,    `/,-&apos; )
+ *     `.__,  : `-&apos;/  /`--&apos;
+ *       |     `--&apos;  |
+ *       `   `-._   /
+ *        \        (
+ *        /\ .      \.  freebuf
+ *       / |` \     ,-\
+ *      /  \| .)   /   \
+ *     ( ,&apos;|\    ,&apos;     :
+ *     | \,`.`--&quot;/      }
+ *     `,&apos;    \  |,&apos;    /
+ *    / &quot;-._   `-/      |
+ *    &quot;-.   &quot;-.,&apos;|     ;
+ *   /        _/[&quot;---&apos;&quot;&quot;]
+ *  :        /  |&quot;-     &apos;
+ *  &apos;           |      /
+ *              `      |
+ */
+
+
+/** 
+ * https://campus.alibaba.com/
+ *                                 `:::::::::::,
+ *                             `::;:::::::;:::::::,  `
+ *                          `::;;:::::::@@@@;:::::::`
+ *                        ,:::::::::::::@    #@&apos;:::::`
+ *                      :::::::::::::::&apos;@@      @;::::
+ *                    ::::::::::::&apos;@@@@&apos;```      .+:::`
+ *                  ::::::::::;@@@#.              ,:::,
+ *                .::::::::+@#@`                   ::::
+ *               :::::::+@@&apos;                       ::::
+ *             `:::::&apos;@@:                         `:::.
+ *            ,::::@@:  `                         ::::
+ *           ;::::::@                            .:::;
+ *          :;:::::;@`        `                  :::;
+ *         :::::::::@`        @                 ;::::
+ *        :::::::::#`          @`              ,::::
+ *       :::::::::@`         +@ @             .::::`
+ *      .::::::&apos;@@`       `@@&apos;  @             ::::,
+ *      :::::::++@@@@@@@@@@.                 ::::;
+ *     ;:::::::+,   `..`                    :::::
+ *    ,::::::::&apos;,                          :::::
+ *    :::::::::+,                         :::::`
+ *   :::::::::+@.                        ,::::.`                     `,
+ *   ::::::;;@+                         .::;::                     `;
+ *  :::::::@@                          `:::;:                   `::``
+ *  ::::::#@                           ;::::                  .::`
+ *  :::::;@                           :::::`               .;::`
+ *  :::::@                           `:;:::            `::::;
+ *  :::::#                           :::::.        `,;:::::
+ *  ::::::                    `      ::::::,.,::::::::::.
+ *  ,::::::`              .::        ::::::::::::::::;`
+ *   ;::::::::,````.,:::::,          ::::::::::::::.
+ *    :::::::::::::::::: `           `::::::::::`
+ *     `::::::::::::,                  .:::.
+ *         `..`
+ */
+
+
+/**
+ * 頂頂頂頂頂頂頂頂頂　頂頂頂頂頂頂頂頂頂
+ * 頂頂頂頂頂頂頂　　　　　頂頂　　　　　
+ * 　　　頂頂　　　頂頂頂頂頂頂頂頂頂頂頂
+ * 　　　頂頂　　　頂頂頂頂頂頂頂頂頂頂頂
+ * 　　　頂頂　　　頂頂　　　　　　　頂頂
+ * 　　　頂頂　　　頂頂　　頂頂頂　　頂頂
+ * 　　　頂頂　　　頂頂　　頂頂頂　　頂頂
+ * 　　　頂頂　　　頂頂　　頂頂頂　　頂頂
+ * 　　　頂頂　　　頂頂　　頂頂頂　　頂頂
+ * 　　　頂頂　　　　　　　頂頂頂　
+ * 　　　頂頂　　　　　　頂頂　頂頂　頂頂
+ * 　頂頂頂頂　　　頂頂頂頂頂　頂頂頂頂頂
+ * 　頂頂頂頂　　　頂頂頂頂　　　頂頂頂頂
+ */
+</code></pre><p>以上魔性图 图片转字符可以上这个<a href="http://ku.cndesign.com/pic/" target="_blank" rel="noopener">传送门</a></p>
+<hr>
+<p>以下为注释</p>
+<pre><code>/**
+ * 这个公司没有年终奖的,兄弟别指望了,也别来了,我准备辞职了
+ * 另外这个项目有很多*Bug* 你坚持不了多久的,拜拜!
+ */
+
+
+/**
+ * 1只羊 == one sheep
+ * 2只羊 == two sheeps
+ * 3只羊 == three sheeps
+ * 4只羊 == four sheeps
+ * 5只羊 == five sheeps
+ * 6只羊 == six sheeps
+ * 7只羊 == seven sheeps
+ * 8只羊 == eight sheeps
+ * 9只羊 == nine sheeps
+ * 10只羊 == ten sheeps
+ * 11只羊 == eleven sheeps
+ * 12只羊 == twelve sheeps
+ * 13只羊 == thirteen sheeps
+ * 14只羊 == fourteen sheeps
+ * 15只羊 == fifteen sheeps
+ * 16只羊 == sixteen sheeps
+ * 17只羊 == seventeen sheeps
+ * 18只羊 == eighteen sheeps
+ * 19只羊 == nineteen sheeps
+ * 20只羊 == twenty sheeps
+ * 21只羊 == twenty one sheeps
+ * 22只羊 == twenty two sheeps
+ * 23只羊 == twenty three sheeps
+ * 24只羊 == twenty four sheeps
+ * 25只羊 == twenty five sheeps
+ * 26只羊 == twenty six sheeps
+ * 27只羊 == twenty seven sheeps
+ * 28只羊 == twenty eight sheeps
+ * 29只羊 == twenty nine sheeps
+ * 30只羊 == thirty sheeps
+ * 现在瞌睡了吧，好了，不要再改下面的代码了，睡觉咯~~
+ */
+
+
+/**
+ * You may think you know what the following code does.
+ * But you dont. Trust me.
+ * Fiddle with it, and youll spend many a sleepless
+ * night cursing the moment you thought youd be clever
+ * enough to &quot;optimize&quot; the code below.
+ * Now close this file and go play with something else.
+ */
+/**
+ * 你可能会认为你读得懂以下的代码。但是你不会懂的，相信我吧。
+ * 要是你尝试玩弄这段代码的话，你将会在无尽的通宵中不断地咒骂自己为什么会认为自己聪明到可以优化这段代码。
+ * 现在请关闭这个文件去玩点别的吧。
+ */
+
+
+/**
+ * somedev1 -  6/7/02 Adding temporary tracking of Login screen
+ * somedev2 -  5/22/07 Temporary my ass
+ */
+/**
+ * 一些修改1 - 2002/6/7 增加临时的跟踪登录界面
+ * 一些修改2 - 2007/5/22 我临时的犯傻
+ */
+
+
+/**
+ * 程序员1（于2010年6月7日）：在这个坑临时加入一些调料
+ * 程序员2（于2011年5月22日）：临你个屁啊
+ * 程序员3（于2012年7月23日）：楼上都是狗屎，鉴定完毕
+ * 程序员4（于2013年8月2日）：fuck 楼上，三年了，这坑还在！！！
+ * 程序员5（于2014年8月21日）：哈哈哈，这坑居然坑了这么多人，幸好我也不用填了，系统终止运行了，you&apos;re died
+ */
+
+
+/**
+ * For the brave souls who get this far: You are the chosen ones,
+ * the valiant knights of programming who toil away, without rest,
+ * fixing our most awful code. To you, true saviors, kings of men,
+ * I say this: never gonna give you up, never gonna let you down,
+ * never gonna run around and desert you. Never gonna make you cry,
+ * never gonna say goodbye. Never gonna tell a lie and hurt you.
+ */
+/**
+ * 致终于来到这里的勇敢的人： 
+ * 你是被上帝选中的人，是英勇的、不敌辛苦的、不眠不休的来修改我们这最棘手的代码的编程骑士。
+ * 你，我们的救世主，人中之龙，我要对你说：永远不要放弃，永远不要对自己失望，永远不要逃走，辜负了自己，
+ * 永远不要哭啼，永远不要说再见，永远不要说谎来伤害自己。
+ */
+
+
+/**
+ * Dear maintainer:
+ * 
+ * Once you are done trying to &apos;optimize&apos; this routine,
+ * and have realized what a terrible mistake that was,
+ * please increment the following counter as a warning
+ * to the next guy:
+ * 
+ * total_hours_wasted_here = 42
+ */
+/**
+ * 亲爱的维护者：
+ * 
+ * 如果你尝试了对这段程序进行&apos;优化&apos;
+ * 下面这个计数器的个数用来对后来人进行警告
+ * 
+ * 浪费在这里的总时间 = 42h
+ */
+
+
+Exception up = new Exception(&quot;Something is really wrong.&quot;);
+throw up;  //ha ha
+
+
+/** 
+ * When I wrote this, only God and I understood what I was doing
+ * Now, God only knows
+ */
+/** 
+* 写这段代码的时候，只有上帝和我知道它是干嘛的
+* 现在，只有上帝知道
+*/
+
+
+stop(); // Hammertime!
+
+
+// Autogenerated, do not edit. All changes will be undone.
+
+
+// sometimes I believe compiler ignores all my comments
+// 有时候我相信编译器忽略了我所有的注释
+
+
+/** 
+ * I dedicate all this code, all my work, to my wife, Darlene, who will 
+ * have to support me and our three children and the dog once it gets 
+ * released into the public.
+ */
+
+
+// drunk, fix later
+// 有点晕了，以后再修改
+
+
+// Magic. Do not touch.
+// 麻鸡。别碰它。
+
+
+#define TRUE FALSE// Happy debugging suckers
+
+
+// I&apos;m sorry.
+
+
+return 1; # returns 1
+
+
+/**
+ * Always returns true.
+ */
+public boolean isAvailable() {
+    return false;
+}
+
+
+long long ago; /* in a galaxy far far away */ 
+// 很久很久以前 在一个遥远的银河中（出自星球大战）
+
+
+// This code sucks, you know it and I know it.  
+// Move on and call me an idiot later.
+// 你我都知道这代码很烂
+// 但之后你就把我当傻瓜看好了
+
+
+// I am not sure why this works but it fixes the problem. 
+// 虽然我不知道为什么这样管用，但它却是修复了问题
+
+
+// If this comment is removed the program will blow up 
+// 如果删了此处代码程序就炸了
+
+
+// This function has been here since 1987. DON&apos;T FXXKING TOUCH IT
+// 这函数1987年就这在了，别他娘动它
+
+
+// if i ever see this again i&apos;m going to start bringing guns to work
+// 如果要是再让我看见这样的代码，也许我会带着一把枪来上班
+
+
+// no comments for you
+// it was hard to write
+// so it should be hard to read
+// 难写的代码，肯定很难读。因此，我没有注释留给你。
+
+
+// I will give you two of my seventy-two virgins if you can fix this.
+// 如果你能把这个问题修正了，我会送你两个七十二岁的处女。
+
+
+// I am not responsible of this code.
+// They made me write it, against my will.
+// 下面的代码，我不负责。因为是他们逼我写的，违背了我的意愿。
+
+
+/* You are not expected to understand this */
+/* 你绝不会明白的 */
+
+
+// I have to find a better job
+// 看来我需要找份更好的工作了
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/10/e9-aa-8c-e8-af-81-e6-89-8b-e6-9c-ba-e5-8f-b7-e3-80-81-e8-ba-ab-e4-bb-bd-e8-af-81-e3-80-81-e6-8a-a4-e7-85-a7-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/10/e9-aa-8c-e8-af-81-e6-89-8b-e6-9c-ba-e5-8f-b7-e3-80-81-e8-ba-ab-e4-bb-bd-e8-af-81-e3-80-81-e6-8a-a4-e7-85-a7-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f/" class="post-title-link" itemprop="url">验证手机号、身份证、护照正则表达式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-10 09:34:20" itemprop="dateCreated datePublished" datetime="2017-01-10T09:34:20+08:00">2017-01-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>/*<em>
+ </em>/</p>
+<p>var validateUtils = {<br>    provinceAndCitys: {11:”北京”,12:”天津”,13:”河北”,14:”山西”,15:”内蒙古”,21:”辽宁”,22:”吉林”,23:”黑龙江”,<br>        31:”上海”,32:”江苏”,33:”浙江”,34:”安徽”,35:”福建”,36:”江西”,37:”山东”,41:”河南”,42:”湖北”,43:”湖南”,44:”广东”,<br>        45:”广西”,46:”海南”,50:”重庆”,51:”四川”,52:”贵州”,53:”云南”,54:”西藏”,61:”陕西”,62:”甘肃”,63:”青海”,64:”宁夏”,<br>        65:”新疆”,71:”台湾”,81:”香港”,82:”澳门”,91:”国外”},</p>
+<pre><code>powers: \[&quot;7&quot;,&quot;9&quot;,&quot;10&quot;,&quot;5&quot;,&quot;8&quot;,&quot;4&quot;,&quot;2&quot;,&quot;1&quot;,&quot;6&quot;,&quot;3&quot;,&quot;7&quot;,&quot;9&quot;,&quot;10&quot;,&quot;5&quot;,&quot;8&quot;,&quot;4&quot;,&quot;2&quot;\],
+
+parityBit: \[&quot;1&quot;,&quot;0&quot;,&quot;X&quot;,&quot;9&quot;,&quot;8&quot;,&quot;7&quot;,&quot;6&quot;,&quot;5&quot;,&quot;4&quot;,&quot;3&quot;,&quot;2&quot;\],
+
+genders: {male:&quot;男&quot;,female:&quot;女&quot;},
+
+checkAddressCode: function(addressCode){
+    var check = /^\[1-9\]\\d{5}$/.test(addressCode);
+    if(!check) return false;
+    if(IdCardNoUtil.provinceAndCitys\[parseInt(addressCode.substring(0,2))\]){
+        return true;
+    }else{
+        return false;
+    }
+},
+
+checkBirthDayCode: function(birDayCode){
+    var check = /^\[1-9\]\\d{3}((0\[1-9\])|(1\[0-2\]))((0\[1-9\])|(\[1-2\]\[0-9\])|(3\[0-1\]))$/.test(birDayCode);
+    if(!check) return false;
+    var yyyy = parseInt(birDayCode.substring(0,4),10);
+    var mm = parseInt(birDayCode.substring(4,6),10);
+    var dd = parseInt(birDayCode.substring(6),10);
+    var xdata = new Date(yyyy,mm-1,dd);
+    if(xdata &gt; new Date()){
+        return false;//生日不能大于当前日期
+    }else if ( ( xdata.getFullYear() == yyyy ) &amp;&amp; ( xdata.getMonth () == mm - 1 ) &amp;&amp; ( xdata.getDate() == dd ) ){
+        return true;
+    }else{
+        return false;
+    }
+},
+
+getParityBit: function(idCardNo){
+    var id17 = idCardNo.substring(0,17);
+    var power = 0;
+    for(var i=0;i&lt;17;i++){
+        power += parseInt(id17.charAt(i),10) * parseInt(IdCardNoUtil.powers\[i\]);
+    }
+    var mod = power % 11;
+    return IdCardNoUtil.parityBit\[mod\];
+},
+
+checkParityBit: function(idCardNo){
+    var parityBit = idCardNo.charAt(17).toUpperCase();
+    if(IdCardNoUtil.getParityBit(idCardNo) == parityBit){
+        return true;
+    }else{
+        return false;
+    }
+},
+
+checkIdCardNo: function(idCardNo){
+    //15位和18位身份证号码的基本校验
+    var check = /^\\d{15}|(\\d{17}(\\d|x|X))$/.test(idCardNo);
+    if(!check) return false;
+    //判断长度为15位或18位
+    if(idCardNo.length==15){
+        return IdCardNoUtil.check15IdCardNo(idCardNo);
+    }else if(idCardNo.length==18){
+        return IdCardNoUtil.check18IdCardNo(idCardNo);
+    }else{
+        return false;
+    }
+},
+
+//校验15位的身份证号码
+check15IdCardNo: function(idCardNo){
+    //15位身份证号码的基本校验
+    var check = /^\[1-9\]\\d{7}((0\[1-9\])|(1\[0-2\]))((0\[1-9\])|(\[1-2\]\[0-9\])|(3\[0-1\]))\\d{3}$/.test(idCardNo);
+    if(!check) return false;
+    //校验地址码
+    var addressCode = idCardNo.substring(0,6);
+    check = IdCardNoUtil.checkAddressCode(addressCode);
+    if(!check) return false;
+    var birDayCode = &apos;19&apos; + idCardNo.substring(6,12);
+    //校验日期码
+    return IdCardNoUtil.checkBirthDayCode(birDayCode);
+},
+
+//校验18位的身份证号码
+check18IdCardNo: function(idCardNo){
+    //18位身份证号码的基本格式校验
+    var check = /^\[1-9\]\\d{5}\[1-9\]\\d{3}((0\[1-9\])|(1\[0-2\]))((0\[1-9\])|(\[1-2\]\[0-9\])|(3\[0-1\]))\\d{3}(\\d|x|X)$/.test(idCardNo);
+    if(!check) return false;
+    //校验地址码
+    var addressCode = idCardNo.substring(0,6);
+    check = IdCardNoUtil.checkAddressCode(addressCode);
+    if(!check) return false;
+    //校验日期码
+    var birDayCode = idCardNo.substring(6,14);
+    check = IdCardNoUtil.checkBirthDayCode(birDayCode);
+    if(!check) return false;
+    //验证校检码
+    return IdCardNoUtil.checkParityBit(idCardNo);
+},
+
+formateDateCN: function(day){
+    var yyyy =day.substring(0,4);
+    var mm = day.substring(4,6);
+    var dd = day.substring(6);
+    return yyyy + &apos;-&apos; + mm +&apos;-&apos; + dd;
+},
+
+//获取信息
+getIdCardInfo: function(idCardNo){
+    var idCardInfo = {
+        gender:&quot;&quot;, //性别
+        birthday:&quot;&quot; // 出生日期(yyyy-mm-dd)
+    };
+    if(idCardNo.length==15){
+        var aday = &apos;19&apos; + idCardNo.substring(6,12);
+        idCardInfo.birthday=IdCardNoUtil.formateDateCN(aday);
+        if(parseInt(idCardNo.charAt(14))%2==0){
+            idCardInfo.gender=IdCardNoUtil.genders.female;
+        }else{
+            idCardInfo.gender=IdCardNoUtil.genders.male;
+        }
+    }else if(idCardNo.length==18){
+        var aday = idCardNo.substring(6,14);
+        idCardInfo.birthday=IdCardNoUtil.formateDateCN(aday);
+        if(parseInt(idCardNo.charAt(16))%2==0){
+            idCardInfo.gender=IdCardNoUtil.genders.female;
+        }else{
+            idCardInfo.gender=IdCardNoUtil.genders.male;
+        }
+    }
+    return idCardInfo;
+},
+
+getId15:function(idCardNo){
+    if(idCardNo.length==15){
+        return idCardNo;
+    }else if(idCardNo.length==18){
+        return idCardNo.substring(0,6) + idCardNo.substring(8,17);
+    }else{
+        return null;
+    }
+},
+
+getId18: function(idCardNo){
+    if(idCardNo.length==15){
+        var id17 = idCardNo.substring(0,6) + &apos;19&apos; + idCardNo.substring(6);
+        var parityBit = IdCardNoUtil.getParityBit(id17);
+        return id17 + parityBit;
+    }else if(idCardNo.length==18){
+        return idCardNo;
+    }else{
+        return null;
+    }
+},
+
+// 验证护照是否正确
+checkPassportNumber : function(number) {
+    var str=number;
+    //在JavaScript中，正则表达式只能使用&quot;/&quot;开头和结束，不能使用双引号
+    var Expression=/(P\\d{7})|(G\\d{8})/;
+    var objExp=new RegExp(Expression);
+    if(objExp.test(str)==true){
+        return true;
+    }else{
+        return false;
+    }
+},
+
+// 验证eMail
+checkEMail : function(eMail) {
+    if (eMail.search(/^\\w+((-\\w+)|(\\.\\w+))*\\@\[A-Za-z0-9\]+((\\.|-)\[A-Za-z0-9\]+)*\\.\[A-Za-z0-9\]+$/) != -1)
+        return true;
+    else
+        return false;
+},
+
+// 验证手机号码
+checkPhoneNum : function(phoneNum) {
+    var pattern = /^1\[34578\]\\d{9}$/;
+    if (pattern.test(phoneNum)) {
+        return true;
+    }
+    return false;
+}
+</code></pre><p>};</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/10/e5-85-b3-e4-ba-8ejava-collections-e7-9a-84-e5-87-a0-e4-b8-aa-e5-b8-b8-e8-a7-81-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/10/e5-85-b3-e4-ba-8ejava-collections-e7-9a-84-e5-87-a0-e4-b8-aa-e5-b8-b8-e8-a7-81-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">关于Java Collections的几个常见问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-10 09:06:20" itemprop="dateCreated datePublished" datetime="2017-01-10T09:06:20+08:00">2017-01-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-什么时候用LinkedList，什么时候用ArrayList？"><a href="#1-什么时候用LinkedList，什么时候用ArrayList？" class="headerlink" title="1. 什么时候用LinkedList，什么时候用ArrayList？"></a>1. 什么时候用LinkedList，什么时候用ArrayList？</h3><p>ArrayList</p>
+<p> 是使用数组实现的list，本质上就是数组。ArrayList中的元素可以通过索引随机获取一个元素。但是如果该数组已满，当添加新元素时需要分配一个新的数组然后将原来数组的元素移动过去，需要O(n)的时间复杂度。添加或删除一个元素需要移动数组中的其他元素。这是ArrayList最大的缺点。</p>
+<p>LinkedList</p>
+<p> 是一个双向链表。因此，当需要获取list中某个元素，需要从头到尾遍历list。另一方面，在链表中添加或删除元素很快，只需要O(1)的时间复杂度。从空间上来说，在链表中一个节点需要两个额外的指针来指向它的previous和next节点。 从<strong>时间复杂度</strong>来说，如果对list增加或删除操作较多，优先用LinkedList；如果查询操作较多，优先用ArrayList。 从<strong>空间复杂度</strong>来说，LinkedList会占用较多空间。</p>
+<h3 id="2-如何边遍历边移除Collection中的元素"><a href="#2-如何边遍历边移除Collection中的元素" class="headerlink" title="2. 如何边遍历边移除Collection中的元素"></a>2. 如何边遍历边移除Collection中的元素</h3><p>边遍历边修改Collection的唯一正确方式是使用<code>Iterator.remove()</code>方法，如下：</p>
+<p>Iterator<integer> it = list.iterator();<br>    while(it.hasNext()){<br>    // do something<br>    it.remove();<br>}</integer></p>
+<p>一种最常见的<strong>错误</strong>代码如下：</p>
+<p>for(Integer i : list){<br>    list.remove(i)<br>}</p>
+<p>运行以上错误代码会报<code>ConcurrentModificationException</code>异常。这是因为当使用<code>foreach</code>(for(Integer i : list))语句时，会自动生成一个iterator来遍历该list，但同时该list正在被<code>Iterator.remove()</code>修改。在Java中，一般不允许一个线程在遍历collection时另一个线程在修改它。</p>
+<h3 id="3-如何将List转化成int-？"><a href="#3-如何将List转化成int-？" class="headerlink" title="3. 如何将List转化成int[]？"></a>3. 如何将List转化成int[]？</h3><p>很多人可能认为只需用<code>List.toArray()</code>即可，其实不然。List.toArray()方法只可能得到Integer[]，无法得到int[]。 最简单的方法是使用<code>Apache Commons Lang</code>库中的<code>ArrayUtils</code>。</p>
+<p>int[] array = ArrayUtils.toPrimitive(list.toArray(new Integer[0]));</p>
+<p>在JDK中，没有捷径。需要注意的是，不能直接使用<code>List.toArray()</code>,因为这样会将List转化成Integer[]而不是int[]。正确的做法如下：</p>
+<p>int[] array = new int[list.size()];<br>    for(int i = 0; i &lt; list.size(); i++){<br>    array[i] = list.get(i);<br>}</p>
+<h3 id="4-如何将int-转化成List？"><a href="#4-如何将int-转化成List？" class="headerlink" title="4. 如何将int[]转化成List？"></a>4. 如何将int[]转化成List？</h3><p>同上，很多人以为只需用<code>Arrays.asList()</code>即可，其实不然。因为不能以int[]作为该方法的参数，要的话也只能是Integer[]。 关于<code>Arrays.asList()</code>方法有如下特性：</p>
+<ul>
+<li>1.该方法对于基本数据类型的数组支持并不好,当数组是基本数据类型时不建议使用</li>
+<li>2.当使用asList()方法时，数组就和列表链接在一起了。当更新其中之一时，另一个将自动获得更新。因为asList获得的List实际引用的就是数组 注意:仅仅针对对象数组类型,基本数据类型数组不具备该特性。</li>
+<li>3.asList得到的数组是的没有add和remove方法的。因为asList返回的List是Arrays中的内部类,而该类并没有定义add和remove方法。</li>
+</ul>
+<p>那么如何将int[]转化成List呢？ 还是得自己实现：</p>
+<p>int[] array = {1,2,3,4,5};<br>    List<integer> list = new ArrayList<integer>();<br>    for(int i: array) {<br>    list.add(i);<br>}</integer></integer></p>
+<h3 id="5-过滤一个Collection最好的方法是什么？"><a href="#5-过滤一个Collection最好的方法是什么？" class="headerlink" title="5. 过滤一个Collection最好的方法是什么？"></a>5. 过滤一个Collection最好的方法是什么？</h3><p>如过滤掉list中大于5的整数。</p>
+<p>Iterator<integer> it = list.iterator();<br>    while(it.hasNext()){<br>    int i = it.next();<br>    if(i &gt; 5) { //过滤掉大于5的整数<br>       it.remove();<br>    }<br>}</integer></p>
+<h3 id="6-将List转化成Set最简单的方法？"><a href="#6-将List转化成Set最简单的方法？" class="headerlink" title="6. 将List转化成Set最简单的方法？"></a>6. 将List转化成Set最简单的方法？</h3><p>有两种方法，取决于你怎么要怎么定义两个元素相等。第一种方法是将list放入<code>HashSet</code>里，该方法元素是否相等是通过它们的hashCode()来比较的。如果需要自己定义比较的方法，需要用<code>TreeSet</code>。</p>
+<p>Set<integer> set = new HashSet<integer>(list);</integer></integer></p>
+<p>Set<integer> set = new TreeSet<integer>(aComparator);<br>set.addAll(list);</integer></integer></p>
+<h3 id="7-如何删除ArrayList中重复的元素？"><a href="#7-如何删除ArrayList中重复的元素？" class="headerlink" title="7. 如何删除ArrayList中重复的元素？"></a>7. 如何删除ArrayList中重复的元素？</h3><p>如果不关心元素在ArrayList中的顺序，可以将list放入set中来删除重复元素，然后在放回list。</p>
+<p>Set<integer> set = new HashSet<integer>(list);<br>list.clear();<br>list.addAll(set);</integer></integer></p>
+<p>如果关心元素在ArrayList中的顺序，可以用<code>LinkedHashSet</code>。</p>
+<h3 id="8-有序的collection"><a href="#8-有序的collection" class="headerlink" title="8. 有序的collection"></a>8. 有序的collection</h3><p>Java里有很多方法来维持一个collection有序。有的需要实现Comparable接口，有的需要自己指定Comparator。</p>
+<ol>
+<li><code>Collections.sort()</code>可以用来对list排序。该排序是稳定的，并且可以保证nlog(n)的性能。</li>
+<li><code>PriorityQueue</code>提供排序的队列。<code>PriorityQueue</code>和<code>Collections.sort()</code>的区别是，<code>PriorityQueue</code>动态维护一个有序的队列（每添加或删除一个元素就会重新排序），但是只能获队列中的头元素。</li>
+<li>如果collection中没有重复的元素，<code>TreeSet</code>是另一个选择。跟<code>PriorityQueue</code>一样的是，<code>TreeSet</code>也动态维护一个有序的集合。可以从<code>TreeSet</code>中获取最大和最小的元素。</li>
+</ol>
+<p>总结：<code>Collections.sort()</code>提供一个一次排序的list。<code>PriorityQueue</code>和<code>TreeSet</code>动态维护排序的collection。</p>
+<h3 id="9-拷贝list"><a href="#9-拷贝list" class="headerlink" title="9. 拷贝list"></a>9. 拷贝list</h3><p>有两种方法可以用来拷贝list。一种是使用<code>ArrayList</code>构造器.</p>
+<p>ArrayList<integer> dstList = new ArrayList<integer>(srcList);</integer></integer></p>
+<p>另一种是使用<code>Collections.copy()</code>。</p>
+<p>ArrayList<integer> dstList = new ArrayList<integer>(srcList.size());<br>Collections.copy(dstList, srcList);</integer></integer></p>
+<p>需要注意的是，使用该方法的话目标list至少跟源list长度一样长。否则会报<code>IndexOutOfBoundsException</code>异常。 另外有两点需要注意：</p>
+<ol>
+<li>两种方法都是浅拷贝</li>
+<li><code>Collections.copy()</code>方法的两个参数必须都是list，而<code>ArrayList</code>方法参数只要是collection即可，因此<code>ArrayList</code>方法更通用。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/07/maven-e5-88-86-e6-a8-a1-e5-9d-97-e9-a1-b9-e7-9b-ae-e4-bb-8b-e7-bb-8d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/07/maven-e5-88-86-e6-a8-a1-e5-9d-97-e9-a1-b9-e7-9b-ae-e4-bb-8b-e7-bb-8d/" class="post-title-link" itemprop="url">Maven分模块项目介绍</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-07 19:48:55" itemprop="dateCreated datePublished" datetime="2017-01-07T19:48:55+08:00">2017-01-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Maven项目管理工具，可以将一个完整的项目拆成一个一个模块进行开发，而一些比较通用的模块就可以作为公用组件。在其他项目中直接依赖使用，比如：公用的方法，权限组件等等。</p>
+<h4 id="一-项目结构"><a href="#一-项目结构" class="headerlink" title="一.项目结构"></a>一.项目结构</h4><p>下面是自己建立的一个demo,一个分模块maven项目的大概结构: <img src="http://zhongmin.me/wp-content/uploads/2017/01/jblog1.png" alt> 从图中可以看见.有一个父项目(jblog)聚合了4个子项目。在每个项目里面，不管是父子，都含有一个pom.xml文件。而且要注意的是，小括号中标出了每个项目的打包类型。父项目是pom,也只能是pom。子项目有jar，或者war。根据它包含的内容具体考虑。</p>
+<ul>
+<li>jblog-mapper</li>
+<li>jblog-service</li>
+<li>jblog-web</li>
+<li>jblog-utils</li>
+</ul>
+<p>这些模块的依赖关系如下：og jblog-mapper    –&gt; jblog-utils jblog-service–&gt; jblog-mapper jblog-web   –&gt; jblog-service 大部分依赖是有传递性的，除非你配置了特殊的依赖scope，jblog-mapper依赖于jblog-utils，jblog-service依赖于app-mapper，于是jblog-service也依赖于jblog-utils。同理，jblog-web依赖于jblog-dao,jblog-util。 用项目层次的划分替代包层次的划分能给我们带来如下好处：</p>
+<ol>
+<li>方便重用，如果你有一个新的项目需要用到mapper和service，添加对它们的依赖即可，你不再需要去依赖一个WAR。而有些模块，如utils模块，可以渐渐进化成公司的一份基础工具类库，供所有项目使用。这是模块化最重要的一个目的。</li>
+<li>由于划分了模块，每个模块的配置都在各自的pom.xml里，不用再到一个混乱的纷繁复杂的总的POM中寻找自己的配置。</li>
+<li>如果你只是在mapper上工作，不再需要build整个项目，只要在mapper目录运行mvn命令进行build即可，这样可以节省时间，尤其是当项目越来越复杂，build越来越耗时后。</li>
+<li>某些模块，如utils被所有人依赖，而又不想给所有人修改，现在你完全可以从这个项目结构出来，做成另外一个项目，svn只给特定的人访问，但仍提供jar给别人使用。</li>
+<li>多模块的Maven项目结构支持一些Maven的更有趣的特性（如DepencencyManagement），这留作以后讨论。</li>
+</ol>
+<h4 id="二-pom配置文件"><a href="#二-pom配置文件" class="headerlink" title="二.pom配置文件"></a>二.pom配置文件</h4><p>POM配置细节，实际上非常简单. 1.父模块jblog 的pom.xml</p>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4\_0\_0.xsd"><br><br>  <modelversion>4.0.0</modelversion><br>  <packaging>pom</packaging><br><br>  <name>jblog</name><br>  <modules><br>    <module>jblog-web</module><br>    <module>jblog-service</module><br>    <module>jblog-mapper</module><br>    <module>jblog-utils</module><br>  </modules><br></project>
+
+<p>aven的坐标GAV（groupId, artifactId, version）在这里进行配置，这些都是必须的。特殊的地方在于，这里的packaging为pom。所有带有子模块的项目的packaging都为pom。packaging如果不进行配置，它的默认值是jar，代表Maven会将项目打成一个jar包。 该配置重要的地方在于modules，例子中包含的子模块有app-util, app-dao, app-service, app-war。在Maven build app-parent的时候，它会根据子模块的相互依赖关系整理一个build顺序，然后依次build。 2.utils模块</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"><br>    <parent><br>        <artifactid>jblog</artifactid><br>        <groupid>com.remin</groupid><br>        <version>1.0-SNAPSHOT</version><br>    </parent><br>    <modelversion>4.0.0</modelversion><br><br>    <artifactid>jblog-utils</artifactid><br><br><br></project>
+
+<p>utils模块继承了parent父模块，因此这个POM的一开始就声明了对app-parent的引用，该引用是通过Maven坐标GAV实现的。而关于项目jblog-utils本身，它却没有声明完整GAV，这里我们只看到了artifactId。这个POM并没有错，groupId和version默认从父模块继承了。实际上子模块从父模块继承一切东西，包括依赖，插件配置等等。 3.mapper模块</p>
+<p>?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"><br>    <parent><br>        <artifactid>jblog</artifactid><br>        <groupid>com.remin</groupid><br>        <version>1.0-SNAPSHOT</version><br>    </parent><br>    <modelversion>4.0.0</modelversion><br><br>    <artifactid>jblog-mapper</artifactid><br>  <dependencies><br><br>        <dependency><br>            <groupid>com.remin</groupid><br>            <artifactid>jblog-utils</artifactid><br>            <version>1.0-SNAPSHOT</version><br>        </dependency><br><br>        <dependency><br>            <groupid>org.springframework.boot</groupid><br>            <artifactid>spring-boot-starter-jdbc</artifactid><br>            <version>${spring-boot.version}</version><br>        </dependency><br> </dependencies><br></project>
+
+<p>该配置和jblog-utils的配置几乎没什么差别，不同的地方在于，依赖变化了，mapper依赖于utils。这里要注意的是version的值为${project.version}，这个值是一个属性引用，指向了POM的project/version的值，也就是这个POM对应的version。由于mapper的version继承于parent，因此它的值就是1.0-SNAPSHOT。而utils也继承了这个值，因此在所有这些项目中，我们做到了保持版本一致。 services依赖于mapper,与mapper一致. 3.web模块</p>
+<p>project xmlns=”<a href="http://maven.apache.org/POM/4.0.0&quot;" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0&quot;</a> xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>         xsi:schemaLocation=”<a href="http://maven.apache.org/POM/4.0.0" target="_blank" rel="noopener">http://maven.apache.org/POM/4.0.0</a> <a href="http://maven.apache.org/maven-v4\_0\_0.xsd&quot;&gt;" target="_blank" rel="noopener">http://maven.apache.org/maven-v4\_0\_0.xsd&quot;&gt;</a><br>    <parent><br>        <artifactid>jblog</artifactid><br>        <groupid>com.remin</groupid><br>        <version>1.0-SNAPSHOT</version><br>    </parent></p>
+<pre><code>&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+&lt;packaging&gt;war&lt;/packaging&gt;
+
+&lt;name&gt;jblog-web&lt;/name&gt;
+&lt;artifactId&gt;jblog-web&lt;/artifactId&gt;
+
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.remin&lt;/groupId&gt;
+        &lt;artifactId&gt;jblog-service&lt;/artifactId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;version&gt;${spring-boot.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-freemarker&lt;/artifactId&gt;
+        &lt;version&gt;${spring-boot.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;
+        &lt;version&gt;${spring-boot.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;dependencies&gt;
+                &lt;dependency&gt;
+                    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+                    &lt;artifactId&gt;springloaded&lt;/artifactId&gt;
+                    &lt;version&gt;1.2.5.RELEASE&lt;/version&gt;
+                &lt;/dependency&gt;
+            &lt;/dependencies&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre><p></p>
+<p>web依赖于service，因此配置了对其的依赖。还有一些其他的依赖 由于web是我们最终要部署的应用，因此它的packaging是war。为此，你需要有一个目录src/main/webapp。并在这个目录下拥有web应用需要的文件，如/WEB-INF/web.xml。没有web.xml，Maven会报告build失败，此外你可能还会有这样一些子目录：/js, /img, /css … 。 使用多模块的Maven配置，可以帮助项目划分模块，鼓励重用，防止POM变得过于庞大，方便某个模块的构建，而不用每次都构建整个项目，并且使得针对某个模块的特殊控制更为方便。本文同时给出了一个实际的配置样例，展示了如何使用Maven配置多模块项目。   创建分模块maven项目的方法其实就是建立一个maven项目.删除maven项目的src目录作为父项目.再从父项目中右击new modal 建立新的maven子项目.一般web模块需要选上maven-archeType-webapp选项,生成webapp目录. 参考 :<a href="https://my.oschina.net/lujianing/blog/354121" target="_blank" rel="noopener"> https://my.oschina.net/lujianing/blog/354121</a> 项目建立完之后还需要自己添加子项目之间的依赖关系,这个是具体情况而定.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/06/391/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/06/391/" class="post-title-link" itemprop="url">DataURL与File,Blob,canvas对象之间的互相转换的Javascript</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-06 17:16:50" itemprop="dateCreated datePublished" datetime="2017-01-06T17:16:50+08:00">2017-01-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="canvas转换为dataURL-从canvas获取dataURL"><a href="#canvas转换为dataURL-从canvas获取dataURL" class="headerlink" title="canvas转换为dataURL (从canvas获取dataURL)"></a>canvas转换为dataURL (从canvas获取dataURL)</h1><p>var dataurl = canvas.toDataURL(‘image/png’);<br>var dataurl2 = canvas.toDataURL(‘image/jpeg’, 0.8);</p>
+<h1 id="File对象转换为dataURL、Blob对象转换为dataURL"><a href="#File对象转换为dataURL、Blob对象转换为dataURL" class="headerlink" title="File对象转换为dataURL、Blob对象转换为dataURL"></a>File对象转换为dataURL、Blob对象转换为dataURL</h1><p>File对象也是一个Blob对象，二者的处理相同。</p>
+<p>function readBlobAsDataURL(blob, callback) {<br>    var a = new FileReader();<br>    a.onload = function(e) {callback(e.target.result);};<br>    a.readAsDataURL(blob);<br>}<br>//example:<br>readBlobAsDataURL(blob, function (dataurl){<br>    console.log(dataurl);<br>});<br>readBlobAsDataURL(file, function (dataurl){<br>    console.log(dataurl);<br>});</p>
+<h1 id="dataURL转换为Blob对象"><a href="#dataURL转换为Blob对象" class="headerlink" title="dataURL转换为Blob对象"></a>dataURL转换为Blob对象</h1><p>function dataURLtoBlob(dataurl) {<br>    var arr = dataurl.split(‘,’), mime = arr[0].match(/:(.*?);/)[1],<br>        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);<br>    while(n–){<br>        u8arr[n] = bstr.charCodeAt(n);<br>    }<br>    return new Blob([u8arr], {type:mime});<br>}<br>//test:<br>var blob = dataURLtoBlob(‘data:text/plain;base64,YWFhYWFhYQ==’);</p>
+<h1 id="dataURL图片数据绘制到canvas"><a href="#dataURL图片数据绘制到canvas" class="headerlink" title="dataURL图片数据绘制到canvas"></a>dataURL图片数据绘制到canvas</h1><p>先构造Image对象，src为dataURL，图片onload之后绘制到canvas</p>
+<p>var img = new Image();<br>img.onload = function(){<br>    canvas.drawImage(img);<br>};<br>img.src = dataurl;</p>
+<h1 id="File-Blob的图片文件数据绘制到canvas"><a href="#File-Blob的图片文件数据绘制到canvas" class="headerlink" title="File,Blob的图片文件数据绘制到canvas"></a>File,Blob的图片文件数据绘制到canvas</h1><p>还是先转换成一个url，然后构造Image对象，src为dataURL，图片onload之后绘制到canvas 利用上面的 readBlobAsDataURL 函数，由File,Blob对象得到dataURL格式的url，再参考 <strong>dataURL图片数据绘制到canvas</strong></p>
+<p>readBlobAsDataURL(file, function (dataurl){<br>    var img = new Image();<br>    img.onload = function(){<br>        canvas.drawImage(img);<br>    };<br>    img.src = dataurl;<br>});</p>
+<p>  不同的方法用于构造不同类型的url (分别是 dataURL, objectURL(blobURL), filesystemURL)。这里不一一介绍，仅以dataURL为例。 filesystemURL不是指本地文件URL的形式(file:///….), 而是格式类似于 <code>filesystem:http://...</code> 的一种URL，支持沙盒文件系统的浏览器支持(目前仅Chrome)支持。</p>
+<h1 id="Canvas转换为Blob对象并使用Ajax发送"><a href="#Canvas转换为Blob对象并使用Ajax发送" class="headerlink" title="Canvas转换为Blob对象并使用Ajax发送"></a>Canvas转换为Blob对象并使用Ajax发送</h1><p>转换为Blob对象后，可以使用Ajax上传图像文件。 先从canvas获取dataurl, 再将dataurl转换为Blob对象</p>
+<p>var dataurl = canvas.toDataURL(‘image/png’);<br>var blob = dataURLtoBlob(dataurl);<br>//使用ajax发送<br>var fd = new FormData();<br>fd.append(“image”, blob, “image.png”);<br>var xhr = new XMLHttpRequest();<br>xhr.open(‘POST’, ‘/server’, true);<br>xhr.send(fd);</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/01/06/html5-jquery-e5-9b-be-e7-89-87-e4-b8-8a-e4-bc-a0-e5-89-8d-e9-a2-84-e8-a7-88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/01/06/html5-jquery-e5-9b-be-e7-89-87-e4-b8-8a-e4-bc-a0-e5-89-8d-e9-a2-84-e8-a7-88/" class="post-title-link" itemprop="url">HTML5 jQuery图片上传前预览</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-01-06 15:17:04" itemprop="dateCreated datePublished" datetime="2017-01-06T15:17:04+08:00">2017-01-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>主要是为了实现点击头像是可以上传图片，上传图片后预览头像的功能，Html代码如下：</p>
+<p><img src="/img/member/account\_small\_header.png" id="headImg"> </p>
+<input id="headImgFile" tabindex="-1" type="file" style="display:none" accept="image/*">
+
+<p>img标签是用来展示图片的地方，而 file标签是为了上传图片。</p>
+<p>//点击头像触发input file click 事件<br>mui(‘#app’).on(‘click’, ‘#tap’, function(e) {<br>       $(‘#headImgFile’).click();<br>});</p>
+<p>这是mui的绑定事件，给头像绑定点击事件，点击头像触发file标签的点击事件，进行上传图片。</p>
+<p>//头像 事件<br>mui(‘#app’).on(‘change’, ‘#headImgFile’, function(e) {<br>    var objUrl = getObjectURL(this.files[0]) ;<br>    console.log(“objUrl = “+objUrl) ;<br>    if (objUrl) {<br>        $(“#headImg”).attr(“src”, objUrl) ;<br>    }<br>});</p>
+<p>function getObjectURL(file) {<br>    var url = null ;<br>    if (window.createObjectURL!=undefined) { // basic<br>        url = window.createObjectURL(file) ;<br>    } else if (window.URL!=undefined) { // mozilla(firefox)<br>        url = window.URL.createObjectURL(file) ;<br>    } else if (window.webkitURL!=undefined) { // webkit or chrome<br>        url = window.webkitURL.createObjectURL(file) ;<br>    }<br>    return url ;<br>}</p>
+<p>给file标签绑定change事件，通过HTML5 的File API,建立一個可存取到该file的url，放入到img的src进行展示。只能在支持HTML API的浏览器下实现，比如谷歌Chrome和火狐等。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Jquery插件的开发包括两种： 一种是类级别的插件开发，即给jquery添加新的全局函数，相当于给jquery类本身添加方法。jquery的全局函数就是属于jquery命名空间的函数。另一种是对象级别的插件开发，即给jquery对象添加方法，下面就两种函数的开发做详细的说明。 1.类级别的插件开发 类级别的插件开发最直接的理解就是给jquery类添加类方法，可以理解为添加静态方法。典型的例子就是">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解jquery的$.extend()、$.fn和$.fn.extend()">
+<meta property="og:url" content="http://b.zhongmin.me/2016/12/15/e7-90-86-e8-a7-a3jquery-e7-9a-84-extend-e3-80-81-fn-e5-92-8c-fn-extend/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="Jquery插件的开发包括两种： 一种是类级别的插件开发，即给jquery添加新的全局函数，相当于给jquery类本身添加方法。jquery的全局函数就是属于jquery命名空间的函数。另一种是对象级别的插件开发，即给jquery对象添加方法，下面就两种函数的开发做详细的说明。 1.类级别的插件开发 类级别的插件开发最直接的理解就是给jquery类添加类方法，可以理解为添加静态方法。典型的例子就是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.421Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解jquery的$.extend()、$.fn和$.fn.extend()">
+<meta name="twitter:description" content="Jquery插件的开发包括两种： 一种是类级别的插件开发，即给jquery添加新的全局函数，相当于给jquery类本身添加方法。jquery的全局函数就是属于jquery命名空间的函数。另一种是对象级别的插件开发，即给jquery对象添加方法，下面就两种函数的开发做详细的说明。 1.类级别的插件开发 类级别的插件开发最直接的理解就是给jquery类添加类方法，可以理解为添加静态方法。典型的例子就是">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2016/12/15/e7-90-86-e8-a7-a3jquery-e7-9a-84-extend-e3-80-81-fn-e5-92-8c-fn-extend/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>理解jquery的$.extend()、$.fn和$.fn.extend() | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/12/15/e7-90-86-e8-a7-a3jquery-e7-9a-84-extend-e3-80-81-fn-e5-92-8c-fn-extend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解jquery的$.extend()、$.fn和$.fn.extend()
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-15 11:07:24" itemprop="dateCreated datePublished" datetime="2016-12-15T11:07:24+08:00">2016-12-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Jquery插件的开发包括两种： 一种是类级别的插件开发，即给jquery添加新的全局函数，相当于给jquery类本身添加方法。jquery的全局函数就是属于jquery命名空间的函数。另一种是对象级别的插件开发，即给jquery对象添加方法，下面就两种函数的开发做详细的说明。 1.类级别的插件开发 类级别的插件开发最直接的理解就是给jquery类添加类方法，可以理解为添加静态方法。典型的例子就是$.ajax() 这个函数，将函数定义于jquery的命名空间中。关于类级别的插件开发可以采用如下几种形式进行扩展： 1.1 添加一个新的全局函数 添加一个新的全局函数，我们只需如下定义： ?</p>
+<p>jQuery.foo = function() {&nbsp;&nbsp;<br>  alert(“This is a test.”);&nbsp;<br>};</p>
+<p>1.2 增加多个全局函数 添加多个全局函数，可采用如下定义： ?</p>
+<p>jQuery.foo = function(){<br>   alert(“This is a test.”);<br> };<br> jQuery.bar = function(param){<br>     alert(“This is another test.”);<br> }</p>
+<p>调用时和一个函数的一样的:jQuery.foo(); jQuery.bar(); 简写形式为：$.foo(); $.bar(“bar”); 1.3 使用jQuery.extend(object)添加全局函数  ?</p>
+<p>jQuery.extend({<br>    foo:function(){<br>        alert(“This is a test.”);<br>    },<br>     bar:function(){<br>        alert(“This is another test”);<br>     }<br>});</p>
+<p>1.4 使用命名空间 虽然在jQuery命名空间中，我们禁止使用javascript函数名和变量名。但仍然不可避免某些函数名或变量名将与其他jQuery插件冲突，因此我们习惯将一些方法封装到另一个自定义的命名空间。 ?</p>
+<p>jQuery.myPlugin = {<br>    foo:function(){<br>       alert(“This is a test.”);<br>    }  ,<br>   bar:function(“bar”){<br>      alert(“This is another test.”);<br>   }<br>}</p>
+<p>采用命名空间的函数仍然是全局函数，调用时采用的方法： jQuery.myPlugin.foo(); jQuery.myPlugin.bar(“bar”); 简写形式为： $.myPlugin.foo(); $.myPlugin.bar(“bar”); 通过这个技巧（使用独立的插件名），我们可以避免命名空间内函数的冲突。   2.对象级别的插件开发 对象级别的插件开发需如下两种形式： 形式1： ?</p>
+<p>(function($){<br>    $.fn.pluginName = function(){<br>         // 插件代码写在这里<br>     }<br>})(jQuery);</p>
+<p>上面定义了一个jQuery函数，形参是$,函数定义完成后，把jQuery这个实参传递进去，立即调用执行，这样的好处是我们在写jQuery插件时，也可以使用$这个别名，而不会与prototype引起冲突。 2.1 在jQuery命名空间下生声明一个名字  这是一个单一插件的脚本，如果你的脚本中包含多个插件，或者互逆的插件（例如：$.fn.doSomething() 和 $.fn.undoSomething()）, 那么你需要声明多个函数名字。但是，通常我们编写一个插件时，力求仅使用一个名字来包含它的所有内容，比如下面的插件： 1 $.fn.hilight = function(){2      // 我们的插件写在这里3 };    我们的插件通过这样被调用： 1 $(“myDiv”).hilight();但是我们需要分解我们的代码为多个函数的时候，需要把功能实现分解成多个函数而不增加多余的命名空间。 出于认识到和利用函数是js中最基本的类对象，我们可以这样做，就像其他对象一样，函数可以被制定为属性，因此我们已经声明“hilight”为jQuery的属性对象，任何其他的属性或函数我们需要暴露出来的，都可以在“hilight”函数中被声明属性。 2.2 接受options参数移控制插件的行为 让我们为我们的插件添加功能：指定前景色和背景色的功能，我们也许会让选项像一个options对象传递给插件函数，例：</p>
+<p>// plugin definition<br>$.fn.hilight = function(options){<br>   var defaults = {<br>      foreground : “red”,<br>      background: “yellow”<br>   };<br>// 根据所提供的扩展我们能的options<br>var opts = $.extend(defaults, options);<br>// 插件内容写在这里<br> }</p>
+<p>我们的插件可以这样被调用： $(“myDiv”).hilight({   foreground:”blue” })2.3 暴露插件的默认设置 我们对上面代码的一种改进是暴露插件的默认设置，这有利于让插件的使用者更容易用较少的代码覆盖和修改插件，接下来我们开始利用函数对象。 ?</p>
+<p>// plugin definition<br>$.fn.hilight = function(options){<br>  // extend our default options with those provided.<br>  // note that the first arg to extend is an empty object , this is to keep form overriding our “defaults” object.<br>  var opts = $.extend({},$options);<br>// our plugin inplementation code goes here.<br>};<br>// plugin defaults -added as a property on our plugin function<br>$.fn.hilight.default = {<br>    foreground : “red”,<br>    background:”yellow”<br>};</p>
+<p>现在使用者可以包含这样一行代码在他们的脚本里： // 这个只需要调用一次，且不一定要在ready块中调用$.fn.hilight.defaults.foreground = “blue”;接下来我们像这样使用插件的方法，结果它设置蓝色的前景色： $(“myDiv”).hilight();2.4 整合 下面使我们的例子完成后的代码：</p>
+<p> // 创建一个闭包<br> $(function($){<br>    // 插件的定义<br>    $.fn.hilight = function(options){<br>    // build main options before element iteration<br>    var opts = $.extend({},$.fn.hilight.defaults.options);<br>    // iteration and reformar each matched element<br>    return this.each(function(){<br>       $this = $(this);<br>    // build element specific options<br>       var o = $.meta ? $.extend({}, opts, $this.data()) : opts;<br>        $this.css({<br>         backgroundColor: o.background,<br>         color: o.foreground<br>       });<br>       var markup = $this.html();<br>       // call our format function<br>       markup = $.fn.hilight.format(markup);<br>       $this.html(markup);<br>     });<br>   };<br>   // 私有函数：debugging<br>   function debug($obj) {<br>     if (window.console &amp;&amp; window.console.log)<br>       window.console.log(‘hilight selection count: ‘ + $obj.size());<br>   };<br>   // 定义暴露format函数<br>   $.fn.hilight.format = function(txt) {<br>     return ‘<strong>‘ + txt + ‘</strong>‘;<br>   };<br>   // 插件的defaults<br>   $.fn.hilight.defaults = {<br>     foreground: ‘red’,<br>     background: ‘yellow’<br>   };<br>    })<br>    }<br> // 闭包结束<br> })(jQuery);</p>
+<p>3、总结 jQuery为开发插件提拱了两个方法，分别是： jQuery.fn.extend(object);  给jQuery对象添加方法。jQuery.extend(object);  为扩展jQuery类本身.为类添加新的方法。 3.1 jQuery.fn.extend(object); fn 是什么东西呢。查看jQuery代码，就不难发现。 jQuery.fn = jQuery.prototype = {   init: function( selector, context ) {//….　   //……   };    原来 jQuery.fn = jQuery.prototype.对prototype肯定不会陌生啦。虽然 javascript　没有明确的类的概念，但是用类来理解它，会更方便。jQuery便是一个封装得非常好的类，比如我们用 语句　$(“#btn1”) 会生成一个 jQuery类的实例。 jQuery.fn.extend(object); 对jQuery.prototype进得扩展，就是为jQuery类添加“成员函数”。jQuery类的实例可以使用这个“成员函数”。 $.fn是指jQuery的命名空间，加上fn上的方法及属性，会对jquery实例每一个有效，如扩展$.fn.abc()是对jquery扩展了一个abc方法，那么后面的每个jQuery实例都可以引用这个方法了。 你可以这样：$(“myDiv”).abc(); 比如我们要开发一个插件，做一个特殊的编辑框，当它被点击时，便alert 当前编辑框里的内容。可以这么做：  ?</p>
+<p>$.fn.extend({<br>    alertWhileClick:function(){<br>    $(this).click(function(){<br>    alert($(this).val());<br>});<br>}<br>});<br>$(“#input1”).alertWhileClick();</p>
+<p>//页面上为： <input id="input1" type="text"> $(“#input1”)　为一个jQuery实例，当它调用成员方法 alertWhileClick后，便实现了扩展，每次被点击时它会先弹出目前编辑里的内容。 3.2 jQuery.extend(object);　 为jQuery类添加添加类方法，可以理解为添加静态方法。如： $.extend({       add:function(a,b){return a+b;}   });   便为　jQuery　添加一个为 add　的　“静态方法”，之后便可以在引入 jQuery　的地方，使用这个方法了 $.add(3,4); //return 7</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/06/jsnewdate/" rel="next" title="Javascript中new Date()的浏览器兼容性问题">
+                <i class="fa fa-chevron-left"></i> Javascript中new Date()的浏览器兼容性问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/27/jquery-e8-8e-b7-e5-8f-96-e6-b5-8f-e8-a7-88-e5-99-a8-e6-98-be-e7-a4-ba-e5-8c-ba-e5-9f-9f-ef-bc-88-e5-8f-af-e8-a7-86-e5-8c-ba-e5-9f-9f-ef-bc-89-e7-9a-84-e9-ab-98-e5-ba-a6/" rel="prev" title="JQUERY获取浏览器显示区域（可视区域）的高度">
+                JQUERY获取浏览器显示区域（可视区域）的高度 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

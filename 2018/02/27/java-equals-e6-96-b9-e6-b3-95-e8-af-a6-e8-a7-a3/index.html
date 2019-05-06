@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1.equals()的所属以及内部原理（即Object中equals方法的实现原理） 说起equals方法，我们都知道是超类Object中的一个基本方法，用于检测一个对象是否与另外一个对象相等。而在Object类中这个方法实际上是判断两个对象是否具有相同的引用，如果有，它们就一定相等。其源码如下： public boolean equals(Object obj) {   return (this">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java equals方法详解">
+<meta property="og:url" content="http://b.zhongmin.me/2018/02/27/java-equals-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="1.equals()的所属以及内部原理（即Object中equals方法的实现原理） 说起equals方法，我们都知道是超类Object中的一个基本方法，用于检测一个对象是否与另外一个对象相等。而在Object类中这个方法实际上是判断两个对象是否具有相同的引用，如果有，它们就一定相等。其源码如下： public boolean equals(Object obj) {   return (this">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java equals方法详解">
+<meta name="twitter:description" content="1.equals()的所属以及内部原理（即Object中equals方法的实现原理） 说起equals方法，我们都知道是超类Object中的一个基本方法，用于检测一个对象是否与另外一个对象相等。而在Object类中这个方法实际上是判断两个对象是否具有相同的引用，如果有，它们就一定相等。其源码如下： public boolean equals(Object obj) {   return (this">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/02/27/java-equals-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java equals方法详解 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/02/27/java-equals-e6-96-b9-e6-b3-95-e8-af-a6-e8-a7-a3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java equals方法详解
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-27 16:31:02" itemprop="dateCreated datePublished" datetime="2018-02-27T16:31:02+08:00">2018-02-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>1.equals()的所属以及内部原理（即Object中equals方法的实现原理）</strong> 说起equals方法，我们都知道是超类Object中的一个基本方法，用于检测一个对象是否与另外一个对象相等。而在Object类中这个方法实际上是判断两个对象是否具有相同的引用，如果有，它们就一定相等。其源码如下：</p>
+<p>public boolean equals(Object obj) {   return (this == obj);     }</p>
+<p>实际上我们知道所有的对象都拥有标识(内存地址)和状态(数据)，同时“==”比较两个对象的的内存地址，所以说 Object 的 equals() 方法是比较两个对象的内存地址是否相等，即若 object1.equals(object2) 为 true，则表示 equals1 和 equals2 实际上是引用同一个对象。 <strong>2.equals()与‘==’的区别</strong> 或许这是我们面试时更容易碰到的问题”equals方法与‘==’运算符有什么区别？“，并且常常我们都会胸有成竹地回答：“equals比较的是对象的内容，而‘==’比较的是对象的地址。”。但是从前面我们可以知道equals方法在Object中的实现也是间接使用了‘==’运算符进行比较的，所以从严格意义上来说，我们前面的回答并不完全正确。我们先来看一段代码并运行再来讨论这个问题。</p>
+<p>public class Car {<br>    private int batch;<br>    public Car(int batch) {<br>        this.batch = batch;<br>    }<br>    public static void main(String[] args) {<br>        Car c1 = new Car(1);<br>        Car c2 = new Car(1);<br>        System.out.println(c1.equals(c2));<br>        System.out.println(c1 == c2);<br>    }<br>}</p>
+<p>运行结果：</p>
+<p>false<br>false</p>
+<p>分析：对于‘==’运算符比较两个Car对象，返回了false，这点我们很容易明白，毕竟它们比较的是内存地址，而c1与c2是两个不同的对象，所以c1与c2的内存地址自然也不一样。现在的问题是，我们希望生产的两辆的批次（batch）相同的情况下就认为这两辆车相等，但是运行的结果是尽管c1与c2的批次相同，但equals的结果却反回了false。当然对于equals返回了false，我们也是心知肚明的，因为equal来自Object超类，访问修饰符为public，而我们并没有重写equal方法，故调用的必然是Object超类的原始方equals方法，根据前面分析我们也知道该原始equal方法内部实现使用的是’==’运算符，所以返回了false。因此为了达到我们的期望值，我们必须重写Car的equal方法，让其比较的是对象的批次（即对象的内容），而不是比较内存地址，于是修改如下：</p>
+<p>@Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof Car) {<br>            Car c = (Car) obj;<br>            return batch == c.batch;<br>        }<br>        return false;<br>    }  </p>
+<p>使用instanceof来判断引用obj所指向的对象的类型，如果obj是Car类对象，就可以将其强制转为Car对象，然后比较两辆Car的批次，相等返回true，否则返回false。当然如果obj不是 Car对象，自然也得返回false。我们再次运行：</p>
+<p>运行结果<br>true<br>false</p>
+<p>嗯，达到我们预期的结果了。因为前面的面试题我们应该这样回答更佳 总结：默认情况下也就是从超类Object继承而来的equals方法与‘==’是完全等价的，比较的都是对象的内存地址，但我们可以重写equals方法，使其按照我们的需求的方式进行比较，如String类重写了equals方法，使其比较的是字符的序列，而不再是内存地址。 <strong>3.equals()的重写规则</strong> 前面我们已经知道如何去重写equals方法来实现我们自己的需求了，但是我们在重写equals方法时，还是需要注意如下几点规则的。</p>
+<ul>
+<li>自反性。对于任何非null的引用值x，x.equals(x)应返回true。</li>
+<li>对称性。对于任何非null的引用值x与y，当且仅当：y.equals(x)返回true时，x.equals(y)才返回true。</li>
+<li>传递性。对于任何非null的引用值x、y与z，如果y.equals(x)返回true，y.equals(z)返回true，那么x.equals(z)也应返回true。</li>
+<li>一致性。对于任何非null的引用值x与y，假设对象上equals比较中的信息没有被修改，则多次调用x.equals(y)始终返回true或者始终返回false。</li>
+<li>对于任何非空引用值x，x.equal(null)应返回false。</li>
+</ul>
+<p>当然在通常情况下，如果只是进行同一个类两个对象的相等比较，一般都可以满足以上5点要求，下面我们来看前面写的一个例子。</p>
+<p>public class Car {<br>    private int batch;<br>    public Car(int batch) {<br>        this.batch = batch;<br>    }<br>    public static void main(String[] args) {<br>        Car c1 = new Car(1);<br>        Car c2 = new Car(1);<br>        Car c3 = new Car(1);<br>        System.out.println(“自反性-&gt;c1.equals(c1)：” + c1.equals(c1));<br>        System.out.println(“对称性：”);<br>        System.out.println(c1.equals(c2));<br>        System.out.println(c2.equals(c1));<br>        System.out.println(“传递性：”);<br>        System.out.println(c1.equals(c2));<br>        System.out.println(c2.equals(c3));<br>        System.out.println(c1.equals(c3));<br>        System.out.println(“一致性：”);<br>        for (int i = 0; i &lt; 50; i++) {<br>            if (c1.equals(c2) != c1.equals(c2)) {<br>                System.out.println(“equals方法没有遵守一致性！”);<br>                break;<br>            }<br>        }<br>        System.out.println(“equals方法遵守一致性！”);<br>        System.out.println(“与null比较：”);<br>        System.out.println(c1.equals(null));<br>    }<br>    @Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof Car) {<br>            Car c = (Car) obj;<br>            return batch == c.batch;<br>        }<br>        return false;<br>    }<br>}<br>运行结果:<br>自反性-&gt;c1.equals(c1)：true<br>对称性：<br>true<br>true<br>传递性：<br>true<br>true<br>true<br>一致性：<br>equals方法遵守一致性！<br>与null比较：<br>false</p>
+<p>由运行结果我们可以看出equals方法在同一个类的两个对象间的比较还是相当容易理解的。但是如果是子类与父类混合比较，那么情况就不太简单了。下面我们来看看另一个例子，首先，我们先创建一个新类BigCar，继承于Car,然后进行子类与父类间的比较。</p>
+<p>public class BigCar extends Car {<br>    int count;<br>    public BigCar(int batch, int count) {<br>        super(batch);<br>        this.count = count;<br>    }<br>    @Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof BigCar) {<br>            BigCar bc = (BigCar) obj;<br>            return super.equals(bc) &amp;&amp; count == bc.count;<br>        }<br>        return false;<br>    }<br>    public static void main(String[] args) {<br>        Car c = new Car(1);<br>        BigCar bc = new BigCar(1, 20);<br>        System.out.println(c.equals(bc));<br>        System.out.println(bc.equals(c));<br>    }<br>}<br>运行结果:<br>true<br>false</p>
+<p>对于这样的结果，自然是我们意料之中的啦。因为BigCar类型肯定是属于Car类型，所以c.equals(bc)肯定为true，对于bc.equals(c)返回false，是因为Car类型并不一定是BigCar类型（Car类还可以有其他子类）。嗯，确实是这样。但如果有这样一个需求，只要BigCar和Car的生产批次一样，我们就认为它们两个是相当的，在这样一种需求的情况下，父类（Car）与子类（BigCar）的混合比较就不符合equals方法对称性特性了。很明显一个返回true，一个返回了false，根据对称性的特性，此时两次比较都应该返回true才对。那么该如何修改才能符合对称性呢？其实造成不符合对称性特性的原因很明显，那就是因为Car类型并不一定是BigCar类型（Car类还可以有其他子类），在这样的情况下(Car instanceof BigCar)永远返回false，因此，我们不应该直接返回false，而应该继续使用父类的equals方法进行比较才行（因为我们的需求是批次相同，两个对象就相等，父类equals方法比较的就是batch是否相同）。因此BigCar的equals方法应该做如下修改：</p>
+<p>@Override<br>public boolean equals(Object obj) {<br>    if (obj instanceof BigCar) {<br>        BigCar bc = (BigCar) obj;<br>        return super.equals(bc) &amp;&amp; count == bc.count;<br>    }<br>    return super.equals(obj);<br>}</p>
+<p>这样运行的结果就都为true了。但是到这里问题并没有结束，虽然符合了对称性，却还没符合传递性，实例如下：</p>
+<p>public class BigCar extends Car {<br>    int count;<br>    public BigCar(int batch, int count) {<br>        super(batch);<br>        this.count = count;<br>    }<br>    @Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof BigCar) {<br>            BigCar bc = (BigCar) obj;<br>            return super.equals(bc) &amp;&amp; count == bc.count;<br>        }<br>        return super.equals(obj);<br>    }<br>    public static void main(String[] args) {<br>        Car c = new Car(1);<br>        BigCar bc = new BigCar(1, 20);<br>        BigCar bc2 = new BigCar(1, 22);<br>        System.out.println(bc.equals(c));<br>        System.out.println(c.equals(bc2));<br>        System.out.println(bc.equals(bc2));<br>    }<br>}<br>运行结果:<br>true<br>true<br>false</p>
+<p>bc，bc2，c的批次都是相同的，按我们之前的需求应该是相等，而且也应该符合equals的传递性才对。但是事实上运行结果却不是这样，违背了传递性。出现这种情况根本原因在于：</p>
+<ul>
+<li>父类与子类进行混合比较。</li>
+<li>子类中声明了新变量，并且在子类equals方法使用了新增的成员变量作为判断对象是否相等的条件。</li>
+</ul>
+<p>只要满足上面两个条件，equals方法的传递性便失效了。而且目前并没有直接的方法可以解决这个问题。因此我们在重写equals方法时这一点需要特别注意。虽然没有直接的解决方法，但是间接的解决方案还说有滴，那就是通过组合的方式来代替继承,还有一点要注意的是组合的方式并非真正意义上的解决问题（只是让它们间的比较都返回了false，从而不违背传递性，然而并没有实现我们上面batch相同对象就相等的需求），而是让equals方法满足各种特性的前提下，让代码看起来更加合情合理，代码如下：</p>
+<p>public class Combination4BigCar {<br>    private Car c;<br>    private int count;<br>    public Combination4BigCar(int batch, int count) {<br>        c = new Car(batch);<br>        this.count = count;<br>    }<br>    @Override<br>    public boolean equals(Object obj) {<br>        if (obj instanceof Combination4BigCar) {<br>            Combination4BigCar bc = (Combination4BigCar) obj;<br>            return c.equals(bc.c) &amp;&amp; count == bc.count;<br>        }<br>        return false;<br>    }<br>}</p>
+<p>从代码来看即使batch相同，Combination4BigCar类的对象与Car类的对象间的比较也永远都是false，但是这样看起来也就合情合理了，毕竟Combination4BigCar也不是Car的子类，因此equals方法也就没必要提供任何对Car的比较支持，同时也不会违背了equals方法的传递性。 <strong>4.equals()的重写规则之必要性深入解读</strong> 前面我们一再强调了equals方法重写必须遵守的规则，接下来我们就是分析一个反面的例子，看看不遵守这些规则到底会造成什么样的后果。</p>
+<p>public class AbnormalResult {<br>    public static void main(String[] args) {<br>        List<a> list = new ArrayList<a>();<br>        A a = new A();<br>        B b = new B();<br>        list.add(a);<br>        System.out.println(“list.contains(a)-&gt;” + list.contains(a));<br>        System.out.println(“list.contains(b)-&gt;” + list.contains(b));<br>        list.clear();<br>        list.add(b);<br>        System.out.println(“list.contains(a)-&gt;” + list.contains(a));<br>        System.out.println(“list.contains(b)-&gt;” + list.contains(b));<br>    }<br>    static class A {<br>        @Override<br>        public boolean equals(Object obj) {<br>            return obj instanceof A;<br>        }<br>    }<br>    static class B extends A {<br>        @Override<br>        public boolean equals(Object obj) {<br>            return obj instanceof B;<br>        }<br>    }<br>}</a></a></p>
+<p>上面的代码，我们声明了 A,B两个类，注意必须是static，否则无法被main调用。B类继承A，两个类都重写了equals方法，但是根据我们前面的分析，这样重写是没有遵守对称性原则的，我们先来看看运行结果：</p>
+<p>list.contains(a)-&gt;true<br>list.contains(b)-&gt;false<br>list.contains(a)-&gt;true<br>list.contains(b)-&gt;true</p>
+<p>19行和24行的输出没什么好说的，将a，b分别加入list中，list中自然会含有a，b。但是为什么20行和23行结果会不一样呢？我们先来看看contains方法内部实现</p>
+<p>@Override<br>public boolean contains(Object o) {<br>     return indexOf(o) != -1;<br> }  </p>
+<pre><code>@Override  
+</code></pre><p>public int indexOf(Object o) {<br>E[] a = this.a;<br>if (o == null) {<br>    for (int i = 0; i &lt; a.length; i++)<br>        if (a[i] == null)<br>            return i;<br>} else {<br>    for (int i = 0; i &lt; a.length; i++)<br>        if (o.equals(a[i]))<br>            return i;<br>}<br>return -1;</p>
+<p>可以看出最终调用的是对象的equals方法，所以当调用20行代码list.contains(b)时，实际上调用了 b.equals(a[i]),a[i]是集合中的元素集合中的类型而且为A类型(只添加了a对象)，虽然B继承了A,但此时 a[i] instanceof B 结果为false，equals方法也就会返回false；而当调用23行代码list.contains(a)时，实际上调用了a.equal(a[i]),其中a[i]是集合中的元素而且为B类型(只添加了b对象)，由于B类型肯定是A类型（B继承了A），所以a[i] instanceof A  结果为true，equals方法也就会返回true，这就是整个过程。但很明显结果是有问题的，因为我们的 list的泛型是A,而B又继承了A，此时无论加入了a还是b，都属于同种类型，所以无论是contains(a),还是contains(b)都应该返回true才算正常。而最终却出现上面的结果，这就是因为重写equals方法时没遵守对称性原则导致的结果，如果没遵守传递性也同样会造成上述的结果。当然这里的解决方法也比较简单，我们只要将B类的equals方法修改一下就可以了。</p>
+<p>static class B extends A{<br>        @Override<br>        public boolean equals(Object obj) {<br>            if(obj instanceof B){<br>                return true;<br>            }<br>            return super.equals(obj);<br>        }<br>    }</p>
+<p>到此，我们也应该明白了重写equals必须遵守几点原则的重要性了。当然这里不止是list，只要是java集合类或者java类库中的其他方法，重写equals不遵守5点原则的话，都可能出现意想不到的结果。 <strong>5.为什么重写equals()的同时还得重写hashCode()</strong> 这个问题之前我也很好奇，不过最后还是在书上得到了比较明朗的解释，当然这个问题主要是针对映射相关的操作（Map接口）。学过数据结构的同学都知道Map接口的类会使用到键对象的哈希码，当我们调用put方法或者get方法对Map容器进行操作时，都是根据键对象的哈希码来计算存储位置的，因此如果我们对哈希码的获取没有相关保证，就可能会得不到预期的结果。在java中，我们可以使用hashCode()来获取对象的哈希码，其值就是对象的存储地址，这个方法在Object类中声明，因此所有的子类都含有该方法。那我们先来认识一下hashCode()这个方法吧。hashCode的意思就是散列码，也就是哈希码，是由对象导出的一个整型值，散列码是没有规律的，如果x与y是两个不同的对象，那么x.hashCode()与y.hashCode()基本是不会相同的，下面通过String类的hashCode()计算一组散列码：</p>
+<p>public class HashCodeTest {<br>    public static void main(String[] args) {<br>        int hash=0;<br>        String s=”ok”;<br>        StringBuilder sb =new StringBuilder(s);  </p>
+<pre><code>    System.out.println(s.hashCode()+&quot;  &quot;+sb.hashCode());  
+
+    String t = new String(&quot;ok&quot;);  
+    StringBuilder tb =new StringBuilder(s);  
+    System.out.println(t.hashCode()+&quot;  &quot;+tb.hashCode());  
+}  
+</code></pre><p>}<br>运行结果:</p>
+<p>3548 1829164700<br>3548 2018699554</p>
+<p>我们可以看出，字符串s与t拥有相同的散列码，这是因为字符串的散列码是由内容导出的。而字符串缓冲sb与tb却有着不同的散列码，这是因为StringBuilder没有重写hashCode方法，它的散列码是由Object类默认的hashCode方法计算出来的对象存储地址，所以散列码自然也就不同了。那么我们该如何重写出一个较好的hashCode方法呢，其实并不难，我们只要合理地组织对象的散列码，就能够让不同的对象产生比较均匀的散列码。例如下面的例子：</p>
+<p>ackage com.zejian.test;<br>public class Model {<br>    private String name;<br>    private double salary;<br>    private int sex;  </p>
+<pre><code>@Override  
+public int hashCode() {  
+    return name.hashCode()+new Double(salary).hashCode()   
+            \+ new Integer(sex).hashCode();  
+}  
+</code></pre><p>}</p>
+<p>上面的代码我们通过合理的利用各个属性对象的散列码进行组合，最终便能产生一个相对比较好的或者说更加均匀的散列码，当然上面仅仅是个参考例子而已，我们也可以通过其他方式去实现，只要能使散列码更加均匀（所谓的均匀就是每个对象产生的散列码最好都不冲突）就行了。不过这里有点要注意的就是java 7中对hashCode方法做了两个改进，首先java发布者希望我们使用更加安全的调用方式来返回散列码，也就是使用null安全的方法Objects.hashCode（注意不是Object而是java.util.Objects）方法，这个方法的优点是如果参数为null，就只返回0，否则返回对象参数调用的hashCode的结果。Objects.hashCode 源码如下：</p>
+<p>public static int hashCode(Object o) {<br>        return o != null ? o.hashCode() : 0;<br>    }</p>
+<p>因此我们修改后的代码如下：</p>
+<p>package com.zejian.test;<br>import java.util.Objects;<br>public  class Model {<br>    private   String name;<br>    private double salary;<br>    private int sex;<br>    @Override<br>    public int hashCode() {<br>        return Objects.hashCode(name)+new Double(salary).hashCode()<br>                + new Integer(sex).hashCode();<br>    }<br>}</p>
+<p>java 7还提供了另外一个方法java.util.Objects.hash(Object… objects),当我们需要组合多个散列值时可以调用该方法。进一步简化上述的代码：</p>
+<p>public  class Model {<br>    private   String name;<br>    private double salary;<br>    private int sex;<br>//  @Override<br>//  public int hashCode() {<br>//      return Objects.hashCode(name)+new Double(salary).hashCode()<br>//              + new Integer(sex).hashCode();<br>//  }  </p>
+<pre><code>@Override  
+public int hashCode() {  
+    return Objects.hash(name,salary,sex);  
+}  
+</code></pre><p>}</p>
+<p>好了，到此hashCode()该介绍的我们都说了，还有一点要说的如果我们提供的是一个数值类型的变量的话，那么我们可以调用Arrays.hashCode()来计算它的散列码，这个散列码是由数组元素的散列码组成的。接下来我们回归到我们之前的问题，重写equals方法时也必须重写hashCode方法。在Java API文档中关于hashCode方法有以下几点规定（原文来自java深入解析一书）。</p>
+<ul>
+<li>在java应用程序执行期间，如果在equals方法比较中所用的信息没有被修改，那么在同一个对象上多次调用hashCode方法时必须一致地返回相同的整数。如果多次执行同一个应用时，不要求该整数必须相同。</li>
+<li>如果两个对象通过调用equals方法是相等的，那么这两个对象调用hashCode方法必须返回相同的整数。</li>
+<li>如果两个对象通过调用equals方法是不相等的，不要求这两个对象调用hashCode方法必须返回不同的整数。但是程序员应该意识到对不同的对象产生不同的hash值可以提供哈希表的性能。</li>
+</ul>
+<p>通过前面的分析，我们知道在Object类中，hashCode方法是通过Object对象的地址计算出来的，因为Object对象只与自身相等，所以同一个对象的地址总是相等的，计算取得的哈希码也必然相等，对于不同的对象，由于地址不同，所获取的哈希码自然也不会相等。因此到这里我们就明白了，如果一个类重写了equals方法，但没有重写hashCode方法，将会直接违法了第2条规定，这样的话，如果我们通过映射表(Map接口)操作相关对象时，就无法达到我们预期想要的效果。如果大家不相信, 可以看看下面的例子（来自java深入解析一书）</p>
+<p>import java.util.HashMap;<br>import java.util.Map;<br>public class MapTest {<br>    public static void main(String[] args) {<br>        Map&lt;String,Value&gt; map1 = new HashMap&lt;String,Value&gt;();<br>        String s1 = new String(“key”);<br>        String s2 = new String(“key”);<br>        Value value = new Value(2);<br>        map1.put(s1, value);<br>        System.out.println(“s1.equals(s2):”+s1.equals(s2));<br>        System.out.println(“map1.get(s1):”+map1.get(s1));<br>        System.out.println(“map1.get(s2):”+map1.get(s2));  </p>
+<pre><code>    Map&lt;Key,Value&gt; map2 = new HashMap&lt;Key,Value&gt;();  
+    Key k1 = new Key(&quot;A&quot;);  
+    Key k2 = new Key(&quot;A&quot;);  
+    map2.put(k1, value);  
+    System.out.println(&quot;k1.equals(k2):&quot;+s1.equals(s2));  
+    System.out.println(&quot;map2.get(k1):&quot;+map2.get(k1));  
+    System.out.println(&quot;map2.get(k2):&quot;+map2.get(k2));  
+}  
+
+/\*\* 
+ \* 键 
+ \* @author zejian 
+ \* 
+ */  
+static class Key{  
+    private String k;  
+    public Key(String key){  
+        this.k=key;  
+    }  
+
+    @Override  
+    public boolean equals(Object obj) {  
+        if(obj instanceof Key){  
+            Key key=(Key)obj;  
+            return k.equals(key.k);  
+        }  
+        return false;  
+    }  
+}  
+
+/\*\* 
+ \* 值 
+ \* @author zejian 
+ \* 
+ */  
+static class Value{  
+    private int v;  
+
+    public Value(int v){  
+        this.v=v;  
+    }  
+
+    @Override  
+    public String toString() {  
+        return &quot;类Value的值－－&gt;&quot;+v;  
+    }  
+}  
+</code></pre><p>}</p>
+<p>码比较简单，我们就不过多解释了（注意Key类并没有重写hashCode方法），直接运行看结果</p>
+<p>s1.equals(s2):true<br>map1.get(s1):类Value的值－－&gt;2<br>map1.get(s2):类Value的值－－&gt;2<br>k1.equals(k2):true<br>map2.get(k1):类Value的值－－&gt;2<br>map2.get(k2):null</p>
+<p>对于s1和s2的结果，我们并不惊讶，因为相同的内容的s1和s2获取相同内的value这个很正常，因为String类重写了equals方法和hashCode方法，使其比较的是内容和获取的是内容的哈希码。但是对于k1和k2的结果就不太尽人意了，k1获取到的值是2，k2获取到的是null，这是为什么呢？想必大家已经发现了，Key只重写了equals方法并没有重写hashCode方法，这样的话，equals比较的确实是内容，而hashCode方法呢？没重写，那就肯定调用超类Object的hashCode方法，这样返回的不就是地址了吗？k1与k2属于两个不同的对象，返回的地址肯定不一样，所以现在我们知道调用map2.get(k2)为什么返回null了吧？那么该如何修改呢？很简单，我们要做也重写一下hashCode方法即可（如果参与equals方法比较的成员变量是引用类型的，则可以递归调用hashCode方法来实现）：</p>
+<p>@Override<br>public int hashCode() {<br>     return k.hashCode();<br>}</p>
+<p>再次运行：</p>
+<p>s1.equals(s2):true<br>map1.get(s1):类Value的值－－&gt;2<br>map1.get(s2):类Value的值－－&gt;2<br>k1.equals(k2):true<br>map2.get(k1):类Value的值－－&gt;2<br>map2.get(k2):类Value的值－－&gt;2</p>
+<p><strong>6.重写equals()中getClass与instanceof的区别</strong> 虽然前面我们都在使用instanceof（当然前面我们是根据需求（批次相同即相等）而使用instanceof的），但是在重写equals() 方法时，一般都是推荐使用 getClass 来进行类型判断（除非所有的子类有统一的语义才使用instanceof），不是使用 instanceof。我们都知道 instanceof 的作用是判断其左边对象是否为其右边类的实例，返回 boolean 类型的数据。可以用来判断继承中的子类的实例是否为父类的实现。下来我们来看一个例子：父类Person</p>
+<p>public class Person {<br>        protected String name;<br>        public String getName() {<br>            return name;<br>        }<br>        public void setName(String name) {<br>            this.name = name;<br>        }<br>        public Person(String name){<br>            this.name = name;<br>        }<br>        public boolean equals(Object object){<br>            if(object instanceof Person){<br>                Person p = (Person) object;<br>                if(p.getName() == null || name == null){<br>                    return false;<br>                }<br>                else{<br>                    return name.equalsIgnoreCase(p.getName ());<br>                }<br>            }<br>            return false;<br>       }<br>    }</p>
+<p>子类 Employee</p>
+<p>public class Employee extends Person{<br>        private int id;<br>        public int getId() {<br>            return id;<br>        }<br>        public void setId(int id) {<br>            this.id = id;<br>        }<br>        public Employee(String name,int id){<br>            super(name);<br>            this.id = id;<br>        }<br>        /**<br>         * 重写equals()方法<br>         */<br>        public boolean equals(Object object){<br>            if(object instanceof Employee){<br>                Employee e = (Employee) object;<br>                return super.equals(object) &amp;&amp; e.getId() == id;<br>            }<br>            return false;<br>        }<br>    }</p>
+<p>上面父类 Person 和子类 Employee 都重写了 equals(),不过 Employee 比父类多了一个id属性,而且这里我们并没有统一语义。测试代码如下：</p>
+<p>public class Test {<br>        public static void main(String[] args) {<br>            Employee e1 = new Employee(“chenssy”, 23);<br>            Employee e2 = new Employee(“chenssy”, 24);<br>            Person p1 = new Person(“chenssy”);<br>            System.out.println(p1.equals(e1));<br>            System.out.println(p1.equals(e2));<br>            System.out.println(e1.equals(e2));<br>        }<br>    }</p>
+<p>上面代码我们定义了两个员工和一个普通人，虽然他们同名，但是他们肯定不是同一人，所以按理来说结果应该全部是 false，但是事与愿违，结果是：true、true、false。对于那 e1!=e2 我们非常容易理解，因为他们不仅需要比较 name,还需要比较 ID。但是 p1 即等于 e1 也等于 e2，这是非常奇怪的，因为 e1、e2 明明是两个不同的类，但为什么会出现这个情况？首先 p1.equals(e1)，是调用 p1 的 equals 方法，该方法使用 instanceof 关键字来检查 e1 是否为 Person 类，这里我们再看看 instanceof：判断其左边对象是否为其右边类的实例，也可以用来判断继承中的子类的实例是否为父类的实现。他们两者存在继承关系，肯定会返回 true 了，而两者 name 又相同，所以结果肯定是 true。所以出现上面的情况就是使用了关键字 instanceof，这是非常容易导致我们“钻牛角尖”。故在覆写 equals 时推荐使用 getClass 进行类型判断。而不是使用 instanceof（除非子类拥有统一的语义）。 <strong>7.编写一个完美equals()的几点建议</strong> 下面给出编写一个完美的equals方法的建议（出自Java核心技术 第一卷：基础知识）： 1）显式参数命名为otherObject,稍后需要将它转换成另一个叫做other的变量（参数名命名，强制转换请参考建议5） 2）检测this与otherObject是否引用同一个对象 ：if(this == otherObject) return true;（存储地址相同，肯定是同个对象，直接返回true） 3) 检测otherObject是否为null ，如果为null,返回false.if(otherObject == null) return false; 4) 比较this与otherObject是否属于同一个类 （视需求而选择）</p>
+<ul>
+<li>如果equals的语义在每个子类中有所改变，就使用getClass检测 ：if(getClass()!=otherObject.getClass()) return false; (参考前面分析的第6点)</li>
+<li>如果所有的子类都拥有统一的语义，就使用instanceof检测 ：if(!(otherObject instanceof ClassName)) return false;（即前面我们所分析的父类car与子类bigCar混合比，我们统一了批次相同即相等）</li>
+</ul>
+<p>5) 将otherObject转换为相应的类类型变量：ClassName other = (ClassName) otherObject; 6) 现在开始对所有需要比较的域进行比较 。使用==比较基本类型域，使用equals比较对象域。如果所有的域都匹配，就返回true，否则就返回flase。</p>
+<ul>
+<li>如果在子类中重新定义equals，就要在其中包含调用super.equals(other)</li>
+<li>当此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明 相等对象必须具有相等的哈希码 。</li>
+</ul>
+<p>参考资料： Java核心技术 第一卷：基础知识 Java深入分析 <a href="http://wiki.jikexueyuan.com/project/java-enhancement/java-thirteen.html" target="_blank" rel="noopener">http://wiki.jikexueyuan.com/project/java-enhancement/java-thirteen.html</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/27/java8-e5-ae-9e-e6-88-98-e6-95-99-e5-ad-a6-e8-a7-86-e9-a2-91/" rel="next" title="Java8实战">
+                <i class="fa fa-chevron-left"></i> Java8实战
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/idea-e5-8f-96-e6-b6-88-e6-8e-a7-e5-88-b6-e5-8f-b0-e8-a1-8c-e6-95-b0-e9-99-90-e5-88-b6/" rel="prev" title="Idea取消控制台行数限制">
+                Idea取消控制台行数限制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

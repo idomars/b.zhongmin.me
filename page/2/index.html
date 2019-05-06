@@ -1,0 +1,3396 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/2/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/05/01/jvm-e7-b1-bb-e5-8a-a0-e8-bd-bd-e8-bf-87-e7-a8-8b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/05/01/jvm-e7-b1-bb-e5-8a-a0-e8-bd-bd-e8-bf-87-e7-a8-8b/" class="post-title-link" itemprop="url">JVM--类加载过程</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-01 15:04:14" itemprop="dateCreated datePublished" datetime="2018-05-01T15:04:14+08:00">2018-05-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>一、为什么要使用类加载器？</strong> Java语言里，类加载都是在程序运行期间完成的，这种策略虽然会令类加载时稍微增加一些性能开销，但是会给java应用程序提供高度的灵活性。例如： 1.编写一个面向接口的应用程序，可能等到运行时再指定其实现的子类； 2.用户可以自定义一个类加载器，让程序在运行时从网络或其他地方加载一个二进制流作为程序代码的一部分； <strong>二、类加载的过程</strong> 使用java编译器可以把java代码编译为存储字节码的Class文件，使用其他语言的编译器一样可以把程序代码翻译成Class文件，java虚拟机不关心Class的来源是何种语言。如图所示：<img src="https://zhongmin.me/wp-content/uploads/2018/05/AE68BKNVBRQ9ST9_VJCL.png" alt> 在Class文件中描述的各种信息，最终都需要加载到虚拟机中才能运行和使用。那么虚拟机是如何加载这些Class文件的呢？ JVM把描述类数据的字节码.Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的java类型，这就是虚拟机的类加载机制。 类从被加载到虚拟机内存中开始，到卸载出内存为止，它的生命周期包括了：加载(Loading)、验证(Verification)、准备(Preparation)、解析(Resolution)、初始化(Initialization)、使用(Using)、卸载(Unloading)七个阶段，其中验证、准备、解析三个部分统称链接。<img src="https://zhongmin.me/wp-content/uploads/2018/05/O_AGZ8_BC6QLRHNTRKC.png" alt> 加载(装载)、验证、准备、初始化和卸载这五个阶段顺序是固定的，类的加载过程必须按照这种顺序开始，而解析阶段不一定；它在某些情况下可以在初始化之后再开始，这是为了运行时动态绑定特性（JIT例如接口只在调用的时候才知道具体实现的是哪个子类）。值得注意的是：这些阶段通常都是互相交叉的混合式进行的，通常会在一个阶段执行的过程中调用或激活另外一个阶段。</p>
+<h4 id="一-加载：（重点）"><a href="#一-加载：（重点）" class="headerlink" title="一.加载：（重点）"></a><strong>一.加载：（重点）</strong></h4><p>加载阶段是“类加载机制”中的一个阶段，这个阶段通常也被称作“装载”，主要完成： 1.通过“类全名”来获取定义此类的二进制字节流 2.将字节流所代表的静态存储结构转换为方法区的运行时数据结构 3.在java堆中生成一个代表这个类的java.lang.Class对象，作为方法区这些数据的访问入口 相对于类加载过程的其他阶段，加载阶段(准备地说，是加载阶段中获取类的二进制字节流的动作)是开发期可控性最强的阶段，因为加载阶段可以使用系统提供的类加载器(ClassLoader)来完成，也可以由用户自定义的类加载器完成，开发人员可以通过定义自己的类加载器去控制字节流的获取方式。 加载阶段完成后，虚拟机外部的二进制字节流就按照虚拟机所需的格式存储在方法区之中，方法区中的数据存储格式有虚拟机实现自行定义，虚拟机并未规定此区域的具体数据结构。然后在java堆中实例化一个java.lang.Class类的对象，这个对象作为程序访问方法区中的这些类型数据的外部接口。</p>
+<h4 id="2-连接–验证：（了解）"><a href="#2-连接–验证：（了解）" class="headerlink" title="2.连接–验证：（了解）"></a><strong>2.连接–验证：（了解）</strong></h4><p>验证是链接阶段的第一步，这一步主要的目的是确保class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身安全。 验证阶段主要包括四个检验过程：文件格式验证、元数据验证、字节码验证和符号引用验证。 1.文件格式验证 验证class文件格式规范，例如： class文件是否已魔术0xCAFEBABE开头 ， 主、次版本号是否在当前虚拟机处理范围之内,常量池中是否有不被支出的常量类型等等.该验证阶段的主要目的是保证输入的字节流能正确的解析并存储至方法区之内.只有用过了这个阶段的验证之后,字节流才会进入内存的方法去中进行存储,所有后面的3个验证阶段是基于方法区的存储结构进行的,不会再操作字节流. 2.元数据验证 这个阶段是对字节码描述的信息进行语义分析，以保证起描述的信息符合java语言规范要求。验证点可能包括：这个类是否有父类(除了java.lang.Object之外，所有的类都应当有父类)、这个类是否继承了不允许被继承的类(被final修饰的)、如果这个类的父类是抽象类，是否实现了起父类或接口中要求实现的所有方法。 3.字节码验证 进行数据流和控制流分析，这个阶段对类的方法体进行校验分析，这个阶段的任务是保证被校验类的方法在运行时不会做出危害虚拟机安全的行为。如：保证访法体中的类型转换有效，例如可以把一个子类对象赋值给父类数据类型，这是安全的，但不能把一个父类对象赋值给子类数据类型、保证跳转命令不会跳转到方法体以外的字节码命令上。 4.符号引用验证 符号引用中通过字符串描述的全限定名是否能找到对应的类、符号引用类中的类，字段和方法的访问性(private、protected、public、default)是否可被当前类访问。</p>
+<h4 id="3-连接–准备：（了解）"><a href="#3-连接–准备：（了解）" class="headerlink" title="3.连接–准备：（了解）"></a><strong>3.连接–准备：（了解）</strong></h4><p>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在方法区中进行分配。这个阶段中有两个容易产生混淆的知识点，首先是这时候进行内存分配的仅包括类变量(static 修饰的变量),而不包括实例变量，实例变量将会在对象实例化时随着对象一起分配在java堆中。其次是这里所说的初始值“通常情况”下是数据类型的零值，假设一个类变量定义为: public static int value  = 12; 那么变量value在准备阶段过后的初始值为0而不是12，因为这时候尚未开始执行任何java方法，而把value赋值为123的putstatic指令是程序被编译后，存放于类构造器<clinit>()方法之中，所以把value赋值为12的动作将在初始化阶段才会被执行。 上面所说的“通常情况”下初始值是零值，那相对于一些特殊的情况，如果类字段的字段属性表中存在ConstantValue属性，那在准备阶段变量value就会被初始化为ConstantValue属性所指定的值，建设上面类变量value定义为： public static final int value = 123; 编译时javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据ConstantValue的设置将value设置为123。</clinit></p>
+<h4 id="4-解析：（了解）"><a href="#4-解析：（了解）" class="headerlink" title="4.解析：（了解）"></a><strong>4.解析：（了解）</strong></h4><p>解析阶段是虚拟机常量池内的符号引用替换为直接引用的过程。 符号引用：符号引用是一组符号来描述所引用的目标对象，符号可以是任何形式的字面量，只要使用时能无歧义地定位到目标即可。符号引用与虚拟机实现的内存布局无关，引用的目标对象并不一定已经加载到内存中。 直接引用：直接引用可以是直接指向目标对象的指针、相对偏移量或是一个能间接定位到目标的句柄。直接引用是与虚拟机内存布局实现相关的，同一个符号引用在不同虚拟机实例上翻译出来的直接引用一般不会相同，如果有了直接引用，那引用的目标必定已经在内存中存在。 虚拟机规范并没有规定解析阶段发生的具体时间，只要求了在执行anewarry、checkcast、getfield、instanceof、invokeinterface、invokespecial、invokestatic、invokevirtual、multianewarray、new、putfield和putstatic这13个用于操作符号引用的字节码指令之前，先对它们使用的符号引用进行解析，所以虚拟机实现会根据需要来判断，到底是在类被加载器加载时就对常量池中的符号引用进行解析，还是等到一个符号引用将要被使用前才去解析它。 解析的动作主要针对类或接口、字段、类方法、接口方法四类符号引用进行。分别对应编译后常量池内的CONSTANT_Class_Info、CONSTANT_Fieldref_Info、CONSTANT_Methodef_Info、CONSTANT_InterfaceMethoder_Info四种常量类型。 1.类、接口的解析 2.字段解析 3.类方法解析 4.接口方法解析</p>
+<h4 id="5-初始化：（了解）"><a href="#5-初始化：（了解）" class="headerlink" title="5.初始化：（了解）"></a><strong>5.初始化：（了解）</strong></h4><p>类的初始化阶段是类加载过程的最后一步，在准备阶段，类变量已赋过一次系统要求的初始值，而在初始化阶段，则是根据程序员通过程序制定的主观计划去初始化类变量和其他资源，或者可以从另外一个角度来表达：初始化阶段是执行类构造器<clinit>()方法的过程。 在上面准备阶段 public static int value  = 12;  在准备阶段完成后 value的值为0，而在初始化阶调用了类构造器<clinit>()方法，这个阶段完成后value的值为12。 <em>类构造器<clinit>()方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块(static块)中的语句合并产生的，编译器收集的顺序是由语句在源文件中出现的顺序所决定的，静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句快可以赋值，但是不能访问。 </clinit></em>类构造器<clinit>()方法与类的构造函数(实例构造函数<init>()方法)不同，它不需要显式调用父类构造，虚拟机会保证在子类<clinit>()方法执行之前，父类的<clinit>()方法已经执行完毕。因此在虚拟机中的第一个执行的<clinit>()方法的类肯定是java.lang.Object。 <em>由于父类的<clinit>()方法先执行，也就意味着父类中定义的静态语句快要优先于子类的变量赋值操作。 </clinit></em><clinit>()方法对于类或接口来说并不是必须的，如果一个类中没有静态语句，也没有变量赋值的操作，那么编译器可以不为这个类生成<clinit>()方法。 <em>接口中不能使用静态语句块，但接口与类不太能够的是，执行接口的<clinit>()方法不需要先执行父接口的<clinit>()方法。只有当父接口中定义的变量被使用时，父接口才会被初始化。另外，接口的实现类在初始化时也一样不会执行接口的<clinit>()方法。 </clinit></clinit></clinit></em>虚拟机会保证一个类的<clinit>()方法在多线程环境中被正确加锁和同步，如果多个线程同时去初始化一个类，那么只会有一个线程执行这个类的<clinit>()方法，其他线程都需要阻塞等待，直到活动线程执行<clinit>()方法完毕。如果一个类的<clinit>()方法中有耗时很长的操作，那就可能造成多个进程阻塞。</clinit></clinit></clinit></clinit></clinit></clinit></clinit></clinit></clinit></init></clinit></clinit></clinit></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/05/01/jvm-e7-b1-bb-e5-8a-a0-e8-bd-bd-e7-9a-84-e6-97-b6-e6-9c-ba/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/05/01/jvm-e7-b1-bb-e5-8a-a0-e8-bd-bd-e7-9a-84-e6-97-b6-e6-9c-ba/" class="post-title-link" itemprop="url">JVM-类加载的时机</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-01 13:54:03" itemprop="dateCreated datePublished" datetime="2018-05-01T13:54:03+08:00">2018-05-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由于道行不够深，所以此篇类加载机制的内容主要来自于<strong>《深入理解Java虚拟机——JVM高级特性与最佳实践》</strong>的第7章 虚拟机类加载机制。 <strong>“虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验，类型的加载、连接和初始化，最终形成可以被虚拟机直接使用的Java类型，这就是虚拟机的类加载机制。”</strong>这句话确实读着好懂，但到底类加载做了什么呢？我们都知道Java编译后形成.class字节码文件，虚拟机是不认识.java文件的，所以虚拟机要加载Class文件将它做一些处理才能到“还原”成我们所写的java程序，按照我们的逻辑步骤来执行。Java之所以称为动态语言正是因为类型的加载、连接和初始化都是在程序<strong>运行期间</strong>完成的。这虽然会带来一些开销，但同时它也为Java语言带来了很大的灵活性。 那么在此期间虚拟机做了什么呢？我们可以通过下面的图来了解类的整个生命周期：加载、验证、准备、解析、初始化、使用、卸载。<img src="https://zhongmin.me/wp-content/uploads/2018/05/O_AGZ8_BC6QLRHNTRKC.png" alt> 这7个阶段中的：加载、验证、准备、初始化、卸载的顺序是固定的。但它们并不一定是严格同步串行执行，它们之间可能会有交叉，但总是以“开始”的顺序总是按部就班的。至于解析则有可能在初始化之后才开始，<strong>这是为了支持Java语言的运行时绑定（也称为动态绑定或晚期绑定）</strong>。 对于加载阶段（注意加载和类加载概念，加载是类加载过程的第一个阶段）JVM并没有对此约束，而是交由虚拟机的具体实现。但对于初始化，虚拟机规范则做了严格的规定，初始化可能也是对我们实际编程运用当中非常值得注意的问题。 虚拟机对于类的初始化阶段严格规定了<strong>有且仅有只有5种情况如果对类没有进行过初始化，则必须对类进行“初始化”！</strong></p>
+<ol>
+<li>遇到new、读取一个类的静态字段（getstatic）、设置一个类的静态字段（putstatic）、调用一个类的静态方法（invoke static）。</li>
+<li>使用java.lang.reflect包的方法对类进行反射调用时。</li>
+<li>当类初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。（如果是接口，则不必触发其父类初始化）</li>
+<li>当虚拟机执行一个main方法时，会首先初始化main所在的这个主类。</li>
+<li>当只用jdk1.7的动态语言支持时，如果一个java.lang.invoke.MethodHandle实例最后的解析结果REF_getStatic、REF_putStatic、REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需要先触发其初始化。（暂未研究此种场景）</li>
+</ol>
+<p>上面5种场景是有且仅有，称之为“主动引用”，只有满足上述5种场景之一，就会触发对类进行初始化。其余都不会触发类初始化，称之为“被动引用”。 下面列举3个例子来说明何为“被动引用”： <strong>例1:</strong></p>
+<p>public class SuperClass {<br>    static{<br>        System.out.println(“SuperClass init!”);<br>    }<br>    public static int value = 123;<br>}</p>
+<p>public class SubClass extends SuperClass {<br>    static{<br>        System.out.println(“SubClass init!”);<br>    }<br>}</p>
+<p>public class Main {</p>
+<pre><code>/\*\*
+ \* @param args
+ */
+public static void main(String\[\] args) {
+    System.out.println(SubClass.value);
+}
+</code></pre><p>}</p>
+<p>运行结果:</p>
+<p>SupperClass init!<br>123</p>
+<p>我们看到虽然我们是通过子类来调用的父类静态字段，但从结果可以看到并没有初始化子类，而是初始化了父类，这即是“被动引用”。<strong>对于静态字段，只有直接定义这个字段的类才会被初始化，通过其子类来引用父类中定义的静态字段，只会触发父类的初始化而不会触发子类的初始化。</strong> <strong>例2:</strong></p>
+<p>public class Main {</p>
+<pre><code>/\*\*
+ \* @param args
+ \* 通过数组定义引用类不会触发此类的初始化
+ */
+public static void main(String\[\] args) {
+    SuperClass\[\] sca = new SuperClass\[10\];
+}
+</code></pre><p>}</p>
+<p>我们还是利用例1的SuperClass来创建一个数组，这个应该都知道，通过数组定义引用类不会触发此类的初始化，在编程不注意的时候可能常常因为没有初始化数组导致空指针的情况。它仅仅做了创建一个大小为10的数组。 <strong>例3:</strong></p>
+<p>/*<br> * 常量在编译阶段会存入调用类的常量池中,本质上没有直接引用定义变量的类,所有不会触发定义常量类的初识化<br> */<br>public class ConstClass {<br>    static {<br>        System.out.println(“ConstClass init!”);<br>    }</p>
+<pre><code>public static final String HELLO = &quot;hello&quot;;
+</code></pre><p>}</p>
+<p>public class Main {</p>
+<pre><code>/\*\*
+ \* @param args
+ */
+public static void main(String\[\] args) {
+    System.out.println(ConstClass.HELLO);
+}
+</code></pre><p>}</p>
+<p>打印结果也没有输出 “ConstClass init!”;这是因为常量在<strong>编译阶段</strong>会存入调用类的常量池中，本质上并没有直接饮用到定义常量的类。进一步解释，<strong>虽然在main方法中引用了ConstClass类中的常量HELLO，但其实在编译阶段通过常量传播优化，已经将此常量的值“hello”存储到了Main类的常量池中，之后对ConstClass.HELLO的引用实际上都被转化为Main类对自身常量池的引用。</strong>也就是说，两个类在编译过后实际上不存在任何联系了。 接口的加载过程与类的加载过程有一些不同,针对接口有一些特殊说明:接口与类真正有所区别的地方是前面有仅且仅有需要初始化场景中的第3中:当一个类在初始化的时候,要求其父类全部初始化过了,但是一个接口在初始化的时候,并不会这样要求,只有真正到用到了父接口的时候才会初始化.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/28/955/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/04/28/955/" class="post-title-link" itemprop="url">李煜经典诗词</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-28 09:27:45" itemprop="dateCreated datePublished" datetime="2018-04-28T09:27:45+08:00">2018-04-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/宋词/" itemprop="url" rel="index"><span itemprop="name">宋词</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p><strong>《虞美人·春花秋月何时了》</strong> 春花秋月何时了？往事知多少。 小楼昨夜又东风，故国不堪回首月明中。 雕栏玉砌应犹在，只是朱颜改。 问君能有几多愁？恰似一江春水向东流。</p>
+</blockquote>
+<blockquote>
+<p><strong>《相见欢·无言独上西楼》</strong> 无言独上西楼，月如钩。 寂寞梧桐深院锁清秋。 剪不断，理还乱，是离愁。 别是一般滋味在心头</p>
+</blockquote>
+<blockquote>
+<p><strong>《相见欢·林花谢了春红》</strong> 林花谢了春红，太匆匆。 无奈朝来寒雨晚来风。 胭脂泪，相留醉，几时重。 自是人生长恨水长东。</p>
+</blockquote>
+<blockquote>
+<p><strong>《浪淘沙令·帘外雨潺潺》</strong> 帘外雨潺潺，春意阑珊。罗衾不耐五更寒。 梦里不知身是客，一晌贪欢。 独自莫凭栏，无限江山，别时容易见时难。 流水落花春去也，天上人间。</p>
+</blockquote>
+<blockquote>
+<p><strong>《虞美人·春怨》</strong> 风回小院庭芜绿，柳眼春相续。 凭阑半日独无言，依旧竹声新月似当年。 笙歌未散尊罍在，池面冰初解。 烛明香暗画堂深，满鬓青霜残雪思难任。</p>
+</blockquote>
+<blockquote>
+<p><strong>《清平乐·忆别》</strong> 别来春半，触目柔肠断。 砌下落梅如雪乱，拂了一身还满。 雁来音信无凭，路遥归梦难成。 离恨恰如春草，更行更远还生。</p>
+</blockquote>
+<blockquote>
+<p><strong>《破阵子·四十年来家国》</strong> 四十年来家国，三千里地山河。 凤阁龙楼连霄汉，玉树琼枝作烟萝，几曾识干戈？ 一旦归为臣虏，沈腰潘鬓消磨。 最是仓皇辞庙日，教坊犹奏别离歌，垂泪对宫娥。</p>
+</blockquote>
+<blockquote>
+<p><strong>《望江南·多少恨》</strong> 多少恨，昨夜梦魂中。 还似旧时游上苑，车如流水马如龙。 花月正春风。</p>
+</blockquote>
+<blockquote>
+<p><strong>《长相思·一重山》</strong> 一重山，两重山。 山远天高烟水寒，相思枫叶丹。 菊花开，菊花残。 塞雁高飞人未还，一帘风月闲。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/26/java-8-e4-b8-ad-e7-9a-84-streams-api-e8-af-a6-e8-a7-a3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/04/26/java-8-e4-b8-ad-e7-9a-84-streams-api-e8-af-a6-e8-a7-a3/" class="post-title-link" itemprop="url">Java 8 中的 Streams API 详解</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-26 22:51:31" itemprop="dateCreated datePublished" datetime="2018-04-26T22:51:31+08:00">2018-04-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="为什么需要-Stream"><a href="#为什么需要-Stream" class="headerlink" title="为什么需要 Stream"></a>为什么需要 Stream</h2><p>Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。通常编写并行代码很难而且容易出错, 但使用 Stream API 无需编写一行多线程的代码，就可以很方便地写出高性能的并发程序。所以说，Java 8 中首次出现的 java.util.stream 是一个函数式语言+多核时代综合影响的产物。</p>
+<h3 id="什么是聚合操作"><a href="#什么是聚合操作" class="headerlink" title="什么是聚合操作"></a>什么是聚合操作</h3><p>在传统的 J2EE 应用中，Java 代码经常不得不依赖于关系型数据库的聚合操作来完成诸如：</p>
+<ul>
+<li>客户每月平均消费金额</li>
+<li>最昂贵的在售商品</li>
+<li>本周完成的有效订单（排除了无效的）</li>
+<li>取十个数据样本作为首页推荐</li>
+</ul>
+<p>这类的操作。 但在当今这个数据大爆炸的时代，在数据来源多样化、数据海量化的今天，很多时候不得不脱离 RDBMS，或者以底层返回的数据为基础进行更上层的数据统计。而 Java 的集合 API 中，仅仅有极少量的辅助型方法，更多的时候是程序员需要用 Iterator 来遍历集合，完成相关的聚合应用逻辑。这是一种远不够高效、笨拙的方法。在 Java 7 中，如果要发现 type 为 grocery 的所有交易，然后返回以交易值降序排序好的交易 ID 集合，我们需要这样写：</p>
+<p>清单 1. Java 7 的排序、取值实现</p>
+<p>   List<transaction> groceryTransactions = new Arraylist&lt;&gt;();<br>        for (Transaction t : transactions) {<br>            if (t.getType() == Transaction.GROCERY) {<br>                groceryTransactions.add(t);<br>            }<br>        }<br>        Collections.sort(groceryTransactions, new Comparator() {<br>            public int compare(Transaction t1, Transaction t2) {<br>                return t2.getValue().compareTo(t1.getValue());<br>            }<br>        });<br>        List<integer> transactionIds = new ArrayList&lt;&gt;();<br>        for (Transaction t : groceryTransactions) {<br>            transactionsIds.add(t.getId());<br>        }</integer></transaction></p>
+<p>而在 Java 8 使用 Stream，代码更加简洁易读；而且使用并发模式，程序执行速度更快。</p>
+<p>清单 2. Java 8 的排序、取值实现</p>
+<p>   List<integer> transactionsIds = transactions.parallelStream().<br>                filter(t -&gt; t.getType() == Transaction.GROCERY).<br>                sorted(comparing(Transaction::getValue).reversed()).<br>                map(Transaction::getId).<br>                collect(toList());</integer></p>
+<h2 id="Stream-总览"><a href="#Stream-总览" class="headerlink" title="Stream 总览"></a>Stream 总览</h2><h3 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h3><p>Stream 不是集合元素，它不是数据结构并不保存数据，它是有关算法和计算的，它更像一个高级版本的 Iterator。原始版本的 Iterator，用户只能显式地一个一个遍历元素并对其执行某些操作；高级版本的 Stream，用户只要给出需要对其包含的元素执行什么操作，比如 “过滤掉长度大于 10 的字符串”、“获取每个字符串的首字母”等，Stream 会隐式地在内部进行遍历，做出相应的数据转换。 Stream 就如同一个迭代器（Iterator），单向，不可往复，数据只能遍历一次，遍历过一次后即用尽了，就好比流水从面前流过，一去不复返。 而和迭代器又不同的是，Stream 可以并行化操作，迭代器只能命令式地、串行化操作。顾名思义，当使用串行方式去遍历时，每个 item 读完后再读下一个 item。而使用并行去遍历时，数据会被分成多个段，其中每一个都在不同的线程中处理，然后将结果一起输出。Stream 的并行操作依赖于 Java7 中引入的 Fork/Join 框架（JSR166y）来拆分任务和加速处理过程。Java 的并行 API 演变历程基本如下：</p>
+<ol>
+<li>1.0-1.4 中的 java.lang.Thread</li>
+<li>5.0 中的 java.util.concurrent</li>
+<li>6.0 中的 Phasers 等</li>
+<li>7.0 中的 Fork/Join 框架</li>
+<li>8.0 中的 Lambda</li>
+</ol>
+<p>Stream 的另外一大特点是，数据源本身可以是无限的。</p>
+<h3 id="流的构成"><a href="#流的构成" class="headerlink" title="流的构成"></a>流的构成</h3><p>当我们使用一个流的时候，通常包括三个基本步骤： 获取一个数据源（source）→ 数据转换→执行操作获取想要的结果，每次转换原有 Stream 对象不改变，返回一个新的 Stream 对象（可以有多次转换），这就允许对其操作可以像链条一样排列，变成一个管道，如下图所示。</p>
+<p>图 1. 流管道 (Stream Pipeline) 的构成</p>
+<p><img src="https://zhongmin.me/wp-content/uploads/2018/04/9PDITALLNYRA2NQ5BF.png" alt> 有多种方式生成 Stream Source：</p>
+<ul>
+<li><p>从 Collection 和数组</p>
+</li>
+<li><ul>
+<li>Collection.stream()</li>
+<li>Collection.parallelStream()</li>
+<li>Arrays.stream(T array) or Stream.of()</li>
+</ul>
+<p>从 BufferedReader</p>
+<ul>
+<li>java.io.BufferedReader.lines()</li>
+</ul>
+</li>
+<li><p>静态工厂</p>
+</li>
+<li><p>java.util.stream.IntStream.range()</p>
+</li>
+<li><p>java.nio.file.Files.walk()</p>
+</li>
+<li><p>自己构建</p>
+</li>
+<li><ul>
+<li>java.util.Spliterator</li>
+</ul>
+<p>其它</p>
+<ul>
+<li>Random.ints()</li>
+<li>BitSet.stream()</li>
+<li>Pattern.splitAsStream(java.lang.CharSequence)</li>
+<li>JarFile.stream()</li>
+</ul>
+</li>
+</ul>
+<p>流的操作类型分为两种：</p>
+<ul>
+<li><strong>Intermediate</strong>：一个流可以后面跟随零个或多个 intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用。这类操作都是惰性化的（lazy），就是说，仅仅调用到这类方法，并没有真正开始流的遍历。</li>
+<li><strong>Terminal</strong>：一个流只能有一个 terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。所以这必定是流的最后一个操作。Terminal 操作的执行，才会真正开始流的遍历，并且会生成一个结果，或者一个 side effect。</li>
+</ul>
+<p>在对于一个 Stream 进行多次转换操作 (Intermediate 操作)，每次都对 Stream 的每个元素进行转换，而且是执行多次，这样时间复杂度就是 N（转换次数）个 for 循环里把所有操作都做掉的总和吗？其实不是这样的，转换操作都是 lazy 的，多个转换操作只会在 Terminal 操作的时候融合起来，一次循环完成。我们可以这样简单的理解，Stream 里有个操作函数的集合，每次转换操作就是把转换函数放入这个集合中，在 Terminal 操作的时候循环 Stream 对应的集合，然后对每个元素执行所有的函数。 还有一种操作被称为 <strong>short-circuiting</strong>。用以指：</p>
+<ul>
+<li>对于一个 intermediate 操作，如果它接受的是一个无限大（infinite/unbounded）的 Stream，但返回一个有限的新 Stream。</li>
+<li>对于一个 terminal 操作，如果它接受的是一个无限大的 Stream，但能在有限的时间计算出结果。</li>
+</ul>
+<p>当操作一个无限大的 Stream，而又希望在有限时间内完成操作，则在管道内拥有一个 short-circuiting 操作是必要非充分条件。</p>
+<p>清单 3. 一个流操作的示例:</p>
+<p>  int sum = widgets.stream()<br>                .filter(w -&gt; w.getColor() == RED)<br>                .mapToInt(w -&gt; w.getWeight())<br>                .sum();</p>
+<p>stream() 获取当前小物件的 source，filter 和 mapToInt 为 intermediate 操作，进行数据筛选和转换，最后一个 sum() 为 terminal 操作，对符合条件的全部小物件作重量求和。</p>
+<h2 id="流的使用详解"><a href="#流的使用详解" class="headerlink" title="流的使用详解"></a>流的使用详解</h2><p>简单说，对 Stream 的使用就是实现一个 filter-map-reduce 过程，产生一个最终结果，或者导致一个副作用（side effect）。</p>
+<h3 id="流的构造与转换"><a href="#流的构造与转换" class="headerlink" title="流的构造与转换"></a>流的构造与转换</h3><p>下面提供最常见的几种构造 Stream 的样例。</p>
+<p>清单 4. 构造流的几种常见方法:</p>
+<p>// 1. Individual values<br>Stream stream = Stream.of(“a”, “b”, “c”);<br>// 2. Arrays<br>String [] strArray = new String[] {“a”, “b”, “c”};<br>stream = Stream.of(strArray);<br>stream = Arrays.stream(strArray);<br>// 3. Collections<br>List<string> list = Arrays.asList(strArray);<br>stream = list.stream();</string></p>
+<p>需要注意的是，对于基本数值型，目前有三种对应的包装类型 Stream： IntStream、LongStream、DoubleStream。当然我们也可以用 Stream<integer>、Stream<long> &gt;、Stream<double>，但是 boxing 和 unboxing 会很耗时，所以特别为这三种基本数值型提供了对应的 Stream。 Java 8 中还没有提供其它数值型 Stream，因为这将导致扩增的内容较多。而常规的数值型聚合运算可以通过上面三种 Stream 进行。</double></long></integer></p>
+<p>清单 5. 数值流的构造</p>
+<p>IntStream.of(new int[]{1, 2, 3}).forEach(System.out::println);<br>IntStream.range(1, 3).forEach(System.out::println);<br>IntStream.rangeClosed(1, 3).forEach(System.out::println);</p>
+<p>清单 6. 流转换为其它数据结构</p>
+<p>// 1. Array<br>String[] strArray1 = stream.toArray(String[]::new);<br>// 2. Collection<br>List<string> list1 = stream.collect(Collectors.toList());<br>List<string> list2 = stream.collect(Collectors.toCollection(ArrayList::new));<br>Set set1 = stream.collect(Collectors.toSet());<br>Stack stack1 = stream.collect(Collectors.toCollection(Stack::new));<br>// 3. String<br>String str = stream.collect(Collectors.joining()).toString();</string></string></p>
+<p>一个 Stream 只可以使用一次，上面的代码为了简洁而重复使用了数次。</p>
+<h3 id="流的操作"><a href="#流的操作" class="headerlink" title="流的操作"></a>流的操作</h3><p>接下来，当把一个数据结构包装成 Stream 后，就要开始对里面的元素进行各类操作了。常见的操作可以归类如下。</p>
+<ul>
+<li>Intermediate：</li>
+</ul>
+<p>map (mapToInt, flatMap 等)、 filter、 distinct、 sorted、 peek、 limit、 skip、 parallel、 sequential、 unordered</p>
+<ul>
+<li>Terminal：</li>
+</ul>
+<p>forEach、 forEachOrdered、 toArray、 reduce、 collect、 min、 max、 count、 anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 iterator</p>
+<ul>
+<li>Short-circuiting：</li>
+</ul>
+<p>anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 limit 我们下面看一下 Stream 的比较典型用法。 <strong>map/flatMap</strong> 我们先来看 map。如果你熟悉 scala 这类函数式语言，对这个方法应该很了解，它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。</p>
+<p>清单 7. 转换大写:</p>
+<p>List<string> output = wordList.stream().<br>map(String::toUpperCase).<br>collect(Collectors.toList());</string></p>
+<p>这段代码把所有的单词转换为大写。</p>
+<p>清单 8. 平方数</p>
+<p>List<integer> nums = Arrays.asList(1, 2, 3, 4);<br>List<integer> squareNums = nums.stream().<br>map(n -&gt; n * n).<br>collect(Collectors.toList());</integer></integer></p>
+<p>这段代码生成一个整数 list 的平方数 {1, 4, 9, 16}。 从上面例子可以看出，map 生成的是个 1:1 映射，每个输入元素，都按照规则转换成为另外一个元素。还有一些场景，是一对多映射关系的，这时需要 flatMap。</p>
+<p>清单 9. 一对多</p>
+<p>   Stream&lt;List<integer>&gt; inputStream = Stream.of(<br>                Arrays.asList(1),<br>                Arrays.asList(2, 3),<br>                Arrays.asList(4, 5, 6)<br>        );<br>        Stream<integer> outputStream = inputStream.<br>                flatMap((childList) -&gt; childList.stream());</integer></integer></p>
+<p>flatMap 把 input Stream 中的层级结构扁平化，就是将最底层元素抽出来放到一起，最终 output 的新 Stream 里面已经没有 List 了，都是直接的数字。 <strong>filter</strong> filter 对原始 Stream 进行某项测试，通过测试的元素被留下来生成一个新 Stream。</p>
+<p>清单 10. 留下偶数:</p>
+<p>Integer[] sixNums = {1, 2, 3, 4, 5, 6};<br>Integer[] evens =<br>Stream.of(sixNums).filter(n -&gt; n%2 == 0).toArray(Integer[]::new);</p>
+<p>经过条件“被 2 整除”的 filter，剩下的数字为 {2, 4, 6}。</p>
+<p>清单 11. 把单词挑出来:</p>
+<p>   List<string> output = reader.lines().<br>                flatMap(line -&gt; Stream.of(line.split(REGEXP))).<br>                filter(word -&gt; word.length() &gt; 0).<br>                collect(Collectors.toList());</string></p>
+<p>这段代码首先把每行的单词用 flatMap 整理到新的 Stream，然后保留长度不为 0 的，就是整篇文章中的全部单词了。 <strong>forEach</strong> forEach 方法接收一个 Lambda 表达式，然后在 Stream 的每一个元素上执行该表达式。</p>
+<p>清单 12. 打印姓名（forEach 和 pre-java8 的对比）:</p>
+<p> // Java 8<br>        roster.stream()<br>                .filter(p -&gt; p.getGender() == Person.Sex.MALE)<br>                .forEach(p -&gt; System.out.println(p.getName()));<br>        // Pre-Java 8<br>        for (Person p : roster) {<br>            if (p.getGender() == Person.Sex.MALE) {<br>                System.out.println(p.getName());<br>            }<br>        }</p>
+<p>对一个人员集合遍历，找出男性并打印姓名。可以看出来，forEach 是为 Lambda 而设计的，保持了最紧凑的风格。而且 Lambda 表达式本身是可以重用的，非常方便。当需要为多核系统优化时，可以 parallelStream().forEach()，只是此时原有元素的次序没法保证，并行的情况下将改变串行时操作的行为，此时 forEach 本身的实现不需要调整，而 Java8 以前的 for 循环 code 可能需要加入额外的多线程逻辑。 但一般认为，forEach 和常规 for 循环的差异不涉及到性能，它们仅仅是函数式风格与传统 Java 风格的差别。 另外一点需要注意，forEach 是 terminal 操作，因此它执行后，Stream 的元素就被“消费”掉了，你无法对一个 Stream 进行两次 terminal 运算。下面的代码是错误的：</p>
+<p>stream.forEach(element -&gt; doOneThing(element));<br>stream.forEach(element -&gt; doAnotherThing(element));</p>
+<p>相反，具有相似功能的 intermediate 操作 peek 可以达到上述目的。如下是出现在该 api javadoc 上的一个示例。</p>
+<p>清单 13. peek 对每个元素执行操作并返回一个新的 Stream</p>
+<p>   Stream.of(“one”, “two”, “three”, “four”)<br>                .filter(e -&gt; e.length() &gt; 3)<br>                .peek(e -&gt; System.out.println(“Filtered value: “ + e))<br>                .map(String::toUpperCase)<br>                .peek(e -&gt; System.out.println(“Mapped value: “ + e))<br>                .collect(Collectors.toList());</p>
+<p>forEach 不能修改自己包含的本地变量值，也不能用 break/return 之类的关键字提前结束循环。 <strong>findFirst</strong> 这是一个 termimal 兼 short-circuiting 操作，它总是返回 Stream 的第一个元素，或者空。 这里比较重点的是它的返回值类型：Optional。这也是一个模仿 Scala 语言中的概念，作为一个容器，它可能含有某值，或者不包含。使用它的目的是尽可能避免 NullPointerException。</p>
+<p>清单 14. Optional 的两个用例</p>
+<pre><code>String strA = &quot; abcd &quot;, strB = null;
+   print(strA);
+   print(&quot;&quot;);
+   print(strB);
+   getLength(strA);
+   getLength(&quot;&quot;);
+   getLength(strB);
+   public static void print(String text) {
+       // Java 8
+       Optional.ofNullable(text).ifPresent(System.out::println);
+       // Pre-Java 8
+       if (text != null) {
+           System.out.println(text);
+       }
+   }
+   public static int getLength(String text) {
+       // Java 8
+       return Optional.ofNullable(text).map(String::length).orElse(-1);
+       // Pre-Java 8
+       // return if (text != null) ? text.length() : -1;
+   };
+</code></pre><p>在更复杂的 if (xx != null) 的情况中，使用 Optional 代码的可读性更好，而且它提供的是编译时检查，能极大的降低 NPE 这种 Runtime Exception 对程序的影响，或者迫使程序员更早的在编码阶段处理空值问题，而不是留到运行时再发现和调试。 Stream 中的 findAny、max/min、reduce 等方法等返回 Optional 值。还有例如 IntStream.average() 返回 OptionalDouble 等等。 <strong>reduce</strong> 这个方法的主要作用是把 Stream 元素组合起来。它提供一个起始值（种子），然后依照运算规则（BinaryOperator），和前面 Stream 的第一个、第二个、第 n 个元素组合。从这个意义上说，字符串拼接、数值的 sum、min、max、average 都是特殊的 reduce。例如 Stream 的 sum 就相当于 Integer sum = integers.reduce(0, (a, b) -&gt; a+b); 或 Integer sum = integers.reduce(0, Integer::sum); 也有没有起始值的情况，这时会把 Stream 的前面两个元素组合起来，返回的是 Optional。</p>
+<p>清单 15. reduce 的用例</p>
+<p>// 字符串连接，concat = “ABCD”<br>String concat = Stream.of(“A”, “B”, “C”, “D”).reduce(“”, String::concat);<br>// 求最小值，minValue = -3.0<br>double minValue = Stream.of(-1.5, 1.0, -3.0, -2.0).reduce(Double.MAX_VALUE, Double::min);<br>// 求和，sumValue = 10, 有起始值<br>int sumValue = Stream.of(1, 2, 3, 4).reduce(0, Integer::sum);<br>// 求和，sumValue = 10, 无起始值<br>sumValue = Stream.of(1, 2, 3, 4).reduce(Integer::sum).get();<br>// 过滤，字符串连接，concat = “ace”<br>concat = Stream.of(“a”, “B”, “c”, “D”, “e”, “F”).<br> filter(x -&gt; x.compareTo(“Z”) &gt; 0).<br> reduce(“”, String::concat);</p>
+<p>上面代码例如第一个示例的 reduce()，第一个参数（空白字符）即为起始值，第二个参数（String::concat）为 BinaryOperator。这类有起始值的 reduce() 都返回具体的对象。而对于第四个示例没有起始值的 reduce()，由于可能没有足够的元素，返回的是 Optional，请留意这个区别。 <strong>limit/skip</strong> limit 返回 Stream 的前面 n 个元素；skip 则是扔掉前 n 个元素（它是由一个叫 subStream 的方法改名而来）。</p>
+<p>清单 16. limit 和 skip 对运行次数的影响</p>
+<p>  public void testLimitAndSkip() {<br>            List<person> persons = new ArrayList();<br>            for (int i = 1; i &lt;= 10000; i++) {<br>                Person person = new Person(i, “name” + i);<br>                persons.add(person);<br>            }<br>            List<string> personList2 = persons.stream().<br>                    map(Person::getName).limit(10).skip(3).collect(Collectors.toList());<br>            System.out.println(personList2);<br>        }<br>        private class Person {<br>            public int no;<br>            private String name;<br>            public Person (int no, String name) {<br>                this.no = no;<br>                this.name = name;<br>            }<br>            public String getName() {<br>                System.out.println(name);<br>                return name;<br>            }<br>        }</string></person></p>
+<p>输出结果为：</p>
+<p>name1<br>name2<br>name3<br>name4<br>name5<br>name6<br>name7<br>name8<br>name9<br>name10<br>[name4, name5, name6, name7, name8, name9, name10]</p>
+<p>这是一个有 10，000 个元素的 Stream，但在 short-circuiting 操作 limit 和 skip 的作用下，管道中 map 操作指定的 getName() 方法的执行次数为 limit 所限定的 10 次，而最终返回结果在跳过前 3 个元素后只有后面 7 个返回。 有一种情况是 limit/skip 无法达到 short-circuiting 目的的，就是把它们放在 Stream 的排序操作后，原因跟 sorted 这个 intermediate 操作有关：此时系统并不知道 Stream 排序后的次序如何，所以 sorted 中的操作看上去就像完全没有被 limit 或者 skip 一样。</p>
+<p>清单 17. limit 和 skip 对 sorted 后的运行次数无影响</p>
+<p> List<person> persons = new ArrayList();<br>        for (int i = 1; i &lt;= 5; i++) {<br>            Person person = new Person(i, “name” + i);<br>            persons.add(person);<br>        }<br>        List<person> personList2 = persons.stream().sorted((p1, p2) -&gt;<br>                p1.getName().compareTo(p2.getName())).limit(2).collect(Collectors.toList());<br>        System.out.println(personList2);</person></person></p>
+<p>上面的示例对清单 13 做了微调，首先对 5 个元素的 Stream 排序，然后进行 limit 操作。输出结果为：</p>
+<p>name2<br>name1<br>name3<br>name2<br>name4<br>name3<br>name5<br>name4<br>[stream.StreamDW$Person@816f27d, stream.StreamDW$Person@87aac27]</p>
+<p>即虽然最后的返回元素数量是 2，但整个管道中的 sorted 表达式执行次数没有像前面例子相应减少。 最后有一点需要注意的是，对一个 parallel 的 Steam 管道来说，如果其元素是有序的，那么 limit 操作的成本会比较大，因为它的返回对象必须是前 n 个也有一样次序的元素。取而代之的策略是取消元素间的次序，或者不要用 parallel Stream。 <strong>sorted</strong> 对 Stream 的排序通过 sorted 进行，它比数组的排序更强之处在于你可以首先对 Stream 进行各类 map、filter、limit、skip 甚至 distinct 来减少元素数量后，再排序，这能帮助程序明显缩短执行时间。我们对清单 14 进行优化：</p>
+<p>清单 18. 优化：排序前进行 limit 和 skip</p>
+<p> List<person> persons = new ArrayList();<br>        for (int i = 1; i &lt;= 5; i++) {<br>            Person person = new Person(i, “name” + i);<br>            persons.add(person);<br>        }<br>        List<person> personList2 = persons.stream().limit(2).sorted((p1, p2) -&gt; p1.getName().compareTo(p2.getName())).collect(Collectors.toList());<br>        System.out.println(personList2);</person></person></p>
+<p>结果会简单很多：</p>
+<p>name2<br>name1<br>[stream.StreamDW$Person@6ce253f1, stream.StreamDW$Person@53d8d10a]</p>
+<p>当然，这种优化是有 business logic 上的局限性的：即不要求排序后再取值。 <strong>min/max/distinct</strong> min 和 max 的功能也可以通过对 Stream 元素先排序，再 findFirst 来实现，但前者的性能会更好，为 O(n)，而 sorted 的成本是 O(n log n)。同时它们作为特殊的 reduce 方法被独立出来也是因为求最大最小值是很常见的操作。</p>
+<p>清单 19. 找出最长一行的长度</p>
+<p>  BufferedReader br = new BufferedReader(new FileReader(“c:\\SUService.log”));<br>        int longest = br.lines().<br>                mapToInt(String::length).<br>                max().<br>                getAsInt();<br>        br.close();<br>        System.out.println(longest);</p>
+<p>下面的例子则使用 distinct 来找出不重复的单词。</p>
+<p>清单 20. 找出全文的单词，转小写，并排序</p>
+<p> List<string> words = br.lines().<br>                flatMap(line -&gt; Stream.of(line.split(“ “))).<br>                filter(word -&gt; word.length() &gt; 0).<br>                map(String::toLowerCase).<br>                distinct().<br>                sorted().<br>                collect(Collectors.toList());<br>        br.close();<br>        System.out.println(words);</string></p>
+<p><strong>Match</strong> Stream 有三个 match 方法，从语义上说：</p>
+<ul>
+<li>allMatch：Stream 中全部元素符合传入的 predicate，返回 true</li>
+<li>anyMatch：Stream 中只要有一个元素符合传入的 predicate，返回 true</li>
+<li>noneMatch：Stream 中没有一个元素符合传入的 predicate，返回 true</li>
+</ul>
+<p>它们都不是要遍历全部元素才能返回结果。例如 allMatch 只要一个元素不满足条件，就 skip 剩下的所有元素，返回 false。对清单 13 中的 Person 类稍做修改，加入一个 age 属性和 getAge 方法。</p>
+<p>清单 21. 使用 Match</p>
+<p>  List<person> persons = new ArrayList();<br>        persons.add(new Person(1, “name” + 1, 10));<br>        persons.add(new Person(2, “name” + 2, 21));<br>        persons.add(new Person(3, “name” + 3, 34));<br>        persons.add(new Person(4, “name” + 4, 6));<br>        persons.add(new Person(5, “name” + 5, 55));<br>        boolean isAllAdult = persons.stream().<br>                allMatch(p -&gt; p.getAge() &gt; 18);<br>        System.out.println(“All are adult? “ + isAllAdult);<br>        boolean isThereAnyChild = persons.stream().<br>                anyMatch(p -&gt; p.getAge() &lt; 12);<br>        System.out.println(“Any child? “ + isThereAnyChild);</person></p>
+<p>输出结果：</p>
+<p>All are adult? false<br>Any child? true</p>
+<h3 id="进阶：自己生成流"><a href="#进阶：自己生成流" class="headerlink" title="进阶：自己生成流"></a>进阶：自己生成流</h3><p><strong>Stream.generate</strong> 通过实现 Supplier 接口，你可以自己来控制流的生成。这种情形通常用于随机数、常量的 Stream，或者需要前后元素间维持着某种状态信息的 Stream。把 Supplier 实例传递给 Stream.generate() 生成的 Stream，默认是串行（相对 parallel 而言）但无序的（相对 ordered 而言）。由于它是无限的，在管道中，必须利用 limit 之类的操作限制 Stream 大小。</p>
+<p>清单 22. 生成 10 个随机整数</p>
+<p> Random seed = new Random();<br>        Supplier<integer> random = seed::nextInt;<br>        Stream.generate(random).limit(10).forEach(System.out::println);<br>//Another way<br>        IntStream.generate(() -&gt; (int) (System.nanoTime() % 100)).<br>                limit(10).forEach(System.out::println);</integer></p>
+<p>Stream.generate() 还接受自己实现的 Supplier。例如在构造海量测试数据的时候，用某种自动的规则给每一个变量赋值；或者依据公式计算 Stream 的每个元素值。这些都是维持状态信息的情形。</p>
+<p>清单 23. 自实现 Supplier</p>
+<pre><code>Stream.generate(new PersonSupplier()).
+            limit(10).
+            forEach(p -&gt; System.out.println(p.getName() + &quot;, &quot; + p.getAge()));
+    private class PersonSupplier implements Supplier&lt;Person&gt; {
+        private int index = 0;
+        private Random random = new Random();
+        @Override
+        public Person get() {
+            return new Person(index++, &quot;StormTestUser&quot; + index, random.nextInt(100));
+        }
+    }
+</code></pre><p>输出结果：</p>
+<p>StormTestUser1, 9<br>StormTestUser2, 12<br>StormTestUser3, 88<br>StormTestUser4, 51<br>StormTestUser5, 22<br>StormTestUser6, 28<br>StormTestUser7, 81<br>StormTestUser8, 51<br>StormTestUser9, 4<br>StormTestUser10, 76</p>
+<p><strong>Stream.iterate</strong> iterate 跟 reduce 操作很像，接受一个种子值，和一个 UnaryOperator（例如 f）。然后种子值成为 Stream 的第一个元素，f(seed) 为第二个，f(f(seed)) 第三个，以此类推。 <strong>清单 24. 生成一个等差数列</strong></p>
+<p>Stream.iterate(0, n -&gt; n + 3).limit(10). forEach(x -&gt; System.out.print(x + “ “));</p>
+<p>输出结果：</p>
+<p>0 3 6 9 12 15 18 21 24 27</p>
+<p>与 Stream.generate 相仿，在 iterate 时候管道必须有 limit 这样的操作来限制 Stream 大小。</p>
+<h3 id="进阶：用-Collectors-来进行-reduction-操作"><a href="#进阶：用-Collectors-来进行-reduction-操作" class="headerlink" title="进阶：用 Collectors 来进行 reduction 操作"></a>进阶：用 Collectors 来进行 reduction 操作</h3><p>java.util.stream.Collectors 类的主要作用就是辅助进行各类有用的 reduction 操作，例如转变输出为 Collection，把 Stream 元素进行归组。 <strong>groupingBy/partitioningBy</strong></p>
+<p>清单 25. 按照年龄归组</p>
+<p>   Map&lt;Integer, List<person>&gt; personGroups = Stream.generate(new PersonSupplier()).<br>                limit(100).<br>                collect(Collectors.groupingBy(Person::getAge));<br>        Iterator it = personGroups.entrySet().iterator();<br>        while (it.hasNext()) {<br>            Map.Entry&lt;Integer, List<person>&gt; persons = (Map.Entry) it.next();<br>            System.out.println(“Age “ + persons.getKey() + “ = “ + persons.getValue().size());<br>        }</person></person></p>
+<p>上面的 code，首先生成 100 人的信息，然后按照年龄归组，相同年龄的人放到同一个 list 中，可以看到如下的输出：</p>
+<p>Age 0 = 2<br>Age 1 = 2<br>Age 5 = 2<br>Age 8 = 1<br>Age 9 = 1<br>Age 11 = 2<br>……</p>
+<p>清单 26. 按照未成年人和成年人归组</p>
+<p>  Map&lt;Boolean, List<person>&gt; children = Stream.generate(new PersonSupplier()).<br>                limit(100).<br>                collect(Collectors.partitioningBy(p -&gt; p.getAge() &lt; 18));<br>        System.out.println(“Children number: “ + children.get(true).size());<br>        System.out.println(“Adult number: “ + children.get(false).size());</person></p>
+<p>输出结果：</p>
+<p>Children number: 23<br>Adult number: 77</p>
+<p>在使用条件“年龄小于 18”进行分组后可以看到，不到 18 岁的未成年人是一组，成年人是另外一组。partitioningBy 其实是一种特殊的 groupingBy，它依照条件测试的是否两种结果来构造返回的数据结构，get(true) 和 get(false) 能即为全部的元素对象。</p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>总之，Stream 的特性可以归纳为：</p>
+<ul>
+<li><p>不是数据结构</p>
+</li>
+<li><p>它没有内部存储，它只是用操作管道从 source（数据结构、数组、generator function、IO channel）抓取数据。</p>
+</li>
+<li><p>它也绝不修改自己所封装的底层数据结构的数据。例如 Stream 的 filter 操作会产生一个不包含被过滤元素的新 Stream，而不是从 source 删除那些元素。</p>
+</li>
+<li><p>所有 Stream 的操作必须以 lambda 表达式为参数</p>
+</li>
+<li><p>不支持索引访问</p>
+</li>
+<li><p>你可以请求第一个元素，但无法请求第二个，第三个，或最后一个。不过请参阅下一项。</p>
+</li>
+<li><p>很容易生成数组或者 List</p>
+</li>
+<li><p>惰性化</p>
+</li>
+<li><p>很多 Stream 操作是向后延迟的，一直到它弄清楚了最后需要多少数据才会开始。</p>
+</li>
+<li><p>Intermediate 操作永远是惰性化的。</p>
+</li>
+<li><p>并行能力</p>
+</li>
+<li><p>当一个 Stream 是并行化的，就不需要再写多线程代码，所有对它的操作会自动并行进行的。</p>
+</li>
+<li><p>可以是无限的</p>
+<ul>
+<li>集合有固定大小，Stream 则不必。limit(n) 和 findFirst() 这类的 short-circuiting 操作可以对无限的 Stream 进行运算并很快完成。</li>
+</ul>
+</li>
+</ul>
+<h4 id="相关主题"><a href="#相关主题" class="headerlink" title="相关主题"></a>相关主题</h4><ul>
+<li>Oracle Java 8 官方文档对 <a href="http://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html" target="_blank" rel="noopener">java.util.stream package </a>的说明。</li>
+<li>一篇教程：<a href="http://javarevisited.blogspot.sg/2013/11/java-8-tutorials-resources-and-examples-lambda-expression-stream-api-functional-interfaces.html" target="_blank" rel="noopener">Java 8 Tutorials, Resources, Books and Examples to learn Lambdas, Stream API and Functional Interfaces</a>。</li>
+<li>关于这篇 <a href="http://www.drdobbs.com/jvm/lambdas-and-streams-in-java-8-libraries/240166818" target="_blank" rel="noopener">Lambda 和 Stream</a> 更多介绍的教程。</li>
+<li>访问 <a href="http://www.ibm.com/developerworks/cn/java" target="_blank" rel="noopener">developerWorks Java 专区</a>，了解关于信息管理的更多信息，获取技术文档、how-to 文章、培训、下载、产品信息以及其他资源。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/25/java-8-e8-ae-a4-e8-af-86lambda-e8-a1-a8-e8-be-be-e5-bc-8f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/04/25/java-8-e8-ae-a4-e8-af-86lambda-e8-a1-a8-e8-be-be-e5-bc-8f/" class="post-title-link" itemprop="url">Java 8-- 认识Lambda表达式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-25 21:14:55" itemprop="dateCreated datePublished" datetime="2018-04-25T21:14:55+08:00">2018-04-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Java中，Lambda表达式是SAM类型，SAM类型是一个具有单一抽象方法的接口。（对了，Java8接口可以包含非抽象方法了-即default/defender方法，我们将在后面讲到它） 举个例子，众所周知的Runnable接口就是SAM类型的：</p>
+<p>Runnable r =()-&gt;System.out.println(“hello Lambda!”);</p>
+<p>Comparator 接口也算一个:</p>
+<p>Comparator cmp=(x, y)-&gt;(x &lt; y)?-1:((x &gt; y)?1:0);</p>
+<p>像下面这样写也可以:</p>
+<p>Comparator cmp= (x, y)-&gt;{<br>    return (x &lt; y) ? -1: ((x &gt; y)?1:0);<br>};</p>
+<p>如此看来上面单行的Lambda表达式中隐含有return关键词。</p>
+<p>我来用下面的例子提示一下，使用Java8之前的语法，如何实现同样的比较器代码：</p>
+<p>Comparator cmp=newComparator(){<br>  @Override<br>    publicint compare(Integer x,Integer y){<br>         return (x&lt; y)? -1:((x&gt; y)?1:0);<br>    }<br>};</p>
+<p>如你所见，在这两个例子中有相当一部分代码是相同的，相同部分正是<strong>Comparator</strong> 的比较逻辑：</p>
+<p>(x&lt; y)? -1:((x&gt; y)?1:0)</p>
+<p>当把经典风格java语法转变为Lambda表达式语法时，我们主要关注接口方法的参数和功能逻辑。 看另外一个例子。如果我打算写一个方法，此方法接收一个Lambda表达式作为参数，那么该怎么写？嗯…你得把方法参数声明成函数接口，然后才能传递Lambda表达式进来，如下所示：</p>
+<p>interface Action{<br>     void run(Stringparam);<br>}</p>
+<p>public void execute(Action action){<br>     action.run(“Hello!”);<br>}</p>
+<p>如果我们想要调用execute(..)方法，那么通常地做法，给execute方法传递一个Action的匿名实现类。如下所示：</p>
+<p>execute(new Action{<br>    publicvoid run(String param){<br>        System.out.println(param);<br>    }<br>});</p>
+<p>但是因为我们现在有函数接口做参数类型，所以我们可以用下面的方式调用execute(..)：</p>
+<p>execute((Stringparam)-&gt;System.out.println(param));</p>
+<p>实际上，可以不需要声明Lambda表达式的参数类型：</p>
+<p>execute(param-&gt;System.out.println(param));</p>
+<p>一般来说，Lambda表达式的类型声明规则如下：<strong>要么为所有参数声明类型，要么去掉所有参数的类型声明。</strong></p>
+<p>既然这个Lambda表达式仅调用一个方法，且（该方法和函数接口中定义的方法）使用相同的参数，那么可以用方法引用（method reference）替代这个Lambda表达式。如下所示：</p>
+<p>execute(System.out::println);</p>
+<p>但是，如果（调用的方法）使用参数形式有变，就不能使用方法引用了，得使用完整的Lambda表达式，如下面这种情况</p>
+<p>execute(s-&gt;System.out.println(“<em>“+ s +”</em>“));</p>
+<p>尽管Java本质上并没有函数类型（的变量），但是上面展示的语法已经相当不错，对于在java语言中应用Lambda表达式来说，我们也算有一个非常优雅的解决方案了。</p>
+<h3 id="函数接口"><a href="#函数接口" class="headerlink" title="函数接口"></a>函数接口</h3><p>如刚才讲的，Lambda表达式在运行期表示为一个函数接口（functionalinterface）（或者说一个SAM类型），函数接口是一种只定义了一个抽象方法的接口。尽管JDK已经有一些接口都符合函数接口定义，比如Runnable 和 Comparator，但是这对API演进来说是显然不够的。我们又不能到处在代码里使用像Runnable这样的接口，因为这么做不合乎逻辑。 JDK8中新增了一个包，java.util.function，这个包里有一些专门给新增的API使用的函数接口。此处就不列出所有的函数接口了，有兴趣可以自行学习下java.util.function：） 下面列出几个java.util.function中定义的接口，都非常有趣：</p>
+<p>  Consumer<t> – 在T上执行一个操作，无返回结果<br>  Supplier<t> –无输入参数，返回T的实例<br>  Predicate<t> –输入参数为T的实例，返回boolean值<br>  Function&lt;T,R&gt; –输入参数为T的实例，返回R的实例</t></t></t></p>
+<p><strong>java.util.function</strong> 中新定义了超过40个函数接口。通常可以从接口的名字看出其含义。举个例子，BiFunction和上面提到的Function接口非常相似，只是唯一不同点是BiFunction有两个输入参数而Function有一个 我们可以从那些新接口中看到另一个常见模式，该模式是在一个接口继承另一个接口的时候，把多个参数声明成同一种类型。例如，<a href="http://download.java.net/jdk8/docs/api/java/util/function/BinaryOperator.html" target="_blank" rel="noopener">BinaryOperator</a> 继承<a href="http://download.java.net/jdk8/docs/api/java/util/function/BiFunction.html" target="_blank" rel="noopener">BiFunction</a>，目的仅仅是为了把两个输入参数声明为同类型，如下所示：</p>
+<p>@FunctionalInterface public interface BinaryOperator extends BiFunction&lt;T,T,T&gt;{}</p>
+<p>为了强调接口是函数接口，可以使用新注释<a href="http://download.java.net/jdk8/docs/api/java/lang/FunctionalInterface.html" target="_blank" rel="noopener">@FunctionalInterface</a>，来防止你的团队成员往这个接口里增加方法。这个注释除了在运行时使用，还给javac用来验证该接口是否真是函数接口，其内部的抽象方法是否不多于一个。下面代码不能正常编译：</p>
+<p>@FunctionalInterface interface Action{<br>    void run(String param);<br>    void stop(String param);<br>}</p>
+<p>编译器抛出错误：</p>
+<p>java: Unexpected @FunctionalInterface annotation<br>    Action is not a functional interface<br>    multiple non-overriding abstract methods found in interface Action</p>
+<p>而下面的会编译通过</p>
+<p>@FunctionalInterface interface Action {<br>    void run(String param);<br>    default void stop(String param){}<br>}</p>
+<h3 id="获取变量"><a href="#获取变量" class="headerlink" title="获取变量"></a>获取变量</h3><p>如果Lambda表达式需要访问非静态变量或定义在其外部的对象，那么我们会碰到一种情况，就是Lambda表达式需要获取非体内变量，此时我们称之为一种“<em>获取态”</em>的Lambda表达式。 思考下面比较器的例子：</p>
+<p>int minus_one =-1;<br>int one =1;<br>int zero =0;<br>Comparator cmp =(x, y)-&gt;(x &lt; y)? minus_one :((x &gt; y)? one : zero);</p>
+<p>为了使Lambda表达式生效，Lambda表达式获取的变量minus_one、one和 zero必须是“实质的常量”。这意味着这些变量要么应该声明成final类型，要么不能二次赋值。</p>
+<h3 id="返回值是Lambda表达式"><a href="#返回值是Lambda表达式" class="headerlink" title="返回值是Lambda表达式"></a>返回值是Lambda表达式</h3><p>虽然在上面讲到的例子中，函数接口可以用作其他某个方法的参数，然而函数接口的用法并不限于当参数，函数接口还可以用作方法的返回值。也就是说我们可以从方法返回一个Lambda表达式，如下例子：</p>
+<p>public class Comparator Factory{<br>    public Comparator makeComparator(){<br>        return Integer::compareUnsigned;<br>    }<br>}</p>
+<p>上面的例子展示了一段有效的方法代码，这个方法返回了一个方法引用。然而实际上仅像那样是不能从方法中返回一个方法引用的，其实编译器还会使用invokedynamic 字节码指令，生成一些代码来使它成为一个方法调用，该方法调用返回一个Comparator接口的实例对象。因此客户端代码只认为自己是在使用一个接口：</p>
+<p>Comparator cmp=new ComparatorFactory().makeComparator();<br>cmp.compare(10, -5);// -1</p>
+<h3 id="序列化Lambda表达式"><a href="#序列化Lambda表达式" class="headerlink" title="序列化Lambda表达式"></a>序列化Lambda表达式</h3><p>前一部分中使用的那段代码，创建了一个Comparator 实例对象，该实例对象可以让客户端代码使用。所有工作看似相当成功。但是，有个严重的问题，即是如果我们尝试序列化那个Comparator实例对象，代码就会抛出<a href="http://docs.oracle.com/javase/6/docs/api/java/io/NotSerializableException.html" target="_blank" rel="noopener">NotSerializableException</a>异常。 因为序列化可能存在安全隐患，所以默认情况下，Lambda表达式不能序列化。为了能序列化，java8引入了所谓的类型关联（TypeIntersection），如下所示：</p>
+<p>public class ComparatorFactory{<br>    public Comparator makeComparator(){<br>        return(Comparator&amp;Serializable)Integer::compareUnsigned;<br>    }<br>}</p>
+<p>Serializable接口一般认为是标记性的接口，该接口中没有声明任何方法，因此Serializable接口也可以称作ZAM类型（ZAM即Zero Abstract Methods）。 使用类型关联的一般规则如下： SAM &amp; ZAM1 &amp; ZAM2 &amp; ZAM3 也就是说，如果返回结果是SAM类型的，那么我们可以用SAM类型和一个甚至多个ZAM类型“相关联”。我们现在事实上认为作为返回结果的Comparator 实例对象也是Serializable类型的。 经过上面对返回结果强制转换类型后，编译器在编译后的class文件中多生成了一个方法，如下所示：</p>
+<p>private  static  java.lang.Object  $deserializeLambda$(java.lang.invoke.SerializedLambda);</p>
+<p>此外，通过使用<em>invokedynamic</em> 字节码指令策略，当通过<strong>makeComparator()</strong>方法 创建一个<strong>Comparator</strong> 的实例对象的时候，编译器就会调用<strong>$deserializeLambda$(..)</strong> 方法。</p>
+<h3 id="反编译Lambda表达式"><a href="#反编译Lambda表达式" class="headerlink" title="反编译Lambda表达式"></a>反编译Lambda表达式</h3><p>现在讲一讲这背后的实现原理。当我们在代码中使用Lambda表达式的时候，同时也了解下代码实际上是怎么编译的，这会很有趣。 目前（像Java 7之前的版本），如果你想在java中模仿Lambda表达式，那么你得定义一个匿名内部类。这样会在编译后生成一个相应的class文件。如果你在代码中定义多个匿名内部类，那么这些匿名类只不过是在其相应的class文件名字中增加一个数字后缀。Lambda表达式编译后会是怎样呢？ 仔细思考下面的代码：</p>
+<p>public class Main {<br>  @Functional<br>   Interface  interface Action{<br>       void run(String s);<br>   }<br>   public  void  action(Action action){<br>       action.run(“Hello!”);<br>   }     </p>
+<p>   public  static  void main(String[] args){<br>        new  Main().action((String s)-&gt;System.out.print(“<em>“+ s +”</em>“));<br>   } </p>
+<p>}</p>
+<p>编译后产生两个类文件：Main.class和Main$Action.class，但并没有生成带编号的类，带编号的类通常在匿名类编译后产生。这样在Main.class中一定有什么东西，实现了我们在main方法中定义的Lambda表达式。（我们反编译下Main.class看看究竟）</p>
+<p>$ javap -p Main</p>
+<p>Warning: Binary file Main contains com.zt.Main<br>Compiled from “Main.java”<br>public class com.zt.Main {<br>  public com.zt.Main();<br>  public void action(com.zt.Main$Action);<br>  public static void main(java.lang.String[]);<br>  private static java.lang.Object Lambda$0(java.lang.String);<br>}</p>
+<p>哈！在编译后的class中生成了一个方法Lambda$0！ -C- V选项会给我们展示实际的字节码和常量池定义。 下面的main方法揭示了invokedynamic指令用来分派方法调用。</p>
+<p>public static void main(java.lang.String[]);<br>   Code:<br>   0: new          #4   // class com/zt/Main<br>   3: dup<br>   4: invokespecial#5    // Method “”:()V<br>    7: invokedynamic #6,  0  // InvokeDynamic #0:run:()Lcom/zt/Main$Action;<br>   12: invokevirtual  #7      // Method action:(Lcom/zt/Main$Action;)V<br>   15: return</p>
+<p>可以在常量池中找到引导方法，该引导方法负责在运行时把所有内容链接起来：</p>
+<p>BootstrapMethods:<br>  0: #40 invokestatic java/lang/invoke/LambdaMetafactory.metaFactory:(    \<br>Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;             \<br>Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;          \<br>Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)         \<br>Ljava/lang/invoke/CallSite;<br>  Method arguments:</p>
+<pre><code>#41 invokeinterface com/zt/Main$Action.run:(Ljava/lang/String;)Ljava/lang/Object;
+#42 invokestatic com/zt/Main.Lambda$0:(Ljava/lang/String;)Ljava/lang/Object;
+#43 (Ljava/lang/String;)Ljava/lang/Object;
+</code></pre><p>你可以看见到处都有MethodHandle的影子，但我们现在不会深入去讲MethodHandle。到现在，我们可以确认上面说的那个定义恰恰指的是生成的方法Lambda$0。 如果我定义一个名字是Lambda$0的静态方法会这么样？Lambda$0毕竟算一个有效标识符！于是，我定义了Lambda$0方法，如下所示：</p>
+<p>Public static void Lambda$0(String s){<br>    return null;<br>}</p>
+<p>结果编译失败，不允许我在代码中定义Lambda$0方法。</p>
+<p>java: the symbol Lambda$0(java.lang.String) conflicts with a<br>        compiler-synthesized symbol in com.zt.Main</p>
+<p>这实际上告诉我们在编译过程中，在Main类里构建其他方法前就先构建的Lambda表达式。</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p>//接受2种类型的参数,进行处理<br>BiConsumer&lt;T,U&gt;<br>    void accept(T t, U u);<br>    default BiConsumer&lt;T, U&gt; andThen(BiConsumer&lt;? super T, ? super U&gt; after);<br>//接受单个参数,进行处理<br>Consumer<t><br>    void accept(T t);<br>     default Consumer<t> andThen(Consumer&lt;? super T&gt; after);<br>//接受double类型的参数,进行处理<br>DoubleConsumer<br>    void accept(double value);<br>    default DoubleConsumer andThen(DoubleConsumer after);<br>//接受int类型的参数,进行处理<br>IntConsumer<br>    void accept(int value);<br>    default IntConsumer andThen(IntConsumer after);<br>//接受long类型的参数,进行处理<br>LongConsumer<br>    void accept(long value);<br>    default LongConsumer andThen(LongConsumer after);<br>//接受T和double类型的参数,进行处理<br>ObjDoubleConsumer<t><br>    void accept(T t, double value);<br>//接受T和int类型的参数,进行处理<br>ObjIntConsumer<t><br>     void accept(T t, int value);<br>//接受T和long类型的参数,进行处理<br>ObjLongConsumer<t><br>     void accept(T t, long value);</t></t></t></t></t></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在此为本文的第一章做一个小结。我敢肯定，Lambda表达式在不久的将来会对Java产生巨大的影响。又因为Lambda表达式语法结构相当不错，所以一旦开发者认识到像Lambda这些特性有益于提升开发效率，那么我们将会看到Lambda表达式更广泛的应用。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/24/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-linkedblockingqueue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/04/24/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-linkedblockingqueue/" class="post-title-link" itemprop="url">J.U.C -- 有界阻塞队列 LinkedBlockingQueue</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-24 16:55:53" itemprop="dateCreated datePublished" datetime="2018-04-24T16:55:53+08:00">2018-04-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>LinkedBlockingQueue是一个由链表实现的有界队列阻塞队列，但大小默认值为Integer.MAX_VALUE，所以我们在使用LinkedBlockingQueue时建议手动传值，为其提供我们所需的大小，避免队列过大造成机器负载或者内存爆满等情况。其构造函数如下</p>
+<p>//默认大小为Integer.MAX_VALUE<br>public LinkedBlockingQueue() {<br>       this(Integer.MAX_VALUE);<br>}</p>
+<p>//创建指定大小为capacity的阻塞队列<br>public LinkedBlockingQueue(int capacity) {<br>     if (capacity &lt;= 0) throw new IllegalArgumentException();<br>     this.capacity = capacity;<br>     last = head = new Node<e>(null);<br> }</e></p>
+<p>//创建大小默认值为Integer.MAX_VALUE的阻塞队列并添加c中的元素到阻塞队列<br>public LinkedBlockingQueue(Collection&lt;? extends E&gt; c) {<br>     this(Integer.MAX_VALUE);<br>     final ReentrantLock putLock = this.putLock;<br>     putLock.lock(); // Never contended, but necessary for visibility<br>     try {<br>         int n = 0;<br>         for (E e : c) {<br>             if (e == null)<br>                 throw new NullPointerException();<br>             if (n == capacity)<br>                 throw new IllegalStateException(“Queue full”);<br>             enqueue(new Node<e>(e));<br>             ++n;<br>         }<br>         count.set(n);<br>     } finally {<br>         putLock.unlock();<br>     }<br> }</e></p>
+<p>从源码看，有三种方式可以构造LinkedBlockingQueue，通常情况下，我们建议创建指定大小的LinkedBlockingQueue阻塞队列。LinkedBlockingQueue队列也是按 FIFO（先进先出）排序元素。新元素插入到队列的尾部，而队列执行获取操作会获得位于队列头部的元素。在正常情况下，链接队列的吞吐量要高于基于数组的队列（ArrayBlockingQueue），因为其内部实现添加和删除操作使用的两个ReenterLock来控制并发执行，而ArrayBlockingQueue内部只是使用一个ReenterLock控制并发，因此LinkedBlockingQueue的吞吐量要高于ArrayBlockingQueue。注意LinkedBlockingQueue和ArrayBlockingQueue的API几乎是一样的，但它们的内部实现原理不太相同，这点稍后会分析。使用LinkedBlockingQueue，我们同样也能实现生产者消费者模式。只需把前面ArrayBlockingQueue案例中的阻塞队列对象换成LinkedBlockingQueue即可。这里限于篇幅就不贴重复代码了。接下来我们重点分析LinkedBlockingQueue的内部实现原理，最后我们将对ArrayBlockingQueue和LinkedBlockingQueue 做总结，阐明它们间的不同之处。</p>
+<h4 id="LinkedBlockingQueue的实现原理剖析"><a href="#LinkedBlockingQueue的实现原理剖析" class="headerlink" title="LinkedBlockingQueue的实现原理剖析:"></a>LinkedBlockingQueue的实现原理剖析:</h4><p>LinkedBlockingQueue是一个基于链表的阻塞队列，其内部维持一个基于链表的数据队列，实际上我们对LinkedBlockingQueue的API操作都是间接操作该数据队列，这里我们先看看LinkedBlockingQueue的内部成员变量</p>
+<p>public class LinkedBlockingQueue<e> extends AbstractQueue<e><br>        implements BlockingQueue<e>, java.io.Serializable {</e></e></e></p>
+<pre><code>/\*\*
+ \* 节点类，用于存储数据
+ */
+static class Node&lt;E&gt; {
+    E item;
+
+    /\*\*
+     \* One of:
+     \* \- the real successor Node
+     \* \- this Node, meaning the successor is head.next
+     \* \- null, meaning there is no successor (this is the last node)
+     */
+    Node&lt;E&gt; next;
+
+    Node(E x) { item = x; }
+}
+
+/\*\* 阻塞队列的大小，默认为Integer.MAX_VALUE */
+private final int capacity;
+
+/\*\* 当前阻塞队列中的元素个数 */
+private final AtomicInteger count = new AtomicInteger();
+
+/\*\*
+ \* 阻塞队列的头结点
+ */
+transient Node&lt;E&gt; head;
+
+/\*\*
+ \* 阻塞队列的尾节点
+ */
+private transient Node&lt;E&gt; last;
+
+/\*\* 获取并移除元素时使用的锁，如take, poll, etc */
+private final ReentrantLock takeLock = new ReentrantLock();
+
+/\*\* notEmpty条件对象，当队列没有数据时用于挂起执行删除的线程 */
+private final Condition notEmpty = takeLock.newCondition();
+
+/\*\* 添加元素时使用的锁如 put, offer, etc */
+private final ReentrantLock putLock = new ReentrantLock();
+
+/\*\* notFull条件对象，当队列数据已满时用于挂起执行添加的线程 */
+private final Condition notFull = putLock.newCondition();
+</code></pre><p>}</p>
+<p>从上述可看成，每个添加到LinkedBlockingQueue队列中的数据都将被封装成Node节点，添加的链表队列中，其中head和last分别指向队列的头结点和尾结点。与ArrayBlockingQueue不同的是，LinkedBlockingQueue内部分别使用了takeLock 和 putLock 对并发进行控制，也就是说，添加和删除操作并不是互斥操作，可以同时进行，这样也就可以大大提高吞吐量。这里再次强调如果没有给LinkedBlockingQueue指定容量大小，其默认值将是Integer.MAX_VALUE，如果存在添加速度大于删除速度时候，有可能会内存溢出，这点在使用前希望慎重考虑。至于LinkedBlockingQueue的实现原理图与ArrayBlockingQueue是类似的，除了对添加和移除方法使用单独的锁控制外，两者都使用了不同的Condition条件对象作为等待队列，用于挂起take线程和put线程。 <img src="https://zhongmin.me/wp-content/uploads/2018/04/4CYBIUF8UV8Z_FF.png" alt></p>
+<h4 id="添加方法的实现原理"><a href="#添加方法的实现原理" class="headerlink" title="添加方法的实现原理:"></a>添加方法的实现原理:</h4><p>对于添加方法，主要指的是add，offer以及put，这里先看看add方法和offer方法的实现,</p>
+<p>public boolean add(E e) {<br>     if (offer(e))<br>         return true;<br>     else<br>         throw new IllegalStateException(“Queue full”);<br>}</p>
+<p>从源码可以看出，add方法间接调用的是offer方法，如果add方法添加失败将抛出IllegalStateException异常，添加成功则返回true，那么下面我们直接看看offer的相关方法实现</p>
+<p>public boolean offer(E e) {<br>     //添加元素为null直接抛出异常<br>     if (e == null) throw new NullPointerException();<br>      //获取队列的个数<br>      final AtomicInteger count = this.count;<br>      //判断队列是否已满<br>      if (count.get() == capacity)<br>          return false;<br>      int c = -1;<br>      //构建节点<br>      Node<e> node = new Node<e>(e);<br>      final ReentrantLock putLock = this.putLock;<br>      putLock.lock();<br>      try {<br>          //再次判断队列是否已满，考虑并发情况<br>          if (count.get() &lt; capacity) {<br>              enqueue(node);//添加元素<br>              c = count.getAndIncrement();//拿到当前未添加新元素时的队列长度<br>              //如果容量还没满<br>              if (c + 1 &lt; capacity)<br>                  notFull.signal();//唤醒下一个添加线程，执行添加操作<br>          }<br>      } finally {<br>          putLock.unlock();<br>      }<br>      // 由于存在添加锁和消费锁，而消费锁和添加锁都会持续唤醒等到线程，因此count肯定会变化。<br>      //这里的if条件表示如果队列中还有1条数据<br>      if (c == 0)<br>        signalNotEmpty();//如果还存在数据那么就唤醒消费锁<br>    return c &gt;= 0; // 添加成功返回true，否则返回false<br>  }</e></e></p>
+<p>//入队操作<br>private void enqueue(Node<e> node) {<br>     //队列尾节点指向新的node节点<br>     last = last.next = node;<br>}</e></p>
+<p>//signalNotEmpty方法<br>private void signalNotEmpty() {<br>      final ReentrantLock takeLock = this.takeLock;<br>      takeLock.lock();<br>          //唤醒获取并删除元素的线程<br>          notEmpty.signal();<br>      } finally {<br>          takeLock.unlock();<br>      }<br>  }</p>
+<p>这里的Offer()方法做了两件事，第一件事是判断队列是否满，满了就直接释放锁，没满就将节点封装成Node入队，然后再次判断队列添加完成后是否已满，不满就继续唤醒等到在条件对象notFull上的添加线程。第二件事是，判断是否需要唤醒等到在notEmpty条件对象上的消费线程。这里我们可能会有点疑惑，为什么添加完成后是继续唤醒在条件对象notFull上的添加线程而不是像ArrayBlockingQueue那样直接唤醒notEmpty条件对象上的消费线程？而又为什么要当<code>if (c == 0)</code>时才去唤醒消费线程呢？</p>
+<ul>
+<li>唤醒添加线程的原因，在添加新元素完成后，会判断队列是否已满，不满就继续唤醒在条件对象notFull上的添加线程，这点与前面分析的ArrayBlockingQueue很不相同，在ArrayBlockingQueue内部完成添加操作后，会直接唤醒消费线程对元素进行获取，这是因为ArrayBlockingQueue只用了一个ReenterLock同时对添加线程和消费线程进行控制，这样如果在添加完成后再次唤醒添加线程的话，消费线程可能永远无法执行，而对于LinkedBlockingQueue来说就不一样了，其内部对添加线程和消费线程分别使用了各自的ReenterLock锁对并发进行控制，也就是说添加线程和消费线程是不会互斥的，所以添加锁只要管好自己的添加线程即可，添加线程自己直接唤醒自己的其他添加线程，如果没有等待的添加线程，直接结束了。如果有就直到队列元素已满才结束挂起，当然offer方法并不会挂起，而是直接结束，只有put方法才会当队列满时才执行挂起操作。注意消费线程的执行过程也是如此。这也是为什么LinkedBlockingQueue的吞吐量要相对大些的原因。</li>
+<li>为什么要判断<code>if (c == 0)</code>时才去唤醒消费线程呢，这是因为消费线程一旦被唤醒是一直在消费的（前提是有数据），所以c值是一直在变化的，c值是添加完元素前队列的大小，此时c只可能是0或<code>c&gt;0</code>，如果是<code>c=0</code>，那么说明之前消费线程已停止，条件对象上可能存在等待的消费线程，添加完数据后应该是<code>c+1</code>，那么有数据就直接唤醒等待消费线程，如果没有就结束啦，等待下一次的消费操作。如果<code>c&gt;0</code>那么消费线程就不会被唤醒，只能等待下一个消费操作（poll、take、remove）的调用，那为什么不是条件<code>c&gt;0</code>才去唤醒呢？我们要明白的是消费线程一旦被唤醒会和添加线程一样，一直不断唤醒其他消费线程，如果添加前<code>c&gt;0</code>，那么很可能上一次调用的消费线程后，数据并没有被消费完，条件队列上也就不存在等待的消费线程了，所以<code>c&gt;0</code>唤醒消费线程得意义不是很大，当然如果添加线程一直添加元素，那么一直<code>c&gt;0</code>，消费线程执行的换就要等待下一次调用消费操作了（poll、take、remove）。</li>
+</ul>
+<h4 id="移除方法的实现原理"><a href="#移除方法的实现原理" class="headerlink" title="移除方法的实现原理"></a>移除方法的实现原理</h4><p>关于移除的方法主要是指remove和poll以及take方法，下面一一分析</p>
+<p>public boolean remove(Object o) {<br>   if (o == null) return false;<br>     fullyLock();//同时对putLock和takeLock加锁<br>     try {<br>         //循环查找要删除的元素<br>         for (Node<e> trail = head, p = trail.next;<br>              p != null;<br>              trail = p, p = p.next) {<br>             if (o.equals(p.item)) {//找到要删除的节点<br>                 unlink(p, trail);//直接删除<br>                 return true;<br>             }<br>         }<br>         return false;<br>     } finally {<br>         fullyUnlock();//解锁<br>     }<br>    }</e></p>
+<p>//两个同时加锁<br>void fullyLock() {<br>       putLock.lock();<br>       takeLock.lock();<br>   }</p>
+<p>void fullyUnlock() {<br>      takeLock.unlock();<br>      putLock.unlock();<br>  }</p>
+<p>remove方法删除指定的对象，这里我们可能会诧异，为什么同时对putLock和takeLock加锁？这是因为remove方法删除的数据的位置不确定，为了避免造成并非安全问题，所以需要对2个锁同时加锁。</p>
+<p>public E poll() {<br>         //获取当前队列的大小<br>        final AtomicInteger count = this.count;<br>        if (count.get() == 0)//如果没有元素直接返回null<br>            return null;<br>        E x = null;<br>        int c = -1;<br>        final ReentrantLock takeLock = this.takeLock;<br>        takeLock.lock();<br>        try {<br>            //判断队列是否有数据<br>            if (count.get() &gt; 0) {<br>                //如果有，直接删除并获取该元素值<br>                x = dequeue();<br>                //当前队列大小减一<br>                c = count.getAndDecrement();<br>                //如果队列未空，继续唤醒等待在条件对象notEmpty上的消费线程<br>                if (c &gt; 1)<br>                    notEmpty.signal();<br>            }<br>        } finally {<br>            takeLock.unlock();<br>        }<br>        //判断c是否等于capacity，这是因为如果满说明NotFull条件对象上<br>        //可能存在等待的添加线程<br>        if (c == capacity)<br>            signalNotFull();<br>        return x;<br>    }</p>
+<p>  private E dequeue() {<br>        Node<e> h = head;//获取头结点<br>        Node<e> first = h.next; 获取头结的下一个节点（要删除的节点）<br>        h.next = h; // help GC//自己next指向自己，即被删除<br>        head = first;//更新头结点<br>        E x = first.item;//获取删除节点的值<br>        first.item = null;//清空数据，因为first变成头结点是不能带数据的，这样也就删除队列的带数据的第一个节点<br>        return x;<br>    }</e></e></p>
+<p>poll方法也比较简单，如果队列没有数据就返回null，如果队列有数据，那么就取出来，如果队列还有数据那么唤醒等待在条件对象notEmpty上的消费线程。然后判断if (c == capacity)为true就唤醒添加线程，这点与前面分析if(c==0)是一样的道理。因为只有可能队列满了，notFull条件对象上才可能存在等待的添加线程。</p>
+<p>public E take() throws InterruptedException {<br>        E x;<br>        int c = -1;<br>        //获取当前队列大小<br>        final AtomicInteger count = this.count;<br>        final ReentrantLock takeLock = this.takeLock;<br>        takeLock.lockInterruptibly();//可中断<br>        try {<br>            //如果队列没有数据，挂机当前线程到条件对象的等待队列中<br>            while (count.get() == 0) {<br>                notEmpty.await();<br>            }<br>            //如果存在数据直接删除并返回该数据<br>            x = dequeue();<br>            c = count.getAndDecrement();//队列大小减1<br>            if (c &gt; 1)<br>                notEmpty.signal();//还有数据就唤醒后续的消费线程<br>        } finally {<br>            takeLock.unlock();<br>        }<br>        //满足条件，唤醒条件对象上等待队列中的添加线程<br>        if (c == capacity)<br>            signalNotFull();<br>        return x;<br>    }</p>
+<p>take方法是一个可阻塞可中断的移除方法，主要做了两件事，一是，如果队列没有数据就挂起当前线程到 notEmpty条件对象的等待队列中一直等待，如果有数据就删除节点并返回数据项，同时唤醒后续消费线程，二是尝试唤醒条件对象notFull上等待队列中的添加线程。 到此关于remove、poll、take的实现也分析完了，其中只有take方法具备阻塞功能。remove方法则是成功返回true失败返回false，poll方法成功返回被移除的值，失败或没数据返回null。下面再看看两个检查方法，即peek和element</p>
+<p>/构造方法，head 节点不存放数据<br> public LinkedBlockingQueue(int capacity) {<br>       if (capacity &lt;= 0) throw new IllegalArgumentException();<br>       this.capacity = capacity;<br>       last = head = new Node<e>(null);<br>   }</e></p>
+<p> public E element() {<br>        E x = peek();//直接调用peek<br>        if (x != null)<br>            return x;<br>        else<br>            throw new NoSuchElementException();//没数据抛异常<br>    }</p>
+<p> public E peek() {<br>        if (count.get() == 0)<br>            return null;<br>        final ReentrantLock takeLock = this.takeLock;<br>        takeLock.lock();<br>        try {<br>            //获取头结节点的下一个节点<br>            Node<e> first = head.next;<br>            if (first == null)<br>                return null;//为null就返回null<br>            else<br>                return first.item;//返回值<br>        } finally {<br>            takeLock.unlock();<br>        }<br>    }</e></p>
+<p>从代码来看，head头结节点在初始化时是本身不带数据的，仅仅作为头部head方便我们执行链表的相关操作。peek返回直接获取头结点的下一个节点返回其值，如果没有值就返回null，有值就返回节点对应的值。element方法内部调用的是peek，有数据就返回，没数据就抛异常。下面我们最后来看两个根据时间阻塞的方法，比较有意思，利用的Conditin来实现的。</p>
+<p>//在指定时间内阻塞添加的方法，超时就结束<br> public boolean offer(E e, long timeout, TimeUnit unit)<br>        throws InterruptedException {</p>
+<pre><code>    if (e == null) throw new NullPointerException();
+    //将时间转换成纳秒
+    long nanos = unit.toNanos(timeout);
+    int c = -1;
+    //获取锁
+    final ReentrantLock putLock = this.putLock;
+    //获取当前队列大小
+    final AtomicInteger count = this.count;
+    //锁中断(如果需要)
+    putLock.lockInterruptibly();
+    try {
+        //判断队列是否满
+        while (count.get() == capacity) {
+            if (nanos &lt;= 0)
+                return false;
+            //如果队列满根据阻塞的等待
+            nanos = notFull.awaitNanos(nanos);
+        }
+        //队列没满直接入队
+        enqueue(new Node&lt;E&gt;(e));
+        c = count.getAndIncrement();
+        //唤醒条件对象上等待的线程
+        if (c + 1 &lt; capacity)
+            notFull.signal();
+    } finally { 
+        putLock.unlock();
+    }
+    //唤醒消费线程
+    if (c == 0)
+        signalNotEmpty();
+    return true;
+}
+</code></pre><p>对于这个offer方法，我们重点来看看阻塞的这段代码</p>
+<p>//判断队列是否满<br> while (count.get() == capacity) {<br>        if (nanos &lt;= 0)<br>            return false;<br>        //如果队列满根据阻塞的等待<br>        nanos = notFull.awaitNanos(nanos);<br>    }</p>
+<p>//CoditionObject（Codition的实现类）中的awaitNanos方法<br> public final long awaitNanos(long nanosTimeout)<br>                throws InterruptedException {<br>            if (Thread.interrupted())<br>                throw new InterruptedException();<br>            //这里是将当前添加线程封装成NODE节点加入Condition的等待队列中<br>            //注意这里的NODE是AQS的内部类Node<br>            Node node = addConditionWaiter();<br>            //加入等待，那么就释放当前线程持有的锁<br>            int savedState = fullyRelease(node);<br>            //计算过期时间<br>            final long deadline = System.nanoTime() + nanosTimeout;<br>            int interruptMode = 0;</p>
+<pre><code>    while (!isOnSyncQueue(node)) {
+        if (nanosTimeout &lt;= 0L) {
+            transferAfterCancelledWait(node);
+            break;
+        }
+        //主要看这里！！由于是while 循环，这里会不断判断等待时间
+        //nanosTimeout 是否超时
+        //static final long spinForTimeoutThreshold = 1000L;
+        if (nanosTimeout &gt;= spinForTimeoutThreshold)
+            LockSupport.parkNanos(this, nanosTimeout);//挂起线程
+        if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
+            break;
+        //重新计算剩余等待时间，while循环中继续判断下列公式
+        //nanosTimeout &gt;= spinForTimeoutThreshold
+        nanosTimeout = deadline - System.nanoTime();
+    }
+    if (acquireQueued(node, savedState) &amp;&amp; interruptMode != THROW_IE)
+        interruptMode = REINTERRUPT;
+    if (node.nextWaiter != null)
+        unlinkCancelledWaiters();
+    if (interruptMode != 0)
+        reportInterruptAfterWait(interruptMode);
+    return deadline - System.nanoTime();
+}
+</code></pre><p>awaitNanos方法中，根据传递进来的时间计算超时阻塞nanosTimeout，然后通过while循环中判断<code>nanosTimeout &gt;= spinForTimeoutThreshold</code> 该公式是否成立，当其为true时则说明超时时间nanosTimeout 还未到期，再次计算<code>nanosTimeout = deadline - System.nanoTime();</code>即nanosTimeout ，持续判断，直到nanosTimeout 小于spinForTimeoutThreshold结束超时阻塞操作，方法也就结束。这里的spinForTimeoutThreshold其实更像一个经验值，因为非常短的超时等待无法做到十分精确，因此采用了spinForTimeoutThreshold这样一个临界值。<code>offer(E e, long timeout, TimeUnit unit)</code>方法内部正是利用这样的Codition的超时等待awaitNanos方法实现添加方法的超时阻塞操作。同样对于<code>poll(long timeout, TimeUnit unit)</code>方法也是一样的道理。</p>
+<h3 id="LinkedBlockingQueue和ArrayBlockingQueue迥异"><a href="#LinkedBlockingQueue和ArrayBlockingQueue迥异" class="headerlink" title="LinkedBlockingQueue和ArrayBlockingQueue迥异"></a>LinkedBlockingQueue和ArrayBlockingQueue迥异</h3><p>通过上述的分析，对于LinkedBlockingQueue和ArrayBlockingQueue的基本使用以及内部实现原理我们已较为熟悉了，这里我们就对它们两间的区别来个小结 1.队列大小有所不同，ArrayBlockingQueue是有界的初始化必须指定大小，而LinkedBlockingQueue可以是有界的也可以是无界的(Integer.MAX_VALUE)，对于后者而言，当添加速度大于移除速度时，在无界的情况下，可能会造成内存溢出等问题。 2.数据存储容器不同，ArrayBlockingQueue采用的是数组作为数据存储容器，而LinkedBlockingQueue采用的则是以Node节点作为连接对象的链表。 3.由于ArrayBlockingQueue采用的是数组的存储容器，因此在插入或删除元素时不会产生或销毁任何额外的对象实例，而LinkedBlockingQueue则会生成一个额外的Node对象。这可能在长时间内需要高效并发地处理大批量数据的时，对于GC可能存在较大影响。 4.两者的实现队列添加或移除的锁不一样，ArrayBlockingQueue实现的队列中的锁是没有分离的，即添加操作和移除操作采用的同一个ReenterLock锁，而LinkedBlockingQueue实现的队列中的锁是分离的，其添加采用的是putLock，移除采用的则是takeLock，这样能大大提高队列的吞吐量，也意味着在高并发的情况下生产者和消费者可以并行地操作队列中的数据，以此来提高整个队列的并发性能。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/22/j-u-c-e4-bc-98-e5-85-88-e7-ba-a7-e9-98-9f-e5-88-97-priorityblockingqueue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/04/22/j-u-c-e4-bc-98-e5-85-88-e7-ba-a7-e9-98-9f-e5-88-97-priorityblockingqueue/" class="post-title-link" itemprop="url">J.U.C--优先级队列-PriorityBlockingQueue</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-22 16:47:13" itemprop="dateCreated datePublished" datetime="2018-04-22T16:47:13+08:00">2018-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>PriorityBlockingQueue是一个基于数组实现的线程安全的无界队列，原理和内部结构跟PriorityQueue基本一样，只是多了个线程安全。javadoc里面提到一句， 1：理论上是无界的，所以添加元素可能导致outofmemoryerror； 2.不容许添加null； 3.添加的元素使用构造时候传入Comparator排序，要不然就使用元素的自然排序。 PriorityBlockingQueue是基于优先级，不是FIFO，这是个好东西，可以用来实现优先级的线程池，高优先级的先执行，低优先级的后执行。跟之前看过的几个队列一样，都是继承AbstractQueue实现BlockingQueue接口。 对于优先级的实现，是采用数组来实现堆的，大概样子画个图容易理解：<img src="https://zhongmin.me/wp-content/uploads/2018/04/BK9O67596CP293ZFXMN.png" alt> 堆顶元素时最小的，对于各左右子堆也保证堆顶元素最小。 内部结构和构造：</p>
+<p>//基于数组实现的，如果构造没有传入容量，就是用默认大小<br>private static final int DEFAULT_INITIAL_CAPACITY = 11;</p>
+<p>/**<br> * 数组最大容量<br> */<br>private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;</p>
+<p>/**<br> * 优先级队列数组，记住queue[n]的2个左右子元素在数组的位置为在queue[2*n+1]和queue[2*(n+1)]<br> */<br>private transient Object[] queue;</p>
+<p>/**<br> * 队列元素个数<br> */<br>private transient int size;</p>
+<p>/**<br> * 比较器，构造时可以选择传入，没有就null，到时候就使用元素的自然排序<br> */<br>private transient Comparator&lt;? super E&gt; comparator;</p>
+<p>/**<br> * 重入锁控制多有操作<br> */<br>private final ReentrantLock lock;</p>
+<p>/**<br> * 队列为空的时候条件队列<br> */<br>private final Condition notEmpty;</p>
+<p>/**<br> * 自旋锁<br> */<br>private transient volatile int allocationSpinLock;</p>
+<p>/**<br> * 序列化的时候使用PriorityQueue，这个PriorityBlockingQueue几乎一模一样<br> */<br>private PriorityQueue q;</p>
+<p>/**<br> * 默认构造，使用默认容量，没有比较器<br> */<br>public PriorityBlockingQueue() {<br>    this(DEFAULT_INITIAL_CAPACITY, null);<br>}</p>
+<p>public PriorityBlockingQueue(int initialCapacity) {<br>    this(initialCapacity, null);<br>}</p>
+<p>/**<br> * 最终调用的构造<br> */<br>public PriorityBlockingQueue(int initialCapacity,<br>                             Comparator&lt;? super E&gt; comparator) {<br>    if (initialCapacity &lt; 1)<br>        throw new IllegalArgumentException();<br>    this.lock = new ReentrantLock();<br>    this.notEmpty = lock.newCondition();<br>    this.comparator = comparator;<br>    this.queue = new Object[initialCapacity];<br>}</p>
+<p>首先一个MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;为什么要限制位Integer.MAX_VALUE-8,为什么要限制为-8。网上有人解释说这是因为有一部分虚拟机的实现是需要使用8位来储存size。在很多地方都出现了，这里做一下解释。 内部结构和构造没有什么特别的地方，基于数组实现优先级的堆，记住数组元素queue[n]的左节点queue[2*n+1]和右节点queue[2*(n+1)]，每次出队的都是queue[0]。 看下常用方法： add、put、offer都是最终调用offer()方法:</p>
+<p>public boolean offer(E e) {<br>    if (e == null)<br>        throw new NullPointerException();<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    int n, cap;<br>    Object[] array;<br>    while ((n = size) &gt;= (cap = (array = queue).length))<br>        tryGrow(array, cap); //如果元素数量大于数组大小了，那就自动扩容，无界<br>    try {<br>        Comparator&lt;? super E&gt; cmp = comparator; //这个看构造的时候入参，没有就用自然排序<br>        if (cmp == null)<br>            siftUpComparable(n, e, array); //所有插入都用从底向上调整<br>        else<br>            siftUpUsingComparator(n, e, array, cmp);<br>        size = n + 1;<br>        notEmpty.signal(); //添加后通知非空条件队列可以take<br>    } finally {<br>        lock.unlock();<br>    }<br>    return true;<br>}<br>//数组扩容<br>private void tryGrow(Object[] array, int oldCap) {<br>    lock.unlock(); // 数组扩容的时候使用自旋锁，不需要锁主锁，先释放<br>    Object[] newArray = null;<br>    if (allocationSpinLock == 0 &amp;&amp;<br>        UNSAFE.compareAndSwapInt(this, allocationSpinLockOffset,<br>                                 0, 1)) { //cas占用自旋锁<br>        try {<br>            int newCap = oldCap + ((oldCap &lt; 64) ?<br>                                   (oldCap + 2) : // grow faster if small<br>                                   (oldCap &gt;&gt; 1)); //这里容量最少是翻倍<br>            if (newCap - MAX_ARRAY_SIZE &gt; 0) {    // possible overflow<br>                int minCap = oldCap + 1;<br>                if (minCap &lt; 0 || minCap &gt; MAX_ARRAY_SIZE)<br>                    throw new OutOfMemoryError();<br>                newCap = MAX_ARRAY_SIZE; //扩容后，默认最大<br>            }<br>            if (newCap &gt; oldCap &amp;&amp; queue == array)<br>                newArray = new Object[newCap];<br>        } finally {<br>            allocationSpinLock = 0; //扩容后释放自旋锁<br>        }<br>    }<br>    if (newArray == null) // 到这里如果是本线程扩容newArray肯定是不为null，为null就是其他线程在处理扩容，那就让给别的线程处理<br>        Thread.yield();<br>    lock.lock(); //这里重新重入锁，因为扩容后还有其他操作<br>    if (newArray != null &amp;&amp; queue == array) { //这里不为null那就复制数组<br>        queue = newArray;<br>        System.arraycopy(array, 0, newArray, 0, oldCap);<br>    }<br>}<br>//所有插入都用从下向上调整<br>private static <t> void siftUpComparable(int k, T x, Object[] array) {<br>    Comparable&lt;? super T&gt; key = (Comparable&lt;? super T&gt;) x;<br>    while (k &gt; 0) {<br>        int parent = (k - 1) &gt;&gt;&gt; 1; //取待插入节点的父节点<br>        Object e = array[parent];<br>        if (key.compareTo((T) e) &gt;= 0) //如果比父节点大，那就无所谓退出，直接放在k位置<br>            break;<br>        array[k] = e; //比父节点小，按照k位置给父节点，然后从父节点开始继续向上查找<br>        k = parent;<br>    }<br>    array[k] = key;<br>}<br>//所有插入都用从底向上调整，跟siftUpComparable方法类似就是比较的时候使用了构造传入的comparator<br>private static <t> void siftUpUsingComparator(int k, T x, Object[] array,<br>                                   Comparator&lt;? super T&gt; cmp) {<br>    while (k &gt; 0) {<br>        int parent = (k - 1) &gt;&gt;&gt; 1;<br>        Object e = array[parent];<br>        if (cmp.compare(x, (T) e) &gt;= 0)<br>            break;<br>        array[k] = e;<br>        k = parent;<br>    }<br>    array[k] = x;<br>}</t></t></p>
+<p>所有的添加元素最后都是调用offer方法，2步：扩容+存储，大体流程为：</p>
+<p>1.加锁，检查元素数量是否大于等于数组长度，如果是，那就扩容，扩容没必要使用主锁，先释放锁，使用cas自旋锁，容量最少翻倍，释放自旋锁，可能存在竞争，检查下，是否扩容，如果扩容那就复制数组，再度加主锁；</p>
+<p>2.看构造入参是否有comparator，有就使用，没有就自然排序，从数组待插入位置父节点开始比较大，如果大于父节点，那就直接待插入位置插入，否则就跟父节点交换，然后循环向上查找，数量加1，通知非空条件队列take，最后释放锁。</p>
+<p>看下几个出队操作：</p>
+<p>public E poll() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        return dequeue();<br>    } finally {<br>        lock.unlock();<br>    }<br>}</p>
+<p>public E take() throws InterruptedException {<br>    final ReentrantLock lock = this.lock;<br>    lock.lockInterruptibly(); //响应中断<br>    E result;<br>    try {<br>        while ( (result = dequeue()) == null)<br>            notEmpty.await(); //如果take，数组没有元素是要阻塞的<br>    } finally {<br>        lock.unlock();<br>    }<br>    return result;<br>}</p>
+<p>public E poll(long timeout, TimeUnit unit) throws InterruptedException {<br>    long nanos = unit.toNanos(timeout);<br>    final ReentrantLock lock = this.lock;<br>    lock.lockInterruptibly(); //响应中断<br>    E result;<br>    try {<br>        while ( (result = dequeue()) == null &amp;&amp; nanos &gt; 0)<br>            nanos = notEmpty.awaitNanos(nanos); //响应超时，每次唤醒的超时时间要检查<br>    } finally {<br>        lock.unlock();<br>    }<br>    return result;<br>}</p>
+<p>public E peek() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        return (size == 0) ? null : (E) queue[0]; //只是获取元素，不移除<br>    } finally {<br>        lock.unlock();<br>    }<br>}<br>//获取的基本都调用这个方法<br>private E dequeue() {<br>    int n = size - 1;<br>    if (n &lt; 0)<br>        return null;<br>    else {<br>        Object[] array = queue;<br>        E result = (E) array[0];<br>        E x = (E) array[n]; //将最后一个数组元素取出作为比较基准<br>        array[n] = null; //出队，最后一个数组清掉，相当于堆的最底层最右的叶子节点清掉<br>        Comparator&lt;? super E&gt; cmp = comparator;<br>        if (cmp == null)<br>            siftDownComparable(0, x, array, n); //从顶向下调整<br>        else<br>            siftDownUsingComparator(0, x, array, n, cmp);<br>        size = n;<br>        return result;<br>    }<br>}<br>//从顶向下调整<br>private static <t> void siftDownComparable(int k, T x, Object[] array,<br>                                           int n) {<br>    if (n &gt; 0) { //元素数量大于0,数组非空<br>        Comparable&lt;? super T&gt; key = (Comparable&lt;? super T&gt;)x;<br>        int half = n &gt;&gt;&gt; 1;           // 最后一个叶子节点的父节点位置<br>        while (k &lt; half) {<br>            int child = (k &lt;&lt; 1) + 1; // 待调整位置左节点位置<br>            Object c = array[child]; //左节点<br>            int right = child + 1; //右节点<br>            if (right &lt; n &amp;&amp;<br>                ((Comparable&lt;? super T&gt;) c).compareTo((T) array[right]) &gt; 0)<br>                c = array[child = right]; //左右节点比较，取小的<br>            if (key.compareTo((T) c) &lt;= 0) //如果待调整key最小，那就退出，直接赋值<br>                break;<br>            array[k] = c; //如果key不是最小，那就取左右节点小的那个放到调整位置，然后小的那个节点位置开始再继续调整<br>            k = child;<br>        }<br>        array[k] = key;<br>    }<br>}</t></p>
+<p>出队的大体流程：</p>
+<p>1.加锁，获取queue[0]，清掉堆的最后一个叶子节点，并将其作为比较节点；</p>
+<p>2.调用从顶向下调整的方法：待调整位置节点左右节点和之前的叶子节点比较，如果之前叶子节点最小，那就直接放入待调整位置，如果是叶子节点小，那就取小的那个放入待调整位置，并且将小的部分重新循环查找，循环次数根据2分查找，基本是元素数量的一半就到找到位置。</p>
+<p>再看一个remove，因为remove方法，2中调整方式都用到了：</p>
+<p>public boolean remove(Object o) {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        int i = indexOf(o); //查找o在数组中位置<br>        if (i == -1)<br>            return false;<br>        removeAt(i); //remove掉<br>        return true;<br>    } finally {<br>        lock.unlock();<br>    }<br>}<br>//o在数组中的位置<br>private int indexOf(Object o) {<br>    if (o != null) {<br>        Object[] array = queue;<br>        int n = size;<br>        for (int i = 0; i &lt; n; i++)<br>            if (o.equals(array[i]))<br>                return i;<br>    }<br>    return -1;<br>}<br>//remove掉数组指定位置的元素<br>//跟之前take的dequeue相似的地方，dequeue是remove掉0的位置，然后调整也是从0的位置开始调整，这里是从指定位置调整<br>private void removeAt(int i) {<br>    Object[] array = queue;<br>    int n = size - 1;<br>    if (n == i) // removed last element<br>        array[i] = null;<br>    else {<br>        E moved = (E) array[n]; //跟dequeue一样也是最后一个叶子节点作为比较<br>        array[n] = null;<br>        Comparator&lt;? super E&gt; cmp = comparator;<br>        if (cmp == null)<br>            siftDownComparable(i, moved, array, n); //从指定位置调整<br>        else<br>            siftDownUsingComparator(i, moved, array, n, cmp);<br>        //经过从上向下调整后，如果是直接将比较节点放在待调整位置，那只能说明这个节点在以它为堆顶的堆里面最小，但不能说明从这个节点就向上查找就最大<br>        //这里需要自底向上再来一次调整<br>        if (array[i] == moved) {<br>            if (cmp == null)<br>                siftUpComparable(i, moved, array);<br>            else<br>                siftUpUsingComparator(i, moved, array, cmp);<br>        }<br>    }<br>    size = n;<br>}</p>
+<p>remove的时候有2个调整，先自顶向下调整，保证最小，然后再向上调整。</p>
+<p>其他的方法不看了，都这个意思。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/22/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-arrayblockingqueue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/04/22/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-arrayblockingqueue/" class="post-title-link" itemprop="url">J.U.C -- 有界阻塞队列 ArrayBlockingQueue</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-22 15:37:10" itemprop="dateCreated datePublished" datetime="2018-04-22T15:37:10+08:00">2018-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、-ArrayBlockingQueue类图结构"><a href="#一、-ArrayBlockingQueue类图结构" class="headerlink" title="一、 ArrayBlockingQueue类图结构"></a>一、 ArrayBlockingQueue类图结构</h2><p><img src="https://zhongmin.me/wp-content/uploads/2018/04/A_PM_SAU41DP7F8ZJZ16-560x640.png" alt> 如图ArrayBlockingQueue内部有个数组items用来存放队列元素，putindex下标标示入队元素下标，takeIndex是出队下标，count统计队列元素个数，从定义可知道并没有使用volatile修饰，这是因为访问这些变量使用都是在锁块内，并不存在可见性问题。另外有个独占锁lock用来对出入队操作加锁，这导致同时只有一个线程可以访问入队出队，另外notEmpty，notFull条件变量用来进行出入队的同步。 另外构造函数必须传入队列大小参数，所以为有界队列，默认是Lock为非公平锁。</p>
+<p>public ArrayBlockingQueue(int capacity) {<br>        this(capacity, false);<br>  }</p>
+<pre><code>public ArrayBlockingQueue(int capacity, boolean fair) {
+    if (capacity &lt;= 0)
+        throw new IllegalArgumentException();
+    this.items = new Object\[capacity\];
+    lock = new ReentrantLock(fair);
+    notEmpty = lock.newCondition();
+    notFull =  lock.newCondition();
+}
+</code></pre><h2 id="二、主要方法"><a href="#二、主要方法" class="headerlink" title="二、主要方法"></a>二、主要方法</h2><h4 id="offer方法-在队列尾部添加元素，如果队列满则返回false"><a href="#offer方法-在队列尾部添加元素，如果队列满则返回false" class="headerlink" title="offer方法:在队列尾部添加元素，如果队列满则返回false"></a>offer方法:在队列尾部添加元素，如果队列满则返回false</h4><p>public boolean offer(E e) {<br>    //e为null，则抛出NullPointerException异常<br>    checkNotNull(e);</p>
+<pre><code>//获取独占锁
+final ReentrantLock lock = this.lock;
+lock.lock();
+try {
+    //如果队列满则返回false
+    if (count == items.length)
+        return false;
+    else {
+        //否者插入元素
+        insert(e);
+        return true;
+    }
+} finally {
+    //释放锁
+    lock.unlock();
+}
+</code></pre><p>}<br>private void insert(E x) {<br>    //元素入队<br>    items[putIndex] = x;</p>
+<pre><code>//计算下一个元素应该存放的下标
+putIndex = inc(putIndex);
+++count;
+notEmpty.signal();
+</code></pre><p>}<br>//循环队列，计算下标<br>final int inc(int i) {<br>    return (++i == items.length) ? 0 : i;<br>}</p>
+<p>这里由于在操作共享变量前加了锁，所以不存在内存不可见问题，加过锁后获取的共享变量都是从主内存获取的，而不是在CPU缓存或者寄存器里面的值，释放锁后修改的共享变量值会刷新会主内存中。 另外这个队列是使用循环数组实现，所以计算下一个元素存放下标时候有些特殊。另外insert后调用 notEmpty.signal();是为了激活调用notEmpty.await()阻塞后放入notEmpty条件队列中的线程。</p>
+<h4 id="put操作-在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回"><a href="#put操作-在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回" class="headerlink" title="put操作:在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回"></a>put操作:在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回</h4><p>public void put(E e) throws InterruptedException {<br>    checkNotNull(e);<br>    final ReentrantLock lock = this.lock;</p>
+<pre><code>//获取可被中断锁
+lock.lockInterruptibly();
+try {
+
+    //如果队列满，则把当前线程放入notFull管理的条件队列
+    while (count == items.length)
+        notFull.await();
+
+    //插入元素
+    insert(e);
+} finally {
+    lock.unlock();
+}
+</code></pre><p>}</p>
+<p>需要注意的是如果队列满了那么当前线程会阻塞，知道出队操作调用了notFull.signal方法激活该线程。 代码逻辑很简单，但是这里需要思考一个问题为啥调用lockInterruptibly方法而不是Lock方法。我的理解是因为调用了条件变量的await()方法，而await()方法会在中断标志设置后抛出InterruptedException异常后退出，所以还不如在加锁时候先看中断标志是不是被设置了，如果设置了直接抛出InterruptedException异常，就不用再去获取锁了。然后看了其他并发类里面凡是调用了await的方法获取锁时候都是使用的lockInterruptibly方法而不是Lock也验证了这个想法。</p>
+<h4 id="poll操作-从队头获取并移除元素-并返回移除的元素，队列为空，则返回null。"><a href="#poll操作-从队头获取并移除元素-并返回移除的元素，队列为空，则返回null。" class="headerlink" title="poll操作:从队头获取并移除元素,并返回移除的元素，队列为空，则返回null。"></a>poll操作:从队头获取并移除元素,并返回移除的元素，队列为空，则返回null。</h4><p>public E poll() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        //当前队列为空则返回null,否者<br>        return (count == 0) ? null : extract();<br>    } finally {<br>        lock.unlock();<br>    }<br>}</p>
+<p>private E extract() {<br>    final Object[] items = this.items;</p>
+<pre><code>//获取元素值
+E x = this.&lt;E&gt;cast(items\[takeIndex\]);
+
+//数组中值值为null;
+items\[takeIndex\] = null;
+
+//队头指针计算，队列元素个数减一
+takeIndex = inc(takeIndex);
+--count;
+
+//发送信号激活notFull条件队列里面的线程
+notFull.signal();
+return x;
+</code></pre><p>}</p>
+<p>还有一个是remove方法,与poll一致,但是队列为空时则抛出异常.</p>
+<p>  public E remove() {<br>        E x = poll();<br>        if (x != null)<br>            return x;<br>        else<br>            throw new NoSuchElementException();<br>    }</p>
+<h4 id="take操作-从队头获取元素，并从队列中移除-如果队列为空则阻塞直到队列有元素。"><a href="#take操作-从队头获取元素，并从队列中移除-如果队列为空则阻塞直到队列有元素。" class="headerlink" title="take操作:从队头获取元素，并从队列中移除,如果队列为空则阻塞直到队列有元素。"></a>take操作:从队头获取元素，并从队列中移除,如果队列为空则阻塞直到队列有元素。</h4><p>public E take() throws InterruptedException {<br>    final ReentrantLock lock = this.lock;<br>    lock.lockInterruptibly();<br>    try {</p>
+<pre><code>    //队列为空，则等待，直到队列有元素
+    while (count == 0)
+        notEmpty.await();
+    return extract();
+} finally {
+    lock.unlock();
+}
+</code></pre><p>}</p>
+<p>需要注意的是如果队列为空，当前线程会被挂起放到notEmpty的条件队列里面，直到入队操作执行调用notEmpty.signal后当前线程才会被激活，await才会返回。</p>
+<h4 id="peek操作-返回队列头元素但不移除该元素，队列为空，返回null"><a href="#peek操作-返回队列头元素但不移除该元素，队列为空，返回null" class="headerlink" title="peek操作:返回队列头元素但不移除该元素，队列为空，返回null"></a>peek操作:返回队列头元素但不移除该元素，队列为空，返回null</h4><p>public E peek() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        //队列为空返回null,否者返回头元素<br>        return (count == 0) ? null : itemAt(takeIndex);<br>    } finally {<br>        lock.unlock();<br>    }<br>}</p>
+<p>final E itemAt(int i) {<br>    return this.<e>cast(items[i]);<br>}</e></p>
+<p>element操作,与peek一样,返回队列头元素但不移除该元素，队列为空，则抛出异常</p>
+<p>  public E element() {<br>        E x = peek();<br>        if (x != null)<br>            return x;<br>        else<br>            throw new NoSuchElementException();<br>    }</p>
+<h4 id="其他的方法"><a href="#其他的方法" class="headerlink" title="其他的方法:"></a>其他的方法:</h4><p>//自动移除此队列中的所有元素。<br>void clear() </p>
+<p>//如果此队列包含指定的元素，则返回 true。<br>boolean contains(Object o) </p>
+<p>//移除此队列中所有可用的元素，并将它们添加到给定collection中。<br>int drainTo(Collection&lt;? super E&gt; c) </p>
+<p>//最多从此队列中移除给定数量的可用元素，并将这些元素添加到给定collection 中。<br>int drainTo(Collection&lt;? super E&gt; c, int maxElements) </p>
+<p>//返回在此队列中的元素上按适当顺序进行迭代的迭代器。<br>Iterator<e> iterator() </e></p>
+<p>//返回队列还能添加元素的数量<br>int remainingCapacity() </p>
+<p>//返回此队列中元素的数量。<br>int size() </p>
+<p>//返回一个按适当顺序包含此队列中所有元素的数组。<br>Object[] toArray() </p>
+<p>//返回一个按适当顺序包含此队列中所有元素的数组；返回数组的运行时类型是指定数组的运行时类型。      </p>
+<p><t> T[] toArray(T[] a)</t></p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>ArrayBlockingQueue的其实是消费者生产者的一种实现,take为消费方法,put为生产.,ArrayBlockingQueue通过使用全局独占锁实现同时只能有一个线程进行入队或者出队操作，这个锁的粒度比较大，有点类似在方法上添加synchronized的意味。其中offer,poll操作通过简单的加锁进行入队出队操作，而put,take则使用了条件变量实现如果队列满则等待，如果队列空则等待，然后分别在出队和入队操作中发送信号激活等待线程实现同步。另外相比LinkedBlockingQueue，ArrayBlockingQueue的size操作的结果是精确的，因为计算前加了全局锁。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/22/j-u-c-e5-b7-a5-e5-85-b7-e5-85-ad-phaser/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/04/22/j-u-c-e5-b7-a5-e5-85-b7-e5-85-ad-phaser/" class="post-title-link" itemprop="url">J.U.C工具-(六)-Phaser</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-22 13:45:17" itemprop="dateCreated datePublished" datetime="2018-04-22T13:45:17+08:00">2018-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Phaser是JDK7新添加的线程同步辅助类，作用同CyclicBarrier，CountDownLatch类似，但是使用起来更加灵活： 1. Parties是动态的。 2. Phaser支持树状结构，即Phaser可以有一个父Phaser。 CyclicBarrier，允许一组线程互相等待，直到到达某个公共屏障点。它提供的await()可以实现让所有参与者在临界点到来之前一直处于等待状态。 CountDownLatch，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。它提供了await()、countDown()两个方法来进行操作。 在Phaser中，它把多个线程协作执行的任务划分为多个阶段，编程时需要明确各个阶段的任务，每个阶段都可以有任意个参与者，线程都可以随时注册并参与到某个阶段。 <strong>构造</strong> Phaser创建后，初始阶段编号为0，构造函数中指定初始参与个数。 <strong>注册：Registration</strong> Phaser支持通过register()和bulkRegister(int parties)方法来动态调整注册任务的数量。 <strong>Arrival</strong> 每个Phaser实例都会维护一个phase number，初始值为0。每当所有注册的任务都到达Phaser时，phase number累加，并在超过Integer.MAX_VALUE后清零。arrive()和arriveAndDeregister()方法用于记录到达；其中arrive()，某个参与者完成任务后调用；arriveAndDeregister()，任务完成，取消自己的注册。arriveAndAwaitAdvance()，自己完成等待其他参与者完成，进入阻塞，直到Phaser成功进入下个阶段。 先看第一个例子:</p>
+<h4 id="例1-基本使用方法"><a href="#例1-基本使用方法" class="headerlink" title="例1:基本使用方法"></a>例1:基本使用方法</h4><p>public class TestPhaser {</p>
+<pre><code>public static void main(String\[\] args) {
+    Phaser phaser = new Phaser(4);
+    for(int i = 0 ; i &lt; 4 ; i++){
+        PhaserTask task_01 = new PhaserTask(phaser);
+        Thread thread = new Thread(task\_01, &quot;PhaseTest\_&quot; + i);
+        thread.start();
+    }
+}
+static class PhaserTask implements Runnable{
+    private final Phaser phaser;
+
+    public PhaserTask(Phaser phaser){
+        this.phaser = phaser;
+    }
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + &quot;执行任务完成，等待其他任务执行......&quot;);
+        //等待其他任务执行完成
+        phaser.arriveAndAwaitAdvance();
+        System.out.println(Thread.currentThread().getName() + &quot;继续执行任务...&quot;);
+    }
+}
+</code></pre><p>}</p>
+<p>执行结果</p>
+<p>PhaseTest_0执行任务完成，等待其他任务执行……<br>PhaseTest_2执行任务完成，等待其他任务执行……<br>PhaseTest_3执行任务完成，等待其他任务执行……<br>PhaseTest_3继续执行任务…<br>PhaseTest_1继续执行任务…<br>PhaseTest_0继续执行任务…<br>PhaseTest_2继续执行任务…</p>
+<p>在该实例中我们可以确认，所有子线程的<em>**</em>+”继续执行任务…”，都是在线程调用arriveAndAwaitAdvance()方法之后执行的,这里Phaser起到了CyclicBarrier的作用.</p>
+<h5 id="例2-phaser可以动态的注册线程"><a href="#例2-phaser可以动态的注册线程" class="headerlink" title="例2:phaser可以动态的注册线程:"></a><strong>例2:phaser可以</strong>动态的注册线程:</h5><p> public static void main(String[] args) {<br>        Phaser phaser = new Phaser();<br>        for(int i = 0 ; i &lt; 4 ; i++){<br>            PhaserTask task_01 = new PhaserTask(phaser);<br>            Thread thread = new Thread(task_01, “PhaseTest_“ + i);<br>            thread.start();<br>        }</p>
+<pre><code>    phaser.register();
+    System.out.println(&quot;=========================&quot;);
+}
+static class PhaserTask implements Runnable{
+    private final Phaser phaser;
+
+    public PhaserTask(Phaser phaser){
+        this.phaser = phaser;
+        this.phaser.register();
+    }
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + &quot;执行任务完成，等待其他任务执行......&quot;);
+        //等待其他任务执行完成
+        phaser.arriveAndAwaitAdvance();
+        System.out.println(Thread.currentThread().getName() + &quot;继续执行任务...&quot;);
+    }
+}
+</code></pre><p>运行结果:</p>
+<p>=========================<br>PhaseTest_2执行任务完成，等待其他任务执行……<br>PhaseTest_3执行任务完成，等待其他任务执行……<br>PhaseTest_0执行任务完成，等待其他任务执行……<br>PhaseTest_1执行任务完成，等待其他任务执行……</p>
+<p>可以发现,phaser先注册了4个线程,并且让他们在arriveAndAwaitAdvance处进行等待,但是由于在主线程中也注册进去了,并没有到达标记点arriveAndAwaitAdvance,所以其他线程一直在等待. <strong>例3:phaser可以重复的使用</strong></p>
+<p>  public static void main(String[] args) {<br>        Phaser phaser = new Phaser();<br>        for(int i = 0 ; i &lt; 4 ; i++){<br>            PhaserTask task_01 = new PhaserTask(phaser);<br>            Thread thread = new Thread(task_01, “PhaseTest_“ + i);<br>            thread.start();<br>        }</p>
+<pre><code>    //phaser.register();
+    //System.out.println(&quot;=========================&quot;);
+}
+static class PhaserTask implements Runnable{
+    private final Phaser phaser;
+
+    public PhaserTask(Phaser phaser){
+        this.phaser = phaser;
+        this.phaser.register();
+    }
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + &quot;任务1完成,等待其他线程完成任务1......&quot;);
+        //等待其他任务执行完成
+        phaser.arriveAndAwaitAdvance();
+        System.out.println(Thread.currentThread().getName() + &quot;任务2完成,等待其他线程完成任务2...&quot;);
+
+        phaser.arriveAndAwaitAdvance();
+        System.out.println(Thread.currentThread().getName() + &quot;任务3完成,等待其他线程完成任务3...&quot;);
+
+        phaser.arriveAndAwaitAdvance();
+    }
+</code></pre><p>执行结果:</p>
+<p>PhaseTest_0任务1完成,等待其他线程完成任务1……<br>PhaseTest_2任务1完成,等待其他线程完成任务1……<br>PhaseTest_3任务1完成,等待其他线程完成任务1……<br>PhaseTest_1任务1完成,等待其他线程完成任务1……<br>PhaseTest_1任务2完成,等待其他线程完成任务2…<br>PhaseTest_0任务2完成,等待其他线程完成任务2…<br>PhaseTest_2任务2完成,等待其他线程完成任务2…<br>PhaseTest_3任务2完成,等待其他线程完成任务2…<br>PhaseTest_3任务3完成,等待其他线程完成任务3…<br>PhaseTest_0任务3完成,等待其他线程完成任务3…<br>PhaseTest_2任务3完成,等待其他线程完成任务3…<br>PhaseTest_1任务3完成,等待其他线程完成任务3…</p>
+<p>可以看见注册的线程是一次完成任务1,2,3的; 假如这个在执行任务3的时候,如果有一个线程出现异常不能继续执行下去了,这个时候会如何呢? 修改一下上面的代码:</p>
+<p> public static void main(String[] args) {<br>        Phaser phaser = new Phaser();<br>        for(int i = 0 ; i &lt; 4 ; i++){<br>            PhaserTask task_01 = new PhaserTask(phaser);<br>            Thread thread = new Thread(task_01, “PhaseTest_“ + i);<br>            thread.start();<br>        }</p>
+<pre><code>    //phaser.register();
+    //System.out.println(&quot;=========================&quot;);
+}
+static class PhaserTask implements Runnable{
+    private final Phaser phaser;
+
+    public PhaserTask(Phaser phaser){
+        this.phaser = phaser;
+        this.phaser.register();
+    }
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + &quot;任务1完成,等待其他线程完成任务1......&quot;);
+        System.out.println(&quot;getPhaser()--------------&gt;&quot;+phaser.getPhase());
+        //等待其他任务执行完成
+        phaser.arriveAndAwaitAdvance();
+
+       if(Thread.currentThread().getName().indexOf(&quot;3&quot;) &gt; 0){
+           int  a = 1/0;
+       }
+        System.out.println(Thread.currentThread().getName() + &quot;任务2完成,等待其他线程完成任务2...&quot;);
+        System.out.println(&quot;getPhaser()--------------&gt;&quot;+phaser.getPhase());
+
+        phaser.arriveAndAwaitAdvance();
+        System.out.println(Thread.currentThread().getName() + &quot;任务3完成,等待其他线程完成任务3...&quot;);
+        System.out.println(&quot;getPhaser()--------------&gt;&quot;+phaser.getPhase());
+
+        phaser.arriveAndAwaitAdvance();
+    }
+}
+</code></pre><p>执行结果:</p>
+<p>PhaseTest_0任务1完成,等待其他线程完成任务1……<br>PhaseTest_2任务1完成,等待其他线程完成任务1……<br>PhaseTest_3任务1完成,等待其他线程完成任务1……<br>PhaseTest_1任务1完成,等待其他线程完成任务1……<br>PhaseTest_1任务2完成,等待其他线程完成任务2…<br>PhaseTest_0任务2完成,等待其他线程完成任务2…<br>PhaseTest_2任务2完成,等待其他线程完成任务2…<br>Exception in thread “PhaseTest_3” java.lang.ArithmeticException: / by zero<br>    at 线程.TestPhaser$PhaserTask.run(TestPhaser.java:33)<br>    at java.lang.Thread.run(Thread.java:745)</p>
+<p>可以发现因为线程3在任务2出异常了无法达到预定的点,所有导致其他的线程也会阻塞住等待线程3. 那么这个问题该如何解决呢?  实际上phaser可以动态的注册,同样的也可以都动态的注销;再修改下代码:</p>
+<p>public static void main(String[] args) throws InterruptedException {<br>        Phaser phaser = new Phaser();<br>        for(int i = 0 ; i &lt; 4 ; i++){<br>            PhaserTask task_01 = new PhaserTask(phaser);<br>            Thread thread = new Thread(task_01, “PhaseTest_“ + i);<br>            thread.start();<br>        }<br>        System.out.println(“RegisteredParties==============”+phaser.getRegisteredParties());<br>        TimeUnit.SECONDS.sleep(3);<br>        System.out.println(“RegisteredParties=============”+phaser.getRegisteredParties());<br>        //phaser.register();<br>        //System.out.println(“=========================”);<br>    }<br>    static class PhaserTask implements Runnable{<br>        private final Phaser phaser;</p>
+<pre><code>    public PhaserTask(Phaser phaser){
+        this.phaser = phaser;
+        this.phaser.register();
+    }
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + &quot;任务1完成,等待其他线程完成任务1......&quot;);
+        //等待其他任务执行完成
+        phaser.arriveAndAwaitAdvance();
+
+       if(Thread.currentThread().getName().indexOf(&quot;3&quot;) &gt; 0){
+           try {
+               int a = 1 / 0;
+           }catch (Exception e){
+               phaser.arriveAndDeregister();//从phaser中给删除
+           }
+       }
+        System.out.println(Thread.currentThread().getName() + &quot;任务2完成,等待其他线程完成任务2...&quot;);
+
+        phaser.arriveAndAwaitAdvance();
+        System.out.println(Thread.currentThread().getName() + &quot;任务3完成,等待其他线程完成任务3...&quot;);
+
+        phaser.arriveAndAwaitAdvance();
+    }
+}
+</code></pre><p>当出现异常之后我们将线程从phaser中移除掉,执行结果:</p>
+<p>RegisteredParties==============4<br>PhaseTest_3任务1完成,等待其他线程完成任务1……<br>PhaseTest_2任务1完成,等待其他线程完成任务1……<br>PhaseTest_1任务1完成,等待其他线程完成任务1……<br>PhaseTest_0任务1完成,等待其他线程完成任务1……<br>PhaseTest_0任务2完成,等待其他线程完成任务2…<br>PhaseTest_2任务2完成,等待其他线程完成任务2…<br>PhaseTest_3任务2完成,等待其他线程完成任务2…<br>PhaseTest_2任务3完成,等待其他线程完成任务3…<br>PhaseTest_1任务2完成,等待其他线程完成任务2…<br>PhaseTest_3任务3完成,等待其他线程完成任务3…<br>PhaseTest_1任务3完成,等待其他线程完成任务3…<br>PhaseTest_0任务3完成,等待其他线程完成任务3…<br>RegisteredParties=============3</p>
+<p>可以看见看出其他线程可以正常的完成任务,并没有被阻塞住,同时phaser中的注册parties数量少了1个.</p>
+<h4 id="phaserAPI简述"><a href="#phaserAPI简述" class="headerlink" title="phaserAPI简述:"></a>phaserAPI简述:</h4><p>1、Phaser()：构造函数，创建一个Phaser；默认parties个数为0。此后我们可以通过register()、bulkRegister()方法来注册新的parties。每个Phaser实例内部，都持有几个状态数据：termination状态、已经注册的parties个数（registeredParties）、当前phase下已到达的parties个数（arrivedParties）、当前phase周期数，还有2个同步阻塞队列Queue。Queue中保存了所有的waiter，即因为advance而等待的线程信息；这两个Queue分别为evenQ和oddQ，这两个Queue在实现上没有任何区别，Queue的元素为QNode，每个QNode保存一个waiter的信息，比如Thread引用、阻塞的phase、超时的deadline、是否支持interrupted响应等。两个Queue，其中一个保存当前phase中正在使用的waiter，另一个备用，当phase为奇数时使用evenQ、oddQ备用，偶数时相反，即两个Queue轮换使用。当advance事件触发期间，新register的parties将会被放在备用的Queue中，advance只需要响应另一个Queue中的waiters即可，避免出现混乱。 2、Phaser(int parties)：构造函数，初始一定数量的parties；相当于直接regsiter此数量的parties。 3、arrive()：到达，阻塞，等到当前phase下其他parties到达。如果没有register（即已register数量为0），调用此方法将会抛出异常，此方法返回当前phase周期数，如果Phaser已经终止，则返回负数。 4、arriveAndDeregister()：到达，并注销一个parties数量，非阻塞方法。注销，将会导致Phaser内部的parties个数减一（只影响当前phase），即下一个phase需要等待arrive的parties数量将减一。异常机制和返回值，与arrive方法一致。 5、arriveAndAwaitAdvance()：到达，且阻塞直到其他parties都到达，且advance。此方法等同于awaitAdvance(arrive())。如果你希望阻塞机制支持timeout、interrupted响应，可以使用类似的其他方法（参见下文）。如果你希望到达后且注销，而且阻塞等到当前phase下其他的parties到达，可以使用awaitAdvance(arriveAndDeregister())方法组合。此方法的异常机制和返回值同arrive()。 6、awaitAdvance(int phase)：阻塞方法，等待phase周期数下其他所有的parties都到达。如果指定的phase与Phaser当前的phase不一致，则立即返回。 7、awaitAdvanceInterruptibly(int phase)：阻塞方法，同awaitAdvance，只是支持interrupted响应，即waiter线程如果被外部中断，则此方法立即返回，并抛出InterrutedException。 8、awaitAdvanceInterruptibly(int phase,long timeout,TimeUnit unit)：阻塞方法，同awaitAdvance，支持timeout类型的interrupted响应，即当前线程阻塞等待约定的时长，超时后以TimeoutException异常方式返回。 9、forceTermination()：强制终止，此后Phaser对象将不可用，即register等将不再有效。此方法将会导致Queue中所有的waiter线程被唤醒。 10、register()：新注册一个party，导致Phaser内部registerPaties数量加1；如果此时onAdvance方法正在执行，此方法将会等待它执行完毕后才会返回。此方法返回当前的phase周期数，如果Phaser已经中断，将会返回负数。 11、bulkRegister(int parties)：批量注册多个parties数组，规则同10、。 12、getArrivedParties()：获取已经到达的parties个数。 13、getPhase()：获取当前phase周期数。如果Phaser已经中断，则返回负值。 14、getRegisteredParties()：获取已经注册的parties个数。 15、getUnarrivedParties()：获取尚未到达的parties个数。 16、onAdvance(int phase,int registeredParties)：这个方法比较特殊，表示当进入下一个phase时可以进行的事件处理，如果返回true表示此Phaser应该终止（此后将会把Phaser的状态为termination，即isTermination()将返回true。），否则可以继续进行。phase参数表示当前周期数，registeredParties表示当前已经注册的parties个数。 默认实现为：return registeredParties == 0；在很多情况下，开发者可以通过重写此方法，来实现自定义的advance时间处理机制。</p>
+<h4 id="phaser源码简析"><a href="#phaser源码简析" class="headerlink" title="phaser源码简析"></a>phaser源码简析</h4><p>Phaser的构造函数涉及到两个参数：父Phaser和初始的parties，因此提供了4个构造函数：</p>
+<p>public Phaser();<br>public Phaser(int parties);</p>
+<p>public Phaser(Phaser parent);<br>public Phaser(Phaser parent, int parties);</p>
+<p>因为Phaser的特色在在于动态的parties，因此首先来看动态更新parties是如何实现的。 Phaser提供了两个方法：register和bulkRegister，前者会添加一个需要同步的线程，后者会添加parties个需要同步的线程。</p>
+<p>public int register() {<br>        return doRegister(1);<br>    }</p>
+<pre><code>// 增加了参数的检查
+public int bulkRegister(int parties) {
+    if (parties &lt; 0)
+        throw new IllegalArgumentException();
+    if (parties == 0)
+        return getPhase();
+    return doRegister(parties);
+}
+</code></pre><p>两个方法都调用了doRegister方法，因此接下来就来看看doRegister方法。 在分析doRegister之前先来说说Phaser的成员变量：state，它存储了Phaser的状态信息：</p>
+<p>private volatile long state;</p>
+<p>1. state的最高位是一个标志位，1表示Phaser的线程同步已经结束，0表示线程同步正在进行 2. state的低32位中，低16位表示没有到达的线程数量，高16位表示Parties值 3. state的高32位除了最高位之外的其他31位表示的Phaser的phase，可以理解为第多少次同步（从0开始计算）。 介绍完了state，来看方法doRegister：</p>
+<p>private int doRegister(int registrations) {<br>        // 把registrations值同时加到parties值和还未达到的线程数量中去<br>        long adj = ((long)registrations &lt;&lt; PARTIES_SHIFT) | registrations;<br>        final Phaser parent = this.parent;<br>        int phase;<br>        for (;;) {<br>            long s = state;<br>            int counts = (int)s;<br>            int parties = counts &gt;&gt;&gt; PARTIES_SHIFT;<br>            int unarrived = counts &amp; UNARRIVED_MASK;<br>            // 超过了允许的最大parties<br>            if (registrations &gt; MAX_PARTIES - parties)<br>                throw new IllegalStateException(badRegister(s));<br>            // 最高位为1，表示Phaser的线程同步已经结束<br>            else if ((phase = (int)(s &gt;&gt;&gt; PHASE_SHIFT)) &lt; 0)<br>                break;<br>            // Phaser中的parties不是0<br>            else if (counts != EMPTY) {<br>                // 如果当前Phaser没有父Phaser，或者如果有父Phaser，<br>                // 刷新自己的state值，如果刷新后的state没有变化。<br>                // 这里刷新子Phaser的原因在于，会出现父Phaser已经进入下一个phase<br>                // 而子Phaser却没有及时进入下一个phase的延迟现象<br>                if (parent == null || reconcileState() == s) {<br>                    // 如果所有线程都到达了，等待Phaser进入下一次同步开始<br>                    if (unarrived == 0)<br>                        root.internalAwaitAdvance(phase, null);<br>                    // 更新state成功，跳出循环完成注册<br>                    else if (UNSAFE.compareAndSwapLong(this, stateOffset,<br>                                                       s, s + adj))<br>                        break;<br>                }<br>            }<br>            // 第一次注册，且不是子Phaser<br>            else if (parent == null) {<br>                // 更新当前Phaser的state值成功则完成注册<br>                long next = ((long)phase &lt;&lt; PHASE_SHIFT) | adj;<br>                if (UNSAFE.compareAndSwapLong(this, stateOffset, s, next))<br>                    break;<br>            }<br>            // 第一次注册到子Phaser<br>            else {<br>                // 锁定当前Phaser对象<br>                synchronized (this) {<br>                    // 再次检查state值，确保没有被更新<br>                    if (state == s) {<br>                        // 注册到父Phaser中去<br>                        parent.doRegister(1);<br>                        do { // 获取当前phase值<br>                            phase = (int)(root.state &gt;&gt;&gt; PHASE_SHIFT);<br>                        } while (!UNSAFE.compareAndSwapLong<br>                                 (this, stateOffset, state,<br>                                  ((long)phase &lt;&lt; PHASE_SHIFT) | adj));// 更新当前Phaser的state值<br>                        break;<br>                    }<br>                }<br>            }<br>        }<br>        return phase;<br>    }</p>
+<p>看完了注册，那么来看同步操作的arrive，这里也涉及到两个方法：arrive和arriveAndDeregister，前者会等待其他线程的到达，后者则会立刻返回：</p>
+<p>public int arrive() {<br>        return doArrive(false);<br>    }</p>
+<pre><code>public int arriveAndDeregister() {
+    return doArrive(true);
+}
+</code></pre><p>两个方法都调用了doArrive方法，区别在于参数一个是false，一个是true。那么来看doArrive：</p>
+<p>private int doArrive(boolean deregister) {<br>        // arrive需要把未到达的线程数减去1，<br>        // deregister为true，需要把parties值也减去1<br>        int adj = deregister ? ONE_ARRIVAL|ONE_PARTY : ONE_ARRIVAL;<br>        final Phaser root = this.root;<br>        for (;;) {<br>            // 如果是有父Phaser，首先刷新自己的state<br>            long s = (root == this) ? state : reconcileState();<br>            int phase = (int)(s &gt;&gt;&gt; PHASE_SHIFT);<br>            int counts = (int)s;<br>            int unarrived = (counts &amp; UNARRIVED_MASK) - 1;<br>            // 最高位为1，表示同步已经结束，返回phase值<br>            if (phase &lt; 0)<br>                return phase;<br>            // 如果parties为0或者在此次arrive之前所有线程到达<br>            else if (counts == EMPTY || unarrived &lt; 0) {<br>                // 对于非子Phaser来说，上述情况的arrive肯定是非法的<br>                // 对于子Phaser首先刷新一下状态再做检查<br>                if (root == this || reconcileState() == s)<br>                    throw new IllegalStateException(badArrive(s));<br>            }<br>            // 正常情况下，首先更新state<br>            else if (UNSAFE.compareAndSwapLong(this, stateOffset, s, s-=adj)) {<br>                // 所有线程都已经到达<br>                if (unarrived == 0) {<br>                    // 计算parties作为下一个phase的未到达的parties<br>                    long n = s &amp; PARTIES_MASK;<br>                    int nextUnarrived = (int)n &gt;&gt;&gt; PARTIES_SHIFT;<br>                    // 调用父Phaser的doArrive<br>                    if (root != this)<br>                        // 如果下一个phase的未到达的parties为0，则需要向<br>                        // 父Phaser取消注册<br>                        return parent.doArrive(nextUnarrived == 0);<br>                    // 正在进入下一个Phase，默认的实现是nextUnarrived为0<br>                    // 表示正在进入下一个Phase，因为下一个phase的parties<br>                    // 为0，需要等待parties不为0<br>                    if (onAdvance(phase, nextUnarrived))<br>                        // 正在等待下一个phase，设置状态为终止<br>                        n |= TERMINATION_BIT;<br>                    else if (nextUnarrived == 0)<br>                        // 下一个phase的parties为0，更新未到达的parties的值<br>                        n |= EMPTY;<br>                    else<br>                        // 更新下一个phase的未到达的parties的值<br>                        n |= nextUnarrived;<br>                    // phase值加1<br>                    n |= (long)((phase + 1) &amp; MAX_PHASE) &lt;&lt; PHASE_SHIFT;</p>
+<pre><code>                // 更新state值
+                UNSAFE.compareAndSwapLong(this, stateOffset, s, n);
+
+                // 唤醒等待的线程
+                releaseWaiters(phase);
+            }
+            return phase;
+        }
+    }
+}
+</code></pre><p>关于arrive还有一个方法：arriveAndAwaitAdvance。这个方法会等到下一个phase开始再返回，相等于doArrive方法添加了awaitAdvance方法的功能。基本逻辑和上面说的doArrive方法类似：</p>
+<p>public int arriveAndAwaitAdvance() {<br>        final Phaser root = this.root;<br>        for (;;) {<br>            long s = (root == this) ? state : reconcileState();<br>            int phase = (int)(s &gt;&gt;&gt; PHASE_SHIFT);<br>            int counts = (int)s;<br>            int unarrived = (counts &amp; UNARRIVED_MASK) - 1;<br>            if (phase &lt; 0)<br>                return phase;<br>            else if (counts == EMPTY || unarrived &lt; 0) {<br>                // 对于非子Phaser来说，因为可以等待下一个phase，<br>                // 所以不是非法arrive<br>                if (reconcileState() == s)<br>                    throw new IllegalStateException(badArrive(s));<br>            }<br>            else if (UNSAFE.compareAndSwapLong(this, stateOffset, s,<br>                                               s -= ONE_ARRIVAL)) {<br>                // 还有其他线程没有达到，就会等待直到下一个phase开始<br>                if (unarrived != 0)<br>                    return root.internalAwaitAdvance(phase, null);<br>                if (root != this)<br>                    return parent.arriveAndAwaitAdvance();<br>                long n = s &amp; PARTIES_MASK;  // base of next state<br>                int nextUnarrived = (int)n &gt;&gt;&gt; PARTIES_SHIFT;<br>                if (onAdvance(phase, nextUnarrived))<br>                    n |= TERMINATION_BIT;<br>                else if (nextUnarrived == 0)<br>                    n |= EMPTY;<br>                else<br>                    n |= nextUnarrived;<br>                int nextPhase = (phase + 1) &amp; MAX_PHASE;<br>                n |= (long)nextPhase &lt;&lt; PHASE_SHIFT;<br>                if (!UNSAFE.compareAndSwapLong(this, stateOffset, s, n))<br>                    return (int)(state &gt;&gt;&gt; PHASE_SHIFT);<br>                releaseWaiters(phase);<br>                return nextPhase;<br>            }<br>        }<br>    }</p>
+<p>这一部分主要讲了Phaser的动态更新parties以及线程的arrive,后面将会分析线程等待的实现。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/22/abstractqueuedsynchronizer-e4-ba-94-semaphore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/04/22/abstractqueuedsynchronizer-e4-ba-94-semaphore/" class="post-title-link" itemprop="url">AbstractQueuedSynchronizer(五)-Semaphore</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-22 10:31:03" itemprop="dateCreated datePublished" datetime="2018-04-22T10:31:03+08:00">2018-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Semaphore又称信号量，是操作系统中的一个概念，在Java并发编程中，信号量控制的是线程并发的数量。它通过协调各个线程，以保证合理的使用公共资源。很多年以来，我都觉得从字面上很难理解Semaphore所表达的含义，只能把它比作是控制流量的红绿灯，比如XX马路要限制流量，只允许同时有一百辆车在这条路上行使，其他的都必须在路口等待，所以前一百辆车会看到绿灯，可以开进这条马路，后面的车会看到红灯，不能驶入XX马路，但是如果前一百辆中有五辆车已经离开了XX马路，那么后面就允许有5辆车驶入马路，这个例子里说的车就是线程，驶入马路就表示线程在执行，离开马路就表示线程执行完成，看见红灯就表示线程被阻塞，不能执行。简单的理解就是Semaphore就是一个资源池.</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>Semaphore可以用于做流量控制，特别公用资源有限的应用场景，比如数据库连接。假如有一个需求，要读取几万个文件的数据，因为都是IO密集型任务，我们可以启动几十个线程并发的读取，但是如果读到内存后，还需要存储到数据库中，而数据库的连接数只有10个，这时我们必须控制只有十个线程同时获取数据库连接保存数据，否则会报错无法获取数据库连接。这个时候，我们就可以使用Semaphore来做流控，代码如下：</p>
+<p>public class SemaphoreTest {</p>
+<pre><code>private static final int THREAD_COUNT = 30;
+
+private static ExecutorService threadPool = Executors
+        .newFixedThreadPool(THREAD_COUNT);
+
+private static Semaphore s = new Semaphore(10);
+
+public static void main(String\[\] args) {
+    for (int i = 0; i &lt; THREAD_COUNT; i++) {
+        threadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    s.acquire();
+                    System.out.println(&quot;save data&quot;);
+                    s.release();
+                } catch (InterruptedException e) {
+                }
+            }
+        });
+    }
+
+    threadPool.shutdown();
+}
+</code></pre><p>}</p>
+<p>在代码中，虽然有30个线程在执行，但是只允许10个并发的执行。Semaphore的构造方法Semaphore(int permits) 接受一个整型的数字，表示可用的许可证数量。Semaphore(10)表示允许10个线程获取许可证，也就是最大并发数是10。Semaphore的用法也很简单，首先线程使用Semaphore的acquire()获取一个许可证，使用完之后调用release()归还许可证。还可以用tryAcquire()方法尝试获取许可证。acqurire也可以同时获取多个许可证.</p>
+<h3 id="Semaphore还提供一些其他方法："><a href="#Semaphore还提供一些其他方法：" class="headerlink" title="Semaphore还提供一些其他方法："></a>Semaphore还提供一些其他方法：</h3><ul>
+<li>int availablePermits() ：返回此信号量中当前可用的许可证数。</li>
+<li>int getQueueLength()：返回正在等待获取许可证的线程数。</li>
+<li>boolean hasQueuedThreads() ：是否有线程正在等待获取许可证。</li>
+<li>void reducePermits(int reduction) ：减少reduction个许可证。是个protected方法。</li>
+<li>Collection getQueuedThreads() ：返回所有等待获取许可证的线程集合。是个protected方法</li>
+</ul>
+<h3 id="源码简析"><a href="#源码简析" class="headerlink" title="源码简析"></a>源码简析</h3><p>Semaphore 其实也是 AQS 中共享锁的使用,创建 Semaphore 实例的时候，需要一个参数 permits，这个基本上可以确定是设置给 AQS 的 state 的，然后每个线程调用 acquire 的时候，执行 state = state - 1，release 的时候执行 state = state + 1，当然，acquire 的时候，如果 state = 0，说明没有资源了，需要等待其他线程 release。 构造方法：</p>
+<p>public Semaphore(int permits) {<br>    sync = new NonfairSync(permits);<br>}</p>
+<p>public Semaphore(int permits, boolean fair) {<br>    sync = fair ? new FairSync(permits) : new NonfairSync(permits);<br>}</p>
+<p>这里和 ReentrantLock 类似，用了公平策略和非公平策略。 看 acquire 方法：</p>
+<p>public void acquire() throws InterruptedException {<br>    sync.acquireSharedInterruptibly(1);<br>}<br>public void acquireUninterruptibly() {<br>    sync.acquireShared(1);<br>}<br>public void acquire(int permits) throws InterruptedException {<br>    if (permits &lt; 0) throw new IllegalArgumentException();<br>    sync.acquireSharedInterruptibly(permits);<br>}<br>public void acquireUninterruptibly(int permits) {<br>    if (permits &lt; 0) throw new IllegalArgumentException();<br>    sync.acquireShared(permits);<br>}</p>
+<p>这边多了两个可以传参的 acquire 方法，不过大家也都懂的吧，如果我们需要一次获取超过一个的资源，会用得着这个的。 我们接下来看不抛出 InterruptedException 异常的 acquireUninterruptibly() 方法吧：</p>
+<p>public void acquireUninterruptibly() {<br>    sync.acquireShared(1);<br>}<br>public final void acquireShared(int arg) {<br>    if (tryAcquireShared(arg) &lt; 0)<br>        doAcquireShared(arg);<br>}</p>
+<p>前面说了，Semaphore 分公平策略和非公平策略，我们对比一下两个 tryAcquireShared 方法：</p>
+<p>// 公平策略：<br>protected int tryAcquireShared(int acquires) {<br>    for (;;) {<br>        // 区别就在于是不是会先判断是否有线程在排队，然后才进行 CAS 减操作<br>        if (hasQueuedPredecessors())<br>            return -1;<br>        int available = getState();<br>        int remaining = available - acquires;<br>        if (remaining &lt; 0 ||<br>            compareAndSetState(available, remaining))<br>            return remaining;<br>    }<br>}<br>// 非公平策略：<br>protected int tryAcquireShared(int acquires) {<br>    return nonfairTryAcquireShared(acquires);<br>}<br>final int nonfairTryAcquireShared(int acquires) {<br>    for (;;) {<br>        int available = getState();<br>        int remaining = available - acquires;<br>        if (remaining &lt; 0 ||<br>            compareAndSetState(available, remaining))<br>            return remaining;<br>    }<br>}</p>
+<p>我们其实不太需要关心是不是公平策略还是非公平策略，它们的区别往往就那么一两行。 我们再回到 acquireShared 方法，</p>
+<p>public final void acquireShared(int arg) {<br>    if (tryAcquireShared(arg) &lt; 0)<br>        doAcquireShared(arg);<br>}</p>
+<p>由于 tryAcquireShared(arg) 返回小于 0 的时候，说明 state 已经小于 0 了（没资源了），此时 acquire 不能立马拿到资源，需要进入到阻塞队列等待：</p>
+<p>private void doAcquireShared(int arg) {<br>    final Node node = addWaiter(Node.SHARED);<br>    boolean failed = true;<br>    try {<br>        boolean interrupted = false;<br>        for (;;) {<br>            final Node p = node.predecessor();<br>            if (p == head) {<br>                int r = tryAcquireShared(arg);<br>                if (r &gt;= 0) {<br>                    setHeadAndPropagate(node, r);<br>                    p.next = null; // help GC<br>                    if (interrupted)<br>                        selfInterrupt();<br>                    failed = false;<br>                    return;<br>                }<br>            }<br>            if (shouldParkAfterFailedAcquire(p, node) &amp;&amp;<br>                parkAndCheckInterrupt())<br>                interrupted = true;<br>        }<br>    } finally {<br>        if (failed)<br>            cancelAcquire(node);<br>    }<br>}</p>
+<p>线程挂起后等待有资源被 release 出来。接下来，我们就要看 release 的方法了：</p>
+<p>// 任务介绍，释放一个资源<br>public void release() {<br>    sync.releaseShared(1);<br>}<br>public final boolean releaseShared(int arg) {<br>    if (tryReleaseShared(arg)) {<br>        doReleaseShared();<br>        return true;<br>    }<br>    return false;<br>}</p>
+<p>protected final boolean tryReleaseShared(int releases) {<br>    for (;;) {<br>        int current = getState();<br>        int next = current + releases;<br>        // 溢出，当然，我们一般也不会用这么大的数<br>        if (next &lt; current) // overflow<br>            throw new Error(“Maximum permit count exceeded”);<br>        if (compareAndSetState(current, next))<br>            return true;<br>    }<br>}</p>
+<p>tryReleaseShared 方法总是会返回 true，然后是 doReleaseShared，这个也是我们熟悉的方法了，我就贴下代码，不分析了，这个方法用于唤醒所有的等待线程：</p>
+<p>private void doReleaseShared() {<br>    for (;;) {<br>        Node h = head;<br>        if (h != null &amp;&amp; h != tail) {<br>            int ws = h.waitStatus;<br>            if (ws == Node.SIGNAL) {<br>                if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0))<br>                    continue;            // loop to recheck cases<br>                unparkSuccessor(h);<br>            }<br>            else if (ws == 0 &amp;&amp;<br>                     !compareAndSetWaitStatus(h, 0, Node.PROPAGATE))<br>                continue;                // loop on failed CAS<br>        }<br>        if (h == head)                   // loop if head changed<br>            break;<br>    }<br>}</p>
+<p>J.U.C的很多并发包还是基于AQS的独占锁以及共享锁的实现,但是设计的思路以及代码都很巧妙.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

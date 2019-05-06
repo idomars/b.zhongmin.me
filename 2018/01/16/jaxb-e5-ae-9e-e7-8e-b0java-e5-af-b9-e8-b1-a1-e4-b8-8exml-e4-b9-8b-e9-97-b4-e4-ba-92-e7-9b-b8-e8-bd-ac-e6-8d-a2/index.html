@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="首先熟悉一下JAXB实现对象与xml互转时常用的一些注解使用： 1.@XmlRootElement，用于类级别的注解，对应xml的跟元素。通过name属性定义这个根节点的名称。 2.@XmlAccessorType，定义映射这个类中的何种类型都需要映射到xml。(如果不存在@XmlAccessorType,默认使用XmlAccessType.PUBLIC_MEMBER注解) 　　参数：XmlAcc">
+<meta name="keywords" content="Xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAXB 实现java对象与xml之间互相转换">
+<meta property="og:url" content="http://b.zhongmin.me/2018/01/16/jaxb-e5-ae-9e-e7-8e-b0java-e5-af-b9-e8-b1-a1-e4-b8-8exml-e4-b9-8b-e9-97-b4-e4-ba-92-e7-9b-b8-e8-bd-ac-e6-8d-a2/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="首先熟悉一下JAXB实现对象与xml互转时常用的一些注解使用： 1.@XmlRootElement，用于类级别的注解，对应xml的跟元素。通过name属性定义这个根节点的名称。 2.@XmlAccessorType，定义映射这个类中的何种类型都需要映射到xml。(如果不存在@XmlAccessorType,默认使用XmlAccessType.PUBLIC_MEMBER注解) 　　参数：XmlAcc">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2018/01/NH54TWIRRUOHQ8IG4FV.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAXB 实现java对象与xml之间互相转换">
+<meta name="twitter:description" content="首先熟悉一下JAXB实现对象与xml互转时常用的一些注解使用： 1.@XmlRootElement，用于类级别的注解，对应xml的跟元素。通过name属性定义这个根节点的名称。 2.@XmlAccessorType，定义映射这个类中的何种类型都需要映射到xml。(如果不存在@XmlAccessorType,默认使用XmlAccessType.PUBLIC_MEMBER注解) 　　参数：XmlAcc">
+<meta name="twitter:image" content="http://zhongmin.me/wp-content/uploads/2018/01/NH54TWIRRUOHQ8IG4FV.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/01/16/jaxb-e5-ae-9e-e7-8e-b0java-e5-af-b9-e8-b1-a1-e4-b8-8exml-e4-b9-8b-e9-97-b4-e4-ba-92-e7-9b-b8-e8-bd-ac-e6-8d-a2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JAXB 实现java对象与xml之间互相转换 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/01/16/jaxb-e5-ae-9e-e7-8e-b0java-e5-af-b9-e8-b1-a1-e4-b8-8exml-e4-b9-8b-e9-97-b4-e4-ba-92-e7-9b-b8-e8-bd-ac-e6-8d-a2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JAXB 实现java对象与xml之间互相转换
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-16 15:58:35" itemprop="dateCreated datePublished" datetime="2018-01-16T15:58:35+08:00">2018-01-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先熟悉一下JAXB实现对象与xml互转时常用的一些注解使用： 1.@XmlRootElement，用于类级别的注解，对应xml的跟元素。通过name属性定义这个根节点的名称。 2.@XmlAccessorType，定义映射这个类中的何种类型都需要映射到xml。(如果不存在@XmlAccessorType,默认使用XmlAccessType.PUBLIC_MEMBER注解) 　　参数：XmlAccessType.FIELD: java对象中的所有成员变量。 XmlAccessType.PROPERTY：java对象中所有通过getter/setter方式访问的成员变量。 XmlAccessType.PUBLIC_MEMBER：java对象中所有的public访问权限的成员变量和通过getter/setter方式访问的成员变量。 XmlAccessType.NONE: java对象的所有属性都不映射为xml的元素。 3.@XmlAttribute，用于把java对象的属性映射为xml的属性,并可通过name属性为生成的xml属性指定别名。 4.@XmlElement，指定一个字段或get/set方法映射到xml的节点。通过name属性定义这个根节点的名称。 5.@XmlElementWrapper，为数组或集合定义一个父节点。通过name属性定义这个父节点的名称。 下面来看一个例子： 先定义一个学生类，Student如下：</p>
+<p>package com.quest.software.bus4j.ui.framework.extend.frameParase.test;</p>
+<p>import java.util.List;</p>
+<p>import javax.xml.bind.annotation.XmlAttribute;<br>import javax.xml.bind.annotation.XmlElement;<br>import javax.xml.bind.annotation.XmlElementWrapper;</p>
+<p>public class Student {<br>    String name;  //姓名<br>    String sex;    //性别<br>    int number;     //学号<br>    String className;    //班级<br>    List<string> hobby;    //爱好</string></p>
+<pre><code>public Student(){
+}
+public Student(String name,String sex,int number,
+        String className,List&lt;String&gt; hobby) {
+    this.name = name;
+    this.sex = sex;
+    this.number = number;
+    this.className = className;
+    this.hobby = hobby;
+}
+@XmlAttribute(name=&quot;name&quot;)  
+public String getName() {
+    return name;
+}
+public void setName(String name) {
+    this.name = name;
+}
+
+@XmlAttribute(name=&quot;sex&quot;)  
+public String getSex() {
+    return sex;
+}
+public void setSex(String sex) {
+    this.sex = sex;
+}
+
+@XmlAttribute(name=&quot;number&quot;)  
+public int getNumber() {
+    return number;
+}
+public void setNumber(int number) {
+    this.number = number;
+}
+
+@XmlElement(name=&quot;className&quot;)  
+public String getClassName() {
+    return className;
+}
+public void setClassName(String className) {
+    this.className = className;
+}
+
+@XmlElementWrapper(name=&quot;hobbys&quot;)
+@XmlElement(name = &quot;hobby&quot;)
+public List&lt;String&gt; getHobby() {
+    return hobby;
+}
+public void setHobby(List&lt;String&gt; hobby) {
+    this.hobby = hobby;
+}
+</code></pre><p>}</p>
+<p>切记，如果java对象属性同时添加了get和set方法，注解不能定义在属性的定义上，只需在get或者set方法上定义一个即可，否则jaxb会报错！！如下： Exception in thread “main” com.sun.xml.internal.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions Class has two properties of the same name “name” 然后再定义学生集合类，StudentList如下：</p>
+<p>package com.quest.software.bus4j.ui.framework.extend.frameParase.test;</p>
+<p>import java.util.List;</p>
+<p>import javax.xml.bind.annotation.XmlElement;<br>import javax.xml.bind.annotation.XmlRootElement;</p>
+<p>@XmlRootElement(name=”list”)<br>public class StudentList {</p>
+<pre><code>List&lt;Student&gt; students;    //所有学生信息的集合
+
+@XmlElement(name = &quot;student&quot;)  
+public List&lt;Student&gt; getStudents() {
+    return students;
+}
+
+public void setStudents(List&lt;Student&gt; students) {
+    this.students = students;
+}
+</code></pre><p>}</p>
+<p>后写xml和java对象互转的类(通过Marshaller类实现将对象转换为xml，同时也可利用Unmarshaller类进行xml转换为类)： 1.java对象转换为xml：</p>
+<p>package com.quest.software.bus4j.ui.framework.extend.frameParase.test;</p>
+<p>import java.io.BufferedWriter;<br>import java.io.File;<br>import java.io.FileWriter;<br>import java.io.IOException;<br>import java.io.StringWriter;<br>import java.util.ArrayList;<br>import java.util.List;</p>
+<p>import javax.xml.bind.JAXBContext;<br>import javax.xml.bind.JAXBException;<br>import javax.xml.bind.Marshaller;</p>
+<p>public class BeanToXml {</p>
+<pre><code>/\*\*
+ \* java对象转换为xml文件
+ \* @param xmlPath  xml文件路径
+ \* @param load    java对象.Class
+ \* @return    xml文件的String
+ \* @throws JAXBException    
+ */
+public static String beanToXml(Object obj,Class&lt;?&gt; load) throws JAXBException{
+    JAXBContext context = JAXBContext.newInstance(load);
+    Marshaller marshaller = context.createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB\_FORMATTED\_OUTPUT, true);
+    marshaller.setProperty(Marshaller.JAXB_ENCODING, &quot;GBK&quot;);
+    StringWriter writer = new StringWriter();
+    marshaller.marshal(obj,writer);
+    return writer.toString();
+}
+public static void main(String\[\] args) throws JAXBException, IOException {
+        List&lt;String&gt; hobby = new ArrayList&lt;&gt;();
+        hobby.add(&quot;篮球&quot;);
+        hobby.add(&quot;音乐&quot;);
+        hobby.add(&quot;乒乓球&quot;);
+
+        List&lt;Student&gt; studentList = new ArrayList&lt;&gt;();
+
+        Student st = new Student(&quot;张三&quot;,&quot;男&quot;,10001,&quot;尖子班&quot;,hobby);
+        studentList.add(st);
+        Student st1 = new Student(&quot;李四&quot;,&quot;男&quot;,10002,&quot;普通班&quot;,hobby);
+        studentList.add(st1);
+        Student st2 = new Student(&quot;莉莉&quot;,&quot;女&quot;,10003,&quot;普通班&quot;,hobby);
+        studentList.add(st2);
+
+        StudentList students = new StudentList();
+        students.setStudents(studentList);
+        String str =  BeanToXml.beanToXml(students, StudentList.class);
+
+        //写入到xml文件中
+        String xmlPath = &quot;D:/testConfig.xml&quot;;
+        BufferedWriter bfw = new BufferedWriter(new FileWriter(new File(xmlPath)));
+        bfw.write(str);
+        bfw.close();
+}
+</code></pre><p>}</p>
+<p>测试生成的xml文件如下图： <img src="http://zhongmin.me/wp-content/uploads/2018/01/NH54TWIRRUOHQ8IG4FV.png" alt> 2.xml转换为java对象：</p>
+<p>package com.quest.software.bus4j.ui.framework.extend.frameParase.test;</p>
+<p>import java.io.File;<br>import java.io.IOException;<br>import java.util.List;</p>
+<p>import javax.xml.bind.JAXBContext;<br>import javax.xml.bind.JAXBException;<br>import javax.xml.bind.Unmarshaller;</p>
+<p>public class XmlToBean {</p>
+<pre><code>/\*\*
+ \* xml文件配置转换为对象
+ \* @param xmlPath  xml文件路径
+ \* @param load    java对象.Class
+ \* @return    java对象
+ \* @throws JAXBException    
+ \* @throws IOException
+ */
+public static Object xmlToBean(String xmlPath,Class&lt;?&gt; load) throws JAXBException, IOException{
+    JAXBContext context = JAXBContext.newInstance(load);  
+    Unmarshaller unmarshaller = context.createUnmarshaller(); 
+    Object object = unmarshaller.unmarshal(new File(xmlPath));
+    return object;
+}
+
+public static void main(String\[\] args) throws IOException, JAXBException {
+    String xmlPath =  &quot;D:/testConfig.xml&quot;;
+    Object object = XmlToBean.xmlToBean(xmlPath,StudentList.class);
+    StudentList students = (StudentList)object;
+    List&lt;Student&gt; studentList = students.getStudents();
+
+    for(int i=0;i&lt;studentList.size();i++){
+        System.out.println(studentList.get(i).name);
+        System.out.println(studentList.get(i).sex);
+        System.out.println(studentList.get(i).number);
+        System.out.println(studentList.get(i).className);
+        for(String str :studentList.get(i).hobby){
+            System.out.print(str+&quot; &quot;);
+        }
+        System.out.println(&quot;-------------&quot;);
+    }
+}
+</code></pre><p>}</p>
+<p>测试打印的结果如下： 张三 男 10001 尖子班 篮球 音乐 乒乓球 ————- 李四 男 10002 普通班 篮球 音乐 乒乓球 ————- 莉莉 女 10003 普通班 篮球 音乐 乒乓球 ————- jaxb虽然挺实用，但是在xml转java对象时xml文件不能配置错了，必须严格按照自己定义的java对象的注解来编写xml文件，否则jaxb里面报错很难查错！！！</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Xml/" rel="tag"># Xml</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/15/1/" rel="next" title="1">
+                <i class="fa fa-chevron-left"></i> 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/24/e4-bb-80-e4-b9-88-e6-98-af-e9-97-ad-e5-8c-85/" rel="prev" title="什么是闭包">
+                什么是闭包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

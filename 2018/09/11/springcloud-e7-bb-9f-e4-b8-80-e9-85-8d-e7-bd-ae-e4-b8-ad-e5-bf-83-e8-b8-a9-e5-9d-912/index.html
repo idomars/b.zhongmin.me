@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="config-server暂时没有遇到坑,记录一下client读取config过程中遇到的问题 1.读取配置中心的配置文件应该有application.yml 修改为 bootstrap.yml,优先加载 2.Git仓库中配置文件的名称应该与 spring.application.name 一致,这样应用才知道读取哪一个文件.如果不一致的话可以使用,spring.cloud.config.name">
+<meta name="keywords" content="spring-cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringCloud 统一配置中心踩坑2">
+<meta property="og:url" content="http://b.zhongmin.me/2018/09/11/springcloud-e7-bb-9f-e4-b8-80-e9-85-8d-e7-bd-ae-e4-b8-ad-e5-bf-83-e8-b8-a9-e5-9d-912/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="config-server暂时没有遇到坑,记录一下client读取config过程中遇到的问题 1.读取配置中心的配置文件应该有application.yml 修改为 bootstrap.yml,优先加载 2.Git仓库中配置文件的名称应该与 spring.application.name 一致,这样应用才知道读取哪一个文件.如果不一致的话可以使用,spring.cloud.config.name">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-11_20-57-05.png">
+<meta property="og:image" content="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-11_21-25-45.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.429Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringCloud 统一配置中心踩坑2">
+<meta name="twitter:description" content="config-server暂时没有遇到坑,记录一下client读取config过程中遇到的问题 1.读取配置中心的配置文件应该有application.yml 修改为 bootstrap.yml,优先加载 2.Git仓库中配置文件的名称应该与 spring.application.name 一致,这样应用才知道读取哪一个文件.如果不一致的话可以使用,spring.cloud.config.name">
+<meta name="twitter:image" content="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-11_20-57-05.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/09/11/springcloud-e7-bb-9f-e4-b8-80-e9-85-8d-e7-bd-ae-e4-b8-ad-e5-bf-83-e8-b8-a9-e5-9d-912/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SpringCloud 统一配置中心踩坑2 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/09/11/springcloud-e7-bb-9f-e4-b8-80-e9-85-8d-e7-bd-ae-e4-b8-ad-e5-bf-83-e8-b8-a9-e5-9d-912/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringCloud 统一配置中心踩坑2
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-11 21:28:40" itemprop="dateCreated datePublished" datetime="2018-09-11T21:28:40+08:00">2018-09-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习记录/" itemprop="url" rel="index"><span itemprop="name">学习记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>config-server暂时没有遇到坑,记录一下client读取config过程中遇到的问题 1.读取配置中心的配置文件应该有application.yml 修改为 bootstrap.yml,优先加载 2.Git仓库中配置文件的名称应该与 spring.application.name 一致,这样应用才知道读取哪一个文件.如果不一致的话可以使用,spring.cloud.config.name来设置需要读取的配置文件名称.<img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-11_20-57-05.png" alt> 3.不能加入 spring-cloud-config-server 包,之前一直无法加载配置文件就是因为这jar包的问题. 4.如果通过配置中心服务名称来检索配置文件, 就是开启spring.cloud.config.discovery=true,如下</p>
+<p>spring.cloud.config.discovery.enabled=true<br>spring.cloud.config.discovery.service-id=config-server<br>spring.cloud.config.label=master<br>spring.cloud.config.profile=test</p>
+<p>#spring.cloud.config.uri=<a href="http://cloud.com:9030/" target="_blank" rel="noopener">http://cloud.com:9030/</a></p>
+<p>则一定需要在配置文件中配置好注册中心的地址 eureka.client.service-url.defaultZone=<a href="http://cloud.com:9001/eureka/" target="_blank" rel="noopener">http://cloud.com:9001/eureka/</a> ,否则是无法找到配置中心实列的.但是如果是直接配置spring.cloud.config.uri=<a href="http://cloud.com:9030/" target="_blank" rel="noopener">http://cloud.com:9030/</a> ,这样服务直接从配置中心地址加载配置文件,不需要向注册中心注册的. 5. Unregistering application server with eureka with status DOWN 的问题,client貌似起来之后又自动停止了.日志如下:</p>
+<p>2018-09-11 21:23:12.774  INFO 15376 — [           main] me.zhongmin.server.ServerApplication     : Started ServerApplication in 9.209 seconds (JVM running for 10.992)<br>2018-09-11 21:23:12.787  INFO 15376 — [      Thread-24] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@21ab988f: startup date [Tue Sep 11 21:23:10 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4d5d943d<br>2018-09-11 21:23:12.788  INFO 15376 — [      Thread-24] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application cloud-server with eureka with status DOWN<br>2018-09-11 21:23:12.788  WARN 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1536672192788, current=DOWN, previous=UP]<br>2018-09-11 21:23:12.790  INFO 15376 — [      Thread-24] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 0<br>2018-09-11 21:23:12.796  INFO 15376 — [      Thread-24] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown<br>2018-09-11 21:23:12.797  INFO 15376 — [      Thread-24] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans<br>2018-09-11 21:23:12.800  INFO 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient …<br>2018-09-11 21:23:12.801  INFO 15376 — [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLOUD-SERVER/remin:cloud-server:9011 - registration status: 204<br>2018-09-11 21:23:12.803  INFO 15376 — [      Thread-24] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING<br>2018-09-11 21:23:12.804  INFO 15376 — [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLOUD-SERVER/remin:cloud-server:9011: registering service…<br>2018-09-11 21:23:12.810  INFO 15376 — [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLOUD-SERVER/remin:cloud-server:9011 - registration status: 204<br>2018-09-11 21:23:12.811  INFO 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : Unregistering …<br>2018-09-11 21:23:12.821  INFO 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CLOUD-SERVER/remin:cloud-server:9011 - deregister  status: 200<br>2018-09-11 21:23:12.833  INFO 15376 — [      Thread-24] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient</p>
+<p>这个问题只需要加入</p>
+   <dependency><br>            <groupid>org.springframework.boot</groupid><br>            <artifactid>spring-boot-starter-web</artifactid><br>        </dependency>
+
+<p>就可以将解决问题,具体原因还不明白; 6.还有一个细节,Git仓库中存放多个文件时,其中server.properties为默认文件<img src="https://zhongmin.me/wp-content/uploads/2018/09/Snipaste_2018-09-11_21-25-45.png" alt> 这个默认文件不管是配置哪个环境都会加载的,并且与根据环境加载的文件进行合并.这个文件一般配置一些通用的配置! 暂时就遇到这么多,明天再试试Bus动态刷新配置文件! 7.关于spring.cloud.config.server.git.basedir配置,这个配置的Git本地仓库路径,会从Git上拉取配置文件到本地仓库.千万不要直接配置成项目路径. 我是直接配置的config路径,本来以为会新增几个文件,没想到直接会全部覆盖,导致config下的项目代码都没有了!</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring-cloud/" rel="tag"># spring-cloud</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/08/spring-cloud-e6-b3-a8-e5-86-8c-e4-b8-ad-e5-bf-83-e8-b8-a9-e5-9d-91-e8-ae-b0-e5-bd-951/" rel="next" title="Spring-Cloud  注册中心踩坑记录1">
+                <i class="fa fa-chevron-left"></i> Spring-Cloud  注册中心踩坑记录1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/14/springboot-e4-b8-8ejunit-e9-81-87-e5-88-b0-e7-9a-84-e4-b8-80-e4-b8-aa-e9-97-ae-e9-a2-98/" rel="prev" title="SpringBoot与Junit遇到的一个问题">
+                SpringBoot与Junit遇到的一个问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

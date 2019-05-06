@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一、 ArrayBlockingQueue类图结构 如图ArrayBlockingQueue内部有个数组items用来存放队列元素，putindex下标标示入队元素下标，takeIndex是出队下标，count统计队列元素个数，从定义可知道并没有使用volatile修饰，这是因为访问这些变量使用都是在锁块内，并不存在可见性问题。另外有个独占锁lock用来对出入队操作加锁，这导致同时只有一个线程可以">
+<meta name="keywords" content="Java,J.U.C,queue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="J.U.C -- 有界阻塞队列 ArrayBlockingQueue">
+<meta property="og:url" content="http://b.zhongmin.me/2018/04/22/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-arrayblockingqueue/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="一、 ArrayBlockingQueue类图结构 如图ArrayBlockingQueue内部有个数组items用来存放队列元素，putindex下标标示入队元素下标，takeIndex是出队下标，count统计队列元素个数，从定义可知道并没有使用volatile修饰，这是因为访问这些变量使用都是在锁块内，并不存在可见性问题。另外有个独占锁lock用来对出入队操作加锁，这导致同时只有一个线程可以">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://zhongmin.me/wp-content/uploads/2018/04/A_PM_SAU41DP7F8ZJZ16-560x640.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="J.U.C -- 有界阻塞队列 ArrayBlockingQueue">
+<meta name="twitter:description" content="一、 ArrayBlockingQueue类图结构 如图ArrayBlockingQueue内部有个数组items用来存放队列元素，putindex下标标示入队元素下标，takeIndex是出队下标，count统计队列元素个数，从定义可知道并没有使用volatile修饰，这是因为访问这些变量使用都是在锁块内，并不存在可见性问题。另外有个独占锁lock用来对出入队操作加锁，这导致同时只有一个线程可以">
+<meta name="twitter:image" content="https://zhongmin.me/wp-content/uploads/2018/04/A_PM_SAU41DP7F8ZJZ16-560x640.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/04/22/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-arrayblockingqueue/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>J.U.C -- 有界阻塞队列 ArrayBlockingQueue | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/22/j-u-c-e6-9c-89-e7-95-8c-e9-98-bb-e5-a1-9e-e9-98-9f-e5-88-97-arrayblockingqueue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">J.U.C -- 有界阻塞队列 ArrayBlockingQueue
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-22 15:37:10" itemprop="dateCreated datePublished" datetime="2018-04-22T15:37:10+08:00">2018-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、-ArrayBlockingQueue类图结构"><a href="#一、-ArrayBlockingQueue类图结构" class="headerlink" title="一、 ArrayBlockingQueue类图结构"></a>一、 ArrayBlockingQueue类图结构</h2><p><img src="https://zhongmin.me/wp-content/uploads/2018/04/A_PM_SAU41DP7F8ZJZ16-560x640.png" alt> 如图ArrayBlockingQueue内部有个数组items用来存放队列元素，putindex下标标示入队元素下标，takeIndex是出队下标，count统计队列元素个数，从定义可知道并没有使用volatile修饰，这是因为访问这些变量使用都是在锁块内，并不存在可见性问题。另外有个独占锁lock用来对出入队操作加锁，这导致同时只有一个线程可以访问入队出队，另外notEmpty，notFull条件变量用来进行出入队的同步。 另外构造函数必须传入队列大小参数，所以为有界队列，默认是Lock为非公平锁。</p>
+<p>public ArrayBlockingQueue(int capacity) {<br>        this(capacity, false);<br>  }</p>
+<pre><code>public ArrayBlockingQueue(int capacity, boolean fair) {
+    if (capacity &lt;= 0)
+        throw new IllegalArgumentException();
+    this.items = new Object\[capacity\];
+    lock = new ReentrantLock(fair);
+    notEmpty = lock.newCondition();
+    notFull =  lock.newCondition();
+}
+</code></pre><h2 id="二、主要方法"><a href="#二、主要方法" class="headerlink" title="二、主要方法"></a>二、主要方法</h2><h4 id="offer方法-在队列尾部添加元素，如果队列满则返回false"><a href="#offer方法-在队列尾部添加元素，如果队列满则返回false" class="headerlink" title="offer方法:在队列尾部添加元素，如果队列满则返回false"></a>offer方法:在队列尾部添加元素，如果队列满则返回false</h4><p>public boolean offer(E e) {<br>    //e为null，则抛出NullPointerException异常<br>    checkNotNull(e);</p>
+<pre><code>//获取独占锁
+final ReentrantLock lock = this.lock;
+lock.lock();
+try {
+    //如果队列满则返回false
+    if (count == items.length)
+        return false;
+    else {
+        //否者插入元素
+        insert(e);
+        return true;
+    }
+} finally {
+    //释放锁
+    lock.unlock();
+}
+</code></pre><p>}<br>private void insert(E x) {<br>    //元素入队<br>    items[putIndex] = x;</p>
+<pre><code>//计算下一个元素应该存放的下标
+putIndex = inc(putIndex);
+++count;
+notEmpty.signal();
+</code></pre><p>}<br>//循环队列，计算下标<br>final int inc(int i) {<br>    return (++i == items.length) ? 0 : i;<br>}</p>
+<p>这里由于在操作共享变量前加了锁，所以不存在内存不可见问题，加过锁后获取的共享变量都是从主内存获取的，而不是在CPU缓存或者寄存器里面的值，释放锁后修改的共享变量值会刷新会主内存中。 另外这个队列是使用循环数组实现，所以计算下一个元素存放下标时候有些特殊。另外insert后调用 notEmpty.signal();是为了激活调用notEmpty.await()阻塞后放入notEmpty条件队列中的线程。</p>
+<h4 id="put操作-在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回"><a href="#put操作-在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回" class="headerlink" title="put操作:在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回"></a>put操作:在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回</h4><p>public void put(E e) throws InterruptedException {<br>    checkNotNull(e);<br>    final ReentrantLock lock = this.lock;</p>
+<pre><code>//获取可被中断锁
+lock.lockInterruptibly();
+try {
+
+    //如果队列满，则把当前线程放入notFull管理的条件队列
+    while (count == items.length)
+        notFull.await();
+
+    //插入元素
+    insert(e);
+} finally {
+    lock.unlock();
+}
+</code></pre><p>}</p>
+<p>需要注意的是如果队列满了那么当前线程会阻塞，知道出队操作调用了notFull.signal方法激活该线程。 代码逻辑很简单，但是这里需要思考一个问题为啥调用lockInterruptibly方法而不是Lock方法。我的理解是因为调用了条件变量的await()方法，而await()方法会在中断标志设置后抛出InterruptedException异常后退出，所以还不如在加锁时候先看中断标志是不是被设置了，如果设置了直接抛出InterruptedException异常，就不用再去获取锁了。然后看了其他并发类里面凡是调用了await的方法获取锁时候都是使用的lockInterruptibly方法而不是Lock也验证了这个想法。</p>
+<h4 id="poll操作-从队头获取并移除元素-并返回移除的元素，队列为空，则返回null。"><a href="#poll操作-从队头获取并移除元素-并返回移除的元素，队列为空，则返回null。" class="headerlink" title="poll操作:从队头获取并移除元素,并返回移除的元素，队列为空，则返回null。"></a>poll操作:从队头获取并移除元素,并返回移除的元素，队列为空，则返回null。</h4><p>public E poll() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        //当前队列为空则返回null,否者<br>        return (count == 0) ? null : extract();<br>    } finally {<br>        lock.unlock();<br>    }<br>}</p>
+<p>private E extract() {<br>    final Object[] items = this.items;</p>
+<pre><code>//获取元素值
+E x = this.&lt;E&gt;cast(items\[takeIndex\]);
+
+//数组中值值为null;
+items\[takeIndex\] = null;
+
+//队头指针计算，队列元素个数减一
+takeIndex = inc(takeIndex);
+--count;
+
+//发送信号激活notFull条件队列里面的线程
+notFull.signal();
+return x;
+</code></pre><p>}</p>
+<p>还有一个是remove方法,与poll一致,但是队列为空时则抛出异常.</p>
+<p>  public E remove() {<br>        E x = poll();<br>        if (x != null)<br>            return x;<br>        else<br>            throw new NoSuchElementException();<br>    }</p>
+<h4 id="take操作-从队头获取元素，并从队列中移除-如果队列为空则阻塞直到队列有元素。"><a href="#take操作-从队头获取元素，并从队列中移除-如果队列为空则阻塞直到队列有元素。" class="headerlink" title="take操作:从队头获取元素，并从队列中移除,如果队列为空则阻塞直到队列有元素。"></a>take操作:从队头获取元素，并从队列中移除,如果队列为空则阻塞直到队列有元素。</h4><p>public E take() throws InterruptedException {<br>    final ReentrantLock lock = this.lock;<br>    lock.lockInterruptibly();<br>    try {</p>
+<pre><code>    //队列为空，则等待，直到队列有元素
+    while (count == 0)
+        notEmpty.await();
+    return extract();
+} finally {
+    lock.unlock();
+}
+</code></pre><p>}</p>
+<p>需要注意的是如果队列为空，当前线程会被挂起放到notEmpty的条件队列里面，直到入队操作执行调用notEmpty.signal后当前线程才会被激活，await才会返回。</p>
+<h4 id="peek操作-返回队列头元素但不移除该元素，队列为空，返回null"><a href="#peek操作-返回队列头元素但不移除该元素，队列为空，返回null" class="headerlink" title="peek操作:返回队列头元素但不移除该元素，队列为空，返回null"></a>peek操作:返回队列头元素但不移除该元素，队列为空，返回null</h4><p>public E peek() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        //队列为空返回null,否者返回头元素<br>        return (count == 0) ? null : itemAt(takeIndex);<br>    } finally {<br>        lock.unlock();<br>    }<br>}</p>
+<p>final E itemAt(int i) {<br>    return this.<e>cast(items[i]);<br>}</e></p>
+<p>element操作,与peek一样,返回队列头元素但不移除该元素，队列为空，则抛出异常</p>
+<p>  public E element() {<br>        E x = peek();<br>        if (x != null)<br>            return x;<br>        else<br>            throw new NoSuchElementException();<br>    }</p>
+<h4 id="其他的方法"><a href="#其他的方法" class="headerlink" title="其他的方法:"></a>其他的方法:</h4><p>//自动移除此队列中的所有元素。<br>void clear() </p>
+<p>//如果此队列包含指定的元素，则返回 true。<br>boolean contains(Object o) </p>
+<p>//移除此队列中所有可用的元素，并将它们添加到给定collection中。<br>int drainTo(Collection&lt;? super E&gt; c) </p>
+<p>//最多从此队列中移除给定数量的可用元素，并将这些元素添加到给定collection 中。<br>int drainTo(Collection&lt;? super E&gt; c, int maxElements) </p>
+<p>//返回在此队列中的元素上按适当顺序进行迭代的迭代器。<br>Iterator<e> iterator() </e></p>
+<p>//返回队列还能添加元素的数量<br>int remainingCapacity() </p>
+<p>//返回此队列中元素的数量。<br>int size() </p>
+<p>//返回一个按适当顺序包含此队列中所有元素的数组。<br>Object[] toArray() </p>
+<p>//返回一个按适当顺序包含此队列中所有元素的数组；返回数组的运行时类型是指定数组的运行时类型。      </p>
+<p><t> T[] toArray(T[] a)</t></p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>ArrayBlockingQueue的其实是消费者生产者的一种实现,take为消费方法,put为生产.,ArrayBlockingQueue通过使用全局独占锁实现同时只能有一个线程进行入队或者出队操作，这个锁的粒度比较大，有点类似在方法上添加synchronized的意味。其中offer,poll操作通过简单的加锁进行入队出队操作，而put,take则使用了条件变量实现如果队列满则等待，如果队列空则等待，然后分别在出队和入队操作中发送信号激活等待线程实现同步。另外相比LinkedBlockingQueue，ArrayBlockingQueue的size操作的结果是精确的，因为计算前加了全局锁。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/J-U-C/" rel="tag"># J.U.C</a>
+          
+            <a href="/tags/queue/" rel="tag"># queue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/22/j-u-c-e5-b7-a5-e5-85-b7-e5-85-ad-phaser/" rel="next" title="J.U.C工具-(六)-Phaser">
+                <i class="fa fa-chevron-left"></i> J.U.C工具-(六)-Phaser
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/j-u-c-e4-bc-98-e5-85-88-e7-ba-a7-e9-98-9f-e5-88-97-priorityblockingqueue/" rel="prev" title="J.U.C--优先级队列-PriorityBlockingQueue">
+                J.U.C--优先级队列-PriorityBlockingQueue <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-ArrayBlockingQueue类图结构"><span class="nav-number">1.</span> <span class="nav-text">一、 ArrayBlockingQueue类图结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、主要方法"><span class="nav-number">2.</span> <span class="nav-text">二、主要方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#offer方法-在队列尾部添加元素，如果队列满则返回false"><span class="nav-number">2.0.1.</span> <span class="nav-text">offer方法:在队列尾部添加元素，如果队列满则返回false</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#put操作-在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回"><span class="nav-number">2.0.2.</span> <span class="nav-text">put操作:在队列尾部添加元素，如果队列满则等待队列有空位置插入后返回</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#poll操作-从队头获取并移除元素-并返回移除的元素，队列为空，则返回null。"><span class="nav-number">2.0.3.</span> <span class="nav-text">poll操作:从队头获取并移除元素,并返回移除的元素，队列为空，则返回null。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#take操作-从队头获取元素，并从队列中移除-如果队列为空则阻塞直到队列有元素。"><span class="nav-number">2.0.4.</span> <span class="nav-text">take操作:从队头获取元素，并从队列中移除,如果队列为空则阻塞直到队列有元素。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#peek操作-返回队列头元素但不移除该元素，队列为空，返回null"><span class="nav-number">2.0.5.</span> <span class="nav-text">peek操作:返回队列头元素但不移除该元素，队列为空，返回null</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他的方法"><span class="nav-number">2.0.6.</span> <span class="nav-text">其他的方法:</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#七、总结"><span class="nav-number">3.</span> <span class="nav-text">七、总结</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

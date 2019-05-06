@@ -1,0 +1,3169 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/8/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/8/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/22/springmaybatis-e5-bc-82-e5-b8-b8manual-close-is-not-allowed-over-a-spring-managed-sqlsession/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/22/springmaybatis-e5-bc-82-e5-b8-b8manual-close-is-not-allowed-over-a-spring-managed-sqlsession/" class="post-title-link" itemprop="url">Spring+Maybatis 异常:Manual close is not allowed over a Spring managed SqlSession</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-22 11:19:48" itemprop="dateCreated datePublished" datetime="2017-05-22T11:19:48+08:00">2017-05-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Spring+mybatis ,在使用junit单元测试的时候产生数据库异常:</p>
+<p>2017-05-22 10:55:04,520 - WARN  [localhost-startStop-1] org.springframework.beans.factory.support.DisposableBeanAdapter  - Invocation of destroy method ‘close’ failed on bean with name ‘sqlSessionService’<br>java.lang.UnsupportedOperationException: Manual close is not allowed over a Spring managed SqlSession<br>    at org.mybatis.spring.SqlSessionTemplate.close(SqlSessionTemplate.java:310)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br>    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br>    at java.lang.reflect.Method.invoke(Method.java:498)<br>    at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:364)<br>    at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:287)<br>    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:578)<br>    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:554)<br>    at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:954)<br>    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:523)<br>    at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:961)<br>    at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1033)<br>    at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1009)<br>    at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:961)<br>    at org.springframework.web.context.ContextLoader.closeWebApplicationContext(ContextLoader.java:581)<br>    at org.springframework.web.context.ContextLoaderListener.contextDestroyed(ContextLoaderListener.java:116)<br>    at org.apache.catalina.core.StandardContext.listenerStop(StandardContext.java:4774)<br>    at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5411)<br>    at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:226)<br>    at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1420)<br>    at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1409)<br>    at java.util.concurrent.FutureTask.run(FutureTask.java:266)<br>    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)<br>    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)<br>    at java.lang.Thread.run(Thread.java:745)</p>
+<p>解决方法:</p>
+<bean id="sqlSessionService" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype"><br>    <constructor-arg index="0" ref="sqlSessionFactoryService"><br></constructor-arg></bean>
+
+<p># 增加scope=”prototype”</p>
+<p>scope=”prototype”没写的问题,项目中对一个表的增删该操作是用一个action，这个action有add,update,delete,save这些方法， 添加和修改是共用一个页面，当页面得到id时对表进行的修改操作，反之是添加操作。因为在配置<a href="http://lib.csdn.net/base/javaee" title="Java EE知识库" target="_blank" rel="noopener">spring</a>的bean是忘了写scope=”prototype” 所以每次添加时都显示最后一次访问过的记录,scope=”prototype” 会在该类型的对象被请求 时创建一个新的action对象。如果没有配置scope=prototype则添加的时候不会新建一个action，他仍然会保留上次访问的过记录的信息 webwork的Action不是线程安全的，要求在多线程环境下必须是一个线程对应一个独立的实例，不能使用singleton。所以，我们在 Spring配置Webwork Action Bean时，需要加上属性scope=”prototype”或singleton=”false”。 singleton模式指的是对某个对象的完全共享，包括代码空间和数据空间，说白了，如果一个类是singleton的，假如这个类有成员变量，那么这个成员变量的值是各个线程共享的（有点类似于static的样子了），当线程A往给变量赋了一个值以后，线程B就能读出这个值。因此，对于前台 Action，肯定不能使用singleton的模式，必须是一个线程请求对应一个独立的实例。推而广之，只要是带数据成员变量的类，为了防止多个线程混用数据，就不能使用singleton。对于我们用到的Service、Dao，之所以用了singleton，就是因为他们没有用到数据成员变量，如果谁的Service需要数据成员变量，请设置singleton=false。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/19/java-e5-86-85-e9-83-a8-e7-b1-bb-e5-b0-8f-e7-bb-93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/19/java-e5-86-85-e9-83-a8-e7-b1-bb-e5-b0-8f-e7-bb-93/" class="post-title-link" itemprop="url">Java内部类小结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-19 14:49:02" itemprop="dateCreated datePublished" datetime="2017-05-19T14:49:02+08:00">2017-05-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>内部类是指在一个外部类的内部再定义一个类。类名不需要和文件夹相同。</p>
+<p>*内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部顶级类即类名和文件名相同的只能使用public和default）。</p>
+<p>注意：内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和其内部定义的名为inner的内部类。编译完成后出现outer.class和outer$inner.class两类。所以内部类的成员变量/方法名可以和外部类的相同。</p>
+<h3 id="1-成员内部类"><a href="#1-成员内部类" class="headerlink" title="1. 成员内部类"></a>1. 成员内部类</h3><p>成员内部类，就是作为外部类的成员，可以直接使用外部类的所有成员和方法，即使是private的。这是因为</p>
+<p>同时外部类要访问内部类的所有成员变量/方法，则需要通过内部类的对象来获取。</p>
+<p>要注意的是，成员内部类不能含有static的变量和方法。<strong>因为成员内部类需要先创建了外部类，才能创建它自己的</strong>，</p>
+<p>而需要创建内部类对象，需要指明这个对象的类型：OuterClass.InnerClass。可以使用outer.inner  obj = new outer().new inner();</p>
+<p>在内部类内部要引用外部类对象时，使用OuterClass.this来表示外部类对象的引用；</p>
+<p>public class Outer {<br>    public static void main(String[] args) {<br>        Outer outer = new Outer();<br>        Outer.Inner inner = outer.new Inner();<br>        inner.print(“Outer.new”); </p>
+<pre><code>    inner = outer.getInner(); 
+    inner.print(&quot;Outer.get&quot;); 
+} 
+
+// 推荐使用getxxx()来获取成员内部类，尤其是该内部类的构造函数无参数时 
+public Inner getInner() { 
+    return new Inner(); 
+} 
+
+public class Inner { 
+    public void print(String str) { 
+        System.out.println(str); 
+    } 
+ public Outer getOuter(){
+        return Outer.this;//在内部类可以使用outClass.this  获取当前外部类的引用.
+    }
+} 
+</code></pre><p>}</p>
+<h3 id="2-局部内部类"><a href="#2-局部内部类" class="headerlink" title="2. 局部内部类"></a>2. 局部内部类</h3><pre><code>局部内部类，是指内部类定义在方法和作用域内。Thinking in Java给了这么两个例子：
+</code></pre><p>定义在方法内：</p>
+<p>public class Parcel4 {<br>    public Destination destination(String s) {<br>        class PDestination implements Destination {<br>            private String label; </p>
+<pre><code>        private PDestination(String whereTo) { 
+            label = whereTo; 
+        } 
+
+        public String readLabel() { 
+            return label; 
+        } 
+    } 
+    return new PDestination(s); 
+} 
+
+public static void main(String\[\] args) { 
+    Parcel4 p = new Parcel4(); 
+    Destination d = p.destination(&quot;Tasmania&quot;); 
+} 
+</code></pre><p>}</p>
+<p>定义在作用域里：</p>
+<p>public class Parcel5 {<br>    private void internalTracking(boolean b) {<br>        if (b) {<br>            class TrackingSlip {<br>                private String id;<br>                TrackingSlip(String s) {<br>                    id = s;<br>                }<br>                String getSlip() {<br>                    return id;<br>                }<br>            }<br>            TrackingSlip ts = new TrackingSlip(“slip”);<br>            String s = ts.getSlip();<br>        }<br>    } </p>
+<pre><code>public void track() { 
+    internalTracking(true); 
+} 
+
+public static void main(String\[\] args) { 
+    Parcel5 p = new Parcel5(); 
+    p.track(); 
+} 
+</code></pre><p>}</p>
+<p>局部内部类也像别的类一样进行编译，但只是作用域不同而已，只在该方法或条件的作用域内才能使用，退出这些作用域后无法引用的。</p>
+<h3 id="3-嵌套内部类"><a href="#3-嵌套内部类" class="headerlink" title="3. 嵌套内部类"></a>3. 嵌套内部类</h3><pre><code> 嵌套内部类，就是修饰为static的内部类。声明为static的内部类，不需要内部类对象和外部类对象之间的联系，就是说我们可以直接引用outer.inner，即不需要创建外部类，也不需要创建内部类。
+
+嵌套类和普通的内部类还有一个区别：普通内部类不能有static数据和static属性，也不能包含嵌套类，但嵌套类可以。而嵌套类不能声明为private，一般声明为public，方便调用。
+</code></pre><p>public class OuterClass {<br>    private String sex;<br>    public static String name = “chenssy”;</p>
+<pre><code>/**
+ *静态内部类
+ */
+static class InnerClass1{
+    /\* 在静态内部类中可以存在静态成员 */
+    public static String \_name1 = &quot;chenssy\_static&quot;;
+
+    public void display(){
+        /\* 
+         \* 静态内部类只能访问外围类的静态成员变量和方法
+         \* 不能访问外围类的非静态成员变量和方法
+         */
+        System.out.println(&quot;OutClass name :&quot; + name);
+    }
+}
+
+/\*\*
+ \* 非静态内部类
+ */
+class InnerClass2{
+    /\* 非静态内部类中不能存在静态成员 */
+    public String \_name2 = &quot;chenssy\_inner&quot;;
+    /\* 非静态内部类中可以调用外围类的任何成员,不管是静态的还是非静态的 */
+    public void display(){
+        System.out.println(&quot;OuterClass name：&quot; + name);
+    }
+}
+
+/\*\*
+ \* @desc 外围类方法
+ \* @return void
+ */
+public void display(){
+    /\* 外围类访问静态内部类：内部类. */
+    System.out.println(InnerClass1._name1);
+    /\* 静态内部类 可以直接创建实例不需要依赖于外围类 */
+    new InnerClass1().display();
+
+    /\* 非静态内部的创建需要依赖于外围类 */
+    OuterClass.InnerClass2 inner2 = new OuterClass().new InnerClass2();
+    /\* 方位非静态内部类的成员需要使用非静态内部类的实例 */
+    System.out.println(inner2._name2);
+    inner2.display();
+}
+
+public static void main(String\[\] args) {
+    OuterClass outer = new OuterClass();
+    outer.display();
+}
+</code></pre><p>}<br>----------------<br>Output:<br>chenssy_static<br>OutClass name :chenssy<br>chenssy_inner<br>OuterClass name：chenssy</p>
+<p>上面这个例子充分展现了静态内部类和非静态内部类的区别。</p>
+<h3 id="4-匿名内部类"><a href="#4-匿名内部类" class="headerlink" title="4. 匿名内部类"></a>4. 匿名内部类</h3><pre><code>有时候我为了免去给内部类命名，便倾向于使用匿名内部类，因为它没有名字。例如：
+</code></pre><p>(Button) findViewById(R.id.start)).setOnClickListener(new Button.OnClickListener() {<br>    @Override<br>    public void onClick(View v) {<br>        new Thread() { </p>
+<pre><code>        @Override 
+        public void run() { 
+            // TODO Auto-generated method stub 
+        } 
+
+    }.start(); 
+} 
+</code></pre><p>});</p>
+<p>匿名内部类是不能加访问修饰符的。<strong>要注意的是，new 匿名类，这个类是要先定义的</strong>，看下面例子：</p>
+<p>public class Outer {<br>    public static void main(String[] args) {<br>        Outer outer = new Outer();<br>        Inner inner = outer.getInner(“Inner”, “gz”);<br>        System.out.println(inner.getName());<br>    } </p>
+<pre><code>public Inner getInner(final String name, String city) { 
+    return new Inner() { 
+        private String nameStr = name; 
+
+        public String getName() { 
+            return nameStr; 
+        } 
+    }; 
+} 
+</code></pre><p>} </p>
+<p>//注释后，编译时提示类Inner找不到<br>/* interface Inner {<br>    String getName();<br>} */</p>
+<p>同时在这个例子，留意外部类的方法的形参，<strong>当所在的方法的形参需要被内部类里面使用时，该形参必须为final</strong>。这里可以看到形参name已经定义为final了，而形参city 没有被使用则不用定义为final。为什么要定义为final呢？在网上找到本人比较如同的解释：</p>
+<p> “这是一个编译器设计的问题，如果你了解java的编译原理的话很容易理解。</p>
+<p>首先，内部类被编译的时候会生成一个单独的内部类的.class文件，这个文件并不与外部类在同一class文件中。</p>
+<p>当外部类传的参数被内部类调用时，从java程序的角度来看是直接的调用例如：</p>
+<p>public void dosome(final String a,final int b){<br>  class Dosome{public void dosome(){System.out.println(a+b)}};<br>  Dosome some=new Dosome();<br>  some.dosome();<br>}</p>
+<p>从代码来看好像是那个内部类直接调用的a参数和b参数，但是实际上不是，在java编译器编译以后实际的操作代码是</p>
+<p>class Outer$Dosome{<br>  public Dosome(final String a,final int b){<br>  this.Dosome$a=a;<br>  this.Dosome$b=b;<br>}<br>  public void dosome(){<br>  System.out.println(this.Dosome$a+this.Dosome$b);<br>}<br>}}</p>
+<p>从以上代码看来，内部类并不是直接调用方法传进来的参数，而是内部类将传进来的参数通过自己的构造器备份到了自己的内部，自己内部的方法调用的实际是自己的属性而不是外部类方法的参数。</p>
+<p>这样理解就很容易得出为什么要用final了，因为两者从外表看起来是同一个东西，实际上却不是这样，如果内部类改掉了这些参数的值也不可能影响到原参数，然而这样却失去了参数的一致性，因为从编程人员的角度来看他们是同一个东西，如果编程人员在程序设计的时候在内部类中改掉参数的值，但是外部调用的时候又发现值其实没有被改掉，这就让人非常的难以理解和接受，为了避免这种尴尬的问题存在，所以编译器设计人员把内部类能够使用的参数设定为必须是final来规避这种莫名其妙错误的存在。”</p>
+<p><strong> (简单理解就是，拷贝引用，为了避免引用值发生改变，例如被外部类的方法修改等，而导致内部类得到的值不一致，于是用final来让该引用不可改变)</strong></p>
+<p> 因为匿名内部类，没名字，是用默认的构造函数的，无参数的，那如果需要参数呢？则需要该类有带参数的构造函数：</p>
+<p>public class Outer {<br>    public static void main(String[] args) {<br>        Outer outer = new Outer();<br>        Inner inner = outer.getInner(“Inner”, “gz”);<br>        System.out.println(inner.getName());<br>    } </p>
+<pre><code>public Inner getInner(final String name, String city) { 
+    return new Inner(name, city) { 
+        private String nameStr = name; 
+
+        public String getName() { 
+            return nameStr; 
+        } 
+    }; 
+} 
+</code></pre><p>} </p>
+<p>abstract class Inner {<br>    Inner(String name, String city) {<br>        System.out.println(city);<br>    } </p>
+<pre><code>abstract String getName(); 
+</code></pre><p>}</p>
+<p>注意这里的形参city，由于它没有被匿名内部类直接使用，而是被抽象类Inner的构造函数所使用，所以不必定义为final。</p>
+<pre><code>而匿名内部类通过实例初始化，可以达到类似构造器的效果：
+</code></pre><p>public class Outer {<br>    public static void main(String[] args) {<br>        Outer outer = new Outer();<br>        Inner inner = outer.getInner(“Inner”, “gz”);<br>        System.out.println(inner.getName());<br>        System.out.println(inner.getProvince());<br>    } </p>
+<pre><code>public Inner getInner(final String name, final String city) { 
+    return new Inner() { 
+        private String nameStr = name; 
+        private String province; 
+
+        // 实例初始化 
+        { 
+            if (city.equals(&quot;gz&quot;)) { 
+                province = &quot;gd&quot;; 
+            }else { 
+                province = &quot;&quot;; 
+            } 
+        } 
+
+        public String getName() { 
+            return nameStr; 
+        } 
+
+        public String getProvince() { 
+            return province; 
+        } 
+    }; 
+} 
+</code></pre><p>} </p>
+<p>interface Inner {<br>    String getName();<br>    String getProvince();</p>
+<h5 id="5-内部类的继承"><a href="#5-内部类的继承" class="headerlink" title="5.内部类的继承"></a>5.内部类的继承</h5><pre><code>内部类的继承，是指内部类被继承，普通类 extents 内部类。而这时候代码上要有点特别处理，具体看以下例子：
+</code></pre><p>public class InheritInner extends WithInner.Inner { </p>
+<pre><code>// InheritInner() 是不能通过编译的，一定要加上形参 
+InheritInner(WithInner wi) { 
+    wi.super(); 
+} 
+
+public static void main(String\[\] args) { 
+    WithInner wi = new WithInner(); 
+    InheritInner obj = new InheritInner(wi); 
+} 
+</code></pre><p>} </p>
+<p>class WithInner {<br>    class Inner { </p>
+<pre><code>} 
+</code></pre><p>}</p>
+<p>可以看到子类的构造函数里面要使用父类的外部类对象.super();而这个对象需要从外面创建并传给形参。</p>
+<p>至于内部类的重载，感觉Thinking in Java的例子很复杂，在平常应用中应该很少，因为有点难懂，不清晰。而内部类和闭包之间的事情，暂时放下，以后再看。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/18/spring-e4-ba-8b-e5-8a-a1-e7-ae-a1-e7-90-86-ef-bc-88-e8-af-a6-e8-a7-a3-e5-ae-9e-e4-be-8b-ef-bc-89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/18/spring-e4-ba-8b-e5-8a-a1-e7-ae-a1-e7-90-86-ef-bc-88-e8-af-a6-e8-a7-a3-e5-ae-9e-e4-be-8b-ef-bc-89/" class="post-title-link" itemprop="url">Spring事务管理（详解+实例）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-18 14:02:15" itemprop="dateCreated datePublished" datetime="2017-05-18T14:02:15+08:00">2017-05-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>标签：</p>
+<p>写这篇博客之前我首先读了《Spring in action》，之后在网上看了一些关于Spring事务管理的文章，感觉都没有讲全，这里就将书上的和网上关于事务的知识总结一下，参考的文章如下：</p>
+<blockquote>
+<ul>
+<li><a href="http://www.open-open.com/lib/view/open1350865116821.html" target="_blank" rel="noopener">Spring事务机制详解</a></li>
+<li><a href="http://www.blogjava.net/robbie/archive/2009/04/05/264003.html" target="_blank" rel="noopener">Spring事务配置的五种方式</a></li>
+<li><a href="http://www.jb51.net/article/57589.htm" target="_blank" rel="noopener">Spring中的事务管理实例详解</a></li>
+</ul>
+</blockquote>
+<h2 id="1-初步理解"><a href="#1-初步理解" class="headerlink" title="1 初步理解"></a>1 初步理解</h2><p>理解事务之前，先讲一个你日常生活中最常干的事：取钱。 比如你去ATM机取1000块钱，大体有两个步骤：首先输入密码金额，银行卡扣掉1000元钱；然后ATM出1000元钱。这两个步骤必须是要么都执行要么都不执行。如果银行卡扣除了1000块但是ATM出钱失败的话，你将会损失1000元；如果银行卡扣钱失败但是ATM却出了1000块，那么银行将损失1000元。所以，如果一个步骤成功另一个步骤失败对双方都不是好事，如果不管哪一个步骤失败了以后，整个取钱过程都能回滚，也就是完全取消所有操作的话，这对双方都是极好的。 事务就是用来解决类似问题的。事务是一系列的动作，它们综合在一起才是一个完整的工作单元，这些动作必须全部完成，如果有一个失败的话，那么事务就会回滚到最开始的状态，仿佛什么都没发生过一样。 在企业级应用程序开发中，事务管理必不可少的技术，用来确保数据的完整性和一致性。 事务有四个特性：ACID</p>
+<blockquote>
+<ul>
+<li>原子性（Atomicity）：事务是一个原子操作，由一系列动作组成。事务的原子性确保动作要么全部完成，要么完全不起作用。</li>
+<li>一致性（Consistency）：一旦事务完成（不管成功还是失败），系统必须确保它所建模的业务处于一致的状态，而不会是部分完成部分失败。在现实中的数据不应该被破坏。</li>
+<li>隔离性（Isolation）：可能有许多事务会同时处理相同的数据，因此每个事务都应该与其他事务隔离开来，防止数据损坏。</li>
+<li>持久性（Durability）：一旦事务完成，无论发生什么系统错误，它的结果都不应该受到影响，这样就能从任何系统崩溃中恢复过来。通常情况下，事务的结果被写到持久化存储器中。</li>
+</ul>
+</blockquote>
+<h2 id="2-核心接口"><a href="#2-核心接口" class="headerlink" title="2 核心接口"></a>2 核心接口</h2><p>Spring事务管理的实现有许多细节，如果对整个接口框架有个大体了解会非常有利于我们理解事务，下面通过讲解Spring的事务接口来了解Spring实现事务的具体策略。 Spring事务管理涉及的接口的联系如下：<img src="http://zhongmin.me/wp-content/uploads/2017/05/20160324011156424.png" alt></p>
+<h3 id="2-1-事务管理器"><a href="#2-1-事务管理器" class="headerlink" title="2.1 事务管理器"></a>2.1 事务管理器</h3><p>Spring并不直接管理事务，而是提供了多种事务管理器，他们将事务管理的职责委托给Hibernate或者JTA等持久化机制所提供的相关平台框架的事务来实现。 Spring事务管理器的接口是org.springframework.transaction.PlatformTransactionManager，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。此接口的内容如下：</p>
+<p>Public interface PlatformTransactionManager()…{<br>    // 由TransactionDefinition得到TransactionStatus对象<br>    TransactionStatus getTransaction(TransactionDefinition definition) throws TransactionException;<br>    // 提交<br>    Void commit(TransactionStatus status) throws TransactionException;<br>    // 回滚<br>    Void rollback(TransactionStatus status) throws TransactionException;<br>    }</p>
+<p>从这里可知具体的具体的事务管理机制对Spring来说是透明的，它并不关心那些，那些是对应各个平台需要关心的，所以Spring事务管理的一个优点就是为不同的事务API提供一致的编程模型，如JTA、JDBC、Hibernate、JPA。下面分别介绍各个平台框架实现事务管理的机制。</p>
+<h4 id="2-1-1-JDBC事务"><a href="#2-1-1-JDBC事务" class="headerlink" title="2.1.1 JDBC事务"></a>2.1.1 JDBC事务</h4><p>如果应用程序中直接使用JDBC来进行持久化，DataSourceTransactionManager会为你处理事务边界。为了使用DataSourceTransactionManager，你需要使用如下的XML将其装配到应用程序的上下文定义中：</p>
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><br>        <property name="dataSource" ref="dataSource"><br>    </property></bean>
+
+<p>实际上，DataSourceTransactionManager是通过调用java.sql.Connection来管理事务，而后者是通过DataSource获取到的。通过调用连接的commit()方法来提交事务，同样，事务失败则通过调用rollback()方法进行回滚。</p>
+<h4 id="2-1-2-Hibernate事务"><a href="#2-1-2-Hibernate事务" class="headerlink" title="2.1.2 Hibernate事务"></a>2.1.2 Hibernate事务</h4><p>如果应用程序的持久化是通过Hibernate实习的，那么你需要使用HibernateTransactionManager。对于Hibernate3，需要在Spring上下文定义中添加如下的<code>&lt;bean&gt;</code>声明：</p>
+<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"><br>      <property name="sessionFactory" ref="sessionFactory"><br></property></bean>
+
+<p>sessionFactory属性需要装配一个Hibernate的session工厂，HibernateTransactionManager的实现细节是它将事务管理的职责委托给org.hibernate.Transaction对象，而后者是从Hibernate Session中获取到的。当事务成功完成时，HibernateTransactionManager将会调用Transaction对象的commit()方法，反之，将会调用rollback()方法。</p>
+<h4 id="2-1-3-Java持久化API事务（JPA）"><a href="#2-1-3-Java持久化API事务（JPA）" class="headerlink" title="2.1.3 Java持久化API事务（JPA）"></a>2.1.3 Java持久化API事务（JPA）</h4><p>Hibernate多年来一直是事实上的Java持久化标准，但是现在Java持久化API作为真正的Java持久化标准进入大家的视野。如果你计划使用JPA的话，那你需要使用Spring的JpaTransactionManager来处理事务。你需要在Spring中这样配置JpaTransactionManager：</p>
+<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"><br>      <property name="sessionFactory" ref="sessionFactory"><br></property></bean>
+
+<p>JpaTransactionManager只需要装配一个JPA实体管理工厂（javax.persistence.EntityManagerFactory接口的任意实现）。JpaTransactionManager将与由工厂所产生的JPA EntityManager合作来构建事务。</p>
+<h4 id="2-1-4-Java原生API事务"><a href="#2-1-4-Java原生API事务" class="headerlink" title="2.1.4 Java原生API事务"></a>2.1.4 Java原生API事务</h4><p>如果你没有使用以上所述的事务管理，或者是跨越了多个事务管理源（比如两个或者是多个不同的数据源），你就需要使用JtaTransactionManager：</p>
+<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"><br>      <property name="transactionManagerName" value="java:/TransactionManager"><br></property></bean>
+
+<p>JtaTransactionManager将事务管理的责任委托给javax.transaction.UserTransaction和javax.transaction.TransactionManager对象，其中事务成功完成通过UserTransaction.commit()方法提交，事务失败通过UserTransaction.rollback()方法回滚。</p>
+<h3 id="2-2-基本事务属性的定义"><a href="#2-2-基本事务属性的定义" class="headerlink" title="2.2 基本事务属性的定义"></a>2.2 基本事务属性的定义</h3><p>上面讲到的事务管理器接口PlatformTransactionManager通过getTransaction(TransactionDefinition definition)方法来得到事务，这个方法里面的参数是TransactionDefinition类，这个类就定义了一些基本的事务属性。 那么什么是事务属性呢？事务属性可以理解成事务的一些基本配置，描述了事务策略如何应用到方法上。事务属性包含了5个方面，如图所示： <img src="http://zhongmin.me/wp-content/uploads/2017/05/20160325003448793.png" alt></p>
+<pre><code>而TransactionDefinition接口内容如下：
+</code></pre><p>public interface TransactionDefinition {<br>    int getPropagationBehavior(); // 返回事务的传播行为<br>    int getIsolationLevel(); // 返回事务的隔离级别，事务管理器根据它来控制另外一个事务可以看到本事务内的哪些数据<br>    int getTimeout();  // 返回事务必须在多少秒内完成<br>    boolean isReadOnly(); // 事务是否只读，事务管理器能够根据这个返回值进行优化，确保事务是只读的<br>}</p>
+<p>我们可以发现TransactionDefinition正好用来定义事务属性，下面详细介绍一下各个事务属性。</p>
+<h4 id="2-2-1-传播行为"><a href="#2-2-1-传播行为" class="headerlink" title="2.2.1 传播行为"></a>2.2.1 传播行为</h4><p>事务的第一个方面是传播行为（propagation behavior）。当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。Spring定义了七种传播行为：</p>
+<p>传播行为</p>
+<p>含义</p>
+<p>PROPAGATION_REQUIRED</p>
+<p>表示当前方法必须运行在事务中。如果当前事务存在，方法将会在该事务中运行。否则，会启动一个新的事务</p>
+<p>PROPAGATION_SUPPORTS</p>
+<p>表示当前方法不需要事务上下文，但是如果存在当前事务的话，那么该方法会在这个事务中运行</p>
+<p>PROPAGATION_MANDATORY</p>
+<p>表示该方法必须在事务中运行，如果当前事务不存在，则会抛出一个异常</p>
+<p>PROPAGATION_REQUIRED_NEW</p>
+<p>表示当前方法必须运行在它自己的事务中。一个新的事务将被启动。如果存在当前事务，在该方法执行期间，当前事务会被挂起。如果使用JTATransactionManager的话，则需要访问TransactionManager</p>
+<p>PROPAGATION_NOT_SUPPORTED</p>
+<p>表示该方法不应该运行在事务中。如果存在当前事务，在该方法运行期间，当前事务将被挂起。如果使用JTATransactionManager的话，则需要访问TransactionManager</p>
+<p>PROPAGATION_NEVER</p>
+<p>表示当前方法不应该运行在事务上下文中。如果当前正有一个事务在运行，则会抛出异常</p>
+<p>PROPAGATION_NESTED</p>
+<p>表示如果当前已经存在一个事务，那么该方法将会在嵌套事务中运行。嵌套的事务可以独立于当前事务进行单独地提交或回滚。如果当前事务不存在，那么其行为与PROPAGATION_REQUIRED一样。注意各厂商对这种传播行为的支持是有所差异的。可以参考资源管理器的文档来确认它们是否支持嵌套事务</p>
+<p><em>注：以下具体讲解传播行为的内容参考自<a href="http://www.open-open.com/lib/view/open1350865116821.html" target="_blank" rel="noopener">Spring事务机制详解</a></em> （1）PROPAGATION_REQUIRED 如果存在一个事务，则支持当前事务。如果没有事务则开启一个新的事务。</p>
+<p>//事务属性 PROPAGATION_REQUIRED<br>methodA{<br>    ……<br>    methodB();<br>    ……<br>}</p>
+<p>//事务属性 PROPAGATION_REQUIRED<br>methodB{<br>   ……<br>}</p>
+<p>使用spring声明式事务，spring使用AOP来支持声明式事务，会根据事务属性，自动在方法调用之前决定是否开启一个事务，并在方法执行之后决定事务提交或回滚事务。 单独调用methodB方法：</p>
+<p>main{<br>    metodB();<br>}</p>
+<p>相当于</p>
+<p>Main{<br>    Connection con=null;<br>    try{<br>        con = getConnection();<br>        con.setAutoCommit(false); </p>
+<pre><code>    //方法调用
+    methodB(); 
+
+    //提交事务
+    con.commit(); 
+} Catch(RuntimeException ex) { 
+    //回滚事务
+    con.rollback();   
+} finally { 
+    //释放资源
+    closeCon(); 
+} 
+</code></pre><p>}</p>
+<p>Spring保证在methodB方法中所有的调用都获得到一个相同的连接。在调用methodB时，没有一个存在的事务，所以获得一个新的连接，开启了一个新的事务。 单独调用MethodA时，在MethodA内又会调用MethodB. 执行效果相当于：</p>
+<p>main{<br>    Connection con = null;<br>    try{<br>        con = getConnection();<br>        methodA();<br>        con.commit();<br>    } catch(RuntimeException ex) {<br>        con.rollback();<br>    } finally {<br>        closeCon();<br>    }<br>}</p>
+<p>调用MethodA时，环境中没有事务，所以开启一个新的事务.当在MethodA中调用MethodB时，环境中已经有了一个事务，所以methodB就加入当前事务。 （2）PROPAGATION_SUPPORTS 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行。但是对于事务同步的事务管理器，PROPAGATION_SUPPORTS与不使用事务有少许不同。</p>
+<p>//事务属性 PROPAGATION_REQUIRED<br>methodA(){<br>  methodB();<br>}</p>
+<p>//事务属性 PROPAGATION_SUPPORTS<br>methodB(){<br>  ……<br>}</p>
+<p>单纯的调用methodB时，methodB方法是非事务的执行的。当调用methdA时,methodB则加入了methodA的事务中,事务地执行。 （3）PROPAGATION_MANDATORY 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常。</p>
+<p>//事务属性 PROPAGATION_REQUIRED<br>methodA(){<br>    methodB();<br>}</p>
+<p>//事务属性 PROPAGATION_MANDATORY<br>    methodB(){<br>    ……<br>}</p>
+<p>当单独调用methodB时，因为当前没有一个活动的事务，则会抛出异常throw new IllegalTransactionStateException(“Transaction propagation ‘mandatory’ but no existing transaction found”);当调用methodA时，methodB则加入到methodA的事务中，事务地执行。 （4）PROPAGATION_REQUIRES_NEW 总是开启一个新的事务。如果一个事务已经存在，则将这个存在的事务挂起。</p>
+<p>//事务属性 PROPAGATION_REQUIRED<br>methodA(){<br>    doSomeThingA();<br>    methodB();<br>    doSomeThingB();<br>}</p>
+<p>//事务属性 PROPAGATION_REQUIRES_NEW<br>methodB(){<br>    ……<br>}</p>
+<p>调用A方法：</p>
+<p>main(){<br>    methodA();<br>}</p>
+<p>相当于</p>
+<p>main(){<br>    TransactionManager tm = null;<br>    try{<br>        //获得一个JTA事务管理器<br>        tm = getTransactionManager();<br>        tm.begin();//开启一个新的事务<br>        Transaction ts1 = tm.getTransaction();<br>        doSomeThing();<br>        tm.suspend();//挂起当前事务<br>        try{<br>            tm.begin();//重新开启第二个事务<br>            Transaction ts2 = tm.getTransaction();<br>            methodB();<br>            ts2.commit();//提交第二个事务<br>        } Catch(RunTimeException ex) {<br>            ts2.rollback();//回滚第二个事务<br>        } finally {<br>            //释放资源<br>        }<br>        //methodB执行完后，恢复第一个事务<br>        tm.resume(ts1);<br>        doSomeThingB();<br>        ts1.commit();//提交第一个事务<br>    } catch(RunTimeException ex) {<br>        ts1.rollback();//回滚第一个事务<br>    } finally {<br>        //释放资源<br>    }<br>}</p>
+<p>在这里，我把ts1称为外层事务，ts2称为内层事务。从上面的代码可以看出，ts2与ts1是两个独立的事务，互不相干。Ts2是否成功并不依赖于 ts1。如果methodA方法在调用methodB方法后的doSomeThingB方法失败了，而methodB方法所做的结果依然被提交。而除了 methodB之外的其它代码导致的结果却被回滚了。使用PROPAGATION_REQUIRES_NEW,需要使用 JtaTransactionManager作为事务管理器。 （5）PROPAGATION_NOT_SUPPORTED 总是非事务地执行，并挂起任何存在的事务。使用PROPAGATION_NOT_SUPPORTED,也需要使用JtaTransactionManager作为事务管理器。（代码示例同上，可同理推出） （6）PROPAGATION_NEVER 总是非事务地执行，如果存在一个活动事务，则抛出异常。 （7）PROPAGATION_NESTED如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行。这是一个嵌套事务,使用JDBC 3.0驱动时,仅仅支持DataSourceTransactionManager作为事务管理器。需要JDBC 驱动的java.sql.Savepoint类。有一些JTA的事务管理器实现可能也提供了同样的功能。使用PROPAGATION_NESTED，还需要把PlatformTransactionManager的nestedTransactionAllowed属性设为true;而 nestedTransactionAllowed属性值默认为false。</p>
+<p>//事务属性 PROPAGATION_REQUIRED<br>methodA(){<br>    doSomeThingA();<br>    methodB();<br>    doSomeThingB();<br>}</p>
+<p>//事务属性 PROPAGATION_NESTED<br>methodB(){<br>    ……<br>}</p>
+<p>如果单独调用methodB方法，则按REQUIRED属性执行。如果调用methodA方法，相当于下面的效果：</p>
+<p>main(){<br>    Connection con = null;<br>    Savepoint savepoint = null;<br>    try{<br>        con = getConnection();<br>        con.setAutoCommit(false);<br>        doSomeThingA();<br>        savepoint = con2.setSavepoint();<br>        try{<br>            methodB();<br>        } catch(RuntimeException ex) {<br>            con.rollback(savepoint);<br>        } finally {<br>            //释放资源<br>        }<br>        doSomeThingB();<br>        con.commit();<br>    } catch(RuntimeException ex) {<br>        con.rollback();<br>    } finally {<br>        //释放资源<br>    }<br>}</p>
+<p>当methodB方法调用之前，调用setSavepoint方法，保存当前的状态到savepoint。如果methodB方法调用失败，则恢复到之前保存的状态。但是需要注意的是，这时的事务并没有进行提交，如果后续的代码(doSomeThingB()方法)调用失败，则回滚包括methodB方法的所有操作。 嵌套事务一个非常重要的概念就是内层事务依赖于外层事务。外层事务失败时，会回滚内层事务所做的动作。而内层事务操作失败并不会引起外层事务的回滚。 PROPAGATION_NESTED 与PROPAGATION_REQUIRES_NEW的区别:它们非常类似,都像一个嵌套事务，如果不存在一个活动的事务，都会开启一个新的事务。使用 PROPAGATION_REQUIRES_NEW时，内层事务与外层事务就像两个独立的事务一样，一旦内层事务进行了提交后，外层事务不能对其进行回滚。两个事务互不影响。两个事务不是一个真正的嵌套事务。同时它需要JTA事务管理器的支持。 使用PROPAGATION_NESTED时，外层事务的回滚可以引起内层事务的回滚。而内层事务的异常并不会导致外层事务的回滚，它是一个真正的嵌套事务。DataSourceTransactionManager使用savepoint支持PROPAGATION_NESTED时，需要JDBC 3.0以上驱动及1.4以上的JDK版本支持。其它的JTA TrasactionManager实现可能有不同的支持方式。 PROPAGATION_REQUIRES_NEW 启动一个新的, 不依赖于环境的 “内部” 事务. 这个事务将被完全 commited 或 rolled back 而不依赖于外部事务, 它拥有自己的隔离范围, 自己的锁, 等等. 当内部事务开始执行时, 外部事务将被挂起, 内务事务结束时, 外部事务将继续执行。 另一方面, PROPAGATION_NESTED 开始一个 “嵌套的” 事务, 它是已经存在事务的一个真正的子事务. 潜套事务开始执行时, 它将取得一个 savepoint. 如果这个嵌套事务失败, 我们将回滚到此 savepoint. 潜套事务是外部事务的一部分, 只有外部事务结束后它才会被提交。 由此可见, PROPAGATION_REQUIRES_NEW 和 PROPAGATION_NESTED 的最大区别在于, PROPAGATION_REQUIRES_NEW 完全是一个新的事务, 而 PROPAGATION_NESTED 则是外部事务的子事务, 如果外部事务 commit, 嵌套事务也会被 commit, 这个规则同样适用于 roll back. PROPAGATION_REQUIRED应该是我们首先的事务传播行为。它能够满足我们大多数的事务需求。</p>
+<h3 id="2-2-2-隔离级别"><a href="#2-2-2-隔离级别" class="headerlink" title="2.2.2 隔离级别"></a>2.2.2 隔离级别</h3><p>事务的第二个维度就是隔离级别（isolation level）。隔离级别定义了一个事务可能受其他并发事务影响的程度。 （1）并发事务引起的问题 在典型的应用程序中，多个事务并发运行，经常会操作相同的数据来完成各自的任务。并发虽然是必须的，但可能会导致一下的问题。</p>
+<blockquote>
+<ul>
+<li>脏读（Dirty reads）——脏读发生在一个事务读取了另一个事务改写但尚未提交的数据时。如果改写在稍后被回滚了，那么第一个事务获取的数据就是无效的。</li>
+<li>不可重复读（Nonrepeatable read）——不可重复读发生在一个事务执行相同的查询两次或两次以上，但是每次都得到不同的数据时。这通常是因为另一个并发事务在两次查询期间进行了更新。</li>
+<li>幻读（Phantom read）——幻读与不可重复读类似。它发生在一个事务（T1）读取了几行数据，接着另一个并发事务（T2）插入了一些数据时。在随后的查询中，第一个事务（T1）就会发现多了一些原本不存在的记录。</li>
+</ul>
+</blockquote>
+<p><strong>不可重复读与幻读的区别</strong> 不可重复读的重点是修改: 同样的条件, 你读取过的数据, 再次读取出来发现值不一样了 例如：在事务1中，Mary 读取了自己的工资为1000,操作并没有完成</p>
+<p>con1 = getConnection();<br>select salary from employee empId =”Mary”;</p>
+<p>在事务2中，这时财务人员修改了Mary的工资为2000,并提交了事务.</p>
+<pre><code>con2 = getConnection();  
+update employee set salary = 2000;  
+con2.commit(); 
+</code></pre><p>在事务1中，Mary 再次读取自己的工资时，工资变为了2000</p>
+<p>//con1<br>select salary from employee empId =”Mary”;</p>
+<p>在一个事务中前后两次读取的结果并不一致，导致了不可重复读。 幻读的重点在于新增或者删除： 同样的条件, 第1次和第2次读出来的记录数不一样 例如：目前工资为1000的员工有10人。事务1,读取所有工资为1000的员工。</p>
+<p> con1 = getConnection();<br>    Select * from employee where salary =1000;</p>
+<p>共读取10条记录 这时另一个事务向employee表插入了一条员工记录，工资也为1000</p>
+<pre><code>con2 = getConnection();  
+Insert into employee(empId,salary) values(&quot;Lili&quot;,1000);  
+con2.commit();
+</code></pre><p>事务1再次读取所有工资为1000的员工</p>
+<p>  //con1<br>    select * from employee where salary =1000;</p>
+<p>共读取到了11条记录，这就产生了幻像读。 从总的结果来看, 似乎不可重复读和幻读都表现为两次读取的结果不一致。但如果你从控制的角度来看, 两者的区别就比较大。 对于前者, 只需要锁住满足条件的记录。 对于后者, 要锁住满足条件及其相近的记录。 （2）隔离级别</p>
+<p>隔离级别</p>
+<p>含义</p>
+<p>ISOLATION_DEFAULT</p>
+<p>使用后端数据库默认的隔离级别</p>
+<p>ISOLATION_READ_UNCOMMITTED</p>
+<p>最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读</p>
+<p>ISOLATION_READ_COMMITTED</p>
+<p>允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生</p>
+<p>ISOLATION_REPEATABLE_READ</p>
+<p>对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生</p>
+<p>ISOLATION_SERIALIZABLE</p>
+<p>最高的隔离级别，完全服从ACID的隔离级别，确保阻止脏读、不可重复读以及幻读，也是最慢的事务隔离级别，因为它通常是通过完全锁定事务相关的数据库表来实现的</p>
+<h3 id="2-2-3-只读"><a href="#2-2-3-只读" class="headerlink" title="2.2.3 只读"></a>2.2.3 只读</h3><p>事务的第三个特性是它是否为只读事务。如果事务只对后端的数据库进行该操作，数据库可以利用事务的只读特性来进行一些特定的优化。通过将事务设置为只读，你就可以给数据库一个机会，让它应用它认为合适的优化措施。</p>
+<h4 id="2-2-4-事务超时"><a href="#2-2-4-事务超时" class="headerlink" title="2.2.4 事务超时"></a>2.2.4 事务超时</h4><p>为了使应用程序很好地运行，事务不能运行太长的时间。因为事务可能涉及对后端数据库的锁定，所以长时间的事务会不必要的占用数据库资源。事务超时就是事务的一个定时器，在特定时间内事务如果没有执行完毕，那么就会自动回滚，而不是一直等待其结束。</p>
+<h4 id="2-2-5-回滚规则"><a href="#2-2-5-回滚规则" class="headerlink" title="2.2.5 回滚规则"></a>2.2.5 回滚规则</h4><p>事务五边形的最后一个方面是一组规则，这些规则定义了哪些异常会导致事务回滚而哪些不会。默认情况下，事务只有遇到运行期异常时才会回滚，而在遇到检查型异常时不会回滚（这一行为与EJB的回滚行为是一致的） 但是你可以声明事务在遇到特定的检查型异常时像遇到运行期异常那样回滚。同样，你还可以声明事务遇到特定的异常不回滚，即使这些异常是运行期异常。</p>
+<h3 id="2-3-事务状态"><a href="#2-3-事务状态" class="headerlink" title="2.3 事务状态"></a>2.3 事务状态</h3><p>上面讲到的调用PlatformTransactionManager接口的getTransaction()的方法得到的是TransactionStatus接口的一个实现，这个接口的内容如下：</p>
+<p>public interface TransactionStatus{<br>    boolean isNewTransaction(); // 是否是新的事物<br>    boolean hasSavepoint(); // 是否有恢复点<br>    void setRollbackOnly();  // 设置为只回滚<br>    boolean isRollbackOnly(); // 是否为只回滚<br>    boolean isCompleted; // 是否已完成<br>}</p>
+<p>可以发现这个接口描述的是一些处理事务提供简单的控制事务执行和查询事务状态的方法，在回滚或提交的时候需要应用对应的事务状态。</p>
+<h2 id="3-编程式事务"><a href="#3-编程式事务" class="headerlink" title="3 编程式事务"></a>3 编程式事务</h2><h3 id="3-1-编程式和声明式事务的区别"><a href="#3-1-编程式和声明式事务的区别" class="headerlink" title="3.1 编程式和声明式事务的区别"></a>3.1 编程式和声明式事务的区别</h3><p>Spring提供了对编程式事务和声明式事务的支持，编程式事务允许用户在代码中精确定义事务的边界，而声明式事务（基于AOP）有助于用户将操作与事务规则进行解耦。 简单地说，编程式事务侵入到了业务代码里面，但是提供了更加详细的事务管理；而声明式事务由于基于AOP，所以既能起到事务管理的作用，又可以不影响业务代码的具体实现。</p>
+<h3 id="3-2-如何实现编程式事务？"><a href="#3-2-如何实现编程式事务？" class="headerlink" title="3.2 如何实现编程式事务？"></a>3.2 如何实现编程式事务？</h3><p>Spring提供两种方式的编程式事务管理，分别是：使用TransactionTemplate和直接使用PlatformTransactionManager。</p>
+<h4 id="3-2-1-使用TransactionTemplate"><a href="#3-2-1-使用TransactionTemplate" class="headerlink" title="3.2.1 使用TransactionTemplate"></a>3.2.1 使用TransactionTemplate</h4><p>采用TransactionTemplate和采用其他Spring模板，如JdbcTempalte和HibernateTemplate是一样的方法。它使用回调方法，把应用程序从处理取得和释放资源中解脱出来。如同其他模板，TransactionTemplate是线程安全的。代码片段：</p>
+<pre><code>TransactionTemplate tt = new TransactionTemplate(); // 新建一个TransactionTemplate
+Object result = tt.execute(
+    new TransactionCallback(){  
+        public Object doTransaction(TransactionStatus status){  
+            updateOperation();  
+            return resultOfUpdateOperation();  
+        }  
+}); // 执行execute方法进行事务管理
+</code></pre><p>使用TransactionCallback()可以返回一个值。如果使用TransactionCallbackWithoutResult则没有返回值。</p>
+<h4 id="3-2-2-使用PlatformTransactionManager"><a href="#3-2-2-使用PlatformTransactionManager" class="headerlink" title="3.2.2 使用PlatformTransactionManager"></a>3.2.2 使用PlatformTransactionManager</h4><p>示例代码如下：</p>
+<p>   DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager(); //定义一个某个框架平台的TransactionManager，如JDBC、Hibernate<br>    dataSourceTransactionManager.setDataSource(this.getJdbcTemplate().getDataSource()); // 设置数据源<br>    DefaultTransactionDefinition transDef = new DefaultTransactionDefinition(); // 定义事务属性<br>    transDef.setPropagationBehavior(DefaultTransactionDefinition.PROPAGATION_REQUIRED); // 设置传播行为属性<br>    TransactionStatus status = dataSourceTransactionManager.getTransaction(transDef); // 获得事务状态<br>    try {<br>        // 数据库操作<br>        dataSourceTransactionManager.commit(status);// 提交<br>    } catch (Exception e) {<br>        dataSourceTransactionManager.rollback(status);// 回滚<br>    }</p>
+<h2 id="4-声明式事务"><a href="#4-声明式事务" class="headerlink" title="4 声明式事务"></a>4 声明式事务</h2><h3 id="4-1-配置方式"><a href="#4-1-配置方式" class="headerlink" title="4.1 配置方式"></a>4.1 配置方式</h3><p><em>注：以下配置代码参考自<a href="http://www.blogjava.net/robbie/archive/2009/04/05/264003.html" target="_blank" rel="noopener">Spring事务配置的五种方式</a></em> 根据代理机制的不同，总结了五种Spring事务的配置方式，配置文件如下： （1）每个Bean都有一个代理</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemalocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"><br><br>    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"><br>        <property name="configLocation" value="classpath:hibernate.cfg.xml"><br>        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"><br>    </property></property></bean><br><br>    &lt;!-- 定义事务管理器（声明式的事务） –><br>    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"><br>        <property name="sessionFactory" ref="sessionFactory"><br>    </property></bean><br><br>    &lt;!-- 配置DAO –&gt;<br>    <bean id="userDaoTarget" class="com.bluesky.spring.dao.UserDaoImpl"><br>        <property name="sessionFactory" ref="sessionFactory"><br>    </property></bean><br><br>    <bean id="userDao" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"><br>           &lt;!-- 配置事务管理器 –><br>           <property name="transactionManager" ref="transactionManager"><br>        <property name="target" ref="userDaoTarget"><br>         <property name="proxyInterfaces" value="com.bluesky.spring.dao.GeneratorDao"><br>        &lt;!-- 配置事务属性 –><br>        <property name="transactionAttributes"><br>            <props><br>                <prop key="*">PROPAGATION_REQUIRED</prop><br>            </props><br>        </property><br>    </property></property></property></bean><br></beans>
+
+<p>（2）所有Bean共享一个代理基类</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemalocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"><br><br>    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"><br>        <property name="configLocation" value="classpath:hibernate.cfg.xml"><br>        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"><br>    </property></property></bean><br><br>    &lt;!-- 定义事务管理器（声明式的事务） –><br>    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"><br>        <property name="sessionFactory" ref="sessionFactory"><br>    </property></bean><br><br>    <bean id="transactionBase" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" lazy-init="true" abstract="true"><br>        &lt;!-- 配置事务管理器 –><br>        <property name="transactionManager" ref="transactionManager"><br>        &lt;!-- 配置事务属性 –><br>        <property name="transactionAttributes"><br>            <props><br>                <prop key="*">PROPAGATION_REQUIRED</prop><br>            </props><br>        </property><br>    </property></bean><br><br>    &lt;!-- 配置DAO –&gt;<br>    <bean id="userDaoTarget" class="com.bluesky.spring.dao.UserDaoImpl"><br>        <property name="sessionFactory" ref="sessionFactory"><br>    </property></bean><br><br>    <bean id="userDao" parent="transactionBase"><br>        <property name="target" ref="userDaoTarget"><br>    </property></bean><br></beans>
+
+<p>（3）使用拦截器</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemalocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"><br><br>    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"><br>        <property name="configLocation" value="classpath:hibernate.cfg.xml"><br>        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"><br>    </property></property></bean><br><br>    &lt;!-- 定义事务管理器（声明式的事务） –><br>    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"><br>        <property name="sessionFactory" ref="sessionFactory"><br>    </property></bean><br><br>    <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor"><br>        <property name="transactionManager" ref="transactionManager"><br>        &lt;!-- 配置事务属性 –><br>        <property name="transactionAttributes"><br>            <props><br>                <prop key="*">PROPAGATION_REQUIRED</prop><br>            </props><br>        </property><br>    </property></bean><br><br>    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"><br>        <property name="beanNames"><br>            <list><br>                <value>*Dao</value><br>            </list><br>        </property><br>        <property name="interceptorNames"><br>            <list><br>                <value>transactionInterceptor</value><br>            </list><br>        </property><br>    </bean><br><br>    &lt;!-- 配置DAO –&gt;<br>    <bean id="userDao" class="com.bluesky.spring.dao.UserDaoImpl"><br>        <property name="sessionFactory" ref="sessionFactory"><br>    </property></bean><br></beans>
+
+<p>（4）使用tx标签配置的拦截器</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemalocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"><br><br>    &lt;context:annotation-config /&gt;<br>    &lt;context:component-scan base-package=”com.bluesky” /&gt;<br><br>    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"><br>        <property name="configLocation" value="classpath:hibernate.cfg.xml"><br>        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"><br>    </property></property></bean><br><br>    &lt;!-- 定义事务管理器（声明式的事务） –><br>    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"><br>        <property name="sessionFactory" ref="sessionFactory"><br>    </property></bean><br><br>    &lt;tx:advice id=”txAdvice” transaction-manager=”transactionManager”&gt;<br>        <a href="tx:attributes" target="_blank" rel="noopener">tx:attributes</a><br>            &lt;tx:method name=”<em>“ propagation=”REQUIRED” /&gt;<br>        &lt;/tx:attributes&gt;<br>    &lt;/tx:advice&gt;<br><br>    <a href="aop:config" target="_blank" rel="noopener">aop:config</a><br>        &lt;aop:pointcut id=”interceptorPointCuts”<br>            expression=”execution(</em> com.bluesky.spring.dao.<em>.</em>(..))” /&gt;<br>        &lt;aop:advisor advice-ref=”txAdvice”<br>            pointcut-ref=”interceptorPointCuts” /&gt;<br>    &lt;/aop:config&gt;<br></beans>
+
+<p>（5）全注解</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemalocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"><br><br>    &lt;context:annotation-config /&gt;<br>    &lt;context:component-scan base-package=”com.bluesky” /&gt;<br><br>    &lt;tx:annotation-driven transaction-manager=”transactionManager”/&gt;<br><br>    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"><br>        <property name="configLocation" value="classpath:hibernate.cfg.xml"><br>        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"><br>    </property></property></bean><br><br>    &lt;!-- 定义事务管理器（声明式的事务） –><br>    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"><br>        <property name="sessionFactory" ref="sessionFactory"><br>    </property></bean><br><br></beans>
+
+<p>此时在DAO上需加上@Transactional注解，如下：</p>
+<p>package com.bluesky.spring.dao;</p>
+<p>import java.util.List;</p>
+<p>import org.hibernate.SessionFactory;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.orm.hibernate3.support.HibernateDaoSupport;<br>import org.springframework.stereotype.Component;</p>
+<p>import com.bluesky.spring.domain.User;</p>
+<p>@Transactional<br>@Component(“userDao”)<br>public class UserDaoImpl extends HibernateDaoSupport implements UserDao {</p>
+<pre><code>public List&lt;User&gt; listUsers() {
+    return this.getSession().createQuery(&quot;from User&quot;).list();
+}  
+</code></pre><p>}</p>
+<h3 id="4-2-一个声明式事务的实例"><a href="#4-2-一个声明式事务的实例" class="headerlink" title="4.2 一个声明式事务的实例"></a>4.2 一个声明式事务的实例</h3><p><em>注：该实例参考自<a href="http://www.jb51.net/article/57589.htm" target="_blank" rel="noopener">Spring中的事务管理实例详解</a></em> <strong>首先是数据库表</strong> book(isbn, book_name, price) account(username, balance) book_stock(isbn, stock) <strong>然后是XML配置</strong></p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemalocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"><br><br>    <import resource="applicationContext-db.xml"><br><br>    &lt;context:component-scan<br>        base-package=”com.springinaction.transaction”&gt;<br>    &lt;/context:component-scan&gt;<br><br>    &lt;tx:annotation-driven transaction-manager=”txManager”/&gt;<br><br>    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><br>        <property name="dataSource" ref="dataSource"><br>    </property></bean><br><br></import></beans>
+
+<p><strong>使用的类</strong> BookShopDao</p>
+<p>package com.springinaction.transaction;</p>
+<p>public interface BookShopDao {<br>    // 根据书号获取书的单价<br>    public int findBookPriceByIsbn(String isbn);<br>    // 更新书的库存，使书号对应的库存-1<br>    public void updateBookStock(String isbn);<br>    // 更新用户的账户余额：account的balance-price<br>    public void updateUserAccount(String username, int price);<br>}</p>
+<p>BookShopDaoImpl</p>
+<p>package com.springinaction.transaction;</p>
+<p>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.jdbc.core.JdbcTemplate;<br>import org.springframework.stereotype.Repository;</p>
+<p>@Repository(“bookShopDao”)<br>public class BookShopDaoImpl implements BookShopDao {</p>
+<pre><code>@Autowired
+private JdbcTemplate JdbcTemplate;
+
+@Override
+public int findBookPriceByIsbn(String isbn) {
+    String sql = &quot;SELECT price FROM book WHERE isbn = ?&quot;;
+
+    return JdbcTemplate.queryForObject(sql, Integer.class, isbn);
+}
+
+@Override
+public void updateBookStock(String isbn) {
+    //检查书的库存是否足够，若不够，则抛出异常
+    String sql2 = &quot;SELECT stock FROM book_stock WHERE isbn = ?&quot;;
+    int stock = JdbcTemplate.queryForObject(sql2, Integer.class, isbn);
+    if (stock == 0) {
+        throw new BookStockException(&quot;库存不足！&quot;);
+    }
+    String sql = &quot;UPDATE book_stock SET stock = stock - 1 WHERE isbn = ?&quot;;
+    JdbcTemplate.update(sql, isbn);
+}
+
+@Override
+public void updateUserAccount(String username, int price) {
+    //检查余额是否不足，若不足，则抛出异常
+    String sql2 = &quot;SELECT balance FROM account WHERE username = ?&quot;;
+    int balance = JdbcTemplate.queryForObject(sql2, Integer.class, username);
+    if (balance &lt; price) {
+        throw new UserAccountException(&quot;余额不足！&quot;);
+    }       
+    String sql = &quot;UPDATE account SET balance = balance - ? WHERE username = ?&quot;;
+    JdbcTemplate.update(sql, price, username);
+}
+</code></pre><p>}</p>
+<p>BookShopService</p>
+<p>package com.springinaction.transaction;<br>public interface BookShopService {<br>     public void purchase(String username, String isbn);<br>}</p>
+<p>BookShopServiceImpl</p>
+<p>package com.springinaction.transaction;</p>
+<p>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.stereotype.Service;<br>import org.springframework.transaction.annotation.Isolation;<br>import org.springframework.transaction.annotation.Propagation;<br>import org.springframework.transaction.annotation.Transactional;</p>
+<p>@Service(“bookShopService”)<br>public class BookShopServiceImpl implements BookShopService {</p>
+<pre><code>@Autowired
+private BookShopDao bookShopDao;
+
+/\*\*
+ \* 1.添加事务注解
+ \* 使用propagation 指定事务的传播行为，即当前的事务方法被另外一个事务方法调用时如何使用事务。
+ \* 默认取值为REQUIRED，即使用调用方法的事务
+ \* REQUIRES_NEW：使用自己的事务，调用的事务方法的事务被挂起。
+ \*
+ \* 2.使用isolation 指定事务的隔离级别，最常用的取值为READ_COMMITTED
+ \* 3.默认情况下 Spring 的声明式事务对所有的运行时异常进行回滚，也可以通过对应的属性进行设置。通常情况下，默认值即可。
+ \* 4.使用readOnly 指定事务是否为只读。 表示这个事务只读取数据但不更新数据，这样可以帮助数据库引擎优化事务。若真的是一个只读取数据库值得方法，应设置readOnly=true
+ \* 5.使用timeOut 指定强制回滚之前事务可以占用的时间。
+ */
+@Transactional(propagation=Propagation.REQUIRES_NEW,
+        isolation=Isolation.READ_COMMITTED,
+        noRollbackFor={UserAccountException.class},
+        readOnly=true, timeout=3)
+@Override
+public void purchase(String username, String isbn) {
+    //1.获取书的单价
+    int price = bookShopDao.findBookPriceByIsbn(isbn);
+    //2.更新书的库存
+    bookShopDao.updateBookStock(isbn);
+    //3.更新用户余额
+    bookShopDao.updateUserAccount(username, price);
+}
+</code></pre><p>}</p>
+<p>Cashier</p>
+<p>package com.springinaction.transaction;<br>import java.util.List;<br>public interface Cashier {<br>    public void checkout(String username, List<string>isbns);<br>}</string></p>
+<p>CashierImpl：CashierImpl.checkout和bookShopService.purchase联合测试了事务的传播行为</p>
+<p>package com.springinaction.transaction;</p>
+<p>import java.util.List;</p>
+<p>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.stereotype.Service;<br>import org.springframework.transaction.annotation.Transactional;</p>
+<p>@Service(“cashier”)<br>public class CashierImpl implements Cashier {<br>    @Autowired<br>    private BookShopService bookShopService;</p>
+<pre><code>@Transactional
+@Override
+public void checkout(String username, List&lt;String&gt; isbns) {
+    for(String isbn : isbns) {
+        bookShopService.purchase(username, isbn);
+    }
+}
+</code></pre><p>}</p>
+<p>BookStockException</p>
+<p>package com.springinaction.transaction;<br>public class BookStockException extends RuntimeException {</p>
+<pre><code>private static final long serialVersionUID = 1L;
+
+public BookStockException() {
+    super();
+    // TODO Auto-generated constructor stub
+}
+
+public BookStockException(String arg0, Throwable arg1, boolean arg2,
+        boolean arg3) {
+    super(arg0, arg1, arg2, arg3);
+    // TODO Auto-generated constructor stub
+}
+
+public BookStockException(String arg0, Throwable arg1) {
+    super(arg0, arg1);
+    // TODO Auto-generated constructor stub
+}
+
+public BookStockException(String arg0) {
+    super(arg0);
+    // TODO Auto-generated constructor stub
+}
+
+public BookStockException(Throwable arg0) {
+    super(arg0);
+    // TODO Auto-generated constructor stub
+}
+</code></pre><p>}</p>
+<p>UserAccountException</p>
+<p>package com.springinaction.transaction;<br>public class UserAccountException extends RuntimeException {</p>
+<pre><code>private static final long serialVersionUID = 1L;
+
+public UserAccountException() {
+    super();
+    // TODO Auto-generated constructor stub
+}
+
+public UserAccountException(String arg0, Throwable arg1, boolean arg2,
+        boolean arg3) {
+    super(arg0, arg1, arg2, arg3);
+    // TODO Auto-generated constructor stub
+}
+
+public UserAccountException(String arg0, Throwable arg1) {
+    super(arg0, arg1);
+    // TODO Auto-generated constructor stub
+}
+
+public UserAccountException(String arg0) {
+    super(arg0);
+    // TODO Auto-generated constructor stub
+}
+
+public UserAccountException(Throwable arg0) {
+    super(arg0);
+    // TODO Auto-generated constructor stub
+}
+</code></pre><p>}</p>
+<p>测试类</p>
+<p>package com.springinaction.transaction;</p>
+<p>import java.util.Arrays;</p>
+<p>import org.junit.Test;<br>import org.springframework.context.ApplicationContext;<br>import org.springframework.context.support.ClassPathXmlApplicationContext;</p>
+<p>public class SpringTransitionTest {</p>
+<pre><code>private ApplicationContext ctx = null;
+private BookShopDao bookShopDao = null;
+private BookShopService bookShopService = null;
+private Cashier cashier = null;
+{
+    ctx = new ClassPathXmlApplicationContext(&quot;config/transaction.xml&quot;);
+    bookShopDao = ctx.getBean(BookShopDao.class);
+    bookShopService = ctx.getBean(BookShopService.class);
+    cashier = ctx.getBean(Cashier.class);
+}
+
+@Test
+public void testBookShopDaoFindPriceByIsbn() {
+    System.out.println(bookShopDao.findBookPriceByIsbn(&quot;1001&quot;));
+}
+
+@Test
+public void testBookShopDaoUpdateBookStock(){
+    bookShopDao.updateBookStock(&quot;1001&quot;);
+}
+
+@Test
+public void testBookShopDaoUpdateUserAccount(){
+    bookShopDao.updateUserAccount(&quot;AA&quot;, 100);
+}
+@Test
+public void testBookShopService(){
+    bookShopService.purchase(&quot;AA&quot;, &quot;1001&quot;);
+}
+
+@Test
+public void testTransactionPropagation(){
+    cashier.checkout(&quot;AA&quot;, Arrays.asList(&quot;1001&quot;, &quot;1002&quot;));
+}
+</code></pre><p>}</p>
+<p>  <em>OVER</em> 原文链接:<a href="http://www.mamicode.com/info-detail-1248286.html" target="_blank" rel="noopener">http://www.mamicode.com/info-detail-1248286.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/14/druid-e9-85-8d-e7-bd-ae-e6-95-b0-e6-8d-ae-e5-ba-93-e8-bf-9e-e6-8e-a5-e4-bd-bf-e7-94-a8-e5-af-86-e6-96-87-e5-af-86-e7-a0-81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/14/druid-e9-85-8d-e7-bd-ae-e6-95-b0-e6-8d-ae-e5-ba-93-e8-bf-9e-e6-8e-a5-e4-bd-bf-e7-94-a8-e5-af-86-e6-96-87-e5-af-86-e7-a0-81/" class="post-title-link" itemprop="url">druid配置数据库连接使用密文密码</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-14 14:19:00" itemprop="dateCreated datePublished" datetime="2017-05-14T14:19:00+08:00">2017-05-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>从网上down另一个项目,启动时报这个错误,关于这个错误相关问题不多,卡了好几天了终于找到问题所在: <img src="http://zhongmin.me/wp-content/uploads/2017/05/N9M3AA@7F5PZ1@GCN.png" alt> 这个原因是druid数据库密码加密的原因,原本的数据库密码是进行加密的,但是我在本地跑的时候密码已经修改成明文密码了.所以报出这个错误. 解决方法有俩个: 1.下图是数据库连接的配置,可以将最后俩个关于解密密码的配置去掉就ok了.<img src="http://zhongmin.me/wp-content/uploads/2017/05/DYT5DIGU3152SCWI1R.png" alt> 2.第二个方法就是对数据库密码进行加密. 生成密码需要jdk环境,以及druid包,找到druid包所在的目录,可以使用的maven仓库中的druid包.在目录下打开命令窗口(win用户可以在目录中 shift+鼠标右键 打开命令窗口)<img src="http://zhongmin.me/wp-content/uploads/2017/05/865EC6E5H70W9JHNO_Y1.png" alt>在命令行中输入命令:</p>
+<p>java -cp druid-1.0.22.jar com.alibaba.druid.filter.config.ConfigTools you_password</p>
+<p>回车后会看见生成的密码: <img src="http://zhongmin.me/wp-content/uploads/2017/05/N6D6C8JX7A52U3_2_I.png" alt> 这里包含了公钥,私钥以及密码.将密码copy至配置文件.然后修改数据源的配置</p>
+  <property name="connectionProperties" value="config.decrypt=true;config.decrypt.key=${publickey}">
+
+<p>这里配置上生成的公钥用来解密. config.decrypt=true 表示需要进行解密,这个可以配置在数据源中也可以通过其他方式来配置. 有三种方式配置： 1) 可以在配置文件my.properties中指定config.decrypt=true 2) 也可以在DruidDataSource的ConnectionProperties中指定config.decrypt=true 3) 也可以在jvm启动参数中指定-Ddruid.config.decrypt=true   参考:</p>
+</property>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/09/java-e7-b1-bb-e7-9a-84-e5-88-9d-e5-a7-8b-e5-8c-96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/09/java-e7-b1-bb-e7-9a-84-e5-88-9d-e5-a7-8b-e5-8c-96/" class="post-title-link" itemprop="url">Java类的初始化</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-09 21:33:23" itemprop="dateCreated datePublished" datetime="2017-05-09T21:33:23+08:00">2017-05-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>先总结一下一个对象的创建过程，假如有一个名为Dog的类: 1.即使没有显式的使用static关键字，即没有static成员方法或者代码块，构造器实际是一个静态的方法。因此当首次创建Dog对象，或者首次访问Dog类中的静态方法、静态域时，Java解释器必须查找类路径，已定位Dog.class文件。 2.然后会载入Dog.class文件（这将创建一个Class对象），有关静态初始化的所有动作都会执行。因此静态初始化只在Class对象首次访问的时候进行一次。 3.这块存储空间将被清零，这就自动的将Dog对象中的所有基本类型的数据都设置成了默认值,(对数字来说就是0，布尔类型的为false,char为0,String类型为null),而对象的引用会赋予默认值null. 4.执行所有出现于对象定义处的初始化动作。 6.执行构造器。这会涉及到继承的问题。 这段总结摘自于Think In Java P96页。</p>
+<h4 id="Q1：访问类的静态域是否会执行所有的静态代码块？"><a href="#Q1：访问类的静态域是否会执行所有的静态代码块？" class="headerlink" title="Q1：访问类的静态域是否会执行所有的静态代码块？"></a>Q1：访问类的静态域是否会执行所有的静态代码块？</h4><p>public class TestClassLoad {<br>    public static void main(String[] args) {<br>       int i = Window.i;<br>    }<br>}<br>class Window{<br>    static int i = 10;<br>    static {<br>        System.out.println(“window中static初始化块”);<br>    }<br>    static void f(){<br>        System.out.println(“window中static方法”);<br>    }<br>    Window(int marker){<br>        System.out.println(“Window(“+marker+”)”);<br>    }<br>    Window(){<br>        System.out.println(“Window()”);<br>    }<br>}</p>
+<p>输出结果如下：</p>
+<p>window中static初始化块</p>
+<p>发现只执行了静态代码块中的代码，而构造器并没有执行，那么与第一点说构造器实际上是一个静态方法又相互矛盾了。查了一些资料，其实构造器并不是一个静态方法只是具有静态方法的一些特性，可以看做静态方法。 关于构造器是否是静态方法可以参考这篇文章：<a href="http://rednaxelafx.iteye.com/blog/652719" target="_blank" rel="noopener">http://rednaxelafx.iteye.com/blog/652719</a> 对于第三点这块存储空间将会被清0，是指创建dog对象的时候需要在heap上分配足够的内存，这块内会先被清零。</p>
+<h4 id="Q2-静态成员变量的初始化在静态代码执行前还是执行后？"><a href="#Q2-静态成员变量的初始化在静态代码执行前还是执行后？" class="headerlink" title="Q2:静态成员变量的初始化在静态代码执行前还是执行后？"></a>Q2:静态成员变量的初始化在静态代码执行前还是执行后？</h4><p>public class TestClassLoad {<br>    public static void main(String[] args) {<br>       int i = Window.i;<br>        System.out.println(“Window.i=”+i);<br>    }<br>}<br>class Window{<br>    static int i = 10;<br>    static {<br>        i = 20;<br>        System.out.println(“window中static初始化块”);<br>    }<br>}</p>
+<p>输出结果为：</p>
+<p>window中static初始化块<br>Window.i=20</p>
+<p>结果i=20说明静态成员变量的初始化在静态代码块之前。</p>
+<h4 id="Q3-对于第6点-如果Dog类存在父类，初始化顺序又是怎样？"><a href="#Q3-对于第6点-如果Dog类存在父类，初始化顺序又是怎样？" class="headerlink" title="Q3:对于第6点,如果Dog类存在父类，初始化顺序又是怎样？"></a>Q3:对于第6点,如果Dog类存在父类，初始化顺序又是怎样？</h4><p>class Parent{<br>    public static String age = f(“parent static age”);<br>    public String weight= f(“parent weight”);<br>    public static String name = “parent”;<br>    {<br>        System.out.println(“parent中的初始化块”);<br>    }<br>    static{<br>        System.out.println(“parent中static初始化块”);<br>    }<br>    public static String f(String i){<br>        System.out.println(i+”初始化”);<br>        return “20”;<br>    }<br>    public Parent(){<br>        System.out.println(“parent构造方法”);<br>    }<br>}</p>
+<p>class Son extends Parent{<br>    public static String height = f(“son static height”);<br>    public String sonage= f(“son sonage”);<br>    public static String name = “son”;<br>    {<br>        System.out.println(“son中的初始化块”);<br>    }<br>    static{<br>        System.out.println(“son中的static初始化块”);<br>    }<br>    public Son(){<br>        System.out.println(“son构造方法”);<br>    }<br>}<br>public class TestClassLoad {<br>    public static void main(String[] args) {<br>        Parent p = new Son();<br>        Parent p2 = new Son();<br>    }<br>}</p>
+<p>输出结果为:</p>
+<p>parent static age初始化<br>parent中static初始化块<br>son static height初始化<br>son中的static初始化块<br>parent weight初始化<br>parent中的初始化块<br>parent构造方法<br>son sonage初始化<br>son中的初始化块<br>son构造方法<br>---------------------------------</p>
+<p>##下面是p2 = new Son()打印的结果<br>parent weight初始化<br>parent中的初始化块<br>parent构造方法<br>son sonage初始化<br>son中的初始化块<br>son构造方法</p>
+<p>由此可见：属性、方法、构造方法和自由块都是类中的成员，在创建类的对象时，类中各成员的执行顺序： 1.父类静态成员和静态初始化快，按在代码中出现的顺序依次执行。 2.子类静态成员和静态初始化块，按在代码中出现的顺序依次执行。 3. 父类的实例成员和实例初始化块，按在代码中出现的顺序依次执行。 4.执行父类的构造方法。 5.子类实例成员和实例初始化块，按在代码中出现的顺序依次执行。 6.执行子类的构造方法。 初始化块主要用于对象的初始化操作，在创建对象时调用，可以用于完成初始化属性值、加载其他的类的功能。 初始化块和构造方法功能类似，可以再创建对象的时候完成一些初始化的操作，一般的情况下，构造方法初始化和初始化块初始化可以通用。 构造方法在初始化的时候可以通过参数船只，但是初始化块不能，初始化块的初始化在构造方法之前执行，如果搞糟方法多次重载，此时可以考虑构造方法中共通的代码放到初始化块中进行初始化。 静态初始化块和非晶态初始化块的区别？ 非静态初始化块主要是用于对象的初始化操作，在每次创建对象的时都要调用一次，其执行顺序在构造方法之前。 在初始化块之前有static修饰，则为静态初始化块。由于非静态成员不能再静态方法中使用，同样也不能在静态初始化块中，因此，静态初始化块主要用于初始化静态变量和静态方法，静态初始化块只调用一次，是在类的第一次加载到内存时，并非一定要创建对象才执行， 静态初始化块比非静态初始化块先执行。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/09/wordpress-e6-97-a0-e6-b3-95-e5-b0-86-e4-b8-8a-e4-bc-a0-e7-9a-84-e6-96-87-e4-bb-b6-e7-a7-bb-e5-8a-a8-e8-87-b3wp-contentuploads-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/09/wordpress-e6-97-a0-e6-b3-95-e5-b0-86-e4-b8-8a-e4-bc-a0-e7-9a-84-e6-96-87-e4-bb-b6-e7-a7-bb-e5-8a-a8-e8-87-b3wp-contentuploads-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/" class="post-title-link" itemprop="url">wordpress无法将上传的文件移动至wp-content/uploads的解决方法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-09 18:14:21" itemprop="dateCreated datePublished" datetime="2017-05-09T18:14:21+08:00">2017-05-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天重置了阿里云的lnmp环境之后，重装了wordpress程序，在安装主题、wordpress插件，删除wordpress插件的时候，会提示”要执行请求的操作，WordPress需要访问您网页服务器的权限。 请输入您的FTP登录凭据以继续。 如果您忘记了您的登录凭据（如用户名、密码），请联系您的网站托管商。”这其实是由于我们的lnmp环境或者你的主机文件权限不够导致的。 对于lnmp一键安装包的解决方法，如下： 1：给我们的文件赋予权限：</p>
+<blockquote>
+<p>chown -R www /home/wwwroot/wordpress/ chmod -R 775 /home/wwwroot/wordpress/ chmod -R 777 /home/wwwroot/wordpress/wp-content/</p>
+</blockquote>
+<p>2.在网站根目录下，找到wp-config.php文件并添加以下代码：（加到最后就行）</p>
+<blockquote>
+<p>define(“FS_METHOD”, “direct”); define(“FS_CHMOD_DIR”, 0777); define(“FS_CHMOD_FILE”, 0777);</p>
+</blockquote>
+<p>3.在此进行我们的操作，就木有问题咧。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/07/maven-e7-9a-84java-web-e9-a1-b9-e7-9b-ae-e5-90-af-e5-8a-a8-e6-89-be-e4-b8-8d-e5-88-b0spring-contextloaderlistener-e7-9a-84-e8-a7-a3-e5-86-b3-e5-8a-9e-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/07/maven-e7-9a-84java-web-e9-a1-b9-e7-9b-ae-e5-90-af-e5-8a-a8-e6-89-be-e4-b8-8d-e5-88-b0spring-contextloaderlistener-e7-9a-84-e8-a7-a3-e5-86-b3-e5-8a-9e-e6-b3-95/" class="post-title-link" itemprop="url">maven的java web项目启动找不到Spring ContextLoaderListener的解决办法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-07 18:13:30" itemprop="dateCreated datePublished" datetime="2017-05-07T18:13:30+08:00">2017-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用maven搭建的java web项目，部署到tomcat运行时，就报了如下错误，即启动web项目时，加载web.xml文件，找不到spring的监听器，控制台错误如下： <img src="http://zhongmin.me/wp-content/uploads/2017/05/F6HKT@M@CY6MVRNKL.png" alt> 这个错误很烦,之前也遇到过这个错误,不过忘记怎么解决的了。经过半天研究后发现，不知道什么原因，找了半天 最后终于找到解决方法，感谢原作者，参考<a href="http://www.yihaomen.com/article/java/471.htm" target="_blank" rel="noopener">http://www.yihaomen.com/article/java/471.htm</a> 解决方法： 1. 右键单击工程项目 -&gt;点击 properties 2. 选择 Deployment Assembly 3. 点击 Add -&gt; Java Build Path Entries -&gt; Next 4. 选择 Maven Dependencies -&gt; Finish -&gt; Apply -&gt; OK 5. Clean project and server. 重启server <img src="http://zhongmin.me/wp-content/uploads/2017/05/@7QCI32SABN2LEY.png" alt> 到现在还没搞清楚原因是啥!</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/04/beanutils-copyproperties-e7-9a-84-e5-87-a0-e4-b8-aa-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/04/beanutils-copyproperties-e7-9a-84-e5-87-a0-e4-b8-aa-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">BeanUtils.copyProperties的几个问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-04 17:45:26" itemprop="dateCreated datePublished" datetime="2017-05-04T17:45:26+08:00">2017-05-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.如果Integer 或Long 为null copy完成后会默认赋值0. beanUtils对null值不太友好,当源对象存在null值时,会给目标对象赋默认值为0 解决方法是重写转换器:</p>
+<p>BeanUtilsBean.getInstance().getConvertUtils().register(new LongConverter(null), Long.class);<br>BeanUtilsBean.getInstance().getConvertUtils().register(new IntegerConverter(null), Integer.class);<br>BeanUtilsBean.getInstance().getConvertUtils().register(new DoubleConverter(null), Double.class);<br>BeanUtilsBean.getInstance().getConvertUtils().register(new BigDecimalConverter(null), BigDecimal.class);</p>
+<p>重写了Integer,double,Long,bigDecimal 的转换器,当copy目标对象中存在这些类型的值为null是,beanutils不会赋默认值为0. 2.no value specified for ‘date’错误 beanUtils同样对data类型不太友好,解决这个问题需要重写日期转换器.</p>
+<p>BeanUtilsBean.getInstance().getConvertUtils().register(new SqlDateConverter(null), Date.class);</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/04/12/oracle-10g-e5-a6-82-e4-bd-95-e5-af-b9-e7-94-a8-e6-88-b7-e5-a7-93-e5-90-8d-ef-bc-8c-e6-8c-89-e9-a6-96-e5-ad-97-e6-af-8d-e6-8e-92-e5-ba-8f-e3-80-81-e6-9f-a5-e8-af-a2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/12/oracle-10g-e5-a6-82-e4-bd-95-e5-af-b9-e7-94-a8-e6-88-b7-e5-a7-93-e5-90-8d-ef-bc-8c-e6-8c-89-e9-a6-96-e5-ad-97-e6-af-8d-e6-8e-92-e5-ba-8f-e3-80-81-e6-9f-a5-e8-af-a2/" class="post-title-link" itemprop="url">Oracle 10g如何对用户姓名，按首字母排序、查询</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-12 15:10:54" itemprop="dateCreated datePublished" datetime="2017-04-12T15:10:54+08:00">2017-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>首先介绍Oracle 9i新增加的一个系统自带的排序函数 1、按首字母排序 在oracle9i中新增了按照拼音、部首、笔画排序功能。设置NLS_SORT值 SCHINESE_RADICAL_M   按照部首（第一顺序）、笔划（第二顺序）排序 SCHINESE_STROKE_M   按照笔划（第一顺序）、部首（第二顺序）排序 SCHINESE_PINYIN_M   按照拼音排序 oracle9i中新增了按照拼音、部首、笔画排序功能 用法示例:</p>
+<p>拼音<br>SELECT <em> FROM TEAM ORDER BY NLSSORT(排序字段,’NLS_SORT = SCHINESE_PINYIN_M’)<br>笔划<br>SELECT </em> FROM TEAM ORDER BY NLSSORT(排序字段,’NLS_SORT = SCHINESE_STROKE_M’)<br>部首<br>SELECT * FROM TEAM ORDER BY NLSSORT(排序字段,’NLS_SORT = SCHINESE_RADICAL_M’)</p>
+<p>2、按首字母拼音查询 首先我们要创建一个可以查询汉字首字母的函数，函数代码如下：</p>
+<p>CREATE OR REPLACE FUNCTION F_TRANS_PINYIN_CAPITAL(P_NAME IN VARCHAR2) RETURN VARCHAR2 AS<br>V_COMPARE VARCHAR2(100);<br>V_RETURN VARCHAR2(4000);   </p>
+<p>FUNCTION F_NLSSORT(P_WORD IN VARCHAR2) RETURN VARCHAR2 AS<br>BEGIN<br>RETURN NLSSORT(P_WORD, ‘NLS_SORT=SCHINESE_PINYIN_M’);<br>END;<br>BEGIN<br>FOR I IN 1..LENGTH(P_NAME) LOOP<br>V_COMPARE := F_NLSSORT(SUBSTR(P_NAME, I, 1));<br>IF V_COMPARE &gt;= F_NLSSORT(‘ 吖 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘驁 ‘) THEN<br>V_RETURN := V_RETURN || ‘a’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘八 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘簿 ‘) THEN<br>V_RETURN := V_RETURN || ‘b’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘嚓 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘錯 ‘) THEN<br>V_RETURN := V_RETURN || ‘c’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘咑 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘鵽 ‘) THEN<br>V_RETURN := V_RETURN || ‘d’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘妸 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘樲 ‘) THEN<br>V_RETURN := V_RETURN || ‘e’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘发 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘猤 ‘) THEN<br>V_RETURN := V_RETURN || ‘f’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘旮 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘腂 ‘) THEN<br>V_RETURN := V_RETURN || ‘g’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘妎 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘夻 ‘) THEN<br>V_RETURN := V_RETURN || ‘h’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘丌 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘攈 ‘) THEN<br>V_RETURN := V_RETURN || ‘j’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘咔 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘穒 ‘) THEN<br>V_RETURN := V_RETURN || ‘k’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘垃 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘擽 ‘) THEN<br>V_RETURN := V_RETURN || ‘l’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘嘸 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘椧 ‘) THEN<br>V_RETURN := V_RETURN || ‘m’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘拏 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘瘧 ‘) THEN<br>V_RETURN := V_RETURN || ‘n’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘筽 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘漚 ‘) THEN<br>V_RETURN := V_RETURN || ‘o’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘妑 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘曝 ‘) THEN<br>V_RETURN := V_RETURN || ‘p’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘七 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘裠 ‘) THEN<br>V_RETURN := V_RETURN || ‘q’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘亽 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘鶸 ‘) THEN<br>V_RETURN := V_RETURN || ‘r’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘仨 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘蜶 ‘) THEN<br>V_RETURN := V_RETURN || ‘s’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘侤 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘籜 ‘) THEN<br>V_RETURN := V_RETURN || ‘t’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘屲 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘鶩 ‘) THEN<br>V_RETURN := V_RETURN || ‘w’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘夕 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘鑂 ‘) THEN<br>V_RETURN := V_RETURN || ‘x’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘丫 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘韻 ‘) THEN<br>V_RETURN := V_RETURN || ‘y’;<br>ELSIF V_COMPARE &gt;= F_NLSSORT(‘帀 ‘) AND V_COMPARE &lt;= F_NLSSORT(‘咗 ‘) THEN<br>V_RETURN := V_RETURN || ‘z’;<br>END IF;<br>END LOOP;<br>RETURN V_RETURN;<br>END;</p>
+<p>随后，我们可以先取出姓名，然后截取第一个汉字，最后取汉字的首字母，即可用来作为查询条件</p>
+<p>select e.fullname,e.expert_id from expert e where f_trans_pinyin_capital(substr(e.fullname,1,1)) = ‘z’</p>
+<p>最后展示一个将两个结合起来运用的例子：</p>
+<p>select e.expert_id,e.eperson_id,e.fullname,<br>sum(b2i.browse_num) browsecount,<br>count(o.object_id),wmsys.wm_concat(distinct d.name)<br>from expert e<br>left join expert2disciplinetype e2d on e2d.expert_id = e.expert_id<br>left join disciplinetype d on d.discipline_type_id = e2d.discipline_type_id<br>and d.upid = ‘0’<br>left join community2expert c2e on c2e.expert_id = e.expert_id<br>left join item i on i.item_type_id = ‘AcademicRes’ and i.withdrawn = ‘N’<br>join metadatavalue m on m.item_id = i.item_id and m.metadata_field_id = ‘64’<br>join objectpublishinfo o on o.object_id = i.item_id<br>and o.object_type = ‘item’ and o.viewobjecttype = ‘eperson’<br>and o.viewobjectid = e.eperson_id and o.state = ‘1’<br>and o.publishstate_id = ‘3’<br>left join browse2item b2i on b2i.item_id = o.object_id<br>where e.state = ‘1’ and f_trans_pinyin_capital(substr(e.fullname,1,1)) = ‘z’<br>group by e.expert_id,e.eperson_id,e.fullname<br>order by nlssort(e.fullname,’NLS_SORT=SCHINESE_PINYIN_M’)</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/04/07/eclipse-e7-9a-84-at-com-genuitec-eclipse-ast-deploy-core-deployment-e9-94-99-e8-af-af-e8-a7-a3-e5-86-b3-e5-8a-9e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/07/eclipse-e7-9a-84-at-com-genuitec-eclipse-ast-deploy-core-deployment-e9-94-99-e8-af-af-e8-a7-a3-e5-86-b3-e5-8a-9e/" class="post-title-link" itemprop="url">Eclipse的 at com.genuitec.eclipse.ast.deploy.core.Deployment.错误解决办</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-07 11:14:49" itemprop="dateCreated datePublished" datetime="2017-04-07T11:14:49+08:00">2017-04-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件工具/" itemprop="url" rel="index"><span itemprop="name">软件工具</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们使用myeclipse自动部署web项目时会设置服务器的位置，而部署的相关配置会存储在myeclipse工作目录下的“/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.genuitec.eclipse.ast.deploy.core.prefs”中；因此当我们更换了服务器的配置时，在进行部署时就会报错 这时我们的解决方法是： 1、我们关闭myeclipse软件 2、进入到工作空间的/.metadata/.plugins/org.eclipse.core.runtime/.settings/中删除这个com.genuitec.eclipse.ast.deploy.core.prefs文件，然后打开myeclipse重新部署即可。 第二种方式是，把web工程建在另外的工作空间中。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

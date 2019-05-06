@@ -1,0 +1,3027 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/9/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/9/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/04/05/e3-80-90-e6-95-b0-e6-8d-ae-e7-bb-93-e6-9e-84-e4-b8-8e-e7-ae-97-e6-b3-95-e5-88-86-e6-9e-90-e3-80-91-e9-80-89-e6-8b-a9-e9-97-ae-e9-a2-98-ef-bc-88-e4-b8-80-e7-bb-84n-e4-b8-aa-e6-95-b0-e7-a1-ae-e5-ae-9a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/04/05/e3-80-90-e6-95-b0-e6-8d-ae-e7-bb-93-e6-9e-84-e4-b8-8e-e7-ae-97-e6-b3-95-e5-88-86-e6-9e-90-e3-80-91-e9-80-89-e6-8b-a9-e9-97-ae-e9-a2-98-ef-bc-88-e4-b8-80-e7-bb-84n-e4-b8-aa-e6-95-b0-e7-a1-ae-e5-ae-9a/" class="post-title-link" itemprop="url">【数据结构与算法分析】选择问题（一组N个数确定其第K个最大者）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-05 10:24:18" itemprop="dateCreated datePublished" datetime="2017-04-05T10:24:18+08:00">2017-04-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构与算法分析/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法分析</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-问题是设有一组N个数而需要确定其第k个最大者，这个问题叫做选择问题。"><a href="#1-问题是设有一组N个数而需要确定其第k个最大者，这个问题叫做选择问题。" class="headerlink" title="1.问题是设有一组N个数而需要确定其第k个最大者，这个问题叫做选择问题。"></a>1.问题是设有一组N个数而需要确定其第k个最大者，这个问题叫做选择问题。</h4><p>在书中第一章提供了俩种解决方法： 1.将N个数放进数组中，再通过简单的排序算法，比如冒泡排序，以递减的顺序对数组排列，然后返回下表为 k-1 上的元素，Java代码实现如下</p>
+<pre><code>private void print(int\[\] a,int i){
+    System.out.print(&quot;第 &quot;+i+&quot; 次:&quot;);
+    for(int k:a){
+        System.out.print(k+&quot;,&quot;);
+    }
+    System.out.print(&quot;\\n&quot;);
+}
+/\*\*
+ \* 内部排序 ：
+ \* 插入排序 \-\- 直接插入排序
+ */
+private  int\[\] insertSort(int\[\] a, int n) {
+    for (int i = 0; i &lt; n-1; i++) {
+        if (a\[i\] &lt; a\[i + 1\]) { //如果第 i个元素大于它后面的一个元素，则需要对他后面这个元素进行排序
+            int j = i;
+            int x = a\[i + 1\]; //标记为哨兵，a\[i+1\],位带排序状态，
+            a\[i + 1\] = a\[i\]; //将第i个较大的元素后移一位
+            //确定x应该排放的位置
+            while (j &gt;= 0 &amp;&amp; x &gt; a\[j\]) { //当地j个元素比x大的时候，需要将j元素继续往后移一个位置
+                a\[j + 1\] = a\[j\];
+                j--;
+            }
+            a\[j+1\] = x;
+        }
+        this.print(a,i);
+    }
+    return a;
+}
+
+private void test1(int\[\] n,int k){
+    int length = n.length;
+    n = insertSort(n,length);
+    System.out.println(&quot;第&quot;+k+&quot;大的数为:&quot;+n\[k-1\]);
+}
+
+public static void main(String\[\] args) {
+    int\[\] array = {12,15,16,35,17,96,77,44,11,55,2,19};
+    new Test().test1(array,4);
+}
+</code></pre><p>输出结果如下：</p>
+<p>第 0 次:15,12,16,35,17,96,77,44,11,55,2,19,<br>第 1 次:16,15,12,35,17,96,77,44,11,55,2,19,<br>第 2 次:35,16,15,12,17,96,77,44,11,55,2,19,<br>第 3 次:35,17,16,15,12,96,77,44,11,55,2,19,<br>第 4 次:96,35,17,16,15,12,77,44,11,55,2,19,<br>第 5 次:96,77,35,17,16,15,12,44,11,55,2,19,<br>第 6 次:96,77,44,35,17,16,15,12,11,55,2,19,<br>第 7 次:96,77,44,35,17,16,15,12,11,55,2,19,<br>第 8 次:96,77,55,44,35,17,16,15,12,11,2,19,<br>第 9 次:96,77,55,44,35,17,16,15,12,11,2,19,<br>第 10 次:96,77,55,44,35,19,17,16,15,12,11,2,<br>第4大的数为:44</p>
+<p>2.先将前k个元素读入数组中并以递减对其排序，接着将剩下的元素依次读入。当新元素被读到时，如果他小于数组最后一个元素则忽略之，否则将其放入正确的位置，同时将最后一个元素挤出数组。结束的时候，数组最后一个元素为答案。</p>
+<p>public class Test {</p>
+<pre><code>private void print(int\[\] a,int i){
+    System.out.print(&quot;第 &quot;+i+&quot; 次:&quot;);
+    for(int k:a){
+        System.out.print(k+&quot;,&quot;);
+    }
+    System.out.print(&quot;\\n&quot;);
+}
+
+/\*\*
+ \* 内部排序 ：
+ \* 插入排序 \-\- 直接插入排序
+ */
+private  int\[\] insertSort(int\[\] a, int n) {
+    for (int i = 0; i &lt; n-1; i++) {
+        if (a\[i\] &lt; a\[i + 1\]) { //如果第 i个元素大于它后面的一个元素，则需要对他后面这个元素进行排序
+            int j = i;
+            int x = a\[i + 1\]; //标记为哨兵，a\[i+1\],位带排序状态，
+            a\[i + 1\] = a\[i\]; //将第i个较大的元素后移一位
+            //确定x应该排放的位置
+            while (j &gt;= 0 &amp;&amp; x &gt; a\[j\]) { //当地j个元素比x大的时候，需要将j元素继续往后移一个位置
+                a\[j + 1\] = a\[j\];
+                j--;
+            }
+            a\[j+1\] = x;
+        }
+        this.print(a,i);
+    }
+    return a;
+}
+
+/**
+ *将N个数放进数组中，再通过简单的排序算法，比如冒泡排序，以递减的顺序对数组排列，然后返回下表为 k-1 上的元素
+ \* @param n
+ \* @param k
+ */
+private void test1(int\[\] n,int k){
+    int length = n.length;
+    n = insertSort(n,length);
+    System.out.println(&quot;第&quot;+k+&quot;大的数为:&quot;+n\[k-1\]);
+}
+
+private void test2(int\[\] n,int k){
+    int nlength = n.length;
+    int\[\] karr = new int\[k\];
+    System.arraycopy(n,0,karr,0,k);
+    karr = insertSort(karr,k);
+    int kmin = karr\[k-1\];
+    for(int i = k;i &lt; nlength;i++){
+        if(n\[i\] &gt; kmin){
+            int m = k - 2;
+            for( ; m&gt;=0;m--){
+                if(karr\[m\] &gt; n\[i\]) {
+                    break;
+                }
+            }
+            m++; //n\[i\]插入的位置
+            int temp\[\] = new int\[k - m\];
+            System.arraycopy(karr, m, temp, 0, k - m);
+            karr\[m\] = n\[i\];
+            System.arraycopy(temp, 0, karr, m + 1, k - m - 1);
+        }
+    }
+    print(karr,8);
+}
+
+public static void main(String\[\] args) {
+    int\[\] array = {12,15,16,35,17,96,77,44,11,55,2,19};
+  //  new Test().test1(array,4);
+    List list = Arrays.asList(array);
+    new Test().test2(array,4);
+    //list.set(4,101);
+
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/31/spring-e6-b3-a8-e5-85-a5-e5-8e-9f-e7-90-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/31/spring-e6-b3-a8-e5-85-a5-e5-8e-9f-e7-90-86/" class="post-title-link" itemprop="url">spring注入原理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-31 16:42:57" itemprop="dateCreated datePublished" datetime="2017-03-31T16:42:57+08:00">2017-03-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>IOC（Inverse of Control）可翻译为“控制反转”，但大多数人都习惯将它称为“依赖注入”。在Spring中，通过IOC可以将实现类 、参数信息等配置在其对应的配置文件中 ，那么当需要更改实现类或参数信息时，只需要修改配置文件即可，这种方法在上例的基础上更进一步的降低了类与类之间的耦合。我们还可以对某对象所需要的其它对象进行注入 ，这种注入都是在配置文件中做的，Spring的IOC的实现原理利用的就是Java的反射机制，Spring还充当了工厂的角色，我们不需要自己建立工厂类 。Spring的工厂类会帮我们完成配置文件的读取、利用反射机制注入对象等工作，我们可以通过bean的名称获取对应的对象。下面让我们看看如下的模拟Spring的bean工厂类： 1、BeanFactory.java</p>
+<p>/**<br> * @ClassName: BeanFactory<br> */<br>public class BeanFactory {  </p>
+<pre><code>Logger log = Logger.getLogger(BeanFactory.class);  
+private Map&lt;String, Object&gt; beanMap = new HashMap&lt;String, Object&gt;();  
+
+/\*\* 
+ \* bean工厂的初始化 
+ \*  
+ \* @param xml 
+ */  
+public void init(String xml) {  
+    try {  
+        //读取指定的配置文件  
+        SAXReader reader = new SAXReader();  
+        //从class目录下获取指定的配置文件  
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();  
+        InputStream inputStream = classLoader.getResourceAsStream(xml);  
+        //读取xml文件  
+        Document document = reader.read(inputStream);  
+        //获取跟节点  
+        Element root = document.getRootElement();  
+        //遍历bean节点  
+        Element foo;  
+        for(Iterator iteBean = root.elementIterator(&quot;bean&quot;);iteBean.hasNext();){  
+            foo = (Element)iteBean.next();  
+            //获取bean的属性id和class  
+            Attribute id = foo.attribute(&quot;id&quot;);  
+            Attribute cls = foo.attribute(&quot;class&quot;);  
+            //利用java反射机制，通过class的名称获取Class对象  
+            Class bean = Class.forName(cls.getText());  
+            //获取对应class信息  
+            java.beans.BeanInfo info = java.beans.Introspector.getBeanInfo(bean);  
+            //获取其属性描述  
+            java.beans.PropertyDescriptor pd\[\] = info.getPropertyDescriptors();  
+            //设置值的方法  
+            Method mSet = null;  
+            //创建一个对象(创建此 Class 对象所表示的类的一个新实例。如同用一个带有一个空参数列表的 new 表达式实例化该类。如果该类尚未初始化，则初始化这个类。)  
+            Object obj = bean.newInstance();  
+
+            //遍历该bean的property属性  
+            for(Iterator iteProperty = foo.elementIterator(&quot;property&quot;);iteProperty.hasNext();){  
+                Element elementProperty = (Element)iteProperty.next();  
+                //获取该property的name属性  
+                Attribute name = elementProperty.attribute(&quot;name&quot;);  
+                String value = null;  
+                //获取该property的子元素value的值  
+                for(Iterator iteValue = elementProperty.elementIterator(&quot;value&quot;);iteValue.hasNext();){  
+                    Element elementValue = (Element)iteValue.next();  
+                    value = elementValue.getText();  
+                    break;  
+                }  
+
+                for (int k = 0; k &lt; pd.length; k++) {  
+                    log.info(pd\[k\].getName());  
+                    if (pd\[k\].getName().equalsIgnoreCase(name.getText())) {  
+                           mSet = pd\[k\].getWriteMethod();  
+                           //利用Java的反射机制调用对象的某个set方法，并将值设置进去  
+                           mSet.invoke(obj, value);  
+                    }  
+             }  
+            }  
+           //将对象放入beanMap中，其中key为id值，value为对象  
+            beanMap.put(id.getText(), obj);  
+        }  
+
+    } catch (Exception e) {  
+        e.printStackTrace();  
+    }  
+}  
+
+/\*\* 
+ \* 通过bean的id获取bean的对象. 
+ \* @param beanName bean的id 
+ \* @return 返回对应对象 
+ */  
+ public Object getBean(String beanName) {  
+       Object obj = beanMap.get(beanName);  
+       return obj;  
+ }  
+
+ public static void main(String\[\] args) {  
+     BeanFactory factory = new BeanFactory();  
+     factory.init(&quot;config.xml&quot;);  
+     JavaBean javaBean = (JavaBean) factory.getBean(&quot;javaBean&quot;);  
+     System.out.println(&quot;userName=&quot; + javaBean.getUserName());  
+     System.out.println(&quot;password=&quot; + javaBean.getPassWord());  
+ }  
+</code></pre><p>}</p>
+<p> 2、JavaBean.java</p>
+<p>public class JavaBean {<br>    private String userName;<br>    private String passWord;  </p>
+<pre><code>public String getUserName() {  
+    return userName;  
+}  
+
+public void setUserName(String userName) {  
+    this.userName = userName;  
+}  
+
+public String getPassWord() {  
+    return passWord;  
+}  
+
+public void setPassWord(String passWord) {  
+    this.passWord = passWord;  
+}  
+</code></pre><p>}</p>
+<p> 3、config.xml</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;  </p>
+<beans><br>    <bean id="javaBean" class="com.yt.manager.spring.JavaBean"><br>        <property name="userName"><br>            <value>这是姓名</value><br>        </property><br>        <property name="passWord"><br>            <value>这是密码</value><br>        </property><br>    </bean><br></beans>
+
+<p>可以看到，虽然在main()方法中没有对属性赋值，但属性值已经被注入，在BeanFactory类中的Class bean = Class.forName(cls.getText()); 通过类名来获取对应的类，mSet.invoke(obj, value);通过invoke方法来调用特定对象的特定方法，实现的原理都是基于Java的反射机制，在此我们有一次见证了Java反射机制的强大。当然，这只是对IOC的一个简单演示，在Spring中，情况要复杂得多，例如，可以一个bean引用另一个bean，还可以有多个配置文件、通过多种方式载入配置文件等等。不过原理还是采用Java的反射机制来实现IOC的。 在本文中，笔者通过讲述Java反射机制概述与初探、IOC使用的背景、IOC粉墨登场等内容，演示了Java反射机制API的强大功能，并通过编写自己的简单的IOC框架，让读者更好的理解了IOC的实现原理。本文通过IOC的一个简要实现实例，模拟了Spring中IOC的实现，虽然只是完成了Spring中依赖注入的一小部分工作， 但是很好的展现了Java反射机制在Spring中的应用，能使我们能更好的从原理上了解IOC的实现，也能为我们实现自己的准Spring框架提供方案，有兴趣的朋友可以通过Spring的源码进行IOC的进一步的学习。 附：通过java反射机制获取指定类的属性和方法</p>
+<p>/**<br> * @Description:java.beans包的使用<br> * @ClassName: JavaBeans<br> */<br>public class JavaBeans {  </p>
+<pre><code>/\*\* 
+ \* @param args 
+ \* @throws Exception 
+ */  
+@SuppressWarnings(&quot;rawtypes&quot;)  
+public static void main(String\[\] args) throws Exception {  
+    // 返回与带有给定字符串名的类或接口相关联的 Class 对象  
+    Class bean = Class.forName(&quot;com.yt.manager.spring.JavaBean&quot;);  
+    // 获取指定类的信息  
+    BeanInfo info = Introspector.getBeanInfo(bean);  
+    // 遍历指定类的方法  
+    MethodDescriptor\[\] methods = info.getMethodDescriptors();  
+    for (int i = 0; i &lt; methods.length; i++) {  
+        System.out.println(&quot;方法：&quot;+methods\[i\].getDisplayName());  
+    }  
+    // 遍历指定类的属性  
+    PropertyDescriptor\[\] propertys = info.getPropertyDescriptors();  
+    for (int j = 0; j &lt; propertys.length; j++) {  
+        System.out.println(&quot;属性：&quot;+propertys\[j\].getName());  
+    }  
+}  
+</code></pre><p>}</p>
+<p>/**<br> * @Description: java.lang.reflect.method类中invoke方法的使用<br> * @ClassName: MethodInvoke<br> */<br>public class MethodInvoke {  </p>
+<pre><code>/\*\*  
+ \* @param args 
+ \* @throws ClassNotFoundException 
+ */  
+public static void main(String\[\] args) throws Exception {  
+
+    JavaBean javaBean = new JavaBean();  
+    //获取指定类的指定方法，  
+    Class c = Class.forName(&quot;com.yt.manager.spring.JavaBean&quot;);  
+    Method method = c.getMethod(&quot;setUserName&quot;, new Class\[\] { String.class });  
+    //对带有指定参数的指定对象调用由此 Method 对象表示的底层方法,调用对象javaBean的setuserName方法，参数为&quot;testName&quot;  
+    method.invoke(javaBean, &quot;testName&quot;);  
+
+    System.out.println(javaBean.getUserName());  
+}  
+</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/31/bigdecimal-e7-9a-847-e4-b8-ad-e8-88-8d-e5-85-a5-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/31/bigdecimal-e7-9a-847-e4-b8-ad-e8-88-8d-e5-85-a5-e6-b3-95/" class="post-title-link" itemprop="url">BigDecimal 的7中舍入法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-31 12:44:53" itemprop="dateCreated datePublished" datetime="2017-03-31T12:44:53+08:00">2017-03-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>目前java支持7中舍入法： 1、 UP：表示远离零方向舍入。向绝对值最大的方向舍入，只要舍弃位非0即进位。</p>
+<p>  /*<em><br>       RoundingMode源码中的注释栗子
+         </em></p><p>Example:<br>         <em><table border><br>         \</table></em> <caption><b>Rounding mode UP Examples</b></caption><br>         <em><tr valign="top"><th>Input Number</th><br>         \</tr></em>    <th>Input rounded to one digit<br> with {@code UP} rounding<br>         <em><tr align="right"><td>5.5</td>  <td>6</td>
+         </tr></em></th><tr align="right"><td>2.5</td>  <td>3</td><br>         <em><tr align="right"><td>1.6</td>  <td>2</td>
+         </tr></em></tr><tr align="right"><td>1.1</td>  <td>2</td><br>         <em><tr align="right"><td>1.0</td>  <td>1</td>
+         </tr></em></tr><tr align="right"><td>-1.0</td> <td>-1</td><br>         <em><tr align="right"><td>-1.1</td> <td>-2</td>
+         </tr></em></tr><tr align="right"><td>-1.6</td> <td>-2</td><br>         <em><tr align="right"><td>-2.5</td> <td>-3</td>
+         </tr></em></tr><tr align="right"><td>-5.5</td> <td>-6</td><br>         <em>
+         </em>/</tr></p>
+<p>2、DOWN：趋向零方向舍入。向绝对值最小的方向输入，所有的位都要舍弃，不存在进位情况。</p>
+<p>  /**</p>
+<pre><code>*&lt;p&gt;Example:
+*&lt;table border&gt;
+\* &lt;caption&gt;&lt;b&gt;Rounding mode DOWN Examples&lt;/b&gt;&lt;/caption&gt;
+*&lt;tr valign=top&gt;&lt;th&gt;Input Number&lt;/th&gt;
+\*    &lt;th&gt;Input rounded to one digit&lt;br&gt; with {@code DOWN} rounding
+*&lt;tr align=right&gt;&lt;td&gt;5.5&lt;/td&gt;  &lt;td&gt;5&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;2.5&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.6&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.1&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.0&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.0&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.1&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.6&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-2.5&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-5.5&lt;/td&gt; &lt;td&gt;-5&lt;/td&gt;
+*&lt;/table&gt;
+*/
+</code></pre><p>3、CEILING：向上取值，向正无穷方向舍入。向正最大方向靠拢。若是正数，舍入行为类似于UP，若为负数，舍入行为类似于DOWN。Math.round()方法就是使用的此模式。</p>
+<p> /**</p>
+<pre><code>*&lt;p&gt;Example:
+*&lt;table border&gt;
+\* &lt;caption&gt;&lt;b&gt;Rounding mode CEILING Examples&lt;/b&gt;&lt;/caption&gt;
+*&lt;tr valign=top&gt;&lt;th&gt;Input Number&lt;/th&gt;
+\*    &lt;th&gt;Input rounded to one digit&lt;br&gt; with {@code CEILING} rounding
+*&lt;tr align=right&gt;&lt;td&gt;5.5&lt;/td&gt;  &lt;td&gt;6&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;2.5&lt;/td&gt;  &lt;td&gt;3&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.6&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.1&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.0&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.0&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.1&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.6&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-2.5&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-5.5&lt;/td&gt; &lt;td&gt;-5&lt;/td&gt;
+*&lt;/table&gt;
+*/
+</code></pre><p>4、 FLOOR：向下取值，与CEILING 相反，向负无穷方向舍入。向负无穷方向靠拢。若是正数，舍入行为类似于DOWN；若为负数，舍入行为类似于UP。</p>
+<p> /**</p>
+<pre><code>*&lt;p&gt;Example:
+*&lt;table border&gt;
+\* &lt;caption&gt;&lt;b&gt;Rounding mode FLOOR Examples&lt;/b&gt;&lt;/caption&gt;
+*&lt;tr valign=top&gt;&lt;th&gt;Input Number&lt;/th&gt;
+\*    &lt;th&gt;Input rounded to one digit&lt;br&gt; with {@code FLOOR} rounding
+*&lt;tr align=right&gt;&lt;td&gt;5.5&lt;/td&gt;  &lt;td&gt;5&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;2.5&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.6&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.1&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.0&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.0&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.1&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.6&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-2.5&lt;/td&gt; &lt;td&gt;-3&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-5.5&lt;/td&gt; &lt;td&gt;-6&lt;/td&gt;
+*&lt;/table&gt;
+*/
+</code></pre><p>5、 HALF_UP：最近数字舍入(5进)，不管正负数都是四舍五入。这是我们最经典的四舍五入。</p>
+<p> /**<br>         * Rounding mode to round towards {@literal “nearest neighbor”}</p>
+<pre><code>*&lt;p&gt;Example:
+*&lt;table border&gt;
+\* &lt;caption&gt;&lt;b&gt;Rounding mode HALF_UP Examples&lt;/b&gt;&lt;/caption&gt;
+*&lt;tr valign=top&gt;&lt;th&gt;Input Number&lt;/th&gt;
+\*    &lt;th&gt;Input rounded to one digit&lt;br&gt; with {@code HALF_UP} rounding
+*&lt;tr align=right&gt;&lt;td&gt;5.5&lt;/td&gt;  &lt;td&gt;6&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;2.5&lt;/td&gt;  &lt;td&gt;3&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.6&lt;/td&gt;  &lt;td&gt;2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.1&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;1.0&lt;/td&gt;  &lt;td&gt;1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.0&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.1&lt;/td&gt; &lt;td&gt;-1&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-1.6&lt;/td&gt; &lt;td&gt;-2&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-2.5&lt;/td&gt; &lt;td&gt;-3&lt;/td&gt;
+*&lt;tr align=right&gt;&lt;td&gt;-5.5&lt;/td&gt; &lt;td&gt;-6&lt;/td&gt;
+*&lt;/table&gt;
+*/
+</code></pre><p>6、 HALF_DOWN：最近数字舍入(5舍)。在这里5是要舍弃的，但是如果5后面还有值那么就会舍5进1。</p>
+<p>  /*<em>
+         </em></p><p>Example:<br>         <em><table border><br>         \</table></em> <caption><b>Rounding mode HALF_DOWN Examples</b></caption><br>         <em><tr valign="top"><th>Input Number</th><br>         \</tr></em>    <th>Input rounded to one digit<br> with {@code HALF_DOWN} rounding<br>         <em><tr align="right"><td>5.5</td>  <td>5</td>
+         </tr></em></th><tr align="right"><td>2.5</td>  <td>2</td><br>         <em><tr align="right"><td>1.6</td>  <td>2</td>
+         </tr></em></tr><tr align="right"><td>1.1</td>  <td>1</td><br>         <em><tr align="right"><td>1.0</td>  <td>1</td>
+         </tr></em></tr><tr align="right"><td>-1.0</td> <td>-1</td><br>         <em><tr align="right"><td>-1.1</td> <td>-1</td>
+         </tr></em></tr><tr align="right"><td>-1.6</td> <td>-2</td><br>         <em><tr align="right"><td>-2.5</td> <td>-2</td>
+         </tr></em></tr><tr align="right"><td>-5.5</td> <td>-5</td><br>         <em>
+         </em>/</tr></p>
+<p>如果5的后面有数字：</p>
+<p> BigDecimal i = new BigDecimal(1.451);<br> i = i.setScale(1, RoundingMode.HALF_UP);<br> System.out.println(i);</p>
+<p>输出结果：1.5</p>
+<p>7、 HAIL_EVEN：银行家舍入法。 因为银行的盈利渠道主要是利息差，它从储户手里收集资金，然后放贷出去，期间产生的利息差就是银行所获得的利润。如果我们采用平常四舍五入的规则话，这里采用每10笔存款利息计算作为模型，如下： 四舍：0.000、0.001、0.002、0.003、0.004。这些舍的都是银行赚的钱。 五入：0.005、0.006、0.007、0.008、0.009。这些入的都是银行亏的钱，分别为：0.005、0.004、.003、0.002、0.001。 所以对于银行来说它的盈利应该是0.000 + 0.001 + 0.002 + 0.003 + 0.004 - 0.005 - 0.004 - 0.003 - 0.002 - 0.001 = -0.005。从结果中可以看出每10笔的利息银行可能就会损失0.005元，千万别小看这个数字，这对于银行来说就是一笔非常大的损失。面对这个问题就产生了如下的银行家涉入法了。该算法是由美国银行家提出了，主要用于修正采用上面四舍五入规则而产生的误差。如下： 舍去位的数值小于5时，直接舍去。 舍去位的数值大于5时，进位后舍去。 当舍去位的数值等于5时，若5后面还有其他非0数值，则进位后舍去，若5后面是0时，则根据5前一位数的奇偶性来判断，奇数进位，偶数舍去。 对于上面的规则我们举例说明 11.556 = 11.56          ——六入 11.554 = 11.55          —–四舍 11.5551 = 11.56         —–五后有数进位 11.545 = 11.54          —–五后无数，若前位为偶数应舍去 11.555 = 11.56          —–五后无数，若前位为奇数应进位</p>
+<p>/**<br>         * Rounding mode to round towards the {@literal “nearest neighbor”}<br>         * unless both neighbors are equidistant, in which case, round<br>         * towards the even neighbor.  Behaves as for<br>         * {@code RoundingMode.HALF_UP} if the digit to the left of the<br>         * discarded fraction is odd; behaves as for<br>         * {@code RoundingMode.HALF_DOWN} if it’s even.  Note that this<br>         * is the rounding mode that statistically minimizes cumulative<br>         * error when applied repeatedly over a sequence of calculations.<br>         * It is sometimes known as {@literal “Banker’s rounding,”} and is<br>         * chiefly used in the USA.  This rounding mode is analogous to<br>         * the rounding policy used for {@code float} and {@code double}<br>         * arithmetic in Java.<br>         <em>
+         </em></p><p>Example:<br>         <em><table border><br>         \</table></em> <caption><b>Rounding mode HALF_EVEN Examples</b></caption><br>         <em><tr valign="top"><th>Input Number</th><br>         \</tr></em>    <th>Input rounded to one digit<br> with {@code HALF_EVEN} rounding<br>         <em><tr align="right"><td>5.5</td>  <td>6</td>
+         </tr></em></th><tr align="right"><td>2.5</td>  <td>2</td><br>         <em><tr align="right"><td>1.6</td>  <td>2</td>
+         </tr></em></tr><tr align="right"><td>1.1</td>  <td>1</td><br>         <em><tr align="right"><td>1.0</td>  <td>1</td>
+         </tr></em></tr><tr align="right"><td>-1.0</td> <td>-1</td><br>         <em><tr align="right"><td>-1.1</td> <td>-1</td>
+         </tr></em></tr><tr align="right"><td>-1.6</td> <td>-2</td><br>         <em><tr align="right"><td>-2.5</td> <td>-2</td>
+         </tr></em></tr><tr align="right"><td>-5.5</td> <td>-6</td><br>         <em>
+         </em>/</tr></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/30/e6-b7-b1-e5-85-a5-e7-90-86-e8-a7-a3java-e7-b1-bb-e5-8a-a0-e8-bd-bd-e6-9c-ba-e5-88-b6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/30/e6-b7-b1-e5-85-a5-e7-90-86-e8-a7-a3java-e7-b1-bb-e5-8a-a0-e8-bd-bd-e6-9c-ba-e5-88-b6/" class="post-title-link" itemprop="url">深入理解Java类加载机制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-30 14:14:00" itemprop="dateCreated datePublished" datetime="2017-03-30T14:14:00+08:00">2017-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-为什么要学习类的加载机制？"><a href="#1-为什么要学习类的加载机制？" class="headerlink" title="1.为什么要学习类的加载机制？"></a>1.为什么要学习类的加载机制？</h3><p>Java的核心是什么？当然是JVM了，所以说了解并熟悉JVM对于我们理解Java语言非常重要，不管你是做Java还是Android，熟悉JVM是我们每个Java、Android开发者必不可少的技能。如果你现在觉得Android的开发到了天花板的地步，那不妨往下走走，一起探索JAVA层面的内容。如果我们不了解自己写的代码是如何被执行的，那么我们只是一个会写代码的程序员，我们知其然不知其所以然。看到很多人说现在工作难找，真是这样吗？如果我们足够优秀，工作还难找吗？如果我们底子足够深，需要找工作吗？找不到工作多想想自己的原因，总是抱怨环境是没有用的，因为你没办法去改变坏境。如果我们一直停留在框架层面，停留在新的功能层面，那么我们的优势在哪里呢？所以说，我们不仅要学会写代码，还要知道为什么这样写代码，这才是我们的核心竞争力之一。这样我们的差异化才能够体现出来，不信？我们走着瞧……我们第一个差异化就是对JVM的掌握，而今天的内容类加载机制是JVM比较核心的部分，如果你想和别人不一样，那就一起仔细研究研究这次的内容吧。</p>
+<h3 id="2-引子"><a href="#2-引子" class="headerlink" title="2.引子"></a>2.引子</h3><p>为了看看自己是否掌握了类加载机制，我们看看一道题： <img src="http://zhongmin.me/wp-content/uploads/2017/03/J98N9B0IP_9BW7@IU2I1.png" alt> 上面是一个Singleton类，有3个静态变量，下面是一个测试类，打印出静态属性的值，就是这么简单<img src="http://zhongmin.me/wp-content/uploads/2017/03/ERPOAIOROOKY0@LI.png" alt> 在往下看之前，大家先看看这道题的输出是啥？如果你清楚知道为什么，那么说明你掌握了类的加载机制，往下看或许有不一样的收获；如果你不懂，那就更要往下看了。我们先不讲这道题，待我们了解了类的加载机制之后，回过头看看这道题，或许有恍然大悟的感觉，或许讲完之后你会怀疑自己是否真正了解Java，或许你写了这么多年的Java都不了解它的执行机制。</p>
+<h3 id="3-关于加载"><a href="#3-关于加载" class="headerlink" title="3.关于加载"></a>3.关于加载</h3><h4 id="a-什么是类的加载"><a href="#a-什么是类的加载" class="headerlink" title="a.什么是类的加载"></a>a.什么是类的加载</h4><p>类的加载指的是将类的.class文件中的二进制数据读入内存中,将其放在运行时数据区域的方法去内,然后在堆中创建java.lang.Class对象,用来封装类在方法区的数据结构.只有java虚拟机才会创建class对象,并且是一一对应关系.这样才能通过反射找到相应的类信息. 我们上面提到过Class这个类，这个类我们并没有new过，这个类是由java虚拟机创建的。通过它可以找到类的信息，我们来看下源码: <img src="http://zhongmin.me/wp-content/uploads/2017/03/26PQU_R9Z6CKW045DTJ1.png" alt> 从上面贴出的Class类的构造方法源码中，我们知道这个构造器是私有的，并且只有虚拟机才能创建这个类的对象。</p>
+<h4 id="b-什么时候对类进行加载呢？"><a href="#b-什么时候对类进行加载呢？" class="headerlink" title="b.什么时候对类进行加载呢？"></a>b.什么时候对类进行加载呢？</h4><p>Java虚拟机有预加载功能。类加载器并不需要等到某个类被”首次主动使用”时再加载它,JVM规范规定JVM可以预测加载某一个类，如果这个类出错，但是应用程序没有调用这个类， JVM也不会报错；如果调用这个类的话，JVM才会报错，（LinkAgeError错误)。其实就是一句话，Java虚拟机有预加载功能。</p>
+<h3 id="4-类加载器"><a href="#4-类加载器" class="headerlink" title="4.类加载器"></a>4.类加载器</h3><h4 id="a-什么是类加载器？"><a href="#a-什么是类加载器？" class="headerlink" title="a.什么是类加载器？"></a>a.什么是类加载器？</h4><p>类加载器负责对类的加载。 Java自带有3种类加载器</p>
+<ul>
+<li>根类加载器,使用c++编写(BootStrap),负责加载rt.jar</li>
+<li>扩展类加载器,java实现(ExtClassLoader)</li>
+<li>应用加载器,java实现(AppClassLoader) classpath</li>
+</ul>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/3__K7ZORSAW663N9JBXP.png" alt></p>
+<p>根类加载器，是用c++实现的，我们没有办法在java层面看到；我们接下来看看ExtClassLoader的代码,它是在Launcher类中static class ExtClassLoader extends URLClassLoader</p>
+<p>同时我们看看AppClassLoader，它也是在Launcher中</p>
+<p>static class AppClassLoader extends URLClassLoader</p>
+<p>他们同时继承一个类URLClassLoader。 关于这种层次关系，看起来像继承，其实不是的。我们看到上面的代码就知道ExtClassLoader和AppClassLoader同时继承同一个类。同时我们来看下ClassLoader的loadClass方法也可以知道，下面贴出源代码：<img src="http://zhongmin.me/wp-content/uploads/2017/03/@DVWK49DB5Q40EQ7MYZU.png" alt>源码没有全部贴出，只是贴出关键代码。从上面代码我们知道首先会检查class是否已经加载了，如果已经加载那就直接拿出，否则再进行加载。其中有一个parent属性，就是表示父加载器。这点正好说明了加载器之间的关系并不是继承关系。</p>
+<h4 id="b-双亲委派机制"><a href="#b-双亲委派机制" class="headerlink" title="b.双亲委派机制"></a>b.双亲委派机制</h4><p>关于类加载器，我们不得不说一下双亲委派机制。听着很高大上，其实很简单。比如A类的加载器是AppClassLoader(其实我们自己写的类的加载器都是AppClassLoader)，AppClassLoader不会自己去加载类，而会委ExtClassLoader进行加载，那么到了ExtClassLoader类加载器的时候，它也不会自己去加载，而是委托BootStrap类加载器进行加载，就这样一层一层往上委托，如果Bootstrap类加载器无法进行加载的话，再一层层往下走。 上面的源码也说明了这点。 <img src="http://zhongmin.me/wp-content/uploads/2017/03/Z18N__F9WSZY589XQB.png" alt></p>
+<h4 id="c-为何要双亲委派机制"><a href="#c-为何要双亲委派机制" class="headerlink" title="c.为何要双亲委派机制"></a>c.为何要双亲委派机制</h4><p>对于我们技术来讲，我们不但要知其然，还要知其所以然。为何要采用双亲委派机制呢？了解为何之前，我们先来说明一个知识点： 判断两个类相同的前提是这两个类都是同一个加载器进行加载的，如果使用不同的类加载器进行加载同一个类，也会有不同的结果。我们看一个例子： <img src="http://zhongmin.me/wp-content/uploads/2017/03/VS6AR1_CZCFHPUAE2.png" alt> 大家可以看看输出的是什么？我们自己定义了一个类加载器，让它去加载我们自己写的一个类，然后判断由我们写的类加载器加载的类是否是MyClassLoader的一个实例。 答案是否定的。为什么？因为jvm.classloader.MyClassLoader是在classpath下面，是由AppClassLoader加载器加载的，而我们却指定了自己的加载器，当然加载出来的类就不相同了。不信，我们将他的父类加载器都打印出来。在上面代码中加入下面代码：<img src="http://zhongmin.me/wp-content/uploads/2017/03/UW2_5715ZL9@T1G5MS.png" alt> 对比一下下面的代码：<img src="http://zhongmin.me/wp-content/uploads/2017/03/VMP4Q7754O5EUHJAAPA.png" alt> 第一个是我们自己加载器加载的类，第二个是直接new的一个对象，是由App类加载器进行加载的，我们把它们的父类加载器打印出来了，可以看出他们的加载器是不一样的。很奇怪为何会执行classloader==null这句话。其实classloader==null表示的就是根类加载器。我们看看Class.getClassLoader()方法源码：<img src="http://zhongmin.me/wp-content/uploads/2017/03/@D3EY6X8S8OBRWWFV459.png" alt> 从注释中我们知道了，如果返回了null，表示的是bootstrap类加载器。</p>
+<h3 id="5-类的连接"><a href="#5-类的连接" class="headerlink" title="5.类的连接"></a>5.类的连接</h3><p>了解类的加载之后，我们需要了解一下类的连接。类的连接有三步，分别是验证，准备，解析。下面让我们一一了解.</p>
+<h4 id="a-验证阶段"><a href="#a-验证阶段" class="headerlink" title="a.验证阶段"></a>a.验证阶段</h4><p>验证阶段主要做了以下工作 -将已经读入到内存类的二进制数据合并到虚拟机运行时环境中去。 -类文件结构检查:格式符合jvm规范-语义检查:符合java语言规范,final类没有子类,final类型方法没有被覆盖 -字节码验证:确保字节码可以安全的被java虚拟机执行. 二进制兼容性检查:确保互相引用的类的一致性.如A类的a方法会调用B类的b方法.那么java虚拟机在验证A类的时候会检查B类的b方法是否存在并检查版本兼容性.因为有可能A类是由jdk1.7编译的，而B类是由1.8编译的。那根据向下兼容的性质，A类引用B类可能会出错，注意是可能。</p>
+<h4 id="b-准备阶段"><a href="#b-准备阶段" class="headerlink" title="b.准备阶段"></a>b.准备阶段</h4><p>java虚拟机为类的静态变量分配内存并赋予默认的初始值.如int分配4个字节并赋值为0,long分配8字节并赋值为0;</p>
+<h4 id="c-解析阶段"><a href="#c-解析阶段" class="headerlink" title="c.解析阶段"></a>c.解析阶段</h4><p>解析阶段主要是将符号引用转化为直接引用的过程。比如 A类中的a方法引用了B类中的b方法，那么它会找到B类的b方法的内存地址，将符号引用替换为直接引用(内存地址)。</p>
+<h3 id="6-初始化时机"><a href="#6-初始化时机" class="headerlink" title="6.初始化时机"></a>6.初始化时机</h3><p>主动初始化的6种方式 (1)创建对象的实例：我们new对象的时候，会引发类的初始化，前提是这个类没有被初始化。 (2)调用类的静态属性或者为静态属性赋值 (3)调用类的静态方法 (4)通过class文件反射创建对象 (5)初始化一个类的子类：使用子类的时候先初始化父类 (6)java虚拟机启动时被标记为启动类的类：就是我们的main方法所在的类 只有上面6种情况才是主动使用，也只有上面六种情况的发生才会引发类的初始化。同时我们需要注意下面几个Tips: 1)在同一个类加载器下面只能初始化类一次,如果已经初始化了就不必要初始化了. 这里多说一点，为什么只初始化一次呢？因为我们上面讲到过类加载的最终结果就是在堆中存有唯一一个Class对象，我们通过Class对象找到 类的相关信息。唯一一个Class对象说明了类只需要初始化一次即可，如果再次初始化就会出现多个Class对象，这样和唯一相违背了。 2)在编译的时候能确定下来的静态变量(编译常量),不会对类进行初始化; 3)在编译时无法确定下来的静态变量(运行时常量),会对类进行初始化; 4)如果这个类没有被加载和连接的话,那就需要进行加载和连接 5)如果这个类有父类并且这个父类没有被初始化,则先初始化父类. 6)如果类中存在初始化语句,依次执行初始化语句.<img src="http://zhongmin.me/wp-content/uploads/2017/03/UC_1EG_F23Z7EIF@LI4.png" alt>上面和下面的例子大家对比下，然后自己看看输出的是什么？<img src="http://zhongmin.me/wp-content/uploads/2017/03/XDR7YDMVD3HXQB9J1T1_DN.png" alt> 第一个输出的是 2 第二个输出的是 FinalTest2 static block 61（随机数） 为何会出现这样的结果呢？ 参考上面的Tips2和Tips3，第一个能够在编译时期确定的，叫做编译常量；第二个是运行时才能确定下来的，叫做运行时常量。编译常量不会引起类的初始化，而运行常量就会。 那么将第一个例子的final去掉之后呢？输出又是什么呢？ 这就是对类的首次主动使用，引用类的静态变量，输出的当然是： FinalTest static block 2 那么在第一个例子的输出语句下面添加 FinalTest.x =3； 又会输出什么呢？ 大家不妨试试！提示（Tips1）</p>
+<h3 id="7-类的初始化步骤"><a href="#7-类的初始化步骤" class="headerlink" title="7.类的初始化步骤"></a>7.类的初始化步骤</h3><p>讲到这里我们应该对类的加载-连接-初始化有一个全局概念了，那么接下来我们看看类具体初始化执行步骤。我们分两种情况讨论，一种是类有父类，一种是类没有父类。（当然所有类的顶级父类都是Object）</p>
+<p><strong>没有父类的情况：</strong></p>
+<ul>
+<li>类的静态属性</li>
+<li>类的静态代码块</li>
+<li>类的非静态属性</li>
+<li>类的非静态代码块</li>
+<li>构造方法</li>
+</ul>
+<p><strong>有父类的情况:</strong></p>
+<ul>
+<li>父类的静态属性</li>
+<li>父类的静态代码块</li>
+<li>子类的静态属性</li>
+<li>子类的静态代码块</li>
+<li>父类的非静态属性</li>
+<li>父类的非静态代码块</li>
+<li>父类构造方法</li>
+<li>子类非静态属性</li>
+<li>子类非静态代码块</li>
+<li>子类构造方法</li>
+</ul>
+<p>在这要说明下，静态代码块和静态属性是等价的，他们是按照代码顺序执行的。 类的初始化内容这样看起来还是挺多的，包括“主动使用”大家可以自己去写一些demo去验证一下。</p>
+<h3 id="8-结束JVM进程的几种方式"><a href="#8-结束JVM进程的几种方式" class="headerlink" title="8.结束JVM进程的几种方式"></a>8.结束JVM进程的几种方式</h3><p>(1) 执行System.exit() (2) 程序正常结束 (3) 程序抛出异常,一直向上抛出没处理 (4) 操作系统异常,导致JVM退出</p>
+<p>JVM有上面4种结束的方式，我们一一了解下：(1)我们先来看看第一种方式，找到源代码我们发现：<img src="http://zhongmin.me/wp-content/uploads/2017/03/EOCE7@LL4VXTLR3UP1F2.png" alt></p>
+<p>上面的代码解释了System.exit()方法的作用就是：是中断当前运行的java虚拟机。这是自杀方式。</p>
+<p>(2)第二种程序正常结束的方式，我们在运行main方法的时候，运行状态按钮由绿色变红色再变绿色的过程就是程序启动-运行-结束的过程。 那么，我们来看看Android的程序，同样，安卓也有自己的启动方式，也是一个main方法。那么我们的android程序能够一直运行的前提就是我们的main方法一直被执行着，一旦main方法执行完毕，程序就是kill。我们找找源代码才能有更好的说服力；我们找到ActivityThread的main方法<img src="http://zhongmin.me/wp-content/uploads/2017/03/FO37RRZ@AYZU9QLOST.png" alt>上面的代码都不用看，直接看最后两行代码。执行完Looper.loop()之后，直接抛出了异常。但是我们并没有见到这个异常，说明我们的Looper一直在执行这样保证我们的app不被kill掉。Android就是用这种方式来保证我们的app一直运行下去的。(3)第三种方式不用过多解释，一直没有处理被抛出的异常，这样导致了程序崩溃。 (4)第四种方式是系统异常导致了jvm退出。其实jvm就是一个软件，如果我们的操作系统都出现了错误，那么运行在他上面的软件（jvm）必然会被kill。</p>
+<h3 id="9-结束并回顾"><a href="#9-结束并回顾" class="headerlink" title="9.结束并回顾"></a>9.结束并回顾</h3><p>到这里，我们基本都清楚了类的加载机制。那么我们在第一篇文章中开头提到一个例子，我们这里来讲讲输出的是什么，并且为何如此输出，大家坐稳。<img src="http://zhongmin.me/wp-content/uploads/2017/03/J98N9B0IP_9BW7@IU2I1.png" alt>下面是我们的测试类TestSingleton</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/1Z4XIA64I6574709KJWO4.png" alt> 输出是： counter1=1 counter2=0 why？我们一步一步分析： 1 执行TestSingleton第一句的时候，因为我们没有对Singleton类进行加载和连接，所以我们首先需要对它进行加载和连接操作。在连接阶-准备阶段，我们要讲给静态变量赋予默认初始值。 singleton =null counter1 =0 counter2 =0 2 加载和连接完毕之后，我们再进行初始化工作。初始化工作是从上往下依次执行的，注意这个时候还没有调用Singleton.getSingleton(); 首先 singleton = new Singleton();这样会执行构造方法内部逻辑，进行++；此时counter1=1，counter2 =1 ； 接下来再看第二个静态属性，我们并没有对它进行初始化，所以它就没办法进行初始化工作了； 第三个属性counter2我们初始化为0，因此此时的counter2 =1 ； 3 初始化完毕之后我们就要调用静态方法Singleton.getSingleton(); 我们知道返回的singleton已经初始化了。 那么输出的内容也就理所当然的是1和0了。这样一步一步去理解程序执行过程是不是让你清晰的认识了java虚拟机执行程序的逻辑呢。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/29/springboot-e6-89-ab-e6-8f-8f-e4-b8-8d-e5-88-b0url-e8-b7-af-e5-be-84-e7-9a-84-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/29/springboot-e6-89-ab-e6-8f-8f-e4-b8-8d-e5-88-b0url-e8-b7-af-e5-be-84-e7-9a-84-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">SpringBoot 扫描不到url路径的问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-29 17:08:06" itemprop="dateCreated datePublished" datetime="2017-03-29T17:08:06+08:00">2017-03-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>spring boot项目启动时出现controller的路由没被注册， 原因：启动类application跟controller不在一个包中,扫描不到controller， 如启动类在com.xyz.a，controller在com.xyz.b 解决办法: 方法1：将controller跟启动类放在一个包中，或者在启动类所在包的子包中 方法2：在启动类上添加注解 @ComponentScan(“包名”)</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/29/springboot-e5-90-af-e5-8a-a8-e6-8a-a5-e9-94-99-ef-bc-9astart-due-to-a-componentscan-of-the-default-package/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/29/springboot-e5-90-af-e5-8a-a8-e6-8a-a5-e9-94-99-ef-bc-9astart-due-to-a-componentscan-of-the-default-package/" class="post-title-link" itemprop="url">SpringBoot启动报错：**start due to a @ComponentScan of the default package.</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-29 11:01:11" itemprop="dateCreated datePublished" datetime="2017-03-29T11:01:11+08:00">2017-03-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.</p>
+<p>  Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package. 因为application.<a href="http://lib.csdn.net/base/javase" title="Java SE知识库" target="_blank" rel="noopener">Java</a> 文件不能直接放在main/java文件夹下，必须要建一个包把他放进去. 参考：<a href="http://stackoverflow.com/questions/35070455/springboot-beandefinitionstoreexception-failed-to-parse-configuration-class" target="_blank" rel="noopener">http://stackoverflow.com/questions/35070455/springboot-beandefinitionstoreexception-failed-to-parse-configuration-class</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/21/java-e5-8f-91-e9-80-81http-get-e3-80-81post-e8-af-b7-e6-b1-82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/21/java-e5-8f-91-e9-80-81http-get-e3-80-81post-e8-af-b7-e6-b1-82/" class="post-title-link" itemprop="url">Java发送Http Get、Post请求</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-21 09:04:10" itemprop="dateCreated datePublished" datetime="2017-03-21T09:04:10+08:00">2017-03-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>package demo.Http;</p>
+<p>import java.io.BufferedReader;<br>import java.io.IOException;<br>import java.io.InputStreamReader;<br>import java.io.PrintWriter;<br>import java.net.URL;<br>import java.net.URLConnection;<br>import java.util.List;<br>import java.util.Map;</p>
+<p>public class HttpRequest {<br>    /**<br>     * 向指定URL发送GET方法的请求<br>     *<br>     * @param url<br>     *            发送请求的URL<br>     * @param param<br>     *            请求参数，请求参数应该是 name1=value1&amp;name2=value2 的形式。<br>     * @return URL 所代表远程资源的响应结果<br>     <em>/<br>    public static String sendGet(String url, String param) {<br>        String result = “”;<br>        BufferedReader in = null;<br>        try {<br>            String urlNameString = url + “?” + param;<br>            URL realUrl = new URL(urlNameString);<br>            // 打开和URL之间的连接<br>            URLConnection connection = realUrl.openConnection();<br>            // 设置通用的请求属性<br>            connection.setRequestProperty(“accept”, “</em>/*”);<br>            connection.setRequestProperty(“connection”, “Keep-Alive”);<br>            connection.setRequestProperty(“user-agent”,<br>                    “Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)”);<br>            // 建立实际的连接<br>            connection.connect();<br>            // 获取所有响应头字段<br>            Map&lt;String, List<string>&gt; map = connection.getHeaderFields();<br>            // 遍历所有的响应头字段<br>            for (String key : map.keySet()) {<br>                System.out.println(key + “—&gt;” + map.get(key));<br>            }<br>            // 定义 BufferedReader输入流来读取URL的响应<br>            in = new BufferedReader(new InputStreamReader(<br>                    connection.getInputStream()));<br>            String line;<br>            while ((line = in.readLine()) != null) {<br>                result += line;<br>            }<br>        } catch (Exception e) {<br>            System.out.println(“发送GET请求出现异常！” + e);<br>            e.printStackTrace();<br>        }<br>        // 使用finally块来关闭输入流<br>        finally {<br>            try {<br>                if (in != null) {<br>                    in.close();<br>                }<br>            } catch (Exception e2) {<br>                e2.printStackTrace();<br>            }<br>        }<br>        return result;<br>    }</string></p>
+<pre><code>/\*\*
+ \* 向指定 URL 发送POST方法的请求
+ \* 
+ \* @param url
+ \*            发送请求的 URL
+ \* @param param
+ \*            请求参数，请求参数应该是 name1=value1&amp;name2=value2 的形式。
+ \* @return 所代表远程资源的响应结果
+ */
+public static String sendPost(String url, String param) {
+    PrintWriter out = null;
+    BufferedReader in = null;
+    String result = &quot;&quot;;
+    try {
+        URL realUrl = new URL(url);
+        // 打开和URL之间的连接
+        URLConnection conn = realUrl.openConnection();
+        // 设置通用的请求属性
+        conn.setRequestProperty(&quot;accept&quot;, &quot;*/*&quot;);
+        conn.setRequestProperty(&quot;connection&quot;, &quot;Keep-Alive&quot;);
+        conn.setRequestProperty(&quot;user-agent&quot;,
+                &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)&quot;);
+        // 发送POST请求必须设置如下两行
+        conn.setDoOutput(true);
+        conn.setDoInput(true);
+        // 获取URLConnection对象对应的输出流
+        out = new PrintWriter(conn.getOutputStream());
+        // 发送请求参数
+        out.print(param);
+        // flush输出流的缓冲
+        out.flush();
+        // 定义BufferedReader输入流来读取URL的响应
+        in = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()));
+        String line;
+        while ((line = in.readLine()) != null) {
+            result += line;
+        }
+    } catch (Exception e) {
+        System.out.println(&quot;发送 POST 请求出现异常！&quot;+e);
+        e.printStackTrace();
+    }
+    //使用finally块来关闭输出流、输入流
+    finally{
+        try{
+            if(out!=null){
+                out.close();
+            }
+            if(in!=null){
+                in.close();
+            }
+        }
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+    return result;
+}    
+</code></pre><p>}</p>
+<p>调用方法：</p>
+<p> public static void main(String[] args) {<br>        //发送 GET 请求<br>        String s=HttpRequest.sendGet(“<a href="http://localhost:6144/Home/RequestString&quot;" target="_blank" rel="noopener">http://localhost:6144/Home/RequestString&quot;</a>, “key=123&amp;v=456”);<br>        System.out.println(s);</p>
+<pre><code>    //发送 POST 请求
+    String sr=HttpRequest.sendPost(&quot;http://localhost:6144/Home/RequestPostString&quot;, &quot;key=123&amp;v=456&quot;);
+    System.out.println(sr);
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/16/java-e7-9a-84classloader-e4-b8-8epackage-e6-9c-ba-e5-88-b6prohibited-package-namexxx-e9-94-99-e8-af-af/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/16/java-e7-9a-84classloader-e4-b8-8epackage-e6-9c-ba-e5-88-b6prohibited-package-namexxx-e9-94-99-e8-af-af/" class="post-title-link" itemprop="url">Java的ClassLoader与Package机制(Prohibited package name:XXX错误)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-16 10:10:20" itemprop="dateCreated datePublished" datetime="2017-03-16T10:10:20+08:00">2017-03-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>如遇到这个问题： Prohibited package name:xxx 则可参考以下 为了深入了解<a href="http://lib.csdn.net/base/javase" title="Java SE知识库" target="_blank" rel="noopener">Java</a>的ClassLoader机制，我们先来做以下实验：</p>
+<p>package java.lang;//自定义的包名是java.lang<br>public class Test {<br>  public static void main(String[] args) {<br>     char[] c = “1234567890”.toCharArray();<br>     String s = new String(0, 10, c);<br>  }<br>}</p>
+<p>String类有一个Package权限的构造函数<strong>String(int offset, int length, char[] array)</strong>，按照默认的访问权限，由于Test属于java.lang包，因此理论上应该可以访问String的这个构造函数。<strong>编译通过！</strong>执行时结果如下：</p>
+<blockquote>
+<p>Exception in thread “main” java.lang.SecurityException: Prohibited package name:<br> java.lang<br>        at java.lang.ClassLoader.defineClass(Unknown Source)<br>        at java.security.SecureClassLoader.defineClass(Unknown Source)<br>        at java.NET.URLClassLoader.defineClass(Unknown Source)<br>        at java.Net.URLClassLoader.access$100(Unknown Source)<br>        at java.net.URLClassLoader$1.run(Unknown Source)<br>        at java.security.AccessController.doPrivileged(Native Method)<br>        at java.net.URLClassLoader.findClass(Unknown Source)<br>        at java.lang.ClassLoader.loadClass(Unknown Source)<br>        at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)<br>        at java.lang.ClassLoader.loadClass(Unknown Source)<br>        at java.lang.ClassLoader.loadClassInternal(Unknown Source)</p>
+</blockquote>
+<p>奇怪吧？要弄清为什么会有SecurityException，就必须搞清楚ClassLoader的机制。 Java的ClassLoader就是用来动态装载class的，ClassLoader对一个class只会装载一次，JVM使用的ClassLoader一共有4种： <strong>启动类装载器，标准扩展类装载器，类路径装载器</strong>和<strong>网络类装载器</strong>。 这4种ClassLoader的优先级依次从高到低，使用所谓的“双亲委派模型”。确切地说，如果一个网络类装载器被请求装载一个java.lang.Integer，它会首先把请求发送给上一级的类路径装载器，如果返回已装载，则网络类装载器将不会装载这个java.lang.Integer，如果上一级的类路径装载器返回未装载，它才会装载java.lang.Integer。 类似的，类路径装载器收到请求后（无论是直接请求装载还是下一级的ClassLoader上传的请求），它也会先把请求发送到上一级的标准扩展类装载器，这样一层一层上传，于是启动类装载器优先级最高，如果它按照自己的方式找到了java.lang.Integer，则下面的ClassLoader都不能再装载java.lang.Integer，尽管你自己写了一个java.lang.Integer，试图取代核心库的java.lang.Integer是不可能的，因为自己写的这个类根本无法被下层的ClassLoader装载。 再说说Package权限。Java语言规定，在同一个包中的class，如果没有修饰符，默认为Package权限，包内的class都可以访问。但是这还不够准确。确切的说，只有由同一个ClassLoader装载的class才具有以上的Package权限。比如启动类装载器装载了java.lang.String，类路径装载器装载了我们自己写的java.lang.Test，它们不能互相访问对方具有Package权限的方法。这样就阻止了恶意代码访问核心类的Package权限方法。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/15/e6-95-b0-e6-8d-ae-e5-ba-93-e7-b4-a2-e5-bc-95-e7-9a-84-e5-ae-9e-e7-8e-b0-e5-8e-9f-e7-90-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/15/e6-95-b0-e6-8d-ae-e5-ba-93-e7-b4-a2-e5-bc-95-e7-9a-84-e5-ae-9e-e7-8e-b0-e5-8e-9f-e7-90-86/" class="post-title-link" itemprop="url">数据库索引的实现原理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-15 16:40:14" itemprop="dateCreated datePublished" datetime="2017-03-15T16:40:14+08:00">2017-03-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>数据库索引</strong>，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。<strong>索引的实现通常使用B树及其变种B+树</strong>。 在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。 为表设置索引要付出代价的：一是增加了数据库的存储空间，二是在插入和修改数据时要花费较多的时间(因为索引也要随之变动)。 <img src="http://zhongmin.me/wp-content/uploads/2017/03/1336034967_9324.png" alt> 上图展示了一种可能的索引方式。左边是数据表，一共有两列七条记录，最左边的是数据记录的物理地址（注意逻辑上相邻的记录在磁盘上也并不是一定物理相邻的）。为了加快Col2的查找，可以维护一个右边所示的二叉查找树，每个节点分别包含索引键值和一个指向对应数据记录物理地址的指针，这样就可以运用二叉查找在O(log2n)的复杂度内获取到相应数据。   创建索引可以大大提高系统的性能。 第一，通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。 第二，可以大大加快数据的检索速度，这也是创建索引的最主要的原因。 第三，可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。 第四，在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。 第五，通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。 也许会有人要问：增加索引有如此多的优点，为什么不对表中的每一个列创建一个索引呢？因为，增加索引也有许多不利的方面。 第一，创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。 第二，索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。 第三，当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。 索引是建立在数据库表中的某些列的上面。在创建索引的时候，应该考虑在哪些列上可以创建索引，在哪些列上不能创建索引。<strong>一般来说，应该在这些列上创建索引：</strong>在经常需要搜索的列上，可以加快搜索的速度；在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度；在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。 同样，对于有些列不应该创建索引。<strong>一般来说，不应该创建索引的的这些列具有下列特点：</strong> 第一，对于那些在查询中很少使用或者参考的列不应该创建索引。这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求。 第二，对于那些只有很少数据值的列也不应该增加索引。这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。 第三，对于那些定义为text, image和bit数据类型的列不应该增加索引。这是因为，这些列的数据量要么相当大，要么取值很少。 第四，当修改性能远远大于检索性能时，不应该创建索引。这是因为，<strong>修改性能和检索性能是互相矛盾的</strong>。当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改性能远远大于检索性能时，不应该创建索引。 根据数据库的功能，可以在数据库设计器中创建三种索引：<strong>唯一索引、主键索引和聚集索引</strong>。 <strong>唯一索引</strong> 唯一索引是不允许其中任何两行具有相同索引值的索引。 当现有数据中存在重复的键值时，大多数数据库不允许将新创建的唯一索引与表一起保存。数据库还可能防止添加将在表中创建重复键值的新数据。例如，如果在employee表中职员的姓(lname)上创建了唯一索引，则任何两个员工都不能同姓。 <strong>主键索引</strong> 数据库表经常有一列或列组合，其值唯一标识表中的每一行。该列称为表的主键。 在数据库关系图中为表定义主键将自动创建主键索引，主键索引是唯一索引的特定类型。该索引要求主键中的每个值都唯一。当在查询中使用主键索引时，它还允许对数据的快速访问。 <strong>聚集索引</strong> 在聚集索引中，表中行的物理顺序与键值的逻辑（索引）顺序相同。一个表只能包含一个聚集索引。 如果某索引不是聚集索引，则表中行的物理顺序与键值的逻辑顺序不匹配。与非聚集索引相比，聚集索引通常提供更快的数据访问速度。</p>
+<h3 id="局部性原理与磁盘预读"><a href="#局部性原理与磁盘预读" class="headerlink" title="局部性原理与磁盘预读"></a>局部性原理与磁盘预读</h3><p>由于存储介质的特性，磁盘本身存取就比主存慢很多，再加上机械运动耗费，磁盘的存取速度往往是主存的几百分分之一，因此为了提高效率，要尽量减少磁盘I/O。为了达到这个目的，磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取一定长度的数据放入内存。这样做的理论依据是计算机科学中著名的<strong>局部性原理</strong>：<strong>当一个数据被用到时，其附近的数据也通常会马上被使用。程序运行期间所需要的数据通常比较集中。</strong> 由于磁盘顺序读取的效率很高（不需要寻道时间，只需很少的旋转时间），因此对于具有局部性的程序来说，预读可以提高I/O效率。 预读的长度一般为页（page）的整倍数。页是计算机管理存储器的逻辑块，硬件及<a href="http://lib.csdn.net/base/operatingsystem" title="操作系统知识库" target="_blank" rel="noopener">操作系统</a>往往将主存和磁盘存储区分割为连续的大小相等的块，每个存储块称为一页（在许多操作系统中，页得大小通常为4k），主存和磁盘以页为单位交换数据。当程序要读取的数据不在主存中时，会触发一个缺页异常，此时系统会向磁盘发出读盘信号，磁盘会找到数据的起始位置并向后连续读取一页或几页载入内存中，然后异常返回，程序继续运行。</p>
+<h3 id="B-Tree索引的性能分析"><a href="#B-Tree索引的性能分析" class="headerlink" title="B-/+Tree索引的性能分析"></a>B-/+Tree索引的性能分析</h3><p>到这里终于可以分析B-/+Tree索引的性能了。 上文说过一般使用磁盘I/O次数评价索引结构的优劣。先从B-Tree分析，根据B-Tree的定义，可知检索一次最多需要访问h个节点。数据库系统的设计者巧妙利用了磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次I/O就可以完全载入。为了达到这个目的，在实际实现B-Tree还需要使用如下技巧： 每次新建节点时，直接申请一个页的空间，这样就保证一个节点物理上也存储在一个页里，加之计算机存储分配都是按页对齐的，就实现了一个node只需一次I/O。 <strong>B-Tree中一次检索最多需要h-1次I/O（根节点常驻内存），渐进复杂度为O(h)=O(logdN)。</strong>一般实际应用中，出度d是非常大的数字，通常超过100，因此h非常小（通常不超过3）。 而红黑树这种结构，h明显要深的多。由于逻辑上很近的节点（父子）物理上可能很远，无法利用局部性，所以红黑树的I/O渐进复杂度也为O(h)，效率明显比B-Tree差很多。 <strong>综上所述，用B-Tree作为索引结构效率是非常高的。</strong> <strong>应该花时间学习B-树和B+树数据结构</strong> ============================================================================================================= 1）B树 B树中每个节点包含了键值和键值对于的数据对象存放地址指针，所以成功搜索一个对象可以不用到达树的叶节点。 成功搜索包括节点内搜索和沿某一路径的搜索，成功搜索时间取决于关键码所在的层次以及节点内关键码的数量。 在B树中查找给定关键字的方法是：首先把根结点取来，在根结点所包含的关键字K1,…,kj查找给定的关键字（可用顺序查找或二分查找法），若找到等于给定值的关键字，则查找成功；否则，一定可以确定要查的关键字在某个Ki或Ki+1之间，于是取Pi所指的下一层索引节点块继续查找，直到找到，或指针Pi为空时查找失败。 2）B+树 B+树非叶节点中存放的关键码并不指示数据对象的地址指针，非也节点只是索引部分。所有的叶节点在同一层上，包含了全部关键码和相应数据对象的存放地址指针，且叶节点按关键码从小到大顺序链接。如果实际数据对象按加入的顺序存储而不是按关键码次数存储的话，叶节点的索引必须是稠密索引，若实际数据存储按关键码次序存放的话，叶节点索引时稀疏索引。 B+树有2个头指针，一个是树的根节点，一个是最小关键码的叶节点。 所以 B+树有两种搜索方法： 一种是按叶节点自己拉起的链表顺序搜索。 一种是从根节点开始搜索，和B树类似，不过如果非叶节点的关键码等于给定值，搜索并不停止，而是继续沿右指针，一直查到叶节点上的关键码。所以无论搜索是否成功，都将走完树的所有层。 B+ 树中，数据对象的插入和删除仅在叶节点上进行。 这两种处理索引的数据结构的不同之处： a，B树中同一键值不会出现多次，并且它有可能出现在叶结点，也有可能出现在非叶结点中。而B+树的键一定会出现在叶结点中，并且有可能在非叶结点中也有可能重复出现，以维持B+树的平衡。 b，因为B树键位置不定，且在整个树结构中只出现一次，虽然可以节省存储空间，但使得在插入、删除操作复杂度明显增加。B+树相比来说是一种较好的折中。 c，B树的查询效率与键在树中的位置有关，最大时间复杂度与B+树相同(在叶结点的时候)，最小时间复杂度为1(在根结点的时候)。而B+树的时候复杂度对某建成的树是固定的。 原文地址:<a href="http://blog.csdn.net/kennyrose/article/details/7532032" target="_blank" rel="noopener">http://blog.csdn.net/kennyrose/article/details/7532032</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/15/wordpress-e6-97-a0-e6-b3-95-e5-8f-91-e5-b8-83-e6-96-87-e7-ab-a0-e7-9a-84-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/03/15/wordpress-e6-97-a0-e6-b3-95-e5-8f-91-e5-b8-83-e6-96-87-e7-ab-a0-e7-9a-84-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">wordpress无法发布文章的问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-15 16:07:06" itemprop="dateCreated datePublished" datetime="2017-03-15T16:07:06+08:00">2017-03-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>好久没折腾wordpress了，本来想转一篇文章的，但是发布的时候一直出现下面这种情况： <img src="http://zhongmin.me/wp-content/uploads/2017/03/20170315155411.png" alt> 文章发布成功，却没有内容标题，查看数据库的时候数据好像都没有入库。查看nginx日志mysql日志也没有发现错误，查了很多资料也没啥发现。 最后只能打开wp的debug模式，在wp-config.php 文件下通过对定义这个常量即可开启debug 模式。</p>
+<p>//开启 on wp_debug<br>define(‘WP_DEBUG’, true);</p>
+<p>//关闭 wp_debug<br>define(‘WP_DEBUG’, false);</p>
+<p>开启debug之后，浏览器中提示你相关的错误信息，重新发布一篇测试，浏览器报出数据库的错误: <img src="http://zhongmin.me/wp-content/uploads/2017/03/20170315160127.png" alt> Got a packet bigger than‘max_allowed_packet’bytes 的错误，</p>
+<p>mysql根据配置文件会限制server接受的数据包大小。</p>
+<p>有时候大的插入和更新会受max_allowed_packet 参数限制，导致写入或者更新失败。 查看目前配置</p>
+<p>show VARIABLES like ‘%max_allowed_packet%’; <img src="http://zhongmin.me/wp-content/uploads/2017/03/20170315160340.png" alt> 可以看见这里限制了1M,</p>
+<p>修改方法 1、修改配置文件 可以编辑my.cnf来修改（windows下my.ini）,在[mysqld]段或者mysql的server配置段进行修改。</p>
+<p>max_allowed_packet = 20M</p>
+<p>如果找不到my.cnf可以通过</p>
+<p>mysql –help | grep my.cnf</p>
+<p>去寻找my.cnf文件。 linux下该文件在/etc/下。 2、在mysql命令行中修改 在mysql 命令行中运行</p>
+<p>set global max_allowed_packet = 2*1024*1024*10</p>
+<p>然后退出命令行，重启mysql服务，再进入。</p>
+<p>show VARIABLES like ‘%max_allowed_packet%’;</p>
+<p>查看下max_allowed_packet是否编辑成功</p>
+<p> 注意：该值设置过小将导致单个记录超过限制后写入数据库失败，且后续记录写入也将失败。</p>
+<p>修改完重启mysql,继续插入数据，ok!</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

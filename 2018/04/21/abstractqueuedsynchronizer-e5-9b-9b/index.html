@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="CyclicBarrierCyclicBarrier 的字面意思是可循环使用（Cyclic）的屏障（Barrier）。它要做的事情是，让一组线程到达一个屏障（也可以叫同步点）时被阻塞，直到最后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续干活。CyclicBarrier默认的构造方法是CyclicBarrier(int parties)，其参数表示屏障拦截的线程数量，每个线程调用a">
+<meta name="keywords" content="Java,J.U.C,AQS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AbstractQueuedSynchronizer(四)-CyclicBarrier">
+<meta property="og:url" content="http://b.zhongmin.me/2018/04/21/abstractqueuedsynchronizer-e5-9b-9b/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="CyclicBarrierCyclicBarrier 的字面意思是可循环使用（Cyclic）的屏障（Barrier）。它要做的事情是，让一组线程到达一个屏障（也可以叫同步点）时被阻塞，直到最后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续干活。CyclicBarrier默认的构造方法是CyclicBarrier(int parties)，其参数表示屏障拦截的线程数量，每个线程调用a">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://zhongmin.me/wp-content/uploads/2018/04/1JHHK29RYRN5SC07YS0C1-960x418.png">
+<meta property="og:image" content="https://zhongmin.me/wp-content/uploads/2018/04/MW9NXA12SYPEOE13FC-833x640.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AbstractQueuedSynchronizer(四)-CyclicBarrier">
+<meta name="twitter:description" content="CyclicBarrierCyclicBarrier 的字面意思是可循环使用（Cyclic）的屏障（Barrier）。它要做的事情是，让一组线程到达一个屏障（也可以叫同步点）时被阻塞，直到最后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续干活。CyclicBarrier默认的构造方法是CyclicBarrier(int parties)，其参数表示屏障拦截的线程数量，每个线程调用a">
+<meta name="twitter:image" content="https://zhongmin.me/wp-content/uploads/2018/04/1JHHK29RYRN5SC07YS0C1-960x418.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/04/21/abstractqueuedsynchronizer-e5-9b-9b/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>AbstractQueuedSynchronizer(四)-CyclicBarrier | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/04/21/abstractqueuedsynchronizer-e5-9b-9b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AbstractQueuedSynchronizer(四)-CyclicBarrier
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-21 18:04:44" itemprop="dateCreated datePublished" datetime="2018-04-21T18:04:44+08:00">2018-04-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h2><p>CyclicBarrier 的字面意思是可循环使用（Cyclic）的屏障（Barrier）。它要做的事情是，让一组线程到达一个屏障（也可以叫同步点）时被阻塞，直到最后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续干活。CyclicBarrier默认的构造方法是CyclicBarrier(int parties)，其参数表示屏障拦截的线程数量，每个线程调用await方法告诉CyclicBarrier我已经到达了屏障，然后当前线程被阻塞。 实例代码如下</p>
+<p>public class CyclicBarrierTest {</p>
+<pre><code>static CyclicBarrier c = new CyclicBarrier(2);
+
+public static void main(String\[\] args) {
+    new Thread(new Runnable() {
+
+        @Override
+        public void run() {
+            try {
+                c.await();
+            } catch (Exception e) {
+
+            }
+            System.out.println(1);
+        }
+    }).start();
+
+    try {
+        c.await();
+    } catch (Exception e) {
+
+    }
+    System.out.println(2);
+}
+</code></pre><p>}</p>
+<p>输出</p>
+<p>2<br>1</p>
+<p>如果把new CyclicBarrier(2)修改成new CyclicBarrier(3)则主线程和子线程会永远等待，因为没有第三个线程执行await方法，即没有第三个线程到达屏障，所以之前到达屏障的两个线程都不会继续执行。 CyclicBarrier还提供一个更高级的构造函数CyclicBarrier(int parties, Runnable barrierAction)，用于在线程到达屏障时，优先执行barrierAction，方便处理更复杂的业务场景。代码如下：</p>
+<p>public class CyclicBarrierTest2 {</p>
+<pre><code>static CyclicBarrier c = new CyclicBarrier(2, new A());
+
+public static void main(String\[\] args) {
+    new Thread(new Runnable() {
+
+        @Override
+        public void run() {
+            try {
+                c.await();
+            } catch (Exception e) {
+
+            }
+            System.out.println(1);
+        }
+    }).start();
+
+    try {
+        c.await();
+    } catch (Exception e) {
+
+    }
+    System.out.println(2);
+}
+
+static class A implements Runnable {
+
+    @Override
+    public void run() {
+        System.out.println(3);
+    }
+
+}
+</code></pre><p>}</p>
+<p>输出</p>
+<p>3<br>1<br>2</p>
+<h3 id="CyclicBarrier的应用场景"><a href="#CyclicBarrier的应用场景" class="headerlink" title="CyclicBarrier的应用场景"></a>CyclicBarrier的应用场景</h3><p>CyclicBarrier可以用于多线程计算数据，最后合并计算结果的应用场景。比如我们用一个Excel保存了用户所有银行流水，每个Sheet保存一个帐户近一年的每笔银行流水，现在需要统计用户的日均银行流水，先用多线程处理每个sheet里的银行流水，都执行完之后，得到每个sheet的日均银行流水，最后，再用barrierAction用这些线程的计算结果，计算出整个Excel的日均银行流水。</p>
+<h3 id="CyclicBarrier和CountDownLatch的区别"><a href="#CyclicBarrier和CountDownLatch的区别" class="headerlink" title="CyclicBarrier和CountDownLatch的区别"></a>CyclicBarrier和CountDownLatch的区别</h3><p>CountDownLatch的计数器只能使用一次。而CyclicBarrier的计数器可以使用reset() 方法重置。所以CyclicBarrier能处理更为复杂的业务场景，比如如果计算发生错误，可以重置计数器，并让线程们重新执行一次。 CyclicBarrier还提供其他有用的方法，比如getNumberWaiting方法可以获得CyclicBarrier阻塞的线程数量。isBroken方法用来知道阻塞的线程是否被中断。</p>
+<h3 id="CyclicBarrier源码"><a href="#CyclicBarrier源码" class="headerlink" title="CyclicBarrier源码"></a>CyclicBarrier源码</h3><p><img src="https://zhongmin.me/wp-content/uploads/2018/04/1JHHK29RYRN5SC07YS0C1-960x418.png" alt> 首先，CyclicBarrier 的源码实现和 CountDownLatch 大相径庭，CountDownLatch 基于 AQS 的共享模式的使用，而 CyclicBarrier 基于 Condition 来实现。 因为 CyclicBarrier 的源码相对来说简单许多，读者只要熟悉了前面关于 Condition 的分析，那么这里的源码是毫无压力的，就是几个特殊概念罢了。 废话结束，先上基本属性和构造方法，往下拉一点点，和图一起看：</p>
+<p>public class CyclicBarrier {<br>    // 我们说了，CyclicBarrier 是可以重复使用的，我们把每次从开始使用到穿过栅栏当做”一代”<br>    private static class Generation {<br>        boolean broken = false;<br>    }</p>
+<pre><code>/\*\* The lock for guarding barrier entry */
+private final ReentrantLock lock = new ReentrantLock();
+// CyclicBarrier 是基于 Condition 的
+// Condition 是“条件”的意思，CyclicBarrier 的等待线程通过 barrier 的“条件”是大家都到了栅栏上
+private final Condition trip = lock.newCondition();
+
+// 参与的线程数
+private final int parties;
+
+// 如果设置了这个，代表越过栅栏之前，要执行相应的操作
+private final Runnable barrierCommand;
+
+// 当前所处的“代”
+private Generation generation = new Generation();
+
+// 还没有到栅栏的线程数，这个值初始为 parties，然后递减
+// 还没有到栅栏的线程数 = parties - 已经到栅栏的数量
+private int count;
+
+public CyclicBarrier(int parties, Runnable barrierAction) {
+    if (parties &lt;= 0) throw new IllegalArgumentException();
+    this.parties = parties;
+    this.count = parties;
+    this.barrierCommand = barrierAction;
+}
+
+public CyclicBarrier(int parties) {
+    this(parties, null);
+}
+</code></pre><p>用一图来描绘下 CyclicBarrier 里面的一些概念<img src="https://zhongmin.me/wp-content/uploads/2018/04/MW9NXA12SYPEOE13FC-833x640.png" alt> 看图我们也知道了，CyclicBarrier 的源码最重要的就是 await() 方法了。 首先，先看怎么开启新的一代：</p>
+<p>// 开启新的一代，当最后一个线程到达栅栏上的时候，调用这个方法来唤醒其他线程，同时初始化“下一代”<br>private void nextGeneration() {<br>    // 首先，需要唤醒所有的在栅栏上等待的线程<br>    trip.signalAll();<br>    // 更新 count 的值<br>    count = parties;<br>    // 重新生成“新一代”<br>    generation = new Generation();<br>}</p>
+<p>看看怎么打破一个栅栏：</p>
+<p>private void breakBarrier() {<br>    // 设置状态 broken 为 true<br>    generation.broken = true;<br>    // 重置 count 为初始值 parties<br>    count = parties;<br>    // 唤醒所有已经在等待的线程<br>    trip.signalAll();<br>}</p>
+<p>这两个方法之后用得到，现在开始分析最重要的等待通过栅栏方法 await 方法：</p>
+<p>// 不带超时机制<br>public int await() throws InterruptedException, BrokenBarrierException {<br>    try {<br>        return dowait(false, 0L);<br>    } catch (TimeoutException toe) {<br>        throw new Error(toe); // cannot happen<br>    }<br>}<br>// 带超时机制，如果超时抛出 TimeoutException 异常<br>public int await(long timeout, TimeUnit unit)<br>    throws InterruptedException,<br>           BrokenBarrierException,<br>           TimeoutException {<br>    return dowait(true, unit.toNanos(timeout));<br>}</p>
+<p>继续往里看：</p>
+<p>private int dowait(boolean timed, long nanos)<br>        throws InterruptedException, BrokenBarrierException,<br>               TimeoutException {<br>    final ReentrantLock lock = this.lock;<br>    // 先要获取到锁，然后在 finally 中要记得释放锁<br>    // 如果记得 Condition 部分的话，我们知道 condition 的 await 会释放锁，signal 的时候需要重新获取锁<br>    lock.lock();<br>    try {<br>        final Generation g = generation;<br>        // 检查栅栏是否被打破，如果被打破，抛出 BrokenBarrierException 异常<br>        if (g.broken)<br>            throw new BrokenBarrierException();<br>        // 检查中断状态，如果中断了，抛出 InterruptedException 异常<br>        if (Thread.interrupted()) {<br>            breakBarrier();<br>            throw new InterruptedException();<br>        }<br>        // index 是这个 await 方法的返回值<br>        // 注意到这里，这个是从 count 递减后得到的值<br>        int index = –count;</p>
+<pre><code>    // 如果等于 0，说明所有的线程都到栅栏上了，准备通过
+    if (index == 0) {  // tripped
+        boolean ranAction = false;
+        try {
+            // 如果在初始化的时候，指定了通过栅栏前需要执行的操作，在这里会得到执行
+            final Runnable command = barrierCommand;
+            if (command != null)
+                command.run();
+            // 如果 ranAction 为 true，说明执行 command.run() 的时候，没有发生异常退出的情况
+            ranAction = true;
+            // 唤醒等待的线程，然后开启新的一代
+            nextGeneration();
+            return 0;
+        } finally {
+            if (!ranAction)
+                // 进到这里，说明执行指定操作的时候，发生了异常，那么需要打破栅栏
+                // 之前我们说了，打破栅栏意味着唤醒所有等待的线程，设置 broken 为 true，重置 count 为 parties
+                breakBarrier();
+        }
+    }
+
+    // loop until tripped, broken, interrupted, or timed out
+    // 如果是最后一个线程调用 await，那么上面就返回了
+    // 下面的操作是给那些不是最后一个到达栅栏的线程执行的
+    for (;;) {
+        try {
+            // 如果带有超时机制，调用带超时的 Condition 的 await 方法等待，直到最后一个线程调用 await
+            if (!timed)
+                trip.await();
+            else if (nanos &gt; 0L)
+                nanos = trip.awaitNanos(nanos);
+        } catch (InterruptedException ie) {
+            // 如果到这里，说明等待的线程在 await（是 Condition 的 await）的时候被中断
+            if (g == generation &amp;&amp; ! g.broken) {
+                // 打破栅栏
+                breakBarrier();
+                // 打破栅栏后，重新抛出这个 InterruptedException 异常给外层调用的方法
+                throw ie;
+            } else {
+                // 到这里，说明 g != generation, 说明新的一代已经产生，即最后一个线程 await 执行完成，
+                // 那么此时没有必要再抛出 InterruptedException 异常，记录下来这个中断信息即可
+                // 或者是栅栏已经被打破了，那么也不应该抛出 InterruptedException 异常，
+                // 而是之后抛出 BrokenBarrierException 异常
+                Thread.currentThread().interrupt();
+            }
+        }
+
+          // 唤醒后，检查栅栏是否是“破的”
+        if (g.broken)
+            throw new BrokenBarrierException();
+
+        // 这个 for 循环除了异常，就是要从这里退出了
+        // 我们要清楚，最后一个线程在执行完指定任务(如果有的话)，会调用 nextGeneration 来开启一个新的代
+        // 然后释放掉锁，其他线程从 Condition 的 await 方法中得到锁并返回，然后到这里的时候，其实就会满足 g != generation 的
+        // 那什么时候不满足呢？barrierCommand 执行过程中抛出了异常，那么会执行打破栅栏操作，
+        // 设置 broken 为true，然后唤醒这些线程。这些线程会从上面的 if (g.broken) 这个分支抛 BrokenBarrierException 异常返回
+        // 当然，还有最后一种可能，那就是 await 超时，此种情况不会从上面的 if 分支异常返回，也不会从这里返回，会执行后面的代码
+        if (g != generation)
+            return index;
+
+        // 如果醒来发现超时了，打破栅栏，抛出异常
+        if (timed &amp;&amp; nanos &lt;= 0L) {
+            breakBarrier();
+            throw new TimeoutException();
+        }
+    }
+} finally {
+    lock.unlock();
+}
+</code></pre><p>}</p>
+<p>好了，我想我应该讲清楚了吧，我好像几乎没有漏掉任何一行代码吧？ 下面开始收尾工作。 首先，我们看看怎么得到有多少个线程到了栅栏上，处于等待状态：</p>
+<p>public int getNumberWaiting() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        return parties - count;<br>    } finally {<br>        lock.unlock();<br>    }<br>}</p>
+<p>判断一个栅栏是否被打破了，这个很简单，直接看 broken 的值即可：</p>
+<p>public boolean isBroken() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        return generation.broken;<br>    } finally {<br>        lock.unlock();<br>    }<br>}</p>
+<p>前面我们在说 await 的时候也几乎说清楚了，什么时候栅栏会被打破，总结如下：</p>
+<ol>
+<li>中断，我们说了，如果某个等待的线程发生了中断，那么会打破栅栏，同时抛出 InterruptedException 异常；</li>
+<li>超时，打破栅栏，同时抛出 TimeoutException 异常；</li>
+<li>指定执行的操作抛出了异常，这个我们前面也说过。</li>
+</ol>
+<p>最后，我们来看看怎么重置一个栅栏：</p>
+<p>public void reset() {<br>    final ReentrantLock lock = this.lock;<br>    lock.lock();<br>    try {<br>        breakBarrier();   // break the current generation<br>        nextGeneration(); // start a new generation<br>    } finally {<br>        lock.unlock();<br>    }<br>}</p>
+<p>我们设想一下，如果初始化时，指定了线程 parties = 4，前面有 3 个线程调用了 await 等待，在第 4 个线程调用 await 之前，我们调用 reset 方法，那么会发生什么？ 首先，打破栅栏，那意味着所有等待的线程（3个等待的线程）会唤醒，await 方法会通过抛出 BrokenBarrierException 异常返回。然后开启新的一代，重置了 count 和 generation，相当于一切归零了。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/J-U-C/" rel="tag"># J.U.C</a>
+          
+            <a href="/tags/AQS/" rel="tag"># AQS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/21/abstractqueuedsynchronizer-e4-b8-89-countdownlatch/" rel="next" title="AbstractQueuedSynchronizer(三)-CountDownLatch">
+                <i class="fa fa-chevron-left"></i> AbstractQueuedSynchronizer(三)-CountDownLatch
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/abstractqueuedsynchronizer-e4-ba-94-semaphore/" rel="prev" title="AbstractQueuedSynchronizer(五)-Semaphore">
+                AbstractQueuedSynchronizer(五)-Semaphore <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">1.</span> <span class="nav-text">CyclicBarrier</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CyclicBarrier的应用场景"><span class="nav-number">1.1.</span> <span class="nav-text">CyclicBarrier的应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CyclicBarrier和CountDownLatch的区别"><span class="nav-number">1.2.</span> <span class="nav-text">CyclicBarrier和CountDownLatch的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CyclicBarrier源码"><span class="nav-number">1.3.</span> <span class="nav-text">CyclicBarrier源码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

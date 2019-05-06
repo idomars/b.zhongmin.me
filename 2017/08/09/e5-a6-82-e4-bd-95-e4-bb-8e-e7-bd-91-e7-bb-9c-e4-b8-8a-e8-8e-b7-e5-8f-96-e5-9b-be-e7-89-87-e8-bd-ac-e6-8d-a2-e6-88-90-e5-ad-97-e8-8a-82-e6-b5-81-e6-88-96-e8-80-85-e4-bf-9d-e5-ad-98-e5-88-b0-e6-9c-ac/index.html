@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="package com.hg.threadPoolExecutorDemo;import java.io.ByteArrayOutputStream;import java.io.File;import java.io.FileOutputStream;import java.io.InputStream;import java.net.HttpURLConnection;import java.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何从网络上获取图片转换成字节流或者保存到本地(转)">
+<meta property="og:url" content="http://b.zhongmin.me/2017/08/09/e5-a6-82-e4-bd-95-e4-bb-8e-e7-bd-91-e7-bb-9c-e4-b8-8a-e8-8e-b7-e5-8f-96-e5-9b-be-e7-89-87-e8-bd-ac-e6-8d-a2-e6-88-90-e5-ad-97-e8-8a-82-e6-b5-81-e6-88-96-e8-80-85-e4-bf-9d-e5-ad-98-e5-88-b0-e6-9c-ac/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="package com.hg.threadPoolExecutorDemo;import java.io.ByteArrayOutputStream;import java.io.File;import java.io.FileOutputStream;import java.io.InputStream;import java.net.HttpURLConnection;import java.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何从网络上获取图片转换成字节流或者保存到本地(转)">
+<meta name="twitter:description" content="package com.hg.threadPoolExecutorDemo;import java.io.ByteArrayOutputStream;import java.io.File;import java.io.FileOutputStream;import java.io.InputStream;import java.net.HttpURLConnection;import java.">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/08/09/e5-a6-82-e4-bd-95-e4-bb-8e-e7-bd-91-e7-bb-9c-e4-b8-8a-e8-8e-b7-e5-8f-96-e5-9b-be-e7-89-87-e8-bd-ac-e6-8d-a2-e6-88-90-e5-ad-97-e8-8a-82-e6-b5-81-e6-88-96-e8-80-85-e4-bf-9d-e5-ad-98-e5-88-b0-e6-9c-ac/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>如何从网络上获取图片转换成字节流或者保存到本地(转) | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/08/09/e5-a6-82-e4-bd-95-e4-bb-8e-e7-bd-91-e7-bb-9c-e4-b8-8a-e8-8e-b7-e5-8f-96-e5-9b-be-e7-89-87-e8-bd-ac-e6-8d-a2-e6-88-90-e5-ad-97-e8-8a-82-e6-b5-81-e6-88-96-e8-80-85-e4-bf-9d-e5-ad-98-e5-88-b0-e6-9c-ac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">如何从网络上获取图片转换成字节流或者保存到本地(转)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-09 15:36:31" itemprop="dateCreated datePublished" datetime="2017-08-09T15:36:31+08:00">2017-08-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>package com.hg.threadPoolExecutorDemo;<br>import java.io.ByteArrayOutputStream;<br>import java.io.File;<br>import java.io.FileOutputStream;<br>import java.io.InputStream;<br>import java.net.HttpURLConnection;<br>import java.net.URL;<br>/**<br> * @说明 从网络获取图片到本地<br> * @version 1.0<br> * @since<br> <em>/<br>public class GetImage {<br>    /\</em>*<br>     * 测试<br>     * @param args<br>     <em>/<br>    public static void main(String[] args) {<br>        String url = “<a href="http://www.baidu.com/img/baidu_sylogo1.gif&quot;" target="_blank" rel="noopener">http://www.baidu.com/img/baidu_sylogo1.gif&quot;</a>;<br>        byte[] btImg = getImageFromNetByUrl(url);<br>        if(null != btImg &amp;&amp; btImg.length &gt; 0){<br>            System.out.println(“读取到：” + btImg.length + “ 字节”);<br>            String fileName = “百度.gif”;<br>            writeImageToDisk(btImg, fileName);<br>        }else{<br>            System.out.println(“没有从该连接获得内容”);<br>        }<br>    }<br>    /\</em>*<br>     * 将图片写入到磁盘<br>     * @param img 图片数据流<br>     * @param fileName 文件保存时的名称<br>     <em>/<br>    public static void writeImageToDisk(byte[] img, String fileName){<br>        try {<br>            File file = new File(“D:\\” + fileName);<br>            FileOutputStream fops = new FileOutputStream(file);<br>            fops.write(img);<br>            fops.flush();<br>            fops.close();<br>            System.out.println(“图片已经写入到D盘”);<br>        } catch (Exception e) {<br>            e.printStackTrace();<br>        }<br>    }<br>    /\</em>*<br>     * 根据地址获得数据的字节流<br>     * @param strUrl 网络连接地址<br>     * @return<br>     <em>/<br>    public static byte[] getImageFromNetByUrl(String strUrl){<br>        try {<br>            URL url = new URL(strUrl);<br>            HttpURLConnection conn = (HttpURLConnection)url.openConnection();<br>            conn.setRequestMethod(“GET”);<br>            conn.setConnectTimeout(5 </em> 1000);<br>            InputStream inStream = conn.getInputStream();//通过输入流获取图片数据<br>            byte[] btImg = readInputStream(inStream);//得到图片的二进制数据<br>            return btImg;<br>        } catch (Exception e) {<br>            e.printStackTrace();<br>        }<br>        return null;<br>    }<br>    /**<br>     * 从输入流中获取数据<br>     * @param inStream 输入流<br>     * @return<br>     * @throws Exception<br>     */<br>    public static byte[] readInputStream(InputStream inStream) throws Exception{<br>        ByteArrayOutputStream outStream = new ByteArrayOutputStream();<br>        byte[] buffer = new byte[1024];<br>        int len = 0;<br>        while( (len=inStream.read(buffer)) != -1 ){<br>            outStream.write(buffer, 0, len);<br>        }<br>        inStream.close();<br>        return outStream.toByteArray();<br>    }<br>}</p>
+<p>另一种方法:</p>
+<p>package com.hg.threadPoolExecutorDemo;  </p>
+<p>import java.io.File;<br>import java.io.FileOutputStream;<br>import java.io.InputStream;<br>import java.io.OutputStream;<br>import java.net.URL;<br>import java.net.URLConnection;  </p>
+<p>public class DownloadImage {  </p>
+<pre><code>/\*\*  
+ \* @param args  
+ \* @throws Exception   
+ */  
+public static void main(String\[\] args) throws Exception {  
+    // TODO Auto-generated method stub    
+</code></pre><p>//      download(“<a href="http://ui.51bi.com/opt/siteimg/images/fanbei0923/Mid_07.jpg&quot;" target="_blank" rel="noopener">http://ui.51bi.com/opt/siteimg/images/fanbei0923/Mid_07.jpg&quot;</a>,<br>//              “51bi.jpg”, “D:\\image\\”);<br>        download(“<a href="http://www.hao123.com/&quot;" target="_blank" rel="noopener">http://www.hao123.com/&quot;</a>,<br>                “nidi.html”, “D:\\image\\”);<br>    }  </p>
+<pre><code>public static void download(String urlString, String filename,  
+        String savePath) throws Exception {  
+    // 构造URL    
+    URL url = new URL(urlString);  
+    // 打开连接    
+    URLConnection con = url.openConnection();  
+    //设置请求超时为5s    
+    con.setConnectTimeout(5 * 1000);  
+    // 输入流    
+    InputStream is = con.getInputStream();  
+
+    // 1K的数据缓冲    
+    byte\[\] bs = new byte\[1024\];  
+    // 读取到的数据长度    
+    int len;  
+    // 输出的文件流    
+    File sf = new File(savePath);  
+    if (!sf.exists()) {  
+        sf.mkdirs();  
+    }  
+    OutputStream os = new FileOutputStream(sf.getPath() + &quot;\\\&quot; + filename);  
+    // 开始读取    
+    while ((len = is.read(bs)) != -1) {  
+        os.write(bs, 0, len);  
+    }  
+    // 完毕，关闭所有链接    
+    os.close();  
+    is.close();  
+}  
+</code></pre><p>}</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/08/ie11-e4-b8-8b-e8-bd-bd-e6-96-87-e4-bb-b6-e4-b9-b1-e7-a0-81-e7-9a-84-e9-97-ae-e9-a2-98/" rel="next" title="ie11下载文件乱码的问题">
+                <i class="fa fa-chevron-left"></i> ie11下载文件乱码的问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/21/oracle-e6-89-b9-e9-87-8f-e6-8f-92-e5-85-a5-e4-b8-8e-e8-b7-9f-e6-96-b0-e6-93-8d-e4-bd-9c/" rel="prev" title="oracle批量插入与跟新操作">
+                oracle批量插入与跟新操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

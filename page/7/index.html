@@ -1,0 +1,2707 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/7/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/7/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/07/18/springboot-e7-83-ad-e9-83-a8-e7-bd-b2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/07/18/springboot-e7-83-ad-e9-83-a8-e7-bd-b2/" class="post-title-link" itemprop="url">SpringBoot 热部署</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-18 20:19:43" itemprop="dateCreated datePublished" datetime="2017-07-18T20:19:43+08:00">2017-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我在开发的时候，总是会及时对自己的程序进行测试，总是频繁的重启web server，容器不烦我们都觉得烦了。 dependencys目录下增加：</p>
+<p>**<dependency><br>   <groupid>org.springframework.boot</groupid><br>   <artifactid>spring-boot-devtools</artifactid><br></dependency></p>
+<p><dependency><br>   <groupid>org.springframework</groupid><br>   <artifactid>springloaded</artifactid></dependency></p>
+<p><version>1.2.6.RELEASE</version><br></p>
+<p><dependency><br>    <groupid>org.springframework.boot</groupid><br>    <artifactid>spring-boot-starter-web</artifactid><br></dependency>**</p>
+<p><strong>project 节点下添加：</strong></p>
+<p><strong><build><br>    <plugins><br>        <plugin><br>            <groupid>org.springframework.boot</groupid><br>            <artifactid>spring-boot-maven-plugin</artifactid><br>            <dependencies><br>                <em>&lt;!-- spring热部署–&gt;</em> <dependency><br>                    <groupid>org.springframework</groupid><br>                    <artifactid>springloaded</artifactid><br>                    <version>1.2.6.RELEASE</version><br>                </dependency><br>            </dependencies><br>        </plugin><br>    </plugins><br></build></strong></p>
+<p>当系统通过 mvn spring-boot:run启动或者 右键application debug 启动Java文件时，系统会监视classes文件，当有classes文件被改动时，系统会重新加载类文件，不用重启启动服务 ps：需要重新编译文件 ctl+shift+f9</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/07/17/gson-e5-b0-86-e5-ad-97-e7-ac-a6-e4-b8-b2-e8-bd-ac-e6-8d-a2-e6-88-90jsonobject-e5-92-8cjsonarray/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/07/17/gson-e5-b0-86-e5-ad-97-e7-ac-a6-e4-b8-b2-e8-bd-ac-e6-8d-a2-e6-88-90jsonobject-e5-92-8cjsonarray/" class="post-title-link" itemprop="url">Gson将字符串转换成JsonObject和JsonArray</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-17 18:22:42" itemprop="dateCreated datePublished" datetime="2017-07-17T18:22:42+08:00">2017-07-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>以下均利用Gson来处理： 1.将bean转换成Json字符串：</p>
+<p>public static String beanToJSONString(Object bean) {<br> return new Gson().toJson(bean);<br>}</p>
+<p>2.将Json字符串转换成对象：</p>
+<p>public static Object JSONToObject(String json,Class beanClass) {<br>    Gson gson = new Gson();<br>    Object res = gson.fromJson(json, beanClass);<br>    return res;<br>}</p>
+<p>注：转换后的对象使用前进行强转：例如bean bean1 = (bean)FormatUtil.JSONToObject(json, bean.class);   3.将Json字符串转换成JsonObject对象：</p>
+<p>JsonObject returnData = new JsonParser().parse(jsonstr).getAsJsonObject();</p>
+<p>4.将JsonArray类型的Json字符串解析成对象方法：</p>
+<p>Gson gson = new Gson();<br>JsonParser parser = new JsonParser();<br>JsonArray Jarray = parser.parse(jstring).getAsJsonArray();</p>
+<p>ArrayList<channelsearchenum> lcs = new ArrayList<channelsearchenum>();</channelsearchenum></channelsearchenum></p>
+<p>for(JsonElement obj : Jarray ){<br>    channelSearchEnum cse = gson.fromJson( obj , channelSearchEnum.class);<br>    lcs.add(cse);<br>}</p>
+<p>或者</p>
+<p>String json = “[{\“username\“:\“test\“},{\“username\“:\“test2\“}]“;<br>System.out.println(new JsonParser().parse(json).getAsJsonArray().get(0).getAsJsonObject().get(“username”).getAsString());</p>
+<p>5.获取JsonObject中指定key值对应的JsonArray对象：</p>
+<p>String json= “{\“pids\“:[\“1\“,\“2\“,\“3\“]}”;<br>System.out.println(new JsonParser().parse(json).getAsJsonObject().getAsJsonArray(“pids”).get(0).getAsString());</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/07/17/oracle-e6-95-b0-e6-8d-ae-e5-ba-93-e5-b0-86-e5-a4-9a-e4-b8-aa-e5-88-97-e7-9a-84-e6-9f-a5-e8-af-a2-e7-bb-93-e6-9e-9c-e9-9b-86-e5-90-88-e5-b9-b6-e5-88-b0-e4-b8-80-e8-a1-8c-e4-b8-ad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/07/17/oracle-e6-95-b0-e6-8d-ae-e5-ba-93-e5-b0-86-e5-a4-9a-e4-b8-aa-e5-88-97-e7-9a-84-e6-9f-a5-e8-af-a2-e7-bb-93-e6-9e-9c-e9-9b-86-e5-90-88-e5-b9-b6-e5-88-b0-e4-b8-80-e8-a1-8c-e4-b8-ad/" class="post-title-link" itemprop="url">oracle数据库将多个列的查询结果集合并到一行中</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-17 11:37:00" itemprop="dateCreated datePublished" datetime="2017-07-17T11:37:00+08:00">2017-07-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在学习和开发过程中我们经常会遇到这样的问题：当我们需要把某一些查询到的结果合并并插入到数据库中的某一行时，会变得很麻烦。在某些情况下，我们可能可以借助诸如编程语言帮我们解决这样的问题，但这么做是非常不灵活的。如果只是用数据库，如何实现呢？首先我们想到的是使用存储过程或者使用函数，通过连接符将需要的结果集合并。但有时我们可能仅需要少量这样的操作，单单为少数几次写一个存储过程或者函数又会变得麻烦。而且，如果使用函数或者存储过程，多数情况下我们会使用效率低下的循环来完成。这会使得程序的运行效率低下。 一次无意中发现了这样一个函数listagg()函数。 listagg()函数会将某列的查询结果通过分组的形式合并成一行，并且我们可以在各个结果集中定义自己想要的分隔符。</p>
+<p>如: select * from test;</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/07/X9M7Z6FXF_ERJR0J@LQK22.png" alt></p>
+<p>select id,listagg(name,’,’) within GROUP (order by name) from test group by id;</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/07/N8F8QVQB1888OWD6.png" alt> listagg()函数合并结果时，我们可以通过order by 设置它合并的先后顺序，通过 group by 来设置它合并的条件。有点类似于sum()或者count()的使用方法。 值得注意的是，这个函数的连接符只会出现在查询结果的中间，而且这个合并会根据分组条件无限叠加。因此，当我们需要将结果插入数据表的某一行时，请记得加上长度限制（通常我们使用substr()函数将太长的部分去掉），以免出现数据丢失等情况。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/07/03/string-split-e7-bb-93-e5-b0-be-e7-a9-ba-e5-ad-97-e7-ac-a6-e4-b8-b2-e5-b0-86-e8-a2-ab-e4-b8-a2-e5-bc-83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/07/03/string-split-e7-bb-93-e5-b0-be-e7-a9-ba-e5-ad-97-e7-ac-a6-e4-b8-b2-e5-b0-86-e8-a2-ab-e4-b8-a2-e5-bc-83/" class="post-title-link" itemprop="url">String.split()结尾空字符串将被丢弃</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-03 15:19:00" itemprop="dateCreated datePublished" datetime="2017-07-03T15:19:00+08:00">2017-07-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>测试</p>
+<p>String str=”1#2#3############”;<br>String[] split = str.split(“#”);<br>for (String string : split) {<br>System.out.println(“str “+string);</p>
+<p>测试结果</p>
+<p>str 1<br>str 2<br>str 3</p>
+<p>问题：#号中间的空无法获取？（官方解释） split(String regex, int limit)方法，头一个参数String regex表示字符串分割的模式，包括分隔符和正则表达式；但是第二个参数limit比较迷糊人，api中这样解释： limit 参数控制模式应用的次数，因此影响所得数组的长度。如果该限制 n 大于 0，则模式将被最多应用 n - 1 次，数组的长度将不会大于 n，而且数组的最后一项将包含所有超出最后匹配的定界符的输入。如果 n 为非正，那么模式将被应用尽可能多的次数，而且数组可以是任何长度。如果 n 为 0，那么模式将被应用尽可能多的次数，数组可以是任何长度，并且结尾空字符串将被丢弃。 解决 将String[] split = str.split(“#”);改为String[] split = str.split(“#”，-1);（其实第二个参数只要是负数就可以）</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/06/30/java-e5-8f-8d-e5-b0-84-e7-9a-84-e4-b8-80-e4-ba-9b-e7-9f-a5-e8-af-86-e7-82-b9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/06/30/java-e5-8f-8d-e5-b0-84-e7-9a-84-e4-b8-80-e4-ba-9b-e7-9f-a5-e8-af-86-e7-82-b9/" class="post-title-link" itemprop="url">Java反射的一些知识点</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-30 16:39:55" itemprop="dateCreated datePublished" datetime="2017-06-30T16:39:55+08:00">2017-06-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>关于获取类的字段有两种方式：getFields()和getDeclaredFields()。我们先来看看这两者的区别吧： getFields()：获得某个类的所有的公共（public）的字段，包括父类中的字段。 getDeclaredFields()：获得某个类的所有声明的字段，即包括public、private和proteced，但是不包括父类的申明字段。 同样类似的还有getConstructors()和getDeclaredConstructors()、getMethods()和getDeclaredMethods()，这两者分别表示获取某个类的方法、构造函数。 具体编码如下： 我们先创建一个Bean:</p>
+<p>public class User {<br>    private long id;<br>    private String name;  </p>
+<pre><code>public void setId(long id) {  
+    this.id = id;  
+}  
+
+public void setName(String name) {  
+    this.name = name;  
+}  
+
+public long getId() {  
+    return id;  
+}  
+
+public String getName() {  
+    return name;  
+}  
+</code></pre><p>}</p>
+<p>再来获取此类中的所有字段 Field[] fields = User.class.getDeclaredFields(); 获取字段的名称 String fieldName = field.getName(); 获取字段的修饰符 int fieldValue = field.getModifiers();//如：private、static、final等 与某个具体的修饰符进行比较 Modifier.isStatic(fieldValue)//看此修饰符是否为静态(static) 获取字段的声明类型 field.getType()；//返回的是一个class 与某个类型进行比较 field.getType() == Timestamp.class 获取指定对象中此字段的值 Object fieldObject= field.get(user);//user可以看做是从数据库中查找出来的对象 关于field还有一种情况我们需要注意，就是当字段修饰符为private时，我们需要加上： field.setAccessible(true); 判断方法是：if (!field.isAccessible()) 判断一个属性是否是静态的: boolean isStatic = Modifier.isStatic(field.getModifiers());</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/06/29/redis-windows-e5-ae-89-e8-a3-85-e4-b8-8e-e5-90-af-e5-8a-a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/06/29/redis-windows-e5-ae-89-e8-a3-85-e4-b8-8e-e5-90-af-e5-8a-a8/" class="post-title-link" itemprop="url">Redis windows安装与启动</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-29 17:30:39" itemprop="dateCreated datePublished" datetime="2017-06-29T17:30:39+08:00">2017-06-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis 官方下载地址：<a href="http://redis.io/download" target="_blank" rel="noopener">http://redis.io/download</a>，不过官方没有64位的Windows下的可执行程序，目前有个开源的托管在github上, 地址：<a href="https://github.com/ServiceStack/redis-windows" target="_blank" rel="noopener">https://github.com/ServiceStack/redis-windows</a> 点击这个地方，下载文件并解压到自己的电脑目录下。在<a href="https://github.com/ServiceStack/redis-windows/tree/master/downloads" target="_blank" rel="noopener">https://github.com/ServiceStack/redis-windows/tree/master/downloads</a>可以看见各个版本的安装包. 本文使用版本：<strong>redis64-3.0.501.zip</strong> 解压后目录如下：<img src="http://zhongmin.me/wp-content/uploads/2017/06/TYU9UOQ3NMGN1W_9NH.png" alt></p>
+<p><strong>文件名</strong></p>
+<p><strong>简要</strong></p>
+<p>redis-benchmark.exe</p>
+<p>基准测试</p>
+<p>redis-check-aof.exe</p>
+<p>aof</p>
+<p>redischeck-dump.exe</p>
+<p>dump</p>
+<p>redis-cli.exe</p>
+<p>客户端</p>
+<p>redis-server.exe</p>
+<p>服务器</p>
+<p>redis.windows.conf</p>
+<p>配置文件</p>
+<p>然后编辑<strong>redis.windows.conf</strong>文件，我看网上有的教程说编辑里边<strong>maxheap <bytes> </bytes></strong>,但是3.x版本以后，修改的是 maxmemory <strong><bytes></bytes></strong>, bytes是字节，请自行换算，我这里改成<strong>maxmemory 1024000000</strong>。 其实这个地方可以不用设置，他描述上已经说了，redis会自动设置的。<img src="http://zhongmin.me/wp-content/uploads/2017/06/JJ96821HJLFX@YALOC.png" alt> 设置redis的密码：找到<strong># requirepass foobared</strong> 改为 <strong>requirepass 我的密码</strong> ，本机测试可不设置 <img src="http://zhongmin.me/wp-content/uploads/2017/06/K1I6S5P@SSE7H2Z3XWEZ6W.png" alt> 保存后打开redis的解压目录，shift+鼠标左键找到菜单上：<strong>在此处打开命令行窗口 或</strong> 自行运行cmd命令到此目录 命令如下：</p>
+<p>redis-server.exe redis.windows.conf –maxmemory 200M</p>
+<p>其中–maxmemory 200M是选填的，如果你配置文件redis.windows.conf中配置，这个就可以省去，如果没配置，这个可以加也可以不加，你开心就好<img src="http://zhongmin.me/wp-content/uploads/2017/06/21S3UDSFBK5@@MSDJQE.png" alt> 当出现此界面的时候，说明启动成功，监听端口6379,然后让我们测试一下效果吧 重新打开一个DOS界面，效果如下：<img src="http://zhongmin.me/wp-content/uploads/2017/06/X2LKZD9E@HOT2P@5HVV.png" alt> 如果你设置了redis的密码，则需要在set之前执行auth 密码 命令，否则会提<strong>示(error) NOAUTH Authentication required.</strong> <img src="http://zhongmin.me/wp-content/uploads/2017/06/7QKW3OBF71COZ53I2V6J.png" alt> 最后说一下将redis加到Windows服务中。首先还是要启动redis服务器端，然后在运行redis客户端，然后通过Windows的service-install命令，输入</p>
+<p>redis-server –service-install redis.windows.conf –loglevel verbose</p>
+<p>以后就可以使用win的服务启动，而不需要每次都要打开一个DOS界面启动了。 推荐redis技术阅读：<a href="http://www.cnblogs.com/hoojo/p/4466024.html" target="_blank" rel="noopener">http://www.cnblogs.com/hoojo/p/4466024.html</a> 推荐redis桌面客户端：<a href="http://www.oschina.net/p/redis-studio" target="_blank" rel="noopener">http://www.oschina.net/p/redis-studio</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/06/12/java-poi-e8-af-bb-e5-8f-96excel-e6-96-87-e4-bb-b6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/06/12/java-poi-e8-af-bb-e5-8f-96excel-e6-96-87-e4-bb-b6/" class="post-title-link" itemprop="url">Java poi读取Excel文件</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-12 14:46:38" itemprop="dateCreated datePublished" datetime="2017-06-12T14:46:38+08:00">2017-06-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>private void parseTowerDemandExcelFile(InputStream is) throws IOException{<br>    Workbook workbook =  new XSSFWorkbook(is);<br>    int colNum = 0;// Sheet总行数<br>    Sheet sheet=workbook.getSheetAt(0);<br>    colNum = sheet.getLastRowNum();// 总行数 不包括标题内容<br>    Row row;<br>    Wxtower wxtower;<br>    for(int i=1; i&lt;=colNum;i++){<br>        row = sheet.getRow(i);// 要解析的行数<br>        row.getCell((short) 2);//获取第二列的数据<br>    }<br>        log.info(“wxtower有”+count+”条数据发生变化.”);<br>}</p>
+<p>读取到excel流之后先将流转换为workbook对象,通过workbook的getsheetat方法获取到sheet.再通过sheet.getrow方法获取的一行记录.row.getcell(2)定位到单元格.大概的流程是workbook–sheet—row—cell的过程. 通过单元格获取不同类型的数据,因为excel单元格存在不同的格式,不同格式需要使用cell的不同方法去获取.避免读取单元格内容值时发生异常:</p>
+<pre><code>/\*\*
+ \* 获取lint类型的数据
+ */
+private Integer getIntCellValue(Cell cell){
+        if (cell == null) {
+            return null;
+        }
+        Integer intCell ;
+        switch (cell.getCellType()) {
+        case HSSFCell.CELL\_TYPE\_STRING:
+            intCell = Integer.parseInt(cell.getStringCellValue());
+            break;
+        case HSSFCell.CELL\_TYPE\_NUMERIC:
+            intCell = ((Double)cell.getNumericCellValue()).intValue();
+            break;
+        case HSSFCell.CELL\_TYPE\_BOOLEAN:
+        case HSSFCell.CELL\_TYPE\_BLANK:
+        default:
+            intCell = null;
+            break;
+        }
+        return intCell;
+}
+/\*\*
+ \* 获取long类型的数据
+ */
+private Long getLongCellValue(Cell cell){
+        if (cell == null) {
+            return null;
+        }
+       Long longCell ;
+        switch (cell.getCellType()) {
+        case HSSFCell.CELL\_TYPE\_STRING:
+            longCell = Long.parseLong(cell.getStringCellValue());
+            break;
+        case HSSFCell.CELL\_TYPE\_NUMERIC:
+            longCell = ((Double)cell.getNumericCellValue()).longValue();
+            break;
+        case HSSFCell.CELL\_TYPE\_BOOLEAN:
+        case HSSFCell.CELL\_TYPE\_BLANK:
+        default:
+            longCell = null;
+            break;
+        }
+        return longCell;
+}
+/\*\*
+ \* 获取单元格数据内容为字符串类型的数据
+ \* 
+ \* @param cell Excel单元格
+ \* @return String 单元格数据内容
+ */
+private String getStringCellValue(Cell cell) {
+    String strCell = &quot;&quot;;
+    switch (cell.getCellType()) {
+    case HSSFCell.CELL\_TYPE\_STRING:
+        strCell = cell.getStringCellValue();
+        break;
+    case HSSFCell.CELL\_TYPE\_NUMERIC:
+        strCell = String.valueOf(cell.getNumericCellValue());
+        break;
+    case HSSFCell.CELL\_TYPE\_BOOLEAN:
+        strCell = String.valueOf(cell.getBooleanCellValue());
+        break;
+    case HSSFCell.CELL\_TYPE\_BLANK:
+        strCell = &quot;&quot;;
+        break;
+    default:
+        strCell = &quot;&quot;;
+        break;
+    }
+    if (strCell.equals(&quot;&quot;) || strCell == null) {
+        return &quot;&quot;;
+    }
+    if (cell == null) {
+        return &quot;&quot;;
+    }
+    return strCell;
+}
+
+/\*\*
+ \* 获取单元格数据内容为日期类型的数据
+ \* 
+ \* @param cell
+ \*            Excel单元格
+ \* @return String 单元格数据内容
+ */
+private String getDateCellValue(Cell cell) {
+    String result = &quot;&quot;;
+    try {
+        int cellType = cell.getCellType();
+        if (cellType == HSSFCell.CELL\_TYPE\_NUMERIC) {
+            Date date = cell.getDateCellValue();
+            result = (date.getYear() + 1900) + &quot;-&quot; + (date.getMonth() + 1)
+                    \+ &quot;\-&quot; \+ date.getDate();
+        } else if (cellType == HSSFCell.CELL\_TYPE\_STRING) {
+            String date = getStringCellValue(cell);
+            result = date.replaceAll(&quot;\[年月\]&quot;, &quot;-&quot;).replace(&quot;日&quot;, &quot;&quot;).trim();
+        } else if (cellType == HSSFCell.CELL\_TYPE\_BLANK) {
+            result = &quot;&quot;;
+        }
+    } catch (Exception e) {
+        System.out.println(&quot;日期格式不正确!&quot;);
+        e.printStackTrace();
+    }
+    return result;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/06/07/mybatis-e6-95-b0-e6-8d-ae-e6-98-a0-e5-b0-84-e5-88-b0-e5-ae-9e-e4-bd-93-e7-b1-bb-e7-9a-84-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/06/07/mybatis-e6-95-b0-e6-8d-ae-e6-98-a0-e5-b0-84-e5-88-b0-e5-ae-9e-e4-bd-93-e7-b1-bb-e7-9a-84-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">Mybatis数据映射到实体类的问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-06-07 16:41:13" itemprop="dateCreated datePublished" datetime="2017-06-07T16:41:13+08:00">2017-06-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在做数据库查询操作的时候 <img src="http://zhongmin.me/wp-content/uploads/2017/06/JDKC4W0O673V77BGNCYK.png" alt> 查询出的一列值为null的值,但是通过日志打印出来发现null变成了0;debug时发现objectstatus的值的确是成了0.<img src="http://zhongmin.me/wp-content/uploads/2017/06/SIQ7M94O382J_0DV_T.png" alt> 进入实体类后发现objectstatus 定义成了基本类型,int,int类型无法接受null值,mybatis在进行类型转换的时候可能处理了null,默认为int的默认值0; <img src="http://zhongmin.me/wp-content/uploads/2017/06/36RFF9M54VR2U7WWH.png" alt></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/25/hashmap-e5-b7-a5-e4-bd-9c-e5-8e-9f-e7-90-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/25/hashmap-e5-b7-a5-e4-bd-9c-e5-8e-9f-e7-90-86/" class="post-title-link" itemprop="url">HashMap工作原理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-25 08:58:02" itemprop="dateCreated datePublished" datetime="2017-05-25T08:58:02+08:00">2017-05-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java知识基础/" itemprop="url" rel="index"><span itemprop="name">Java知识基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HashMap的工作原理是近年来常见的Java面试题。几乎每个Java程序员都知道HashMap，都知道哪里要用HashMap，知道<a href="http://www.importnew.com/7010.html" target="_blank" rel="noopener">Hashtable和HashMap之间的区别</a>，那么为何这道面试题如此特殊呢？是因为这道题考察的深度很深。这题经常出现在高级或中高级面试中。投资银行更喜欢问这个问题，甚至会要求你实现HashMap来考察你的编程能力。ConcurrentHashMap和其它同步集合的引入让这道题变得更加复杂。让我们开始探索的旅程吧！</p>
+<h3 id="先来些简单的问题"><a href="#先来些简单的问题" class="headerlink" title="先来些简单的问题"></a><a href="https://github.com/stephanietang/ImportNew/blob/master/Java/How%20HashMap%20works%20in%20Java.md#%E5%85%88%E6%9D%A5%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E9%97%AE%E9%A2%98" target="_blank" rel="noopener"></a>先来些简单的问题</h3><p><strong>“你用过HashMap吗？” “什么是HashMap？你为什么用到它？”</strong> 几乎每个人都会回答“是的”，然后回答HashMap的一些特性，譬如HashMap可以接受null键值和值，而Hashtable则不能；HashMap是非synchronized;HashMap很快；以及HashMap储存的是键值对等等。这显示出你已经用过HashMap，而且对它相当的熟悉。但是面试官来个急转直下，从此刻开始问出一些刁钻的问题，关于HashMap的更多基础的细节。面试官可能会问出下面的问题： <strong>“你知道HashMap的工作原理吗？” “你知道HashMap的get()方法的工作原理吗？”</strong> 你也许会回答“我没有详查标准的Java API，你可以看看Java源代码或者Open JDK。”“我可以用Google找到答案。” 但一些面试者可能可以给出答案，“HashMap是基于hashing的原理，我们使用put(key, value)存储对象到HashMap中，使用get(key)从HashMap中获取对象。当我们给put()方法传递键和值时，我们先对键调用hashCode()方法，返回的hashCode用于找到bucket位置来储存Entry对象。”这里关键点在于指出，HashMap是在bucket中储存键对象和值对象，作为Map.Entry。这一点有助于理解获取对象的逻辑。如果你没有意识到这一点，或者错误的认为仅仅只在bucket中存储值的话，你将不会回答如何从HashMap中获取对象的逻辑。这个答案相当的正确，也显示出面试者确实知道hashing以及HashMap的工作原理。但是这仅仅是故事的开始，当面试官加入一些Java程序员每天要碰到的实际场景的时候，错误的答案频现。下个问题可能是关于HashMap中的碰撞探测(collision detection)以及碰撞的解决方法： <strong>“当两个对象的hashcode相同会发生什么？”</strong> 从这里开始，真正的困惑开始了，一些面试者会回答因为hashcode相同，所以两个对象是相等的，HashMap将会抛出异常，或者不会存储它们。然后面试官可能会提醒他们有equals()和hashCode()两个方法，并告诉他们两个对象就算hashcode相同，但是它们可能并不相等。一些面试者可能就此放弃，而另外一些还能继续挺进，他们回答“因为hashcode相同，所以它们的bucket位置相同，‘碰撞’会发生。因为HashMap使用链表存储对象，这个Entry(包含有键值对的Map.Entry对象)会存储在链表中。”这个答案非常的合理，虽然有很多种处理碰撞的方法，这种方法是最简单的，也正是HashMap的处理方法。但故事还没有完结，面试官会继续问： <strong>“如果两个键的hashcode相同，你如何获取值对象？”</strong> 面试者会回答：当我们调用get()方法，HashMap会使用键对象的hashcode找到bucket位置，然后获取值对象。面试官提醒他如果有两个值对象储存在同一个bucket，他给出答案:将会遍历链表直到找到值对象。面试官会问因为你并没有值对象去比较，你是如何确定确定找到值对象的？除非面试者直到HashMap在链表中存储的是键值对，否则他们不可能回答出这一题。 其中一些记得这个重要知识点的面试者会说，找到bucket位置之后，会调用keys.equals()方法去找到链表中正确的节点，最终找到要找的值对象。完美的答案！ 许多情况下，面试者会在这个环节中出错，因为他们混淆了hashCode()和equals()方法。因为在此之前hashCode()屡屡出现，而equals()方法仅仅在获取值对象的时候才出现。一些优秀的开发者会指出使用不可变的、声明作final的对象，并且采用合适的equals()和hashCode()方法的话，将会减少碰撞的发生，提高效率。不可变性使得能够缓存不同键的hashcode，这将提高整个获取对象的速度，使用String，Interger这样的wrapper类作为键是非常好的选择。 如果你认为到这里已经完结了，那么听到下面这个问题的时候，你会大吃一惊。<strong>“如果HashMap的大小超过了负载因子(load factor)定义的容量，怎么办？”</strong>除非你真正知道HashMap的工作原理，否则你将回答不出这道题。默认的负载因子大小为0.75，也就是说，当一个map填满了75%的bucket时候，和其它集合类(如ArrayList等)一样，将会创建原来HashMap大小的两倍的bucket数组，来重新调整map的大小，并将原来的对象放入新的bucket数组中。这个过程叫作rehashing，因为它调用hash方法找到新的bucket位置。 如果你能够回答这道问题，下面的问题来了：<strong>“你了解重新调整HashMap大小存在什么问题吗？”</strong>你可能回答不上来，这时面试官会提醒你当多线程的情况下，可能产生条件竞争(race condition)。 当重新调整HashMap大小的时候，确实存在条件竞争，因为如果两个线程都发现HashMap需要重新调整大小了，它们会同时试着调整大小。在调整大小的过程中，存储在链表中的元素的次序会反过来，因为移动到新的bucket位置的时候，HashMap并不会将元素放在链表的尾部，而是放在头部，这是为了避免尾部遍历(tail traversing)。如果条件竞争发生了，那么就死循环了。这个时候，你可以质问面试官，为什么这么奇怪，要在多线程的环境下使用HashMap呢？：） 热心的读者贡献了更多的关于HashMap的问题：</p>
+<ol>
+<li><strong>为什么String, Interger这样的wrapper类适合作为键？</strong> String, Interger这样的wrapper类作为HashMap的键是再适合不过了，而且String最为常用。因为String是不可变的，也是final的，而且已经重写了equals()和hashCode()方法了。其他的wrapper类也有这个特点。不可变性是必要的，因为为了要计算hashCode()，就要防止键值改变，如果键值在放入时和获取时返回不同的hashcode的话，那么就不能从HashMap中找到你想要的对象。不可变性还有其他的优点如线程安全。如果你可以仅仅通过将某个field声明成final就能保证hashCode是不变的，那么请这么做吧。因为获取对象的时候要用到equals()和hashCode()方法，那么键对象正确的重写这两个方法是非常重要的。如果两个不相等的对象返回不同的hashcode的话，那么碰撞的几率就会小些，这样就能提高HashMap的性能。</li>
+<li><strong>我们可以使用自定义的对象作为键吗？</strong> 这是前一个问题的延伸。当然你可能使用任何对象作为键，只要它遵守了equals()和hashCode()方法的定义规则，并且当对象插入到Map中之后将不会再改变了。如果这个自定义对象时不可变的，那么它已经满足了作为键的条件，因为当它创建之后就已经不能改变了。</li>
+<li><strong>我们可以使用CocurrentHashMap来代替Hashtable吗？</strong>这是另外一个很热门的面试题，因为ConcurrentHashMap越来越多人用了。我们知道Hashtable是synchronized的，但是ConcurrentHashMap同步性能更好，因为它仅仅根据同步级别对map的一部分进行上锁。ConcurrentHashMap当然可以代替HashTable，但是HashTable提供更强的线程安全性。看看<a href="http://javarevisited.blogspot.sg/2011/04/difference-between-concurrenthashmap.html" target="_blank" rel="noopener">这篇博客</a>查看Hashtable和ConcurrentHashMap的区别。</li>
+</ol>
+<p>我个人很喜欢这个问题，因为这个问题的深度和广度，也不直接的涉及到不同的概念。让我们再来看看这些问题设计哪些知识点：</p>
+<ul>
+<li>hashing的概念</li>
+<li>HashMap中解决碰撞的方法</li>
+<li>equals()和hashCode()的应用，以及它们在HashMap中的重要性</li>
+<li>不可变对象的好处</li>
+<li>HashMap多线程的条件竞争</li>
+<li>重新调整HashMap的大小</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a href="https://github.com/stephanietang/ImportNew/blob/master/Java/How%20HashMap%20works%20in%20Java.md#%E6%80%BB%E7%BB%93" target="_blank" rel="noopener"></a>总结</h3><h4 id="HashMap的工作原理"><a href="#HashMap的工作原理" class="headerlink" title="HashMap的工作原理"></a><a href="https://github.com/stephanietang/ImportNew/blob/master/Java/How%20HashMap%20works%20in%20Java.md#hashmap%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-1" target="_blank" rel="noopener"></a>HashMap的工作原理</h4><p>HashMap基于hashing原理，我们通过put()和get()方法储存和获取对象。当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，让后找到bucket位置来储存值对象。当获取对象时，通过键对象的equals()方法找到正确的键值对，然后返回值对象。HashMap使用链表来解决碰撞问题，当发生碰撞了，对象将会储存在链表的下一个节点中。 HashMap在每个链表节点中储存键值对对象。 当两个不同的键对象的hashcode相同时会发生什么？ 它们会储存在同一个bucket位置的链表中。键对象的equals()方法用来找到键值对。 因为HashMap的好处非常多，我曾经在电子商务的应用中使用HashMap作为缓存。因为金融领域非常多的运用Java，也出于性能的考虑，我们会经常用到HashMap和ConcurrentHashMap。你可以查看更多的关于HashMap的文章:</p>
+<ul>
+<li><a href="http://www.importnew.com/7010.html" target="_blank" rel="noopener">HashMap和Hashtable的区别</a></li>
+<li><a href="http://www.importnew.com/6931.html" target="_blank" rel="noopener">HashMap和HashSet的区别</a></li>
+</ul>
+<p>原文链接： <a href="http://javarevisited.blogspot.hk/2011/02/how-hashmap-works-in-java.html" target="_blank" rel="noopener">Javarevisited</a> 翻译： <a href="http://www.importnew.com/" target="_blank" rel="noopener">ImportNew.com</a> - <a href="http://www.importnew.com/author/tangxiaojuan" target="_blank" rel="noopener">唐小娟</a> 译文链接： <a href="http://www.importnew.com/7099.html" target="_blank" rel="noopener">http://www.importnew.com/7099.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/05/22/logback-e6-89-93-e5-8d-b0sql-e8-af-ad-e5-8f-a5-e7-9a-84-e9-85-8d-e7-bd-ae/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/05/22/logback-e6-89-93-e5-8d-b0sql-e8-af-ad-e5-8f-a5-e7-9a-84-e9-85-8d-e7-bd-ae/" class="post-title-link" itemprop="url">Logback打印SQL语句的配置</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-22 11:56:38" itemprop="dateCreated datePublished" datetime="2017-05-22T11:56:38+08:00">2017-05-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<configuration debug="true" scan="true" scanperiod="30 seconds"><br><br><br><br>    &lt;!-- ch.qos.logback.core.ConsoleAppender 控制台输出 –&gt;<br>    <appender name="console" class="ch.qos.logback.core.ConsoleAppender"><br>        <encoder><br>            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern><br>        </encoder><br>    </appender><br>    <appender name="File" class="ch.qos.logback.core.FileAppender"><br>        <file>/logs/mssm/webt.log</file><br>        <layout class="ch.qos.logback.classic.PatternLayout"><br>            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern><br>        </layout><br>    </appender><br><br>    <logger name="com.xwtech" level="TRACE"><br><br>    <root level="info"><br>        <appender-ref ref="console"><br>        &lt;!-- <appender-ref ref="File"> –&gt;<br>    </appender-ref></appender-ref></root><br><br><br></logger></configuration>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2684 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/6/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/6/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/11/24/godaddy-dns-e9-97-ae-e9-a2-98-e5-af-bc-e8-87-b4-e5-9f-9f-e5-90-8d-e8-a7-a3-e6-9e-90-e4-b8-8d-e6-ad-a3-e5-b8-b8-e7-9a-84-e8-a7-a3-e5-86-b3-e5-8a-9e-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/11/24/godaddy-dns-e9-97-ae-e9-a2-98-e5-af-bc-e8-87-b4-e5-9f-9f-e5-90-8d-e8-a7-a3-e6-9e-90-e4-b8-8d-e6-ad-a3-e5-b8-b8-e7-9a-84-e8-a7-a3-e5-86-b3-e5-8a-9e-e6-b3-95/" class="post-title-link" itemprop="url">GoDaddy DNS问题导致域名解析不正常的解决办法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-24 13:57:21" itemprop="dateCreated datePublished" datetime="2017-11-24T13:57:21+08:00">2017-11-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>GoDaddy 全球最大的域名注册商，价格对于国内用户来说还是不错的，现在有支持了支付宝，成了不少站长注册新玉米的选择。但是这些天，论坛朋友发帖，说GoDaddy DNS问题，导致解析出很多问题，我今天就教大家　　如何解决这个问题。 实际上，前些天我也是刚在GoDaddy注册了个新域名，也碰到和大家一样的问题，不过我研究了一下，解决了碰到的问题，完全正常的解析，今天就和大家分享一下。 我在注册完域名后，进入管理域名界面的时候，发现域名解析出，无法编辑修改。只有在dns这里能修改，　　就很郁闷，正常情况下，域名解析这里应该可以，我就猜测，他应该是部分dns出问题，导致解析用不了，我尝试更换了dns，居然成功解析，现在给出具体的方法。 1.到dnspod注册个用户，免费的DNS解析，很不错。 2.登陆dnspod，添加你的GoDaddy注册的域名进去，然后把解析那些都修改好。 3.登陆GoDaddy，进入你的域名管理界面，选择【dns修改】，把DNS修改成dnspod提供的dns服务器地址 ns1.dnspod.net ns2.dnspod.net ns3.dnspod.net ns4.dnspod.net 点击OK，但是你会发现，他里面的dns文件可能还是原来默认的GoDaddy提供的dns，但是实际上已经修改成功了。 到这里，你在GoDaddy修改了dns，dnspod那里有添加了域名解析，那你的域名就可以正常使用。我在GoDaddy的域名就是用这个方法，正常解析的，</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/09/19/e5-be-ae-e4-bf-a1-e5-bc-80-e5-8f-91-e8-b8-a9-e5-9d-91-e8-ae-b0-e5-bd-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/09/19/e5-be-ae-e4-bf-a1-e5-bc-80-e5-8f-91-e8-b8-a9-e5-9d-91-e8-ae-b0-e5-bd-95/" class="post-title-link" itemprop="url">微信开发踩坑记录</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-09-19 21:28:04" itemprop="dateCreated datePublished" datetime="2017-09-19T21:28:04+08:00">2017-09-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1.微信有很多的高级接口权限只对企业号开放,订阅号的权限少之又少,其实个人没有企业号也是可以进行开发的,微信开发了测试账号的申请。申请地址如下:</strong> <a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index" target="_blank" rel="noopener">https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index</a> <strong>2.账号配置的问题,测试账号申请成功之后需要配置你的服务器的信息.</strong> 配置的服务器一定得是80端口的服务,并且服务必须发布.提交的是微信会发送请求进行验证. <img src="http://zhongmin.me/wp-content/uploads/2017/11/HNK_5@5NW1ICGKBM502.png" alt> <strong>3.网页授权时出现redirect_uri参数错误</strong> 在微信公众号请求用户网页授权之前，开发者需要先到公众平台官网中的“开发 - 接口权限 - 网页服务 - 网页帐号 - 网页授权获取用户基本信息”的配置选项中，修改授权回调域名。请注意，这里填写的是域名（是一个字符串），而不是URL，因此请勿加 http:// 等协议头；</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/09/05/javascript-e6-95-b0-e6-8d-ae-e7-bb-93-e6-9e-84-e4-b8-8e-e7-ae-97-e6-b3-95-e4-b9-8b-e9-9b-86-e5-90-88set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/09/05/javascript-e6-95-b0-e6-8d-ae-e7-bb-93-e6-9e-84-e4-b8-8e-e7-ae-97-e6-b3-95-e4-b9-8b-e9-9b-86-e5-90-88set/" class="post-title-link" itemprop="url">JavaScript数据结构与算法之集合(Set)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-09-05 17:20:00" itemprop="dateCreated datePublished" datetime="2017-09-05T17:20:00+08:00">2017-09-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>集合(Set)</strong> 说起集合，就想起刚进高中时，数学第一课讲的就是集合。因此在学习集合这种数据结构时，倍感亲切。 集合的基本性质有一条: 集合中元素是不重复的。因为这种性质，所以我们选用了对象来作为集合的容器，而非数组。 虽然数组也能做到所有不重复，但终究过于繁琐，不如集合。 <strong>集合的操作</strong> 集合的基本操作有交集、并集、差集等。这儿我们介绍JavaScipt集合中交集、并集、差集的实现。 <strong>JavaScipt中集合的实现</strong> 首先，创建一个构造函数。</p>
+<p>/**<br> * 集合的构造函数<br> <em>/<br>function Set方法 {<br> /\</em>*<br>  * 集合元素的容器，以对象来表示<br>  * @type {Object}<br>  */<br> var items = {};<br>}</p>
+<p>集合需要有如下方法:</p>
+<ol>
+<li>has(value): 检测集合内是否有某个元素</li>
+<li>add(value): 给集合内添加某个元素</li>
+<li>remove(value): 移除集合中某个元素</li>
+<li>clear(value): 清空集合</li>
+<li>size(): 返回集合长度</li>
+<li>values(): 返回集合转换的数组</li>
+<li>union(otherSet): 返回两个集合的并集</li>
+<li>intersection(otherSet): 返回两个集合的交集</li>
+<li>difference(otherSet): 返回两个集合的差集</li>
+<li>subset(otherSet): 判断该集合是否为传入集合的子集</li>
+</ol>
+<p><strong>has方法:</strong> 说明:集合中元素是不重复的。所以在其它任何操作前，必须用has方法确认集合是否有某个元素。这儿使用了hasOwnProperty方法来检测。 实现:</p>
+<p>/**<br> * 检测集合内是否有某个元素<br> * @param {Any} value  要检测的元素<br> * @return {Boolean}    如果有，返回true<br> */<br>this.has = function(value) {<br> // hasOwnProperty的问题在于<br> // 它是一个方法，所以可能会被覆写<br> return items.hasOwnProperty(value)<br>};</p>
+<p><strong>add方法:</strong> 说明: 给集合内添加某个元素。 实现:</p>
+<p>/**<br> * 给集合内添加某个元素<br> * @param {Any} value 要被添加的元素<br> * @return {Boolean}    添加成功返回True。<br> */<br>this.add = function(value) {<br> //先检测元素是否存在。<br> if (!this.has(value)) {<br>  items[value] = value;<br>  return true;<br> }<br> //如果元素已存在则返回false<br> return false;<br>};</p>
+<p><strong>remove方法:</strong> 说明: 移除集合中某个元素 实现:</p>
+<p>/**<br> * 移除集合中某个元素<br> * @param {Any} value 要移除的元素<br> * @return {Boolean}    移除成功返回True。<br> */<br>this.remove = function(value) {<br> //先检测元素是否存在。<br> if (this.has(value)) {<br>  delete items[value];<br>  return true;<br> }<br> //如果元素不存在，则删除失败返回false<br> return false;<br>};</p>
+<p><strong>clear方法:</strong> 说明: 清空集合 实现:</p>
+<p>/**<br> * 清空集合<br> */<br>this.clear = function() {<br> this.items = {};<br>};</p>
+<p><strong>size方法</strong> 说明: 返回集合长度，这儿有两种方法。第一种方法使用了Object.keys这个Api，但只支持IE9及以上。第二种则适用于所有浏览器。 实现:</p>
+<p>/**<br> * 返回集合长度，只可用于IE9及以上<br> * @return {Number} 集合长度<br> */<br>this.size = function() {<br> // Object.keys方法能将对象转化为数组<br> // 只可用于IE9及以上，但很方便<br> return Object.keys(items).length;<br>}</p>
+<p>/**<br> * 返回集合长度，可用于所有浏览器<br> * @return {Number} 集合长度<br> */<br>this.sizeLegacy = function() {<br> var count = 0;<br> for (var prop in items) {<br>  if (items.hasOwnProperty(prop)) {<br>   ++count;<br>  }<br> }<br> return count;<br>}</p>
+<p><strong>values方法</strong> 说明: 返回集合转换的数组，这儿也有两种方法。理由同上。使用了Object.keys，只能支持IE9及以上。 实现:</p>
+<p>/**<br> * 返回集合转换的数组，只可用于IE9及以上<br> * @return {Array} 转换后的数组<br> */<br>this.values = function() {<br> return Object.keys(items);<br>};</p>
+<p>/**<br> * 返回集合转换的数组，可用于所有浏览器<br> * @return {Array} 转换后的数组<br> */<br>this.valuesLegacy = function() {<br> var keys = [];<br> for (var key in items) {<br>  keys.push(key)<br> };<br> return keys;<br>};</p>
+<p><strong>union方法</strong> 说明: 返回两个集合的并集 实现:</p>
+<p>/**<br> * 返回两个集合的并集<br> * @param {Set} otherSet 要进行并集操作的集合<br> * @return {Set}     两个集合的并集<br> */<br>this.union = function(otherSet) {<br> //初始化一个新集合，用于表示并集。<br> var unionSet = new Set();<br> //将当前集合转换为数组，并依次添加进unionSet<br> var values = this.values();<br> for (var i = 0; i &lt; values.length; i++) {<br>  unionSet.add(values[i]);<br> }</p>
+<p> //将其它集合转换为数组，依次添加进unionSet。<br> //循环中的add方法保证了不会有重复元素的出现<br> values = otherSet.values();<br> for (var i = 0; i &lt; values.length; i++) {<br>  unionSet.add(values[i]);<br> }</p>
+<p> return unionSet;<br>};</p>
+<p><strong>intersection方法</strong> 说明: 返回两个集合的交集 实现:</p>
+<p>/**<br> * 返回两个集合的交集<br> * @param {Set} otherSet 要进行交集操作的集合<br> * @return {Set}     两个集合的交集<br> */<br>this.intersection = function(otherSet) {<br> //初始化一个新集合，用于表示交集。<br> var interSectionSet = new Set();<br> //将当前集合转换为数组<br> var values = this.values();<br> //遍历数组，如果另外一个集合也有该元素，则interSectionSet加入该元素。<br> for (var i = 0; i &lt; values.length; i++) {</p>
+<p>  if (otherSet.has(values[i])) {<br>   interSectionSet.add(values[i])<br>  }<br> }</p>
+<p> return interSectionSet;<br>};</p>
+<p><strong>difference方法</strong> 说明: 返回两个集合的差集 实现:</p>
+<p>/**<br> * 返回两个集合的交集<br> * @param {Set} otherSet 要进行交集操作的集合<br> * @return {Set}     两个集合的交集<br> */<br>this.intersection = function(otherSet) {<br> //初始化一个新集合，用于表示交集。<br> var interSectionSet = new Set();<br> //将当前集合转换为数组<br> var values = this.values();<br> //遍历数组，如果另外一个集合也有该元素，则interSectionSet加入该元素。<br> for (var i = 0; i &lt; values.length; i++) {</p>
+<p>  if (otherSet.has(values[i])) {<br>   interSectionSet.add(values[i])<br>  }<br> }</p>
+<p> return interSectionSet;<br>};</p>
+<p><strong>difference方法</strong> 说明: 返回两个集合的差集 实现:</p>
+<p>/**<br> * 返回两个集合的差集<br> * @param {Set} otherSet 要进行差集操作的集合<br> * @return {Set}     两个集合的差集<br> */<br>this.difference = function(otherSet) {<br> //初始化一个新集合，用于表示差集。<br> var differenceSet = new Set();<br> //将当前集合转换为数组<br> var values = this.values();<br> //遍历数组，如果另外一个集合没有该元素，则differenceSet加入该元素。<br> for (var i = 0; i &lt; values.length; i++) {</p>
+<p>  if (!otherSet.has(values[i])) {<br>   differenceSet.add(values[i])<br>  }<br> }</p>
+<p> return differenceSet;<br>};</p>
+<p><strong>subset方法</strong> 说明: 判断该集合是否为传入集合的子集。这段代码在我自己写完后与书上一比对，觉得自己超级low。我写的要遍历数组三次，书上的只需要一次，算法复杂度远远低于我的。 实现:</p>
+<p>**<br> * 判断该集合是否为传入集合的子集<br> * @param {Set} otherSet 传入的集合<br> * @return {Boolean}   是则返回True<br> */<br>this.subset = function(otherSet) {<br> // 第一个判定,如果该集合长度大于otherSet的长度<br> // 则直接返回false<br> if (this.size() &gt; otherSet.size()) {<br>  return false;<br> } else {<br>  // 将当前集合转换为数组<br>  var values = this.values();</p>
+<p>  for (var i = 0; i &lt; values.length; i++) {</p>
+<p>   if (!otherSet.has(values[i])) {<br>    // 第二个判定。只要有一个元素不在otherSet中<br>    // 那么则可以直接判定不是子集，返回false<br>    return false;<br>   }<br>  }</p>
+<p>  return true;<br> }<br>};</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/09/04/mysql-e6-9c-8d-e5-8a-a1-e6-97-a0-e6-b3-95-e5-90-af-e5-8a-a8-e6-9c-8d-e5-8a-a1-e6-b2-a1-e6-9c-89-e6-8a-a5-e5-91-8a-e4-bb-bb-e4-bd-95-e9-94-99-e8-af-af/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/09/04/mysql-e6-9c-8d-e5-8a-a1-e6-97-a0-e6-b3-95-e5-90-af-e5-8a-a8-e6-9c-8d-e5-8a-a1-e6-b2-a1-e6-9c-89-e6-8a-a5-e5-91-8a-e4-bb-bb-e4-bd-95-e9-94-99-e8-af-af/" class="post-title-link" itemprop="url">Mysql 服务无法启动 服务没有报告任何错误</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-09-04 16:01:49" itemprop="dateCreated datePublished" datetime="2017-09-04T16:01:49+08:00">2017-09-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天以zip模式在windows10 64位环境下安装mysql5.7，到最后一步提示mysql服务无法启动。 安装步骤如下： 1.配置环境变量 我的电脑-&gt;属性-&gt;高级-&gt;环境变量-&gt;path 如:C:\Program Files\MySQL\MySQL Server 5.6\bin 注意是追加，不要覆盖 2.修改my-default.ini 在其中修改或添加配置： [mysqld] basedir=C:\Program Files\MySQL\MySQL Server 5.6（mysql所在目录） datadir=C:\Program Files\MySQL\MySQL Server 5.6\data （mysql所在目录\data） 3.以管理员身份运行cmd（win10右键左下角开始按钮选择以管理员身份运行cmd即可） 以管理员身份运行cmd（一定要用管理员身份运行，不然权限不够）， 输入：cd C:\Program Files\MySQL\MySQL Server 5.6\bin 进入mysql的bin文件夹(不管有没有配置过环境变量，也要进入bin文件夹，否则之后启动服务仍然会报错误2) 输入mysqld -install(如果不用管理员身份运行，将会因为权限不够而出现错误：Install/Remove of the Service Denied!) 安装成功 4.运行mysqld  –initialize（标题问题所在，若没有init则不存在data目录，自然无法启动成功） 5.安装成功后就要启动服务了，继续在cmd中输入:net start mysql,服务启动成功！ 服务启动成功之后，就可以登录了，输入mysql -u root -p（第一次登录没有密码，直接按回车过）,登录成功！   追加内容： 在安装mysql5.7版本时，经常会遇到mysql -u root -p直接回车登陆不上的情况，原因在于5.7版本在安装时自动给了一个随机密码，坑爹的是在init步骤的时候不像linux系统会给出命令行提示，需要手动在mysql目录下搜索*.err，以文本形式打开才能看到如下内容： 016-02-25T15:09:43.033062Z 1 [Note] A temporary password is generated for root@localhost: &gt;mso&lt;k70mrWe 红色字母即为第一次的登陆密码，记得加双引号。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/08/21/oracle-e6-89-b9-e9-87-8f-e6-8f-92-e5-85-a5-e4-b8-8e-e8-b7-9f-e6-96-b0-e6-93-8d-e4-bd-9c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/08/21/oracle-e6-89-b9-e9-87-8f-e6-8f-92-e5-85-a5-e4-b8-8e-e8-b7-9f-e6-96-b0-e6-93-8d-e4-bd-9c/" class="post-title-link" itemprop="url">oracle批量插入与跟新操作</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-21 11:17:29" itemprop="dateCreated datePublished" datetime="2017-08-21T11:17:29+08:00">2017-08-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>批量更新操作:</p>
+  <update id="batchUpdateWxBlindSation" parametertype="java.util.List"><br>        begin<br>          <foreach collection="list" item="item" index="index" open close separator=";"><br>              update WXBLINDSTATION<br>            <set><br>              <if test="item.blindname != null"><br>                BLINDNAME = #{item.blindname,jdbcType=VARCHAR},<br>              </if><br>              <if test="item.longitude != null"><br>                LONGITUDE = #{item.longitude,jdbcType=DECIMAL},<br>              </if><br>              <if test="item.latitude != null"><br>                LATITUDE = #{item.latitude,jdbcType=DECIMAL},<br>              </if><br>              <if test="item.stationid != null"><br>                STATIONID = #{item.stationid,jdbcType=DECIMAL},<br>              </if><br>              <if test="item.cityname != null"><br>                CITYNAME = #{item.cityname,jdbcType=VARCHAR},<br>              </if><br>              <if test="item.subname != null"><br>                SUBNAME = #{item.subname,jdbcType=VARCHAR},<br>              </if><br>              <if test="item.syscode != null"><br>                SYSCODE = #{item.syscode,jdbcType=VARCHAR},<br>              </if><br>              <if test="item.backreason != null"><br>                BACKREASON = #{item.backreason,jdbcType=VARCHAR},<br>              </if><br>              <if test="item.backstatus != null"><br>                BACKSTATUS = #{item.backstatus,jdbcType=DECIMAL},<br>              </if><br>              <if test="item.inputtype != null"><br>                INPUTTYPE = #{item.inputtype,jdbcType=VARCHAR},<br>              </if><br>              <if test="item.reportdate != null"><br>                REPORTDATE = #{item.reportdate,jdbcType=DATE},<br>              </if><br>              <if test="item.reporter != null"><br>                REPORTER = #{item.reporter,jdbcType=VARCHAR},<br>              </if><br>              <if test="item.reportertel != null"><br>                REPORTERTEL = #{item.reportertel,jdbcType=VARCHAR},<br>              </if><br>              <if test="item.backdate != null"><br>                BACKDATE = #{item.backdate,jdbcType=DATE},<br>              </if><br>              <if test="item.backperson != null"><br>                BACKPERSON = #{item.backperson,jdbcType=DECIMAL},<br>              </if><br>            </set><br>            where  BLINDID = #{item.blindid,jdbcType=VARCHAR}<br>         </foreach><br>            ;end;<br>    </update>
+
+<p>网上查了很多批量更新的操作,可能都是针对mysql数据库的,oracle数据库语法是 begin …end 形式,需要在sql头尾加上begin与end; 批量插入:</p>
+<p> <insert id="batchInsertBlindStation" parametertype="java.util.List"><br>           insert All<br>           <foreach collection="list" item="station" index="index" separator><br>              into WXBLINDSTATION<br>           ( BLINDSTATIONID, BLINDID, BLINDNAME, LONGITUDE, LATITUDE, STATIONID, CITYNAME, SUBNAME,<br>    SYSCODE, BACKSTATUS, INPUTTYPE, REPORTDATE, REPORTER, REPORTERTEL<br>    )<br>        values<br>              (</foreach></insert></p>
+<pre><code>#{station.blindstationid,jdbcType=DECIMAL}, #{station.blindid,jdbcType=VARCHAR}, #{station.blindname,jdbcType=VARCHAR}, 
+#{station.longitude,jdbcType=DECIMAL}, #{station.latitude,jdbcType=DECIMAL}, #{station.stationid,jdbcType=DECIMAL}, 
+#{station.cityname,jdbcType=VARCHAR}, #{station.subname,jdbcType=VARCHAR}, #{station.syscode,jdbcType=VARCHAR}, 
+#{station.backstatus,jdbcType=DECIMAL}, #{station.inputtype,jdbcType=VARCHAR}, 
+#{station.reportdate,jdbcType=DATE}, #{station.reporter,jdbcType=VARCHAR}, #{station.reportertel,jdbcType=VARCHAR}
+        )
+      &lt;/foreach &gt;
+      SELECT 1 FROM DUAL
+&lt;/insert &gt;
+</code></pre><p>批量插入没啥要注意的,记一下</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/08/09/e5-a6-82-e4-bd-95-e4-bb-8e-e7-bd-91-e7-bb-9c-e4-b8-8a-e8-8e-b7-e5-8f-96-e5-9b-be-e7-89-87-e8-bd-ac-e6-8d-a2-e6-88-90-e5-ad-97-e8-8a-82-e6-b5-81-e6-88-96-e8-80-85-e4-bf-9d-e5-ad-98-e5-88-b0-e6-9c-ac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/08/09/e5-a6-82-e4-bd-95-e4-bb-8e-e7-bd-91-e7-bb-9c-e4-b8-8a-e8-8e-b7-e5-8f-96-e5-9b-be-e7-89-87-e8-bd-ac-e6-8d-a2-e6-88-90-e5-ad-97-e8-8a-82-e6-b5-81-e6-88-96-e8-80-85-e4-bf-9d-e5-ad-98-e5-88-b0-e6-9c-ac/" class="post-title-link" itemprop="url">如何从网络上获取图片转换成字节流或者保存到本地(转)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-09 15:36:31" itemprop="dateCreated datePublished" datetime="2017-08-09T15:36:31+08:00">2017-08-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>package com.hg.threadPoolExecutorDemo;<br>import java.io.ByteArrayOutputStream;<br>import java.io.File;<br>import java.io.FileOutputStream;<br>import java.io.InputStream;<br>import java.net.HttpURLConnection;<br>import java.net.URL;<br>/**<br> * @说明 从网络获取图片到本地<br> * @version 1.0<br> * @since<br> <em>/<br>public class GetImage {<br>    /\</em>*<br>     * 测试<br>     * @param args<br>     <em>/<br>    public static void main(String[] args) {<br>        String url = “<a href="http://www.baidu.com/img/baidu_sylogo1.gif&quot;" target="_blank" rel="noopener">http://www.baidu.com/img/baidu_sylogo1.gif&quot;</a>;<br>        byte[] btImg = getImageFromNetByUrl(url);<br>        if(null != btImg &amp;&amp; btImg.length &gt; 0){<br>            System.out.println(“读取到：” + btImg.length + “ 字节”);<br>            String fileName = “百度.gif”;<br>            writeImageToDisk(btImg, fileName);<br>        }else{<br>            System.out.println(“没有从该连接获得内容”);<br>        }<br>    }<br>    /\</em>*<br>     * 将图片写入到磁盘<br>     * @param img 图片数据流<br>     * @param fileName 文件保存时的名称<br>     <em>/<br>    public static void writeImageToDisk(byte[] img, String fileName){<br>        try {<br>            File file = new File(“D:\\” + fileName);<br>            FileOutputStream fops = new FileOutputStream(file);<br>            fops.write(img);<br>            fops.flush();<br>            fops.close();<br>            System.out.println(“图片已经写入到D盘”);<br>        } catch (Exception e) {<br>            e.printStackTrace();<br>        }<br>    }<br>    /\</em>*<br>     * 根据地址获得数据的字节流<br>     * @param strUrl 网络连接地址<br>     * @return<br>     <em>/<br>    public static byte[] getImageFromNetByUrl(String strUrl){<br>        try {<br>            URL url = new URL(strUrl);<br>            HttpURLConnection conn = (HttpURLConnection)url.openConnection();<br>            conn.setRequestMethod(“GET”);<br>            conn.setConnectTimeout(5 </em> 1000);<br>            InputStream inStream = conn.getInputStream();//通过输入流获取图片数据<br>            byte[] btImg = readInputStream(inStream);//得到图片的二进制数据<br>            return btImg;<br>        } catch (Exception e) {<br>            e.printStackTrace();<br>        }<br>        return null;<br>    }<br>    /**<br>     * 从输入流中获取数据<br>     * @param inStream 输入流<br>     * @return<br>     * @throws Exception<br>     */<br>    public static byte[] readInputStream(InputStream inStream) throws Exception{<br>        ByteArrayOutputStream outStream = new ByteArrayOutputStream();<br>        byte[] buffer = new byte[1024];<br>        int len = 0;<br>        while( (len=inStream.read(buffer)) != -1 ){<br>            outStream.write(buffer, 0, len);<br>        }<br>        inStream.close();<br>        return outStream.toByteArray();<br>    }<br>}</p>
+<p>另一种方法:</p>
+<p>package com.hg.threadPoolExecutorDemo;  </p>
+<p>import java.io.File;<br>import java.io.FileOutputStream;<br>import java.io.InputStream;<br>import java.io.OutputStream;<br>import java.net.URL;<br>import java.net.URLConnection;  </p>
+<p>public class DownloadImage {  </p>
+<pre><code>/\*\*  
+ \* @param args  
+ \* @throws Exception   
+ */  
+public static void main(String\[\] args) throws Exception {  
+    // TODO Auto-generated method stub    
+</code></pre><p>//      download(“<a href="http://ui.51bi.com/opt/siteimg/images/fanbei0923/Mid_07.jpg&quot;" target="_blank" rel="noopener">http://ui.51bi.com/opt/siteimg/images/fanbei0923/Mid_07.jpg&quot;</a>,<br>//              “51bi.jpg”, “D:\\image\\”);<br>        download(“<a href="http://www.hao123.com/&quot;" target="_blank" rel="noopener">http://www.hao123.com/&quot;</a>,<br>                “nidi.html”, “D:\\image\\”);<br>    }  </p>
+<pre><code>public static void download(String urlString, String filename,  
+        String savePath) throws Exception {  
+    // 构造URL    
+    URL url = new URL(urlString);  
+    // 打开连接    
+    URLConnection con = url.openConnection();  
+    //设置请求超时为5s    
+    con.setConnectTimeout(5 * 1000);  
+    // 输入流    
+    InputStream is = con.getInputStream();  
+
+    // 1K的数据缓冲    
+    byte\[\] bs = new byte\[1024\];  
+    // 读取到的数据长度    
+    int len;  
+    // 输出的文件流    
+    File sf = new File(savePath);  
+    if (!sf.exists()) {  
+        sf.mkdirs();  
+    }  
+    OutputStream os = new FileOutputStream(sf.getPath() + &quot;\\\&quot; + filename);  
+    // 开始读取    
+    while ((len = is.read(bs)) != -1) {  
+        os.write(bs, 0, len);  
+    }  
+    // 完毕，关闭所有链接    
+    os.close();  
+    is.close();  
+}  
+</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/08/08/ie11-e4-b8-8b-e8-bd-bd-e6-96-87-e4-bb-b6-e4-b9-b1-e7-a0-81-e7-9a-84-e9-97-ae-e9-a2-98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/08/08/ie11-e4-b8-8b-e8-bd-bd-e6-96-87-e4-bb-b6-e4-b9-b1-e7-a0-81-e7-9a-84-e9-97-ae-e9-a2-98/" class="post-title-link" itemprop="url">ie11下载文件乱码的问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-08 18:54:02" itemprop="dateCreated datePublished" datetime="2017-08-08T18:54:02+08:00">2017-08-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目中有用到文件下载功能，之前在处理下载时对IE浏览器下文件下载名进行过处理，测试也没有问题， 但是功能上线后，业务反馈IE11文件下载文件名依然乱码。打印User-Agent字符串如下： IE11 User-Agent字符串:Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko IE6~IE10版本的User-Agent字符串:Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.0; Trident/6.0) IE浏览器在IE11,更改了User-Agent字符串格式内容，所以针对IE11,做一下判断即可：</p>
+<p>//下载文件，并处理文件名乱码<br>        public void downloadFile(HttpServletRequest request,HttpServletResponse response){<br>           String path = request.getSession().getServletContext().getRealPath(“/upload/文档1.doc”);<br>            // path是根据日志路径和文件名拼接出来的<br>             File file = new File(path);<br>            //获取日志文件名称<br>              String filename = file.getName();<br>           try {<br>              //判断是否是IE11<br>               filename = encodeUrlparam(request,filename);</p>
+<pre><code>  InputStream fis = new BufferedInputStream(new FileInputStream(path));  
+     byte\[\] buffer;  
+  buffer = new byte\[fis.available()\];  
+     fis.read(buffer);  
+     fis.close();  
+     response.reset();  
+     response.addHeader(&quot;Content-Disposition&quot;, &quot;attachment;filename=&quot; +filename);  
+     response.addHeader(&quot;Content-Length&quot;, &quot;&quot; + file.length());  
+     OutputStream os = response.getOutputStream();  
+     response.setContentType(&quot;application/octet-stream&quot;);  
+     os.write(buffer);// 输出文件  
+     os.flush();  
+     os.close();  
+ } catch (IOException e) {  
+  // TODO Auto-generated catch block  
+  e.printStackTrace();  
+ }  
+}  
+</code></pre><p>public static String encodeUrlparam(HttpServletRequest request,String docoldname) throws UnsupportedEncodingException{<br>             Boolean flag= request.getHeader(“User-Agent”).indexOf(“like Gecko”)&gt;0 &amp;&amp;request.getHeader(“User-Agent”).toUpperCase()<br>                     .indexOf(“CHROME”) &lt; 0;<br>            if (request.getHeader(“User-Agent”).toLowerCase()<br>                     .indexOf(“firefox”) &gt; 0) {<br>                docoldname = new String(docoldname.getBytes(“UTF-8”), “ISO8859-1”); // firefox浏览器<br>                    } else if (request.getHeader(“User-Agent”).toUpperCase()<br>                        .indexOf(“MSIE”) &gt; 0 || flag) {<br>                        docoldname = URLEncoder.encode(docoldname, “UTF-8”);// IE浏览器<br>                     }else if (request.getHeader(“User-Agent”).toUpperCase()<br>                         .indexOf(“CHROME”) &gt; 0) {<br>                         docoldname = new String(docoldname.getBytes(“UTF-8”), “ISO8859-1”);// 谷歌<br>                        }</p>
+<pre><code>    return docoldname;
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/08/04/linux-e4-b8-8bmysql-e7-9a-84root-e5-af-86-e7-a0-81-e5-bf-98-e8-ae-b0-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/08/04/linux-e4-b8-8bmysql-e7-9a-84root-e5-af-86-e7-a0-81-e5-bf-98-e8-ae-b0-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/" class="post-title-link" itemprop="url">linux下mysql的root密码忘记解决方法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-04 00:16:23" itemprop="dateCreated datePublished" datetime="2017-08-04T00:16:23+08:00">2017-08-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1．首先确认服务器出于安全的状态，也就是没有人能够任意地连接MySQL数据库。 因为在重新设置MySQL的root密码的期间，MySQL数据库完全出于没有密码保护的 状态下，其他的用户也可以任意地登录和修改MySQL的信息。可以采用将MySQL对 外的端口封闭，并且停止Apache以及所有的用户进程的方法实现服务器的准安全 状态。最安全的状态是到服务器的Console上面操作，并且拔掉网线。 2．修改MySQL的登录设置： # vi /etc/my.cnf 在[mysqld]的段中加上一句：skip-grant-tables 例如： [mysqld] datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock skip-grant-tables 保存并且退出vi。 3．重新启动mysqld # /etc/init.d/mysqld restart Stopping MySQL: [ OK ] Starting MySQL: [ OK ] 4．登录并修改MySQL的root密码 # /usr/bin/mysql Welcome to the MySQL monitor. Commands end with ; or \g. Your MySQL connection id is 3 to server version: 3.23.56 Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the buffer. mysql&gt; USE mysql ; Reading table information for completion of table and column names You can turn off this feature to get a quicker startup with -A Database changed mysql&gt; UPDATE user SET Password = password ( ‘new-password’ ) WHERE User = ‘root’ ; Query OK, 0 rows affected (0.00 sec) Rows matched: 2 Changed: 0 Warnings: 0 mysql&gt; flush privileges ; Query OK, 0 rows affected (0.01 sec) mysql&gt; quit Bye 5．将MySQL的登录设置修改回来 # vi /etc/my.cnf 将刚才在[mysqld]的段中加上的skip-grant-tables删除 保存并且退出vi。 6．重新启动mysqld # /etc/init.d/mysqld restart Stopping MySQL: [ OK ] Starting MySQL: [ OK ]</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/07/31/oracle-trunc-e5-87-bd-e6-95-b0-e7-9a-84-e7-94-a8-e6-b3-95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/07/31/oracle-trunc-e5-87-bd-e6-95-b0-e7-9a-84-e7-94-a8-e6-b3-95/" class="post-title-link" itemprop="url">Oracle trunc()函数的用法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-31 14:12:28" itemprop="dateCreated datePublished" datetime="2017-07-31T14:12:28+08:00">2017-07-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Oracle trunc()函数的用法 –Oracle trunc()函数的用法 /<strong><strong><strong>**</strong></strong></strong>日期<strong><strong><strong><strong><em>**</em></strong></strong></strong></strong>/ 1.select trunc(sysdate) from dual –2013-01-06 今天的日期为2013-01-06 2.select trunc(sysdate, ‘mm’) from dual –2013-01-01 返回当月第一天. 3.select trunc(sysdate,’yy’) from dual –2013-01-01 返回当年第一天 4.select trunc(sysdate,’dd’) from dual –2013-01-06 返回当前年月日 5.select trunc(sysdate,’yyyy’) from dual –2013-01-01 返回当年第一天 6.select trunc(sysdate,’d’) from dual –2013-01-06 (星期天)返回当前星期的第一天 7.select trunc(sysdate, ‘hh’) from dual –2013-01-06 17:00:00 当前时间为17:35 8.select trunc(sysdate, ‘mi’) from dual –2013-01-06 17:35:00 TRUNC()函数没有秒的精确 /<strong><strong><strong>***</strong></strong></strong>数字<strong><strong><strong><strong><em>**</em></strong></strong></strong></strong>/ /<em> TRUNC（number,num_digits） Number 需要截尾取整的数字。 Num_digits 用于指定取整精度的数字。Num_digits 的默认值为 0。 TRUNC()函数截取时不进行四舍五入 </em>/ 9.select trunc(123.458) from dual –123 10.select trunc(123.458,0) from dual –123 11.select trunc(123.458,1) from dual –123.4 12.select trunc(123.458,-1) from dual –120 13.select trunc(123.458,-4) from dual –0 14.select trunc(123.458,4) from dual –123.458 15.select trunc(123) from dual –123 16.select trunc(123,1) from dual –123 17.select trunc(123,-1) from dual –120</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/07/18/e4-bd-bf-e7-94-a8formdata-e4-b8-8a-e4-bc-a0-e6-96-87-e4-bb-b6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/07/18/e4-bd-bf-e7-94-a8formdata-e4-b8-8a-e4-bc-a0-e6-96-87-e4-bb-b6/" class="post-title-link" itemprop="url">使用FormData上传文件</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-18 21:51:03" itemprop="dateCreated datePublished" datetime="2017-07-18T21:51:03+08:00">2017-07-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>关于FormData</p>
+<ul>
+<li>XMLHttpRequest Level 2添加了一个新的接口  —- FormData</li>
+<li>利用FormData对象，可以通过js用一些键值对来模拟一系列表单控件，可以使用XMLHttpRequest的 send( ) 方法来异步提交表单</li>
+<li>与普通的ajax相比，使用FormData的最大优点就是可以异步上传二进制文件</li>
+</ul>
+<p>FormData对象</p>
+<ul>
+<li><ul>
+<li>FormData对象，可以把所有表单元素的name与value组成一个queryString,提交到后台。 在使用ajax提交时，使用FormData对象可以减少拼接queryString的工作量</li>
+<li>queryString是查询字符串，http查询字符串由url中？后面的值指定</li>
+<li>当页面上的form以GET方式向页面发送请求数据时 (如数据含有不安全字符，则浏览器先将其转换成16进制的字符再传送，如空格被转换成%20时 ) ,web server 将请求数据放入一名为QUERY_STRING的环境变量中。    Request.QueryString  方法是从这一环境变量中取出相应的值，并将被转成16进制的字符还原</li>
+</ul>
+</li>
+</ul>
+<p>使用FormData上传文件、图片 HTML:</p>
+<p><form enctype="multipart/form-data"></form></p>
+<p><input name="file" type="file"></p>
+<p><input type="button" value="Upload"><br></p>
+<progress></progress>
+
+<p>首先，你可以做一些验证，例如文件的onChange事件：</p>
+<p>$(‘:file’).change(function(){<br>    var file = this.files[0];<br>    name = file.name;<br>    size = file.size;<br>    type = file.type;<br>    //your validation<br>});</p>
+<p>使用formdata上传数据:</p>
+<pre><code>var formdata=new FormData($(&quot;#form1&quot;)\[0\]);//获取文件法一
+//var formdata=new FormData( ); 
+//formdata.append(&quot;file&quot; ,  $(&quot;#file&quot;)\[0\].files\[0\]);//获取文件法二
+$.ajax({
+    type : &apos;post&apos;,
+    url : &apos;#&apos;,
+    data : formdata,
+    cache : false,
+    processData : false,  //  不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
+    contentType : false,  //  不设置Content-type请求头
+    success : function(){}
+    error : function(){ }
+})
+</code></pre><p>处理进度：</p>
+<p>function progressHandlingFunction(e){<br>    if(e.lengthComputable){<br>        $(‘progress’).attr({value:e.loaded,max:e.total});<br>    }<br>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

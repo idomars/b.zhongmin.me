@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="jvisualvm能干什么：监控内存泄露，跟踪垃圾回收，执行时内存、cpu分析，线程分析…   jvisualvm已经被集成在jdk1.6以上的版本中(不是jre)。自身运行需要最低jdk1.6版本，但是可以监控运行在jdk1.4以上版本的java程序 以jdk1.6update45(jdk1.6update45自带的jvisualvm)来做说明，当然也可单独下载独立的jvisualvm，正常安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM工具 jvisualvm">
+<meta property="og:url" content="http://b.zhongmin.me/2018/03/28/jvm-e5-b7-a5-e5-85-b7-jvisualvm/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="jvisualvm能干什么：监控内存泄露，跟踪垃圾回收，执行时内存、cpu分析，线程分析…   jvisualvm已经被集成在jdk1.6以上的版本中(不是jre)。自身运行需要最低jdk1.6版本，但是可以监控运行在jdk1.4以上版本的java程序 以jdk1.6update45(jdk1.6update45自带的jvisualvm)来做说明，当然也可单独下载独立的jvisualvm，正常安装">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/25/1356421514_6174.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/25/1356421974_8908.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356658216_1476.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356658532_9561.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/25/1356424196_8620.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356658833_4248.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356659239_3404.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356659492_3452.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20130918170902453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTE5ODgxMDI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356660131_3194.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/25/1356426256_4304.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356660551_8853.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/26/1356513076_2032.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356659492_3452.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20130918170902453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTE5ODgxMDI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356660131_3194.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356661065_3854.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201212/28/1356661122_1872.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20131025173516906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTE5ODgxMDI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20131026232124656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTE5ODgxMDI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM工具 jvisualvm">
+<meta name="twitter:description" content="jvisualvm能干什么：监控内存泄露，跟踪垃圾回收，执行时内存、cpu分析，线程分析…   jvisualvm已经被集成在jdk1.6以上的版本中(不是jre)。自身运行需要最低jdk1.6版本，但是可以监控运行在jdk1.4以上版本的java程序 以jdk1.6update45(jdk1.6update45自带的jvisualvm)来做说明，当然也可单独下载独立的jvisualvm，正常安装">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201212/25/1356421514_6174.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/03/28/jvm-e5-b7-a5-e5-85-b7-jvisualvm/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JVM工具 jvisualvm | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/03/28/jvm-e5-b7-a5-e5-85-b7-jvisualvm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM工具 jvisualvm
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-28 09:40:50" itemprop="dateCreated datePublished" datetime="2018-03-28T09:40:50+08:00">2018-03-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>jvisualvm能干什么：监控内存泄露，跟踪垃圾回收，执行时内存、cpu分析，线程分析…   jvisualvm已经被集成在jdk1.6以上的版本中(不是jre)。自身运行需要最低jdk1.6版本，但是可以监控运行在jdk1.4以上版本的java程序 以jdk1.6update45(jdk1.6update45自带的jvisualvm)来做说明，当然也可单独下载独立的jvisualvm，正常安装完jdk后，至jdk的bin目录下，运行jvisualvm.exe即可 <img src="http://img.my.csdn.net/uploads/201212/25/1356421514_6174.png" alt> 网上有人说jvisualvm对ntfs的硬盘格式支持的不好（都说不好，也没说到底哪里不好），反正我用着是挺正常的，不管怎么样先把解决方式记下来吧 创建jvisualvm.exe的快捷方式，右键快捷方式选择属性，在“目标”栏中追加”-XX:+PerfBypassFileSystemCheck” <img src="http://img.my.csdn.net/uploads/201212/25/1356421974_8908.jpg" alt> 程序运行后会自动监控本机运行的java程序（Local标签下，远程服务器上的java程序需要另行配置），如果是下载的jvisualvm，解压后，运行bin目录下的jvisualvm.exe即可 Local标签下的第一个VisualVM为jvisualvm对自身的监控，可以看到消耗的资源还是很少的，第二个为本机的eclipse <img src="http://img.my.csdn.net/uploads/201212/28/1356658216_1476.png" alt> 监控项总共分为Overview，Monitor，Threads和一个Sampler。 <strong>1.Overview（jvm启动参数，系统参数）</strong> <img src="http://img.my.csdn.net/uploads/201212/28/1356658532_9561.png" alt> 可以看到eclipse的启动参数 <img src="http://img.my.csdn.net/uploads/201212/25/1356424196_8620.png" alt> (通过这些启动参数，可以判断程序是否有内存溢出) <strong>2.Monitor</strong> <img src="http://img.my.csdn.net/uploads/201212/28/1356658833_4248.png" alt> 左上：cpu利用率，gc状态的监控 右上：堆利用率，永久内存区的利用率 左下：类的监控 右下：线程的监控 performGC：gc的详细运行状态 HeapDump：堆的详细状态（可以看到堆的概况，里面所有的类，还能点进具体的一个类查看这个类的状态） <strong>3.Threads</strong> <img src="http://img.my.csdn.net/uploads/201212/28/1356659239_3404.png" alt> 能够显示线程的名称和运行的状态，在调试多线程时必不可少，而且可以点进一个线程查看这个线程的详细运行情况 <strong>监控服务器上的tomcat</strong> tomcat的配置文件catalina.sh中增加:</p>
+<ol>
+<li>JAVA_OPTS=”-Dcom.sun.management.jmxremote.port=9998</li>
+<li>-Dcom.sun.management.jmxremote.ssl=false</li>
+<li>-Dcom.sun.management.jmxremote.authenticate=false</li>
+<li>-Djava.rmi.server.hostname=192.168.58.164”</li>
+</ol>
+<p>参数说明:</p>
+<ol>
+<li>指定了JMX启动的代理端口，这个端口就是visualvm要连接的端口（9998端口不能被别的程序使用netstat -an|gerp 9998）</li>
+<li>Dcom.sun.management.jmxremote.port=9998</li>
+<li>指定了JMX是否启用ssl</li>
+<li>Dcom.sun.management.jmxremote.authenticate=false</li>
+<li>指定了JMX是否启用鉴权（需要用户名，密码鉴权）</li>
+<li>Dcom.sun.management.jmxremote.authenticate=false</li>
+<li>指定了服务器主机名</li>
+<li>Djava.rmi.server.hostname=192.168.58.164</li>
+</ol>
+<p><img src="http://img.my.csdn.net/uploads/201212/28/1356659492_3452.png" alt> 填写主机名： <img src="http://img.blog.csdn.net/20130918170902453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTE5ODgxMDI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt> 右键创建一个jmx连接： <img src="http://img.my.csdn.net/uploads/201212/28/1356660131_3194.png" alt> 填写上端口号即可：</p>
+<p><img src="http://img.my.csdn.net/uploads/201212/25/1356426256_4304.jpg" alt></p>
+<p>配置完成：</p>
+<p><img src="http://img.my.csdn.net/uploads/201212/28/1356660551_8853.png" alt>   <strong>监控服务器上的java程序</strong> 相较于监控tomcat要麻烦很多，要预先启动jstatd服务（${java_home}/bin目录下） jstatd是一个监控JVM从创建到销毁过程中资源占用情况并提供远程监控接口的RMI（Remote Method Invocation，远程方法调用）服务器程序，它是一个Daemon程序（后台进程），要保证远程监控软件连接到本地的话需要jstatd始终保持运行。 jstatd运行需要通过-J-Djava.security.policy=***指定安全策略，因此我们需要在服务器上建立一个指定安全策略的文件jstatd.all.policy（我放在了${java_home}/bin目录下），文件内容如下：</p>
+<ol>
+<li>grant codebase “file:/home/123/123/jdk1.5.0_15/lib/tools.jar” {</li>
+<li>permission java.security.AllPermission;</li>
+<li>};</li>
+</ol>
+<p>然后使用这个策略文件启动jstatd服务</p>
+<ol>
+<li>[123@123 bin]$ pwd</li>
+<li>/home/123/123/jdk1.5.0_15/bin</li>
+<li>[123@123 bin]$ ./jstatd -J-Djava.security.policy=./jstatd.all.policy &amp;</li>
+</ol>
+<p>因为监控的过程中需要jstatd服务一直运行，所以加上了&amp;，如果需要日志也可使用:</p>
+<ol>
+<li>./jstatd -J-Djava.security.policy=./jstatd.all.policy -J-Djava.rmi.server.logCalls=true</li>
+</ol>
+<p>接下来就可以在jvisualvm中配置监控该服务器上运行的java程序了，和在jvisualvm中配置监控tomcat服务器的操作过程是一样的 需要特别注意的是，有时在配置远程监控java程序的时候jvisualvm会报一个错误 点击查看错误详情： <img src="http://img.my.csdn.net/uploads/201212/26/1356513076_2032.png" alt> connection refused to host:127.0.0.1初步判断和主机名有关系</p>
+<ol>
+<li>[123@123 bin]# hostname -i</li>
+<li><p>127.0.0.1</p>
+</li>
+<li><p>[123@123 bin]# hostname 192.168.58.168</p>
+</li>
+</ol>
+<p>修改完重启jstatd服务（网上很多人说要修改主机的/etc/hosts文件，但是我自己测试修改/etc/hosts文件是没有效果的，必须要修改主机名）</p>
+<p><img src="http://img.my.csdn.net/uploads/201212/28/1356659492_3452.png" alt></p>
+<p>填写主机名： <img src="http://img.blog.csdn.net/20130918170902453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTE5ODgxMDI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt> 这里要选添加一个jstatd连接： <img src="http://img.my.csdn.net/uploads/201212/28/1356660131_3194.png" alt> 直接选择默认配置即可（默认使用1099端口）： <img src="http://img.my.csdn.net/uploads/201212/28/1356661065_3854.png" alt> 点击ok后，168上的所有java程序就会自动列出： <img src="http://img.my.csdn.net/uploads/201212/28/1356661122_1872.png" alt> PS: jvisualvm也是可以安装插件的，具体步骤为tool -&gt; plugin -&gt;aviable plugin，推荐一个非常好用的插件VisualGC <img src="http://img.blog.csdn.net/20131025173516906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTE5ODgxMDI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt> 安装完这个插件后，将会增加新的监控条目Visual GC，可以看到虚拟机内存各个区的使用情况 <img src="http://img.blog.csdn.net/20131026232124656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTE5ODgxMDI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/15/java-e5-b9-b6-e5-8f-91-e7-bc-96-e7-a8-8b-e5-8e-9f-e5-ad-90-e6-80-a7-ef-bc-8c-e6-9c-89-e5-ba-8f-e6-80-a7-ef-bc-8c-e5-8f-af-e8-a7-81-e6-80-a7/" rel="next" title="Java并发编程-原子性，有序性，可见性">
+                <i class="fa fa-chevron-left"></i> Java并发编程-原子性，有序性，可见性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/28/minor-gc-e3-80-81major-gc-e5-92-8cfull-gc-e4-b9-8b-e9-97-b4-e7-9a-84-e5-8c-ba-e5-88-ab/" rel="prev" title="Minor GC、Major GC和Full GC之间的区别">
+                Minor GC、Major GC和Full GC之间的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

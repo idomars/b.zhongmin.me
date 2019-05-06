@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1.CAS操作CAS（Compare-And-Swap）指令是并行程序设计最基础的基石，随着越来越多的本本都用上了双核，这个世界已经快速步入并行计算时代，CAS指令发挥的作用也就越来越大。CAS指令，在Intel CPU上称为CMPXCHG，的作用是将指定内存地址的内容与所给的某个值相比，如果相等，则将其内容替换为所给的另一个值，这一系列操作是原子的，不可能被中断。基本上所有的同步机制，与信号量、">
+<meta name="keywords" content="Java,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CAS指令与MESI缓存一致性协议">
+<meta property="og:url" content="http://b.zhongmin.me/2018/03/13/cas-e6-8c-87-e4-bb-a4-e4-b8-8emesi-e7-bc-93-e5-ad-98-e4-b8-80-e8-87-b4-e6-80-a7-e5-8d-8f-e8-ae-ae/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="1.CAS操作CAS（Compare-And-Swap）指令是并行程序设计最基础的基石，随着越来越多的本本都用上了双核，这个世界已经快速步入并行计算时代，CAS指令发挥的作用也就越来越大。CAS指令，在Intel CPU上称为CMPXCHG，的作用是将指定内存地址的内容与所给的某个值相比，如果相等，则将其内容替换为所给的另一个值，这一系列操作是原子的，不可能被中断。基本上所有的同步机制，与信号量、">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CAS指令与MESI缓存一致性协议">
+<meta name="twitter:description" content="1.CAS操作CAS（Compare-And-Swap）指令是并行程序设计最基础的基石，随着越来越多的本本都用上了双核，这个世界已经快速步入并行计算时代，CAS指令发挥的作用也就越来越大。CAS指令，在Intel CPU上称为CMPXCHG，的作用是将指定内存地址的内容与所给的某个值相比，如果相等，则将其内容替换为所给的另一个值，这一系列操作是原子的，不可能被中断。基本上所有的同步机制，与信号量、">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2018/03/13/cas-e6-8c-87-e4-bb-a4-e4-b8-8emesi-e7-bc-93-e5-ad-98-e4-b8-80-e8-87-b4-e6-80-a7-e5-8d-8f-e8-ae-ae/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CAS指令与MESI缓存一致性协议 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2018/03/13/cas-e6-8c-87-e4-bb-a4-e4-b8-8emesi-e7-bc-93-e5-ad-98-e4-b8-80-e8-87-b4-e6-80-a7-e5-8d-8f-e8-ae-ae/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CAS指令与MESI缓存一致性协议
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-13 19:41:19" itemprop="dateCreated datePublished" datetime="2018-03-13T19:41:19+08:00">2018-03-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-CAS操作"><a href="#1-CAS操作" class="headerlink" title="1.CAS操作"></a><strong>1.CAS操作</strong></h3><p>CAS（Compare-And-Swap）指令是并行程序设计最基础的基石，随着越来越多的本本都用上了双核，这个世界已经快速步入并行计算时代，CAS指令发挥的作用也就越来越大。CAS指令，在Intel CPU上称为CMPXCHG，的作用是将指定内存地址的内容与所给的某个值相比，如果相等，则将其内容替换为所给的另一个值，这一系列操作是原子的，不可能被中断。基本上所有的同步机制，与信号量、Java中的synchronized等的实现最终都要用到CAS指令，即使锁无关的数据结构也离不开CAS指令。 关于CAS指令最著名的传闻是CAS需要锁总线，因此CAS指令不但慢而且会严重影响系统并发度，即使没有冲突是也一样。不过在较新的CPU中（对于Intel CPU来说是486之后），事实并非如此。目前的CPU一般都采用了很好的缓存一致性协议，在很多情况下能够防止锁总线的发生，这其中最著名的就是Intel CPU中使用的MESI缓存一致性协议。 先来说说缓存一致性问题。为了提高数据访问效率，每个CPU上都有一个容量很小（现在一般是1M这个数量级），速度很快的缓存，用于缓存最常访问的那些数据。由于操作内存的速度实在太慢，数据被修改时也只更新缓存，并不直接写出到内存中去，这一来就造成了缓存中的数据与内存不一致。如果系统中只有一个CPU，所有线程看到的都是缓存中的最新数据，当然没问题。但如果系统中有多个CPU，同一份内存可能会被缓存到多个CPU中，如果在不同CPU中运行的不同线程看到同一份内存的缓存值不一样就麻烦了，因此有必要维护这多种缓存的一致性。当然要做到这一点只要一有修改操作，就通知所有CPU更新缓存，或者放弃缓存下次访问的时候再重新从内存中读取。但这会Stupid的实现显然不会有好的性能，为解决这一问题，产生了很多维护缓存一致性的协议，MESI就是其中一种。</p>
+<h3 id="2-MESI状态"><a href="#2-MESI状态" class="headerlink" title="2.MESI状态"></a><strong>2.MESI状态</strong></h3><p>MESI是“modified”, “exclusive”, “shared”, 和 “invalid”首字母的大写，当使用MESI cache-coherence 协议的时候，cacheline可以处于这四个状态中的一个，因此，HW工程师设计cache的时候，除了物理地址和具体的数据之外，还需要为每一个cacheline设计一个2-bit的tag来标识该cacheline的状态。 M: 被修改的。处于这一状态的数据只在本CPU中有缓存，且其数据已被修改，没有更新到内存中 E: 独占的。处于这一状态的数据只在本CPU中有缓存，且其数据没有被修改，与内存一致 S: 共享的。处于这一状态的数据在多个CPU中有缓存 I: 无效的。本CPU中的这份缓存已经无效了。 处于modified状态的cacheline说明近期有过来自对应cpu的写操作，同时也说明该该数据不会存在其他cpu对应的cache中。因此，处于modified状态的cacheline也可以说是被该CPU独占。而又因为只有该CPU的cache保存了最新的数据（最终的memory中都没有更新），所以，该cache需要对该数据负责到底。例如根据请求，该cache将数据及其控制权传递到其他cache中，或者cache需要负责将数据写回到memory中，而这些操作都需要在reuse该cache line之前完成。 exclusive状态和modified状态非常类似，唯一的区别是对应CPU还没有修改cacheline中的数据，也正因为还没有修改数据，因此memory中对应的data也是最新的。在exclusive状态下，cpu也可以不通知其他CPU cache而直接对cacheline进行操作，因此，exclusive状态也可以被认为是被该CPU独占。由于memory中的数据和cacheline中的数据都是最新的，因此，cpu不需对exclusive状态的cacheline执行写回的操作或者将数据以及归属权转交其他cpu cache，而直接reuse该cacheline（将cacheine中的数据丢弃，用作他用）。 处于share状态的cacheline，其数据可能在一个或者多个CPU cache中，因此，处于这种状态的cache line，CPU不能直接修改cacheline的数据，而是需要首先和其他CPU cache进行沟通。和exclusive状态类似，处于share状态的cacheline对应的memory中的数据也是最新的，因此，cpu也可以直接丢弃cacheline中的数据而不必将其转交给其他CPU cache或者写回到memory中。 处于invalid状态的cacheline是空的，没有数据。当新的数据要进入cache的时候，优选状态是invalid的cacheline，之所以如此是因为如果选中其他状态的cacheline，则说明需要替换cacheline数据，而未来如果再次访问这个被替换掉的cacheline数据的时候将遇到开销非常大的cache miss。 当CPU要读取数据时，只要缓存的状态不是I都可以从缓存中读，否则就要从主存中读。这一读操作可能会被某个处于M或E状态的CPU截获，该CPU将修改的数据写出到内存，并将自己设为S状态后这一读操作才继续进行。只有缓存状态是E或M时，CPU才可以修改其中的数据，修改后缓存即处于M状态。如果CPU要修改数据时发现其缓存不处于E或M状态，则需要发出特殊的RFO指令（Read For Ownership），将其它CPU的缓存设为I状态。 因此，如果一个变量在某段时间内只被一个线程频繁修改，则对应的缓存早就处于M状态，这时CAS操作就不会涉及到总线操作。所以频繁的加锁并不一定会影响系统并发度，关键是看锁冲突的情况严重不严重，如果经常出现冲突，即缓存一会被这个CPU独占，一会被那个CPU独占，这时才会不断产生RFO，影响到并发性能。 CPU原语-比较并交换(CompareAndSet),实现非阻塞算法 <strong>什么是CAS?</strong> cas是现代CPU提供给并发程序使用的原语操作. 不同的CPU有不同的使用规范. 在 Intel 处理器中，比较并交换通过指令的 cmpxchg 系列实现。 PowerPC 处理器有一对名为“加载并保留”和“条件存储”的指令，它们实现相同的目地； MIPS 与 PowerPC 处理器相似，除了第一个指令称为“加载链接”。 CAS 操作包含三个操作数 —— 内存位置（V）、预期原值（A）和新值(B) <strong>什么是非阻塞算法?</strong> 一个线程的失败或挂起不应该影响其他线程的失败或挂起.这类算法称之为非阻塞(nonblocking)算法 对比阻塞算法: 如果有一类并发操作, 其中一个线程优先得到对象监视器的锁, 当其他线程到达同步边界时, 就会被阻塞. 直到前一个线程释放掉锁后, 才可以继续竞争对象锁.(当然,这里的竞争也可是公平的, 按先来后到的次序) <strong>CAS 原理:</strong> 我认为位置 V 应该包含值 A；如果包含该值，则将 B 放到这个位置；否则，不要更改该位置，只告诉我这个位置现在的值即可。 CAS使用示例(jdk 1.5 并发包 AtomicInteger类分析</p>
+<p>/**<br>　　* Atomically sets to the given value and returns the old value.<br>　　*<br>　　* @param newValue the new value<br>　　* @return the previous value<br>　　*/ public final int getAndSet(int newValue) {<br>　　for (;;) {<br>　　int current = get();<br>　　if (compareAndSet(current, newValue))<br>　　return current;<br>　　}<br>　　}<br>　　public final boolean compareAndSet(int expect, int update) {<br>　　return unsafe.compareAndSwapInt(this, valueOffset, expect, update);<br>　　}</p>
+<p>这个方法是, AtomicInteger类的常用方法, 作用是, 将变量设置为指定值, 并返回设置前的值. 它利用了cpu原语compareAndSet来保障值的唯一性. 另, AtomicInteger类中, 其他的实用方法, 也是基于同样的实现方式. 比如 getAndIncrement, getAndDecrement, getAndAdd等等. <strong>CAS语义上存在的”ABA 问题”</strong> 什么是ABA问题? 假设, 第一次读取V地址的A值, 然后通过CAS来判断V地址的值是否仍旧为A, 如果是, 就将B的值写入V地址,覆盖A值. 但是, 语义上, 有一个漏洞, 当第一次读取V的A值, 此时, 内存V的值变为B值, 然后在未执行CAS前, 又变回了A值. 此时, CAS再执行时, 会判断其正确的, 并进行赋值. 这种判断值的方式来断定内存是否被修改过, 针对某些问题, 是不适用的. 为了解决这种问题, jdk 1.5并发包提供了AtomicStampedReference(有标记的原子引用)类, 通过控制变量值的版本来保证CAS正确性. 其实, 大部分通过值的变化来CAS, 已经够用了. <strong>jdk1.5原子包介绍(基于volatile)</strong> 包的特色: 1, 普通原子数值类型AtomicInteger, AtomicLong提供一些原子操作的加减运算. 2, 使用了解决脏数据问题的经典模式-“比对后设定”, 即 查看主存中数据是否与预期提供的值一致,如果一致,才更新. 3, 使用AtomicReference可以实现对所有对象的原子引用及赋值.包括Double与Float, 但不包括对其的计算.浮点的计算,只能依靠同步关键字或Lock接口来实现了. 4, 对数组元素里的对象,符合以上特点的, 也可采用原子操作.包里提供了一些数组原子操作类 AtomicIntegerArray, AtomicLongArray等等. 5, 大幅度提升系统吞吐量及性能.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/28/idea-e5-8f-96-e6-b6-88-e6-8e-a7-e5-88-b6-e5-8f-b0-e8-a1-8c-e6-95-b0-e9-99-90-e5-88-b6/" rel="next" title="Idea取消控制台行数限制">
+                <i class="fa fa-chevron-left"></i> Idea取消控制台行数限制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/15/java-e5-b9-b6-e5-8f-91-e7-bc-96-e7-a8-8b-e5-8e-9f-e5-ad-90-e6-80-a7-ef-bc-8c-e6-9c-89-e5-ba-8f-e6-80-a7-ef-bc-8c-e5-8f-af-e8-a7-81-e6-80-a7/" rel="prev" title="Java并发编程-原子性，有序性，可见性">
+                Java并发编程-原子性，有序性，可见性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-CAS操作"><span class="nav-number">1.</span> <span class="nav-text">1.CAS操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MESI状态"><span class="nav-number">2.</span> <span class="nav-text">2.MESI状态</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,2828 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="从零开始">
+<meta property="og:url" content="http://b.zhongmin.me/page/14/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/page/14/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/12/15/e7-90-86-e8-a7-a3jquery-e7-9a-84-extend-e3-80-81-fn-e5-92-8c-fn-extend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/12/15/e7-90-86-e8-a7-a3jquery-e7-9a-84-extend-e3-80-81-fn-e5-92-8c-fn-extend/" class="post-title-link" itemprop="url">理解jquery的$.extend()、$.fn和$.fn.extend()</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-15 11:07:24" itemprop="dateCreated datePublished" datetime="2016-12-15T11:07:24+08:00">2016-12-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端知识/" itemprop="url" rel="index"><span itemprop="name">前端知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Jquery插件的开发包括两种： 一种是类级别的插件开发，即给jquery添加新的全局函数，相当于给jquery类本身添加方法。jquery的全局函数就是属于jquery命名空间的函数。另一种是对象级别的插件开发，即给jquery对象添加方法，下面就两种函数的开发做详细的说明。 1.类级别的插件开发 类级别的插件开发最直接的理解就是给jquery类添加类方法，可以理解为添加静态方法。典型的例子就是$.ajax() 这个函数，将函数定义于jquery的命名空间中。关于类级别的插件开发可以采用如下几种形式进行扩展： 1.1 添加一个新的全局函数 添加一个新的全局函数，我们只需如下定义： ?</p>
+<p>jQuery.foo = function() {&nbsp;&nbsp;<br>  alert(“This is a test.”);&nbsp;<br>};</p>
+<p>1.2 增加多个全局函数 添加多个全局函数，可采用如下定义： ?</p>
+<p>jQuery.foo = function(){<br>   alert(“This is a test.”);<br> };<br> jQuery.bar = function(param){<br>     alert(“This is another test.”);<br> }</p>
+<p>调用时和一个函数的一样的:jQuery.foo(); jQuery.bar(); 简写形式为：$.foo(); $.bar(“bar”); 1.3 使用jQuery.extend(object)添加全局函数  ?</p>
+<p>jQuery.extend({<br>    foo:function(){<br>        alert(“This is a test.”);<br>    },<br>     bar:function(){<br>        alert(“This is another test”);<br>     }<br>});</p>
+<p>1.4 使用命名空间 虽然在jQuery命名空间中，我们禁止使用javascript函数名和变量名。但仍然不可避免某些函数名或变量名将与其他jQuery插件冲突，因此我们习惯将一些方法封装到另一个自定义的命名空间。 ?</p>
+<p>jQuery.myPlugin = {<br>    foo:function(){<br>       alert(“This is a test.”);<br>    }  ,<br>   bar:function(“bar”){<br>      alert(“This is another test.”);<br>   }<br>}</p>
+<p>采用命名空间的函数仍然是全局函数，调用时采用的方法： jQuery.myPlugin.foo(); jQuery.myPlugin.bar(“bar”); 简写形式为： $.myPlugin.foo(); $.myPlugin.bar(“bar”); 通过这个技巧（使用独立的插件名），我们可以避免命名空间内函数的冲突。   2.对象级别的插件开发 对象级别的插件开发需如下两种形式： 形式1： ?</p>
+<p>(function($){<br>    $.fn.pluginName = function(){<br>         // 插件代码写在这里<br>     }<br>})(jQuery);</p>
+<p>上面定义了一个jQuery函数，形参是$,函数定义完成后，把jQuery这个实参传递进去，立即调用执行，这样的好处是我们在写jQuery插件时，也可以使用$这个别名，而不会与prototype引起冲突。 2.1 在jQuery命名空间下生声明一个名字  这是一个单一插件的脚本，如果你的脚本中包含多个插件，或者互逆的插件（例如：$.fn.doSomething() 和 $.fn.undoSomething()）, 那么你需要声明多个函数名字。但是，通常我们编写一个插件时，力求仅使用一个名字来包含它的所有内容，比如下面的插件： 1 $.fn.hilight = function(){2      // 我们的插件写在这里3 };    我们的插件通过这样被调用： 1 $(“myDiv”).hilight();但是我们需要分解我们的代码为多个函数的时候，需要把功能实现分解成多个函数而不增加多余的命名空间。 出于认识到和利用函数是js中最基本的类对象，我们可以这样做，就像其他对象一样，函数可以被制定为属性，因此我们已经声明“hilight”为jQuery的属性对象，任何其他的属性或函数我们需要暴露出来的，都可以在“hilight”函数中被声明属性。 2.2 接受options参数移控制插件的行为 让我们为我们的插件添加功能：指定前景色和背景色的功能，我们也许会让选项像一个options对象传递给插件函数，例：</p>
+<p>// plugin definition<br>$.fn.hilight = function(options){<br>   var defaults = {<br>      foreground : “red”,<br>      background: “yellow”<br>   };<br>// 根据所提供的扩展我们能的options<br>var opts = $.extend(defaults, options);<br>// 插件内容写在这里<br> }</p>
+<p>我们的插件可以这样被调用： $(“myDiv”).hilight({   foreground:”blue” })2.3 暴露插件的默认设置 我们对上面代码的一种改进是暴露插件的默认设置，这有利于让插件的使用者更容易用较少的代码覆盖和修改插件，接下来我们开始利用函数对象。 ?</p>
+<p>// plugin definition<br>$.fn.hilight = function(options){<br>  // extend our default options with those provided.<br>  // note that the first arg to extend is an empty object , this is to keep form overriding our “defaults” object.<br>  var opts = $.extend({},$options);<br>// our plugin inplementation code goes here.<br>};<br>// plugin defaults -added as a property on our plugin function<br>$.fn.hilight.default = {<br>    foreground : “red”,<br>    background:”yellow”<br>};</p>
+<p>现在使用者可以包含这样一行代码在他们的脚本里： // 这个只需要调用一次，且不一定要在ready块中调用$.fn.hilight.defaults.foreground = “blue”;接下来我们像这样使用插件的方法，结果它设置蓝色的前景色： $(“myDiv”).hilight();2.4 整合 下面使我们的例子完成后的代码：</p>
+<p> // 创建一个闭包<br> $(function($){<br>    // 插件的定义<br>    $.fn.hilight = function(options){<br>    // build main options before element iteration<br>    var opts = $.extend({},$.fn.hilight.defaults.options);<br>    // iteration and reformar each matched element<br>    return this.each(function(){<br>       $this = $(this);<br>    // build element specific options<br>       var o = $.meta ? $.extend({}, opts, $this.data()) : opts;<br>        $this.css({<br>         backgroundColor: o.background,<br>         color: o.foreground<br>       });<br>       var markup = $this.html();<br>       // call our format function<br>       markup = $.fn.hilight.format(markup);<br>       $this.html(markup);<br>     });<br>   };<br>   // 私有函数：debugging<br>   function debug($obj) {<br>     if (window.console &amp;&amp; window.console.log)<br>       window.console.log(‘hilight selection count: ‘ + $obj.size());<br>   };<br>   // 定义暴露format函数<br>   $.fn.hilight.format = function(txt) {<br>     return ‘<strong>‘ + txt + ‘</strong>‘;<br>   };<br>   // 插件的defaults<br>   $.fn.hilight.defaults = {<br>     foreground: ‘red’,<br>     background: ‘yellow’<br>   };<br>    })<br>    }<br> // 闭包结束<br> })(jQuery);</p>
+<p>3、总结 jQuery为开发插件提拱了两个方法，分别是： jQuery.fn.extend(object);  给jQuery对象添加方法。jQuery.extend(object);  为扩展jQuery类本身.为类添加新的方法。 3.1 jQuery.fn.extend(object); fn 是什么东西呢。查看jQuery代码，就不难发现。 jQuery.fn = jQuery.prototype = {   init: function( selector, context ) {//….　   //……   };    原来 jQuery.fn = jQuery.prototype.对prototype肯定不会陌生啦。虽然 javascript　没有明确的类的概念，但是用类来理解它，会更方便。jQuery便是一个封装得非常好的类，比如我们用 语句　$(“#btn1”) 会生成一个 jQuery类的实例。 jQuery.fn.extend(object); 对jQuery.prototype进得扩展，就是为jQuery类添加“成员函数”。jQuery类的实例可以使用这个“成员函数”。 $.fn是指jQuery的命名空间，加上fn上的方法及属性，会对jquery实例每一个有效，如扩展$.fn.abc()是对jquery扩展了一个abc方法，那么后面的每个jQuery实例都可以引用这个方法了。 你可以这样：$(“myDiv”).abc(); 比如我们要开发一个插件，做一个特殊的编辑框，当它被点击时，便alert 当前编辑框里的内容。可以这么做：  ?</p>
+<p>$.fn.extend({<br>    alertWhileClick:function(){<br>    $(this).click(function(){<br>    alert($(this).val());<br>});<br>}<br>});<br>$(“#input1”).alertWhileClick();</p>
+<p>//页面上为： <input id="input1" type="text"> $(“#input1”)　为一个jQuery实例，当它调用成员方法 alertWhileClick后，便实现了扩展，每次被点击时它会先弹出目前编辑里的内容。 3.2 jQuery.extend(object);　 为jQuery类添加添加类方法，可以理解为添加静态方法。如： $.extend({       add:function(a,b){return a+b;}   });   便为　jQuery　添加一个为 add　的　“静态方法”，之后便可以在引入 jQuery　的地方，使用这个方法了 $.add(3,4); //return 7</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/12/06/jsnewdate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/12/06/jsnewdate/" class="post-title-link" itemprop="url">Javascript中new Date()的浏览器兼容性问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-06 10:02:21" itemprop="dateCreated datePublished" datetime="2016-12-06T10:02:21+08:00">2016-12-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在页面中，用了一个时间上的组件来开发时间选择框，但是测试时发现在Firefox下是无法正常工作的，在Chrome下是可以正常运行的。 代码如下：</p>
+<p>var timestart = ‘2016-12-01’;<br>var timeend = ‘2016-12-06’;<br>var time1 = (timestart+’ 00:00:00’).toString();<br>var time2 = (timeend+’ 23:59:59’).toString();<br>timestart = new Date(time1);<br>timeend = new Date(time2);</p>
+<p>问题就在于 new Date(time1)这个构造函数无法正确的生成Date对象，经过测试之后发现这段代码这有在Chrome下正常执行，而在其他浏览器下会报错。</p>
+<h4 id="正确的做法"><a href="#正确的做法" class="headerlink" title="正确的做法"></a>正确的做法</h4><p>以下列出正确的做法：</p>
+<p>var time1 = (timestart+’ 00:00:00’).toString();<br>var time2 = (timeend+’ 23:59:59’).toString();<br>timestart = new Date(Date.parse(str.replace(/-/g,”/“))).getTime();<br>timeend = new Date(Date.parse(str.replace(/-/g,”/“))).getTime();</p>
+<p>主要的变化是对默认的日期格式进行了转换， 基于’/‘格式的日期字符串，才是被各个浏览器所广泛支持的，‘-’连接的日期字符串，则是只在chrome下可以正常工作。 ‘2016-12-01’是无法被各个浏览器中，使用new Date(str)来正确生成日期对象的。 正确的用法是’2016/12/06’.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/12/01/wordpresschangetheme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/12/01/wordpresschangetheme/" class="post-title-link" itemprop="url">wordpress从数据库更换修改主题theme</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-01 17:24:53" itemprop="dateCreated datePublished" datetime="2016-12-01T17:24:53+08:00">2016-12-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>今天安装主题的时候不知道咋回事出现访问网站什么都打不开的结果，后台进不去，前台无法访问，安装的主题应该是有问题的，只有通过数据库来修改主题。
+</code></pre><p>具体操作方法如下：我是通过navicat连接数据库的，通过phpMyAdmin打开也是一样的，点击查询输入sql查询当前使用的主题：</p>
+<p>SELECT *<br>FROM wp_options<br>WHERE option_name = ‘template’<br>OR option_name = ‘stylesheet’<br>OR option_name = ‘current_theme’;</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2016/12/re0.me_2016-12-14_01-17-33.png" alt="qq%e5%9b%be%e7%89%8720161201171939"> 将对应的字段修改为系统自带的主题theme，</p>
+<p>UPDATE wp_options SET option_value = ‘default’ WHERE option_name = ‘template’; </p>
+<p>UPDATE wp_options SET option_value = ‘default’ WHERE option_name = ‘stylesheet’; </p>
+<p>UPDATE wp_options SET option_value = ‘default’ WHERE option_name = ‘current_theme’;</p>
+<p>如果需要这只新Theme的话，需要注意  SET option_value = ‘Siren-master’  Siren-master 与你网站主题下已有主题的目录名一致。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/29/logbackconfigfilter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/29/logbackconfigfilter/" class="post-title-link" itemprop="url">logback 常用配置三 (filter)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-29 15:11:56" itemprop="dateCreated datePublished" datetime="2016-11-29T15:11:56+08:00">2016-11-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/学习记录/" itemprop="url" rel="index"><span itemprop="name">学习记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>logback 常用配置详解（三）</strong> <strong><filter></filter></strong> <strong><filter>:</filter></strong> 过滤器，执行一个过滤器会有返回个枚举值，即DENY，NEUTRAL，ACCEPT其中之一。返回DENY，日志将立即被抛弃不再经过其他过滤器；返回NEUTRAL，有序列表里的下个过滤器过接着处理日志；返回ACCEPT，日志会被立即处理，不再经过剩余过滤器。 过滤器被添加到<strong><appender></appender></strong> 中，为<strong><appender></appender></strong> 添加一个或多个过滤器后，可以用任意条件对日志进行过滤。<strong><appender></appender></strong> 有多个过滤器时，按照配置顺序执行。 下面是几个常用的过滤器： <strong>LevelFilter：</strong> 级别过滤器，根据日志级别进行过滤。如果日志级别等于配置级别，过滤器会根据onMath 和 onMismatch接收或拒绝日志。有以下子节点： <level>:设置过滤级别 <onmatch>:用于配置符合过滤条件的操作 <onmismatch>:用于配置不符合过滤条件的操作 例如：将过滤器的日志级别配置为INFO，所有INFO级别的日志交给appender处理，非INFO级别的日志，被过滤掉。 Xml代码</onmismatch></onmatch></level></p>
+<configuration><br>  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender"><br>    <filter class="ch.qos.logback.classic.filter.LevelFilter"><br>      <level>INFO</level><br>      <onmatch>ACCEPT</onmatch><br>      <onmismatch>DENY</onmismatch><br>    </filter><br>    <encoder><br>      <pattern><br>        %-4relative [%thread] %-5level %logger{30} - %msg%n<br>      </pattern><br>    </encoder><br>  </appender><br>  <root level="DEBUG"><br>    <appender-ref ref="CONSOLE"><br>  </appender-ref></root><br></configuration>
+
+<p>  <strong>ThresholdFilter：</strong> 临界值过滤器，过滤掉低于指定临界值的日志。当日志级别等于或高于临界值时，过滤器返回NEUTRAL；当日志级别低于临界值时，日志会被拒绝。 例如：过滤掉所有低于INFO级别的日志。 Xml代码</p>
+<configuration><br>  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender"><br>    <!-- 过滤掉 TRACE 和 DEBUG 级别的日志--><br>    <filter class="ch.qos.logback.classic.filter.ThresholdFilter"><br>      <level>INFO</level><br>    </filter><br>    <encoder><br>      <pattern><br>        %-4relative [%thread] %-5level %logger{30} - %msg%n<br>      </pattern><br>    </encoder><br>  </appender><br>  <root level="DEBUG"><br>    <appender-ref ref="CONSOLE"><br>  </appender-ref></root><br></configuration>
+
+<p><strong>EvaluatorFilter：</strong> 求值过滤器，评估、鉴别日志是否符合指定条件。需要额外的两个JAR包，commons-compiler.jar和janino.jar有以下子节点： <evaluator>: 鉴别器，常用的鉴别器是JaninoEventEvaluato，也是默认的鉴别器，它以任意的java布尔值表达式作为求值条件，求值条件在配置文件解释过成功被动态编译，布尔值表达式返回true就表示符合过滤条件。evaluator有个子标签<expression>，用于配置求值条件。 求值表达式作用于当前日志，logback向求值表达式暴露日志的各种字段： Name Type Description</expression></evaluator></p>
+<p>event</p>
+<p><code>LoggingEvent</code></p>
+<p>与记录请求相关联的原始记录事件，下面所有变量都来自event，例如，event.getMessage()返回下面”message”相同的字符串</p>
+<p>message</p>
+<p><code>String</code></p>
+<p>日志的原始消息，例如，设有logger mylogger，”name”的值是”AUB”，对于 mylogger.info(“Hello {}”,name); “Hello {}”就是原始消息。</p>
+<p>formatedMessage</p>
+<p><code>String</code></p>
+<p>日志被各式话的消息，例如，设有logger mylogger，”name”的值是”AUB”，对于 mylogger.info(“Hello {}”,name); “Hello Aub”就是格式化后的消息。</p>
+<p>logger</p>
+<p><code>String</code></p>
+<p>logger 名。</p>
+<p>loggerContext</p>
+<p><code>LoggerContextVO</code></p>
+<p>日志所属的logger上下文。</p>
+<p>level</p>
+<p><code>int</code></p>
+<p>级别对应的整数值，所以 <em>level &gt; INFO</em> 是正确的表达式。</p>
+<p>timeStamp</p>
+<p><code>long</code></p>
+<p>创建日志的时间戳。</p>
+<p>marker</p>
+<p><code>Marker</code></p>
+<p>与日志请求相关联的Marker对象，注意“Marker”有可能为null，所以你要确保它不能是null。</p>
+<p>mdc</p>
+<p><code>Map</code></p>
+<p>包含创建日志期间的MDC所有值得map。访问方法是： <em>mdc.get(“myKey”)</em> 。mdc.get()返回的是Object不是String，要想调用String的方法就要强转，例如，<code>((String) mdc.get(&quot;k&quot;)).contains(&quot;val&quot;)</code> .MDC可能为null，调用时注意。</p>
+<p>throwable</p>
+<p>java.lang.Throwable</p>
+<p>如果没有异常与日志关联”throwable” 变量为 null. 不幸的是， “throwable” 不能被序列化。在远程系统上永远为null，对于与位置无关的表达式请使用下面的变量<code>throwableProxy</code></p>
+<p>throwableProxy</p>
+<p><code>IThrowableProxy</code></p>
+<p>与日志事件关联的异常代理。如果没有异常与日志事件关联，则变量”throwableProxy” 为 null. 当异常被关联到日志事件时，”throwableProxy” 在远程系统上不会为null</p>
+<p><onmatch>:用于配置符合过滤条件的操作 <onmismatch>:用于配置不符合过滤条件的操作 例如：过滤掉所有日志消息中不包含“billing”字符串的日志。 Xml代码</onmismatch></onmatch></p>
+<configuration><br><br>  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <filter class="ch.qos.logback.core.filter.EvaluatorFilter"><br>      <evaluator> <!-- 默认为 ch.qos.logback.classic.boolex.JaninoEventEvaluator --><br>        <expression>return message.contains(“billing”);</expression><br>      </evaluator><br>      <onmatch>ACCEPT </onmatch><br>      <onmismatch>DENY</onmismatch><br>    </filter><br>    <encoder><br>      <pattern><br>        %-4relative [%thread] %-5level %logger - %msg%n<br>      </pattern><br>    </encoder><br>  </appender><br><br>  <root level="INFO"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br></configuration>  
+
+<p><strong><matcher> ：</matcher></strong> 匹配器，尽管可以使用String类的matches()方法进行模式匹配，但会导致每次调用过滤器时都会创建一个新的Pattern对象，为了消除这种开销，可以预定义一个或多个matcher对象，定以后就可以在求值表达式中重复引用。<matcher>是<evaluator>的子标签。 <matcher>中包含两个子标签，一个是<name>，用于定义matcher的名字，求值表达式中使用这个名字来引用matcher；另一个是<regex>，用于配置匹配条件。 例如： Xml代码</regex></name></matcher></evaluator></matcher></p>
+<configuration debug="true"><br><br>  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <filter class="ch.qos.logback.core.filter.EvaluatorFilter"><br>      <evaluator><br>        <matcher><br>          <name>odd</name><br>          <!-- filter out odd numbered statements --><br>          <regex>statement [13579]</regex><br>        </matcher><br><br>        <expression>odd.matches(formattedMessage)</expression><br>      </evaluator><br>      <onmismatch>NEUTRAL</onmismatch><br>      <onmatch>DENY</onmatch><br>    </filter><br>    <encoder><br>      <pattern>%-4relative [%thread] %-5level %logger - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <root level="DEBUG"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br></configuration>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/29/logbackconfig2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/29/logbackconfig2/" class="post-title-link" itemprop="url">LogBack常用配置二--appender</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-29 15:05:21" itemprop="dateCreated datePublished" datetime="2016-11-29T15:05:21+08:00">2016-11-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/学习记录/" itemprop="url" rel="index"><span itemprop="name">学习记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>logback 常用配置详解（二）</strong> <strong><appender></appender></strong>   <img src="http://logback.qos.ch/manual/images/chapters/configuration/appenderSyntax.png" alt> <strong><appender>：</appender></strong> <appender>是<configuration>的子节点，是负责写日志的组件。 <appender>有两个必要属性name和class。name指定appender名称，class指定appender的全限定名。 <strong>1.ConsoleAppender:</strong> 把日志添加到控制台，有以下子节点： <encoder>：对日志进行格式化。（具体参数稍后讲解 ） <target>：字符串 <em>System.out</em> 或者 <em>System.err</em> ，默认 <em>System.out</em> ； 例如： Xml代码</target></encoder></appender></configuration></appender></p>
+<configuration><br><br>  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <encoder><br>      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern><br>    </encoder><br>  </appender><br><br>  <root level="DEBUG"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br></configuration>
+
+<p><strong>2.FileAppender:</strong> 把日志添加到文件，有以下子节点： <file>：被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建，没有默认值。 <append>：如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true。 <encoder>：对记录事件进行格式化。（具体参数稍后讲解 ） <prudent>：如果是 true，日志会被安全的写入文件，即使其他的FileAppender也在向此文件做写入操作，效率低，默认是 false。 例如： Xml代码</prudent></encoder></append></file></p>
+<configuration><br><br>  <appender name="FILE" class="ch.qos.logback.core.FileAppender"><br>    <file>testFile.log</file><br>    <append>true</append><br>    <encoder><br>      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <root level="DEBUG"><br>    <appender-ref ref="FILE"><br>  </appender-ref></root><br></configuration>
+
+<p><strong>3.RollingFileAppender:</strong> 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件。有以下子节点： <file>：被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建，没有默认值。 <append>：如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true。 <encoder>：对记录事件进行格式化。 <rollingpolicy>:当发生滚动时，决定 <strong>RollingFileAppender</strong> 的行为，涉及文件移动和重命名。 <triggeringpolicy **>:<strong> 告知 </strong>RollingFileAppender<strong> 合适激活滚动。 <prudent>：当为true时，不支持FixedWindowRollingPolicy。支持TimeBasedRollingPolicy，但是有两个限制，1不支持也不允许文件压缩，2不能设置file属性，必须留空。 </prudent></strong>rollingPolicy：**</triggeringpolicy></rollingpolicy></encoder></append></file></p>
+<p><strong>TimeBasedRollingPolicy：</strong> 最常用的滚动策略，它根据时间来制定滚动策略，既负责滚动也负责出发滚动。有以下子节点：</p>
+<p><filenamepattern>:必要节点，包含文件名及“%d”转换符， “%d”可以包含一个<code>java.text.SimpleDateFormat指定的时间格式，如：%d{yyyy-MM}。如果直接使用 %d，默认格式是 yyyy-MM-dd。</code><strong>RollingFileAppender</strong> 的file字节点可有可无，通过设置file，可以为活动文件和归档文件指定不同位置，当前日志总是记录到file指定的文件（活动文件），活动文件的名字不会改变；如果没设置file，活动文件的名字会根据<strong>fileNamePattern</strong> 的值，每隔一段时间改变一次。“/”或者“\”会被当做目录分隔符。</filenamepattern></p>
+<p><maxhistory>:可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每个月滚动，且<maxhistory>是6，则只保存最近6个月的文件，删除之前的旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除。</maxhistory></maxhistory></p>
+<p><strong>FixedWindowRollingPolicy：</strong> 根据固定窗口算法重命名文件的滚动策略。有以下子节点：</p>
+<p><minindex>:窗口索引最小值</minindex></p>
+<p><maxindex>:窗口索引最大值，当用户指定的窗口过大时，会自动将窗口设置为12。</maxindex></p>
+<p><filenamepattern>:</filenamepattern></p>
+<p>必须包含“%i”例如，假设最小值和最大值分别为1和2，命名模式为 mylog%i.log,会产生归档文件mylog1.log和mylog2.log。还可以指定文件压缩选项，例如，mylog%i.log.gz 或者 没有log%i.log.zip</p>
+<p><strong>triggeringPolicy:</strong></p>
+<p><strong>SizeBasedTriggeringPolicy：</strong> 查看当前活动文件的大小，如果超过指定大小会告知 <strong>RollingFileAppender</strong> 触发当前活动文件滚动。只有一个节点<strong>:</strong></p>
+<p><maxfilesize>:这是活动文件的大小，默认值是10MB。</maxfilesize></p>
+<p>例如：每天生成一个日志文件，保存30天的日志文件。</p>
+<p>Java代码</p>
+<configuration><br>  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"><br><br>    <rollingpolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"><br>      <filenamepattern>logFile.%d{yyyy-MM-dd}.log</filenamepattern><br>      <maxhistory>30</maxhistory><br>    </rollingpolicy><br><br>    <encoder><br>      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <root level="DEBUG"><br>    <appender-ref ref="FILE"><br>  </appender-ref></root><br></configuration>
+
+<p>例如：按照固定窗口模式生成日志文件，当文件大于20MB时，生成新的日志文件。窗口大小是1到3，当保存了3个归档文件后，将覆盖最早的日志。 Xml代码</p>
+<configuration><br>  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"><br>    <file>test.log</file><br><br>    <rollingpolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy"><br>      <filenamepattern>tests.%i.log.zip</filenamepattern><br>      <minindex>1</minindex><br>      <maxindex>3</maxindex><br>    </rollingpolicy><br><br>    <triggeringpolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy"><br>      <maxfilesize>5MB</maxfilesize><br>    </triggeringpolicy><br>    <encoder><br>      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <root level="DEBUG"><br>    <appender-ref ref="FILE"><br>  </appender-ref></root><br></configuration>
+
+<p>  <strong><encoder>：</encoder></strong> 负责两件事，一是把日志信息转换成字节数组，二是把字节数组写入到输出流。 目前<strong>PatternLayoutEncoder</strong> 是唯一有用的且默认的<strong>encoder</strong> ，有一个<pattern>节点，用来设置日志的输入格式。使用“%”加“转换符”方式，如果要输出“%”，则必须用“\”对“\%”进行转义。 例如： Xml代码</pattern></p>
+<p><encoder><br>   <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern><br>&lt;/encoder</encoder></p>
+<p><strong><pattern>里面的转换符说明：</pattern></strong> 转换符 作用</p>
+<p><strong>c</strong> {<em>length</em> } <strong>lo</strong> {<em>length</em> } <strong>logger</strong> {<em>length</em> }</p>
+<p>输出日志的logger名，可有一个整形参数，功能是缩短logger名，设置为0表示只输入logger最右边点符号之后的字符串。 Conversion specifier Logger name Result</p>
+<p>%logger</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p>%logger{0}</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p>Bar</p>
+<p>%logger{5}</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p>m.s.s.Bar</p>
+<p>%logger{10}</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p>m.s.s.Bar</p>
+<p>%logger{15}</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p>m.s.sample.Bar</p>
+<p>%logger{16}</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p>m.sub.sample.Bar</p>
+<p>%logger{26}</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p>mainPackage.sub.sample.Bar</p>
+<p><strong>C</strong> {<em>length</em> } <strong>class</strong> {<em>length</em> }</p>
+<p>输出执行记录请求的调用者的全限定名。参数与上面的一样。尽量避免使用，除非执行速度不造成任何问题。</p>
+<p><strong>contextName</strong> <strong>cn</strong></p>
+<p>输出上下文名称。</p>
+<p><strong>d</strong> {<em>pattern</em> } <strong>date</strong> {<em>pattern</em> }</p>
+<p>输出日志的打印日志，模式语法与<code>java.text.SimpleDateFormat</code> 兼容。 Conversion Pattern Result</p>
+<p>%d</p>
+<p>2006-10-20 14:06:49,812</p>
+<p>%date</p>
+<p>2006-10-20 14:06:49,812</p>
+<p>%date{ISO8601}</p>
+<p>2006-10-20 14:06:49,812</p>
+<p>%date{HH:mm:ss.SSS}</p>
+<p>14:06:49.812</p>
+<p>%date{dd MMM yyyy ;HH:mm:ss.SSS}</p>
+<p>20 oct. 2006;14:06:49.812</p>
+<p><strong>F / file</strong></p>
+<p>输出执行记录请求的java源文件名。尽量避免使用，除非执行速度不造成任何问题。</p>
+<p><strong>caller{depth}**</strong>caller{depth, evaluator-1, … evaluator-n}**</p>
+<p>输出生成日志的调用者的位置信息，整数选项表示输出信息深度。例如， <strong>%caller{2}</strong>   输出为：</p>
+<p>0    [main] DEBUG - logging statement<br>Caller+0   at mainPackage.sub.sample.Bar.sampleMethodName(Bar.java:22)<br>Caller+1   at mainPackage.sub.sample.Bar.createLoggingRequest(Bar.java:17)</p>
+<p>例如， <strong>%caller{3}</strong>   输出为：</p>
+<p>16   [main] DEBUG - logging statement<br>Caller+0   at mainPackage.sub.sample.Bar.sampleMethodName(Bar.java:22)<br>Caller+1   at mainPackage.sub.sample.Bar.createLoggingRequest(Bar.java:17)<br>Caller+2   at mainPackage.ConfigTester.main(ConfigTester.java:38)</p>
+<p><strong>L / line</strong></p>
+<p>输出执行日志请求的行号。尽量避免使用，除非执行速度不造成任何问题。</p>
+<p><strong>m / msg / message</strong></p>
+<p>输出应用程序提供的信息。</p>
+<p><strong>M / method</strong></p>
+<p>输出执行日志请求的方法名。尽量避免使用，除非执行速度不造成任何问题。</p>
+<p><strong>n</strong></p>
+<p>输出平台先关的分行符“\n”或者“\r\n”。</p>
+<p><strong>p / le / level</strong></p>
+<p>输出日志级别。</p>
+<p><strong>r / relative</strong></p>
+<p>输出从程序启动到创建日志记录的时间，单位是毫秒</p>
+<p><strong>t / thread</strong></p>
+<p>输出产生日志的线程名。</p>
+<p><strong>replace(_p_ ){r, t}</strong></p>
+<p><strong>p</strong> 为日志内容，<strong>r</strong> 是正则表达式，将<strong>p</strong> 中符合<strong>r</strong> 的内容替换为<strong>t</strong> 。 例如， “%replace(%msg){‘\s’, ‘’}”</p>
+<p><strong>格式修饰符，与转换符共同使用：</strong> 可选的格式修饰符位于“%”和转换符之间。 第一个可选修饰符是<strong>左对齐</strong> 标志，符号是减号“-”；接着是可选的<strong>最小宽度</strong> 修饰符，用十进制数表示。如果字符小于最小宽度，则左填充或右填充，默认是左填充（即右对齐），填充符为空格。如果字符大于最小宽度，字符永远不会被截断。<strong>最大宽度</strong> 修饰符，符号是点号”.”后面加十进制数。如果字符大于最大宽度，则从前面截断。点符号“.”后面加减号“-”在加数字，表示从尾部截断。 例如：%-4relative 表示，将输出从程序启动到创建日志记录的时间 进行左对齐 且最小宽度为4。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/29/logbackconfig/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/29/logbackconfig/" class="post-title-link" itemprop="url">logback常用配置--logger和configuration</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-29 14:34:00" itemprop="dateCreated datePublished" datetime="2016-11-29T14:34:00+08:00">2016-11-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/学习记录/" itemprop="url" rel="index"><span itemprop="name">学习记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>logback 简介</strong> Ceki Gülcü在Java日志领域世界知名。他创造了Log4J ，这个最早的Java日志框架即便在JRE内置日志功能的竞争下仍然非常流行。随后他又着手实现SLF4J 这个“简单的日志前端接口（Façade）”来替代Jakarta Commons-Logging LOGBack，一个“可靠、通用、快速而又灵活的Java日志框架”。 要在工程里面使用logback需要以下jar文件： slf4j-api-1.6.1.jar 官网网址：<a href="http://www.slf4j.org/" target="_blank" rel="noopener">http://www.slf4j.org/</a> 下载地址：<a href="http://www.slf4j.org/dist/slf4j-1.6.1.zip" target="_blank" rel="noopener">http://www.slf4j.org/dist/slf4j-1.6.1.zip</a> logback-access-0.9.29.jar logback-classic-0.9.29.jar logback-core-0.9.29.jar 官网网址：<a href="http://logback.qos.ch/" target="_blank" rel="noopener">http://logback.qos.ch/</a> 下载地址：<a href="http://logback.qos.ch/dist/logback-0.9.29.zip" target="_blank" rel="noopener">http://logback.qos.ch/dist/logback-0.9.29.zip</a> 在工程src目录下建立logback.xml 注： 1.logback首先会试着查找logback.groovy文件; 2.当没有找到时，继续试着查找logback-test.xml文件; 3.当没有找到时，继续试着查找logback.xml文件; 4.如果仍然没有找到，则使用默认配置（打印到控制台）。 在工程src目录下建立logback包，然后在包下建立LogbackDemo.java用于测试，代码如</p>
+<p>package logback;  </p>
+<p>import org.slf4j.Logger;<br>import org.slf4j.LoggerFactory;  </p>
+<p>public class LogbackDemo {<br>    private static Logger log = LoggerFactory.getLogger(LogbackDemo.class);<br>    public static void main(String[] args) {<br>        log.trace(“======trace”);<br>        log.debug(“======debug”);<br>        log.info(“======info”);<br>        log.warn(“======warn”);<br>        log.error(“======error”);  </p>
+<pre><code>    String name = &quot;Aub&quot;;  
+    String message = &quot;3Q&quot;;  
+    String\[\] fruits = { &quot;apple&quot;, &quot;banana&quot; };  
+
+    // logback提供的可以使用变量的打印方式，结果为&quot;Hello,Aub!&quot;  
+    log.info(&quot;Hello,{}!&quot;, name);  
+
+    // 可以有多个参数,结果为“Hello,Aub! 3Q!”  
+    log.info(&quot;Hello,{}!   {}!&quot;, name, message);  
+
+    // 可以传入一个数组，结果为&quot;Fruit:  apple,banana&quot;  
+    log.info(&quot;Fruit:  {},{}&quot;, fruits);   
+}  
+</code></pre><p>}</p>
+<p><strong>logback 配置详解（一）<configuration> and <logger></logger></configuration></strong> <strong>一：根节点<configuration>包含的属性：</configuration></strong> scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。 scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。 debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 例如：</p>
+<configuration scan="true" scanperiod="60 seconds" debug="false"><br>      &lt;!-- 其他配置省略–><br></configuration>
+
+<p>  <strong>二：根节点<configuration>的子节点：</configuration></strong> <img src="http://logback.qos.ch/manual/images/chapters/configuration/basicSyntax.png" alt> <strong>2.1设置上下文名称：<contextname></contextname></strong> 每个logger都关联到logger上下文，默认上下文名称为“default”。但可以使用<contextname>设置成其他名字，用于区分不同应用程序的记录。一旦设置，不能修改。</contextname></p>
+<configuration scan="true" scanperiod="60 seconds" debug="false"><br>      <contextname>myAppName</contextname><br>      <!-- 其他配置省略--><br></configuration>
+
+<p><strong>2.2设置变量：</strong> <strong><property></property></strong> 用来定义变量值的标签，<property> 有两个属性，name和value；其中name的值是变量的名称，value的值时变量定义的值。通过<property>定义的值会被插入到logger上下文中。定义变量后，可以使“${}”来使用变量。 例如使用<property>定义上下文名称，然后在<contentname>设置logger上下文时使用。</contentname></property></property></property></p>
+<p>Xml代码</p>
+<configuration scan="true" scanperiod="60 seconds" debug="false"><br>      <property name="APP_Name" value="myAppName"><br>      <contextname>${APP_Name}</contextname><br>      <!-- 其他配置省略--><br></property></configuration>
+
+<p><strong>2.3获取时间戳字符串：<timestamp></timestamp></strong> 两个属性 key:标识此<strong><timestamp></timestamp></strong> 的名字；datePattern：设置将当前时间（解析配置文件的时间）转换为字符串的模式，遵循java.txt.SimpleDateFormat的格式。        例如将解析配置文件的时间作为上下文名称：</p>
+<p>Xml代码</p>
+<configuration scan="true" scanperiod="60 seconds" debug="false"><br>      <timestamp key="bySecond" datepattern="yyyyMMdd'T'HHmmss"><br>      <contextname>${bySecond}</contextname><br>      <!-- 其他配置省略--><br></timestamp></configuration>
+
+<p><strong>2.4设置loger：</strong> <strong><loger></loger></strong> 用来设置某一个包或者具体的某一个类的日志打印级别、以及指定<appender>。<loger>仅有一个name属性，一个可选的level和一个可选的addtivity属性。 name:用来指定受此loger约束的某一个包或者具体的某一个类。 level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，还有一个特俗值INHERITED或者同义词NULL，代表强制执行上级的级别。如果未设置此属性，那么当前loger将会继承上级的级别。 addtivity:是否向上级loger传递打印信息。默认是true。 <loger>可以包含零个或多个<appender-ref>元素，标识这个appender将会添加到这个loger。 <strong><root></root></strong> 也是<loger>元素，但是它是根loger。只有一个level属性，应为已经被命名为”root”. level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，不能设置为INHERITED或者同义词NULL。默认是DEBUG。 <root>可以包含零个或多个<appender-ref>元素，标识这个appender将会添加到这个loger。 例如： LogbackDemo.java类</appender-ref></root></loger></appender-ref></loger></loger></appender></p>
+<p>Java代码</p>
+<p>package logback;  </p>
+<p>import org.slf4j.Logger;<br>import org.slf4j.LoggerFactory;  </p>
+<p>public class LogbackDemo {<br>    private static Logger log = LoggerFactory.getLogger(LogbackDemo.class);<br>    public static void main(String[] args) {<br>        log.trace(“======trace”);<br>        log.debug(“======debug”);<br>        log.info(“======info”);<br>        log.warn(“======warn”);<br>        log.error(“======error”);<br>    }<br>}  </p>
+<p>logback.xml配置文件 <strong>第1种：只配置root</strong></p>
+<p>Xml代码</p>
+<configuration><br><br>  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <!-- encoder 默认配置为PatternLayoutEncoder --><br>    <encoder><br>      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <root level="INFO"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br><br> </configuration>
+
+<p>其中appender的配置表示打印到控制台； <root level="INFO">将root的打印级别设置为“INFO”，指定了名字为“STDOUT”的appender。 当执行logback.LogbackDemo类的main方法时，root将级别为“INFO”及大于“INFO”的日志信息交给已经配置好的名为“STDOUT”的appender处理，“STDOUT”appender将信息打印到控制台； <strong>打印结果如下：</strong></root></p>
+<p>13:30:38.484 [main] INFO  logback.LogbackDemo - ======info<br>13:30:38.500 [main] WARN  logback.LogbackDemo - ======warn<br>13:30:38.500 [main] ERROR logback.LogbackDemo - ======error</p>
+<p><strong> 第2种：带有loger的配置，不指定级别，不指定appender，</strong></p>
+<p>Xml代码</p>
+<configuration><br><br>  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <!-- encoder 默认配置为PatternLayoutEncoder --><br>    <encoder><br>      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <!-- logback为java中的包 --><br>  <logger name="logback"><br><br>  <root level="DEBUG"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br><br> </logger></configuration>
+
+<p>其中appender的配置表示打印到控制台； <logger name="logback">将控制logback包下的所有类的日志的打印，但是并没用设置打印级别，所以继承他的上级<root>的日志级别“DEBUG”； 没有设置addtivity，默认为true，将此loger的打印信息向上级传递； 没有设置appender，此loger本身不打印任何信息。 <root level="DEBUG">将root的打印级别设置为“DEBUG”，指定了名字为“STDOUT”的appender。 当执行logback.LogbackDemo类的main方法时，因为LogbackDemo 在包logback中，所以首先执行<logger name="logback">，将级别为“DEBUG”及大于“DEBUG”的日志信息传递给root，本身并不打印； root接到下级传递的信息，交给已经配置好的名为“STDOUT”的appender处理，“STDOUT”appender将信息打印到控制台； <strong>打印结果如下：</strong></logger></root></root></logger></p>
+<p>13:19:15.406 [main] DEBUG logback.LogbackDemo - ======debug<br>13:19:15.406 [main] INFO  logback.LogbackDemo - ======info<br>13:19:15.406 [main] WARN  logback.LogbackDemo - ======warn<br>13:19:15.406 [main] ERROR logback.LogbackDemo - ======error</p>
+<p><strong>第3种：带有多个loger的配置，指定级别，指定appender</strong></p>
+<p>Xml代码</p>
+<configuration><br>   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"><br>    <!-- encoder 默认配置为PatternLayoutEncoder --><br>    <encoder><br>      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern><br>    </encoder><br>  </appender><br><br>  <!-- logback为java中的包 --><br>  <logger name="logback"><br>  <!--logback.LogbackDemo：类的全路径 --><br>  <logger name="logback.LogbackDemo" level="INFO" additivity="false"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></logger><br><br>  <root level="ERROR"><br>    <appender-ref ref="STDOUT"><br>  </appender-ref></root><br></logger></configuration>
+
+<p>其中appender的配置表示打印到控制台； <logger name="logback">将控制logback包下的所有类的日志的打印，但是并没用设置打印级别，所以继承他的上级<root>的日志级别“DEBUG”； 没有设置addtivity，默认为true，将此loger的打印信息向上级传递； 没有设置appender，此loger本身不打印任何信息。 <logger name="logback.LogbackDemo" level="INFO" additivity="false">控制logback.LogbackDemo类的日志打印，打印级别为“INFO”； additivity属性为false，表示此loger的打印信息不再向上级传递， 指定了名字为“STDOUT”的appender。 <root level="ERROR">将root的打印级别设置为“ERROR”，指定了名字为“STDOUT”的appender。 当执行logback.LogbackDemo类的main方法时，先执行<logger name="logback.LogbackDemo" level="INFO" additivity="false">，将级别为“INFO”及大于“INFO”的日志信息交给此loger指定的名为“STDOUT”的appender处理，在控制台中打出日志，不再向次loger的上级 <logger name="logback"> 传递打印信息； <logger name="logback">未接到任何打印信息，当然也不会给它的上级root传递任何打印信息； <strong>打印结果如下：</strong></logger></logger></logger></root></logger></root></logger></p>
+<p>14:05:35.937 [main] INFO  logback.LogbackDemo - ======info<br>14:05:35.937 [main] WARN  logback.LogbackDemo - ======warn<br>14:05:35.937 [main] ERROR logback.LogbackDemo - ======error</p>
+<p>如果将<logger name="logback.LogbackDemo" level="INFO" additivity="false">修改为 <logger name="logback.LogbackDemo" level="INFO" additivity="true">那打印结果将是什么呢？ 没错，日志打印了两次，想必大家都知道原因了，因为打印信息向上级传递，logger本身打印一次，root接到后又打印一次 <strong>打印结果如下：</strong></logger></logger></p>
+<p>14:09:01.531 [main] INFO  logback.LogbackDemo - ======info<br>14:09:01.531 [main] INFO  logback.LogbackDemo - ======info<br>14:09:01.531 [main] WARN  logback.LogbackDemo - ======warn<br>14:09:01.531 [main] WARN  logback.LogbackDemo - ======warn<br>14:09:01.531 [main] ERROR logback.LogbackDemo - ======error<br>14:09:01.531 [main] ERROR logback.LogbackDemo - ======error</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/28/github/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/28/github/" class="post-title-link" itemprop="url">Git 远程仓库GitHub</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-28 11:43:03" itemprop="dateCreated datePublished" datetime="2016-11-28T11:43:03+08:00">2016-11-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。这时候需要一台电脑充当服务器，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。而GitHub便可以充当这台服务器，当然也可以自己搭建。</p>
+<p> github是一个基于git的代码托管平台，付费用户可以建私人仓库，我们一般的免费用户只能使用公共仓库，也就是代码要公开。</p>
+<h4 id="注册账户以及创建仓库"><a href="#注册账户以及创建仓库" class="headerlink" title="注册账户以及创建仓库"></a>注册账户以及创建仓库</h4><p>要想使用github第一步当然是注册github账号了， github官网地址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>。 之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一个git的简单教程。</p>
+<h4 id="Github-安装"><a href="#Github-安装" class="headerlink" title="Github 安装"></a>Github 安装</h4><pre><code>[下载 git Windows 版](https://git-for-windows.github.io/)
+</code></pre><h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><p>首先在本地创建ssh key；$ ssh-keygen -t rsa -C “<a href="mailto:your_email@youremail.com" target="_blank" rel="noopener">your_email@youremail.com</a>“，后面的<a href="mailto:your_email@youremail.com" target="_blank" rel="noopener">your_email@youremail.com</a>改为你在github上注册的邮箱</p>
+<p>$ ssh-keygen -t rsa -C “<a href="mailto:120081275@qq.com" target="_blank" rel="noopener">120081275@qq.com</a>“;<br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa):<br>Created directory ‘/c/Users/Administrator/.ssh’.<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in /c/Users/Administrator/.ssh/id_rsa.<br>Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>SHA256:fhetuNPMYqxh+PKsx8SNPr2QS5dJEsnDvdNLIkWEHa4 <a href="mailto:your_e12120081275@qq.com" target="_blank" rel="noopener">your_e12120081275@qq.com</a><br>The key’s randomart image is:<br>+—[RSA 2048]—-+<br>|         ++.     |<br>|       o.=.      |<br>|        * +      |<br>|         = o .   |<br>|       .Eo= + .  |<br>|       o+=.B +   |<br>|      .+Bo<em>++    |<br>|      .==**o+    |<br>|      .=</em>+o+     |<br>+—-[SHA256]—–+</p>
+<p>在创建key的过程中会让你输入保存 key的路径以及密码，回车选择默认就可以，在创建成功之后，在 /c/Users/Administrator 默认路径下会多出 .ssh 文件夹，里面有 id_rsa 和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。 打开 id_rsa.pub，复制里面的key。 然后进入github官网，登录账号，进入 Account Settings（账户配置），左边选择SSH Keys，New SSH Key,title随便填，粘贴在你电脑上生成的key。</p>
+<h4 id><a href="#" class="headerlink" title></a><img src="http://zhongmin.me/wp-content/uploads/2016/11/git.png" alt="git"></h4><p> Add SSH key 添加成功之后可以在列表里看见刚刚添加的key.</p>
+<p>验证是否成功，在git下输入 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<p>$ ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>;<br>The authenticity of host ‘github.com (192.30.253.112)’ can’t be established.<br>RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.<br>Are you sure you want to continue connecting (yes/no)? yes<br>Warning: Permanently added ‘github.com,192.30.253.112’ (RSA) to the list of known hosts.<br>Hi minjj2016! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+<p>第一次的时候又可以提示是否确认连接，输入yes 后看见 You’ve successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github。</p>
+<h4 id="关联Git仓库"><a href="#关联Git仓库" class="headerlink" title="关联Git仓库"></a>关联Git仓库</h4><p>首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库，只需要在Repository name填入<code>mygit</code>，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库. 在本地进入需要上传的仓库，打开Git命令提示符，添加远程仓库：</p>
+<p>$ git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yourName/yourRepo.git</p>
+<p>后面的yourName和yourRepo表示你在github的用户名和刚才新建的仓库，加完之后进入.git，打开config，这里会多出一个remote “origin”内容，这就是刚才添加的远程地址，也可以直接修改config来配置远程地址。 如果需要修改远程仓库的地址，可以使用以下命令：</p>
+<p>$ git remote set-url origin  <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yourName/yourRepo.git;</p>
+<p>还可以先删除之前的远程仓库，再添加新的地址：</p>
+<p>$ git remote rm origin<br>$ git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:Liutos/foobar.git</p>
+<p>下一步，就可以把本地库的所有内容推送到远程库上 ：</p>
+<p>$ git push -u origin master;<br>Counting objects: 8, done.<br>Delta compression using up to 4 threads.<br>Compressing objects: 100% (4/4), done.<br>Writing objects: 100% (8/8), 746 bytes | 0 bytes/s, done.<br>Total 8 (delta 0), reused 0 (delta 0)<br>To <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:minjj2016/mygit.git<br>   420d91d..94d2551  master -&gt; master<br>Branch master set up to track remote branch master from origin.</p>
+<p>把本地库的内容推送到远程，用 <code>git push</code> 命令，实际上是把当前分支<code>master</code>推送到远程。 由于远程库是空的，我们第一次推送<code>master</code>分支时，加上了<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送的远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时就可以简化命令。 推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样。 以后只要本地作了提交，就可以通过命令：</p>
+<pre><code>$ git push origin master
+</code></pre><p>把本地<code>master</code>分支的最新修改推送至GitHub。</p>
+<h3 id="SSH警告"><a href="#SSH警告" class="headerlink" title="SSH警告"></a>SSH警告</h3><p>当你第一次使用Git的<code>clone</code>或者<code>push</code>命令连接GitHub时，会得到一个警告：</p>
+<pre><code>The authenticity of host &apos;github.com (xx.xx.xx.xx)&apos; can&apos;t be established.
+RSA key fingerprint is xx.xx.xx.xx.xx.
+Are you sure you want to continue connecting (yes/no)?
+</code></pre><p>这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入<code>yes</code>回车即可。 Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：</p>
+<p>Warning: Permanently added ‘github.com’ (RSA) to the list of known hosts.</p>
+<p>这个警告只会出现一次，后面的操作就不会有任何警告了。 如果你实在担心有人冒充GitHub服务器，输入<code>yes</code>前可以对照<a href="https://help.github.com/articles/what-are-github-s-ssh-key-fingerprints/" target="_blank" rel="noopener">GitHub的RSA Key的指纹信息</a>是否与SSH连接给出的一致。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>要关联一个远程库，使用命令</p>
+<p>git remote add origin git@server-name:path/repo-name.git；</p>
+<p>关联后，使用命令</p>
+<p>git push -u origin master</p>
+<p> 第一次推送master分支的所有内容； 此后，每次本地提交后，只要有必要，就可以使用命令</p>
+<p>git push origin master</p>
+<p> 推送最新修改； 分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/24/jdbcmysqljdbc20161124/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/24/jdbcmysqljdbc20161124/" class="post-title-link" itemprop="url">JDBC链接Mysql数据库是遇到的问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-24 15:39:56" itemprop="dateCreated datePublished" datetime="2016-11-24T15:39:56+08:00">2016-11-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Bug/" itemprop="url" rel="index"><span itemprop="name">Bug</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一个问题是 在连接数据库的时候一直连接不上,报出 Caused by: java.sql.SQLException: Access denied for user ‘minjj‘@’localhost’ (using password: YES) 的错误,但是数据库连接账号应该是root, 可能是在配置文件直接配置了username=root,spring读取配置文件时,${username}可能读到了电脑的管理员名称产生了冲突. 只需要将配置文件中username稍作修改就连接成功了. 第二个是 上面的问题解决之后又出现了  The server time zone value ‘�й���׼ʱ��’ is unrecognized or represents more than one time zone. 这样的错误. 这个错误的原因是mysql  jdbc驱动包过新的原因,jar包版本是6.0.3的, 只需要在数据库连接url加上serverTimezone =UTC即可</p>
+<p>db.url=jdbc:mysql://127.0.0.1:3306/mssm?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC</p>
+<p>后来在测试的时候还遇到一个诡异的问题，就是数据库中的时间比如是：2016-11-11 12:00:00 但是通过程序查出来的时间一直是 2016-11-11 20:00:00 也就是比数据库中时间快了 8个小时，查了很久的相关问题，都说是mysql 时区的问题，但是查我的mysql时区并没有什么问题，也尝试一些方法去解决，都没有什么效果。最后还是将 mysql 驱动包从6.0.3 版本换成了 5.1.25版本的，问题竟然就没有了。╮(╯▽╰)╭</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/24/mybatis-update20161124/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/24/mybatis-update20161124/" class="post-title-link" itemprop="url">Mybatis update语句返回值异常的问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-24 15:23:22" itemprop="dateCreated datePublished" datetime="2016-11-24T15:23:22+08:00">2016-11-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端开发/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在demo中有一个插入数据库的功能，后面的逻辑是根据返回值来进行判断的，如果是1表示插入数据库成功，小于等于0时表示插入失败，之前测试时还是好好的，重新clone之后再去试的时候发现了这个问题。也debug查找了很久，发现返回的值一直是一个负数，其他也没有发现什么问题，sql是可以正常的插入数据的。 后来查了一些资料，发现是因为mybatis 配置文件中 defaultExecutorType 引起的；defaultExecutorType有三个执行器SIMPLE、REUSE和BATCH。其中BATCH可以批量更新操作缓存SQL以提高性能，但是有个缺陷就是无法获取update、delete返回的行数。defaultExecutorType的默认执行器是SIMPLE。</p>
+<p>名称</p>
+<p>描述</p>
+<p>SIMPLE</p>
+<p>执行器执行其它语句</p>
+<p>REUSE</p>
+<p>可能重复使用prepared statements 语句</p>
+<p>BATCH</p>
+<p>可以重复执行语句和批量更新</p>
+<p>由于项目配置中启用了BATCH执行器，UPDATE和DELETE返回的行数就丢失了，把执行器改为SIMPLE即可。</p>
+<p>   &lt;!-- 全局映射器启用缓存 –&gt;<br>        <setting name="cacheEnabled" value="true"><br>        &lt;!-- 查询时，关闭关联对象即时加载以提高性能 –&gt;<br>        <setting name="lazyLoadingEnabled" value="true"><br>        &lt;!-- 设置关联对象加载的形态，此处为按需加载字段(加载字段由SQL指定)，不会加载关联表的所有字段，以提高性能 –&gt;<br>        <setting name="aggressiveLazyLoading" value="false"><br>        &lt;!-- 对于未知的SQL查询，允许返回不同的结果集以达到通用的效果 –&gt;<br>        <setting name="multipleResultSetsEnabled" value="true"><br>        &lt;!-- 给予被嵌套的resultMap以字段-属性的映射支持 –&gt;<br>        <setting name="autoMappingBehavior" value="FULL"><br>        &lt;!-- 对于批量更新操作缓存SQL以提高性能  开启这个好像会影响 mybatis 更新删除操作返回行数–&gt;<br>        <!--<setting name="defaultExecutorType" value="BATCH" />--><br>        &lt;!-- 数据库超过25000秒仍未响应则超时 –&gt;<br>        <setting name="defaultStatementTimeout" value="25000"></setting></setting></setting></setting></setting></setting></p>
+<p>修改或者注释之后 问题解决。</p>
+<p>MyBatis发现更新和插入返回值一直为”-2147482646”的错误是由defaultExecutorType设置引起的，如果设置为batch，更新返回值就会丢失。mybatis官方的讨论列表，这句很关键：“If the batch<br>executor is in use, the update counts are being lost. ”</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2016/11/23/restfulstyle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/23/restfulstyle/" class="post-title-link" itemprop="url">RestFul 风格</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-23 17:39:12" itemprop="dateCreated datePublished" datetime="2016-11-23T17:39:12+08:00">2016-11-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/knowledge/" itemprop="url" rel="index"><span itemprop="name">knowledge</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>--- 简洁版 —</strong> 0. REST不是”rest”这个单词，而是几个单词缩写。但即使那几个单词说出来，也无法理解在说什么 -_-!! （不是要贬低人，是我自己也理解困难）； 1. REST描述的是在网络中client和server的一种交互形式；REST本身不实用，实用的是如何设计 RESTful API（REST风格的网络接口）； 2. Server提供的RESTful API中，URL中只使用名词来指定资源，原则上不使用动词。“资源”是REST架构或者说整个网络处理的核心。比如： <a href="http://api.qc.com/v1/newsfeed" target="_blank" rel="noopener">http://api.qc.com/v1/newsfeed</a>: 获取某人的新鲜; <a href="http://api.qc.com/v1/friends" target="_blank" rel="noopener">http://api.qc.com/v1/friends</a>: 获取某人的好友列表; <a href="http://api.qc.com/v1/profile" target="_blank" rel="noopener">http://api.qc.com/v1/profile</a>: 获取某人的详细信息;3. 用HTTP协议里的动词来实现资源的添加，修改，删除等操作。即通过HTTP动词来实现资源的状态扭转： GET 用来获取资源， POST 用来新建资源（也可以用于更新资源）， PUT 用来更新资源， DELETE 用来删除资源。比如： DELETE <a href="http://api.qc.com/v1/friends" target="_blank" rel="noopener">http://api.qc.com/v1/friends</a>: 删除某人的好友 （在http parameter指定好友id） POST <a href="http://api.qc.com/v1/friends" target="_blank" rel="noopener">http://api.qc.com/v1/friends</a>: 添加好友 UPDATE <a href="http://api.qc.com/v1/profile" target="_blank" rel="noopener">http://api.qc.com/v1/profile</a>: 更新个人资料 禁止使用： GET <a href="http://api.qc.com/v1/deleteFriend" target="_blank" rel="noopener">http://api.qc.com/v1/deleteFriend</a> 图例： 4. Server和Client之间传递某资源的一个表现形式，比如用JSON，XML传输文本，或者用JPG，WebP传输图片等。当然还可以压缩HTTP传输时的数据（on-wire data compression）。 5. 用 HTTP Status Code传递Server的状态信息。比如最常用的 200 表示成功，500 表示Server内部错误等。 主要信息就这么点。最后是要解放思想，Web端不再用之前典型的PHP或JSP架构，而是改为前段渲染和附带处理简单的商务逻辑（比如AngularJS或者BackBone的一些样例）。Web端和Server只使用上述定义的API来传递数据和改变数据状态。格式一般是JSON。iOS和Android同理可得。由此可见，Web，iOS，Android和第三方开发者变为平等的角色通过一套API来共同消费Server提供的服务。 <strong>--- 详细版 —</strong> <strong>先说REST名称</strong> REST – REpresentational State Transfer 首先，之所以晦涩是因为前面主语被去掉了，全称是 Resource Representational State Transfer：通俗来讲就是：资源在网络中以某种表现形式进行状态转移。分解开来： Resource：资源，即数据（前面说过网络的核心）。比如 newsfeed，friends等； Representational：某种表现形式，比如用JSON，XML，JPEG等； State Transfer：状态变化。通过HTTP动词实现。 <strong>REST的出处</strong> Roy Fielding的毕业论文。这哥们参与设计HTTP协议，也是Apache Web Server项目（可惜现在已经是 nginx 的天下）的co-founder。PhD的毕业学校是 UC Irvine，Irvine在加州，有着充裕的阳光和美丽的海滩，是著名的富人区。Oculus VR 的总部就坐落于此（虚拟现实眼镜，被FB收购，CTO为Quake和Doom的作者 John Carmack）。 <strong>RESTful API</strong> 实用的是如何正确地理解 RESTful架构和设计好RESTful API。 <strong>首先为什么要用RESTful结构呢？</strong> 大家都知道”古代”网页是前端后端融在一起的，比如之前的PHP，JSP等。在之前的桌面时代问题不大，但是近年来移动互联网的发展，各种类型的Client层出不穷，RESTful可以通过一套统一的接口为 Web，iOS和Android提供服务。另外对于广大平台来说，比如Facebook platform，微博开放平台，微信公共平台等，它们不需要有显式的前端，只需要一套提供服务的接口，于是RESTful更是它们最好的选择。在RESTful架构下： <img src="http://zhongmin.me/wp-content/uploads/2016/12/rest-300x136.jpg" alt> <strong>Server的API如何设计才满足RESTful要求?</strong> 首先是简洁版里面的那几点。外加一些附带的 best practices： 1. URL root: <a href="https://example.org/api/v1/\" target="_blank" rel="noopener">https://example.org/api/v1/\</a><em> <a href="https://api.example.com/v1/" target="_blank" rel="noopener">https://api.example.com/v1/</a></em>2. API versioning: 可以放在URL里面，也可以用HTTP的header： /api/v1/ 3. URI使用名词而不是动词，且推荐用复数。 BAD</p>
+<ul>
+<li>/getProducts</li>
+<li>/listOrders</li>
+<li>/retrieveClientByOrder?orderId=1</li>
+</ul>
+<p>GOOD</p>
+<ul>
+<li>GET /products : will return the list of all products</li>
+<li>POST /products : will add a product to the collection</li>
+<li>GET /products/4 : will retrieve product #4</li>
+<li>PATCH/PUT /products/4 : will update product #4</li>
+</ul>
+<p>4. 保证 HEAD 和 GET 方法是安全的，不会对资源状态有所改变（污染）。比如严格杜绝如下情况： GET /deleteProduct?id=1 5. 资源的地址推荐用嵌套结构。比如： GET /friends/10375923/profile UPDATE /profile/primaryAddress/city6. 警惕返回结果的大小。如果过大，及时进行分页（pagination）或者加入限制（limit）。HTTP协议支持分页（Pagination）操作，在Header中使用 Link 即可。 7. 使用正确的HTTP Status Code表示访问状态：HTTP/1.1: Status Code Definitions 8. 在返回结果用明确易懂的文本（String。注意返回的错误是要给人看的，避免用 1001 这种错误信息），而且适当地加入注释。 9. 关于安全：自己的接口就用https，加上一个key做一次hash放在最后即可。考虑到国情，HTTPS在无线网络里不稳定，可以使用Application Level的加密手段把整个HTTP的payload加密。有兴趣的朋友可以用手机连上电脑的共享Wi-Fi，然后用Charles监听微信的网络请求（发照片或者刷朋友圈）。 RestFul 优势</p>
+<p>首先，REST规范：</p>
+<ul>
+<li>强调HTTP应当以资源为中心，并且规范了资源URI的风格；</li>
+<li>规范了HTTP请求动作（PUT，POST等）的使用，具有对应的语义；</li>
+</ul>
+<p>遵循REST规范的Web应用将会获得下面好处：</p>
+<ul>
+<li>URL具有很强可读性的，具有自描述性；</li>
+<li>资源描述与视图的松耦合；</li>
+<li>可提供OpenAPI，便于第三方系统集成，提高互操作性；</li>
+<li>如果提供无状态的服务接口，可提高应用的水平扩展性；</li>
+</ul>
+<p>原文地址：<a href="https://www.zhihu.com/question/28557115" target="_blank" rel="noopener">https://www.zhihu.com/question/28557115</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

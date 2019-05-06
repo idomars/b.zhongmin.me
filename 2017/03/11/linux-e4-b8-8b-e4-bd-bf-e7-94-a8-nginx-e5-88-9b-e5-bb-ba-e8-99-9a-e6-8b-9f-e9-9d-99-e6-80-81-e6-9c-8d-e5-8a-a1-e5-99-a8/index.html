@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一、什么是nginx是一个C语言开发的HTTP反向代理服务器，性能非常高 一个俄罗斯的哥们开发的，官方提供的测试性能能够达到5W的并发，我的天呐~，实际测试差不多是2W，而淘宝的牛人可以优化到200W 运行效率非常好，占用的资源也非常低，运行稳定 二、Nginx的应用场景 有哪些1、http服务器：Nginx是一个http服务可以独立提供http服务，可以做网页静态服务器，你可以放一些静态资源，比">
+<meta name="keywords" content="linux,nginx,web服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 下 使用 Nginx 创建虚拟静态服务器">
+<meta property="og:url" content="http://b.zhongmin.me/2017/03/11/linux-e4-b8-8b-e4-bd-bf-e7-94-a8-nginx-e5-88-9b-e5-bb-ba-e8-99-9a-e6-8b-9f-e9-9d-99-e6-80-81-e6-9c-8d-e5-8a-a1-e5-99-a8/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="一、什么是nginx是一个C语言开发的HTTP反向代理服务器，性能非常高 一个俄罗斯的哥们开发的，官方提供的测试性能能够达到5W的并发，我的天呐~，实际测试差不多是2W，而淘宝的牛人可以优化到200W 运行效率非常好，占用的资源也非常低，运行稳定 二、Nginx的应用场景 有哪些1、http服务器：Nginx是一个http服务可以独立提供http服务，可以做网页静态服务器，你可以放一些静态资源，比">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/160419090827731.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/160419090827732.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/12.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/12312.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/123124124124.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/sss.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/makeinstall.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/makeinstall2.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/succ.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/start.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/fire.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/nginxs.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/conf.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/nginxconf.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/newservice.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/html_88.png">
+<meta property="og:image" content="http://zhongmin.me/wp-content/uploads/2017/03/succcs.png">
+<meta property="og:updated_time" content="2019-05-06T06:56:52.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 下 使用 Nginx 创建虚拟静态服务器">
+<meta name="twitter:description" content="一、什么是nginx是一个C语言开发的HTTP反向代理服务器，性能非常高 一个俄罗斯的哥们开发的，官方提供的测试性能能够达到5W的并发，我的天呐~，实际测试差不多是2W，而淘宝的牛人可以优化到200W 运行效率非常好，占用的资源也非常低，运行稳定 二、Nginx的应用场景 有哪些1、http服务器：Nginx是一个http服务可以独立提供http服务，可以做网页静态服务器，你可以放一些静态资源，比">
+<meta name="twitter:image" content="http://zhongmin.me/wp-content/uploads/2017/03/160419090827731.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://b.zhongmin.me/2017/03/11/linux-e4-b8-8b-e4-bd-bf-e7-94-a8-nginx-e5-88-9b-e5-bb-ba-e8-99-9a-e6-8b-9f-e9-9d-99-e6-80-81-e6-9c-8d-e5-8a-a1-e5-99-a8/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Linux 下 使用 Nginx 创建虚拟静态服务器 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://b.zhongmin.me/2017/03/11/linux-e4-b8-8b-e4-bd-bf-e7-94-a8-nginx-e5-88-9b-e5-bb-ba-e8-99-9a-e6-8b-9f-e9-9d-99-e6-80-81-e6-9c-8d-e5-8a-a1-e5-99-a8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiaohe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux 下 使用 Nginx 创建虚拟静态服务器
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-03-11 14:02:59" itemprop="dateCreated datePublished" datetime="2017-03-11T14:02:59+08:00">2017-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-06 14:56:52" itemprop="dateModified" datetime="2019-05-06T14:56:52+08:00">2019-05-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、什么是nginx"><a href="#一、什么是nginx" class="headerlink" title="一、什么是nginx"></a>一、什么是nginx</h3><p>是一个C语言开发的HTTP反向代理服务器，性能非常高</p>
+<p>一个俄罗斯的哥们开发的，官方提供的测试性能能够达到5W的并发，我的天呐~，实际测试差不多是2W，而淘宝的牛人可以优化到200W</p>
+<p>运行效率非常好，占用的资源也非常低，运行稳定</p>
+<h3 id="二、Nginx的应用场景-有哪些"><a href="#二、Nginx的应用场景-有哪些" class="headerlink" title="二、Nginx的应用场景 有哪些"></a>二、Nginx的应用场景 有哪些</h3><p>1、http服务器：Nginx是一个http服务可以独立提供http服务，可以做网页静态服务器，你可以放一些静态资源，比如HTML, JS, CSS, 图片</p>
+<p>2、虚拟主机：可以实现在一台服务器虚拟出多个网站，同时使用80端口</p>
+<p>3、反向代理，负载均衡：当网站的访问量达到一定程度后，单台服务器不能满足用户的请求时，这时需要用多台服务器集群可以使用nginx做反向代理。并且多台服务器可以平均分担负载，不会因为某台服务器负载过高而宕机，也不会出现某台服务器闲置的情况。</p>
+<h3 id="三、Nginx安装"><a href="#三、Nginx安装" class="headerlink" title="三、Nginx安装"></a>三、Nginx安装</h3><p>首先需要在虚拟机上安装Linux环境（怎么安装的，略…）（当然你也可以用Windows版本的，性能的话呢，呵呵）</p>
+<p>首先要准备编译环境（bala bala …）</p>
+<p>分别运行一下4条命令，至于是啥东西就不多说了，有兴趣的可以m我或者百度一下</p>
+<p>yum install gcc-c++</p>
+<p>yum install -y pcre pcre-devel</p>
+<p>yum install -y zlib zlib-devel</p>
+<p>yum install -y openssl openssl-devel</p>
+<p>下载地址</p>
+<p>进入<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a></p>
+<p>我目前使用的是1.81, 1.9 的新的不用</p>
+<p>好，东风来了：</p>
+<p>1. 把nginx的源码上传到linux系统</p>
+<p>放在root下</p>
+<p>2. 把压缩包解压缩</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/160419090827731.png" alt></p>
+<p>3.在/var下新建/var/temp/nginx/目录</p>
+<p>4. 进行configure配置</p>
+<p>./configure \</p>
+<p>–prefix=/usr/local/nginx \</p>
+<p>–pid-path=/var/run/nginx/nginx.pid \</p>
+<p>–lock-path=/var/lock/nginx.lock \</p>
+<p>–error-log-path=/var/log/nginx/error.log \</p>
+<p>–http-log-path=/var/log/nginx/access.log \</p>
+<p>–with-http_gzip_static_module \</p>
+<p>–http-client-body-temp-path=/var/temp/nginx/client \</p>
+<p>–http-proxy-temp-path=/var/temp/nginx/proxy \</p>
+<p>–http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</p>
+<p>–http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</p>
+<p>–http-scgi-temp-path=/var/temp/nginx/scgi</p>
+<p>直接复制这一坨命令到putty（有很多SSH，随意用）</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/160419090827732.png" alt></p>
+<p>运行结果：<img src="http://zhongmin.me/wp-content/uploads/2017/03/12.png" alt></p>
+<p>此时已经有makefile文件夹了</p>
+<p>5. make</p>
+<p>进入 nginx-1.8.1文件夹，运行命令</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/12312.png" alt></p>
+<p>编译成功<img src="http://zhongmin.me/wp-content/uploads/2017/03/123124124124.png" alt></p>
+<p>6. make install</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/sss.png" alt></p>
+<p>运行结果：<img src="http://zhongmin.me/wp-content/uploads/2017/03/makeinstall.png" alt></p>
+<p>此时，在 /usr/local下会多一个nginx<img src="http://zhongmin.me/wp-content/uploads/2017/03/makeinstall2.png" alt></p>
+<p>这时，我们可以使Nginx启动或停止</p>
+<p>1. 启动：进入nginx的sbin目录，./nginx就可以直接启动</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/succ.png" alt></p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/start.png" alt></p>
+<p>启动成功</p>
+<p>PS：如果你的linux是新建的，那么防火墙是关闭的</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/fire.png" alt></p>
+<p>关闭防火墙就可以访问该虚拟机的IP</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/nginxs.png" alt></p>
+<p>我们开看一下这个文件</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/conf.png" alt></p>
+<p>看看配置<img src="http://zhongmin.me/wp-content/uploads/2017/03/nginxconf.png" alt></p>
+<p>新建一个server节点</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/newservice.png" alt></p>
+<p>对应更目录，html_88</p>
+<p><img src="http://zhongmin.me/wp-content/uploads/2017/03/html_88.png" alt></p>
+<p>./nginx -s reload 刷一下<img src="http://zhongmin.me/wp-content/uploads/2017/03/succcs.png" alt></p>
+<p>成功！</p>
+<p>PS：如果访问不了可能是端口没开</p>
+<p>打开88端口即可，这边就不多说了</p>
+<p><strong>更多Nginx相关教程见以下内容</strong>：</p>
+<p><a href="http://www.linuxidc.com/topicnews.aspx?tid=14" title="CentOS" target="_blank" rel="noopener">CentOS</a> 6.2实战部署Nginx+MySQL+PHP <a href="http://www.linuxidc.com/Linux/2013-09/90020.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2013-09/90020.htm</a> 使用Nginx搭建WEB服务器 <a href="http://www.linuxidc.com/Linux/2013-09/89768.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2013-09/89768.htm</a> 搭建基于Linux6.3+Nginx1.2+PHP5+MySQL5.5的Web服务器全过程 <a href="http://www.linuxidc.com/Linux/2013-09/89692.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2013-09/89692.htm</a> CentOS 6.3下Nginx性能调优 <a href="http://www.linuxidc.com/Linux/2013-09/89656.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2013-09/89656.htm</a> CentOS 6.3下配置Nginx加载ngx_pagespeed模块 <a href="http://www.linuxidc.com/Linux/2013-09/89657.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2013-09/89657.htm</a> CentOS 6.4安装配置Nginx+Pcre+php-fpm <a href="http://www.linuxidc.com/Linux/2013-08/88984.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2013-08/88984.htm</a> Nginx安装配置使用详细笔记 <a href="http://www.linuxidc.com/Linux/2014-07/104499.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2014-07/104499.htm</a> Nginx日志过滤 使用ngx_log_if不记录特定日志 <a href="http://www.linuxidc.com/Linux/2014-07/104686.htm" target="_blank" rel="noopener">http://www.linuxidc.com/Linux/2014-07/104686.htm</a> <strong>Nginx 的详细介绍</strong>：<a href="http://www.linuxidc.com/Linux/2012-03/56786.htm" title="Nginx" target="_blank" rel="noopener">请点这里</a> <strong>Nginx 的下载地址</strong>：<a href="http://www.linuxidc.com/down.aspx?id=342" target="_blank" rel="noopener">请点这里</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
+          
+            <a href="/tags/web服务器/" rel="tag"># web服务器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/09/jvectormap-api-e4-b9-8bworldmap/" rel="next" title="JVectorMap API之WorldMap">
+                <i class="fa fa-chevron-left"></i> JVectorMap API之WorldMap
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/wordpress-e6-97-a0-e6-b3-95-e5-8f-91-e5-b8-83-e6-96-87-e7-ab-a0-e7-9a-84-e9-97-ae-e9-a2-98/" rel="prev" title="wordpress无法发布文章的问题">
+                wordpress无法发布文章的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xiaohe</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">153</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是nginx"><span class="nav-number">1.</span> <span class="nav-text">一、什么是nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Nginx的应用场景-有哪些"><span class="nav-number">2.</span> <span class="nav-text">二、Nginx的应用场景 有哪些</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Nginx安装"><span class="nav-number">3.</span> <span class="nav-text">三、Nginx安装</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaohe</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
